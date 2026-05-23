@@ -11,8 +11,11 @@ export interface RateLimitResult {
 export async function checkAndConsumeRateLimit(
   userId: string,
   route: string,
+  overrideLimit?: number,
 ): Promise<RateLimitResult> {
-  const limit = Number(process.env.RATE_LIMIT_PER_HOUR ?? DEFAULT_LIMIT_PER_HOUR);
+  const limit =
+    overrideLimit ??
+    Number(process.env.RATE_LIMIT_PER_HOUR ?? DEFAULT_LIMIT_PER_HOUR);
   const windowStart = new Date(Date.now() - 60 * 60 * 1000);
 
   const used = await prisma.usageLog.count({
