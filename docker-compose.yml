@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: flirtai-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: flirtai
+      POSTGRES_PASSWORD: flirtai
+      POSTGRES_DB: flirtai
+    ports:
+      - "5432:5432"
+    volumes:
+      - flirtai-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flirtai -d flirtai"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  flirtai-pgdata:

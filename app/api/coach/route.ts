@@ -1,220 +1,183 @@
-import OpenAI from "openai";
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
+import Anthropic from "@anthropic-ai/sdk";
+import { z } from "zod";
 
-import { FLIRT_AI_SYSTEM_PROMPT } from "@/lib/flirt/system-prompt";
-import type { CoachChatResponse, CoachRequest } from "@/types/flirt";
+import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/db";
+import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
+import { buildSystemPrompt } from "@/lib/flirt/system-prompt";
+import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
+import type {
+  CoachChatResponse,
+  ConversationMessage,
+  MessageInsight,
+  ReplySuggestion,
+} from "@/types/flirt";
 
-const coachChatSchema = {
-  type: "object",
-  additionalProperties: false,
-  required: ["assistantMessage", "suggestions", "insight", "contact"],
-  properties: {
-    assistantMessage: { type: "string" },
-    suggestions: {
-      type: "array",
-      minItems: 3,
-      maxItems: 5,
-      items: {
-        type: "object",
-        additionalProperties: false,
-        required: ["tone", "text", "why"],
-        properties: {
-          tone: {
-            type: "string",
-            enum: ["playful", "confident", "intriguing", "direct"],
-          },
-          text: { type: "string" },
-          why: { type: "string" },
-        },
-      },
-    },
-    insight: {
-      type: "object",
-      additionalProperties: false,
-      required: ["interestLevel", "read", "move", "avoid"],
-      properties: {
-        interestLevel: {
-          type: "string",
-          enum: ["Low", "Medium", "High"],
-        },
-        read: { type: "string" },
-        move: { type: "string" },
-        avoid: { type: "string" },
-      },
-    },
-    contact: {
-      type: "object",
-      additionalProperties: false,
-      required: [
-        "name",
-        "source",
-        "status",
-        "attractionLevel",
-        "personalityType",
-        "interests",
-        "tags",
-        "lastInteractionSummary",
-      ],
-      properties: {
-        name: { type: "string" },
-        source: { type: "string" },
-        status: {
-          type: "string",
-          enum: ["active", "cold", "hot lead"],
-        },
-        attractionLevel: {
-          type: "string",
-          enum: ["Low", "Medium", "High"],
-        },
-        personalityType: { type: "string" },
-        interests: {
-          type: "array",
-          maxItems: 6,
-          items: { type: "string" },
-        },
-        tags: {
-          type: "array",
-          maxItems: 4,
-          items: { type: "string" },
-        },
-        lastInteractionSummary: { type: "string" },
-      },
-    },
-  },
-} as const;
+const HISTORY_CAP = 8;
 
-function buildFallbackResponse(payload: CoachRequest): CoachChatResponse {
-  const name =
-    payload.contact.name &&
-    payload.contact.name !== "Nova conversa" &&
-    payload.contact.name !== "Sem nome"
-      ? payload.contact.name
-      : "Sem nome";
-
-  const suggestions = [
-    {
-      tone: "confident" as const,
-      text: "Quinta funciona. 20h, vinho ou café?",
-      why: "Curto, claro e fácil de aceitar.",
-    },
-    {
-      tone: "playful" as const,
-      text: "Quarta ou quinta eu consigo. Escolhe qual versão sua eu conhece primeiro.",
-      why: "Mantém leveza com direção.",
-    },
-    {
-      tone: "direct" as const,
-      text: "Tenho quinta à noite livre. Vamos facilitar e resolver isso com um drink.",
-      why: "Fecha o plano sem exagerar.",
-    },
-  ];
-
-  return {
-    assistantMessage:
-      "Sinal bom. Ela abriu espaço para você liderar sem parecer emocionado. A melhor linha aqui é curta, leve e com direção.\n\nEu iria de: 'Quinta funciona. 20h, vinho ou café?'\n\nSe quiser, eu deixo mais provocativa, mais seca ou mais natural.",
-    suggestions,
-    insight: {
-      interestLevel: "High",
-      read: "Ela está investindo e te deu abertura para conduzir.",
-      move: "Responder curto e já trazer duas opções simples.",
-      avoid: "Texto longo, empolgação demais ou deixar tudo na mão dela.",
-    },
-    contact: {
-      name,
-      source: payload.contact.source || "Origem indefinida",
-      status: payload.contact.status || "active",
-      attractionLevel: payload.contact.attractionLevel || "Medium",
-      personalityType: payload.contact.personalityType || "Perfil em leitura",
-      interests: payload.contact.interests || [],
-      tags: payload.contact.tags.length ? payload.contact.tags : ["Novo"],
-      lastInteractionSummary: payload.prompt,
-    },
-  };
-}
+const requestSchema = z.object({
+  contactId: z.string().min(1),
+  prompt: z.string().min(1).max(4000),
+  mode: z.enum(["incoming", "strategy"]).default("incoming"),
+});
 
 export async function POST(request: Request) {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Não autenticado." }, { status: 401 });
+  }
+  const userId = session.user.id;
+
+  let parsed;
   try {
-    const payload = (await request.json()) as CoachRequest;
+    parsed = requestSchema.parse(await request.json());
+  } catch {
+    return NextResponse.json({ error: "Payload inválido." }, { status: 400 });
+  }
+  const { contactId, prompt, mode } = parsed;
 
-    if (!payload.prompt?.trim()) {
-      return NextResponse.json(
-        { error: "A mensagem para o FLIRT A.I está vazia." },
-        { status: 400 },
-      );
-    }
-
-    const apiKey = process.env.OPENAI_API_KEY;
-    const model = process.env.OPENAI_MODEL ?? "gpt-5";
-
-    if (!apiKey) {
-      return NextResponse.json(buildFallbackResponse(payload));
-    }
-
-    const client = new OpenAI({ apiKey });
-    const response = await client.responses.create({
-      model,
-      input: [
-        {
-          role: "system",
-          content: `${FLIRT_AI_SYSTEM_PROMPT}
-
-You are powering a chat-first UI. Reply in Brazilian Portuguese unless the user is clearly speaking another language.
-
-Important behavior:
-- Keep the answer conversational and compact, as a chat bubble, not a dashboard.
-- Give practical flirt coaching, grounded in confidence, authenticity, respect, emotional intelligence, and timing.
-- Sound like a sharp Brazilian wingman, not a generic assistant.
-- Use simple words. No overexplaining. No "ChatGPT" phrasing.
-- If the user pasted her message, explain the read briefly and then give 3 to 5 ready-to-send reply options.
-- Suggestions must sound like real messages a confident guy would actually send.
-- Avoid generic filler, artificial lines, or overly polished phrasing.
-- Each suggestion should be concise, practical, and easy to copy.
-- The sidebar profile must be inferred from context. Update name, source, status, attractionLevel, tags, personalityType, interests, and lastInteractionSummary.
-- If a fact is unknown, preserve the current value instead of inventing specific details.
-- If the current name is generic and the user reveals her name, update it.
-- Never recommend manipulation, harassment, pressure, dishonesty, spam, obsession, humiliation, or treating women like possessions.
-- If interest is clearly weak, say so and advise reducing investment or moving on.
-- Keep replies masculine, light, provocative when appropriate, and never needy.
-- Infer the best tone from the conversation itself. Do not rely on any manual style or coach toggle.
-- Fill the insight object with:
-  - interestLevel: Low, Medium, or High
-  - read: one short read on what her behavior indicates
-  - move: one short next move
-  - avoid: one short warning
-- assistantMessage should read naturally in chat, with short paragraphs and optional numbered options.`,
-        },
-        {
-          role: "user",
-          content: JSON.stringify(payload),
-        },
-      ],
-      text: {
-        format: {
-          type: "json_schema",
-          name: "flirt_chat_response",
-          schema: coachChatSchema,
-          strict: true,
-        },
-      },
-    });
-
-    const outputText = response.output_text?.trim();
-    if (!outputText) {
-      throw new Error("A OpenAI retornou uma resposta vazia.");
-    }
-
-    const parsed = JSON.parse(outputText) as CoachChatResponse;
-
-    return NextResponse.json(parsed);
-  } catch (error) {
+  const rate = await checkAndConsumeRateLimit(userId, "coach");
+  if (!rate.ok) {
     return NextResponse.json(
+      { error: "Limite por hora atingido. Tenta de novo daqui a pouco." },
       {
-        error:
-          error instanceof Error
-            ? error.message
-            : "O FLIRT A.I não conseguiu responder agora.",
+        status: 429,
+        headers: {
+          "Retry-After": Math.ceil((rate.resetAt.getTime() - Date.now()) / 1000).toString(),
+        },
       },
-      { status: 500 },
     );
   }
+
+  const contact = await prisma.contact.findFirst({
+    where: { id: contactId, userId },
+    include: {
+      messages: {
+        orderBy: { createdAt: "desc" },
+        take: HISTORY_CAP,
+      },
+    },
+  });
+  if (!contact) {
+    return NextResponse.json({ error: "Contato não encontrado." }, { status: 404 });
+  }
+
+  const history = [...contact.messages].reverse();
+
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json(
+      { error: "Servidor sem ANTHROPIC_API_KEY configurada." },
+      { status: 503 },
+    );
+  }
+
+  const client = new Anthropic({ apiKey });
+  const model = process.env.ANTHROPIC_MODEL ?? "claude-sonnet-4-6";
+
+  const messagesForLlm: Anthropic.MessageParam[] = [];
+  for (const message of history) {
+    const role: "user" | "assistant" = message.sender === "assistant" ? "assistant" : "user";
+    const prefix = message.sender === "contact" ? "[Mensagem dela] " : "";
+    messagesForLlm.push({ role, content: prefix + message.content });
+  }
+  messagesForLlm.push({
+    role: "user",
+    content: [
+      `Contexto atual da conversa com ${contact.name || "sem nome"}:`,
+      `- Fonte: ${contact.source}`,
+      `- Status: ${contact.status}`,
+      `- Nível de atração estimado: ${contact.attractionLevel}`,
+      `- Perfil: ${contact.personalityType ?? "em leitura"}`,
+      `- Interesses: ${contact.interests.length ? contact.interests.join(", ") : "—"}`,
+      `- Tags: ${contact.tags.length ? contact.tags.join(", ") : "—"}`,
+      "",
+      `Pedido dele: ${prompt}`,
+    ].join("\n"),
+  });
+
+  let response: Anthropic.Message;
+  try {
+    response = await client.messages.create({
+      model,
+      max_tokens: 2048,
+      system: buildSystemPrompt(mode),
+      messages: messagesForLlm,
+      tools: [coachToolSchema],
+      tool_choice: { type: "tool", name: COACH_TOOL_NAME },
+    });
+  } catch (error) {
+    const status = (error as { status?: number })?.status ?? 502;
+    const message =
+      status === 404
+        ? `Modelo "${model}" não está disponível na sua conta Anthropic. Confira ANTHROPIC_MODEL.`
+        : error instanceof Error
+          ? error.message
+          : "O FLIRT A.I não conseguiu responder.";
+    return NextResponse.json({ error: message }, { status: status === 404 ? 500 : 502 });
+  }
+
+  const toolBlock = response.content.find(
+    (block): block is Anthropic.ToolUseBlock => block.type === "tool_use",
+  );
+  if (!toolBlock) {
+    return NextResponse.json(
+      { error: "Resposta sem tool_use. Tenta de novo." },
+      { status: 502 },
+    );
+  }
+
+  const llmResponse = toolBlock.input as CoachChatResponse;
+
+  const statusDbValue =
+    llmResponse.contact.status === "hot lead" ? "hot_lead" : llmResponse.contact.status;
+
+  const [, assistantMessage] = await prisma.$transaction([
+    prisma.message.create({
+      data: { contactId, sender: "user", content: prompt },
+    }),
+    prisma.message.create({
+      data: {
+        contactId,
+        sender: "assistant",
+        content: llmResponse.assistantMessage,
+        suggestions: llmResponse.suggestions as unknown as object,
+        insight: llmResponse.insight as unknown as object,
+      },
+    }),
+    prisma.contact.update({
+      where: { id: contactId },
+      data: {
+        name: llmResponse.contact.name || contact.name,
+        source: llmResponse.contact.source || contact.source,
+        status: statusDbValue,
+        attractionLevel: llmResponse.contact.attractionLevel,
+        personalityType: llmResponse.contact.personalityType || contact.personalityType,
+        interests: llmResponse.contact.interests.length
+          ? llmResponse.contact.interests
+          : contact.interests,
+        tags: llmResponse.contact.tags.length ? llmResponse.contact.tags : contact.tags,
+        lastInteractionSummary:
+          llmResponse.contact.lastInteractionSummary || prompt.slice(0, 280),
+      },
+    }),
+  ]);
+
+  const payload: CoachChatResponse & { messageId: string } = {
+    ...llmResponse,
+    suggestions: llmResponse.suggestions as ReplySuggestion[],
+    insight: llmResponse.insight as MessageInsight,
+    messageId: assistantMessage.id,
+  };
+
+  return NextResponse.json(payload, {
+    headers: {
+      "X-RateLimit-Remaining": rate.remaining.toString(),
+    },
+  });
 }
+
+// Helper exposto pra eventual SSE/streaming futuro
+export type CoachConversationMessage = ConversationMessage;

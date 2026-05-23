@@ -1,0 +1,173 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────────────────────
+// better-auth canonical schema
+// https://www.better-auth.com/docs/concepts/database
+// ─────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified Boolean   @default(false) @map("email_verified")
+  name          String?
+  image         String?
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  sessions  Session[]
+  accounts  Account[]
+  contacts  Contact[]
+  usageLogs UsageLog[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  token     String   @unique
+  expiresAt DateTime @map("expires_at")
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  userId                String    @map("user_id")
+  accountId             String    @map("account_id")
+  providerId            String    @map("provider_id")
+  accessToken           String?   @map("access_token")
+  refreshToken          String?   @map("refresh_token")
+  idToken               String?   @map("id_token")
+  accessTokenExpiresAt  DateTime? @map("access_token_expires_at")
+  refreshTokenExpiresAt DateTime? @map("refresh_token_expires_at")
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime @map("expires_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+// ─────────────────────────────────────────────────────────────
+// FlirtAI domain
+// ─────────────────────────────────────────────────────────────
+
+enum ContactStatus {
+  active
+  cold
+  hot_lead @map("hot lead")
+}
+
+enum AttractionLevel {
+  Low
+  Medium
+  High
+}
+
+enum MessageSender {
+  user
+  assistant
+  contact
+}
+
+model Contact {
+  id                     String          @id @default(cuid())
+  userId                 String          @map("user_id")
+  name                   String
+  age                    Int?
+  source                 String          @default("Instagram")
+  instagramHandle        String?         @map("instagram_handle")
+  avatarUrl              String?         @map("avatar_url")
+  tags                   String[]        @default([])
+  status                 ContactStatus   @default(active)
+  attractionLevel        AttractionLevel @default(Medium) @map("attraction_level")
+  personalityType        String?         @map("personality_type")
+  interests              String[]        @default([])
+  lastInteractionSummary String?         @map("last_interaction_summary")
+  greenFlags             String[]        @default([]) @map("green_flags")
+  redFlags               String[]        @default([]) @map("red_flags")
+  notes                  String?
+  createdAt              DateTime        @default(now()) @map("created_at")
+  updatedAt              DateTime        @updatedAt @map("updated_at")
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages Message[]
+  analysis Analysis?
+
+  @@index([userId])
+  @@index([userId, updatedAt(sort: Desc)])
+  @@map("contact")
+}
+
+model Message {
+  id          String        @id @default(cuid())
+  contactId   String        @map("contact_id")
+  sender      MessageSender
+  content     String
+  suggestions Json?
+  insight     Json?
+  createdAt   DateTime      @default(now()) @map("created_at")
+
+  contact Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+
+  @@index([contactId, createdAt])
+  @@map("message")
+}
+
+model Analysis {
+  contactId  String   @id @map("contact_id")
+  insights   String?
+  strategy   String?
+  flags      Json     @default("[]")
+  instagram  Json     @default("{}")
+  lastAdvice Json     @default("{}") @map("last_advice")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  contact Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+
+  @@map("analysis")
+}
+
+model UsageLog {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  route     String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("usage_log")
+}

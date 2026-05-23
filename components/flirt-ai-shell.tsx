@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import {
   useCallback,
   useDeferredValue,
@@ -26,7 +25,9 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { ContactAvatar } from "@/components/contact-avatar";
 import { useFlirtStore } from "@/store/use-flirt-store";
+import { useOcr } from "@/lib/use-ocr";
 import type {
   CoachChatResponse,
   CoachInputMode,
@@ -187,13 +188,23 @@ export function FlirtAiShell() {
     contacts,
     selectedContactId,
     hasHydrated,
+    bootstrapError,
+    bootstrap,
     selectContact,
     createContact,
     appendMessage,
     applyCoachResponse,
   } = useFlirtStore();
   const [value, setValue] = useState("");
-  const [attachments, setAttachments] = useState<string[]>([]);
+  interface OcrAttachment {
+    id: string;
+    name: string;
+    status: "reading" | "ready" | "error";
+    text?: string;
+    error?: string;
+  }
+  const [attachments, setAttachments] = useState<OcrAttachment[]>([]);
+  const ocr = useOcr();
   const [isTyping, setIsTyping] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [activeSuggestion, setActiveSuggestion] = useState<number>(-1);
@@ -239,6 +250,12 @@ export function FlirtAiShell() {
       void useFlirtStore.persist.rehydrate();
     }
   }, []);
+
+  useEffect(() => {
+    if (hasHydrated) {
+      void bootstrap();
+    }
+  }, [hasHydrated, bootstrap]);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -328,16 +345,54 @@ export function FlirtAiShell() {
   const handleAttachChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files ?? []);
     if (!files.length) return;
-
-    setAttachments((previous) => [
-      ...previous,
-      ...files.map((file) => file.name),
-    ]);
     event.target.value = "";
+
+    for (const file of files) {
+      const id = crypto.randomUUID();
+      setAttachments((previous) => [
+        ...previous,
+        { id, name: file.name, status: "reading" },
+      ]);
+
+      ocr
+        .recognize(file)
+        .then((text) => {
+          setAttachments((previous) =>
+            previous.map((attachment) =>
+              attachment.id === id
+                ? { ...attachment, status: "ready", text }
+                : attachment,
+            ),
+          );
+          setValue((current) => {
+            const trimmedText = text.trim();
+            if (!trimmedText) return current;
+            const prefix = current.trim() ? `${current.trim()}\n\n` : "";
+            return `${prefix}[Print da conversa]\n${trimmedText}`;
+          });
+          requestAnimationFrame(() => adjustHeight());
+        })
+        .catch((cause) => {
+          setAttachments((previous) =>
+            previous.map((attachment) =>
+              attachment.id === id
+                ? {
+                    ...attachment,
+                    status: "error",
+                    error:
+                      cause instanceof Error
+                        ? cause.message
+                        : "Não consegui ler a imagem.",
+                  }
+                : attachment,
+            ),
+          );
+        });
+    }
   };
 
-  const removeAttachment = (index: number) => {
-    setAttachments((previous) => previous.filter((_, current) => current !== index));
+  const removeAttachment = (id: string) => {
+    setAttachments((previous) => previous.filter((attachment) => attachment.id !== id));
   };
 
   const selectCommandSuggestion = (index: number) => {
@@ -363,7 +418,7 @@ export function FlirtAiShell() {
 
     if (commandMeta.command === "/nova") {
       const name = commandMeta.cleanPrompt;
-      createContact(name || undefined);
+      await createContact(name || undefined);
       setValue("");
       setAttachments([]);
       adjustHeight(true);
@@ -376,21 +431,21 @@ export function FlirtAiShell() {
     let activeContact: ContactRecord | null = selectedContact;
 
     if (!activeContact) {
-      const nextContactId = createContact();
-      activeContact =
-        useFlirtStore.getState().contacts.find((contact) => contact.id === nextContactId) ??
-        null;
+      const nextContactId = await createContact();
+      if (nextContactId) {
+        activeContact =
+          useFlirtStore.getState().contacts.find((contact) => contact.id === nextContactId) ??
+          null;
+      }
     }
 
     if (!activeContact) {
-      setErrorMessage("Nao consegui abrir uma nova conversa agora. Tenta de novo.");
+      setErrorMessage("Não consegui abrir uma nova conversa agora. Tenta de novo.");
       return;
     }
 
     const contactId = activeContact.id;
-    const messageContent = commandMeta.displayPrompt
-      ? commandMeta.displayPrompt
-      : `Analise os anexos: ${attachments.join(", ")}`;
+    const messageContent = commandMeta.displayPrompt || trimmed;
     const outgoingMessage: ConversationMessage = {
       id: crypto.randomUUID(),
       sender: "user",
@@ -413,19 +468,9 @@ export function FlirtAiShell() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          contact: {
-            name: activeContact.name,
-            source: activeContact.source,
-            status: activeContact.status,
-            attractionLevel: activeContact.attractionLevel,
-            personalityType: activeContact.personalityType,
-            interests: activeContact.interests,
-            tags: activeContact.tags,
-            lastInteractionSummary: activeContact.lastInteractionSummary,
-          },
+          contactId,
           prompt: messageContent,
           mode: commandMeta.mode,
-          conversationHistory: [...activeContact.conversationHistory, outgoingMessage],
         }),
       });
 
@@ -482,7 +527,7 @@ export function FlirtAiShell() {
             selectedContactId={selectedContact?.id ?? ""}
             searchValue={searchValue}
             onSearchChange={setSearchValue}
-            onCreateContact={() => createContact()}
+            onCreateContact={() => { void createContact(); }}
             onSelectContact={selectContact}
           />
         </div>
@@ -509,7 +554,7 @@ export function FlirtAiShell() {
                   selectedContactId={selectedContact?.id ?? ""}
                   searchValue={searchValue}
                   onSearchChange={setSearchValue}
-                  onCreateContact={() => createContact()}
+                  onCreateContact={() => { void createContact(); }}
                   onSelectContact={selectContact}
                   onClose={() => setSidebarOpen(false)}
                 />
@@ -531,15 +576,12 @@ export function FlirtAiShell() {
                 </button>
                 {selectedContact ? (
                   <>
-                    <div className="relative h-11 w-11 overflow-hidden rounded-2xl border border-white/10">
-                      <Image
-                        src={selectedContact.avatar}
-                        alt={selectedContact.name}
-                        fill
-                        className="object-cover"
-                        sizes="44px"
-                      />
-                    </div>
+                    <ContactAvatar
+                      name={selectedContact.name}
+                      src={selectedContact.avatar}
+                      className="h-11 w-11"
+                      sizes="44px"
+                    />
                     <div>
                       <h2 className="font-heading text-2xl text-white">
                         {selectedContact.name}
@@ -588,7 +630,7 @@ export function FlirtAiShell() {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => createContact()}
+                onClick={() => { void createContact(); }}
                 className="hidden rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
               >
                 Nova conversa
@@ -845,18 +887,37 @@ export function FlirtAiShell() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                     >
-                      {attachments.map((file, index) => (
+                      {attachments.map((file) => (
                         <motion.div
-                          key={`${file}-${index}`}
-                          className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/70"
+                          key={file.id}
+                          className={cn(
+                            "flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs",
+                            file.status === "ready" &&
+                              "border-white/10 bg-white/[0.04] text-white/70",
+                            file.status === "reading" &&
+                              "border-white/10 bg-white/[0.04] text-white/55",
+                            file.status === "error" &&
+                              "border-rose-400/30 bg-rose-500/10 text-rose-200",
+                          )}
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.9 }}
+                          title={file.status === "error" ? file.error : file.text}
                         >
-                          <span>{file}</span>
+                          {file.status === "reading" ? (
+                            <LoaderIcon className="h-3 w-3 animate-spin" />
+                          ) : null}
+                          <span className="max-w-[14rem] truncate">{file.name}</span>
+                          <span className="text-[10px] text-white/35">
+                            {file.status === "reading"
+                              ? "lendo..."
+                              : file.status === "ready"
+                                ? `${file.text?.length ?? 0} chars`
+                                : "erro"}
+                          </span>
                           <button
                             type="button"
-                            onClick={() => removeAttachment(index)}
+                            onClick={() => removeAttachment(file.id)}
                             className="text-white/40 transition-colors hover:text-white"
                           >
                             <XIcon className="h-3 w-3" />
@@ -954,8 +1015,8 @@ export function FlirtAiShell() {
                 ))}
               </div>
 
-              {errorMessage ? (
-                <p className="mt-3 text-sm text-rose-200">{errorMessage}</p>
+              {errorMessage || bootstrapError ? (
+                <p className="mt-3 text-sm text-rose-200">{errorMessage ?? bootstrapError}</p>
               ) : null}
 
               <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/36">
@@ -1221,15 +1282,12 @@ function ConversationSidebar({
               )}
             >
               <div className="flex items-center gap-3">
-                <div className="relative h-12 w-12 overflow-hidden rounded-2xl border border-white/10">
-                  <Image
-                    src={contact.avatar}
-                    alt={contact.name}
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
-                </div>
+                <ContactAvatar
+                  name={contact.name}
+                  src={contact.avatar}
+                  className="h-12 w-12"
+                  sizes="48px"
+                />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
                     <p className="truncate text-sm font-medium text-white">
