@@ -10,6 +10,7 @@ import {
   useTransition,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import {
   ArrowUpIcon,
   CircleUserRound,
@@ -20,6 +21,7 @@ import {
   PlusIcon,
   SearchIcon,
   SendIcon,
+  SettingsIcon,
   Sparkles,
   XIcon,
 } from "lucide-react";
@@ -635,6 +637,13 @@ export function FlirtAiShell() {
               >
                 Nova conversa
               </button>
+              <Link
+                href="/settings"
+                aria-label="Configurações"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white"
+              >
+                <SettingsIcon className="h-4 w-4" />
+              </Link>
             </div>
           </div>
 

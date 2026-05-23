@@ -51,31 +51,37 @@ export async function POST(request: Request) {
     );
   }
 
-  const contact = await prisma.contact.findFirst({
-    where: { id: contactId, userId },
-    include: {
-      messages: {
-        orderBy: { createdAt: "desc" },
-        take: HISTORY_CAP,
+  const [user, contact] = await Promise.all([
+    prisma.user.findUnique({
+      where: { id: userId },
+      select: { anthropicApiKey: true, anthropicModel: true },
+    }),
+    prisma.contact.findFirst({
+      where: { id: contactId, userId },
+      include: {
+        messages: {
+          orderBy: { createdAt: "desc" },
+          take: HISTORY_CAP,
+        },
       },
-    },
-  });
+    }),
+  ]);
   if (!contact) {
     return NextResponse.json({ error: "Contato não encontrado." }, { status: 404 });
   }
 
   const history = [...contact.messages].reverse();
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = user?.anthropicApiKey || process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { error: "Servidor sem ANTHROPIC_API_KEY configurada." },
+      { error: "Sem chave da Anthropic. Configure em /settings ou no servidor." },
       { status: 503 },
     );
   }
 
   const client = new Anthropic({ apiKey });
-  const model = process.env.ANTHROPIC_MODEL ?? "claude-sonnet-4-6";
+  const model = user?.anthropicModel || process.env.ANTHROPIC_MODEL || "claude-sonnet-4-6";
 
   const messagesForLlm: Anthropic.MessageParam[] = [];
   for (const message of history) {
