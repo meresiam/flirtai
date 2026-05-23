@@ -28,6 +28,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
+import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import { useOcr } from "@/lib/use-ocr";
 import type {
@@ -565,7 +566,14 @@ export function FlirtAiShell() {
           ) : null}
         </AnimatePresence>
 
-        <section className="liquid-panel relative flex min-h-[calc(100vh-2rem)] flex-col overflow-hidden rounded-[30px] border border-white/10">
+        <AnimatedGradientBorder
+          borderRadius={30}
+          borderWidth={2}
+          animationMode="static"
+          glow={false}
+          className="relative min-h-[calc(100vh-2rem)]"
+        >
+        <section className="liquid-panel relative flex min-h-[calc(100vh-2.4rem)] flex-col overflow-hidden rounded-[28px]">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4 sm:px-6">
             <div>
               <div className="flex items-center gap-3">
@@ -612,12 +620,7 @@ export function FlirtAiShell() {
                     <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04]">
                       <FlirtIcon className="h-5 w-5" />
                     </div>
-                    <div>
-                      <p className="text-sm text-white/48">
-                      Converse normalmente. O perfil dela nasce na lateral conforme o
-                      contexto entra.
-                      </p>
-                    </div>
+                    <h2 className="font-heading text-xl text-white">Flirt.ai</h2>
                   </div>
                 )}
               </div>
@@ -638,6 +641,13 @@ export function FlirtAiShell() {
                 Nova conversa
               </button>
               <Link
+                href="/profiles"
+                aria-label="Perfis monitorados"
+                className="hidden items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
+              >
+                Perfis
+              </Link>
+              <Link
                 href="/settings"
                 aria-label="Configurações"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white"
@@ -650,29 +660,17 @@ export function FlirtAiShell() {
           <div className="relative flex-1 overflow-hidden">
             <div className="absolute inset-0 overflow-y-auto px-5 py-6 sm:px-6">
               {showEmptyConversationState ? (
-                <div className="mx-auto flex h-full max-w-3xl flex-col items-center justify-center text-center">
+                <div className="mx-auto flex h-full max-w-2xl flex-col items-center justify-center text-center">
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-5"
+                    transition={{ duration: 0.4 }}
+                    className="space-y-6"
                   >
-                    <div className="space-y-3">
-                      <div className="flex justify-center">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-[24px] border border-white/10 bg-white/[0.03]">
-                          <FlirtIcon className="h-8 w-8" />
-                        </div>
-                      </div>
-                      <h3 className="bg-gradient-to-r from-white/95 to-white/55 bg-clip-text pb-1 text-3xl font-medium tracking-tight text-transparent sm:text-[2.1rem]">
-                        Tudo acontece no chat.
-                      </h3>
-                      <p className="mx-auto max-w-xl text-sm leading-6 text-white/45">
-                        {selectedContact
-                          ? "Manda a proxima mensagem dela, pede leitura, resposta ou estrategia. Eu respondo no centro e atualizo o perfil dela na lateral sem poluir a tela."
-                          : "Comeca com a primeira mensagem dela ou com o contexto da interacao. A partir disso eu abro a conversa, leio o interesse, sugiro respostas e monto o perfil no historico da esquerda."}
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap items-center justify-center gap-2">
+                    <h3 className="text-2xl font-medium tracking-tight text-white/90">
+                      Por onde começamos?
+                    </h3>
+                    <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center">
                       {emptyStatePrompts.map((prompt) => (
                         <button
                           key={prompt.label}
@@ -681,7 +679,7 @@ export function FlirtAiShell() {
                             setValue(prompt.value);
                             requestAnimationFrame(() => adjustHeight());
                           }}
-                          className="group rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 text-left transition hover:border-[#ff355d]/20 hover:bg-white/[0.06]"
+                          className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left transition hover:border-[#ff355d]/24 hover:bg-white/[0.06]"
                         >
                           <div className="flex items-center gap-3">
                             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-white/72">
@@ -689,16 +687,11 @@ export function FlirtAiShell() {
                             </span>
                             <div>
                               <p className="text-sm font-medium text-white">{prompt.label}</p>
-                              <p className="mt-1 text-xs text-white/42">{prompt.helper}</p>
+                              <p className="mt-0.5 text-xs text-white/42">{prompt.helper}</p>
                             </div>
                           </div>
                         </button>
                       ))}
-                    </div>
-                    <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] text-white/36">
-                      <span className="rounded-full border border-white/10 px-3 py-1.5">Cole a mensagem</span>
-                      <span className="rounded-full border border-white/10 px-3 py-1.5">Receba resposta</span>
-                      <span className="rounded-full border border-white/10 px-3 py-1.5">Perfil na lateral</span>
                     </div>
                   </motion.div>
                 </div>
@@ -802,8 +795,16 @@ export function FlirtAiShell() {
 
           <div className="border-t border-white/10 px-5 py-5 sm:px-6">
             <div className="mx-auto w-full max-w-3xl">
+              <AnimatedGradientBorder
+                borderRadius={26}
+                borderWidth={1.5}
+                animationSpeed={9}
+                glow={false}
+                backgroundColor="#0b0e16"
+                className="relative overflow-visible"
+              >
               <motion.div
-                className="relative overflow-visible rounded-[26px] border border-white/[0.06] bg-white/[0.03] shadow-xl backdrop-blur-xl"
+                className="relative overflow-visible rounded-[24px] shadow-xl backdrop-blur-xl"
                 initial={{ scale: 0.98 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.1 }}
@@ -1007,38 +1008,15 @@ export function FlirtAiShell() {
                   </motion.button>
                 </div>
               </motion.div>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {commandSuggestions.map((suggestion, index) => (
-                  <motion.button
-                    key={suggestion.prefix}
-                    onClick={() => selectCommandSuggestion(index)}
-                    className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-white/60 transition-all hover:bg-white/[0.05] hover:text-white/90"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    {suggestion.icon}
-                    <span>{suggestion.label}</span>
-                  </motion.button>
-                ))}
-              </div>
+              </AnimatedGradientBorder>
 
               {errorMessage || bootstrapError ? (
                 <p className="mt-3 text-sm text-rose-200">{errorMessage ?? bootstrapError}</p>
               ) : null}
-
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/36">
-                <span className="rounded-full border border-white/10 px-3 py-1.5">
-                  Enter envia
-                </span>
-                <span className="rounded-full border border-white/10 px-3 py-1.5">
-                  Shift + Enter quebra linha
-                </span>
-              </div>
             </div>
           </div>
         </section>
+        </AnimatedGradientBorder>
       </div>
 
       {inputFocused ? (

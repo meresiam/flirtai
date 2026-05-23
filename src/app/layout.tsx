@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Sora } from "next/font/google";
 
 import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
 const sora = Sora({
@@ -31,7 +32,9 @@ export default function RootLayout({
       lang="en"
       className={cn("dark font-sans", sora.variable, spaceGrotesk.variable)}
     >
-      <body>{children}</body>
+      <body>
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
     </html>
   );
 }
