@@ -153,6 +153,44 @@
   backdrop-filter: blur(22px);
 }
 
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotate {
+  from { --gradient-angle: 0deg; }
+  to   { --gradient-angle: 360deg; }
+}
+
+.gradient-border-auto {
+  animation: gradient-rotate var(--animation-duration, 6s) linear infinite;
+}
+
+.gradient-border-hover {
+  animation: gradient-rotate var(--animation-duration, 6s) linear infinite;
+  animation-play-state: paused;
+}
+.gradient-border-hover:hover {
+  animation-play-state: running;
+}
+
+.gradient-border-stop-hover {
+  animation: gradient-rotate var(--animation-duration, 6s) linear infinite;
+}
+.gradient-border-stop-hover:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-border-auto,
+  .gradient-border-hover,
+  .gradient-border-stop-hover {
+    animation: none !important;
+  }
+}
+
 .lab-bg::before {
   overflow: hidden;
   max-width: 100vw;

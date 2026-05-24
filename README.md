@@ -76,41 +76,55 @@ Sem comando: o coach interpreta o input como nova mensagem da conversa atual.
 ## Estrutura
 
 ```
-app/
-├── api/
-│   ├── auth/[...all]/      better-auth handler
-│   ├── coach/              Anthropic Claude + persiste mensagens
-│   └── contacts/           CRUD de contatos
-├── login/                  email + senha
-├── signup/                 cadastro
-└── page.tsx                shell do chat
-
-components/
-├── flirt-ai-shell.tsx      UI principal (chat + sidebar + comandos)
-└── contact-avatar.tsx      avatar com fallback inicial-gradiente
-
-lib/
-├── auth.ts                 better-auth config
-├── auth-client.ts          hooks React
-├── api-auth.ts             helper requireUser()
-├── db.ts                   Prisma client singleton
-├── rate-limit.ts           60/h por user
-├── serializers.ts          DB → JSON (snake_case → camelCase)
-└── flirt/
-    ├── coach-schema.ts     tool_use JSON schema
-    └── system-prompt.ts    prompts por mode
+src/
+├── app/
+│   ├── api/
+│   │   ├── auth/[...all]/  better-auth handler
+│   │   ├── coach/          Anthropic Claude + persiste mensagens
+│   │   ├── contacts/       CRUD de contatos
+│   │   └── settings/       override per-user de API key / modelo
+│   ├── login/              email + senha
+│   ├── signup/             cadastro
+│   ├── settings/           configurações do usuário
+│   └── page.tsx            shell do chat
+│
+├── components/
+│   ├── flirt-ai-shell.tsx  UI principal (chat + sidebar + comandos)
+│   └── contact-avatar.tsx  avatar com fallback inicial-gradiente
+│
+├── lib/
+│   ├── auth.ts             better-auth config
+│   ├── auth-client.ts      hooks React
+│   ├── api-auth.ts         helper requireUser()
+│   ├── db.ts               Prisma client singleton (driver adapter)
+│   ├── rate-limit.ts       60/h por user
+│   ├── serializers.ts      DB → JSON (snake_case → camelCase)
+│   ├── use-ocr.ts          Tesseract.js worker p/ attachments
+│   └── flirt/
+│       ├── coach-schema.ts tool_use JSON schema
+│       └── system-prompt.ts prompts por mode
+│
+├── store/
+│   └── use-flirt-store.ts  Zustand (cache + persist localStorage)
+│
+└── types/
+    └── flirt.ts            tipos compartilhados client/server
 
 prisma/
-└── schema.prisma           5 tabelas + 3 tabelas auth
+├── schema.prisma           5 tabelas domain + 4 tabelas better-auth
+└── migrations/
 
 docs/
 ├── DATA-MODEL.md
 ├── COMPONENT-MAP.md
 └── v2-roadmap/             ideias para futuro
 
-proxy.ts                    redireciona não-logado para /login
+proxy.ts                    Next 16 — redireciona não-logado p/ /login
 docker-compose.yml          Postgres local
+Dockerfile                  build standalone + migrate deploy no start
 ```
+
+Path alias `@/*` → `./src/*` (configurado em `tsconfig.json`). Tudo que não é código de app (`prisma.config.ts`, `components.json`, configs Next/ESLint/TS, Dockerfile) fica na raiz porque os respectivos tools exigem.
 
 ## Stack notes
 

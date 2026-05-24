@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/signup", "/api/auth"];
+const PUBLIC_PATHS = ["/login", "/signup"];
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -25,6 +25,9 @@ export async function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
+// API routes handle their own auth via requireUser() and return 401 JSON.
+// Excluding /api from the matcher lets fetch() get a clean 401 instead of a
+// 307 redirect (which the client cannot interpret).
 export const config = {
-  matcher: ["/((?!api/auth|_next/static|_next/image|favicon.ico|.*\\.).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)"],
 };
