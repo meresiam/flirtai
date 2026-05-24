@@ -68,6 +68,50 @@ Em Coolify, no projeto do flirtai:
 4. Header: `X-Cron-Secret: <valor>`.
 5. Schedule: a cada 10 minutos.
 
+## Purge job (retenção 180 dias)
+
+Endpoint dedicado `/api/cron/purge-old-data` apaga dados antigos respeitando
+`PROFILE_WATCH_RETENTION_DAYS` (default 180). Mesma autenticação `X-Cron-Secret`
+do scan.
+
+Regras de retenção, todas usando a mesma cutoff (`now - retentionDays`):
+
+| Modelo                | Condição de purge                              |
+|-----------------------|------------------------------------------------|
+| `ProfileSnapshot`     | `capturedAt < cutoff`                          |
+| `ProfilePost`         | `isDeleted = true AND lastSeenAt < cutoff`     |
+| `ProfileReport`       | `windowEnd < cutoff`                           |
+| `CoachingSuggestion`  | `acknowledged = true AND createdAt < cutoff`   |
+
+`MonitoredProfile` **nunca** é apagado pelo purge — o user controla via
+`DELETE /api/profiles/[id]` (cascade limpa o resto). Posts ativos (não
+deletados) e sugestões não-ackeditas também são preservados indefinidamente.
+
+Cadência recomendada: diária às 04:00 UTC (off-peak).
+
+```sh
+# Coolify Scheduled Task — Frequency: 0 4 * * *
+curl -fsS -X POST https://$COOLIFY_FQDN/api/cron/purge-old-data \
+  -H "X-Cron-Secret: $CRON_SECRET"
+```
+
+Resposta:
+
+```json
+{
+  "retentionDays": 180,
+  "cutoff": "2025-11-26T04:00:00.000Z",
+  "deleted": {
+    "snapshots": 42,
+    "posts": 7,
+    "reports": 12,
+    "suggestions": 3
+  }
+}
+```
+
+Idempotente: rodar 10x seguidas == rodar 1x.
+
 ## Operação
 
 ### Adicionar perfil (REST)
@@ -128,7 +172,7 @@ Cascade remove snapshots, posts, reports e suggestions.
 - **Termo versionado** (`CURRENT_CONSENT_VERSION`) — mudança força re-aceite.
 - **Schema sem campos psicográficos.** Tentativa de adicionar (`dating_status`, `partner_handle`, etc.) deve ser rejeitada em PR.
 - **Hard-block** em perfil privado.
-- **Retenção 180 dias** (env `PROFILE_WATCH_RETENTION_DAYS`). Purge agendado fica como TODO da Wave 5.
+- **Retenção 180 dias** (env `PROFILE_WATCH_RETENTION_DAYS`). Purge agendado via `/api/cron/purge-old-data` — ver seção "Purge job" abaixo.
 - **Sem mass scraping.** Cadência mínima 6h, batch máximo 50 por chamada do cron.
 
 ## Arquitetura interna
@@ -146,6 +190,7 @@ src/lib/profile-watch/
 ├── serializers.ts          # DB → JSON, esconde campos sensíveis
 ├── zod-schemas.ts          # validação payload
 ├── cron-runner.ts          # orquestrador por perfil
+├── purge.ts                # retenção 180d (chamado pelo cron purge)
 └── tools/
     ├── report-tool-schema.ts
     └── coaching-tool-schema.ts (Wave 4)
@@ -159,7 +204,8 @@ src/app/api/profiles/
 └── [id]/suggestions/[suggestionId]/route.ts  # PATCH ack
 
 src/app/api/cron/
-└── profile-scan/route.ts   # POST cron handler
+├── profile-scan/route.ts     # POST cron handler (scans de perfis)
+└── purge-old-data/route.ts   # POST cron handler (purge retenção 180d)
 ```
 
 ## Próximas waves
@@ -167,4 +213,4 @@ src/app/api/cron/
 - **Wave 2:** UI `/profiles` + `/profiles/new` + ConsentDialog.
 - **Wave 3:** UI `/profiles/[id]` + ReportTimeline + PostHistory.
 - **Wave 4:** OAuth Meta + Graph API client + Self-Coach (CoachingSuggestion).
-- **Wave 5:** Nielsen audit + mobile audit + purge job.
+- **Wave 5:** Nielsen audit + mobile audit (~~purge job entregue~~).
