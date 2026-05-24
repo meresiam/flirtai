@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { MessageSquareIcon } from "lucide-react";
@@ -10,9 +10,13 @@ import { MetricDeltaRow } from "@/components/profile-watch/metric-delta-row";
 import { ReportTimeline } from "@/components/profile-watch/report-timeline";
 import { PostHistoryTable } from "@/components/profile-watch/post-history-table";
 import { PostHistoryCards } from "@/components/profile-watch/post-history-cards";
+import { PostHistoryFilters, type PostTypeFilter } from "@/components/profile-watch/post-history-filters";
+import { PostDetailDialog } from "@/components/profile-watch/post-detail-dialog";
 import { CoachingPanel } from "@/components/profile-watch/coaching-panel";
 import { useProfilesStore } from "@/store/use-profiles-store";
-import type { ProfileDetailResponse } from "@/types/profile-watch";
+import type { ProfileDetailResponse, ProfilePostSummary } from "@/types/profile-watch";
+
+const REFRESH_ON_FOCUS_THRESHOLD_MS = 30_000;
 
 // Toast mínimo inline (sonner não está instalado — usa estado local)
 function Toast({ message, type }: { message: string; type: "success" | "error" }) {
@@ -44,37 +48,69 @@ export default function ProfileDetailPage() {
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
+  // Filtros de posts
+  const [postSearch, setPostSearch] = useState("");
+  const deferredPostSearch = useDeferredValue(postSearch);
+  const [postType, setPostType] = useState<PostTypeFilter>("all");
+  const [includeDeleted, setIncludeDeleted] = useState(false);
+
+  // Dialog de detalhe
+  const [selectedPost, setSelectedPost] = useState<ProfilePostSummary | null>(null);
+
+  // Refresh on-focus
+  const lastFetchedAtRef = useRef<number>(0);
+
   function showToast(message: string, type: "success" | "error") {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3500);
   }
 
+  const loadDetail = useCallback(
+    async (mode: "initial" | "silent") => {
+      if (!id) return;
+      if (mode === "initial") {
+        setIsLoading(true);
+        setFetchError(null);
+      }
+      try {
+        const r = await fetch(`/api/profiles/${id}`, { cache: "no-store" });
+        if (r.status === 401) { window.location.href = "/login"; return; }
+        if (r.status === 404) {
+          if (mode === "initial") setFetchError("Perfil não encontrado.");
+          return;
+        }
+        if (!r.ok) throw new Error("Erro ao carregar perfil.");
+        const data = (await r.json()) as ProfileDetailResponse;
+        setDetail(data);
+        lastFetchedAtRef.current = Date.now();
+      } catch (e) {
+        if (mode === "initial") {
+          setFetchError(e instanceof Error ? e.message : "Erro ao carregar.");
+        }
+      } finally {
+        if (mode === "initial") setIsLoading(false);
+      }
+    },
+    [id],
+  );
+
   // Fetch inicial do detalhe
   useEffect(() => {
     if (!id) return;
-    let cancelled = false;
+    void loadDetail("initial");
+  }, [id, loadDetail]);
 
-    async function load() {
-      setIsLoading(true);
-      setFetchError(null);
-      try {
-        const r = await fetch(`/api/profiles/${id}`, { cache: "no-store" });
-        if (cancelled) return;
-        if (r.status === 401) { window.location.href = "/login"; return; }
-        if (r.status === 404) { setFetchError("Perfil não encontrado."); return; }
-        if (!r.ok) throw new Error("Erro ao carregar perfil.");
-        const data = (await r.json()) as ProfileDetailResponse;
-        if (!cancelled) setDetail(data);
-      } catch (e) {
-        if (!cancelled) setFetchError(e instanceof Error ? e.message : "Erro ao carregar.");
-      } finally {
-        if (!cancelled) setIsLoading(false);
-      }
+  // Refresh on-focus: ao voltar pra aba depois de >30s, refetch silencioso
+  useEffect(() => {
+    function handleVisibility() {
+      if (document.visibilityState !== "visible") return;
+      const elapsed = Date.now() - lastFetchedAtRef.current;
+      if (lastFetchedAtRef.current === 0 || elapsed < REFRESH_ON_FOCUS_THRESHOLD_MS) return;
+      void loadDetail("silent");
     }
-
-    void load();
-    return () => { cancelled = true; };
-  }, [id]);
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, [loadDetail]);
 
   // Ações
   async function handlePauseToggle() {
@@ -117,14 +153,45 @@ export default function ProfileDetailPage() {
       return;
     }
     showToast("Scan iniciado. Os dados serão atualizados em breve.", "success");
-    // Recarrega dados após breve delay para dar chance ao scan processar
-    setTimeout(() => {
-      fetch(`/api/profiles/${id}`, { cache: "no-store" })
-        .then((r) => r.json())
-        .then((data) => setDetail(data as ProfileDetailResponse))
-        .catch(() => undefined);
-    }, 2000);
+    setTimeout(() => { void loadDetail("silent"); }, 2000);
   }
+
+  // Aplica filtros ao histórico de posts
+  const allPosts = useMemo(() => detail?.posts ?? [], [detail?.posts]);
+
+  const postCountsByType = useMemo<Record<PostTypeFilter, number>>(() => {
+    const base: Record<PostTypeFilter, number> = {
+      all: 0,
+      image: 0,
+      carousel: 0,
+      reel: 0,
+      video: 0,
+    };
+    const visiblePool = includeDeleted ? allPosts : allPosts.filter((p) => !p.isDeleted);
+    base.all = visiblePool.length;
+    for (const p of visiblePool) {
+      if (p.mediaType in base) base[p.mediaType as PostTypeFilter] += 1;
+    }
+    return base;
+  }, [allPosts, includeDeleted]);
+
+  const deletedCount = useMemo(
+    () => allPosts.filter((p) => p.isDeleted).length,
+    [allPosts],
+  );
+
+  const filteredPosts = useMemo(() => {
+    let result = allPosts;
+    if (!includeDeleted) result = result.filter((p) => !p.isDeleted);
+    if (postType !== "all") result = result.filter((p) => p.mediaType === postType);
+    const q = deferredPostSearch.trim().toLowerCase();
+    if (q) {
+      result = result.filter((p) => (p.caption ?? "").toLowerCase().includes(q));
+    }
+    return result;
+  }, [allPosts, includeDeleted, postType, deferredPostSearch]);
+
+  const showPostFilters = !isLoading && allPosts.length > 0;
 
   // Monta métricas para o MetricDeltaRow
   function buildMetrics() {
@@ -249,25 +316,57 @@ export default function ProfileDetailPage() {
 
         {/* Histórico de posts — tabela no desktop, cards no mobile */}
         <section className="mt-8" aria-labelledby="posts-heading">
-          <h2 id="posts-heading" className="mb-3 text-xs uppercase tracking-[0.14em] text-white/35">
-            Posts detectados
-          </h2>
-
-          {/* Mobile (<md): cards */}
-          <div className="md:hidden">
-            <PostHistoryCards
-              posts={detail?.posts ?? []}
-              isLoading={isLoading}
-            />
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h2 id="posts-heading" className="text-xs uppercase tracking-[0.14em] text-white/35">
+              Posts detectados
+            </h2>
+            {showPostFilters && filteredPosts.length !== allPosts.length && (
+              <span className="text-[10px] tabular-nums text-white/35">
+                {filteredPosts.length} de {allPosts.length}
+              </span>
+            )}
           </div>
 
-          {/* Desktop (>=md): tabela */}
-          <div className="hidden md:block">
-            <PostHistoryTable
-              posts={detail?.posts ?? []}
-              isLoading={isLoading}
-            />
-          </div>
+          {showPostFilters && (
+            <div className="mb-4">
+              <PostHistoryFilters
+                searchValue={postSearch}
+                onSearchChange={setPostSearch}
+                activeType={postType}
+                onTypeChange={setPostType}
+                includeDeleted={includeDeleted}
+                onIncludeDeletedChange={setIncludeDeleted}
+                counts={postCountsByType}
+                deletedCount={deletedCount}
+              />
+            </div>
+          )}
+
+          {showPostFilters && filteredPosts.length === 0 ? (
+            <p className="py-8 text-center text-sm text-white/40">
+              Nenhum post bate com esses filtros.
+            </p>
+          ) : (
+            <>
+              {/* Mobile (<md): cards */}
+              <div className="md:hidden">
+                <PostHistoryCards
+                  posts={filteredPosts}
+                  isLoading={isLoading}
+                  onPostClick={setSelectedPost}
+                />
+              </div>
+
+              {/* Desktop (>=md): tabela */}
+              <div className="hidden md:block">
+                <PostHistoryTable
+                  posts={filteredPosts}
+                  isLoading={isLoading}
+                  onPostClick={setSelectedPost}
+                />
+              </div>
+            </>
+          )}
         </section>
 
         {/* Coaching panel — só source=self (dead code no MVP) */}
@@ -280,6 +379,13 @@ export default function ProfileDetailPage() {
           </section>
         )}
       </main>
+
+      {/* Dialog de detalhe do post */}
+      <PostDetailDialog
+        post={selectedPost}
+        open={selectedPost !== null}
+        onClose={() => setSelectedPost(null)}
+      />
 
       {/* Toast */}
       {toast && <Toast message={toast.message} type={toast.type} />}

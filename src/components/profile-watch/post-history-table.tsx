@@ -24,9 +24,10 @@ function formatDate(iso: string | null): string {
 interface PostHistoryTableProps {
   posts: ProfilePostSummary[];
   isLoading?: boolean;
+  onPostClick?: (post: ProfilePostSummary) => void;
 }
 
-export function PostHistoryTable({ posts, isLoading }: PostHistoryTableProps) {
+export function PostHistoryTable({ posts, isLoading, onPostClick }: PostHistoryTableProps) {
   if (isLoading) {
     return (
       <div className="overflow-hidden rounded-2xl border border-white/[0.08]" aria-busy="true">
@@ -97,8 +98,12 @@ export function PostHistoryTable({ posts, isLoading }: PostHistoryTableProps) {
             {posts.map((post) => (
               <tr
                 key={post.id}
+                onClick={onPostClick ? () => onPostClick(post) : undefined}
                 className={cn(
-                  "border-b border-white/[0.04] transition-colors hover:bg-white/[0.02]",
+                  "border-b border-white/[0.04] transition-colors",
+                  onPostClick
+                    ? "cursor-pointer hover:bg-white/[0.04]"
+                    : "hover:bg-white/[0.02]",
                   post.isDeleted && "opacity-60",
                 )}
               >
@@ -121,6 +126,7 @@ export function PostHistoryTable({ posts, isLoading }: PostHistoryTableProps) {
                       href={post.permalink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       aria-label={`Ver post ${post.shortcode} no Instagram`}
                       className="flex items-center gap-1 font-mono text-[11px] text-white/50 hover:text-white/80 transition-colors"
                     >

@@ -24,9 +24,10 @@ function formatDate(iso: string | null): string {
 interface PostHistoryCardsProps {
   posts: ProfilePostSummary[];
   isLoading?: boolean;
+  onPostClick?: (post: ProfilePostSummary) => void;
 }
 
-export function PostHistoryCards({ posts, isLoading }: PostHistoryCardsProps) {
+export function PostHistoryCards({ posts, isLoading, onPostClick }: PostHistoryCardsProps) {
   if (isLoading) {
     return (
       <div className="flex flex-col gap-3" aria-busy="true">
@@ -61,8 +62,10 @@ export function PostHistoryCards({ posts, isLoading }: PostHistoryCardsProps) {
         <div
           key={post.id}
           role="listitem"
+          onClick={onPostClick ? () => onPostClick(post) : undefined}
           className={cn(
-            "flex gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-3",
+            "flex gap-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 transition-colors",
+            onPostClick && "cursor-pointer hover:bg-white/[0.04] hover:border-white/[0.12]",
             post.isDeleted && "opacity-60",
           )}
         >
@@ -109,6 +112,7 @@ export function PostHistoryCards({ posts, isLoading }: PostHistoryCardsProps) {
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               aria-label={`Ver post ${post.shortcode} no Instagram`}
               className="flex items-center gap-1 font-mono text-[11px] text-white/35 hover:text-white/65 transition-colors mt-0.5 w-fit"
             >
