@@ -10,8 +10,10 @@
 | Coluna DB    | snake_case  | `attraction_level`       |
 | Modelo TS    | PascalCase  | `Contact`                |
 | Campo TS     | camelCase   | `attractionLevel`        |
-| Enum DB      | snake_case  | `hot lead` (literal)     |
+| Enum DB      | snake_case  | `hot_lead` (literal)     |
 | Enum TS      | snake_case  | `hot_lead`               |
+
+> **Wave 0 / C9 (24-05-2026):** o literal de DB era `'hot lead'` (com espaço) mapeado via Prisma `@map`; agora batem 1:1 entre TS e DB. Migration `20260524230000_rename_hot_lead_enum` aplica `ALTER TYPE "ContactStatus" RENAME VALUE 'hot lead' TO 'hot_lead'`.
 
 ## Entidades
 
