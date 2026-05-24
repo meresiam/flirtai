@@ -67,7 +67,7 @@ export function ReportCard({ report, isExpanded, onToggle }: ReportCardProps) {
             type="button"
             onClick={onToggle}
             aria-expanded={isExpanded}
-            className="min-h-[36px] min-w-[44px] rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 text-xs text-white/50 transition hover:border-white/15 hover:text-white/75"
+            className="min-h-[44px] min-w-[44px] rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 text-xs text-white/50 transition hover:border-white/15 hover:text-white/75"
           >
             {isExpanded ? "Fechar" : "Ver resumo"}
           </button>

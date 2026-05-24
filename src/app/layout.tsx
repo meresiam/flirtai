@@ -19,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Flirt.ai",
   description:
-    "A premium AI wingman for conversation strategy, attraction intelligence, and ethical dating communication.",
+    "Wingman de IA premium para estratégia de conversa, leitura de atração e comunicação ética em relacionamentos.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={cn("dark font-sans", sora.variable, spaceGrotesk.variable)}
     >
       <body>
