@@ -12,8 +12,19 @@ export async function resizeImageToDataUrl(
   file: File,
   options: ResizeOptions = {},
 ): Promise<string> {
-  if (!file.type.startsWith("image/")) {
-    throw new Error("Arquivo precisa ser uma imagem.");
+  const lowerName = file.name.toLowerCase();
+  const isHeic =
+    file.type === "image/heic" ||
+    file.type === "image/heif" ||
+    lowerName.endsWith(".heic") ||
+    lowerName.endsWith(".heif");
+  if (isHeic) {
+    throw new Error(
+      "HEIC não é suportado no navegador. Converte pra JPEG/PNG (no iPhone: Ajustes > Câmera > Formatos > Mais Compatível, ou exporta pelo app Fotos).",
+    );
+  }
+  if (file.type && !file.type.startsWith("image/")) {
+    throw new Error("Arquivo precisa ser uma imagem (JPG, PNG, WEBP, GIF).");
   }
   if (file.size > MAX_FILE_BYTES) {
     throw new Error("Imagem grande demais (máx. 10MB).");
