@@ -8,6 +8,7 @@ import { prisma } from "@/lib/db";
 import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
 import { buildSystemPrompt } from "@/lib/flirt/system-prompt";
 import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
+import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
 import type {
   CoachChatResponse,
   ConversationMessage,
@@ -104,6 +105,14 @@ export async function POST(request: Request) {
     ].join("\n"),
   });
 
+  const traceInput = {
+    userIdHash: hashUserId(userId),
+    contactId,
+    model,
+    mode,
+  };
+  const startedAt = Date.now();
+
   let response: Anthropic.Message;
   try {
     response = await client.messages.create({
@@ -122,8 +131,30 @@ export async function POST(request: Request) {
         : error instanceof Error
           ? error.message
           : "O FLIRT A.I não conseguiu responder.";
+    await traceCoachCall(traceInput, {
+      inputTokens: 0,
+      outputTokens: 0,
+      cacheReadTokens: 0,
+      cacheCreationTokens: 0,
+      latencyMs: Date.now() - startedAt,
+      status: "error",
+      errorMessage: message,
+    });
     return NextResponse.json({ error: message }, { status: status === 404 ? 500 : 502 });
   }
+
+  const usage = response.usage as Anthropic.Usage & {
+    cache_read_input_tokens?: number;
+    cache_creation_input_tokens?: number;
+  };
+  await traceCoachCall(traceInput, {
+    inputTokens: usage.input_tokens ?? 0,
+    outputTokens: usage.output_tokens ?? 0,
+    cacheReadTokens: usage.cache_read_input_tokens ?? 0,
+    cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
+    latencyMs: Date.now() - startedAt,
+    status: "ok",
+  });
 
   const toolBlock = response.content.find(
     (block): block is Anthropic.ToolUseBlock => block.type === "tool_use",
