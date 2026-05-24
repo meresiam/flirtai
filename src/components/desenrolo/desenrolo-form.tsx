@@ -1,11 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { useMemo, useState } from "react";
-import { LoaderIcon, ImageIcon } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { LoaderIcon, ImageIcon, UploadIcon, XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
+import { resizeImageToDataUrl, isDataUrl, dataUrlSizeKB } from "@/lib/image";
 import {
   RATING_DIMENSIONS,
   RATING_LABELS,
@@ -78,7 +79,27 @@ export function DesenroloForm({
   });
   const [tagDraft, setTagDraft] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isProcessingImage, setIsProcessingImage] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = ""; // permite re-selecionar o mesmo arquivo depois
+    if (!file) return;
+    setIsProcessingImage(true);
+    setErrorMessage(null);
+    try {
+      const dataUrl = await resizeImageToDataUrl(file, { maxDim: 400, quality: 0.75 });
+      update("avatarUrl", dataUrl);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error ? error.message : "Não consegui processar essa imagem.",
+      );
+    } finally {
+      setIsProcessingImage(false);
+    }
+  }
 
   const padrao = useMemo(() => computePadrao(values.ratings), [values.ratings]);
 
@@ -159,18 +180,59 @@ export function DesenroloForm({
             className="h-28 w-28 ring-2 ring-white/10"
             sizes="112px"
           />
-          <label className="text-[11px] font-medium uppercase tracking-wider text-white/40">
-            Foto (URL)
-          </label>
-          <div className="relative w-full sm:w-56">
-            <ImageIcon className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-white/35" />
-            <input
-              type="url"
-              value={values.avatarUrl}
-              onChange={(e) => update("avatarUrl", e.target.value)}
-              placeholder="https://..."
-              className="w-full rounded-lg border border-white/[0.07] bg-black/30 py-2 pl-9 pr-3 text-xs text-white outline-none transition focus:border-[#ff355d]/40"
-            />
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+
+          <div className="flex w-full flex-col items-stretch gap-2 sm:w-56">
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={isProcessingImage}
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-white/85 transition hover:border-[#ff355d]/40 hover:bg-[#ff355d]/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isProcessingImage ? (
+                <>
+                  <LoaderIcon className="h-3.5 w-3.5 animate-spin" />
+                  Processando...
+                </>
+              ) : (
+                <>
+                  <UploadIcon className="h-3.5 w-3.5" />
+                  {isDataUrl(values.avatarUrl) ? "Trocar foto" : "Subir foto"}
+                </>
+              )}
+            </button>
+
+            {isDataUrl(values.avatarUrl) ? (
+              <div className="flex items-center justify-between rounded-md bg-white/[0.04] px-2.5 py-1.5 text-[10px] text-white/55">
+                <span>Arquivo · {dataUrlSizeKB(values.avatarUrl)}KB</span>
+                <button
+                  type="button"
+                  onClick={() => update("avatarUrl", "")}
+                  aria-label="Remover foto"
+                  className="text-white/40 transition hover:text-white"
+                >
+                  <XIcon className="h-3 w-3" />
+                </button>
+              </div>
+            ) : (
+              <div className="relative">
+                <ImageIcon className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-white/35" />
+                <input
+                  type="url"
+                  value={values.avatarUrl}
+                  onChange={(e) => update("avatarUrl", e.target.value)}
+                  placeholder="ou cole uma URL"
+                  className="w-full rounded-lg border border-white/[0.07] bg-black/30 py-2 pl-9 pr-3 text-xs text-white outline-none transition focus:border-[#ff355d]/40"
+                />
+              </div>
+            )}
           </div>
         </div>
 

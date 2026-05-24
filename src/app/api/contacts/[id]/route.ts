@@ -13,7 +13,15 @@ const ratingValue = z.number().min(0).max(10).nullable().optional();
 const patchSchema = z.object({
   name: z.string().min(1).max(120).optional(),
   source: z.string().max(120).optional(),
-  avatarUrl: z.string().url().max(2048).nullable().optional().or(z.literal("")),
+  avatarUrl: z
+    .string()
+    .max(5_000_000)
+    .refine(
+      (v) => v === "" || v.startsWith("https://") || v.startsWith("data:image/"),
+      "Foto inválida: aceita URL https:// ou imagem data:image/",
+    )
+    .nullable()
+    .optional(),
   age: z.number().int().min(13).max(120).nullable().optional(),
   instagramHandle: z.string().max(120).nullable().optional(),
   tags: z.array(z.string().min(1).max(40)).max(12).optional(),

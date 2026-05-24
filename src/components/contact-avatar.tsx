@@ -41,6 +41,7 @@ export function ContactAvatar({ name, src, className, sizes }: ContactAvatarProp
   const [errored, setErrored] = React.useState(false);
   const showImage = Boolean(src) && !errored;
   const [from, to] = PALETTE[hashIndex(name || "x", PALETTE.length)]!;
+  const isDataUrl = typeof src === "string" && src.startsWith("data:");
 
   return (
     <div
@@ -48,14 +49,24 @@ export function ContactAvatar({ name, src, className, sizes }: ContactAvatarProp
       aria-label={name}
     >
       {showImage ? (
-        <Image
-          src={src!}
-          alt={name}
-          fill
-          className="object-cover"
-          sizes={sizes}
-          onError={() => setErrored(true)}
-        />
+        isDataUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={src!}
+            alt={name}
+            className="h-full w-full object-cover"
+            onError={() => setErrored(true)}
+          />
+        ) : (
+          <Image
+            src={src!}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes={sizes}
+            onError={() => setErrored(true)}
+          />
+        )
       ) : (
         <div
           className="flex h-full w-full items-center justify-center text-sm font-semibold text-white"
