@@ -94,6 +94,11 @@ enum ContactStatus {
   hot_lead @map("hot lead")
 }
 
+enum ContactKind {
+  desenrolo
+  agent_chat @map("agent chat")
+}
+
 enum AttractionLevel {
   Low
   Medium
@@ -109,6 +114,7 @@ enum MessageSender {
 model Contact {
   id                     String          @id @default(cuid())
   userId                 String          @map("user_id")
+  kind                   ContactKind     @default(desenrolo)
   name                   String
   age                    Int?
   source                 String          @default("Instagram")
@@ -123,6 +129,9 @@ model Contact {
   greenFlags             String[]        @default([]) @map("green_flags")
   redFlags               String[]        @default([]) @map("red_flags")
   notes                  String?
+  rating                 Decimal?        @db.Decimal(3, 1)
+  location               String?
+  metContext             String?         @map("met_context")
   createdAt              DateTime        @default(now()) @map("created_at")
   updatedAt              DateTime        @updatedAt @map("updated_at")
 
@@ -131,6 +140,7 @@ model Contact {
   analysis Analysis?
 
   @@index([userId])
+  @@index([userId, kind, updatedAt(sort: Desc)])
   @@index([userId, updatedAt(sort: Desc)])
   @@map("contact")
 }

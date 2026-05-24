@@ -11,11 +11,17 @@ type RouteContext = { params: Promise<{ id: string }> };
 const patchSchema = z.object({
   name: z.string().min(1).max(120).optional(),
   source: z.string().max(120).optional(),
-  tags: z.array(z.string()).max(10).optional(),
+  avatarUrl: z.string().url().max(2048).nullable().optional().or(z.literal("")),
+  age: z.number().int().min(13).max(120).nullable().optional(),
+  instagramHandle: z.string().max(120).nullable().optional(),
+  tags: z.array(z.string().min(1).max(40)).max(12).optional(),
   status: z.enum(["active", "cold", "hot lead"]).optional(),
   attractionLevel: z.enum(["Low", "Medium", "High"]).optional(),
   personalityType: z.string().max(120).optional(),
-  notes: z.string().max(2000).optional(),
+  notes: z.string().max(2000).nullable().optional(),
+  rating: z.number().min(0).max(10).nullable().optional(),
+  location: z.string().max(160).nullable().optional(),
+  metContext: z.string().max(240).nullable().optional(),
 });
 
 async function ensureOwned(userId: string, contactId: string) {
@@ -60,9 +66,13 @@ export async function PATCH(request: Request, { params }: RouteContext) {
     return NextResponse.json({ error: "Payload inválido." }, { status: 400 });
   }
 
-  const { status, ...rest } = parsed;
+  const { status, avatarUrl, ...rest } = parsed;
+  const normalizedAvatar =
+    avatarUrl === undefined ? undefined : avatarUrl === "" ? null : avatarUrl;
+
   const data = {
     ...rest,
+    ...(normalizedAvatar !== undefined ? { avatarUrl: normalizedAvatar } : {}),
     ...(status
       ? { status: status === "hot lead" ? ContactStatus.hot_lead : (status as ContactStatus) }
       : {}),

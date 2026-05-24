@@ -11,10 +11,13 @@ import {
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ArrowUpIcon,
+  BotIcon,
   CircleUserRound,
   Command,
+  HeartIcon,
   LoaderIcon,
   MenuIcon,
   Paperclip,
@@ -29,11 +32,18 @@ import {
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
 import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import { useOcr } from "@/lib/use-ocr";
 import type {
   CoachChatResponse,
   CoachInputMode,
+  ContactKind,
   ContactRecord,
   ConversationMessage,
   ReplySuggestion,
@@ -198,6 +208,19 @@ export function FlirtAiShell() {
     appendMessage,
     applyCoachResponse,
   } = useFlirtStore();
+  const router = useRouter();
+
+  const handleCreate = useCallback(
+    (kind: ContactKind) => {
+      if (kind === "desenrolo") {
+        router.push("/desenrolos/new");
+      } else {
+        void createContact({ kind: "agent_chat" });
+      }
+    },
+    [createContact, router],
+  );
+
   const [value, setValue] = useState("");
   interface OcrAttachment {
     id: string;
@@ -557,7 +580,7 @@ export function FlirtAiShell() {
                   selectedContactId={selectedContact?.id ?? ""}
                   searchValue={searchValue}
                   onSearchChange={setSearchValue}
-                  onCreateContact={() => { void createContact(); }}
+                  onCreateContact={handleCreate}
                   onSelectContact={selectContact}
                   onClose={() => setSidebarOpen(false)}
                 />
@@ -633,13 +656,25 @@ export function FlirtAiShell() {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => { void createContact(); }}
-                className="hidden rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
+              <NewConversationPicker
+                onCreate={handleCreate}
+                trigger={
+                  <button
+                    type="button"
+                    className="hidden rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
+                  >
+                    Nova conversa
+                  </button>
+                }
+              />
+              <Link
+                href="/desenrolos"
+                aria-label="Meus desenrolos"
+                className="hidden items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
               >
-                Nova conversa
-              </button>
+                <HeartIcon className="h-3.5 w-3.5" />
+                Desenrolos
+              </Link>
               <Link
                 href="/profiles"
                 aria-label="Perfis monitorados"
@@ -1192,6 +1227,54 @@ function FlirtIcon({ className }: { className?: string }) {
   );
 }
 
+function NewConversationPicker({
+  onCreate,
+  trigger,
+}: {
+  onCreate: (kind: ContactKind) => void;
+  trigger: React.ReactNode;
+}) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger render={trigger as React.ReactElement} />
+      <DropdownMenuContent
+        align="end"
+        sideOffset={6}
+        className="w-64 border-white/10 bg-[#0c0f1a] p-1.5 text-white"
+      >
+        <DropdownMenuItem
+          onClick={() => onCreate("desenrolo")}
+          className="group flex cursor-pointer items-start gap-3 rounded-md px-2.5 py-2.5 text-left transition focus-visible:bg-white/[0.07] data-[highlighted]:bg-white/[0.07]"
+        >
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#ff355d]/15">
+            <HeartIcon className="h-4 w-4 text-[#ff355d]" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-medium text-white">Adicionar desenrolo</p>
+            <p className="mt-0.5 text-[11px] text-white/45">
+              Perfil completo de uma mulher
+            </p>
+          </div>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => onCreate("agent_chat")}
+          className="group flex cursor-pointer items-start gap-3 rounded-md px-2.5 py-2.5 text-left transition focus-visible:bg-white/[0.07] data-[highlighted]:bg-white/[0.07]"
+        >
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.07]">
+            <BotIcon className="h-4 w-4 text-white/75" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-medium text-white">Chat com agente</p>
+            <p className="mt-0.5 text-[11px] text-white/45">
+              Conversa livre sem perfil
+            </p>
+          </div>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 function ConversationSidebar({
   contacts,
   selectedContactId,
@@ -1205,7 +1288,7 @@ function ConversationSidebar({
   selectedContactId: string;
   searchValue: string;
   onSearchChange: (value: string) => void;
-  onCreateContact: () => void;
+  onCreateContact: (kind: ContactKind) => void;
   onSelectContact: (contactId: string) => void;
   onClose?: () => void;
 }) {
@@ -1224,13 +1307,18 @@ function ConversationSidebar({
             </p>
           </div>
           <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={onCreateContact}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-white/70 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white"
-              >
-                <PlusIcon className="h-4 w-4" />
-              </button>
+              <NewConversationPicker
+                onCreate={onCreateContact}
+                trigger={
+                  <button
+                    type="button"
+                    aria-label="Nova conversa"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-white/70 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white"
+                  >
+                    <PlusIcon className="h-4 w-4" />
+                  </button>
+                }
+              />
             {onClose ? (
               <button
                 type="button"
@@ -1269,12 +1357,18 @@ function ConversationSidebar({
               )}
             >
               <div className="flex items-center gap-3">
-                <ContactAvatar
-                  name={contact.name}
-                  src={contact.avatar}
-                  className="h-12 w-12"
-                  sizes="48px"
-                />
+                {contact.kind === "agent_chat" ? (
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05]">
+                    <BotIcon className="h-5 w-5 text-white/65" />
+                  </div>
+                ) : (
+                  <ContactAvatar
+                    name={contact.name}
+                    src={contact.avatar}
+                    className="h-12 w-12"
+                    sizes="48px"
+                  />
+                )}
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
                     <p className="truncate text-sm font-medium text-white">
@@ -1285,14 +1379,24 @@ function ConversationSidebar({
                     </span>
                   </div>
                   <p className="mt-1 truncate text-xs text-white/45">
-                    {contact.source} • {contact.personalityType}
+                    {contact.kind === "agent_chat" ? "Agente" : `${contact.source} • ${contact.personalityType}`}
                   </p>
                 </div>
               </div>
-              <div className="mt-3 flex items-center gap-2 text-[11px] text-white/42">
-                <span className={cn("h-2 w-2 rounded-full", statusDot(contact.status))} />
-                <span>{labelStatus(contact.status)}</span>
-              </div>
+              {contact.kind === "desenrolo" ? (
+                <div className="mt-3 flex items-center gap-2 text-[11px] text-white/42">
+                  <span className={cn("h-2 w-2 rounded-full", statusDot(contact.status))} />
+                  <span>{labelStatus(contact.status)}</span>
+                  {contact.rating !== null ? (
+                    <>
+                      <span className="text-white/20">·</span>
+                      <span className="font-mono tabular-nums text-[#ff8a9e]">
+                        {contact.rating.toFixed(1)}
+                      </span>
+                    </>
+                  ) : null}
+                </div>
+              ) : null}
               <p className="mt-2 line-clamp-2 text-xs leading-5 text-white/55">
                 {getPreview(contact)}
               </p>
@@ -1306,14 +1410,18 @@ function ConversationSidebar({
                 : "Nenhuma conversa ainda. Crie uma nova aba ou mande a primeira mensagem."}
             </p>
             {!searchValue.trim() ? (
-              <button
-                type="button"
-                onClick={onCreateContact}
-                className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs text-white/68 transition hover:bg-white/[0.08] hover:text-white"
-              >
-                <PlusIcon className="h-3.5 w-3.5" />
-                Abrir primeira conversa
-              </button>
+              <NewConversationPicker
+                onCreate={onCreateContact}
+                trigger={
+                  <button
+                    type="button"
+                    className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs text-white/68 transition hover:bg-white/[0.08] hover:text-white"
+                  >
+                    <PlusIcon className="h-3.5 w-3.5" />
+                    Abrir primeira conversa
+                  </button>
+                }
+              />
             ) : null}
           </div>
         )}

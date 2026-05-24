@@ -5,9 +5,40 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 import type {
   CoachChatResponse,
+  ContactKind,
   ContactRecord,
   ConversationMessage,
 } from "@/types/flirt";
+
+export interface CreateContactPayload {
+  kind?: ContactKind;
+  name?: string;
+  source?: string;
+  avatarUrl?: string;
+  age?: number | null;
+  instagramHandle?: string;
+  rating?: number | null;
+  location?: string;
+  metContext?: string;
+  tags?: string[];
+  notes?: string;
+}
+
+export type UpdateContactPayload = Partial<{
+  name: string;
+  source: string;
+  avatarUrl: string | null;
+  age: number | null;
+  instagramHandle: string | null;
+  tags: string[];
+  status: ContactRecord["status"];
+  attractionLevel: ContactRecord["attractionLevel"];
+  personalityType: string;
+  notes: string | null;
+  rating: number | null;
+  location: string | null;
+  metContext: string | null;
+}>;
 
 interface FlirtState {
   contacts: ContactRecord[];
@@ -17,7 +48,13 @@ interface FlirtState {
   bootstrapError: string | null;
   bootstrap: () => Promise<void>;
   selectContact: (contactId: string) => void;
-  createContact: (name?: string) => Promise<string | null>;
+  createContact: (
+    payload?: string | CreateContactPayload,
+  ) => Promise<string | null>;
+  updateContact: (
+    contactId: string,
+    patch: UpdateContactPayload,
+  ) => Promise<ContactRecord | null>;
   appendMessage: (contactId: string, message: ConversationMessage) => void;
   applyCoachResponse: (contactId: string, response: CoachChatResponse) => void;
   removeContact: (contactId: string) => Promise<void>;
@@ -51,6 +88,13 @@ export const useFlirtStore = create<FlirtState>()(
         set({ isBootstrapping: true, bootstrapError: null });
         try {
           const response = await fetch("/api/contacts", { cache: "no-store" });
+          if (response.status === 401) {
+            if (typeof window !== "undefined") {
+              window.location.href = "/login";
+            }
+            set({ isBootstrapping: false });
+            return;
+          }
           if (!response.ok) {
             throw new Error("Não consegui carregar suas conversas.");
           }
@@ -74,12 +118,16 @@ export const useFlirtStore = create<FlirtState>()(
 
       selectContact: (contactId) => set({ selectedContactId: contactId }),
 
-      createContact: async (name) => {
+      createContact: async (payload) => {
+        const body: CreateContactPayload =
+          typeof payload === "string" || payload === undefined
+            ? { name: payload }
+            : payload;
         try {
           const response = await fetch("/api/contacts", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name }),
+            body: JSON.stringify(body),
           });
           if (!response.ok) return null;
           const { contact } = (await response.json()) as { contact: ContactRecord };
@@ -88,6 +136,26 @@ export const useFlirtStore = create<FlirtState>()(
             selectedContactId: contact.id,
           }));
           return contact.id;
+        } catch {
+          return null;
+        }
+      },
+
+      updateContact: async (contactId, patch) => {
+        try {
+          const response = await fetch(`/api/contacts/${contactId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(patch),
+          });
+          if (!response.ok) return null;
+          const { contact } = (await response.json()) as { contact: ContactRecord };
+          set((state) => ({
+            contacts: state.contacts.map((c) =>
+              c.id === contactId ? { ...c, ...contact } : c,
+            ),
+          }));
+          return contact;
         } catch {
           return null;
         }
@@ -169,7 +237,7 @@ export const useFlirtStore = create<FlirtState>()(
     }),
     {
       name: "flirt-ai-store",
-      version: 4,
+      version: 5,
       skipHydration: true,
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({

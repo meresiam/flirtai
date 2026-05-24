@@ -1,5 +1,7 @@
 export type ContactStatus = "active" | "cold" | "hot lead";
 
+export type ContactKind = "desenrolo" | "agent_chat";
+
 export type AttractionLevel = "Low" | "Medium" | "High";
 
 export type MessageSender = "user" | "assistant" | "contact";
@@ -53,6 +55,7 @@ export interface InstagramSimulation {
 
 export interface ContactRecord {
   id: string;
+  kind: ContactKind;
   name: string;
   source: string;
   avatar: string;
@@ -62,6 +65,10 @@ export interface ContactRecord {
   interests: string[];
   tags: string[];
   lastInteractionSummary: string;
+  rating: number | null;
+  location: string | null;
+  metContext: string | null;
+  notes: string | null;
   conversationHistory: ConversationMessage[];
   updatedAt: string;
 }
