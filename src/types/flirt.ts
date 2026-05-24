@@ -53,6 +53,31 @@ export interface InstagramSimulation {
   bestApproach: string;
 }
 
+export type RatingDimension =
+  | "beleza"
+  | "inteligencia"
+  | "lealdade"
+  | "respeito"
+  | "vestimenta";
+
+export const RATING_DIMENSIONS: RatingDimension[] = [
+  "beleza",
+  "inteligencia",
+  "lealdade",
+  "respeito",
+  "vestimenta",
+];
+
+export const RATING_LABELS: Record<RatingDimension, string> = {
+  beleza: "Beleza",
+  inteligencia: "Inteligência",
+  lealdade: "Lealdade",
+  respeito: "Respeito",
+  vestimenta: "Vestimenta",
+};
+
+export type ContactRatings = Record<RatingDimension, number | null>;
+
 export interface ContactRecord {
   id: string;
   kind: ContactKind;
@@ -65,7 +90,8 @@ export interface ContactRecord {
   interests: string[];
   tags: string[];
   lastInteractionSummary: string;
-  rating: number | null;
+  ratings: ContactRatings;
+  padrao: number | null;
   location: string | null;
   metContext: string | null;
   notes: string | null;

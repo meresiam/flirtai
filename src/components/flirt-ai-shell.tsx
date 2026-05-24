@@ -1387,11 +1387,11 @@ function ConversationSidebar({
                 <div className="mt-3 flex items-center gap-2 text-[11px] text-white/42">
                   <span className={cn("h-2 w-2 rounded-full", statusDot(contact.status))} />
                   <span>{labelStatus(contact.status)}</span>
-                  {contact.rating !== null ? (
+                  {contact.padrao !== null ? (
                     <>
                       <span className="text-white/20">·</span>
                       <span className="font-mono tabular-nums text-[#ff8a9e]">
-                        {contact.rating.toFixed(1)}
+                        Padrão {contact.padrao.toFixed(1)}
                       </span>
                     </>
                   ) : null}

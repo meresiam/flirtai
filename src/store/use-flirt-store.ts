@@ -17,7 +17,11 @@ export interface CreateContactPayload {
   avatarUrl?: string;
   age?: number | null;
   instagramHandle?: string;
-  rating?: number | null;
+  ratingBeleza?: number | null;
+  ratingInteligencia?: number | null;
+  ratingLealdade?: number | null;
+  ratingRespeito?: number | null;
+  ratingVestimenta?: number | null;
   location?: string;
   metContext?: string;
   tags?: string[];
@@ -35,7 +39,11 @@ export type UpdateContactPayload = Partial<{
   attractionLevel: ContactRecord["attractionLevel"];
   personalityType: string;
   notes: string | null;
-  rating: number | null;
+  ratingBeleza: number | null;
+  ratingInteligencia: number | null;
+  ratingLealdade: number | null;
+  ratingRespeito: number | null;
+  ratingVestimenta: number | null;
   location: string | null;
   metContext: string | null;
 }>;
@@ -237,7 +245,7 @@ export const useFlirtStore = create<FlirtState>()(
     }),
     {
       name: "flirt-ai-store",
-      version: 5,
+      version: 6,
       skipHydration: true,
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({

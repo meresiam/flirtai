@@ -1,16 +1,22 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
-import { LoaderIcon, ImageIcon, StarIcon } from "lucide-react";
+import { useMemo, useState } from "react";
+import { LoaderIcon, ImageIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
+import {
+  RATING_DIMENSIONS,
+  RATING_LABELS,
+  type ContactRatings,
+  type RatingDimension,
+} from "@/types/flirt";
 
 export interface DesenroloFormValues {
   name: string;
   avatarUrl: string;
-  rating: number | null;
+  ratings: ContactRatings;
   location: string;
   metContext: string;
   source: string;
@@ -20,10 +26,18 @@ export interface DesenroloFormValues {
   notes: string;
 }
 
+const EMPTY_RATINGS: ContactRatings = {
+  beleza: null,
+  inteligencia: null,
+  lealdade: null,
+  respeito: null,
+  vestimenta: null,
+};
+
 export const EMPTY_FORM: DesenroloFormValues = {
   name: "",
   avatarUrl: "",
-  rating: null,
+  ratings: { ...EMPTY_RATINGS },
   location: "",
   metContext: "",
   source: "Instagram",
@@ -32,6 +46,15 @@ export const EMPTY_FORM: DesenroloFormValues = {
   tags: [],
   notes: "",
 };
+
+function computePadrao(ratings: ContactRatings): number | null {
+  const values = Object.values(ratings).filter(
+    (v): v is number => v !== null && Number.isFinite(v),
+  );
+  if (values.length === 0) return null;
+  const avg = values.reduce((sum, v) => sum + v, 0) / values.length;
+  return Math.round(avg * 10) / 10;
+}
 
 interface DesenroloFormProps {
   initial?: Partial<DesenroloFormValues>;
@@ -51,16 +74,26 @@ export function DesenroloForm({
   const [values, setValues] = useState<DesenroloFormValues>({
     ...EMPTY_FORM,
     ...initial,
+    ratings: { ...EMPTY_RATINGS, ...(initial?.ratings ?? {}) },
   });
   const [tagDraft, setTagDraft] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const padrao = useMemo(() => computePadrao(values.ratings), [values.ratings]);
 
   function update<K extends keyof DesenroloFormValues>(
     key: K,
     value: DesenroloFormValues[K],
   ) {
     setValues((prev) => ({ ...prev, [key]: value }));
+  }
+
+  function setRating(dim: RatingDimension, value: number | null) {
+    setValues((prev) => ({
+      ...prev,
+      ratings: { ...prev.ratings, [dim]: value },
+    }));
   }
 
   function addTag() {
@@ -110,13 +143,15 @@ export function DesenroloForm({
     }
   }
 
-  const ratingDisplay =
-    values.rating === null ? "—" : values.rating.toFixed(1);
+  const padraoDisplay = padrao === null ? "—" : padrao.toFixed(1);
+  const filledDimensions = Object.values(values.ratings).filter(
+    (v) => v !== null,
+  ).length;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Hero: avatar + nome + nota */}
-      <div className="flex flex-col gap-6 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:gap-7">
+      {/* Hero: avatar + nome */}
+      <div className="flex flex-col gap-6 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5 sm:flex-row sm:items-start sm:gap-7">
         <div className="flex flex-col items-center gap-3">
           <ContactAvatar
             name={values.name || "?"}
@@ -139,7 +174,7 @@ export function DesenroloForm({
           </div>
         </div>
 
-        <div className="flex-1 space-y-4">
+        <div className="flex-1">
           <Field label="Nome" required>
             <input
               type="text"
@@ -151,46 +186,45 @@ export function DesenroloForm({
               autoFocus
             />
           </Field>
-
-          <Field
-            label={`Nota de beleza (0.0 – 10.0)`}
-            hint="Quanto VOCÊ acha ela bonita. A nota de interesse dela vem da IA."
-          >
-            <div className="flex items-center gap-4">
-              <StarIcon
-                className={cn(
-                  "h-5 w-5 transition",
-                  values.rating !== null
-                    ? "fill-[#ff355d] text-[#ff355d]"
-                    : "text-white/20",
-                )}
-              />
-              <input
-                type="range"
-                min={0}
-                max={10}
-                step={0.1}
-                value={values.rating ?? 5}
-                onChange={(e) => update("rating", Number(e.target.value))}
-                className="flex-1 accent-[#ff355d]"
-              />
-              <div className="flex items-center gap-2">
-                <span className="w-12 text-right font-mono text-2xl font-semibold text-white tabular-nums">
-                  {ratingDisplay}
-                </span>
-                {values.rating !== null ? (
-                  <button
-                    type="button"
-                    onClick={() => update("rating", null)}
-                    className="rounded-md px-1.5 py-1 text-[10px] uppercase tracking-wider text-white/40 hover:bg-white/[0.05] hover:text-white/70"
-                  >
-                    Limpar
-                  </button>
-                ) : null}
-              </div>
-            </div>
-          </Field>
         </div>
+      </div>
+
+      {/* Padrão — 5 dimensões + média */}
+      <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h3 className="font-heading text-base font-semibold text-white">
+              Padrão
+            </h3>
+            <p className="mt-0.5 text-[11px] text-white/40">
+              Sua nota dela em 5 dimensões. Média {filledDimensions
+                ? `de ${filledDimensions} preenchida(s)`
+                : "calculada quando você avaliar"}.
+            </p>
+          </div>
+          <div className="flex items-baseline gap-1.5 rounded-xl bg-[#ff355d]/15 px-3 py-1.5">
+            <span className="font-mono text-3xl font-semibold text-[#ff8a9e] tabular-nums">
+              {padraoDisplay}
+            </span>
+            <span className="text-xs text-[#ff8a9e]/70">/ 10</span>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {RATING_DIMENSIONS.map((dim) => (
+            <RatingRow
+              key={dim}
+              label={RATING_LABELS[dim]}
+              value={values.ratings[dim]}
+              onChange={(v) => setRating(dim, v)}
+            />
+          ))}
+        </div>
+
+        <p className="mt-4 text-[11px] text-white/35">
+          IA continua lendo o interesse dela nas conversas separadamente —
+          esses números são só seus.
+        </p>
       </div>
 
       {/* Contexto */}
@@ -352,6 +386,55 @@ export function DesenroloForm({
         </button>
       </div>
     </form>
+  );
+}
+
+function RatingRow({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: number | null;
+  onChange: (value: number | null) => void;
+}) {
+  const display = value === null ? "—" : value.toFixed(1);
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-24 shrink-0 text-xs font-medium text-white/65 sm:w-28">
+        {label}
+      </span>
+      <input
+        type="range"
+        min={0}
+        max={10}
+        step={0.1}
+        value={value ?? 5}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className={cn(
+          "flex-1 accent-[#ff355d]",
+          value === null && "opacity-50",
+        )}
+        aria-label={label}
+      />
+      <span
+        className={cn(
+          "w-10 text-right font-mono text-sm tabular-nums",
+          value === null ? "text-white/30" : "text-white",
+        )}
+      >
+        {display}
+      </span>
+      <button
+        type="button"
+        onClick={() => onChange(null)}
+        aria-label={`Limpar ${label}`}
+        disabled={value === null}
+        className="rounded p-1 text-white/30 transition hover:bg-white/[0.05] hover:text-white/70 disabled:cursor-not-allowed disabled:opacity-30"
+      >
+        ×
+      </button>
+    </div>
   );
 }
 

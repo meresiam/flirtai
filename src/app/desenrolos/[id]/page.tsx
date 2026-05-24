@@ -7,7 +7,6 @@ import {
   ArrowLeftIcon,
   MessageSquareIcon,
   TrashIcon,
-  StarIcon,
   MapPinIcon,
   ExternalLinkIcon,
   LoaderIcon,
@@ -20,7 +19,11 @@ import {
   type DesenroloFormValues,
 } from "@/components/desenrolo/desenrolo-form";
 import { useFlirtStore } from "@/store/use-flirt-store";
-import type { ContactRecord } from "@/types/flirt";
+import {
+  RATING_DIMENSIONS,
+  RATING_LABELS,
+  type ContactRecord,
+} from "@/types/flirt";
 
 function labelStatus(status: ContactRecord["status"]) {
   if (status === "hot lead") return "Hot lead";
@@ -102,7 +105,11 @@ export default function DesenroloDetailPage() {
     const updated = await updateContact(id, {
       name: values.name,
       avatarUrl: values.avatarUrl || null,
-      rating: values.rating,
+      ratingBeleza: values.ratings.beleza,
+      ratingInteligencia: values.ratings.inteligencia,
+      ratingLealdade: values.ratings.lealdade,
+      ratingRespeito: values.ratings.respeito,
+      ratingVestimenta: values.ratings.vestimenta,
       location: values.location || null,
       metContext: values.metContext || null,
       source: values.source || undefined,
@@ -135,7 +142,7 @@ export default function DesenroloDetailPage() {
   const initialValues: Partial<DesenroloFormValues> = {
     name: contact.name,
     avatarUrl: contact.avatar,
-    rating: contact.rating,
+    ratings: contact.ratings,
     location: contact.location ?? "",
     metContext: contact.metContext ?? "",
     source: contact.source,
@@ -270,10 +277,14 @@ function DesenroloReadView({
         <div className="flex-1">
           <div className="flex flex-wrap items-baseline gap-3">
             <h1 className="text-3xl font-semibold text-white">{contact.name}</h1>
-            {contact.rating !== null ? (
-              <span className="inline-flex items-center gap-1 rounded-lg bg-[#ff355d]/15 px-2.5 py-1 text-lg font-semibold text-[#ff8a9e] tabular-nums">
-                <StarIcon className="h-4 w-4 fill-current" />
-                {contact.rating.toFixed(1)}
+            {contact.padrao !== null ? (
+              <span className="inline-flex items-baseline gap-1 rounded-lg bg-[#ff355d]/15 px-3 py-1">
+                <span className="text-[10px] uppercase tracking-wider text-[#ff8a9e]/70">
+                  Padrão
+                </span>
+                <span className="font-mono text-xl font-semibold text-[#ff8a9e] tabular-nums">
+                  {contact.padrao.toFixed(1)}
+                </span>
               </span>
             ) : null}
           </div>
@@ -324,6 +335,59 @@ function DesenroloReadView({
           ) : null}
         </div>
       </div>
+
+      {/* Padrão — breakdown das 5 dimensões */}
+      {contact.padrao !== null ? (
+        <div className="mt-6 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
+          <div className="mb-4 flex items-end justify-between">
+            <div>
+              <h3 className="text-xs font-medium uppercase tracking-wider text-white/45">
+                Padrão
+              </h3>
+              <p className="mt-0.5 text-[11px] text-white/35">
+                Sua avaliação dela em 5 dimensões
+              </p>
+            </div>
+            <div className="flex items-baseline gap-1">
+              <span className="font-mono text-3xl font-semibold text-[#ff8a9e] tabular-nums">
+                {contact.padrao.toFixed(1)}
+              </span>
+              <span className="text-xs text-white/35">/ 10</span>
+            </div>
+          </div>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {RATING_DIMENSIONS.map((dim) => {
+              const value = contact.ratings[dim];
+              return (
+                <div
+                  key={dim}
+                  className="flex items-center gap-2.5 rounded-lg bg-white/[0.03] px-3 py-2"
+                >
+                  <span className="flex-1 text-xs text-white/65">
+                    {RATING_LABELS[dim]}
+                  </span>
+                  <div className="h-1.5 w-20 overflow-hidden rounded-full bg-white/[0.08]">
+                    <div
+                      className="h-full rounded-full bg-[#ff355d]"
+                      style={{
+                        width: value !== null ? `${(value / 10) * 100}%` : "0%",
+                      }}
+                    />
+                  </div>
+                  <span
+                    className={cn(
+                      "w-9 text-right font-mono text-xs tabular-nums",
+                      value === null ? "text-white/30" : "text-white/90",
+                    )}
+                  >
+                    {value === null ? "—" : value.toFixed(1)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
 
       {/* Insights da IA */}
       <div className="mt-6 grid gap-4 sm:grid-cols-2">

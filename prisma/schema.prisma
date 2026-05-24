@@ -129,7 +129,11 @@ model Contact {
   greenFlags             String[]        @default([]) @map("green_flags")
   redFlags               String[]        @default([]) @map("red_flags")
   notes                  String?
-  rating                 Decimal?        @db.Decimal(3, 1)
+  ratingBeleza           Decimal?        @db.Decimal(3, 1) @map("rating_beleza")
+  ratingInteligencia     Decimal?        @db.Decimal(3, 1) @map("rating_inteligencia")
+  ratingLealdade         Decimal?        @db.Decimal(3, 1) @map("rating_lealdade")
+  ratingRespeito         Decimal?        @db.Decimal(3, 1) @map("rating_respeito")
+  ratingVestimenta       Decimal?        @db.Decimal(3, 1) @map("rating_vestimenta")
   location               String?
   metContext             String?         @map("met_context")
   createdAt              DateTime        @default(now()) @map("created_at")

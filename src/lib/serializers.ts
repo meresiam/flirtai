@@ -2,6 +2,7 @@ import type { Contact, Message } from "@prisma/client";
 
 import type {
   ContactKind,
+  ContactRatings,
   ContactRecord,
   ContactStatus,
   ConversationMessage,
@@ -17,10 +18,19 @@ function kindFromDb(value: Contact["kind"]): ContactKind {
   return value === "agent_chat" ? "agent_chat" : "desenrolo";
 }
 
-function ratingFromDb(value: Contact["rating"]): number | null {
+function decimalToNumber(value: unknown): number | null {
   if (value === null || value === undefined) return null;
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : null;
+}
+
+function computePadrao(ratings: ContactRatings): number | null {
+  const values = Object.values(ratings).filter(
+    (v): v is number => v !== null && Number.isFinite(v),
+  );
+  if (values.length === 0) return null;
+  const avg = values.reduce((sum, v) => sum + v, 0) / values.length;
+  return Math.round(avg * 10) / 10;
 }
 
 export function serializeMessage(message: Message): ConversationMessage {
@@ -37,6 +47,14 @@ export function serializeMessage(message: Message): ConversationMessage {
 export function serializeContact(
   contact: Contact & { messages?: Message[] },
 ): ContactRecord {
+  const ratings: ContactRatings = {
+    beleza: decimalToNumber(contact.ratingBeleza),
+    inteligencia: decimalToNumber(contact.ratingInteligencia),
+    lealdade: decimalToNumber(contact.ratingLealdade),
+    respeito: decimalToNumber(contact.ratingRespeito),
+    vestimenta: decimalToNumber(contact.ratingVestimenta),
+  };
+
   return {
     id: contact.id,
     kind: kindFromDb(contact.kind),
@@ -49,7 +67,8 @@ export function serializeContact(
     interests: contact.interests,
     tags: contact.tags,
     lastInteractionSummary: contact.lastInteractionSummary ?? "Sem mensagens ainda.",
-    rating: ratingFromDb(contact.rating),
+    ratings,
+    padrao: computePadrao(ratings),
     location: contact.location ?? null,
     metContext: contact.metContext ?? null,
     notes: contact.notes ?? null,

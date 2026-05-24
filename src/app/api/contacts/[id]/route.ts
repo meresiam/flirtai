@@ -8,6 +8,8 @@ import { serializeContact } from "@/lib/serializers";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
+const ratingValue = z.number().min(0).max(10).nullable().optional();
+
 const patchSchema = z.object({
   name: z.string().min(1).max(120).optional(),
   source: z.string().max(120).optional(),
@@ -19,7 +21,11 @@ const patchSchema = z.object({
   attractionLevel: z.enum(["Low", "Medium", "High"]).optional(),
   personalityType: z.string().max(120).optional(),
   notes: z.string().max(2000).nullable().optional(),
-  rating: z.number().min(0).max(10).nullable().optional(),
+  ratingBeleza: ratingValue,
+  ratingInteligencia: ratingValue,
+  ratingLealdade: ratingValue,
+  ratingRespeito: ratingValue,
+  ratingVestimenta: ratingValue,
   location: z.string().max(160).nullable().optional(),
   metContext: z.string().max(240).nullable().optional(),
 });

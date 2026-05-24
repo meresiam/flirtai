@@ -6,6 +6,8 @@ import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
 import { serializeContact } from "@/lib/serializers";
 
+const ratingValue = z.number().min(0).max(10).nullable().optional();
+
 const createSchema = z.object({
   kind: z.enum(["desenrolo", "agent_chat"]).optional(),
   name: z.string().min(1).max(120).optional(),
@@ -13,12 +15,11 @@ const createSchema = z.object({
   avatarUrl: z.string().url().max(2048).optional().or(z.literal("")),
   age: z.number().int().min(13).max(120).nullable().optional(),
   instagramHandle: z.string().max(120).optional(),
-  rating: z
-    .number()
-    .min(0)
-    .max(10)
-    .nullable()
-    .optional(),
+  ratingBeleza: ratingValue,
+  ratingInteligencia: ratingValue,
+  ratingLealdade: ratingValue,
+  ratingRespeito: ratingValue,
+  ratingVestimenta: ratingValue,
   location: z.string().max(160).optional(),
   metContext: z.string().max(240).optional(),
   tags: z.array(z.string().min(1).max(40)).max(12).optional(),
@@ -83,7 +84,11 @@ export async function POST(request: Request) {
       avatarUrl,
       age: parsed.age ?? null,
       instagramHandle: parsed.instagramHandle?.trim() || null,
-      rating: parsed.rating ?? null,
+      ratingBeleza: parsed.ratingBeleza ?? null,
+      ratingInteligencia: parsed.ratingInteligencia ?? null,
+      ratingLealdade: parsed.ratingLealdade ?? null,
+      ratingRespeito: parsed.ratingRespeito ?? null,
+      ratingVestimenta: parsed.ratingVestimenta ?? null,
       location: parsed.location?.trim() || null,
       metContext: parsed.metContext?.trim() || null,
       tags: parsed.tags ?? [],

@@ -6,7 +6,6 @@ import {
   PlusIcon,
   MessageSquareIcon,
   SearchIcon,
-  StarIcon,
   MapPinIcon,
   HeartIcon,
 } from "lucide-react";
@@ -165,10 +164,17 @@ function DesenroloCard({ contact }: { contact: ContactRecord }) {
             <h3 className="truncate text-base font-semibold text-white">
               {contact.name}
             </h3>
-            {contact.rating !== null ? (
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-[#ff355d]/15 px-2 py-0.5 text-sm font-semibold text-[#ff8a9e] tabular-nums">
-                <StarIcon className="h-3 w-3 fill-current" />
-                {contact.rating.toFixed(1)}
+            {contact.padrao !== null ? (
+              <span
+                className="inline-flex shrink-0 items-baseline gap-1 rounded-md bg-[#ff355d]/15 px-2 py-0.5"
+                title={`Padrão: ${contact.padrao.toFixed(1)}`}
+              >
+                <span className="text-[9px] uppercase tracking-wider text-[#ff8a9e]/70">
+                  Padrão
+                </span>
+                <span className="font-mono text-sm font-semibold text-[#ff8a9e] tabular-nums">
+                  {contact.padrao.toFixed(1)}
+                </span>
               </span>
             ) : null}
           </div>
