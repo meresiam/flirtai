@@ -11,7 +11,11 @@ import type {
 } from "@/types/flirt";
 
 function statusFromDb(value: Contact["status"]): ContactStatus {
-  return value === "hot_lead" ? "hot lead" : (value as ContactStatus);
+  return value as ContactStatus;
+}
+
+export function statusToDb(value: ContactStatus): Contact["status"] {
+  return value;
 }
 
 function kindFromDb(value: Contact["kind"]): ContactKind {

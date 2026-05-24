@@ -25,7 +25,7 @@ const patchSchema = z.object({
   age: z.number().int().min(13).max(120).nullable().optional(),
   instagramHandle: z.string().max(120).nullable().optional(),
   tags: z.array(z.string().min(1).max(40)).max(12).optional(),
-  status: z.enum(["active", "cold", "hot lead"]).optional(),
+  status: z.enum(["active", "cold", "hot_lead"]).optional(),
   attractionLevel: z.enum(["Low", "Medium", "High"]).optional(),
   personalityType: z.string().max(120).optional(),
   notes: z.string().max(2000).nullable().optional(),
@@ -87,9 +87,7 @@ export async function PATCH(request: Request, { params }: RouteContext) {
   const data = {
     ...rest,
     ...(normalizedAvatar !== undefined ? { avatarUrl: normalizedAvatar } : {}),
-    ...(status
-      ? { status: status === "hot lead" ? ContactStatus.hot_lead : (status as ContactStatus) }
-      : {}),
+    ...(status ? { status: status as ContactStatus } : {}),
   };
 
   const updated = await prisma.contact.update({

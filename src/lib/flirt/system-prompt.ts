@@ -63,7 +63,7 @@ Estrutura:
   - move: 1 linha — próximo passo dele
   - avoid: 1 linha — o que NÃO fazer
 - contact: perfil atualizado dela. Preserve o que já existe e enriqueça com o contexto novo.
-  - name, source, status (active | cold | hot lead), attractionLevel (Low | Medium | High)
+  - name, source, status (active | cold | hot_lead), attractionLevel (Low | Medium | High)
   - personalityType (1-2 palavras), interests (até 6), tags (até 4)
   - lastInteractionSummary (1 frase do que rolou agora)
 `.trim();

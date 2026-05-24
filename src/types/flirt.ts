@@ -1,4 +1,4 @@
-export type ContactStatus = "active" | "cold" | "hot lead";
+export type ContactStatus = "active" | "cold" | "hot_lead";
 
 export type ContactKind = "desenrolo" | "agent_chat";
 

@@ -16,13 +16,13 @@ import { useFlirtStore } from "@/store/use-flirt-store";
 import type { ContactRecord } from "@/types/flirt";
 
 function labelStatus(status: ContactRecord["status"]) {
-  if (status === "hot lead") return "Hot lead";
+  if (status === "hot_lead") return "Hot lead";
   if (status === "cold") return "Esfriou";
   return "Ativa";
 }
 
 function statusDot(status: ContactRecord["status"]) {
-  if (status === "hot lead") return "bg-rose-300";
+  if (status === "hot_lead") return "bg-rose-300";
   if (status === "cold") return "bg-slate-300";
   return "bg-emerald-300";
 }

@@ -91,7 +91,7 @@ model Verification {
 enum ContactStatus {
   active
   cold
-  hot_lead @map("hot lead")
+  hot_lead
 }
 
 enum ContactKind {

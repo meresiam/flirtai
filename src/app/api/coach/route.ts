@@ -137,9 +137,6 @@ export async function POST(request: Request) {
 
   const llmResponse = toolBlock.input as CoachChatResponse;
 
-  const statusDbValue =
-    llmResponse.contact.status === "hot lead" ? "hot_lead" : llmResponse.contact.status;
-
   const [, assistantMessage] = await prisma.$transaction([
     prisma.message.create({
       data: { contactId, sender: "user", content: prompt },
@@ -158,7 +155,7 @@ export async function POST(request: Request) {
       data: {
         name: llmResponse.contact.name || contact.name,
         source: llmResponse.contact.source || contact.source,
-        status: statusDbValue,
+        status: llmResponse.contact.status,
         attractionLevel: llmResponse.contact.attractionLevel,
         personalityType: llmResponse.contact.personalityType || contact.personalityType,
         interests: llmResponse.contact.interests.length

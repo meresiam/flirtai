@@ -1178,7 +1178,7 @@ function labelTone(tone: ReplySuggestion["tone"]) {
 }
 
 function labelStatus(status: ContactRecord["status"]) {
-  if (status === "hot lead") return "Quente";
+  if (status === "hot_lead") return "Quente";
   if (status === "cold") return "Fria";
   return "Ativa";
 }
@@ -1431,7 +1431,7 @@ function ConversationSidebar({
 }
 
 function statusDot(status: ContactRecord["status"]) {
-  if (status === "hot lead") return "bg-rose-300";
+  if (status === "hot_lead") return "bg-rose-300";
   if (status === "cold") return "bg-slate-300";
   return "bg-emerald-300";
 }

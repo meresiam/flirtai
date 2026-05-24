@@ -57,7 +57,7 @@ export const coachToolSchema: Anthropic.Tool = {
           source: { type: "string" },
           status: {
             type: "string",
-            enum: ["active", "cold", "hot lead"],
+            enum: ["active", "cold", "hot_lead"],
           },
           attractionLevel: {
             type: "string",
