@@ -23,7 +23,7 @@ No test runner is configured. Lint + `tsc --noEmit` (implicit via `next build`) 
 
 ## Stack notes (read before writing code)
 
-- **Next.js 16** — `middleware.ts` is deprecated; auth gating lives in `proxy.ts` at the repo root. App code lives in `src/app/` (path alias `@/*` → `./src/*`). Build uses Turbopack. Keep `output: "standalone"` in `next.config.ts` — the Dockerfile copies `.next/standalone` + `.next/static` and depends on `server.js` existing.
+- **Next.js 16** — `middleware.ts` is deprecated; auth gating lives in `src/proxy.ts` **(must sit next to `app/`, not at repo root — see ADR-007)**. App code lives in `src/app/` (path alias `@/*` → `./src/*`). Build uses Turbopack. Keep `output: "standalone"` in `next.config.ts` — the Dockerfile copies `.next/standalone` + `.next/static` and depends on `server.js` existing.
 - **Prisma 7** — the datasource URL lives in `prisma.config.ts` (not `schema.prisma`). The client is built with `@prisma/adapter-pg` (driver adapter) instead of the binary engine; `src/lib/db.ts` constructs `PrismaPg` from `DATABASE_URL` and caches the client on `globalThis` in dev.
 - **better-auth** — email+password, schema is canonical (`user`, `session`, `account`, `verification` tables, all `@map`-ed to snake_case). Don't hand-edit those tables. Server-side session lookup uses `auth.api.getSession({ headers: await headers() })`; client uses `src/lib/auth-client.ts` hooks.
 - **Anthropic tool_use for structured output** — the coach route forces `tool_choice: { type: "tool", name: "submit_flirt_response" }` against the schema in `src/lib/flirt/coach-schema.ts`. The model's response is read from the `tool_use` block, not from text. Mirror this pattern for any new structured LLM call.
