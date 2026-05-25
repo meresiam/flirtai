@@ -40,6 +40,8 @@ model User {
   usageLogs         UsageLog[]
   monitoredProfiles MonitoredProfile[]
   userProfile       UserProfile?
+  folders           Folder[]
+  tagPreferences    TagPreference[]
 
   @@map("user")
 }
@@ -175,10 +177,15 @@ model Contact {
   ratingVestimenta       Decimal?        @map("rating_vestimenta") @db.Decimal(3, 1)
   location               String?
   metContext             String?         @map("met_context")
+  // W8 — Org & Hygiene
+  pinnedAt               DateTime?       @map("pinned_at")
+  archivedAt             DateTime?       @map("archived_at")
+  folderId               String?         @map("folder_id")
   createdAt              DateTime        @default(now()) @map("created_at")
   updatedAt              DateTime        @updatedAt @map("updated_at")
 
   user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  folder     Folder?        @relation(fields: [folderId], references: [id], onDelete: SetNull)
   messages   Message[]
   analysis   Analysis?
   encounters EncounterLog[]
@@ -186,7 +193,46 @@ model Contact {
   @@index([userId])
   @@index([userId, kind, updatedAt(sort: Desc)])
   @@index([userId, updatedAt(sort: Desc)])
+  @@index([userId, archivedAt, pinnedAt(sort: Desc), updatedAt(sort: Desc)])
+  @@index([userId, folderId])
   @@map("contact")
+}
+
+// W8 — Org & Hygiene
+// Pasta criada pelo User pra organizar contatos na sidebar.
+// onDelete:SetNull em Contact.folderId garante que apagar pasta não derruba contacts.
+model Folder {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  name      String
+  color     String?
+  icon      String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contacts Contact[]
+
+  @@unique([userId, name])
+  @@index([userId, order])
+  @@map("folder")
+}
+
+// W8 — Mapa user-curado label→cor pra tags. Tags continuam em Contact.tags[]
+// (LLM escreve via tool_use); esta tabela só define a cor de display.
+model TagPreference {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  label     String
+  color     String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, label])
+  @@index([userId])
+  @@map("tag_preference")
 }
 
 // W7 — Diario de Campo. Captura pos-encontro de um Contact.
@@ -222,6 +268,9 @@ model Message {
   suggestions Json?
   insight     Json?
   attachments Json?
+  // W8 — Marcado pelo user quando ele de fato enviou a mensagem no IG/WA real.
+  // Só relevante pra sender = user. Coach pode usar pra distinguir "rascunho" de "enviado".
+  sentIrlAt   DateTime?     @map("sent_irl_at")
   createdAt   DateTime      @default(now()) @map("created_at")
 
   contact Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)

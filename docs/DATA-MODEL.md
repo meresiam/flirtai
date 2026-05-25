@@ -128,15 +128,60 @@ Cada mulher cadastrada por um `User`. Frontend a chama de "conversa" na sidebar.
 | `greenFlags`             | String[]            | []             |
 | `redFlags`               | String[]            | []             |
 | `notes`                  | String?             |                |
+| `pinnedAt`               | DateTime?           | null (W8)      |
+| `archivedAt`             | DateTime?           | null (W8)      |
+| `folderId`               | String?             | null (W8)      |
 | `createdAt` / `updatedAt`| DateTime            |                |
 
-Index: `(userId)`, `(userId, updatedAt DESC)` — pra ordenar conversas pelo topo.
+Index: `(userId)`, `(userId, updatedAt DESC)`, `(userId, archivedAt, pinnedAt DESC, updatedAt DESC)` (W8), `(userId, folderId)` (W8).
+
+> **W8 (25-05-2026):** três campos novos pra **Org & Hygiene** da sidebar.
+> - `pinnedAt` (DateTime?) — null = não fixado, set = fixado naquele instante. Ordena `pinned DESC NULLS LAST`. Cap aplicado na API (`PINNED_CAP = 5`) seguindo padrão Telegram; tentar fixar o 6º retorna 409.
+> - `archivedAt` (DateTime?) — soft archive. `null` = lista padrão; set = "Arquivados" tab. Não cascateia delete (não some, só fica fora da lista). Restore = volta `null`. Hard delete continua via `DELETE /api/contacts/[id]` (não muda).
+> - `folderId` (String? FK→Folder) — `ON DELETE SET NULL` (delete da pasta não derruba contacts, eles voltam pra "sem pasta"). Constraint: `folder.userId === contact.userId` reforçado na API (não dá pra mover contact pra pasta de outro user).
+> - Index composto `(userId, archivedAt, pinnedAt DESC, updatedAt DESC)` cobre a query principal do shell: `WHERE userId = ? AND archivedAt IS NULL ORDER BY pinnedAt DESC NULLS LAST, updatedAt DESC`.
+> - Migration `20260525040000_w8_org_hygiene`.
 
 Enums:
 - `ContactStatus`: `active` · `cold` · `hot_lead`
 - `AttractionLevel`: `Low` · `Medium` · `High`
 
 > **W1 / C5 (24-05-2026):** campo `conversationSummary` é um **rolling summary** gerado via Haiku 4.5 (`claude-haiku-4-5-20251001`) quando `messages.count > 30` pra um contato. O resumo é injetado no system prompt do `/api/coach` **antes das últimas 20 mensagens**, permitindo manter contexto longo sem estourar `HISTORY_CAP`. Migration `20260524240100_add_conversation_summary` (ADD COLUMN nullable, baixo risco).
+
+### `Folder` (W8 — Pastas de organização)
+Pasta criada pelo `User` pra agrupar contatos na sidebar. Não tem cor por padrão (chip neutro). Default pasta nenhuma — a "ausência de pasta" é o estado inicial.
+
+| Campo       | Tipo            | Nota                                                |
+|-------------|-----------------|-----------------------------------------------------|
+| `id`        | String PK       | cuid                                                |
+| `userId`    | String FK→User  | cascade delete                                      |
+| `name`      | String          | unique por user (case-sensitive). Max 60 chars.     |
+| `color`     | String?         | hex `#rrggbb` (formato validado server-side) ou token AILA. Null = chip neutro. |
+| `icon`      | String?         | nome de ícone Lucide (ex: `"heart"`, `"flame"`). Null = ícone padrão (`Folder`). |
+| `order`     | Int             | default 0. Ordenação manual na sidebar (drag opcional W8.1). |
+| `createdAt` | DateTime        |                                                     |
+| `updatedAt` | DateTime        | @updatedAt                                          |
+
+Relations: `user` (n-1), `contacts` (1-n) — `Contact.folderId` aponta aqui com `onDelete: SetNull`.
+Index: `(userId, order)`. Unique: `(userId, name)` — impede duplicar.
+Cap: max 30 pastas por user (validado server-side).
+
+### `TagPreference` (W8 — Cores de tag)
+Mapa **user-curado** de `label → cor`. As tags continuam vivendo em `Contact.tags: String[]` (o LLM escreve nelas via tool_use). Esta tabela só define a cor de exibição quando o user pinta uma tag no Tag Manager — tag sem entrada aqui = chip neutro.
+
+| Campo       | Tipo            | Nota                                                |
+|-------------|-----------------|-----------------------------------------------------|
+| `id`        | String PK       | cuid                                                |
+| `userId`    | String FK→User  | cascade delete                                      |
+| `label`     | String          | bate exato com strings em `Contact.tags[]`. Max 40 chars (mesmo cap de tag). |
+| `color`     | String          | hex `#rrggbb` ou token AILA. Obrigatório (sem entrada = sem cor). |
+| `createdAt` | DateTime        |                                                     |
+
+Relations: `user` (n-1).
+Unique: `(userId, label)` — uma cor por tag.
+Cap: max 100 entradas por user.
+
+> **Decisão (W8):** NÃO migrei `Contact.tags: String[]` pra junction table. Motivo: o LLM escreve tags via tool_use no `/api/coach` (ver `coach-schema.ts`) e mudar isso quebraria a transação atômica `prisma.$transaction` da resposta do coach. `TagPreference` resolve cor com 0 disrupção do pipeline LLM.
 
 ### `Message`
 Histórico da conversa entre `User` e uma `Contact`. Inclui sugestões e insight do coach quando vem do assistant.
@@ -150,9 +195,12 @@ Histórico da conversa entre `User` e uma `Contact`. Inclui sugestões e insight
 | `suggestions` | Json?                 | `[{tone, text, why, risk, likelyResponse}]` quando assistant |
 | `insight`     | Json?                 | `{interestLevel, read, move, avoid}`          |
 | `attachments` | Json?                 | W3/C6 — anexos do turno do user (imagens). Shape `[{type, mediaType, name, data?}]` |
+| `sentIrlAt`   | DateTime?             | W8 — marcado pelo user quando enviou a mensagem no IG/WA real. Só faz sentido pra `sender = user`. Coach exclui mensagens não-`sentIrl` do contexto futuro pra não sugerir o que ainda não foi enviado. |
 | `createdAt`   | DateTime              |                                               |
 
 Index: `(contactId, createdAt)` — leitura cronológica.
+
+> **W8 (25-05-2026):** `sentIrlAt` permite ao user marcar "enviei essa no IG". Quando `sender = "user" AND sentIrlAt IS NOT NULL`, a mensagem entra no contexto histórico do `/api/coach` como "já entregue". Quando `sender = "user" AND sentIrlAt IS NULL`, é tratada como "rascunho do coach" (não foi enviada de verdade) e pode ser excluída do contexto se o user mandar uma nova versão. **MVP:** o `/api/coach` continua mandando todas as user-messages como hoje; flag de exclusão fica pra W8.1.
 
 > Cap de contexto: rota `/api/coach` envia só as **20 mensagens mais recentes** pra LLM (HISTORY_CAP, elevado em W1/C5).
 
@@ -216,6 +264,7 @@ Ordem cronológica das migrations aplicadas no schema do core (não inclui Profi
 | `20260525011534_add_user_preferences`     | add_user_preferences     | **W5 / M8**     | ADD `user.timezone`/`locale` (TEXT) + `user.coach_tone` (enum `CoachTone`) + `user.notification_prefs` (JSONB), todos nullable |
 | `20260525020000_create_user_profile`      | create_user_profile      | **W6**          | CREATE TABLE `user_profile` (1-1 com user, cascade) com `tone` (CoachTone?), `age`, `location_city`, `context_life`, `demographics` (JSONB), `win_samples` (JSONB default `[]`), `red_patterns_raw` (JSONB default `[]`), `red_patterns` (JSONB default `[]`), `onboarding_done` (BOOL default false) |
 | `20260525030000_create_encounter_log`     | create_encounter_log     | **W7**          | CREATE TABLE `encounter_log` (n-1 com contact, cascade) com `happened_at` (TIMESTAMP), `raw_text` (TEXT), `extracted` (JSONB), `created_at` (TIMESTAMP default now()) + INDEX `(contact_id, happened_at DESC)` |
+| `20260525040000_w8_org_hygiene`           | w8_org_hygiene           | **W8**          | ADD `contact.pinned_at` (TIMESTAMP NULL), `contact.archived_at` (TIMESTAMP NULL), `contact.folder_id` (TEXT NULL FK→folder ON DELETE SET NULL) + CREATE TABLE `folder` (PK cuid, FK userId cascade, name unique-per-user, color/icon nullable, order Int default 0) + CREATE TABLE `tag_preference` (PK cuid, FK userId cascade, label/color, unique `(userId, label)`) + ADD `message.sent_irl_at` (TIMESTAMP NULL) + INDEX `(userId, archivedAt, pinnedAt DESC, updatedAt DESC)` em Contact pra suportar query principal da sidebar |
 
 ---
 

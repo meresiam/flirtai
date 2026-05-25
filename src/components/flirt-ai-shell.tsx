@@ -903,7 +903,7 @@ export function FlirtAiShell() {
                       <div className="mt-4 grid gap-2 sm:grid-cols-2">
                         {message.suggestions.map((suggestion, suggestionIndex) => (
                           <div
-                            key={suggestion.text}
+                            key={`${message.id}-sug-${suggestionIndex}`}
                             className="rounded-[22px] border border-white/10 bg-white/[0.05] px-3 py-3 text-left transition hover:bg-white/[0.08]"
                           >
                             <button

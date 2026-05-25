@@ -34,6 +34,27 @@ export interface ConversationMessage {
   timestamp: string;
   suggestions?: ReplySuggestion[];
   insight?: MessageInsight;
+  // W8 — ISO date string quando o user marca "enviei essa no IG/WA real".
+  // null/undefined = não enviado IRL ainda. Só faz sentido pra sender === "user".
+  sentIrlAt?: string | null;
+}
+
+// W8 — Pastas de organização de contatos na sidebar.
+export interface FolderRecord {
+  id: string;
+  name: string;
+  color: string | null;
+  icon: string | null;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// W8 — Mapa user-curado label→cor pra tags. Tags continuam em Contact.tags[];
+// esta tabela só define a cor de exibição (sem entrada = chip neutro).
+export interface TagPreferenceRecord {
+  label: string;
+  color: string;
 }
 
 export interface CoachGuidance {
@@ -101,6 +122,10 @@ export interface ContactRecord {
   notes: string | null;
   conversationHistory: ConversationMessage[];
   updatedAt: string;
+  // W8 — Org & Hygiene
+  pinnedAt: string | null;
+  archivedAt: string | null;
+  folderId: string | null;
 }
 
 export interface CoachRequest {

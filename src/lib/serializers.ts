@@ -1,4 +1,4 @@
-import type { Contact, Message } from "@prisma/client";
+import type { Contact, Folder, Message, TagPreference } from "@prisma/client";
 
 import type {
   ContactKind,
@@ -6,8 +6,10 @@ import type {
   ContactRecord,
   ContactStatus,
   ConversationMessage,
+  FolderRecord,
   MessageInsight,
   ReplySuggestion,
+  TagPreferenceRecord,
 } from "@/types/flirt";
 
 function statusFromDb(value: Contact["status"]): ContactStatus {
@@ -45,6 +47,7 @@ export function serializeMessage(message: Message): ConversationMessage {
     timestamp: message.createdAt.toISOString(),
     suggestions: (message.suggestions as ReplySuggestion[] | null) ?? undefined,
     insight: (message.insight as MessageInsight | null) ?? undefined,
+    sentIrlAt: message.sentIrlAt ? message.sentIrlAt.toISOString() : null,
   };
 }
 
@@ -80,5 +83,27 @@ export function serializeContact(
     notes: contact.notes ?? null,
     conversationHistory: contact.messages?.map(serializeMessage) ?? [],
     updatedAt: contact.updatedAt.toISOString(),
+    pinnedAt: contact.pinnedAt ? contact.pinnedAt.toISOString() : null,
+    archivedAt: contact.archivedAt ? contact.archivedAt.toISOString() : null,
+    folderId: contact.folderId ?? null,
+  };
+}
+
+export function serializeFolder(folder: Folder): FolderRecord {
+  return {
+    id: folder.id,
+    name: folder.name,
+    color: folder.color ?? null,
+    icon: folder.icon ?? null,
+    order: folder.order,
+    createdAt: folder.createdAt.toISOString(),
+    updatedAt: folder.updatedAt.toISOString(),
+  };
+}
+
+export function serializeTagPreference(tp: TagPreference): TagPreferenceRecord {
+  return {
+    label: tp.label,
+    color: tp.color,
   };
 }

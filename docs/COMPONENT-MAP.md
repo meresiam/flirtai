@@ -9,13 +9,25 @@ src/app/layout.tsx                          ← fonts + theme + global CSS
 ├── src/app/page.tsx                        ← Home (shell do chat)
 │   └── src/components/flirt-ai-shell.tsx   ← <FlirtAiShell />  [client]
 │       ├── <ConversationSidebar/>          ← lista de contatos + busca + nova conversa
-│       │   └── <ContactCard/>              ← item da lista
+│       │   ├── <SidebarFolderFilter/>      ← W8: chips "Tudo" · pastas · "Arquivados" (gate de visualização)
+│       │   ├── <SidebarPinnedSection/>     ← W8: contatos com pinnedAt set, ordenados pinnedAt DESC
+│       │   ├── <SidebarFolderList/>        ← W8: contatos da pasta filtrada (ou todos quando "Tudo")
+│       │   ├── <SidebarArchivedTab/>       ← W8: contatos com archivedAt set; restore inline
+│       │   ├── <ContactCard/>              ← item da lista (W8: ganha chip de tag colorida + menu de contexto)
+│       │   │   └── <ContactContextMenu/>   ← W8: dropdown "Fixar" · "Mover pra pasta" · "Arquivar" · "Renomear" · "Apagar"
+│       │   ├── <FolderManagerModal/>       ← W8: CRUD de pastas (criar/renomear/cor/ícone/ordem)
+│       │   ├── <TagManagerModal/>          ← W8: lista todas as tags em uso + pintar cor via palette AILA
+│       │   └── <ArchiveUndoToast/>         ← W8: toast 10s "Arquivado. Desfazer" disparado no archive
 │       ├── <ChatHeader/>                   ← avatar + name + status + tags do contato ativo
 │       ├── <ChatMessages/>                 ← lista de mensagens (user/assistant)
 │       │   ├── <UserBubble/>
+│       │   │   └── <SentIrlToggle/>        ← W8: checkbox "enviei no IG" → marca sentIrlAt no Message
 │       │   └── <AssistantBubble/>
 │       │       ├── <InsightChips/>         ← Interesse/Leitura/Mover/Evitar
 │       │       └── <SuggestionCard/>       ← 4 tons, click → preenche input
+│       ├── <ContactSignalsPanel/>          ← painel direito do contato (Flags, Notes, Tags)
+│       │   └── <Tabs/>                     ← W8: tabs "Sinais" · "Encontros" (timeline EncounterLog) · "Notas"
+│       │       └── <EncounterTimelineTab/> ← W8: monta sobre <EncounterTimeline/> em encounter-timeline.tsx
 │       ├── <EmptyState/>                   ← 3 prompts pré-prontos
 │       ├── <ChatInput/>                    ← textarea + attach + command palette + send
 │       │   ├── <CommandPalette/>           ← /nova /resposta /perfil /encontro
@@ -30,8 +42,16 @@ src/app/layout.tsx                          ← fonts + theme + global CSS
 │
 ├── src/app/api/auth/[...all]/route.ts      ← better-auth handler
 ├── src/app/api/coach/route.ts              ← Anthropic Claude → JSON estruturado (consome user.coachTone)
-├── src/app/api/contacts/route.ts           ← GET (lista, aceita ?q= + ?kind=) · POST (cria)
+├── src/app/api/contacts/route.ts           ← GET (lista, ?q= + ?kind= + ?folderId= + ?archived=true|false) · POST (cria)
 ├── src/app/api/contacts/[id]/route.ts      ← GET · PATCH · DELETE
+├── src/app/api/contacts/[id]/pin/route.ts  ← W8: POST (pinnedAt=now) · DELETE (pinnedAt=null)
+├── src/app/api/contacts/[id]/archive/route.ts ← W8: POST (archivedAt=now) · DELETE (archivedAt=null, restore)
+├── src/app/api/contacts/[id]/folder/route.ts  ← W8: PUT { folderId | null } (move/remove)
+├── src/app/api/folders/route.ts            ← W8: GET (lista user folders) · POST (cria)
+├── src/app/api/folders/[id]/route.ts       ← W8: PATCH (name/color/icon/order) · DELETE (SET NULL nos contacts)
+├── src/app/api/tag-preferences/route.ts    ← W8: GET (lista) · POST (upsert label→color)
+├── src/app/api/tag-preferences/[label]/route.ts ← W8: DELETE
+├── src/app/api/messages/[id]/sent-irl/route.ts  ← W8: POST (sentIrlAt=now) · DELETE (sentIrlAt=null)
 └── src/app/api/settings/route.ts           ← GET · PATCH (name, key, model, timezone, locale, coachTone, notificationPrefs)
 ```
 
@@ -50,11 +70,18 @@ src/app/layout.tsx                          ← fonts + theme + global CSS
 - `errorMessage` — erro da última call
 
 ### Global (Zustand — `src/store/use-flirt-store.ts`)
-- `contacts: ContactRecord[]` — espelho do DB no client
+- `contacts: ContactRecord[]` — espelho do DB no client (W8: contém `pinnedAt`/`archivedAt`/`folderId` + `folder?: FolderRecord`)
 - `selectedContactId: string`
 - `hasHydrated: boolean` — flag de bootstrap (server-loaded)
+- **W8 — Org & Hygiene:**
+  - `folders: FolderRecord[]` — pastas do user (hidratado no bootstrap junto com contacts)
+  - `tagPreferences: TagPreferenceRecord[]` — cores user-curadas pra tags
+  - `selectedFolderId: string | null` — filtro ativo na sidebar; `null` = "Tudo"
+  - `showArchived: boolean` — toggle pra exibir tab "Arquivados"
+  - `pendingArchiveUndo: { contactId: string; expiresAt: number } | null` — controla toast undo 10s
 - Actions: `selectContact`, `createContact`, `appendMessage`, `applyCoachResponse`, `setHasHydrated`
-- Persist: localStorage v4 (versão sobe no W0.6 pra invalidar cache antigo sem userId)
+- **W8 actions:** `pinContact(id)`, `unpinContact(id)`, `archiveContact(id)`, `restoreContact(id)`, `moveContactToFolder(id, folderId|null)`, `createFolder(payload)`, `updateFolder(id, patch)`, `deleteFolder(id)`, `selectFolder(id|null)`, `toggleArchivedView()`, `setTagPreference(label, color)`, `removeTagPreference(label)`, `markMessageSentIrl(messageId, sent)`
+- Persist: localStorage v8 (sobe versão pra invalidar cache pre-W8 que não tem os campos novos)
 
 ### Server (sessão)
 - `auth()` — `better-auth` retorna `{ user, session }` ou `null`

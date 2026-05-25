@@ -73,13 +73,40 @@ export async function GET(request: Request) {
   // mesmo em users com histórico longo. `serializeContact` tolera `messages: undefined`.
   const includeMessages = searchParams.get("include") === "messages";
 
+  // W8 — filtros novos:
+  //   ?archived=true  → SÓ arquivados
+  //   ?archived=false → SÓ não-arquivados (default)
+  //   ?archived=all   → tudo (sidebar não usa, mas /desenrolos pode)
+  //   ?folderId=cuid  → filtra por pasta. "none" = sem pasta.
+  const archivedParam = searchParams.get("archived");
+  const archivedFilter: Prisma.ContactWhereInput =
+    archivedParam === "true"
+      ? { archivedAt: { not: null } }
+      : archivedParam === "all"
+        ? {}
+        : { archivedAt: null };
+
+  const folderParam = searchParams.get("folderId");
+  const folderFilter: Prisma.ContactWhereInput | null =
+    folderParam === "none"
+      ? { folderId: null }
+      : folderParam
+        ? { folderId: folderParam }
+        : null;
+
   const contacts = await prisma.contact.findMany({
     where: {
       userId,
       ...(kindFilter ? { kind: kindFilter as ContactKind } : {}),
       ...(searchFilter ?? {}),
+      ...archivedFilter,
+      ...(folderFilter ?? {}),
     },
-    orderBy: { updatedAt: "desc" },
+    // W8 — pinned vai sempre primeiro (DESC NULLS LAST via sort+nulls), depois updatedAt DESC.
+    orderBy: [
+      { pinnedAt: { sort: "desc", nulls: "last" } },
+      { updatedAt: "desc" },
+    ],
     take: CONTACTS_LIST_LIMIT,
     include: includeMessages
       ? {
