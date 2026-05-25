@@ -224,10 +224,12 @@ export async function POST(request: Request) {
         status: statusToDb(llmResponse.contact.status),
         attractionLevel: llmResponse.contact.attractionLevel,
         personalityType: llmResponse.contact.personalityType || contact.personalityType,
-        interests: llmResponse.contact.interests.length
+        interests: llmResponse.contact.interests?.length
           ? llmResponse.contact.interests
           : contact.interests,
-        tags: llmResponse.contact.tags.length ? llmResponse.contact.tags : contact.tags,
+        tags: llmResponse.contact.tags?.length
+          ? llmResponse.contact.tags
+          : contact.tags,
         lastInteractionSummary:
           llmResponse.contact.lastInteractionSummary || prompt.slice(0, 280),
       },

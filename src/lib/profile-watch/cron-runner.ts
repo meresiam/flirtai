@@ -24,8 +24,19 @@ export interface ScanResult {
   error?: string;
 }
 
-function nextScanFrom(profile: MonitoredProfile, now: Date): Date {
+// Próximo scan em caso de sucesso: usa cadenceHours do perfil.
+function nextSuccessfulScanAt(profile: MonitoredProfile, now: Date): Date {
   return new Date(now.getTime() + profile.cadenceHours * 60 * 60 * 1000);
+}
+
+// Próximo scan em caso de falha: backoff exponencial com cap de 24h.
+// Recebe o errorCount JÁ INCREMENTADO (pós-falha).
+// Exemplos: 1→2h, 5→10h, 12→24h, 13→24h (cap em 12 * 2 = 24h).
+// Cap em 12: a partir daí backoff é constante 24h até suceder.
+function nextRetryAt(errorCount: number, now: Date): Date {
+  const cappedCount = Math.min(errorCount, 12);
+  const backoffHours = cappedCount * 2;
+  return new Date(now.getTime() + backoffHours * 60 * 60 * 1000);
 }
 
 async function fetchProfile(profile: MonitoredProfile): Promise<ScrapedProfile> {
@@ -77,13 +88,15 @@ export async function runProfileScan(
         : err instanceof Error
           ? err.message
           : String(err);
+    const newErrorCount = profile.errorCount + 1;
     await prisma.monitoredProfile.update({
       where: { id: profile.id },
       data: {
         status: "error",
         lastErrorMessage: errorMessage.slice(0, 500),
         lastScanAt: now,
-        nextScanAt: nextScanFrom(profile, now),
+        errorCount: newErrorCount,
+        nextScanAt: nextRetryAt(newErrorCount, now),
       },
     });
     return {
@@ -97,15 +110,18 @@ export async function runProfileScan(
     };
   }
 
-  // Privado virou erro hard.
+  // Privado virou erro hard — mas pode voltar a público, então aplica retry exponencial
+  // (não pausa permanentemente; o backoff garante que não spameia Apify).
   if (scraped.isPrivate) {
+    const newErrorCount = profile.errorCount + 1;
     await prisma.monitoredProfile.update({
       where: { id: profile.id },
       data: {
         status: "error",
-        lastErrorMessage: "Perfil ficou privado — monitor pausado.",
+        lastErrorMessage: "Perfil ficou privado — aguardando retry.",
         lastScanAt: now,
-        nextScanAt: nextScanFrom(profile, now),
+        errorCount: newErrorCount,
+        nextScanAt: nextRetryAt(newErrorCount, now),
       },
     });
     return {
@@ -281,7 +297,10 @@ export async function runProfileScan(
       });
       reportCreated = true;
     } catch (err) {
-      // não derrubar o scan se relatório falhou; só loga no profile.
+      // Relatório é secundário: scan principal sucedeu (perfil acessível, snapshot salvo,
+      // diff aplicado). Não derrubar nem incrementar errorCount por falha de LLM.
+      // Decisão de design (M7): errorCount reseta = 0 junto com o update de sucesso abaixo,
+      // mesmo que o relatório tenha falhado. Só loga a mensagem de erro do relatório.
       const errMsg = err instanceof Error ? err.message : String(err);
       await prisma.monitoredProfile.update({
         where: { id: profile.id },
@@ -290,14 +309,16 @@ export async function runProfileScan(
     }
   }
 
-  // 5) atualizar agendamento.
+  // 5) atualizar agendamento — scan principal sucedeu; reseta errorCount para 0.
+  // Se o relatório falhou (bloco acima), errorCount ainda reseta: report é secundário.
   await prisma.monitoredProfile.update({
     where: { id: profile.id },
     data: {
       status: "active",
       lastErrorMessage: null,
+      errorCount: 0,
       lastScanAt: now,
-      nextScanAt: nextScanFrom(profile, now),
+      nextScanAt: nextSuccessfulScanAt(profile, now),
       displayName: scraped.displayName ?? profile.displayName,
     },
   });

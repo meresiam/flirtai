@@ -29,6 +29,29 @@ interface ConsentDialogProps {
   open: boolean;
   onClose: () => void;
   onAccept: (consentVersion: string) => void;
+  /** Controla títulos/descrições. "create" (default) = primeiro aceite; "reaccept" = reaceite por versão atualizada. */
+  mode?: "create" | "reaccept";
+  /** Estado do submit do reaceite. Quando true, desabilita o botão e mostra "Salvando…". */
+  isSubmitting?: boolean;
+}
+
+const DIALOG_COPY = {
+  create: {
+    title: "Termo de uso — Profile Watch",
+    description: "Leia e aceite antes de monitorar um perfil",
+  },
+  reaccept: {
+    title: "Termo de uso atualizado",
+    description:
+      "Atualizamos o termo (clareza sobre uso indevido e direitos do titular). Releia e reaceite para continuar monitorando este perfil.",
+  },
+} as const;
+
+function formatPublishedAt(iso: string | undefined): string {
+  if (!iso) return "…";
+  const [y, m, d] = iso.split("-");
+  if (!y || !m || !d) return iso;
+  return `${d}/${m}/${y}`;
 }
 
 function ConsentBody({
@@ -38,6 +61,7 @@ function ConsentBody({
   onAccept,
   onClose,
   isLoading,
+  isSubmitting,
   error,
 }: {
   consent: ConsentData | null;
@@ -46,6 +70,7 @@ function ConsentBody({
   onAccept: () => void;
   onClose: () => void;
   isLoading: boolean;
+  isSubmitting: boolean;
   error: string | null;
 }) {
   return (
@@ -54,7 +79,7 @@ function ConsentBody({
       <div
         className={cn(
           "max-h-[50vh] overflow-y-auto rounded-xl border border-white/[0.08] bg-white/[0.03] p-4",
-          "text-xs leading-relaxed text-white/60 scrollbar-thin",
+          "text-sm leading-relaxed text-white/65 scrollbar-thin",
         )}
         role="document"
         aria-label="Termos de uso do módulo Profile Watch"
@@ -75,7 +100,7 @@ function ConsentBody({
             <span>{error}</span>
           </div>
         ) : (
-          <pre className="whitespace-pre-wrap font-sans text-xs leading-relaxed text-white/60">
+          <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-white/65">
             {consent?.body}
           </pre>
         )}
@@ -98,9 +123,9 @@ function ConsentBody({
           {checked && <CheckIcon className="h-3 w-3 text-white" />}
         </button>
         <span className="text-sm text-white/70 leading-relaxed">
-          Li e aceito os termos de uso versão{" "}
+          Li e aceito os termos de uso{" "}
           <span className="font-medium text-white/85">
-            {consent?.version ?? "…"}
+            publicados em {formatPublishedAt(consent?.publishedAt)}
           </span>
           . Entendo que apenas dados públicos serão coletados.
         </span>
@@ -111,23 +136,31 @@ function ConsentBody({
         <Button
           variant="ghost"
           onClick={onClose}
+          disabled={isSubmitting}
           className="min-h-[44px] text-white/60 hover:text-white/85"
         >
           Cancelar
         </Button>
         <Button
           onClick={onAccept}
-          disabled={!checked || isLoading || !consent}
+          disabled={!checked || isLoading || isSubmitting || !consent}
           className="min-h-[44px] bg-[#ff355d] text-white hover:bg-[#ff355d]/90 disabled:opacity-40"
         >
-          Aceitar e continuar
+          {isSubmitting ? "Salvando…" : "Aceitar e continuar"}
         </Button>
       </div>
     </div>
   );
 }
 
-export function ConsentDialog({ open, onClose, onAccept }: ConsentDialogProps) {
+export function ConsentDialog({
+  open,
+  onClose,
+  onAccept,
+  mode = "create",
+  isSubmitting = false,
+}: ConsentDialogProps) {
+  const copy = DIALOG_COPY[mode];
   const [consent, setConsent] = useState<ConsentData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -175,6 +208,7 @@ export function ConsentDialog({ open, onClose, onAccept }: ConsentDialogProps) {
     onAccept: handleAccept,
     onClose,
     isLoading,
+    isSubmitting,
     error,
   };
 
@@ -195,10 +229,10 @@ export function ConsentDialog({ open, onClose, onAccept }: ConsentDialogProps) {
         >
           <SheetHeader className="mb-4 text-left">
             <SheetTitle className="text-base font-semibold text-white/90">
-              Termo de uso — Profile Watch
+              {copy.title}
             </SheetTitle>
             <SheetDescription className="text-xs text-white/45">
-              Leia e aceite antes de monitorar um perfil
+              {copy.description}
             </SheetDescription>
           </SheetHeader>
           <ConsentBody {...bodyProps} />
@@ -212,10 +246,10 @@ export function ConsentDialog({ open, onClose, onAccept }: ConsentDialogProps) {
       <DialogContent className="liquid-panel max-w-lg border border-white/[0.08] bg-[#070913]">
         <DialogHeader>
           <DialogTitle className="text-base font-semibold text-white/90">
-            Termo de uso — Profile Watch
+            {copy.title}
           </DialogTitle>
           <DialogDescription className="text-xs text-white/45">
-            Leia e aceite antes de monitorar um perfil
+            {copy.description}
           </DialogDescription>
         </DialogHeader>
         <ConsentBody {...bodyProps} />

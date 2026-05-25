@@ -141,6 +141,7 @@ Ordem cronológica das migrations aplicadas no schema do core (não inclui Profi
 | `20260524230000_rename_hot_lead_enum`     | rename_hot_lead_enum     | W0 / C9         | `ContactStatus` literal `'hot lead'` → `'hot_lead'` (Naming Lock)        |
 | `20260524240000_encrypt_anthropic_api_key`| encrypt_anthropic_api_key| **W1 / C2**     | DROP `anthropic_api_key` plaintext + ADD `anthropic_api_key_encrypted`  |
 | `20260524240100_add_conversation_summary` | add_conversation_summary | **W1 / C5**     | ADD `contact.conversation_summary` pra rolling summary via Haiku        |
+| `20260524235721_add_profile_error_count`  | add_profile_error_count  | **W4 / M7**     | contador pra backoff exponencial no cron-runner                         |
 
 ---
 

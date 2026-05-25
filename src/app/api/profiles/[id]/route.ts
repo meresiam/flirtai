@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
+import { requireFreshConsent } from "@/lib/profile-watch/consent-guard";
 import {
   serializeCoachingSuggestion,
   serializeProfilePost,
@@ -81,6 +82,14 @@ export async function PATCH(request: Request, { params }: RouteContext) {
   } catch (err) {
     const message = err instanceof Error ? err.message : "Payload inválido.";
     return NextResponse.json({ error: message }, { status: 400 });
+  }
+
+  // Pausar é sempre permitido (até desejável quando consent expirou — impede coleta).
+  // Ativar ou alterar cadência exigem consent atual.
+  const isPauseOnly = parsed.status === "paused" && !parsed.cadenceHours;
+  if (!isPauseOnly) {
+    const stale = requireFreshConsent(owned);
+    if (stale) return stale;
   }
 
   const updated = await prisma.monitoredProfile.update({

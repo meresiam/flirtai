@@ -1,8 +1,9 @@
 ---
 projeto: flirtai
 documento: ROADMAP
-versao: 1.0
+versao: 1.1
 criado: 24-05-2026
+atualizado: 24-05-2026
 owner: Meres
 status: ativo
 total_waves: 9
@@ -36,10 +37,10 @@ Cada wave existe pra reforçar essa promessa: estabilizar o core (W0-W5) → con
 | Wave | Nome | Tipo | Estimativa | Bloqueia |
 |---|---|---|---|---|
 | **W0** | Foundation (testes + observability + naming) ✅ DONE — 24-05-2026 | hardening | 3-4 dias | tudo |
-| **W1** | Coach Reliability (bugs LLM + crypto) | hardening | 2-3 dias | W2, W6 |
+| **W1** | Coach Reliability (bugs LLM + crypto) ✅ DONE — 24-05-2026 | hardening | 2-3 dias | W2, W6 |
 | **W2** | Coach UX (streaming + schema cleanup) | UX | 3-4 dias | — |
 | **W3** | Multimodal + Comandos (Vision + commands.ts) | UX | 2-3 dias | W6 (vision) |
-| **W4** | Profile Watch Hardening (consent + retry) | hardening | 2 dias | — |
+| **W4** | Profile Watch Hardening (consent + retry) ✅ DONE — 24-05-2026 | hardening | 2 dias | — |
 | **W5** | Settings & Search expandidos | UX | 1-2 dias | W6 |
 | **W6** | **Memória do Homem** (UserProfile) | feature | 4-6 dias | W8 |
 | **W7** | **Diário de Campo** (EncounterLog) | feature | 3-4 dias | W8 |

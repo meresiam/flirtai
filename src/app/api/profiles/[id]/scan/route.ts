@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
 import { runProfileScan } from "@/lib/profile-watch/cron-runner";
+import { requireFreshConsent } from "@/lib/profile-watch/consent-guard";
 import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
 import {
   serializeProfilePost,
@@ -35,6 +36,10 @@ export async function POST(_req: Request, { params }: RouteContext) {
       { status: 409 },
     );
   }
+
+  // Bloqueia scan manual se o usuário não aceitou a versão atual do termo.
+  const stale = requireFreshConsent(profile);
+  if (stale) return stale;
 
   const rate = await checkAndConsumeRateLimit(
     userId,

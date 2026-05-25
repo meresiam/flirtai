@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { MessageSquareIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -13,8 +13,17 @@ import { PostHistoryCards } from "@/components/profile-watch/post-history-cards"
 import { PostHistoryFilters, type PostTypeFilter } from "@/components/profile-watch/post-history-filters";
 import { PostDetailDialog } from "@/components/profile-watch/post-detail-dialog";
 import { CoachingPanel } from "@/components/profile-watch/coaching-panel";
+import { ConsentDialog } from "@/components/profile-watch/consent-dialog";
 import { useProfilesStore } from "@/store/use-profiles-store";
 import type { ProfileDetailResponse, ProfilePostSummary } from "@/types/profile-watch";
+
+interface ConsentStaleError {
+  error: string;
+  code: "consent_outdated";
+  currentVersion: string;
+  acceptedVersion: string;
+  reacceptUrl: string;
+}
 
 const REFRESH_ON_FOCUS_THRESHOLD_MS = 30_000;
 
@@ -39,6 +48,7 @@ function Toast({ message, type }: { message: string; type: "success" | "error" }
 export default function ProfileDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const id = typeof params.id === "string" ? params.id : Array.isArray(params.id) ? params.id[0] : "";
 
   const { patchProfile, removeProfile } = useProfilesStore();
@@ -47,6 +57,10 @@ export default function ProfileDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+  // Dialog de reaceite de consent
+  const [consentDialogOpen, setConsentDialogOpen] = useState(false);
+  const [isReaccepting, setIsReaccepting] = useState(false);
 
   // Filtros de posts
   const [postSearch, setPostSearch] = useState("");
@@ -112,6 +126,55 @@ export default function ProfileDetailPage() {
     return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, [loadDetail]);
 
+  // Abre o dialog de reaceite se ?reaccept=consent estiver na URL
+  useEffect(() => {
+    if (searchParams.get("reaccept") === "consent") {
+      setConsentDialogOpen(true);
+    }
+  }, [searchParams]);
+
+  // Intercepta resposta 409 com code="consent_outdated" e abre o dialog de reaceite.
+  // Retorna true se foi um 409 de consent (caller deve abortar a ação).
+  async function handleConsentOutdated(res: Response): Promise<boolean> {
+    if (res.status !== 409) return false;
+    try {
+      const body = (await res.json()) as Partial<ConsentStaleError>;
+      if (body.code === "consent_outdated") {
+        setConsentDialogOpen(true);
+        return true;
+      }
+    } catch {
+      // não era um JSON de consent — deixa o caller lidar
+    }
+    return false;
+  }
+
+  // Após o reaceite bem-sucedido: fecha dialog, limpa ?reaccept da URL, refetch silencioso.
+  async function handleConsentAccept(consentVersion: string) {
+    if (!id || isReaccepting) return;
+    setIsReaccepting(true);
+    try {
+      const res = await fetch(`/api/profiles/${id}/consent`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ consentVersion }),
+      });
+      if (!res.ok) {
+        showToast("Não foi possível registrar o reaceite. Tente novamente.", "error");
+        return;
+      }
+      setConsentDialogOpen(false);
+      // Remove ?reaccept da URL sem recarregar a página
+      const url = new URL(window.location.href);
+      url.searchParams.delete("reaccept");
+      router.replace(url.pathname + (url.search !== "?" ? url.search : ""));
+      showToast("Termo de uso aceito. Pode continuar monitorando.", "success");
+      void loadDetail("silent");
+    } finally {
+      setIsReaccepting(false);
+    }
+  }
+
   // Ações
   async function handlePauseToggle() {
     if (!detail) return;
@@ -121,6 +184,7 @@ export default function ProfileDetailPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
     });
+    if (await handleConsentOutdated(res)) return;
     if (!res.ok) {
       showToast("Não foi possível alterar o status.", "error");
       return;
@@ -148,6 +212,7 @@ export default function ProfileDetailPage() {
       showToast("Limite de scans atingido (10/h). Aguarde um pouco.", "error");
       return;
     }
+    if (await handleConsentOutdated(res)) return;
     if (!res.ok) {
       showToast("Não foi possível iniciar o scan.", "error");
       return;
@@ -385,6 +450,15 @@ export default function ProfileDetailPage() {
         post={selectedPost}
         open={selectedPost !== null}
         onClose={() => setSelectedPost(null)}
+      />
+
+      {/* Dialog de reaceite de consent */}
+      <ConsentDialog
+        open={consentDialogOpen}
+        mode="reaccept"
+        isSubmitting={isReaccepting}
+        onClose={() => (isReaccepting ? null : setConsentDialogOpen(false))}
+        onAccept={handleConsentAccept}
       />
 
       {/* Toast */}

@@ -245,6 +245,7 @@ model MonitoredProfile {
   displayName         String?            @map("display_name")
   status              ProfileWatchStatus @default(active)
   lastErrorMessage    String?            @map("last_error_message")
+  errorCount          Int                @default(0) @map("error_count")
   cadenceHours        Int                @default(24) @map("cadence_hours")
   lastScanAt          DateTime?          @map("last_scan_at")
   nextScanAt          DateTime?          @map("next_scan_at")
