@@ -215,11 +215,11 @@ export async function POST(request: Request, { params }: RouteContext) {
     });
   }
 
-  // 4) Aplica extract no Contact + UserProfile (transaction).
-  const nextGreenFlags = mergeDedupCap(contact.greenFlags, extract.greenFlags, FLAGS_CAP);
-  const nextRedFlags = mergeDedupCap(contact.redFlags, extract.redFlags, FLAGS_CAP);
-  const nextAttraction = shiftAttraction(contact.attractionLevel, extract.attractionDelta);
-
+  // 4) Aplica extract no Contact + UserProfile dentro de UMA transacao interativa Serializable.
+  //    CR-01: read+merge+write do mesmo Contact precisam acontecer dentro do mesmo snapshot
+  //    pra evitar perda de greenFlags/redFlags/attractionLevel em POSTs concorrentes
+  //    (tab duplicada, retry de rede, double-click). Em Serializable, conflito de write
+  //    dispara P2034 e devolvemos 409 em PT-BR (front pede pra tentar de novo).
   const finalExtract: EncounterExtractPayload = {
     summary: extract.summary,
     escalation: extract.escalation,
@@ -231,45 +231,66 @@ export async function POST(request: Request, { params }: RouteContext) {
     userRedPatterns: extract.userRedPatterns,
   };
 
-  const writes: Prisma.PrismaPromise<unknown>[] = [
-    prisma.encounterLog.update({
-      where: { id: encounter.id },
-      data: { extracted: finalExtract as unknown as Prisma.InputJsonValue },
-    }),
-    prisma.contact.update({
-      where: { id: contactId },
-      data: {
-        greenFlags: nextGreenFlags,
-        redFlags: nextRedFlags,
-        lastInteractionSummary: extract.summary,
-        attractionLevel: nextAttraction,
-      },
-    }),
-  ];
+  try {
+    await prisma.$transaction(
+      async (tx) => {
+        const fresh = await tx.contact.findUniqueOrThrow({
+          where: { id: contactId },
+          select: { greenFlags: true, redFlags: true, attractionLevel: true },
+        });
+        const nextGreenFlags = mergeDedupCap(fresh.greenFlags, extract.greenFlags, FLAGS_CAP);
+        const nextRedFlags = mergeDedupCap(fresh.redFlags, extract.redFlags, FLAGS_CAP);
+        const nextAttraction = shiftAttraction(fresh.attractionLevel, extract.attractionDelta);
 
-  // Integracao W6 — userRedPatterns alimenta UserProfile.redPatterns (consolidados, nao raw).
-  if (extract.userRedPatterns.length > 0) {
-    const existing = await prisma.userProfile.upsert({
-      where: { userId },
-      update: {},
-      create: { userId },
-      select: { redPatterns: true },
-    });
-    const current = asStringArray(existing.redPatterns);
-    const merged = mergeDedupCap(current, extract.userRedPatterns, RED_PATTERNS_RAW_DB_CAP);
-    if (merged.length !== current.length) {
-      writes.push(
-        prisma.userProfile.update({
-          where: { userId },
+        await tx.encounterLog.update({
+          where: { id: encounter.id },
+          data: { extracted: finalExtract as unknown as Prisma.InputJsonValue },
+        });
+        await tx.contact.update({
+          where: { id: contactId },
           data: {
-            redPatterns: merged as unknown as Prisma.InputJsonValue,
+            greenFlags: nextGreenFlags,
+            redFlags: nextRedFlags,
+            lastInteractionSummary: extract.summary,
+            attractionLevel: nextAttraction,
           },
-        }),
+        });
+
+        // Integracao W6 — userRedPatterns alimenta UserProfile.redPatterns (consolidados, nao raw).
+        if (extract.userRedPatterns.length > 0) {
+          const profile = await tx.userProfile.upsert({
+            where: { userId },
+            update: {},
+            create: { userId },
+            select: { redPatterns: true },
+          });
+          const current = asStringArray(profile.redPatterns);
+          const merged = mergeDedupCap(current, extract.userRedPatterns, RED_PATTERNS_RAW_DB_CAP);
+          if (merged.length !== current.length) {
+            await tx.userProfile.update({
+              where: { userId },
+              data: {
+                redPatterns: merged as unknown as Prisma.InputJsonValue,
+              },
+            });
+          }
+        }
+      },
+      { isolationLevel: Prisma.TransactionIsolationLevel.Serializable, timeout: 10_000 },
+    );
+  } catch (cause) {
+    // P2034: serialization failure / write conflict em Serializable.
+    if (
+      cause instanceof Prisma.PrismaClientKnownRequestError &&
+      cause.code === "P2034"
+    ) {
+      return NextResponse.json(
+        { error: "Outro encontro foi salvo agora, tenta de novo daqui a pouco." },
+        { status: 409 },
       );
     }
+    throw cause;
   }
-
-  await prisma.$transaction(writes);
 
   const refreshedContact = await prisma.contact.findUniqueOrThrow({
     where: { id: contactId },
