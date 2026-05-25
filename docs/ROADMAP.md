@@ -38,7 +38,7 @@ Cada wave existe pra reforçar essa promessa: estabilizar o core (W0-W5) → con
 |---|---|---|---|---|
 | **W0** | Foundation (testes + observability + naming) ✅ DONE — 24-05-2026 | hardening | 3-4 dias | tudo |
 | **W1** | Coach Reliability (bugs LLM + crypto) ✅ DONE — 24-05-2026 | hardening | 2-3 dias | W2, W6 |
-| **W2** | Coach UX (streaming + schema cleanup) | UX | 3-4 dias | — |
+| **W2** | Coach UX (streaming + schema cleanup) ✅ DONE — 24-05-2026 | UX | 3-4 dias | — |
 | **W3** | Multimodal + Comandos (Vision + commands.ts) | UX | 2-3 dias | W6 (vision) |
 | **W4** | Profile Watch Hardening (consent + retry) ✅ DONE — 24-05-2026 | hardening | 2 dias | — |
 | **W5** | Settings & Search expandidos | UX | 1-2 dias | W6 |
