@@ -128,3 +128,41 @@ export interface CoachChatResponse {
   > &
     Partial<Pick<ContactRecord, "personalityType" | "interests" | "tags">>;
 }
+
+// W7 — Diário de Campo (EncounterLog).
+// Shape do extracted Json + record serializado pro front.
+export type EncounterEscalation =
+  | "regrediu"
+  | "estagnou"
+  | "avancou"
+  | "indefinido";
+
+export type EncounterMood =
+  | "leve"
+  | "tenso"
+  | "intenso"
+  | "frustrante"
+  | "neutro";
+
+export type EncounterAttractionDelta = "down" | "same" | "up";
+
+export interface EncounterExtractPayload {
+  summary: string;
+  escalation: EncounterEscalation;
+  mood: EncounterMood;
+  nextMove: string;
+  attractionDelta: EncounterAttractionDelta;
+  greenFlags: string[];
+  redFlags: string[];
+  userRedPatterns: string[];
+  degraded?: boolean;
+}
+
+export interface EncounterRecord {
+  id: string;
+  contactId: string;
+  happenedAt: string; // ISO
+  createdAt: string;  // ISO
+  rawText: string;
+  extracted: EncounterExtractPayload;
+}

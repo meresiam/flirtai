@@ -178,14 +178,34 @@ model Contact {
   createdAt              DateTime        @default(now()) @map("created_at")
   updatedAt              DateTime        @updatedAt @map("updated_at")
 
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  messages Message[]
-  analysis Analysis?
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages   Message[]
+  analysis   Analysis?
+  encounters EncounterLog[]
 
   @@index([userId])
   @@index([userId, kind, updatedAt(sort: Desc)])
   @@index([userId, updatedAt(sort: Desc)])
   @@map("contact")
+}
+
+// W7 — Diario de Campo. Captura pos-encontro de um Contact.
+// raw_text livre PT-BR + extracted JSON via tool_use (Anthropic).
+// Alimenta Contact.greenFlags/redFlags/lastInteractionSummary/attractionLevel
+// e UserProfile.redPatterns quando extracted.userRedPatterns.length > 0.
+// Source of truth: docs/DATA-MODEL.md secao EncounterLog.
+model EncounterLog {
+  id         String   @id @default(cuid())
+  contactId  String   @map("contact_id")
+  happenedAt DateTime @map("happened_at")
+  rawText    String   @map("raw_text")
+  extracted  Json
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  contact Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+
+  @@index([contactId, happenedAt(sort: Desc)])
+  @@map("encounter_log")
 }
 
 model Message {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -10,6 +10,7 @@ import {
   MapPinIcon,
   ExternalLinkIcon,
   LoaderIcon,
+  PlusIcon,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -18,11 +19,14 @@ import {
   DesenroloForm,
   type DesenroloFormValues,
 } from "@/components/desenrolo/desenrolo-form";
+import { EncounterCaptureModal } from "@/components/encounter/encounter-capture-modal";
+import { EncounterTimeline } from "@/components/encounter/encounter-timeline";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import {
   RATING_DIMENSIONS,
   RATING_LABELS,
   type ContactRecord,
+  type EncounterRecord,
 } from "@/types/flirt";
 
 function labelStatus(status: ContactRecord["status"]) {
@@ -56,6 +60,14 @@ export default function DesenroloDetailPage() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
+  // W7 — Diário de Campo
+  const [encounterModalOpen, setEncounterModalOpen] = useState(false);
+  const [encounters, setEncounters] = useState<EncounterRecord[]>([]);
+  const [encountersLoading, setEncountersLoading] = useState(true);
+  const [encountersError, setEncountersError] = useState<string | null>(null);
+  const [encountersCursor, setEncountersCursor] = useState<string | null>(null);
+  const [encountersLoadingMore, setEncountersLoadingMore] = useState(false);
+
   useEffect(() => {
     if (!useFlirtStore.persist.hasHydrated()) {
       void useFlirtStore.persist.rehydrate();
@@ -67,6 +79,107 @@ export default function DesenroloDetailPage() {
       void bootstrap();
     }
   }, [hasHydrated, bootstrap]);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadEncounters() {
+      setEncountersLoading(true);
+      setEncountersError(null);
+      try {
+        const response = await fetch(`/api/contacts/${id}/encounters`, {
+          method: "GET",
+          headers: { Accept: "application/json" },
+        });
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}));
+          throw new Error(data.error ?? "Não consegui carregar os encontros.");
+        }
+        const data = (await response.json()) as {
+          encounters: EncounterRecord[];
+          nextCursor: string | null;
+        };
+        if (!cancelled) {
+          setEncounters(data.encounters);
+          setEncountersCursor(data.nextCursor);
+        }
+      } catch (cause) {
+        if (!cancelled) {
+          setEncountersError(
+            cause instanceof Error ? cause.message : "Falha desconhecida.",
+          );
+        }
+      } finally {
+        if (!cancelled) setEncountersLoading(false);
+      }
+    }
+    void loadEncounters();
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+
+  const loadMoreEncounters = useCallback(async () => {
+    if (!encountersCursor || encountersLoadingMore) return;
+    setEncountersLoadingMore(true);
+    try {
+      const response = await fetch(
+        `/api/contacts/${id}/encounters?before=${encodeURIComponent(encountersCursor)}`,
+        { method: "GET", headers: { Accept: "application/json" } },
+      );
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error ?? "Não consegui carregar mais.");
+      }
+      const data = (await response.json()) as {
+        encounters: EncounterRecord[];
+        nextCursor: string | null;
+      };
+      setEncounters((prev) => [...prev, ...data.encounters]);
+      setEncountersCursor(data.nextCursor);
+    } catch (cause) {
+      setEncountersError(
+        cause instanceof Error ? cause.message : "Falha desconhecida.",
+      );
+    } finally {
+      setEncountersLoadingMore(false);
+    }
+  }, [id, encountersCursor, encountersLoadingMore]);
+
+  const submitEncounter = useCallback(
+    async (payload: { rawText: string; happenedAt: string }) => {
+      const response = await fetch(`/api/contacts/${id}/encounters`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = (await response.json().catch(() => ({}))) as {
+        encounter?: EncounterRecord;
+        contact?: { id: string };
+        degraded?: boolean;
+        degradedReason?: string;
+        error?: string;
+      };
+      if (!response.ok || !data.encounter) {
+        throw new Error(data.error ?? "Não consegui salvar agora.");
+      }
+      // Prepende no topo da timeline (sort happenedAt DESC).
+      setEncounters((prev) => [
+        data.encounter as EncounterRecord,
+        ...prev.filter((e) => e.id !== data.encounter!.id),
+      ]);
+      // Refresca o contato no Zustand pra refletir greenFlags/redFlags/lastInteractionSummary/attractionLevel.
+      void bootstrap();
+      return {
+        encounter: data.encounter,
+        degraded: data.degraded === true,
+        degradedReason: data.degradedReason,
+      };
+    },
+    [id, bootstrap],
+  );
 
   const contact = useMemo(
     () => contacts.find((c) => c.id === id),
@@ -165,6 +278,16 @@ export default function DesenroloDetailPage() {
           </Link>
 
           <div className="flex items-center gap-2">
+            {!isEditing ? (
+              <button
+                type="button"
+                onClick={() => setEncounterModalOpen(true)}
+                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm text-white/80 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-white"
+              >
+                <PlusIcon className="h-4 w-4" />
+                <span className="hidden sm:inline">Como foi?</span>
+              </button>
+            ) : null}
             <button
               type="button"
               onClick={openChat}
@@ -202,6 +325,33 @@ export default function DesenroloDetailPage() {
             statusDot={statusDot}
           />
         )}
+
+        {/* W7 — Diário de Campo */}
+        {!isEditing ? (
+          <section className="mt-10">
+            <div className="mb-4 flex items-baseline justify-between">
+              <h2 className="text-sm font-medium uppercase tracking-wider text-white/55">
+                Diário de campo
+              </h2>
+              <button
+                type="button"
+                onClick={() => setEncounterModalOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/75 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-white"
+              >
+                <PlusIcon className="h-3.5 w-3.5" />
+                Novo encontro
+              </button>
+            </div>
+            <EncounterTimeline
+              encounters={encounters}
+              loading={encountersLoading}
+              loadingMore={encountersLoadingMore}
+              hasMore={encountersCursor != null}
+              error={encountersError}
+              onLoadMore={() => void loadMoreEncounters()}
+            />
+          </section>
+        ) : null}
 
         {/* Zona perigo */}
         {!isEditing ? (
@@ -251,6 +401,13 @@ export default function DesenroloDetailPage() {
           </div>
         ) : null}
       </main>
+
+      <EncounterCaptureModal
+        open={encounterModalOpen}
+        onOpenChange={setEncounterModalOpen}
+        contactName={contact.name}
+        onSubmit={submitEncounter}
+      />
     </div>
   );
 }

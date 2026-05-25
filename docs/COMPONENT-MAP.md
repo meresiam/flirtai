@@ -480,3 +480,135 @@ Critério: zero BLOCK, ≤2 FLAGs (H10 fica FLAG no MVP — tooltip pode ficar p
 - Campo TS: `locationCity`, `contextLife`, `winSamples`, `redPatternsRaw`, `redPatterns`, `onboardingDone`.
 - Frontend label: "Cidade", "Contexto de vida", "O que funcionou pra você", "Padrões a evitar".
 - API contract: `userProfile` (nested), `effectiveTone` (server-only, não exposto).
+
+---
+
+# Wave 7 — Diário de Campo (25-05-2026)
+
+## Visão
+
+Captura pós-encontro. O homem volta de um encontro/conversa importante, abre o perfil dela em `/desenrolos/[id]` e dispara um modal pra escrever em texto livre como foi. O servidor extrai sinais via Anthropic `tool_use`, atualiza o `Contact` (greenFlags, redFlags, lastInteractionSummary, attractionLevel) **e** alimenta `UserProfile.redPatterns` quando detecta padrão problemático recorrente do **próprio user** (integração W6). Timeline de encontros aparece direto no perfil dela.
+
+## Hierarquia
+
+```
+src/app/desenrolos/[id]/page.tsx           ← (mod W7) <DesenroloDetailPage />
+  ├── <DesenroloReadView />                ← já existia (perfil + ratings + insights)
+  ├── <EncounterCaptureButton />           ← NOVO — botão "+ Como foi?" sticky no header
+  ├── <EncounterCaptureModal />            ← NOVO — Dialog full-screen mobile com textarea + happenedAt
+  └── <EncounterTimeline />                ← NOVO — lista cronológica de encounters (mais recente em cima)
+      └── <EncounterCard />                ← item: data + summary + chips (escalation/mood) + flags + nextMove
+
+src/components/encounter/
+├── encounter-capture-modal.tsx            ← <EncounterCaptureModal /> client
+├── encounter-timeline.tsx                 ← <EncounterTimeline /> client
+└── encounter-card.tsx                     ← <EncounterCard /> client
+
+src/lib/flirt/
+└── encounter-schema.ts                    ← Tool definition Anthropic `submit_encounter_extract` + zod do extracted
+
+src/app/api/contacts/[id]/encounters/
+└── route.ts                               ← POST (cria + extract sync) · GET (lista paginada)
+```
+
+## Estado
+
+### Local (useState dentro de DesenroloDetailPage)
+- `modalOpen: boolean` — abre/fecha modal de captura
+- `submitting: boolean` — call em voo (POST encounters)
+- `submitError: string | null`
+- `encounters: EncounterRecord[]` — lista carregada via GET ao montar
+- `encountersLoading: boolean`
+
+Modal:
+- `rawText: string` — textarea controlled
+- `happenedAt: string` — datetime-local (default = now)
+- `degradedNotice: boolean` — exibe aviso se POST retornou `degraded=true`
+
+### Global (Zustand)
+Nada novo. `EncounterLog` é fetch on-mount na página de detalhe. Não persiste em localStorage (volume potencialmente alto + privacidade — texto pessoal sobre encontros do user).
+
+### Server
+- `POST /api/contacts/[id]/encounters` body `{ rawText, happenedAt? }`:
+  1. `requireUser()` → 401
+  2. Confere `Contact` é do user → 404
+  3. Zod parse (`rawText` 5-4000 chars, `happenedAt` ISO opcional)
+  4. Rate limit `route="encounters"` (60/h)
+  5. Insert `EncounterLog` com `extracted: { degraded: true, summary: rawText.slice(0,240), escalation: "indefinido", ... }` mínimo + rawText completo (salva sempre, mesmo que LLM falhe)
+  6. Call Anthropic com tool `submit_encounter_extract`:
+     - System: contexto curto (PT-BR, papel = extrator factual, não conselheiro)
+     - User: contexto da `Contact` (nome, status, attractionLevel, greenFlags/redFlags atuais) + rawText
+  7. Update `EncounterLog.extracted` com payload validado + atualiza `Contact` em `$transaction`:
+     - `greenFlags`/`redFlags` = merge dedup com extracted, cap 12 cada
+     - `lastInteractionSummary` = extracted.summary
+     - `attractionLevel` = clamp shift (Low/Medium/High) baseado em `extracted.attractionDelta`
+  8. Se `extracted.userRedPatterns?.length` > 0: append em `UserProfile.redPatterns` (cap 200, dedup) — integração W6
+  9. Retorna `{ encounter: EncounterRecord, contact: ContactRecord, degraded?: boolean }`
+- `GET /api/contacts/[id]/encounters?limit=20&before=cursor`:
+  - Pagina por `happenedAt DESC, id DESC` (cursor estável)
+  - Default 20 itens
+
+## Fluxos críticos
+
+### 1. Capturar encounter
+```
+/desenrolos/[id] → header "Como foi?" → onClick abre <EncounterCaptureModal />
+  → user escreve texto livre (PT-BR), opcionalmente ajusta happenedAt
+  → "Salvar" → POST /api/contacts/:id/encounters
+    → Insert raw (sempre)
+    → Anthropic extract (tool_use submit_encounter_extract)
+    → Update extracted + Contact + UserProfile (transaction)
+  → 200 → modal fecha → toast "Encontro registrado" → timeline refresh
+  → 200 com degraded=true → modal mostra aviso "Texto guardado, IA não conseguiu ler agora" → fecha
+```
+
+### 2. Ver timeline
+```
+/desenrolos/[id] mount
+  → fetch /api/contacts/[id]/encounters
+  → render <EncounterTimeline />
+  → cards mais recentes em cima
+  → "Carregar mais" se cursor existir
+```
+
+### 3. Integração com Memória do Homem (W6)
+```
+encounter rawText menciona padrão recorrente do user (ex: "insisti depois que ela disse não")
+  → LLM popula extracted.userRedPatterns = ["insistência apesar de sinal claro de desinteresse"]
+  → rota append em UserProfile.redPatterns (cap 200, dedup) — não vai pra redPatternsRaw
+  → próximo turn /api/coach: buildMeContext lê userProfile.redPatterns → injeta no system prompt
+```
+
+## Mobile-first do módulo
+
+- Modal: `Sheet` full-screen no mobile (`<sm`), Dialog padrão no desktop. Textarea ocupa ≥40% da viewport altura.
+- Botão "+ Como foi?": sticky no header do perfil, sempre acessível sem scroll. Touch target 44px.
+- Timeline: cards stack vertical único. Cada card padding 16px, summary visível sem expand.
+- Chips de escalation/mood: 32px altura mín, contraste forte (não usar text-white/30).
+- Aviso degraded: amarelo, banner inline, dismissable.
+
+## Nielsen checklist W7
+
+| # | Critério                                    | Como cumprir aqui                                                |
+|---|---------------------------------------------|------------------------------------------------------------------|
+| H1| Feedback ≤200ms                             | Loader no submit + skeleton na timeline durante fetch            |
+| H2| Linguagem do usuário                        | "Como foi?", "Quando rolou?", "Texto livre — conta como foi"     |
+| H3| Cancelar/undo                               | Modal fecha sem salvar via X ou ESC; sem delete de encounter (MVP — discutir em wave futura) |
+| H4| Consistência                                | Reusa `<Dialog>` do shadcn + ratings/chips do perfil; mesmas cores |
+| H5| Prevenção                                   | rawText mín 5 chars (Zod); happenedAt não-futuro                 |
+| H6| Reconhecimento                              | Botão "+ Como foi?" sempre visível no header, não escondido      |
+| H7| Eficiência                                  | ENTER+CMD envia (atalho); ESC fecha modal                        |
+| H8| Minimalismo                                 | 1 CTA primário "Salvar"; modal foca textarea ao abrir            |
+| H9| Erros PT-BR                                 | "Conta um pouco mais (mín. 5 caracteres)", "Limite de encontros por hora atingido" |
+| H10| Ajuda                                      | Tooltip "?" no botão explica "Guardamos seu relato + o coach extrai sinais" — **FLAG**: pode ficar pra fix rápido |
+
+Critério: zero BLOCK, ≤2 FLAGs (H3 sem delete + H10 tooltip ficam FLAG).
+
+## Naming Lock (W7)
+
+- `EncounterLog` modelo TS · tabela DB `encounter_log` (snake_case).
+- Coluna DB: `id`, `contact_id`, `happened_at`, `raw_text`, `extracted`, `created_at`.
+- Campo TS: `contactId`, `happenedAt`, `rawText`, `extracted`, `createdAt`.
+- Frontend label: "Como foi?" (CTA), "Encontros registrados" (timeline header), "Sinais detectados" (chips).
+- API contract: `encounter` (nested), `degraded` (boolean opcional).
+- Extracted enum: `escalation` = `regrediu|estagnou|avançou|indefinido` · `mood` = `leve|tenso|intenso|frustrante|neutro` · `attractionDelta` = `down|same|up`.

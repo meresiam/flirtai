@@ -67,6 +67,34 @@ Index: PK em `userId` é suficiente.
 
 > **Tone resolution:** `/api/coach` resolve em runtime via `effectiveTone = userProfile?.tone ?? user.coachTone ?? null`. UserProfile.tone é o override fino (W6); User.coachTone (W5) continua sendo o default global em `/settings`. Sem retrocompatibilidade necessária — W5 funciona se UserProfile.tone for null (caso de qualquer user pre-W6).
 
+### `EncounterLog` (W7 — Diário de Campo)
+Captura pós-encontro de um `Contact`. Texto cru (livre, PT-BR) + JSON extraído via LLM com sinais estruturados. Alimenta o coach (atualiza `Contact.greenFlags`/`redFlags`/`lastInteractionSummary`/`attractionLevel`) e, quando reconhece padrão problemático recorrente do **homem**, alimenta `UserProfile.redPatterns` (integração W6).
+
+| Campo         | Tipo                | Nota                                                                  |
+|---------------|---------------------|-----------------------------------------------------------------------|
+| `id`          | String PK           | cuid                                                                  |
+| `contactId`   | String FK→Contact   | cascade delete                                                        |
+| `happenedAt`  | DateTime            | quando o encontro aconteceu (preenchido pelo user, default = `now()`) |
+| `rawText`     | String              | texto livre que o user escreveu no modal (cap 4000 chars na rota)     |
+| `extracted`   | Json                | `{ greenFlags[], redFlags[], escalation, mood, nextMove, userRedPatterns?[] }` — preenchido pelo extractor LLM |
+| `createdAt`   | DateTime            | default `now()`                                                       |
+
+Index: `(contactId, happenedAt DESC)` — timeline cronológica descendente no perfil.
+
+> **Shape de `extracted`:**
+> - `greenFlags: string[]` — sinais positivos novos detectados no encontro (até 6 itens). Merge dedup com `Contact.greenFlags` existente.
+> - `redFlags: string[]` — sinais de alerta novos (até 6 itens). Merge dedup com `Contact.redFlags`.
+> - `escalation: "regrediu" | "estagnou" | "avançou" | "indefinido"` — leitura do estágio do relacionamento depois do encontro.
+> - `mood: "leve" | "tenso" | "intenso" | "frustrante" | "neutro"` — temperatura emocional do user no encontro.
+> - `nextMove: string` — 1 frase PT-BR com a recomendação concreta de próximo passo (≤180 chars).
+> - `summary: string` — 1-2 frases factuais do encontro (≤240 chars). Vira `Contact.lastInteractionSummary`.
+> - `attractionDelta: "down" | "same" | "up"` — sinaliza se `Contact.attractionLevel` deve descer/subir/ficar. Aplicado na rota com clamp em `Low|Medium|High`.
+> - `userRedPatterns?: string[]` — opcional, até 3 itens. Padrões problemáticos do **homem** detectados no relato (ex: "ele insistiu apesar do desinteresse claro"). Quando presente, vai pra `UserProfile.redPatterns` (cap 200 — reusa `RED_PATTERNS_RAW_DB_CAP` por enquanto, W8 consolida).
+
+Relations: `contact` (n-1).
+
+> **W7 (25-05-2026):** introduz Diário de Campo. Captura é **síncrona no MVP** — `POST /api/contacts/:id/encounters` grava raw → call Anthropic com tool `submit_encounter_extract` (em `src/lib/flirt/encounter-schema.ts`) → grava `extracted` + atualiza `Contact` em `prisma.$transaction`. Sem fallback se LLM falhar: grava raw + `extracted={ summary, escalation: "indefinido", ... }` mínimo e retorna 200 com flag `degraded=true` no payload (front mostra aviso "Não consegui ler — texto guardado"). Decisão consciente: prioriza preservação do dado bruto do user em detrimento de extração perfeita. Migration `20260525030000_create_encounter_log`.
+
 ### `Session`, `Account`, `Verification` (better-auth)
 Tabelas canônicas do better-auth. Não tocar manualmente. `Account.password` guarda o hash do email/senha.
 
@@ -179,6 +207,7 @@ Ordem cronológica das migrations aplicadas no schema do core (não inclui Profi
 | `20260525010000_add_message_attachments`  | add_message_attachments  | **W3 / C6**     | ADD `message.attachments JSONB` pra anexos multimodais (vision substitui Tesseract) |
 | `20260525011534_add_user_preferences`     | add_user_preferences     | **W5 / M8**     | ADD `user.timezone`/`locale` (TEXT) + `user.coach_tone` (enum `CoachTone`) + `user.notification_prefs` (JSONB), todos nullable |
 | `20260525020000_create_user_profile`      | create_user_profile      | **W6**          | CREATE TABLE `user_profile` (1-1 com user, cascade) com `tone` (CoachTone?), `age`, `location_city`, `context_life`, `demographics` (JSONB), `win_samples` (JSONB default `[]`), `red_patterns_raw` (JSONB default `[]`), `red_patterns` (JSONB default `[]`), `onboarding_done` (BOOL default false) |
+| `20260525030000_create_encounter_log`     | create_encounter_log     | **W7**          | CREATE TABLE `encounter_log` (n-1 com contact, cascade) com `happened_at` (TIMESTAMP), `raw_text` (TEXT), `extracted` (JSONB), `created_at` (TIMESTAMP default now()) + INDEX `(contact_id, happened_at DESC)` |
 
 ---
 
