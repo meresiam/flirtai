@@ -46,6 +46,7 @@ import {
 } from "@/lib/flirt/commands";
 import {
   fileToBase64Attachment,
+  MAX_ATTACHMENTS_PER_TURN,
   type ImageAttachmentPayload,
 } from "@/lib/flirt/attachments";
 import type {
@@ -366,7 +367,24 @@ export function FlirtAiShell() {
     if (!files.length) return;
     event.target.value = "";
 
-    for (const file of files) {
+    // WR-04 — gate UI-side antes de encodar. Sem isso, 10 imagens selecionadas
+    // viram 10 base64 em paralelo (trava o browser) e só falham no POST quando
+    // o Zod rejeita por .max(MAX_ATTACHMENTS_PER_TURN) com erro genérico.
+    const remaining = MAX_ATTACHMENTS_PER_TURN - attachments.length;
+    if (remaining <= 0) {
+      setErrorMessage(
+        `Máximo de ${MAX_ATTACHMENTS_PER_TURN} imagens por turno.`,
+      );
+      return;
+    }
+    const slice = files.slice(0, remaining);
+    if (files.length > remaining) {
+      setErrorMessage(
+        `Só consigo aceitar mais ${remaining} imagem(ns) neste turno.`,
+      );
+    }
+
+    for (const file of slice) {
       const id = crypto.randomUUID();
       const previewUrl = URL.createObjectURL(file);
       setAttachments((previous) => [
