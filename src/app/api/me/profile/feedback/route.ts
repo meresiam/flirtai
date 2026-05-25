@@ -97,25 +97,41 @@ export async function POST(request: Request) {
     select: { winSamples: true, redPatternsRaw: true },
   });
 
+  // WR-01 — antes de gravar no array do rating atual, remove a mesma
+  // suggestionText do array oposto pra evitar sinal contraditório no coach
+  // (mesmo texto em winSamples + redPatternsRaw).
+  const wins = asStringArray(current.winSamples);
+  const redsRaw = asStringArray(current.redPatternsRaw);
+
   if (parsed.rating === "worked") {
-    const next = appendCapped(
-      asStringArray(current.winSamples),
-      suggestionText,
-      WIN_SAMPLES_CAP,
-    );
+    const cleanedReds = redsRaw.filter((v) => v !== suggestionText);
+    const nextWins = appendCapped(wins, suggestionText, WIN_SAMPLES_CAP);
     await prisma.userProfile.update({
       where: { userId },
-      data: { winSamples: next as unknown as Prisma.InputJsonValue },
+      data: {
+        winSamples: nextWins as unknown as Prisma.InputJsonValue,
+        ...(cleanedReds.length !== redsRaw.length
+          ? {
+              redPatternsRaw:
+                cleanedReds as unknown as Prisma.InputJsonValue,
+            }
+          : {}),
+      },
     });
   } else {
-    const next = appendCapped(
-      asStringArray(current.redPatternsRaw),
-      suggestionText,
-      RED_PATTERNS_RAW_CAP,
-    );
+    const cleanedWins = wins.filter((v) => v !== suggestionText);
+    const nextReds = appendCapped(redsRaw, suggestionText, RED_PATTERNS_RAW_CAP);
     await prisma.userProfile.update({
       where: { userId },
-      data: { redPatternsRaw: next as unknown as Prisma.InputJsonValue },
+      data: {
+        redPatternsRaw: nextReds as unknown as Prisma.InputJsonValue,
+        ...(cleanedWins.length !== wins.length
+          ? {
+              winSamples:
+                cleanedWins as unknown as Prisma.InputJsonValue,
+            }
+          : {}),
+      },
     });
   }
 
@@ -128,11 +144,13 @@ function asStringArray(value: Prisma.JsonValue): string[] {
 }
 
 function appendCapped(arr: string[], item: string, cap: number): string[] {
-  // Dedupe — se a mesma sugestão já existe, não duplica.
-  const filtered = arr.filter((v) => v !== item);
-  filtered.push(item);
-  if (filtered.length > cap) {
-    return filtered.slice(filtered.length - cap);
+  // WR-01 — dedup preservando posição original: se o item já está, não
+  // move pro fim. Antes filter+push promovia repetições antigas pro topo
+  // de recência, distorcendo o slice(-RENDER_CAP) do me-context.
+  if (arr.includes(item)) return arr;
+  const next = [...arr, item];
+  if (next.length > cap) {
+    return next.slice(next.length - cap);
   }
-  return filtered;
+  return next;
 }
