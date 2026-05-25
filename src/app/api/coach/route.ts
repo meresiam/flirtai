@@ -9,6 +9,7 @@ import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
 import { buildSystemPrompt } from "@/lib/flirt/system-prompt";
 import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
 import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
+import { decryptToken } from "@/lib/profile-watch/token-crypto";
 import { statusToDb } from "@/lib/serializers";
 import type {
   CoachChatResponse,
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
   const [user, contact] = await Promise.all([
     prisma.user.findUnique({
       where: { id: userId },
-      select: { anthropicApiKey: true, anthropicModel: true },
+      select: { anthropicApiKeyEncrypted: true, anthropicModel: true },
     }),
     prisma.contact.findFirst({
       where: { id: contactId, userId },
@@ -74,7 +75,10 @@ export async function POST(request: Request) {
 
   const history = [...contact.messages].reverse();
 
-  const apiKey = user?.anthropicApiKey || process.env.ANTHROPIC_API_KEY;
+  const apiKey =
+    (user?.anthropicApiKeyEncrypted
+      ? decryptToken(user.anthropicApiKeyEncrypted)
+      : null) || process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
       { error: "Sem chave da Anthropic. Configure em /settings ou no servidor." },

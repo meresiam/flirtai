@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
+import { encryptToken } from "@/lib/profile-watch/token-crypto";
 
 const patchSchema = z.object({
   anthropicApiKey: z
@@ -16,11 +17,7 @@ const patchSchema = z.object({
   name: z.string().min(1).max(120).optional(),
 });
 
-function maskKey(value: string | null) {
-  if (!value) return null;
-  if (value.length <= 8) return `••••${value.slice(-2)}`;
-  return `${value.slice(0, 6)}••••${value.slice(-4)}`;
-}
+const SET_MASK = "••••••••";
 
 export async function GET() {
   const auth = await requireUser();
@@ -32,7 +29,7 @@ export async function GET() {
       id: true,
       email: true,
       name: true,
-      anthropicApiKey: true,
+      anthropicApiKeyEncrypted: true,
       anthropicModel: true,
     },
   });
@@ -42,8 +39,8 @@ export async function GET() {
     settings: {
       email: user.email,
       name: user.name,
-      anthropicKeyMasked: maskKey(user.anthropicApiKey),
-      anthropicKeySet: Boolean(user.anthropicApiKey),
+      anthropicKeyMasked: user.anthropicApiKeyEncrypted ? SET_MASK : null,
+      anthropicKeySet: Boolean(user.anthropicApiKeyEncrypted),
       anthropicModel: user.anthropicModel,
       defaultModel: process.env.ANTHROPIC_MODEL ?? "claude-sonnet-4-6",
     },
@@ -63,7 +60,9 @@ export async function PATCH(request: Request) {
 
   const data: Record<string, string | null> = {};
   if (parsed.anthropicApiKey !== undefined) {
-    data.anthropicApiKey = parsed.anthropicApiKey;
+    data.anthropicApiKeyEncrypted = parsed.anthropicApiKey
+      ? encryptToken(parsed.anthropicApiKey)
+      : null;
   }
   if (parsed.anthropicModel !== undefined) {
     data.anthropicModel = parsed.anthropicModel;
@@ -77,7 +76,7 @@ export async function PATCH(request: Request) {
     data,
     select: {
       name: true,
-      anthropicApiKey: true,
+      anthropicApiKeyEncrypted: true,
       anthropicModel: true,
     },
   });
@@ -85,8 +84,8 @@ export async function PATCH(request: Request) {
   return NextResponse.json({
     settings: {
       name: updated.name,
-      anthropicKeyMasked: maskKey(updated.anthropicApiKey),
-      anthropicKeySet: Boolean(updated.anthropicApiKey),
+      anthropicKeyMasked: updated.anthropicApiKeyEncrypted ? SET_MASK : null,
+      anthropicKeySet: Boolean(updated.anthropicApiKeyEncrypted),
       anthropicModel: updated.anthropicModel,
     },
   });
