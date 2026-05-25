@@ -91,6 +91,8 @@ export interface ContactRecord {
   personalityType: string;
   interests: string[];
   tags: string[];
+  greenFlags: string[];
+  redFlags: string[];
   lastInteractionSummary: string;
   ratings: ContactRatings;
   padrao: number | null;

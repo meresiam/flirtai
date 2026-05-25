@@ -19,6 +19,7 @@ import {
   Command,
   HeartIcon,
   LoaderIcon,
+  LogOutIcon,
   MenuIcon,
   Paperclip,
   PlusIcon,
@@ -29,6 +30,7 @@ import {
   XIcon,
 } from "lucide-react";
 
+import { signOut } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
 import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border";
@@ -38,7 +40,6 @@ import { SuggestionFeedback } from "@/components/suggestion-feedback";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useFlirtStore } from "@/store/use-flirt-store";
@@ -195,12 +196,29 @@ export function FlirtAiShell() {
   const router = useRouter();
 
   const handleCreate = useCallback(
-    (kind: ContactKind) => {
+    async (kind: ContactKind, name?: string) => {
       if (kind === "desenrolo") {
+        // Se já veio nome do picker, cria direto + redireciona pro detalhe.
+        // Sem nome, manda pro fluxo completo /desenrolos/new (form com tudo).
+        const trimmed = name?.trim();
+        if (trimmed) {
+          const newId = await createContact({
+            kind: "desenrolo",
+            name: trimmed,
+          });
+          if (newId) {
+            router.push(`/desenrolos/${newId}`);
+          }
+          return;
+        }
         router.push("/desenrolos/new");
-      } else {
-        void createContact({ kind: "agent_chat" });
+        return;
       }
+      const trimmed = name?.trim();
+      await createContact({
+        kind: "agent_chat",
+        ...(trimmed ? { name: trimmed } : {}),
+      });
     },
     [createContact, router],
   );
@@ -661,7 +679,7 @@ export function FlirtAiShell() {
             selectedContactId={selectedContact?.id ?? ""}
             searchValue={searchValue}
             onSearchChange={setSearchValue}
-            onCreateContact={() => { void createContact(); }}
+            onCreateContact={handleCreate}
             onSelectContact={selectContact}
           />
         </div>
@@ -1360,45 +1378,95 @@ function NewConversationPicker({
   onCreate,
   trigger,
 }: {
-  onCreate: (kind: ContactKind) => void;
+  onCreate: (kind: ContactKind, name?: string) => void;
   trigger: React.ReactNode;
 }) {
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const trimmed = name.trim();
+  const nameTooLong = trimmed.length > 80;
+  const desenroloDisabled = trimmed.length === 0 || nameTooLong;
+
+  function submit(kind: ContactKind) {
+    if (kind === "desenrolo" && desenroloDisabled) return;
+    onCreate(kind, trimmed.length > 0 ? trimmed : undefined);
+    setName("");
+    setOpen(false);
+  }
+
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger render={trigger as React.ReactElement} />
       <DropdownMenuContent
         align="end"
         sideOffset={6}
-        className="w-64 border-white/10 bg-[#0c0f1a] p-1.5 text-white"
+        className="w-72 border-white/10 bg-[#0c0f1a] p-3 text-white"
       >
-        <DropdownMenuItem
-          onClick={() => onCreate("desenrolo")}
-          className="group flex cursor-pointer items-start gap-3 rounded-md px-2.5 py-2.5 text-left transition focus-visible:bg-white/[0.07] data-[highlighted]:bg-white/[0.07]"
+        <label className="block text-[11px] uppercase tracking-wider text-white/45">
+          Nome dela
+          <input
+            type="text"
+            autoFocus
+            value={name}
+            maxLength={80}
+            onChange={(event) => setName(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" && !desenroloDisabled) {
+                event.preventDefault();
+                submit("desenrolo");
+              }
+            }}
+            placeholder="Ex: Bia"
+            className="mt-1.5 w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm text-white normal-case tracking-normal outline-none transition placeholder:text-white/30 focus:border-[#ff355d]/40 focus:bg-white/[0.06]"
+          />
+        </label>
+        <p
+          className={cn(
+            "mt-1.5 text-[11px]",
+            nameTooLong ? "text-rose-300/85" : "text-white/40",
+          )}
         >
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#ff355d]/15">
-            <HeartIcon className="h-4 w-4 text-[#ff355d]" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-white">Adicionar desenrolo</p>
-            <p className="mt-0.5 text-[11px] text-white/45">
-              Perfil completo de uma mulher
-            </p>
-          </div>
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => onCreate("agent_chat")}
-          className="group flex cursor-pointer items-start gap-3 rounded-md px-2.5 py-2.5 text-left transition focus-visible:bg-white/[0.07] data-[highlighted]:bg-white/[0.07]"
-        >
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.07]">
-            <BotIcon className="h-4 w-4 text-white/75" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-white">Chat com agente</p>
-            <p className="mt-0.5 text-[11px] text-white/45">
-              Conversa livre sem perfil
-            </p>
-          </div>
-        </DropdownMenuItem>
+          {nameTooLong
+            ? "Máximo 80 caracteres."
+            : trimmed.length === 0
+              ? "Digite o nome dela pra começar."
+              : "Pode ajustar depois."}
+        </p>
+
+        <div className="mt-3 space-y-1.5">
+          <button
+            type="button"
+            onClick={() => submit("desenrolo")}
+            disabled={desenroloDisabled}
+            className="group flex w-full cursor-pointer items-start gap-3 rounded-md px-2.5 py-2.5 text-left transition hover:bg-white/[0.07] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent"
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#ff355d]/15">
+              <HeartIcon className="h-4 w-4 text-[#ff355d]" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-medium text-white">Criar desenrolo</p>
+              <p className="mt-0.5 text-[11px] text-white/45">
+                Perfil completo de uma mulher
+              </p>
+            </div>
+          </button>
+          <button
+            type="button"
+            onClick={() => submit("agent_chat")}
+            disabled={nameTooLong}
+            className="group flex w-full cursor-pointer items-start gap-3 rounded-md px-2.5 py-2.5 text-left transition hover:bg-white/[0.07] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent"
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.07]">
+              <BotIcon className="h-4 w-4 text-white/75" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-medium text-white">Criar chat com agente</p>
+              <p className="mt-0.5 text-[11px] text-white/45">
+                Conversa livre — nome opcional
+              </p>
+            </div>
+          </button>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -1417,10 +1485,24 @@ function ConversationSidebar({
   selectedContactId: string;
   searchValue: string;
   onSearchChange: (value: string) => void;
-  onCreateContact: (kind: ContactKind) => void;
+  onCreateContact: (kind: ContactKind, name?: string) => void;
   onSelectContact: (contactId: string) => void;
   onClose?: () => void;
 }) {
+  const [isSigningOut, setIsSigningOut] = useState(false);
+  async function handleLogout() {
+    if (isSigningOut) return;
+    setIsSigningOut(true);
+    try {
+      await signOut();
+    } catch {
+      // ignora — vai redirecionar de qualquer jeito pra garantir saida
+    }
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
+    }
+  }
+
   return (
     <aside className="liquid-panel flex h-full min-h-[14rem] flex-col overflow-hidden rounded-[28px] border border-white/10">
       <div className="border-b border-white/10 px-4 py-4">
@@ -1554,6 +1636,23 @@ function ConversationSidebar({
             ) : null}
           </div>
         )}
+      </div>
+
+      <div className="sticky bottom-0 border-t border-white/10 bg-[#070913]/80 px-3 py-3 backdrop-blur-xl">
+        <button
+          type="button"
+          onClick={handleLogout}
+          disabled={isSigningOut}
+          className="inline-flex w-full min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white/65 transition hover:border-rose-300/30 hover:bg-rose-400/[0.06] hover:text-rose-100 disabled:cursor-not-allowed disabled:opacity-60"
+          aria-label="Sair da conta"
+        >
+          {isSigningOut ? (
+            <LoaderIcon className="h-4 w-4 animate-spin" />
+          ) : (
+            <LogOutIcon className="h-4 w-4" />
+          )}
+          {isSigningOut ? "Saindo..." : "Sair"}
+        </button>
       </div>
     </aside>
   );

@@ -15,12 +15,19 @@ import {
 
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
+import { ContactSignalsPanel } from "@/components/contact/contact-signals-panel";
 import {
   DesenroloForm,
   type DesenroloFormValues,
 } from "@/components/desenrolo/desenrolo-form";
 import { EncounterCaptureModal } from "@/components/encounter/encounter-capture-modal";
 import { EncounterTimeline } from "@/components/encounter/encounter-timeline";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import {
   RATING_DIMENSIONS,
@@ -294,14 +301,25 @@ export default function DesenroloDetailPage() {
 
           <div className="flex items-center gap-2">
             {!isEditing ? (
-              <button
-                type="button"
-                onClick={() => setEncounterModalOpen(true)}
-                className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm text-white/80 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-white"
-              >
-                <PlusIcon className="h-4 w-4" />
-                <span className="hidden sm:inline">Como foi?</span>
-              </button>
+              <TooltipProvider delay={150}>
+                <Tooltip>
+                  <TooltipTrigger
+                    render={
+                      <button
+                        type="button"
+                        onClick={() => setEncounterModalOpen(true)}
+                        className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm text-white/80 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-white"
+                      >
+                        <PlusIcon className="h-4 w-4" />
+                        <span className="hidden sm:inline">Como foi?</span>
+                      </button>
+                    }
+                  />
+                  <TooltipContent>
+                    Registre o que rolou no último encontro. A IA extrai sinais.
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             ) : null}
             <button
               type="button"
@@ -340,6 +358,13 @@ export default function DesenroloDetailPage() {
             statusDot={statusDot}
           />
         )}
+
+        {/* W7.1 — Sinais consolidados do contato */}
+        {!isEditing ? (
+          <div className="mt-6">
+            <ContactSignalsPanel contact={contact} />
+          </div>
+        ) : null}
 
         {/* W7 — Diário de Campo */}
         {!isEditing ? (

@@ -70,6 +70,8 @@ export function serializeContact(
     personalityType: contact.personalityType ?? "Perfil em leitura",
     interests: contact.interests,
     tags: contact.tags,
+    greenFlags: contact.greenFlags ?? [],
+    redFlags: contact.redFlags ?? [],
     lastInteractionSummary: contact.lastInteractionSummary ?? "Sem mensagens ainda.",
     ratings,
     padrao: computePadrao(ratings),
