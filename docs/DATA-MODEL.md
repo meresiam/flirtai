@@ -20,21 +20,27 @@
 ### `User` (better-auth)
 Pessoa logada. Multi-tenant por `userId`.
 
-| Campo                       | Tipo       | Nota                                                                 |
-|-----------------------------|------------|----------------------------------------------------------------------|
-| `id`                        | String PK  | cuid                                                                 |
-| `email`                     | String     | UNIQUE                                                               |
-| `emailVerified`             | Boolean    | default false                                                        |
-| `name`                      | String?    |                                                                      |
-| `image`                     | String?    |                                                                      |
-| `anthropicApiKeyEncrypted`  | String?    | override per-user da API key — encriptado (ver nota abaixo)          |
-| `anthropicModel`            | String?    | override per-user do model id (ex: `claude-sonnet-4-6`)              |
-| `createdAt`                 | DateTime   |                                                                      |
-| `updatedAt`                 | DateTime   |                                                                      |
+| Campo                       | Tipo         | Nota                                                                 |
+|-----------------------------|--------------|----------------------------------------------------------------------|
+| `id`                        | String PK    | cuid                                                                 |
+| `email`                     | String       | UNIQUE                                                               |
+| `emailVerified`             | Boolean      | default false                                                        |
+| `name`                      | String?      |                                                                      |
+| `image`                     | String?      |                                                                      |
+| `anthropicApiKeyEncrypted`  | String?      | override per-user da API key — encriptado (ver nota abaixo)          |
+| `anthropicModel`            | String?      | override per-user do model id (ex: `claude-sonnet-4-6`)              |
+| `timezone`                  | String?      | IANA tz (ex: `America/Sao_Paulo`). W5 / M8.                          |
+| `locale`                    | String?      | BCP47 (ex: `pt-BR`, `en-US`). W5 / M8.                               |
+| `coachTone`                 | CoachTone?   | enum `low_key` · `direto` · `provocador`. W5 / M8.                   |
+| `notificationPrefs`         | Json?        | `{ push: boolean, frequency: "instant"\|"daily"\|"weekly" }`. W5 / M8. |
+| `createdAt`                 | DateTime     |                                                                      |
+| `updatedAt`                 | DateTime     |                                                                      |
 
 Relations: `sessions`, `accounts`, `contacts`, `usageLogs`, `monitoredProfiles`.
 
 > **W1 / C2 (24-05-2026):** o campo `anthropicApiKey` (plaintext) foi substituído por `anthropicApiKeyEncrypted`. Armazenamento usa **AES-256-GCM** com chave derivada de `SHA-256(BETTER_AUTH_SECRET)` (32 bytes), formato `base64(iv(12) || ciphertext || tag(16))`. Reusa `src/lib/profile-watch/token-crypto.ts::encryptToken/decryptToken`. Migration `20260524240000_encrypt_anthropic_api_key` empacotou expand-contract em 1 passo porque o DB dev está vazio; em prod com dados reais splitar em 3 etapas (ADD encrypted → backfill → DROP plaintext).
+
+> **W5 / M8 (24-05-2026):** 4 campos novos de preferência (`timezone`, `locale`, `coachTone`, `notificationPrefs`). Todos nullable — defaults aplicados na borda (route `/api/settings` + `buildSystemPrompt`). `coachTone` é consumido por `src/lib/flirt/system-prompt.ts::buildSystemPrompt(mode, tone?)` e injetado como bloco no system prompt do `/api/coach`. Quando `null`, o coach usa a voz default ("low-key" implícito). Migration `20260525011534_add_user_preferences` (ADD COLUMNs nullable + CREATE TYPE `CoachTone`, baixo risco — sem backfill).
 
 ### `Session`, `Account`, `Verification` (better-auth)
 Tabelas canônicas do better-auth. Não tocar manualmente. `Account.password` guarda o hash do email/senha.
@@ -146,6 +152,7 @@ Ordem cronológica das migrations aplicadas no schema do core (não inclui Profi
 | `20260524240100_add_conversation_summary` | add_conversation_summary | **W1 / C5**     | ADD `contact.conversation_summary` pra rolling summary via Haiku        |
 | `20260524235721_add_profile_error_count`  | add_profile_error_count  | **W4 / M7**     | contador pra backoff exponencial no cron-runner                         |
 | `20260525010000_add_message_attachments`  | add_message_attachments  | **W3 / C6**     | ADD `message.attachments JSONB` pra anexos multimodais (vision substitui Tesseract) |
+| `20260525011534_add_user_preferences`     | add_user_preferences     | **W5 / M8**     | ADD `user.timezone`/`locale` (TEXT) + `user.coach_tone` (enum `CoachTone`) + `user.notification_prefs` (JSONB), todos nullable |
 
 ---
 

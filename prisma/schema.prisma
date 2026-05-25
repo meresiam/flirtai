@@ -26,6 +26,14 @@ model User {
   anthropicApiKeyEncrypted String? @map("anthropic_api_key_encrypted")
   anthropicModel           String? @map("anthropic_model")
 
+  // W5 — preferências do usuário (settings expandido).
+  // Source of truth: docs/DATA-MODEL.md seção User.
+  // notificationPrefs shape: { push: boolean, frequency: "instant"|"daily"|"weekly" }
+  timezone          String?    @map("timezone")
+  locale            String?    @map("locale")
+  coachTone         CoachTone? @map("coach_tone")
+  notificationPrefs Json?      @map("notification_prefs")
+
   sessions          Session[]
   accounts          Account[]
   contacts          Contact[]
@@ -112,6 +120,12 @@ enum MessageSender {
   contact
 }
 
+enum CoachTone {
+  low_key
+  direto
+  provocador
+}
+
 model Contact {
   id                     String          @id @default(cuid())
   userId                 String          @map("user_id")
@@ -131,11 +145,11 @@ model Contact {
   greenFlags             String[]        @default([]) @map("green_flags")
   redFlags               String[]        @default([]) @map("red_flags")
   notes                  String?
-  ratingBeleza           Decimal?        @db.Decimal(3, 1) @map("rating_beleza")
-  ratingInteligencia     Decimal?        @db.Decimal(3, 1) @map("rating_inteligencia")
-  ratingLealdade         Decimal?        @db.Decimal(3, 1) @map("rating_lealdade")
-  ratingRespeito         Decimal?        @db.Decimal(3, 1) @map("rating_respeito")
-  ratingVestimenta       Decimal?        @db.Decimal(3, 1) @map("rating_vestimenta")
+  ratingBeleza           Decimal?        @map("rating_beleza") @db.Decimal(3, 1)
+  ratingInteligencia     Decimal?        @map("rating_inteligencia") @db.Decimal(3, 1)
+  ratingLealdade         Decimal?        @map("rating_lealdade") @db.Decimal(3, 1)
+  ratingRespeito         Decimal?        @map("rating_respeito") @db.Decimal(3, 1)
+  ratingVestimenta       Decimal?        @map("rating_vestimenta") @db.Decimal(3, 1)
   location               String?
   metContext             String?         @map("met_context")
   createdAt              DateTime        @default(now()) @map("created_at")
