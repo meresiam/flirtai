@@ -163,7 +163,7 @@ export default function DesenroloDetailPage() {
       });
       const data = (await response.json().catch(() => ({}))) as {
         encounter?: EncounterRecord;
-        contact?: { id: string };
+        contact?: Partial<ContactRecord> & { id: string };
         degraded?: boolean;
         degradedReason?: string;
         error?: string;
@@ -176,15 +176,24 @@ export default function DesenroloDetailPage() {
         data.encounter as EncounterRecord,
         ...prev.filter((e) => e.id !== data.encounter!.id),
       ]);
-      // Refresca o contato no Zustand pra refletir greenFlags/redFlags/lastInteractionSummary/attractionLevel.
-      void bootstrap();
+      // WR-07: aplica patch direto no Zustand em vez de bootstrap() (que refazia
+      // GET /api/contacts inteiro + re-render da sidebar). A route ja devolve
+      // o Contact atualizado no body.
+      if (data.contact) {
+        const patched = data.contact;
+        useFlirtStore.setState((state) => ({
+          contacts: state.contacts.map((c) =>
+            c.id === id ? { ...c, ...patched } : c,
+          ),
+        }));
+      }
       return {
         encounter: data.encounter,
         degraded: data.degraded === true,
         degradedReason: data.degradedReason,
       };
     },
-    [id, bootstrap],
+    [id],
   );
 
   const contact = useMemo(
