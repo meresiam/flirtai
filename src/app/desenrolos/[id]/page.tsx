@@ -81,6 +81,8 @@ export default function DesenroloDetailPage() {
   }, [hasHydrated, bootstrap]);
 
   useEffect(() => {
+    // WR-02: guard contra id undefined em transition de rota (Next 16 Suspense).
+    if (!id) return;
     let cancelled = false;
     async function loadEncounters() {
       setEncountersLoading(true);
@@ -119,6 +121,8 @@ export default function DesenroloDetailPage() {
   }, [id]);
 
   const loadMoreEncounters = useCallback(async () => {
+    // WR-02: guard contra id undefined em transition de rota.
+    if (!id) return;
     if (!encountersCursor || encountersLoadingMore) return;
     setEncountersLoadingMore(true);
     try {
@@ -147,6 +151,8 @@ export default function DesenroloDetailPage() {
 
   const submitEncounter = useCallback(
     async (payload: { rawText: string; happenedAt: string }) => {
+      // WR-02: guard contra id undefined — evita consumir quota com POST pra rota /undefined/.
+      if (!id) throw new Error("Página ainda carregando, tenta de novo daqui a pouco.");
       const response = await fetch(`/api/contacts/${id}/encounters`, {
         method: "POST",
         headers: {
