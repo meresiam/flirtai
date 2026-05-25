@@ -4,6 +4,7 @@ import { CoachTone, Prisma } from "@prisma/client";
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
+import { LOCALE_IDS, TIMEZONE_IDS } from "@/lib/flirt/locale-options";
 import { encryptToken } from "@/lib/profile-watch/token-crypto";
 
 // W5 / M8 — shape canônico de notificationPrefs.
@@ -13,19 +14,11 @@ const notificationPrefsSchema = z.object({
   frequency: z.enum(["instant", "daily", "weekly"]),
 });
 
-// IANA tz: aceita só formato `Continent/City`. Validação leve no servidor;
-// a UI já restringe a um <select> curto, então isso é defesa em profundidade.
-const timezoneSchema = z
-  .string()
-  .trim()
-  .min(1)
-  .max(64)
-  .regex(/^[A-Za-z]+(?:\/[A-Za-z_]+)+$/, "Timezone inválido (use formato IANA)");
-
-const localeSchema = z
-  .string()
-  .trim()
-  .regex(/^[a-z]{2}(-[A-Z]{2})?$/, "Locale inválido (use formato BCP47, ex: pt-BR)");
+// WR-03 — schema bate exatamente com o set oferecido na UI (LOCALE_IDS /
+// TIMEZONE_IDS). Sem isso, regex aceitava centenas de combinações que
+// o <select> não renderizava, gerando drift silencioso.
+const timezoneSchema = z.enum(TIMEZONE_IDS);
+const localeSchema = z.enum(LOCALE_IDS);
 
 const patchSchema = z.object({
   anthropicApiKey: z

@@ -32,6 +32,11 @@ const HISTORY_CAP = 20;
 const SUMMARY_THRESHOLD = 30;
 const SUMMARY_MODEL = "claude-haiku-4-5-20251001";
 
+// CR-01 — cap de body pra evitar DoS/OOM. 4 anexos * ~7MB base64 + overhead ~= 30MB.
+// Sem isso, com rate limit 60/h um cliente buggy/malicioso submete ~1.7GB/h
+// e cada request reside em memoria do server (request.json + Zod copy + SDK copy).
+const MAX_REQUEST_BYTES = 30 * 1024 * 1024;
+
 const requestSchema = z
   .object({
     contactId: z.string().min(1),
@@ -53,6 +58,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Não autenticado." }, { status: 401 });
   }
   const userId = session.user.id;
+
+  // CR-01 — short-circuit ANTES de ler o body. Header Content-Length nao e
+  // confiavel em 100% dos casos (chunked transfer pode omitir), mas cobre o
+  // vetor de ataque tipico (curl/fetch com body pre-calculado).
+  const contentLength = Number(request.headers.get("content-length") ?? "0");
+  if (contentLength > MAX_REQUEST_BYTES) {
+    return NextResponse.json(
+      { error: "Payload acima do limite (30MB)." },
+      { status: 413 },
+    );
+  }
 
   let parsed;
   try {

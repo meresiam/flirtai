@@ -14,6 +14,12 @@ import {
 } from "lucide-react";
 
 import { authClient } from "@/lib/auth-client";
+import {
+  LOCALE_IDS,
+  TIMEZONE_IDS,
+  type LocaleId,
+  type TimezoneId,
+} from "@/lib/flirt/locale-options";
 
 type CoachToneId = "low_key" | "direto" | "provocador";
 
@@ -42,27 +48,36 @@ interface SettingsPayload {
   };
 }
 
-// Lista curta — cobre 95% dos users PT-BR + opções globais comuns.
-// Mantém o select gerenciável sem precisar de combobox/autocomplete.
-const TIMEZONE_OPTIONS: Array<{ id: string; label: string }> = [
-  { id: "America/Sao_Paulo", label: "São Paulo (UTC−3)" },
-  { id: "America/Manaus", label: "Manaus (UTC−4)" },
-  { id: "America/Belem", label: "Belém (UTC−3)" },
-  { id: "America/Fortaleza", label: "Fortaleza (UTC−3)" },
-  { id: "America/Recife", label: "Recife (UTC−3)" },
-  { id: "America/Noronha", label: "Fernando de Noronha (UTC−2)" },
-  { id: "America/New_York", label: "Nova York (UTC−5)" },
-  { id: "America/Los_Angeles", label: "Los Angeles (UTC−8)" },
-  { id: "Europe/London", label: "Londres (UTC+0)" },
-  { id: "Europe/Lisbon", label: "Lisboa (UTC+0)" },
-  { id: "Europe/Madrid", label: "Madri (UTC+1)" },
-];
+// WR-03 — labels amigáveis pros IDs canônicos importados de locale-options.
+// IDs vivem em src/lib/flirt/locale-options.ts (fonte única back+front).
+// Se LOCALE_IDS / TIMEZONE_IDS ganhar novo ID, TS força adicionar label aqui.
+const TIMEZONE_LABELS: Record<TimezoneId, string> = {
+  "America/Sao_Paulo": "São Paulo (UTC−3)",
+  "America/Manaus": "Manaus (UTC−4)",
+  "America/Belem": "Belém (UTC−3)",
+  "America/Fortaleza": "Fortaleza (UTC−3)",
+  "America/Recife": "Recife (UTC−3)",
+  "America/Noronha": "Fernando de Noronha (UTC−2)",
+  "America/New_York": "Nova York (UTC−5)",
+  "America/Los_Angeles": "Los Angeles (UTC−8)",
+  "Europe/London": "Londres (UTC+0)",
+  "Europe/Lisbon": "Lisboa (UTC+0)",
+  "Europe/Madrid": "Madri (UTC+1)",
+};
 
-const LOCALE_OPTIONS: Array<{ id: string; label: string }> = [
-  { id: "pt-BR", label: "Português (Brasil)" },
-  { id: "en-US", label: "English (US)" },
-  { id: "es-ES", label: "Español (España)" },
-];
+const TIMEZONE_OPTIONS: Array<{ id: TimezoneId; label: string }> = TIMEZONE_IDS.map(
+  (id) => ({ id, label: TIMEZONE_LABELS[id] }),
+);
+
+const LOCALE_LABELS: Record<LocaleId, string> = {
+  "pt-BR": "Português (Brasil)",
+  "en-US": "English (US)",
+  "es-ES": "Español (España)",
+};
+
+const LOCALE_OPTIONS: Array<{ id: LocaleId; label: string }> = LOCALE_IDS.map(
+  (id) => ({ id, label: LOCALE_LABELS[id] }),
+);
 
 const COACH_TONE_OPTIONS: Array<{
   id: CoachToneId;
