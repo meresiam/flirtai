@@ -592,22 +592,27 @@ export function FlirtAiShell() {
         applyCoachResponse(contactId, donePayload!);
       });
     } catch (error) {
+      const baseMessage =
+        error instanceof Error
+          ? error.message
+          : "Não consegui responder agora. Tenta de novo em instantes.";
+      // WR-03 — quando o user mandou imagens e a request falhou, os anexos
+      // ja foram limpos do estado (setAttachments([]) antes do fetch). Avisa
+      // explicitamente que precisa anexar de novo pra evitar "perdi tudo,
+      // o que faço agora?".
+      const errorMessageText = attachmentPayloads.length
+        ? `${baseMessage} (Anexa as imagens de novo antes de retentar.)`
+        : baseMessage;
+
       const fallbackMessage: ConversationMessage = {
         id: crypto.randomUUID(),
         sender: "assistant",
-        content:
-          error instanceof Error
-            ? error.message
-            : "Não consegui responder agora. Tenta de novo em instantes.",
+        content: errorMessageText,
         timestamp: new Date().toISOString(),
       };
 
       appendMessage(contactId, fallbackMessage);
-      setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Não consegui responder agora. Tenta de novo em instantes.",
-      );
+      setErrorMessage(errorMessageText);
     } finally {
       setIsTyping(false);
       setStreamingText(null);
