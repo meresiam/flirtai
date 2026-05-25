@@ -65,8 +65,11 @@ export function useMeProfile(): {
   loading: boolean;
   refetch: () => Promise<void>;
 } {
-  const [profile, setProfile] = useState<MeProfileLite | null>(cache.data);
-  const [loading, setLoading] = useState(cache.data === null);
+  // Lazy init derivada do cache evita setState sincrono em useEffect
+  // (react-hooks/set-state-in-effect). Quando cache ja tem data, comeca
+  // direto com loading=false; caso contrario, useEffect dispara fetch.
+  const [profile, setProfile] = useState<MeProfileLite | null>(() => cache.data);
+  const [loading, setLoading] = useState<boolean>(() => cache.data === null);
 
   useEffect(() => {
     const ac = new AbortController();
@@ -76,9 +79,7 @@ export function useMeProfile(): {
     };
     listeners.add(listener);
 
-    if (cache.data) {
-      setLoading(false);
-    } else {
+    if (!cache.data) {
       void fetchMeProfile(ac.signal).then((data) => {
         setProfile(data);
         setLoading(false);

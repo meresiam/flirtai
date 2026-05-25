@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SparklesIcon, XIcon } from "lucide-react";
 
 import { useMeProfile } from "@/lib/use-me-profile";
@@ -14,16 +14,16 @@ import { useMeProfile } from "@/lib/use-me-profile";
 const DISMISS_KEY = "me-banner-dismissed-until";
 const DISMISS_DURATION_DAYS = 7;
 
+function isDismissedInLocalStorage(): boolean {
+  if (typeof window === "undefined") return false;
+  const until = window.localStorage.getItem(DISMISS_KEY);
+  return until !== null && Number(until) > Date.now();
+}
+
 export function MeBannerCta() {
   const { profile } = useMeProfile();
-  const [dismissed, setDismissed] = useState(false);
-
-  useEffect(() => {
-    const until = window.localStorage.getItem(DISMISS_KEY);
-    if (until && Number(until) > Date.now()) {
-      setDismissed(true);
-    }
-  }, []);
+  // Lazy init evita setState sincrono em useEffect (react-hooks/set-state-in-effect).
+  const [dismissed, setDismissed] = useState<boolean>(isDismissedInLocalStorage);
 
   const shouldRender = !dismissed && profile != null && !profile.onboardingDone;
 
