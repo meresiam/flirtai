@@ -40,14 +40,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import { useOcr } from "@/lib/use-ocr";
+import {
+  COACH_COMMANDS,
+  parseCoachCommand,
+  type CommandIconName,
+} from "@/lib/flirt/commands";
 import type {
   CoachChatResponse,
-  CoachInputMode,
   ContactKind,
   ContactRecord,
   ConversationMessage,
   ReplySuggestion,
 } from "@/types/flirt";
+
+const COMMAND_ICONS: Record<CommandIconName, React.ReactNode> = {
+  plus: <PlusIcon className="h-4 w-4" />,
+  sparkles: <Sparkles className="h-4 w-4" />,
+  user: <CircleUserRound className="h-4 w-4" />,
+  "arrow-up": <ArrowUpIcon className="h-4 w-4" />,
+};
 
 interface UseAutoResizeTextareaProps {
   minHeight: number;
@@ -97,45 +108,11 @@ function useAutoResizeTextarea({
   return { textareaRef, adjustHeight };
 }
 
-interface CommandSuggestion {
-  icon: React.ReactNode;
-  label: string;
-  description: string;
-  prefix: string;
-}
-
 interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   containerClassName?: string;
   showRing?: boolean;
 }
-
-const commandSuggestions: CommandSuggestion[] = [
-  {
-    icon: <PlusIcon className="h-4 w-4" />,
-    label: "Nova aba",
-    description: "Cria uma nova mulher no histórico",
-    prefix: "/nova",
-  },
-  {
-    icon: <Sparkles className="h-4 w-4" />,
-    label: "Melhor resposta",
-    description: "Gera respostas prontas para enviar",
-    prefix: "/resposta",
-  },
-  {
-    icon: <CircleUserRound className="h-4 w-4" />,
-    label: "Extrair perfil",
-    description: "Atualiza o perfil dela no histórico",
-    prefix: "/perfil",
-  },
-  {
-    icon: <ArrowUpIcon className="h-4 w-4" />,
-    label: "Puxar encontro",
-    description: "Move a conversa para algo real",
-    prefix: "/encontro",
-  },
-];
 
 const emptyStatePrompts = [
   {
@@ -344,17 +321,17 @@ export function FlirtAiShell() {
       if (event.key === "ArrowDown") {
         event.preventDefault();
         setActiveSuggestion((previous) =>
-          previous < commandSuggestions.length - 1 ? previous + 1 : 0,
+          previous < COACH_COMMANDS.length - 1 ? previous + 1 : 0,
         );
       } else if (event.key === "ArrowUp") {
         event.preventDefault();
         setActiveSuggestion((previous) =>
-          previous > 0 ? previous - 1 : commandSuggestions.length - 1,
+          previous > 0 ? previous - 1 : COACH_COMMANDS.length - 1,
         );
       } else if (event.key === "Tab" || event.key === "Enter") {
         event.preventDefault();
         if (activeSuggestion >= 0) {
-          const selectedCommand = commandSuggestions[activeSuggestion];
+          const selectedCommand = COACH_COMMANDS[activeSuggestion];
           setValue(`${selectedCommand.prefix} `);
           setShowCommandPalette(false);
           setRecentCommand(selectedCommand.label);
@@ -431,7 +408,7 @@ export function FlirtAiShell() {
   };
 
   const selectCommandSuggestion = (index: number) => {
-    const selectedCommand = commandSuggestions[index];
+    const selectedCommand = COACH_COMMANDS[index];
     setValue(`${selectedCommand.prefix} `);
     setShowCommandPalette(false);
     setRecentCommand(selectedCommand.label);
@@ -449,7 +426,7 @@ export function FlirtAiShell() {
       return;
     }
 
-    const commandMeta = parseCommand(trimmed);
+    const commandMeta = parseCoachCommand(trimmed);
 
     if (commandMeta.command === "/nova") {
       const name = commandMeta.cleanPrompt;
@@ -970,7 +947,7 @@ export function FlirtAiShell() {
                       transition={{ duration: 0.15 }}
                     >
                       <div className="bg-black/95 py-1">
-                        {commandSuggestions.map((suggestion, index) => (
+                        {COACH_COMMANDS.map((suggestion, index) => (
                           <motion.div
                             key={suggestion.prefix}
                             className={cn(
@@ -986,7 +963,7 @@ export function FlirtAiShell() {
                           >
                             <div className="flex items-center gap-2">
                               <div className="flex h-5 w-5 items-center justify-center text-white/60">
-                                {suggestion.icon}
+                                {COMMAND_ICONS[suggestion.iconName]}
                               </div>
                               <div className="font-medium">{suggestion.label}</div>
                               <div className="ml-1 text-xs text-white/40">
@@ -1014,7 +991,7 @@ export function FlirtAiShell() {
 
                       if (nextValue.startsWith("/") && !nextValue.includes(" ")) {
                         setShowCommandPalette(true);
-                        const matchingSuggestionIndex = commandSuggestions.findIndex((cmd) =>
+                        const matchingSuggestionIndex = COACH_COMMANDS.findIndex((cmd) =>
                           cmd.prefix.startsWith(nextValue),
                         );
                         setActiveSuggestion(
@@ -1213,63 +1190,6 @@ function TypingDots() {
       ))}
     </div>
   );
-}
-
-function parseCommand(value: string): {
-  command: string | null;
-  mode: CoachInputMode;
-  cleanPrompt: string;
-  displayPrompt: string;
-} {
-  const knownCommand = commandSuggestions.find((suggestion) =>
-    value.startsWith(suggestion.prefix),
-  );
-
-  if (!knownCommand) {
-    return {
-      command: null,
-      mode: "incoming",
-      cleanPrompt: value,
-      displayPrompt: value,
-    };
-  }
-
-  const cleanPrompt = value.replace(knownCommand.prefix, "").trim();
-
-  if (knownCommand.prefix === "/perfil") {
-    return {
-      command: knownCommand.prefix,
-      mode: "strategy",
-      cleanPrompt,
-      displayPrompt: cleanPrompt || "Atualiza o perfil dela com base no contexto.",
-    };
-  }
-
-  if (knownCommand.prefix === "/encontro") {
-    return {
-      command: knownCommand.prefix,
-      mode: "strategy",
-      cleanPrompt,
-      displayPrompt:
-        cleanPrompt || "Quero puxar a conversa para encontro sem parecer afobado.",
-    };
-  }
-
-  if (knownCommand.prefix === "/resposta") {
-    return {
-      command: knownCommand.prefix,
-      mode: "incoming",
-      cleanPrompt,
-      displayPrompt: cleanPrompt || "Me dá a melhor resposta para isso.",
-    };
-  }
-
-  return {
-    command: knownCommand.prefix,
-    mode: "incoming",
-    cleanPrompt,
-    displayPrompt: cleanPrompt || value,
-  };
 }
 
 function getPreview(contact: ContactRecord) {
