@@ -1,0 +1,163 @@
+---
+mind_id: krausche
+display_name: Lucas Krausche (Desenrolado)
+origin: br
+tier: depth
+philosophical_alignment: greene_axis
+generated: 2026-05-25
+
+source_material:
+  - type: youtube
+    title: "Canal Desenrolado — 30 vídeos curados"
+    url: https://www.youtube.com/@LucasDesenrolado
+    duration_or_pages: 480
+    acquired: true
+    transcript_path: corpus/krausche/processed/full-corpus.md
+    notes: |
+      30 vídeos curados do canal próprio (~88K palavras). Inclui o vídeo
+      mais longo do canal ("O SEGREDO COMPLETO PARA DESENROLAR POR
+      MENSAGEM" ~71min em formato live) + abordagens em campo (academia,
+      festa universitária, balada) + aulas estruturadas (Método
+      Desenrolado, Além da Conquista). Áudio limpo (jovem, não-balada),
+      Whisper PT-BR large-v3.
+---
+
+# Posicionamento Filosófico
+
+signature_phrases:
+  - quote: "Fala, meus desenrolados!"
+    context: |
+      Abertura padrão de TODO vídeo. Constrói identidade de tribo —
+      seguidor não é seguidor, é "desenrolado". Cria pertencimento e
+      espelha a transformação prometida (de tímido pra desenrolado).
+
+  - quote: "A mulher que é bonita, ela já sabe que ela é bonita."
+    context: |
+      Mantra anti-elogio-padrão repetido em pelo menos 8 vídeos.
+      Base lógica de toda a doutrina de abordagem dele: nunca chegar
+      elogiando aparência porque você vira "mais um".
+
+  - quote: "Você não erra. Eu não erro nunca."
+    context: |
+      Frame de invencibilidade ostentado em vídeos de cantadas. Não é
+      verdade literal — é postura. Demonstra que segurança performada
+      vale mais que resultado real.
+
+  - quote: "Seja interessado antes de ser interessante."
+    context: |
+      Tese central sobre comunicação. Inverte o instinto masculino de
+      querer impressionar — autoridade vem de saber escutar, não de
+      saber falar.
+
+  - quote: "A energia feminina libera quando ela está falando, e o homem produz testosterona quando ele está ouvindo."
+    context: |
+      Sua "ciência" da polaridade. Justifica biologicamente porque
+      escutar funciona — não é só estratégia, é "natureza".
+
+  - quote: "Você tem que identificar oportunidades. Não chegar na mulher de qualquer jeito."
+    context: |
+      Resposta dele à pergunta "qual o jeito certo?" — não existe
+      jeito certo, existe leitura situacional. Filosofia de cara que
+      treina improviso, não roteiro.
+
+  - quote: "Tudo que é em excesso, tudo que é exagerado, cansa e fica chato."
+    context: |
+      Princípio anti-bombardeio aplicado a cantadas, mensagens, atenção.
+      Argumento pra calibragem.
+
+  - quote: "Quem é visto é lembrado."
+    context: |
+      Justifica estilo chamativo (calça de borboleta, colar de pérola)
+      e exposição na internet. Vai contra o "preto que nunca erra".
+
+  - quote: "O maior erro dos homens na hora da conquista é a pressa."
+    context: |
+      Tese repetida em date, cantada, sexo e mensagem. Antídoto a
+      ansiedade. Vira o tempo a favor dele.
+
+  - quote: "Não é o que você fala e sim como você demonstra."
+    context: |
+      Conteúdo é secundário, postura é primária. Justifica porque a
+      mesma cantada funciona pra ele e não pro aluno — não é a frase,
+      é o frame.
+
+  - quote: "Tô brincando, amor."
+    context: |
+      Recurso constante em vídeos com a namorada presente. Mostra que
+      mesmo demonstrando técnica ao vivo ele desliga o jogo quando
+      precisa preservar relacionamento real.
+
+  - quote: "Tamo junto e até a próxima."
+    context: |
+      Fechamento padrão de TODO vídeo. Cria continuidade e família —
+      assinatura emocional da marca.
+
+paradoxes:
+  - paradox: "Vende roteiro pronto mas prega que não existe jeito certo"
+    explanation: |
+      A linha comercial dele (Método Desenrolado, Cantadas Infalíveis,
+      Mensagens Infalíveis) entrega scripts copy-paste — "é só copiar e
+      colar a mensagem", como o aluno Marquinhos diz. Mas a teoria
+      central dele é "não existe um jeito certo de chegar na mulher,
+      você tem que identificar oportunidades". A resolução tácita: o
+      script é só andaime; o "verdadeiro desenrolado" interioriza o
+      framework e improvisa. Mas o produto vende como atalho.
+
+  - paradox: "Estratégia pesada disfarçada de espontaneidade"
+    explanation: |
+      Krausche detalha gatilhos mentais de antecipação, curiosidade,
+      polaridade, status social, valor estratégico de atração — tudo
+      calculado. Ao mesmo tempo repete "tem que ser natural", "tem
+      que fluir", "tem que ser autêntico". A tensão: tudo é planejado
+      pra parecer não-planejado. Ele não vê isso como contradição;
+      vê como maestria — quando você treina muito o artifício, ele
+      vira segunda natureza e parece autêntico.
+
+  - paradox: "Greene_axis (estratégia/leitura) com cara de coach de autoestima"
+    explanation: |
+      Por baixo da estratégia de campo, metade dos vídeos é discurso
+      motivacional clássico — "trabalhe seu corpo", "trabalhe sua
+      autoestima", "saiba seu valor", "seja a melhor versão de você".
+      Ele opera dois registros: o frio (técnica, gatilho, script) e o
+      quente (você merece, você vai vencer). Em campo, o frio domina;
+      no produto, o quente vende.
+
+  - paradox: "Anti-feminismo militante misturado com 'mulher tem que ser independente'"
+    explanation: |
+      No vídeo da academia ele diz que "houve uma geração de feminismo
+      que fodeu o Brasil" — criou guerra de gênero. Mas na mesma
+      conversa afirma "eu quero uma mulher independente, parceira, não
+      dependente; não quero ser homem provedor". Resolve a contradição
+      tratando feminismo como "extremo" e independência feminina como
+      "parceria" — categorias dele, não sociológicas.
+
+  - paradox: "Prega leitura de sinais mas confessa que erra muito"
+    explanation: |
+      Diz que "em 5 segundos eu identifico se a mulher quer ficar
+      comigo" e "nunca mais tomei um fora". Mas em vários vídeos
+      conta foras tomados, situações em que confundiu sinal, casos
+      em que "achou que ela tava interessada e era só preocupação
+      com o aparelho da academia". Vende infalibilidade; entrega
+      experiência humana.
+
+obsessions:
+  - "Método Desenrolado / Geração D / Robô Desenrolado — branding obsessivo da própria escola"
+  - "Status social como pré-requisito de atração (perfil bom, seguidores, estilo, postura)"
+  - "Gatilhos mentais (antecipação, curiosidade, autoridade, escassez) aplicados a conversa íntima"
+  - "Polaridade masculino/feminino — homem ouve/age, mulher fala/sente"
+  - "Diferenciação como sobrevivência — 'enquanto 98 caras fazem X, faça Y'"
+  - "Observação de detalhes (acessório, brinco, tatuagem, look) como antídoto ao elogio raso"
+  - "Resiliência via vendas — tese de que rejeição é matemática de funil, não rejeição pessoal"
+  - "Storytelling pessoal — sempre tem 'a vez que eu' (aeroporto, balada, Uberlândia, vidro, escada)"
+  - "Antecipação de futuro junto ('você vai ter que me apresentar a cidade', 'vou ter que voltar')"
+  - "Cantada como abridor, não como produto final — fazer rir é mais importante que ficar"
+
+blindspots:
+  - "Mulher como categoria sociológica monolítica — fala 'as mulheres gostam de X' como verdade universal, ignora classe/cultura/idade/contexto"
+  - "Consentimento ativo como tópico estruturado — fala 'respeito' e 'se ela falar não é não' mas não tem framework pra ler 'sim ambíguo' vs 'sim claro' fora de linguagem corporal"
+  - "Saúde mental do aluno — quando o cara é tímido cronicamente, depressivo, ou em sofrimento, a receita é a mesma do cara mais ou menos confiante. Não distingue patologia de timidez"
+  - "Diferenças entre objetivo casual (rolê) e objetivo afetivo (relacionamento) — toda mecânica de campo dele assume 'ficar' como vitória, e o relacionamento aparece como subproduto raro"
+  - "Mulheres com framework próprio — quando a mulher também sabe ler jogo (a Pamela, a Luana, a Ju Deolindo), ele perde frame e vira persona. Não tem playbook pra mulher que já joga o mesmo jogo"
+  - "Privilégio de baseline — bonito, jogador de futebol, gerente de vendas aos 25, vai a balada em Floripa toda semana. Não enxerga quanto da matemática dele depende de baseline elevado"
+  - "Vida pós-ficada — quase zero conteúdo sobre como manter, brigar, separar, voltar. O método termina no beijo / no número / no date. A vida começa depois"
+  - "Custos emocionais do método sobre quem é alvo — fala várias vezes que 'deixei a menina e voltei pra ex' ou 'usei a menina pra tapar buraco'. Reconhece como erro pessoal mas não como ética estrutural do método"

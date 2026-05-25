@@ -1,0 +1,351 @@
+---
+mind_id: krausche
+category: anti-patterns
+generated: 2026-05-25
+notes: |
+  O que NÃO fazer — Krausche dedica MUITO conteúdo a anti-padrões.
+  É o conjunto de comportamentos que ele identifica como o que faz
+  o 'cara médio' tomar fora. Cada item tem antídoto correspondente
+  apontando pra técnica ou heurística da KB.
+---
+
+anti_patterns:
+  - id: entrevista_de_emprego
+    name: "Abordagem 'Entrevista de Emprego'"
+    description: |
+      'Oi, tudo bem? Como você chama? Quantos anos você tem? Você
+      estuda? Você trabalha? Onde você mora?' — interrogatório
+      sequencial sem energia, conexão ou criatividade.
+    symptoms:
+      - "Você usa esse opener em mais de 80% das abordagens"
+      - "Sua taxa de resposta em direct é < 10%"
+      - "Conversas morrem na 3ª-4ª mensagem"
+      - "Ela responde com monossílabos ('oi', 'tudo', 'sim')"
+    consequence: |
+      Você vira indistinguível de 100 outros caras na fila dela.
+      Inbox satura, ela ignora ou responde por gentileza. No
+      presencial, ela esquiva ou desculpa.
+    antidote: |
+      Técnicas: abordagem_via_oportunidade_situacional, callback_de_perfil,
+      cantada_palavra_chave, suposicao_provocativa.
+      Heurística: nunca_chegue_de_entrevista_de_emprego.
+    source_refs:
+      - "4_COISAS_QUE_VOCE_NUNCA_DEVE_FAZER_AO_CHEGAR_EM_UMA_MULHER"
+      - "8_RESPOSTAS_QUE_TODOS_HOMENS_QUEREM_SABER_DAS_MULHERES"
+
+  - id: elogio_de_aparencia_padrao
+    name: "Elogio de Aparência ('Linda, Gata, Olho Lindo')"
+    description: |
+      Chegar/responder elogiando beleza ('nossa, você é linda', 'que
+      olho maravilhoso', 'você é a mulher mais linda que eu já vi').
+      Como Krausche repete: 'a mulher que é bonita já sabe que é
+      bonita'.
+    symptoms:
+      - "Suas primeiras 3-5 palavras são elogio de aparência"
+      - "Você comenta foto/stories de biquíni dela com 'gata'"
+      - "Você não consegue elogiar nada além do óbvio físico"
+    consequence: |
+      Inflar ego dela sem oferecer nada novo. Vira mais um. Mulher
+      que é objetificada todo dia tem repulsa subconsciente do cara
+      que faz só isso."
+    antidote: |
+      Técnicas: callback_de_perfil, cantada_via_callback_visual.
+      Heurística: nunca_elogie_aparencia_de_quem_ja_sabe.
+      Quando elogiar: estilo, energia, dedicação, fala, escolha.
+      Não aparência."
+    source_refs:
+      - "AS_3_MELHORES_FORMAS_DE_ELOGIAR_UMA_MULHER"
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+
+  - id: invasao_fisica_inicial
+    name: "Invasão Física Inicial (Encostar, Puxar Cabelo, Chegar Por Trás)"
+    description: |
+      Chegar e PUXAR braço/cabelo, ou aparecer atrás dela quando ela
+      tá de costas. Causa susto, retração, repulsa imediata.
+      Comportamento que Krausche classifica como problemático em si
+      mesmo, não só estrategicamente."
+    symptoms:
+      - "Você usa contato físico antes do primeiro contato visual"
+      - "Você 'puxa' atenção pelo corpo dela"
+      - "Você surpreende mulher de costas"
+    consequence: |
+      Reação corporal automática negativa (recuar, fechar postura,
+      olhar pra trás com medo). Estraga abordagem antes da fala.
+      Pode escalar pra problema real."
+    antidote: |
+      Sempre fazer contato visual ANTES de aproximação física. Ela
+      precisa te VER primeiro. Toque só em zona neutra, só depois
+      de provocação verbal validada. Ver: provocacao_e_toque_em_zona_neutra."
+    source_refs:
+      - "4_COISAS_QUE_VOCE_NUNCA_DEVE_FAZER_AO_CHEGAR_EM_UMA_MULHER"
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+
+  - id: reacao_de_emoji_no_direct
+    name: "Reação de Stories com Coraçãozinho/Foguinho"
+    description: |
+      Reagir aos stories dela com emoji (coração, fogo, palminha).
+      O máximo que ela pode fazer é curtir de volta — conversa
+      morre antes de começar. 'É chato, não tem continuidade, é
+      coisa de 2005.'"
+    symptoms:
+      - "Você reage com emoji em mais de 50% dos stories que tenta puxar conversa"
+      - "Você manda foguinho em foto de biquíni 'pra sinalizar interesse'"
+      - "Suas tentativas em direct param na reação emoji"
+    consequence: |
+      Você se identifica como cara que NÃO TEM o que dizer. Vira
+      ruído na inbox dela. Some no algoritmo."
+    antidote: |
+      Sempre responder com TEXTO que abra tópico (pergunta aberta,
+      suposição, callback). Se for muito sem material, espera
+      stories melhor. Ver: protocolo_resposta_de_stories,
+      suposicao_provocativa."
+    source_refs:
+      - "COMO_CHEGAR_NA_MENINA_PELO_INSTAGRAM"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+
+  - id: monologo_curriculo
+    name: "Monólogo de Currículo (Falar Só de Si)"
+    description: |
+      Em date ou conversa, ficar listando feitos, posses, viagens,
+      cargo, dinheiro. Krausche cita: 'porque eu sou gerente de um
+      banco, porque não sei o quê' — sequência de auto-afirmação
+      que ignora o outro lado da mesa."
+    symptoms:
+      - "Em date, você falou mais que 60% do tempo"
+      - "Você corta o assunto dela pra inserir o seu"
+      - "Ela pegou o celular durante a sua fala"
+      - "Você não tem ideia do que ela faz / pensa / sente"
+    consequence: |
+      Ela se sente irrelevante, mero público. Atração esfria. No
+      máximo ela sai com você uma vez por curiosidade, depois some."
+    antidote: |
+      Storytelling em vez de currículo (técnica: storytelling_em_vez_de_curriculo).
+      Escutar mais que falar (heurística: escuta_antes_de_brilhar).
+      Sempre devolver pergunta depois de contar algo seu."
+    source_refs:
+      - "COMO_CRIAR_CONEXAO_COM_QUALQUER_MULHER_ATRAVES_DO_METODO_DESENROLADO"
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+
+  - id: ex_no_date
+    name: "Falar Da Ex no Primeiro Date"
+    description: |
+      Contar histórias da ex-namorada, especialmente reclamando.
+      'Ela me traiu', 'ela era chata', 'pegou meu amigo depois'.
+      Ou — pior — falando bem dela ('era uma pessoa incrível, mas
+      não deu certo')."
+    symptoms:
+      - "Você puxa o assunto ex sem ela perguntar"
+      - "Quando ela pergunta da sua ex, você fala mais que 2 frases"
+      - "Você não sai do tópico ex em 5+ min de conversa"
+    consequence: |
+      Ela pensa: 'ele ainda não superou', 'vai falar isso de mim',
+      'preciso de psicólogo, não de date'. Ela esfria, vai embora,
+      ou pede pra amiga ligar com 'emergência' pra sair."
+    antidote: |
+      'Linda, esquece esse assunto triste, vamos falar de coisa
+      boa, vamos falar da gente'. Redirecionar pra futuro/presente.
+      Ver: heurística nao_fale_de_ex."
+    source_refs:
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+      - "ELA_ACABOU_DE_TERMINAR_COM_O_EX_O_QUE_FAZER_-_SE_LIVRE_DA_DEPENDENCIA_EMOCIONAL"
+
+  - id: pressao_pelo_beijo
+    name: "Tentativa de Beijo Antes da Hora (Pressa)"
+    description: |
+      No date, do nada virar e tentar beijar a mulher sem clima
+      construído. Sem provocação, sem brincadeira, sem zona neutra.
+      Resultado: 'esse moleque é louco, não vai ter clima'."
+    symptoms:
+      - "Você decide beijar baseado em quanto tempo passou, não em sinais"
+      - "Você nunca encosta em zona neutra antes"
+      - "Você não fez ela rir nos últimos 10 min antes da tentativa"
+      - "Ela recua, esquiva, ou olha desconfortável após a tentativa"
+    consequence: |
+      Quebra de conexão. Date termina cedo. Ela conta pras amigas
+      ('ele tentou me beijar do nada'). Segundo date improvável."
+    antidote: |
+      Sequência: provocação verbal > brincadeira > toque em zona
+      neutra (ombro/braço) > lê reação > escala. Beijo nunca é
+      pedido, é gesto natural. Ver: técnica provocacao_e_toque_em_zona_neutra,
+      heurística pressa_e_o_assassino."
+    source_refs:
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+      - "PERCA_SUA_TIMIDEZ_DE_UMA_VEZ_POR_TODAS..._-_Aula_do_curso_Alem_da_Conquista"
+
+  - id: insistencia_pos_sinal_negativo
+    name: "Insistência Após Sinal Negativo Claro"
+    description: |
+      Mulher tá com cara fechada, corpo de lado, olhando o celular,
+      procurando as amigas — todos sinais de 'me deixa em paz' —
+      e o cara continua tentando. 'Ficar insistindo só vai fazer
+      ela te dar um não' (Krausche)."
+    symptoms:
+      - "Você continua a abordagem mesmo após ela esquivar"
+      - "Você tenta puxar conversa após resposta de 1 palavra"
+      - "Você não lê linguagem corporal"
+    consequence: |
+      Não vira: vira não constrangedor (na frente de todo mundo) +
+      você sai mal visto socialmente + ela tem história pra contar
+      contra você. Pior: pode escalar pra desconforto real dela."
+    antidote: |
+      Treinar leitura de sinais (framework: leitura_de_sinais_5_segundos).
+      Sair antes do não: 'depois a gente se fala, vou ali com meus
+      amigos'. Ver: pos_rejeicao_descolamento_via_amizade."
+    source_refs:
+      - "OS_PRINCIPAIS_SINAIS_DE_ATRACAO_QUE_A_MULHER_DEMONSTRA_Linguagem_Corporal"
+      - "PERCA_O_MEDO_DA_REJEICAO_-_ABORDAGEM_PARA_NUNCA_MAIS_TOMAR_FORA"
+
+  - id: tempo_demais_no_app_sem_chamar
+    name: "Conversa Eterna no App Sem Chamar Pra Sair"
+    description: |
+      Match no Tinder ou conversa no direct rolando por dias/semanas
+      sem você nunca chamar pra encontrar. Conversa esfria
+      naturalmente, ela some, ou outro cara chama primeiro."
+    symptoms:
+      - "Match com 5+ dias de conversa sem proposta de encontro"
+      - "Você fica medindo timing 'perfeito' que nunca chega"
+      - "Você teme 'vou perder a moral se ela disser não'"
+    consequence: |
+      Janela de calor afetivo dela passa. Ela esquece. Ou alguém
+      mais ousado tira ela primeiro. Você fica com 'match
+      perfeito' que nunca virou nada."
+    antidote: |
+      Marcar encontro depois de 4-5 mensagens com calor demonstrado.
+      Não esperar 'momento perfeito'. Krausche: 'isso aqui é xadrez,
+      você já tem que pensar na próxima jogada — depois de 4 frases
+      você pode marcar quinta-feira às 20h te pego'."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: pai_da_mina_padrao_diario
+    name: "'Pai da Mina' (Bom Dia, Como Foi Seu Dia, Já Comeu)"
+    description: |
+      Mensagens de cuidador todos os dias sem conteúdo. 'Bom dia',
+      'como foi seu dia', 'já comeu', 'o que tá fazendo'. Padrão de
+      preenchimento que mata calor."
+    symptoms:
+      - "Você manda 'bom dia' todo dia logo cedo"
+      - "Mais de 50% das suas mensagens são pergunta de status"
+      - "Você responde 'tudo' / 'aqui de boa' quando ela retribui"
+    consequence: |
+      Conversa vira ritual sem energia. Ela responde por hábito,
+      sem investimento mental. Quando você for chamar pra sair, vai
+      bater no zero (sem afetividade construída)."
+    antidote: |
+      Pouco com alto valor (técnica: calibragem_de_frequencia_no_direct).
+      Mensagem só quando você TEM algo (meme, observação,
+      pergunta provocativa). Silêncio em vez de ruído."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+
+  - id: pedir_whatsapp_quando_papo_esfriou
+    name: "Pedir o WhatsApp Quando o Papo Já Morreu no Insta"
+    description: |
+      Conversa no Instagram tá morta, ele 'salva' pedindo o WhatsApp.
+      Erro fatal porque transfere conversa morta pra outro app onde
+      o vácuo é ainda mais pesado."
+    symptoms:
+      - "Conversa de 3+ dias sem responder e você pede WhatsApp"
+      - "Resposta dela são monossílabos quando você pede"
+      - "Você nunca chamou pra encontrar antes de pedir WhatsApp"
+    consequence: |
+      Ela passa o número 'por gentileza', depois vácua no WhatsApp.
+      Você fica frustrado, achando que o problema é o app, sem
+      ver que o problema era a conversa antes da migração."
+    antidote: |
+      Pedir WhatsApp apenas quando conversa tá QUENTE e você já tá
+      perto de marcar encontro. Krausche: 'só pedi o WhatsApp depois
+      de uns 30 minutos de conversa legal'. Senão, deixa morrer no
+      Insta mesmo."
+    source_refs:
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: dependencia_de_alcool
+    name: "Dependência de Álcool Pra Abordar"
+    description: |
+      'Só consigo chegar bêbado'. Cara que precisa beber pra ter
+      coragem, e quando bebe demais, perde postura, fala, controle.
+      Anti-pattern duplo: trava sem álcool, e degrada com excesso."
+    symptoms:
+      - "Você só chega em mulher depois de 3+ drinks"
+      - "Você toma fora porque tá bêbado demais (sem controle de fala)"
+      - "Sua memória da noite é fragmentada"
+    consequence: |
+      Você não treina coragem real (loop de dependência). Mulheres
+      detectam embriaguez como red flag. E você perde noites por
+      excesso, voltando pra casa zerado."
+    antidote: |
+      Heurística nao_dependa_de_alcool + protocolo de perda de
+      timidez (reps de comunicação). O vídeo do robô desenrolado
+      prova: aluno desenrolou sem beber porque tinha método."
+    source_refs:
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+      - "LANCEI_O_ROBO_DESENROLADO_E_LEVEI_UM_SEGUIDOR_PARA_TESTAR_NA_FESTA_UNIVERSITARIA_-_ARENA_POS_JOGOS"
+
+  - id: tapa_buraco_emocional
+    name: "Usar Mulher Como Tapa-Buraco Emocional (Você Ou Ela)"
+    description: |
+      Você acabou de terminar e se envolve com outra 'pra esquecer'.
+      Ou se envolve com mulher que ACABOU de terminar e ainda gosta
+      do ex. Em qualquer direção, alguém vira escada. Krausche conta
+      caso pessoal — virou e voltou pra ex, machucou a outra menina."
+    symptoms:
+      - "Você ainda pensa na ex todo dia mas tá com outra"
+      - "Ela fala do ex em 30%+ das conversas"
+      - "Vocês se ven todo dia depois de 2 semanas mas a conexão é mais consolo que paixão"
+    consequence: |
+      Você é descartado quando ex original volta (ela) ou você
+      descarta brutalmente quando sua ex volta. Em qualquer cenário,
+      machuca ambos."
+    antidote: |
+      Período sozinho pós-término. Reconstruir vida (academia,
+      amigos, hobby, trabalho). Só envolver com mulher que tá BEM
+      sozinha. Heurística: ex_recente_e_red_flag."
+    source_refs:
+      - "ELA_ACABOU_DE_TERMINAR_COM_O_EX_O_QUE_FAZER_-_SE_LIVRE_DA_DEPENDENCIA_EMOCIONAL"
+
+  - id: chegar_de_preto_todo_dia
+    name: "Vestimenta Default (Todo Mundo de Preto na Balada)"
+    description: |
+      Ir pra balada / festa com a roupa que TODO cara usa: preta,
+      simples, sem identidade. Some no ambiente. Krausche: 'preto
+      é o famoso não vou errar. Mas quem é visto é lembrado'."
+    symptoms:
+      - "Mais de 50% das suas saídas você foi de preto"
+      - "Você não tem nenhuma peça/acessório identificável"
+      - "Mulheres não te NOTAM antes de você abordar"
+    consequence: |
+      Você precisa carregar 100% do peso da abordagem com a fala —
+      não tem pré-trabalho visual. Mulher não te vê de longe. Não
+      tem 'gancho' visual pra cantada."
+    antidote: |
+      Adicionar acessório identificável (colar, pulseira, tênis),
+      uma cor que destaca, peça com personalidade. Krausche usa
+      colar de pérola, calça de borboleta. Não precisa ser
+      excêntrico — só precisa ser identificável."
+    source_refs:
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+
+  - id: comentario_em_biquini
+    name: "Comentar em Foto de Biquíni Dela"
+    description: |
+      Curtir, comentar, reagir com foguinho em foto sensual onde
+      300 outros caras já fizeram a mesma coisa. Você se iguala ao
+      ruído da inbox dela."
+    symptoms:
+      - "Sua primeira interação com ela foi no post de biquíni"
+      - "Você curte stories de biquíni e espera ela falar contigo"
+      - "Você comenta 'gata' / 'que delícia' / emoji"
+    consequence: |
+      Sinaliza 'mais um' imediatamente. Ela classifica você
+      automaticamente em 'inbox de simps' e ignora. Próxima
+      mensagem sua tem zero chance."
+    antidote: |
+      Esperar stories aleatório (livro, café, paisagem). Responder
+      com texto que abre tópico. Heurística: nunca_responda_biquini."
+    source_refs:
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"

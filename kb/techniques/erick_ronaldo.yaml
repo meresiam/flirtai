@@ -1,0 +1,295 @@
+---
+mind_id: erick_ronaldo
+category: techniques
+generated: 2026-05-25
+---
+
+techniques:
+  - id: compliment_opener_smile
+    name: "Compliment Opener — Smile/Eyes/Specific Feature"
+    description: |
+      Aborda apontando UMA feature específica (sorriso, olhos, sardas,
+      tênis) com uma frase quase poética. O efeito é desarmar: ela espera
+      'you're hot' e recebe 'where did you get that smile, it's beautiful'.
+      Frase formulada como pergunta retórica força resposta engajada
+      ('thank you' + sorriso).
+    script_examples:
+      - "Where did you get that? The smile. It's beautiful."
+      - "You're glowing, so I had to come and say hi."
+      - "You shine brighter than any diamond I've ever seen."
+      - "You look brighter than my future, I'm going to say."
+      - "I'm sorry, I just couldn't keep my eye off you."
+      - "I don't smoke cigarettes but you took my breath away."
+      - "Hold on, let me — you shine brighter than any diamond I've ever seen."
+    when:
+      - "Quando ela tem feature destacável (sorriso aberto, olho colorido)"
+      - "Aprox em ambiente onde compliment direto é bem-vindo (praia, rua, faculdade)"
+    risk: |
+      Se for entregue de forma ensaiada/robótica, vira cringe imediato. A
+      key é entonação genuína + timing — chegar como se acabasse de
+      perceber, não como se tivesse decorado.
+    mastery_signal: |
+      Ela ri ANTES de responder. Sinaliza que o compliment a pegou
+      desprevenida e que ela gostou. Próximo passo: pular pra nome dele +
+      number ask.
+    source_refs:
+      - "How_far_would_you_drive_for_a_sneaky_link"
+      - "PICKING_UP_CONFIDENCE_IN_NASHVILLE"
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: height_qualification_pretext
+    name: "Height Qualification — 'I'm 6 Feet, Can I Get Your Number?'"
+    description: |
+      Pretext-survey: pergunta a altura dela primeiro (como se fosse uma
+      pesquisa neutra), e depois revela 'I'm 6 feet' e emenda direto com
+      'and I was wondering if I could get your number'. O fato de altura
+      ser pré-anunciada vira credencial física implícita e dá lógica boba
+      pra abertura ('é uma pergunta meio pesquisa, mas...').
+    script_examples:
+      - "Quick question — how tall are you? [She answers]. Well, I'm 6 feet and I was wondering if I could get your number."
+      - "Excuse me, I'm doing a survey for class. How tall are you guys? [Answer]. Well, I'm 6 feet, I was wondering if I could get your number."
+    when:
+      - "Quando você tem 1.83m+ (a técnica perde se não tem a credencial)"
+      - "Em campus/faculdade onde 'survey' é pretext socialmente aceito"
+      - "Quando ela está sentada/ocupada (te dá motivo pra interromper)"
+    risk: |
+      Se você NÃO tem a altura, ou ela vai descobrir e perder respeito.
+      Também: se você usar em ambiente noturno onde altura já é visível,
+      perde a graça do 'reveal'.
+    mastery_signal: |
+      Ela ri da audácia ('was that smooth?') e MESMO ASSIM passa o número.
+      Significa que ela viu a técnica, gostou do humor, e gostou do cara.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: prop_calendar_pencil
+    name: "Calendar + Giant Pencil Approach"
+    description: |
+      Chega com um calendário gigante e um lápis tamanho braço. Pede pra
+      ela segurar (envolvimento físico cooperativo) e propõe 'marcar uma
+      data no calendário'. A mecânica embute o ask de número/encontro DENTRO
+      do prop — ela não está concordando com cantada, está jogando o jogo
+      do prop.
+    script_examples:
+      - "I just had to ask — what are you doing on Friday the 13th? [pulls out calendar]"
+      - "Listen here, shorty — what day are you free? Pencil it in!"
+      - "Hold this for me real quick. You like sushi? I can buy you a lot of sushi. Let me put you in for Thursday at 7."
+      - "Hold my pencil — my stick. Yeah just hold that."
+    when:
+      - "Quando você quer viralizar o conteúdo (prop = clipável)"
+      - "Em campus universitário com tráfego pesado e ambiente lúdico"
+    risk: |
+      Prop ridículo só funciona em quem topa o jogo. Pessoa séria/apressada
+      vai te ignorar. Necessita energia alta pra sustentar — se chegar
+      tímido com prop ridículo, vira pior dos mundos.
+    mastery_signal: |
+      Ela pega no lápis/calendário sem hesitar e ENTRA na brincadeira
+      (escreve o nome no calendário, pergunta detalhes do 'date'). Aí o
+      número é só formalidade.
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+
+  - id: prop_batman_costume
+    name: "Persona-Prop ($3000 Batman Costume / Halloween)"
+    description: |
+      Veste fantasia caríssima de Batman e aborda em persona ('I'm Batman,
+      where is she, where's Rachel?'). A persona dá licença pra ser
+      esquisito/intenso, e o custo da fantasia ($3000) sinaliza investimento
+      sério no bit — o que vira atrativo paradoxal.
+    script_examples:
+      - "I'm Batman. Where is she? Where's Rachel?"
+      - "You want to go to the Batcave later? I'll text you a photo under the mask."
+      - "I'm Batman 2004. You can put your number in there."
+    when:
+      - "Halloween / eventos temáticos"
+      - "Quando você tem dinheiro pra investir em prop sério (fantasia barata vira piada feia)"
+      - "Em zonas de festa noturna (Wynwood, Brickell na noite)"
+    risk: |
+      Persona muito comprometida pode bloquear escalada genuína. Em algum
+      momento você precisa quebrar persona pra ser real — se não souber
+      quando, fica preso na fantasia.
+    mastery_signal: |
+      Ela pede 'foto sem a máscara' ou pede pra ver o rosto real — sinaliza
+      que ela quer conhecer o cara por trás da persona. Aí você quebra o
+      bit e finaliza como Eric, não como Batman.
+    source_refs:
+      - "PICKING_UP_GIRL_S_IN_MY_3_000_DOLLAR_COSTUME"
+
+  - id: fake_ticket_authority_prop
+    name: "Fake Police Ticket — 'Too Sexy on the Beach'"
+    description: |
+      Faz tickets falsos com cara de oficial e aborda dizendo 'I got a call
+      from my supervisor, I have to issue you a ticket'. Quando ela
+      pergunta o motivo: 'for being too sexy on the beach'. Termina com
+      'the ticket can be revoked if you text me — magic'. O ticket fica na
+      mão dela com seu número (object permanence — ela tem que decidir
+      ativamente jogar fora).
+    script_examples:
+      - "I am so sorry to do this — I just got a call from my supervisor, I do have to issue you a ticket. It's only $250, not that bad."
+      - "For being too sexy on the beach. That's you, making everyone look bad."
+      - "My phone number is on here — you can text me, the ticket can be revoked. Magic. Ta-da. Abracadabra."
+    when:
+      - "Praia/parque/ambiente outdoor onde fantasia de 'autoridade' funciona"
+      - "Grupos de mulheres (efeito coletivo amplifica)"
+      - "Quando você quer fechar com material físico (número escrito)"
+    risk: |
+      Se ela achar invasivo (toque, atenção indesejada), o frame 'autoridade'
+      vira agressão. Importante: chegar leve, anunciar logo que é piada se
+      o vibe travar.
+    mastery_signal: |
+      Ela pega o ticket, RI, e diz 'this is hilarious, I'm keeping this'.
+      Sinaliza que ela entrou no jogo e que vai lembrar de você. Conversão
+      do número escrito em DM real depende do follow-up.
+    source_refs:
+      - "Giving_girls_TICKETS_for_being_too_sexy_on_the_beach"
+
+  - id: reverse_rejection_astrology
+    name: "Reverse Rejection via Astrology"
+    description: |
+      Inversão de frame: ele pede o número, e ANTES dela responder, ele
+      pergunta 'what's your star sign?'. Quando ela responde, ele 'rejeita':
+      'oh no, we're not compatible, it wouldn't work out, sorry, bye'. O
+      efeito é DDM (deception-disqualification) — ele sai como o cara que
+      rejeitou, ela fica curiosa.
+    script_examples:
+      - "Can I get your number? Wait — first, what's your star sign?"
+      - "Virgo? Oh, hell no. We would not be compatible. I'm sorry. Have a good one. Bye."
+      - "Cancer? Damn, we wouldn't work out either way. All right, bye."
+      - "I'm an asparagus. Yeah, so we're not compatible, it wouldn't work out. Sorry."
+    when:
+      - "Quando você quer treinar 'sair antes de ser saído'"
+      - "Quando ela já parece ter você como certo (alto interesse aparente)"
+      - "Como reset depois de uma sequência de aproximações 'normais'"
+    risk: |
+      É majoritariamente comédia, NÃO técnica de conversão. Não converte
+      número, mas gera respeito/curiosidade e treina o músculo de sair
+      antes. Se feito em alguém que realmente engajou, queima a oportunidade.
+    mastery_signal: |
+      Ela FAZ A PROPOSTA de continuar ('but wait, what if I'm high?' / 'so
+      we can't be friends?'). Inversão completa: agora ela quer manter o
+      contato.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: interview_pretext_camera
+    name: "Camera Interview Pretext"
+    description: |
+      Câmera + microfone + 'I'm reporting live' = pretext socialmente
+      válido pra abordar qualquer mulher. Ela engaja como 'sujeito de
+      entrevista', não como alvo de cantada. Depois da entrevista, ele
+      transiciona: 'is it cool if I grab your number?'.
+    script_examples:
+      - "All right, ladies and gentlemen, I'm here reporting live in South Beach with — what's your name?"
+      - "Lovely meeting you guys. Where are you guys from?"
+      - "Well, question of the night..."
+      - "All right, well that's pretty much it. I love you guys, peace out."
+    when:
+      - "Você é creator com câmera/produção"
+      - "Locais de alta concentração de mulheres bem vestidas (South Beach, Brickell)"
+      - "Você quer abordar em GRUPOS (entrevista coletiva funciona melhor que solo)"
+    risk: |
+      Requer câmera + cameraman + comprometimento estético. Sem produção,
+      a desculpa 'estou gravando' soa falsa. Também: você fica preso a
+      criar conteúdo a cada interação.
+    mastery_signal: |
+      No fim da entrevista ela mesmo pergunta 'is this going on TikTok?' e
+      pede tag/handle. Aí o número entra como bônus natural ('so I can
+      text you when it's posted').
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+      - "How_far_would_you_drive_for_a_sneaky_link"
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+
+  - id: number_close_direct
+    name: "Direct Number Close — No Negotiation"
+    description: |
+      Após 30-60s de interação leve, ele pede o número de forma direta e
+      casual ('Is it cool if I grab your number?' / 'Can I get your
+      number?'). Sem qualificar, sem justificar, sem 'pra gente sair algum
+      dia se você quiser'. Direta = alto status implícito.
+    script_examples:
+      - "Is it cool if I grab your number?"
+      - "Can I get your number?"
+      - "Yeah, I thought you were really pretty — can I get your number?"
+      - "I just moved here from Virginia, I'm trying to make new friends."
+      - "Yeah, you put your number in there."
+    when:
+      - "Default em toda abordagem cold após nome + 1-2 trocas"
+      - "Quando você sente engajamento mínimo (sorriso, eye contact)"
+    risk: |
+      Pedir cedo demais (antes dela demonstrar QUALQUER interesse) reduz
+      taxa de conversão e te marca como 'pegador'. Pedir tarde demais (10
+      min de conversa) deixa óbvio que você nunca ia pedir.
+    mastery_signal: |
+      Ela responde 'yeah' SEM hesitar e pega o seu telefone. Quanto menos
+      hesitação, mais alto o interesse. 'Sure' com pausa = teste de
+      qualificação dela, fique alerta.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+
+  - id: cringy_pickup_line_self_aware
+    name: "Cringy Pickup Line + Meta-Disclaimer"
+    description: |
+      Usa pickup line obviamente cafona ('are you a chess player? because
+      I'm looking for a queen' / 'are you Wi-Fi? because I'm feeling
+      connection'), MAS combinada com auto-consciência ('I know this is
+      cringy, my subscribers commented them, I have to do it'). A linha em
+      si não converte — a auto-consciência converte (sinaliza humor +
+      confiança em ser ridículo).
+    script_examples:
+      - "Are you a chess player? Because I'm looking for a queen."
+      - "Are you Wi-Fi? Because I feel a connection."
+      - "I'm not a gamer, but I wouldn't play you."
+      - "If you were a triangle, you'd be a cute one."
+      - "If you had as much money as your phone number, how much would that be?"
+      - "I'm 6 feet tall, by the way."
+      - "Quick question, is there something in my eye? Because I couldn't keep my eye off you."
+    when:
+      - "Quando você consegue carregar com humor (não tem cara seca)"
+      - "Como opener inesperado em ambiente saturado de approach 'sério'"
+      - "Pra filtrar quem topa humor besta vs quem precisa de drama"
+    risk: |
+      Linha cafona sem entrega humorada é só cafona. A meta-disclaimer
+      ('I know this is corny') é o que salva — sem ela, vira fail.
+    mastery_signal: |
+      Ela responde no mesmo nível com piada de volta, OU ri e diz 'that was
+      actually good'. Sinal: ela aceita o registro lúdico e a interação
+      pode se sustentar.
+    source_refs:
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: language_mirror_cultural_callout
+    name: "Language Mirror — Cultural Background Callout"
+    description: |
+      Pergunta 'what's your background?' e quando ela responde a origem,
+      ele cumprimenta naquela língua/dialeto local. Cubana = 'Que bola
+      hacer?'. Colombiana paisa = 'Mas paisa que una arepa'. Italiana =
+      'Buenas noches señora'. Brasileira = 'Garota bonita'. Polonesa =
+      'Yagshamash'. Cria conexão instantânea por reconhecimento cultural.
+    script_examples:
+      - "Cuban? Que bola hacer?"
+      - "Venezuela? Pana, marico, chama!"
+      - "Colombia? Que parte? Medellin? Que mas pues? Mas paisa que una arepa."
+      - "Polish? Yagshamash? Jak się masz?"
+      - "Brazilian? Garota bonita, obrigado."
+      - "French? Je t'aime beaucoup — that's all I know."
+      - "Arabic / Saudi / Yemen? Habibi."
+    when:
+      - "Cidade cosmopolita (Miami é o caso máximo)"
+      - "Quando o sotaque/look dá pista de origem"
+      - "Depois do 'where are you from' / 'what's your background'"
+    risk: |
+      Se a pronúncia for ridicularmente errada, vira piada às custas dela.
+      Se você usar gíria muito específica (ex: 'mama huevo' venezuelano)
+      sem context, pode parecer apropriação ou tentativa de hood-pass.
+    mastery_signal: |
+      Ela RI alto e responde no idioma dela com afeição. Vira insider
+      moment — ela sente que você 'a vê' culturalmente, não só como rosto
+      bonito.
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"

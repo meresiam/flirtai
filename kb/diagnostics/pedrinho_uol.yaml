@@ -1,0 +1,113 @@
+---
+mind_id: pedrinho_uol
+category: diagnostics
+generated: 2026-05-25
+notes: |
+  Como ler a reação dela imediatamente após a punchline. O Pedrinho-do-corpus toma decisão em
+  ~2 segundos com base no tipo de reação. Mapeamento abaixo é inferência por observação.
+---
+
+diagnostics:
+
+  - id: reacao_pos_cantada
+    situation: Os primeiros 2 segundos após a punchline da cantada
+    signals_to_read:
+      - "Boca: riso aberto, sorriso fechado, lábio mordido, boca aberta de pasmo, cara fechada"
+      - "Olhos: contato sustentado, desvio rápido, rolar de olhos, olhar pra amiga"
+      - "Corpo: passo pra frente, passo pra trás, ombros relaxam, ombros fecham"
+      - "Voz: 'aiii' carinhoso, 'kkkk' real, 'que isso' nervoso, silêncio frio"
+      - "Mãos: tocar o cabelo, tocar você, cruzar braços, mexer no celular"
+      - "Audiência: amiga/grupo rindo junto e empurrando vs. silêncio constrangedor"
+    interpretation_options:
+      - reading: "Riso real + olhar sustentado + 'ai meu deus' carinhoso = JANELA ABERTA"
+        confidence: alta
+        next_move: |
+          Escalar imediato. Pedir número como piada, propor selinho de 'aluguel', ou puxar
+          continuação ('tá me dando 11 numa escala de 10, então rola?'). Não esfriar.
+      - reading: "Riso curto + desviar olhar + 'que isso' = ENGAJOU MAS NÃO ABRIU"
+        confidence: media
+        next_move: |
+          Segunda cantada complementar (gancho diferente — se primeira foi visual, ir pra
+          contextual). NÃO pedir nada ainda. Construir 30 segundos de conversa neutra e tentar
+          novamente. Ou cortar e deixar memorável (sair sem pedir).
+      - reading: "Sorriso simpático sem riso + 'obrigada' formal = EDUCAÇÃO, NÃO INTERESSE"
+        confidence: alta
+        next_move: |
+          Fechar com piada auto-deprecativa de saída ('beleza, era só pra te elogiar mesmo,
+          aproveita o dia'). NÃO insistir. Audiência percebe — você precisa sair com dignidade
+          intacta. Modelo: o 'eu não sou educado' do corpus.
+      - reading: "Cara fechada + 'tô com namorado' + passo pra trás = REJEIÇÃO HARD"
+        confidence: alta
+        next_move: |
+          Recuar imediato. 'Foi mal, boa noite/dia.' Não pedir nada, não insistir, não tentar
+          recuperar. Sair em 2 segundos. Próxima abordagem em ambiente diferente.
+      - reading: "Olhar pra amiga + amiga ri primeiro + ela engaja DEPOIS = AMIGA ABRIU PORTA"
+        confidence: alta
+        next_move: |
+          Cooptar a amiga (tática 'cantada_pesada_audiencia'). Falar com a amiga sobre a alvo:
+          'sua amiga aqui tá me apaixonando, me ajuda'. Amiga vira aliada.
+      - reading: "Silêncio + ela continua olhando = PROCESSANDO, NÃO REJEITOU"
+        confidence: media
+        next_move: |
+          Aguentar o silêncio por 2-3 segundos sem encher. Sorrir. Ela vai responder ou se
+          afastar. Ansiedade de preencher silêncio mata o frame.
+    source_refs:
+      - corpus consolidado pedrinho_uol (60 clips com leituras de reação)
+
+  - id: reacao_stories_instagram
+    situation: Resposta a stories dela no Instagram
+    signals_to_read:
+      - "Tempo de resposta dela (segundos vs. horas)"
+      - "Comprimento da resposta (1 palavra vs. frase)"
+      - "Reciprocidade (ela pergunta de volta? manda algo de áudio/foto?)"
+      - "Emoji usado (rindo / coração / monossílabo neutro)"
+      - "Ela visualizou e não respondeu por X horas"
+    interpretation_options:
+      - reading: "Resposta em < 5 min com emoji rindo + pergunta de volta = ENGAJOU"
+        confidence: alta
+        next_move: |
+          Manter momentum. Próxima mensagem mantém tom cômico mas inclui pergunta concreta
+          (ex.: 'que faz no fim de semana?') sem cantada. Construir 3-4 mensagens neutras antes
+          de propor encontro.
+      - reading: "Resposta em > 1h com mensagem curta = MORNO"
+        confidence: media
+        next_move: |
+          Não disparar segunda cantada. Esperar ela mandar story de novo e responder com
+          observação leve (não cantada). Construir presença, não pressão.
+      - reading: "Visualizou e não respondeu por > 6h = FRIO"
+        confidence: alta
+        next_move: |
+          Abandonar abordagem por cantada. Próximo gancho deve ser comentário neutro/inteligente
+          em story novo dela — sem flerte, sem trocadilho. Reset de frame.
+    source_refs:
+      - 3_MELHORES_RESPOSTAS_STORIES_P_ELA_pedrinhuol_cantadas
+
+  - id: leitura_de_ambiente
+    situation: Antes de abordar — escolher se aborda ou não
+    signals_to_read:
+      - "Ela está com fone? Lendo livro? Mexendo no celular concentrada?"
+      - "Está com pressa (anda rápido)? Parada esperando?"
+      - "Com namorado/grupo masculino misturado?"
+      - "Sorri com amiga ou cara fechada?"
+      - "Olha em volta com curiosidade ou foca à frente?"
+    interpretation_options:
+      - reading: "Parada esperando + olhando em volta + sorriso ambiente = MOMENTO ABERTO"
+        confidence: alta
+        next_move: |
+          Aborda. Setup-pesquisa funciona bem aqui. Ela tem TEMPO e curiosidade.
+      - reading: "Andando rápido + fone + olhar pra frente = MOMENTO FECHADO"
+        confidence: alta
+        next_move: |
+          Não aborda. Custo/benefício ruim. Achar outra alvo ou outro momento. Insistir vira
+          assédio percebido.
+      - reading: "Com grupo de amigas rindo + sem cara de pressa = MOMENTO PERFEITO"
+        confidence: alta
+        next_move: |
+          Aborda incluindo o grupo. Cantada com audiência cooptada tende a render mais.
+      - reading: "Sozinha à noite em rua deserta = MOMENTO ERRADO INDEPENDENTE DE SINAL"
+        confidence: alta
+        next_move: |
+          Não aborda. Contexto de segurança feminina importa mais que oportunidade. Ela vai
+          ler como ameaça, não como flerte.
+    source_refs:
+      - corpus consolidado pedrinho_uol (todas em ambiente público com testemunhas)

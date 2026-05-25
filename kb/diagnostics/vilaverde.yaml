@@ -1,0 +1,284 @@
+---
+mind_id: vilaverde
+category: diagnostics
+generated: 2026-05-25
+notes: |
+  Leitura de situação. Vilaverde é forte em interpretar sinais (de
+  interesse, de rejeição, de fora-de-flow do cliente, de mercado).
+  Cada diagnostic foca em UMA situação típica e dá leituras
+  alternativas com nível de confiança e próximo movimento.
+---
+
+diagnostics:
+  - id: mulher_responde_seco
+    situation: "Mulher só responde com 'kkk', 'sim', 'não', emojis ou likezinhos"
+    signals_to_read:
+      - "Mensagens dela são sempre curtas (1-2 palavras)"
+      - "Demora pra responder (horas/dias)"
+      - "Não faz perguntas de volta"
+      - "Não envia conteúdo proativo (stories, foto, áudio)"
+      - "Likes em vez de respostas verbais"
+    interpretation_options:
+      - reading: "Você não está gerando picos de emoção — está fazendo small talk de entrevista de emprego"
+        confidence: alta
+        next_move: "Pico de emoção forte na próxima mensagem (teasing-desvalidação ou flirting indireto) + pergunta aberta. Não pergunta o que ela tá fazendo — usa o conteúdo do perfil/stories dela."
+      - reading: "Você está no banco de reserva — ela tem outros caras prioritários, te responde por educação"
+        confidence: media
+        next_move: "Reduz frequência de mensagens. Não espera ela. Modo metralhadora — converse com outras. Se ela voltar a investir, retoma."
+      - reading: "Ela não tá num bom momento (briga, trabalho corrido, vida real ruim)"
+        confidence: baixa
+        next_move: "Espera 3-5 dias sem cobrar. Volta com algo leve e divertido (teasing engraçado). Se continuar seca, é leitura #1 ou #2."
+    source_refs:
+      - "O_que_FAZER_quando_a_MULHER_te_responde_SECA_passo_a_passo"
+
+  - id: mulher_olhou_balada
+    situation: "Mulher na balada faz contato visual sustentado / sorri pra você"
+    signals_to_read:
+      - "Olhar dura mais que o normal (>2 segundos)"
+      - "Sorriso ao fazer contato visual"
+      - "Brinca com cabelo enquanto olha"
+      - "Posição corporal vira pra você"
+      - "Olhares repetidos depois de você desviar (proativos)"
+    interpretation_options:
+      - reading: "Sinal de interesse genuíno — green light pra abordar"
+        confidence: alta
+        next_move: "NÃO quebra contato visual. Brinda/acena (comunicação não-verbal primeiro). Regra dos 3 segundos. Aborda com teasing direto: 'se você continuar me olhando desse jeito, vou me sentir um pedaço de carne'."
+      - reading: "Ela está olhando porque você está olhando de volta (loop neutro)"
+        confidence: baixa
+        next_move: "Faça um sinal não-verbal (brinda, sorriso). Se ela RESPONDE positivamente, é sinal real. Se não, era loop neutro."
+      - reading: "Pode estar olhando alguém atrás de você"
+        confidence: baixa
+        next_move: "Não vire imediatamente pra checar (sinal de fraqueza). Em vez disso, sustente o contato visual + sorriso. Se for pra você, ela vai sustentar de volta."
+    source_refs:
+      - "Nunca_Mais_Perca_Oportunidades_-_O_que_Fazer_Quando_Uma_Mulher_Olha_Para_Voce_Passo_a_Passo"
+
+  - id: ela_quer_te_beijar_no_date
+    situation: "Final do primeiro date — você fez beijo na bochecha mantendo contato visual"
+    signals_to_read:
+      - "Ela mantém o contato visual depois do beijo na bochecha"
+      - "Ela NÃO vira o rosto"
+      - "Linguagem corporal aberta, virada pra você"
+      - "Lábios entreabertos, respiração mais profunda"
+      - "Ela mesma se aproxima sutilmente"
+    interpretation_options:
+      - reading: "Green light total — você executou bem o CVC, ela tá pronta"
+        confidence: alta
+        next_move: "Pega na nuca. Olha pra boca dela, olha pro olho. Beija. Sem hesitação."
+      - reading: "Ela tá meio em dúvida mas não está rejeitando"
+        confidence: media
+        next_move: "Faça outro micro-avanço (mão na cintura, encosta a testa na dela). Se ela continua, vai pro beijo. Se afasta, espera próximo encontro."
+      - reading: "Você ainda não chegou no 50% da barrinha — falta CVC durante o date"
+        confidence: media
+        next_move: "Diagnóstico retroativo: passos 2 e 3 do pré-beijo não foram executados durante o date (toques suaves + aproximação). Não force o beijo. Marca segundo date."
+    source_refs:
+      - "4_PASSOS_PARA_BEIJAR_E_CRIAR_INTIMIDADE_COM_UMA_MULHER_MuriloVilaverde"
+      - "3_coisas_que_voce_DEVE_fazer_no_1_encontro"
+
+  - id: cliente_travando_aborgagem
+    situation: "Cliente reclama 'eu sei o que fazer mas trava na hora'"
+    signals_to_read:
+      - "Cliente assiste muitos vídeos / fez muitos cursos"
+      - "Não tem histórico de abordagens reais"
+      - "Sabe explicar teoria perfeitamente"
+      - "Fora de flow social (passou semana sem falar com mulher)"
+      - "Cérebro racionalizando muito antes de agir"
+    interpretation_options:
+      - reading: "Obeso mental — saber sem fazer = não saber"
+        confidence: alta
+        next_move: "Forçar execução imediata. Plano: aborda 1 mulher hoje, mesmo travando. Relato amanhã. Não compra mais curso. Volta na próxima call só com história real."
+      - reading: "Falta de flow social — músculo atrofiado"
+        confidence: alta
+        next_move: "Aplicar 5 etapas do flow social: começa hoje só com bom dia. Trabalha gradual durante a semana. Sábado vai testar."
+      - reading: "Cliente espera condição perfeita (mulher certa, local certo, mood certo)"
+        confidence: media
+        next_move: "Reduzir critério de 'mulher pra abordar' nas primeiras 10 (aborda qualquer uma só pra treinar). Vilaverde: 'tomem fora, fiquem em frente, gaguejem — mas COMECEM'."
+    source_refs:
+      - "OS_DOIS_SEGREDOS_POR_TRAS_DA_CONFIANCA"
+      - "Me_de_13_minutos_e_eu_vou_APAGAR_seu_medo_de_chegar_em_mulher"
+
+  - id: cliente_nao_tem_resultado_apesar_de_volume
+    situation: "Cliente aborda muito, manda muita mensagem, mas não converte em date"
+    signals_to_read:
+      - "Alto volume de abordagens"
+      - "Mulheres respondem inicialmente"
+      - "Conversa morre em 5-10 mensagens"
+      - "Trocam Instagram mas elas não respondem DM"
+      - "Dates não viram segundo date"
+    interpretation_options:
+      - reading: "Problema é Interaction (pilar do VIBE) — falta bloco de interação correto"
+        confidence: alta
+        next_move: "Auditar conversa típica dele. Provavelmente é small talk puro (sem teasing/flirting). Forçar prática do '2T 1F' por uma semana."
+      - reading: "Problema é Execution — ele pula passos do cold approach (vai direto pro 'posso pegar seu Instagram?' sem convite indireto)"
+        confidence: media
+        next_move: "Revisar os 4 passos. Praticar convite indireto antes de pedir contato. Linkar DM com piada interna criada na abordagem."
+      - reading: "Problema é Value/Behavior — Instagram dele fura o balde"
+        confidence: media
+        next_move: "Análise visual do perfil. Provavelmente sem stories, sem lifestyle. Arrumar Instagram pra ontem."
+    source_refs:
+      - "Como_Sair_Do_ZERO_e_Marcar_1-2_Encontros_Toda_Semana_Depois_De_Um_Termino_Guia_Definitivo"
+
+  - id: mulher_friendzonando_apos_alguns_dates
+    situation: "Após 2-4 dates, mulher fica fria, vira friendzone"
+    signals_to_read:
+      - "Mensagens mais espaçadas"
+      - "Convites desmarcados sem reagendamento da parte dela"
+      - "Ela menciona outros caras (positivos)"
+      - "Ela usa palavras 'amigos', 'colega', 'amiga'"
+      - "Toque físico não recíproco"
+    interpretation_options:
+      - reading: "Você falhou no CVC durante os dates — passou todos no zero da barrinha"
+        confidence: alta
+        next_move: "Não tem volta fácil. Recolocou ela em 'amigo' na cabeça dela. Aplica push: para de buscar, foca em modo metralhadora. Se ela voltar a buscar, retoma com teasing forte pra resetar frame."
+      - reading: "Você se abriu cedo demais (falou da ex, contou inseguranças, mostrou vulnerabilidade pre-conquista)"
+        confidence: media
+        next_move: "Aceitar perda. Lição: ser forte primeiro, vulnerável depois. Próxima mulher, aplicar regra."
+      - reading: "Ela tá testando se você é gado (resiste a sair se você correr atrás)"
+        confidence: baixa
+        next_move: "Aplica push real. Some 7 dias. Se ela busca, retoma frame de homem que tem opções. Se não, era leitura #1 ou #2."
+    source_refs:
+      - "NUNCA_conte_esses_3_Segredos_sobre_voce_pra_uma_mulher"
+      - "4_PASSOS_PARA_BEIJAR_E_CRIAR_INTIMIDADE_COM_UMA_MULHER_MuriloVilaverde"
+
+  - id: cliente_obsessivo_com_uma_mulher
+    situation: "Cliente fala só de UMA mulher, checa Insta dela compulsivamente, pensa demais nas mensagens"
+    signals_to_read:
+      - "Conversa de mentoria gira em volta da mesma mulher"
+      - "Cliente checa stories dela várias vezes ao dia"
+      - "Pensa muito antes de cada mensagem"
+      - "Não tá conversando com outras"
+      - "Cancela atividades pra manter agenda livre 'caso ela chame'"
+    interpretation_options:
+      - reading: "Sniper — modo escassez ativado"
+        confidence: alta
+        next_move: "Modo metralhadora obrigatório. Conversa com mínimo 3 outras mulheres simultaneamente. Apaga a notification do Instagram dela do telefone. Acredita: 'um homem com medo de perder uma mulher, já a perdeu'."
+      - reading: "Pedestal — ela está acima dele na régua na cabeça dele"
+        confidence: alta
+        next_move: "Mudança de mindset: 'será que eu vou gostar dela?' (não 'ela vai gostar de mim?'). Lista as Coisas DELA que ele descobriria que NÃO gostaria. Recoloca régua."
+      - reading: "Ele genuinamente quer relacionamento sério com ela e pode dar certo"
+        confidence: baixa
+        next_move: "Mesmo assim, modo metralhadora durante a conquista. Após relacionamento estabelecido, aí muda foco. Mas durante? Volume."
+    source_refs:
+      - "3_Formas_CONTROVERSAS_de_pegar_MULHERES_BONITAS_A_3_e_OURO"
+      - "O_que_eu_aprendi_abordando_1000_mulheres"
+
+  - id: cliente_recem_divorciado_ou_termino
+    situation: "Cliente acabou de sair de relacionamento longo, totalmente fora de flow"
+    signals_to_read:
+      - "Não usa Tinder há anos"
+      - "Instagram zerado / com fotos antigas / com fotos da ex"
+      - "Ciclo social do ex-casal (não tem mais)"
+      - "Não aborda mulheres na rua"
+      - "Trabalho, academia, casa — rotina fechada"
+      - "Vergonha de 'voltar pro jogo'"
+    interpretation_options:
+      - reading: "Limbo pós-término — esperando ex voltar ou tempo curar"
+        confidence: alta
+        next_move: "3 passos brutais: (1) cortar TODOS os vínculos sociais com a ex (parar de seguir, bloquear se necessário); (2) treinar flow social aos poucos com 5 etapas; (3) arrumar Instagram pra ontem."
+      - reading: "Cliente quer 'mulher de valor já' pra preencher vazio"
+        confidence: media
+        next_move: "Primeiro: construir abundância com canais errados (Tinder + Nightlife) só pra abundância. Mulher de valor vem DEPOIS (Ciclo Social + Cold Approach). Sem abundância, ele vai grudar na primeira."
+    source_refs:
+      - "Como_Sair_Do_ZERO_e_Marcar_1-2_Encontros_Toda_Semana_Depois_De_Um_Termino_Guia_Definitivo"
+      - "Como_Retomar_Sua_S3xual_Depois_de_Anos_em_um_Relacionamento_passo_a_passo"
+
+  - id: cliente_redpill_intoxicado
+    situation: "Cliente usa vocabulário redpill (VSM, mulher é vagabunda, golpe da barriga, etc)"
+    signals_to_read:
+      - "Conversa traz termos: VSM, alpha/beta, gold digger, hipergamia"
+      - "Generaliza ('mulher é tudo igual', 'mulher só quer dinheiro')"
+      - "Tem checklist de red flags"
+      - "Não pega ninguém / pega só mulher 'baixa'"
+      - "Senta longe pra falar mal de mulheres"
+    interpretation_options:
+      - reading: "Trauma de relacionamento passado + frustração de não pegar = espelho de redpill"
+        confidence: alta
+        next_move: "Mostrar contradição: redpill diz que mulher só pega cara rico, mas xinga mulher que pega cara rico. Inconsistência. Reframe: 'a culpa é tua, você é o capitão do barco — não terceiriza'."
+      - reading: "Identificação ideológica como compensação por baixa autoestima"
+        confidence: media
+        next_move: "Mostrar exemplos de mulheres normais (não top 1%, não vagabunda) que existem em massa. Diversificar canais — geralmente o cara só usa Tinder (canal errado pro objetivo)."
+      - reading: "Tem alguma verdade no que ele fala, mas exagera"
+        confidence: media
+        next_move: "Aceitar verdades parciais (sim, mulher gata é mais 'maria-vai-com-as-outras', sim, atração tem componentes biológicos). Mas reformular: você pode MANIPULAR sua posição na régua, não é destino."
+    source_refs:
+      - "Isso_Define_Se_Uma_Mulher_Vai_TR4NS4R_Com_Voce_Ou_Nao_baseado_na_psicologia_feminina"
+      - "Nerd_Sedutor_falou_mal_de_mim_REAGINDO_AO_EXPOSED"
+      - "Ignore_a_redpill_beijar_mulher_no_carnaval_vai_te_fazer_ganhar_mais_dinheiro"
+
+  - id: abordagem_de_grupo_com_amiga_chata
+    situation: "Aborda grupo, uma das amigas (cock blocker) já chegou hostil"
+    signals_to_read:
+      - "Amiga puxa o alvo pra longe"
+      - "Amiga interrompe quando você fala"
+      - "Amiga faz olhar de 'não confio nesse cara'"
+      - "Linguagem corporal fechada da amiga"
+    interpretation_options:
+      - reading: "Função normal de amiga protetora — não é pessoal"
+        confidence: alta
+        next_move: "Foco TOTAL na amiga. Teasing leve, brincadeira interna, pede aprovação dela ('aprova esse cara aqui?'). Quando amiga ri e relaxa, vira pro alvo."
+      - reading: "Amiga gostou de você e está disputando atenção"
+        confidence: media
+        next_move: "Use isso. Faça teasing combinado nas duas. Cria triângulo cômico. Amiga que disputa atenção é EASIER que amiga que rejeita."
+      - reading: "Grupo já tá numa vibe ruim antes de você chegar (briga, mood baixo)"
+        confidence: baixa
+        next_move: "Aborte. Não force. 'Foi um prazer conhecer vocês'. Volta outro dia."
+    source_refs:
+      - "O_que_FAZER_quando_a_MULHER_te_responde_SECA_passo_a_passo"
+
+  - id: mulher_em_modo_tinder_swiping_left
+    situation: "Mulher abre Tinder, swipe right em você quase nunca"
+    signals_to_read:
+      - "Pouquíssimos matches por semana (relativo ao tempo investido)"
+      - "Matches quase só de mulher 'baixa' / 'média'"
+      - "Mulher gata 9/10 quase nunca dá match"
+    interpretation_options:
+      - reading: "Perfil tá fraco visualmente (fotos ruins, sem variedade, sem lifestyle)"
+        confidence: alta
+        next_move: "Tirar fotos profissionais. Diversidade: foto séria, foto sorrindo, foto com amigos, foto em viagem, foto em atividade física. Bio curta e divertida (não pretensiosa)."
+      - reading: "Cara baixo na régua das mulheres que ele dá swipe right (ele só dá em mulher acima do nível dele)"
+        confidence: media
+        next_move: "Manipular percepção: exposição via redes. Investir em vestimenta. Foto em lugares 'caros'. Não é desonestidade — é parecer bom (que é o que ele PRECISA fazer, pelo manifest)."
+      - reading: "Tinder local tá saturado / cara tá em lugar com poucas mulheres"
+        confidence: baixa
+        next_move: "Tinder não é o canal principal pra ele. Foco em Cold Approach + Ciclo Social. Tinder só pra abundância suplementar."
+    source_refs:
+      - "Como_Retomar_Sua_S3xual_Depois_de_Anos_em_um_Relacionamento_passo_a_passo"
+      - "Isso_Define_Se_Uma_Mulher_Vai_TR4NS4R_Com_Voce_Ou_Nao_baseado_na_psicologia_feminina"
+
+  - id: ela_postou_stories_de_atenção
+    situation: "Mulher posta stories de pose, foto de espelho, foto sensual com legenda vaga"
+    signals_to_read:
+      - "Tipo de stories pra chamar atenção"
+      - "Posta horário de pico (final de tarde, noite)"
+      - "Legenda vaga ('vibe', 'mood', emoji só)"
+      - "Cara dela visível, corpo destacado"
+    interpretation_options:
+      - reading: "Buscando validação geral — 30 gados vão mandar 'gata', 'linda'"
+        confidence: alta
+        next_move: "NÃO entre na fila. Manda teasing-desvalidação ('arrumou a cama?', 'tá bonita mas o cabelo tá fora', etc). Diferencia da massa imediatamente."
+      - reading: "Especificamente postou pra você ver (você tá no banco de reserva dela)"
+        confidence: baixa
+        next_move: "Mesma estratégia — teasing diferenciado. Se ela responder rápido, era pra você mesmo. Se demora, era validação geral."
+    source_refs:
+      - "Faca_isso_e_NUNCA_mais_fique_no_VACUO_Passo_a_passo_MuriloVilaverde"
+
+  - id: relacionamento_estabelecido_em_risco
+    situation: "Você está namorando há meses/anos e percebe ela esfriando"
+    signals_to_read:
+      - "Menos toque físico inicial dela"
+      - "Menos elogios espontâneos dela"
+      - "Mais celular, menos presença"
+      - "Aceita menos sair com você"
+      - "Ela menciona amigas/outras pessoas mais"
+    interpretation_options:
+      - reading: "Você ficou acomodado — parou de gerar pico de emoção dentro do relacionamento"
+        confidence: alta
+        next_move: "Retomar teasing E flirting DENTRO do relacionamento (Vilaverde aplica isso com a namorada tcheca). Não é só fase de conquista — é manutenção. Surpresas, micro-fantasias, brincadeiras."
+      - reading: "Ela encontrou alguém melhor que você"
+        confidence: media
+        next_move: "Aceitar que pode acontecer ('a qualquer momento ela pode encontrar alguém melhor'). Volta a investir em VOCÊ (academia, carreira, ciclo social) sem desespero. Se ela for, foi. Se ficar, é porque você é a melhor opção."
+      - reading: "Ela tá com problema pessoal (trabalho, família) que não tem a ver com você"
+        confidence: media
+        next_move: "Perguntar diretamente: 'o que tá acontecendo, você parece distante'. Escuta sem se defender. Se for problema pessoal real, apoia (aqui SIM vulnerabilidade conecta — relacionamento estabelecido)."
+    source_refs:
+      - "7_Atitudes_Que_Conquistam_Qualquer_Mulher_10_10"
+      - "NUNCA_conte_esses_3_Segredos_sobre_voce_pra_uma_mulher"

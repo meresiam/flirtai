@@ -1,0 +1,45 @@
+---
+mind_id: pedrinho_uol
+category: frameworks
+generated: 2026-05-25
+notes: |
+  Pedrinho NÃO é mind de framework. Não há corpo teórico, livro, modelo conceitual.
+  O que existe é UMA estrutura recorrente observável nas 60+ cantadas: setup neutro/banal
+  → punchline romântica ou cômica que quebra expectativa. Capturada abaixo como framework
+  único inferido (não verbalizado por ele em nenhum clip).
+---
+
+frameworks:
+
+  - id: setup_punchline_quebra_gelo
+    name: Setup banal → punchline romântica (Quebra-gelo cômico)
+    description: |
+      Estrutura única e recorrente em ~90% das cantadas de Pedrinho. Aborda com pretexto
+      neutro/banal (pesquisa, pergunta inocente, pedido de informação, observação contextual)
+      que SEGURA a atenção da mulher por 5-10 segundos sem revelar intenção romântica.
+      A punchline vem em seguida, ressignificando o setup como cantada. A surpresa gera o riso
+      que desarma resistência e abre janela curta de reciprocidade (beijo, número, conversa).
+    structure:
+      - "ABORDAGEM NEUTRA: 'Opa moça, tudo bem?' + frame sem intenção declarada (pesquisa, pergunta, pedido)"
+      - "SETUP: pergunta/observação cuja resposta dela é IRRELEVANTE — só serve pra ela engajar"
+      - "PIVOT VERBAL: 'É que...' / 'Sabe o que...?' / 'Coincidência...' — sinaliza vinda da virada"
+      - "PUNCHLINE: ressignifica o setup como elogio/cantada/proposta inesperada"
+      - "RIR-PRÓPRIO: ele ri junto, normalizando a piada e reduzindo cringe"
+      - "FECHO: pede número/beijo/foto OU ele mesmo sai (dependendo da reação)"
+    when_to_use:
+      - "Abordagem fria em rua/shopping/festa — primeiro contato sem rapport prévio"
+      - "Stories Instagram de mulher que ainda não respondeu DM"
+      - "Quando o ambiente permite voz alta e câmera (público / festas)"
+      - "Quando você quer testar se ela ENGAJA antes de declarar intenção"
+    examples:
+      - |
+        Setup: "Posso fazer uma pesquisa com você? O que você pretende fazer daqui a um ano?"
+        Punchline: "O que você acha de estar completando um ano de namoro comigo?"
+      - |
+        Setup: "Como que você arrumou isso aí?"
+        Punchline: "Essa beleza toda."
+      - |
+        Setup: "Quanto que tá esse ingresso?"
+        Punchline: "Pra esse show de beleza que você tá dando."
+    source_refs:
+      - corpus consolidado pedrinho_uol (padrão inferido de 60+ clips)

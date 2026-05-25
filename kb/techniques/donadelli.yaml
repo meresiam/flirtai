@@ -1,0 +1,346 @@
+# FlirtAI KB — Donadelli — Techniques
+# Práticas concretas — não são técnicas de campo (PUA), são técnicas
+# de trabalho interno. São o ARSENAL de Donadelli para construir o homem
+# antes de qualquer interação. Marque tudo com axis trabalho_interno.
+
+schema_version: 1.0
+generated: 2026-05-25
+
+mind_id: donadelli
+philosophical_axis: trabalho_interno
+
+techniques:
+  - id: retencao_seminal_basica
+    name: "Retenção Seminal (Hard Mode NoFap)"
+    description: >
+      Abstinência total de ejaculação por períodos definidos (7, 14, 30,
+      90 dias). Inclui corte de pornografia, masturbação E orgasmo no
+      sexo. Donadelli posiciona como prática central — não é só 'parar
+      de bater punheta', é estratégia energética de longo prazo.
+    script_examples:
+      - "Decisão pública/privada — 'vou ficar 30 dias em hard mode' (registrar)"
+      - "Corte de gatilhos visuais — desinstalar Instagram, bloquear sites adultos"
+      - "Substituição comportamental — quando bater vontade, banho frio + 20 flexões + caminhar"
+      - "Comunicação com parceira — se casado/namorando, alinhar 'vou ficar sem ejacular X dias'"
+      - "Tracking — calendário com X em cada dia limpo (efeito visual de streak)"
+    when:
+      - "Reset inicial de viciado pesado — 90 dias mínimo (reboot)"
+      - "Antes de fase criativa intensa — 30 dias"
+      - "Manutenção saudável — ciclos regulares"
+    risk: >
+      Hipersensibilidade pós-retenção (ejaculação precoce no primeiro
+      sexo). Risco de orgulho/identidade rígida ('sou o cara do NoFap').
+      Risco de transferir o vício para outra coisa (Instagram, jogo,
+      café). Em casos extremos de pessoas com história psiquiátrica,
+      pode disparar ansiedade.
+    mastery_signal: >
+      Você passa 30+ dias sem 'contar os dias'. Energia estável (não
+      pico-vale). Mulheres começam a olhar/abordar espontaneamente
+      (relato comum). Não sente urgência ao ver estímulo visual.
+    source_refs:
+      - "LifeHacker — definição dos 3 modos, descrição detalhada do Hard"
+      - "À Deriva — 'retenção seminal, hard mode'"
+
+  - id: meditacao_respiracao_basica
+    name: "Meditação de Respiração com Foco na Pausa"
+    description: >
+      Técnica que Donadelli aprendeu aos 7 anos em grupo de reabilitação
+      e retomou aos 19. Foco da atenção na PAUSA entre inalação e
+      exalação (e vice-versa). Cada pausa é micro-treino de presença.
+      Quando pensamento aparece, observa e volta — não tenta eliminar.
+    script_examples:
+      - "Sentar, costas eretas, olhos fechados"
+      - "Respiração natural — não forçar"
+      - "Inalar... pausa (foco aqui)... exalar... pausa (foco aqui)..."
+      - "Quando aparecer pensamento, observar (sem julgamento) e voltar à pausa"
+      - "Início: 5-10 minutos diários. Avançado: 20-40 minutos"
+    when:
+      - "Toda manhã após banho frio (parte do ritual matinal)"
+      - "Em momentos de pico de tesão/recaída iminente"
+      - "Antes de decisões importantes"
+      - "Quando 'monkey mind' está dominando"
+    risk: >
+      Forçar a tentar 'parar pensamentos' (não funciona, frustra,
+      desiste). Esperar resultado imediato (efeito real aparece após
+      semanas/meses). Confundir com sono — ficar deitado pode virar cochilo.
+    mastery_signal: >
+      Estados de não-dualidade ocasionais ('parecia que era o oceano').
+      Donadelli atingiu isso após ~7 meses de prática diária. Capacidade
+      de observar emoção forte sem se identificar com ela.
+    source_refs:
+      - "À Deriva — explicação da técnica via respiração, monkey mind"
+      - "À Deriva — narrativa dos 7 anos de idade na Alemanha"
+
+  - id: tecnica_proximo_pensamento
+    name: "Pergunta do Próximo Pensamento (técnica do Flamino)"
+    description: >
+      Técnica meditativa pragmática que Donadelli aprendeu de Douglas
+      Flamino. Quando perceber que se perdeu em pensamento, pergunte
+      mentalmente: 'qual será meu próximo pensamento?' Isso cria uma
+      pausa onde o observador (a parte de você que faz a pergunta) se
+      separa do pensador.
+    script_examples:
+      - "Meditando, percebe que se perdeu numa narrativa mental"
+      - "Para. Pergunta: 'qual vai ser meu próximo pensamento?'"
+      - "Permanece em estado de presença vazia por alguns segundos"
+      - "Quando próximo pensamento vem, repete: 'qual vai ser o próximo?'"
+      - "Loop até completar período de meditação"
+    when:
+      - "Quando a respiração simples não está ancorando a atenção"
+      - "Em momentos de ansiedade aguda (interruptor de loop mental)"
+      - "Para iniciantes que não conseguem ficar 10 segundos focados"
+    risk: >
+      Pode virar exercício intelectual ('estou esperando o próximo pensamento')
+      em vez de presença genuína. Aplicar com leveza.
+    mastery_signal: >
+      Aparição de cores/luzes com olhos fechados ('cor amarelada'), sinal
+      de quietude visual. Capacidade de manter a pausa por períodos
+      mais longos.
+    source_refs:
+      - "À Deriva — narrativa de Donadelli aprendendo com Douglas Flamino"
+
+  - id: banho_frio
+    name: "Banho Frio Matinal"
+    description: >
+      Imersão em água fria (não morna, fria de verdade) por 2-5 minutos
+      logo após acordar. Sofrimento voluntário controlado. Constrói
+      resiliência psicológica, melhora circulação, ativa o sistema
+      nervoso simpático, desperta.
+    script_examples:
+      - "Entra no chuveiro, abre apenas a água fria"
+      - "Respira fundo 3x antes (Wim Hof helps)"
+      - "Aguenta 1-3 minutos no início (escala até 5)"
+      - "Não usa 'esquenta um pouco e depois esfria' — direto frio"
+      - "Sai, seca, segue ritual matinal (meditação, café)"
+    when:
+      - "Todo dia de manhã (parte do ritual)"
+      - "Quando precisa quebrar inércia mental (substitui café)"
+      - "Quando está deprimido/desmotivado (interruptor de estado)"
+    risk: >
+      Pessoas com problemas cardíacos devem consultar médico. Forçar
+      em dia muito doente pode piorar resfriado. Não exagerar (10+ min
+      é hipotermia).
+    mastery_signal: >
+      Você passa a SENTIR FALTA quando pula. A primeira respiração após
+      sair do banho parece a primeira respiração do dia de verdade.
+      Capacidade de não recuar quando a água bate.
+    source_refs:
+      - "LifeHacker — banho frio como parte do ritual matinal"
+
+  - id: visualizacao_dia_anterior
+    name: "Visualização do Próximo Dia (à Noite)"
+    description: >
+      Prática noturna: antes de dormir, visualizar o próximo dia em
+      detalhe — o que vai fazer, em qual ordem, como vai se sentir.
+      Premissa: 'o dia começa no dia anterior'. Pessoas que reclamam
+      'todo dia é igual' não visualizam diferente.
+    script_examples:
+      - "22h — celular guardado, cadernos abertos"
+      - "Anota o que precisa ser feito amanhã (prioridades 1-3)"
+      - "Fecha os olhos. Visualiza: acordo, banho frio, medito, café, trabalho"
+      - "Inclui emoção — visualiza-se SENTINDO bem ao fazer cada coisa"
+      - "Dorme com a próxima cena já carregada"
+    when:
+      - "Toda noite (parte do ritual noturno)"
+      - "Especialmente antes de dias importantes (apresentação, encontro)"
+      - "Quando dias estão se borrando (perda de sentido)"
+    risk: >
+      Visualizar com expectativa rígida = frustração quando dia desvia.
+      Use como direção, não como script obrigatório.
+    mastery_signal: >
+      Sensação de 'já estou no dia' antes mesmo de dormir. Acordar
+      energizado, sabendo exatamente o que fazer.
+    source_refs:
+      - "LifeHacker — 'o dia começa no dia anterior. O que você pensa antes de dormir vai determinar o seu próximo dia'"
+
+  - id: visualizacao_lei_atracao
+    name: "Visualização Carregada de Emoção (Lei da Atração Pragmática)"
+    description: >
+      Técnica baseada em Joseph Murphy + Napoleon Hill. Não é wishful
+      thinking — é PENSAMENTO + EMOÇÃO FORTE + PRAZO. Para Donadelli, a
+      emoção mais potente é a sexual (transmutação). A visualização tem
+      que SER VIVIDA como se estivesse acontecendo agora.
+    script_examples:
+      - "Defina a meta — concreta, mensurável, com prazo"
+      - "Sente em local tranquilo, fecha olhos"
+      - "Visualiza-se já no estado desejado (já tem o que quer)"
+      - "Carrega com emoção forte — recordar momento de amor genuíno ou desejo sexual"
+      - "Permanece 5-15 minutos repetindo a cena com emoção"
+      - "Pratica todo dia, mesma hora"
+    when:
+      - "Meta de longo prazo recém-definida"
+      - "Antes de evento importante (visualizar o sucesso)"
+      - "Quando o subconsciente está sabotando ('eu não mereço')"
+    risk: >
+      Sem ação alinhada, vira fantasia. A visualização atrai, mas
+      VOCÊ executa. Cuidado com afirmações reversas: 'eu sou rico'
+      pode reforçar 'eu não sou rico' se a emoção subjacente for de falta.
+    mastery_signal: >
+      Sincronicidades aparecem (oportunidades surgem). A meta começa a
+      sentir 'inevitável' em vez de 'distante'.
+    source_refs:
+      - "À Deriva — Lei da Atração via Joseph Murphy, Napoleon Hill"
+      - "À Deriva — 'pensamento + emoção em um → mover montanhas'"
+
+  - id: respiracao_nadi_shodhana
+    name: "Respiração Alternada (Pranayama Ida/Pingala)"
+    description: >
+      Técnica yogue de respiração alternada pelas narinas. Ida (esquerda,
+      feminina, calmante) e Pingala (direita, masculina, ativadora).
+      Donadelli aprendeu aos 7 anos sem saber o nome. Usa para regulação
+      de estado.
+    script_examples:
+      - "Sente reto, mão direita no rosto"
+      - "Tampa narina direita com polegar — respira pela esquerda 10x (calmar raiva)"
+      - "OU tampa narina esquerda com anelar — respira pela direita 10x (ativar produção)"
+      - "Versão alternada — inala esquerda, exala direita, inala direita, exala esquerda"
+    when:
+      - "Antes de evento — esquerda 10x (acalmar nervosismo)"
+      - "Antes de trabalho criativo — direita 10x (ativar)"
+      - "Em momentos de pico emocional"
+    risk: >
+      Hiperventilação se feito muito rápido. Tontura em iniciantes —
+      respiração natural, não forçada.
+    mastery_signal: >
+      Mudança perceptível de estado em ~2 minutos. Capacidade de usar
+      como 'botão' em situações reais.
+    source_refs:
+      - "À Deriva — narrativa de Anayama aprendida na infância"
+
+  - id: tantra_pratica
+    name: "Sexo Tântrico / Karezza (sem ejaculação)"
+    description: >
+      Prática de sexo prolongado SEM ejaculação masculina. Foco em
+      respiração, presença, troca energética. Donadelli pratica com
+      namorada atual. Resultado: sessões de várias horas, múltiplas
+      'rodadas' sem orgasmo masculino, energia preservada.
+    script_examples:
+      - "Pré-jogo — comunicação clara com parceira sobre intenção"
+      - "Respiração coordenada — sincronizar com parceira"
+      - "Movimentos lentos — pausa quando pico de excitação aproxima"
+      - "Foco no toque, no olhar, na respiração — não no clímax"
+      - "Quando próximo de gozar — para, respira fundo, foca em outro ponto do corpo"
+      - "Sessão pode durar 1-4 horas sem orgasmo masculino"
+    when:
+      - "Em relacionamento estável com parceira disposta"
+      - "Quando quer combinar Hard Mode com intimidade"
+      - "Para aprofundar conexão erótica para além do mecânico"
+    risk: >
+      Blue balls em iniciantes (raro, passa). Frustração da parceira se
+      ela quer ver o orgasmo dele. Risco de transferir 'pressão de performance'
+      pra outro lado (durar mais virou nova ansiedade).
+    mastery_signal: >
+      'Eu não sinto mais vontade de gozar'. Sensação de energia subindo
+      pelo corpo durante o sexo (kundalini reportada). Parceira reporta
+      mais prazer dela (porque você está mais presente).
+    source_refs:
+      - "À Deriva — descrição completa do Tantra, citação Steve Jobs"
+      - "À Deriva — 'eu não necessito mais a ejaculação'"
+
+  - id: jejum_dopaminergico
+    name: "Jejum Dopaminérgico (Dopamine Detox)"
+    description: >
+      Aplicar Hard Mode a TODOS os estímulos hiper-dopaminérgicos —
+      não só pornografia. Inclui redes sociais, notícias, videogame,
+      açúcar refinado, café excessivo, séries em binge. Período de
+      reset (1-30 dias) volta a 'baseline' de prazer com coisas
+      simples.
+    script_examples:
+      - "Identifica seus top 5 hits dopaminérgicos diários"
+      - "Corta TODOS por X dias (24h, 7 dias, 30 dias)"
+      - "Substitui por atividades baixo-dopaminérgicas — caminhar, ler em papel, conversar, meditar"
+      - "Diário — anota o que sentia que precisava e como passou"
+    when:
+      - "Sensação de 'nada mais me dá prazer'"
+      - "Após período de excesso (férias, festas, binge)"
+      - "Início de jornada NoFap (reset completo)"
+    risk: >
+      Abstinência aguda nos primeiros dias (mau-humor, ansiedade, dor
+      de cabeça). Risco social se cortar demais e isolar.
+    mastery_signal: >
+      'Conversar com alguém é extremamente prazeroso. Simplesmente estar
+      presente.' Volta da capacidade de gozo simples (conversa, café,
+      caminhada).
+    source_refs:
+      - "À Deriva — 'corta o máximo possível tudo que estimula dopamina pra você voltar a um estado inocente'"
+      - "À Deriva — 'hoje eu graças a Deus consigo sentar aqui e estou contente. Eu não preciso mais checar Instagram'"
+
+  - id: terceira_perspectiva
+    name: "Auto-Observação em Terceira Pessoa"
+    description: >
+      Técnica filosófica clássica (gregos). No meio de uma ação, congele
+      mentalmente e veja-se como se fosse outra pessoa olhando uma foto.
+      Como você ficaria nesse exato momento numa foto? Funciona como
+      detector de comportamento patético/auto-degradante.
+    script_examples:
+      - "No meio de uma ação compulsiva, congela"
+      - "Pergunta: 'como isso ficaria numa foto agora?'"
+      - "Vê a cena de fora — sua postura, sua expressão, o contexto"
+      - "Avalia: é a foto de um homem que você quer ser?"
+      - "Se não — interrompe e muda"
+    when:
+      - "Pico de impulso para masturbar / scrollar / comer mal"
+      - "Início de conflito relacional"
+      - "Decisão de risco moderado"
+    risk: >
+      Pode virar auto-vigilância paralisante se usado o tempo todo.
+      Use como interruptor pontual, não como estado contínuo.
+    mastery_signal: >
+      Capacidade de mudar rota no momento (sem precisar de 'amanhã eu
+      paro'). Interrupção de ciclos antes deles começarem.
+    source_refs:
+      - "À Deriva — 'meditação histórica, terceira perspectiva, os gregos'"
+      - "À Deriva — narrativa do momento da virada na pornografia"
+
+  - id: trabalho_minimalismo
+    name: "Trabalho Mínimo de 8 Horas + Minimalismo Essencialista"
+    description: >
+      Disciplina diária: trabalhar 8 horas REAIS (não 8 horas no escritório
+      checando feed). Minimalismo aplicado a tudo — roupas, posses, agenda,
+      relacionamentos. Tudo que não agrega ao propósito é eliminado.
+    script_examples:
+      - "Calendário fechado — blocos de 90 minutos focados"
+      - "Inbox/feed bloqueados nas primeiras 2 horas"
+      - "Roupa minimalista — uniforme pessoal (3-5 combinações)"
+      - "Agenda — recusar compromissos que não servem propósito"
+      - "Posses — eliminar o que não usa há 6 meses"
+    when:
+      - "Início de fase de construção (carreira, projeto, recovery)"
+      - "Sobrecarregado de coisas/compromissos sem progresso"
+      - "Setup base para NoFap funcionar (estrutura externa apoia interna)"
+    risk: >
+      Minimalismo radical pode virar identidade rígida e julgamento dos
+      outros. Cuidado para não virar 'eu sou superior por ter pouco'.
+    mastery_signal: >
+      Sentir-se LEVE com menos. Capacidade de focar 90 minutos sem
+      distração. Clareza sobre prioridades.
+    source_refs:
+      - "LifeHacker — '8 horas por dia mínimo' + descrição do minimalismo essencialista"
+
+  - id: leitura_diaria_de_classicos
+    name: "Leitura Diária — Pilares Filosóficos"
+    description: >
+      Donadelli construiu sua visão através de leituras estruturadas.
+      Não é leitura casual — é estudo. Livros centrais que ele cita
+      repetidamente compõem o 'currículo AlphaSpirit'.
+    script_examples:
+      - "Núcleo — 'Think and Grow Rich' (Napoleon Hill), 'Mais Esperto que o Diabo' (Hill)"
+      - "Manifestação — 'Poder do Subconsciente' (Joseph Murphy)"
+      - "Sexual — 'Your Brain on Porn' (Gary Wilson), 'A Prática de Brahmacharya'"
+      - "Espiritual — Upanishads, Sadhguru, taoísmo, budismo"
+      - "Estoicismo — Marco Aurélio, Sêneca"
+      - "Mindset — Joe Dispenza ('Você é o Placebo')"
+      - "30 min/dia, manhã ou final do dia, sem celular"
+    when:
+      - "Construção da base filosófica"
+      - "Substituto a doomscrolling noturno"
+      - "Quando os 'porquês' do NoFap começam a faltar"
+    risk: >
+      Vira leitura compulsiva sem aplicação (informação sem transformação).
+      Vira identidade intelectual ('eu li tudo isso').
+    mastery_signal: >
+      Capacidade de citar e CONECTAR ideias entre tradições diferentes
+      (taoísmo + Freud + estoicismo). Aplicação prática diária.
+    source_refs:
+      - "À Deriva — citações constantes de Napoleon Hill, Joseph Murphy, Sadhguru, Gary Wilson"
+      - "LifeHacker — 'Think and Grow Rich é minha bíblia'"

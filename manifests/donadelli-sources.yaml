@@ -1,0 +1,107 @@
+---
+mind_id: donadelli
+display_name: Matheus Donadelli (AlphaSpirit)
+origin: br
+tier: flavor
+philosophical_alignment: glover_axis
+priority: P2
+generated: 2026-05-23
+notes: |
+  Tier 3 (niche). Brief: "Foco: filosofia de masculinidade/NoFap, conexão
+  energia/atratividade".
+
+  IMPORTANTE: Donadelli DELETOU o canal AlphaSpirit no YT em algum momento
+  (vídeos analisam essa decisão). Site alphaspirit.com.br ainda existe mas
+  é portal de curso pago (não scrape).
+
+  Coletei conteúdo de TERCEIROS: aparições como convidado em podcasts +
+  análises sobre ele. Total ~6-8h áudio.
+
+  Alinhamento filosófico: glover_axis com twist. Defende abstinência
+  sexual (NoFap) + transmutação energética + "virar alpha por dentro
+  primeiro". É o oposto de PUA — é trabalho interno → atração orgânica.
+  Útil pra FlirtAI saber QUANDO o jogo é técnica vs QUANDO é trabalho
+  interno necessário.
+---
+
+# Matheus Donadelli (AlphaSpirit) — Fontes Públicas
+
+## Tier 1 — Aparições em podcasts (terceiros)
+
+- **À Deriva Podcast #029 (Arthur Petry) — episódio principal:**
+  https://www.youtube.com/watch?v=EeUAlA_UC04
+  - Spotify: https://creators.spotify.com/pod/profile/derivapodcast/episodes/029---Matheus-Donadelli-e1uvnni
+  - Spreaker: https://www.spreaker.com/episode/029-matheus-donadelli--44636401
+
+- **LifeHacker Talks (Ian Borges) — NoFap e Energia Sexual Sagrada:**
+  https://www.youtube.com/watch?v=5SFlF-998hg
+  - Spotify: https://open.spotify.com/episode/463GXTs8GPYeYuGjKsykT2
+
+- **Vida Alpha Podcast — Expansão de Consciência/Espiritualidade:**
+  https://open.spotify.com/episode/3sqy002ojQFcBBhY6t9IdU
+
+## Tier 2 — Cortes e análises
+
+- **Cortes Flow Panela (À Deriva playlist completa):**
+  https://www.youtube.com/playlist?list=PL0A0gIo77PUQY1ApS01ooN3i46ipjxVUw
+
+- **Crise da Masculinidade (análise sobre Donadelli):**
+  https://www.youtube.com/watch?v=z8RhI-6G8oI
+
+- **Por Que Excluiu o Canal? (análise sobre Donadelli):**
+  https://www.youtube.com/watch?v=kvZHm6z3i0A
+
+- **Momentos de Perdição (corte):**
+  https://www.youtube.com/watch?v=mSN48CAZSEo
+
+- **Polêmica do NoFap (corte):**
+  https://www.youtube.com/watch?v=ffdxImk734k
+
+- **Pornografia (com Arthur Petry, corte):**
+  https://www.youtube.com/watch?v=xB5GfotklfI
+
+- **Problemas de Concentração (corte):**
+  https://www.youtube.com/watch?v=8df-xgqPMmw
+
+## Site (não scrape — paywall)
+
+- **AlphaSpirit:** https://alphaspirit.com.br/
+- **Aula sobre NoFap webinar registro:** https://alphaspirit.com.br/webinar-registration-36699824
+  - É landing de captura. Não tem conteúdo livre.
+
+## Plano de coleta
+
+```
+Fase 1.1 — Download yt-dlp 8 vídeos + 1 playlist
+  → corpus/donadelli/raw/audio/<video>.mp3
+  → ~6-8h áudio total
+
+Fase 1.2 — Whisper PT-BR large-v3
+  → corpus/donadelli/transcripts/<video>.txt
+  → estimativa ~80-120K tokens
+
+Fase 1.3 — Consolidação
+  → corpus/donadelli/processed/full-corpus.md
+  → tags: nofap, transmutacao, masculinidade, espiritualidade, polemica
+```
+
+## Volume estimado final
+- ~80-120K tokens (volume médio-baixo, mas filosofia bem definida)
+
+## Particularidades técnicas
+- 100% material de terceiros — qualidade variável de áudio
+- Áudios de podcast: limpos, bem captados
+- Cortes Flow Panela: pode ter overlap entre eles
+- Sem cookies necessárias, yt-dlp puro funciona
+
+## Particularidades de extração
+- Donadelli é o ÚNICO mind da KB com filosofia anti-PUA explícita
+  → tratar como CONTRAPONTO necessário pro Caminho D não virar manipulação
+  → marcar `philosophical_axis: trabalho_interno` em cada extração
+- Buscar especificamente:
+  - Framework "transmutação energética" (estrutura, fases)
+  - Diagnóstico de quando "técnica não vai resolver" (precisa trabalho interno)
+  - Anti-padrões: comportamentos de homem sem propósito interno
+  - Heurísticas de masculinidade que NÃO são técnica de campo
+- Útil pra synthesis cross-mind: confrontar com Greene/Strauss (Donadelli
+  diria "vocês estão tratando sintoma, não a causa")

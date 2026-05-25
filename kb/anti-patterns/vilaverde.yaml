@@ -1,0 +1,504 @@
+---
+mind_id: vilaverde
+category: anti-patterns
+generated: 2026-05-25
+notes: |
+  Anti-padrões do Método Vila Verde. Vilaverde é exímio em CATEGORIZAR
+  comportamentos perdedores — dois extremos (gado afeminado e redpill
+  babaca) e o cara neutro/morno no meio. Capture esses arquétipos como
+  alvos de correção, além de comportamentos táticos errados.
+---
+
+anti_patterns:
+  - id: gado_afeminado
+    name: "O Gado / Príncipe Encantado"
+    description: |
+      Arquétipo perdedor #1. Cara bonzinho que faz de tudo pela
+      mulher sem receber nada em troca. Concorda com tudo, agrada o
+      tempo inteiro, paga o restaurante caro, manda foguinho/olhinho,
+      curte todos os stories dela, não discorda nunca, fica com medo
+      de provocar. Vilaverde culpa filmes/séries por criarem essa
+      figura ('príncipe encantado'). Resultado: a mulher trai esse
+      cara pra ficar com o cafajeste.
+    symptoms:
+      - "Manda 'oi gata', 'foguinho', 'olhinho' em mensagens"
+      - "Concorda com tudo que ela fala mesmo quando discorda"
+      - "Restaurante caro pra impressionar logo no 1º date"
+      - "Não tem coragem de fazer teasing por medo dela 'não gostar'"
+      - "Posta no Instagram só vídeo motivacional/animezinho"
+      - "Curte stories dela em segundos toda vez que ela posta"
+      - "Aceita migalha (ela desmarca em cima da hora, ele remarca)"
+    consequence: |
+      A mulher percebe que ele é um 'vendedor desesperado' tentando
+      empurrar produto. Ela compara ele com outros caras (modo
+      metralhadora), vê que ele é gado, e escolhe outro. A mulher
+      gata não fica com gado — ela compara com o mercado e o mercado
+      sempre tem cafajeste melhor.
+    antidote: |
+      Aprender e aplicar TEASING (3Ds — discordar, desvalidar,
+      desafiar). Construir abundância (canais de aquisição
+      múltiplos). Internalizar que 'um homem que tem medo de perder
+      uma mulher, já a perdeu'. Adicionar a postura DEA (Dominante,
+      Excitante, Abundante). Posicionar como heurística mestre: ser
+      forte primeiro, vulnerável depois.
+    source_refs:
+      - "3_Formas_CONTROVERSAS_de_pegar_MULHERES_BONITAS_A_3_e_OURO"
+      - "O_SEGREDO_pra_flertar_sem_colocar_ela_no_PEDESTAL_Na_pratica"
+
+  - id: redpill_babaca
+    name: "O Redpill Babaca / Cafajeste Tóxico"
+    description: |
+      Arquétipo perdedor #2 (extremo oposto do gado). Cara que assistiu
+      15 vídeos redpill e decidiu odiar mulher. Só faz teasing, nunca
+      flerta. Trata mulher como objeto. Acha que 'mulher só quer
+      dinheiro/shape/fama' (VSM). Tem checklist de red flags. Vilaverde
+      crítica MUITO essa figura — diz que esses caras 'preferem
+      rejeitar mulher e contar pra tribozinha do que transar de fato'.
+    symptoms:
+      - "Vocabulário redpill ('VSM', 'mulher é tudo igual', 'mulher de valor não existe')"
+      - "Tem checklist de red flags (tatuagem, body count, sem pai presente, usa Tinder = puta)"
+      - "Só discorda/desvalida, nunca elogia"
+      - "Fala mal de mulher como classe ('vagabunda')"
+      - "Trata mulher como objeto pra demonstrar dominância pros amigos"
+      - "Generaliza exceção (1 mulher traiu = todas traem)"
+      - "Comemora rejeitar mulher mais do que se relacionar"
+    consequence: |
+      A mulher percebe rapidamente. Ela quer um cara confiante, não um
+      cara grosso. Resultado: ele pega só as mulheres mais fracas e
+      pelas razões erradas. Vilaverde aponta a contradição interna do
+      redpill: dizem que 'mulher só quer dinheiro' MAS xingam mulher que
+      pega cara rico. Inconsistência ideológica.
+    antidote: |
+      Aprender FLIRTING. Mulher cresceu com validação e PRECISA dela —
+      mas indireta, não escancarada. Aplicar regra '2T 1F'. Sair da
+      narrativa de terceirização de culpa ('a culpa é minha, sou o
+      capitão do barco'). Quebrar identificação com tribozinha redpill
+      — esses caras quase nunca têm resultado real.
+    source_refs:
+      - "Como_Achar_uma_Mulher_de_Valor_na_era_da_PUT4RIA"
+      - "O_SEGREDO_pra_flertar_sem_colocar_ela_no_PEDESTAL_Na_pratica"
+      - "O_que_FAZER_quando_a_MULHER_te_responde_SECA_passo_a_passo"
+
+  - id: cara_neutro_sem_sal
+    name: "O Cara Neutro / Sem Sal / Em Cima do Muro"
+    description: |
+      Arquétipo perdedor #3 (meio termo morno). Não é gado nem
+      redpill — só é morno. Faz papo de entrevista de emprego ('oi
+      tudo bem, e você?'). Pergunta/resposta seca. Não gera nem
+      pico positivo nem negativo. A mulher chama esse cara de 'sem
+      sal' — não fede e nem cheira. Conversa morre por inanição.
+    symptoms:
+      - "Mensagens 'oi tudo bem? oi tô bem e você? tô legal o que vc fez hoje?'"
+      - "Faz perguntas fechadas (você gosta de pizza? sim/não)"
+      - "Não tem opinião própria, não discorda, não provoca"
+      - "Mulher para de responder do nada"
+      - "A mulher fala 'esse cara é legal, mas sabe… falta alguma coisa'"
+      - "Date vira interrogatório policial"
+    consequence: |
+      A mulher se entedia. Ela escolhe outros caras que sabem causar
+      emoção. Vilaverde compara: 'é mais fácil ela abrir o ChatGPT e
+      conversar com ele do que com você'. Resultado: mulheres param de
+      responder, dates não viram segundo encontro, ela vira amiga (a
+      famosa friendzone).
+    antidote: |
+      Bloco de Interação obrigatório (pico de emoção + pergunta
+      aberta) em cada turno. Aprender teasing E flirting. Postura DEA
+      (especialmente a Excitância — gerar picos). Para de medo de
+      causar emoção negativa — sem teasing, vira gado.
+    source_refs:
+      - "Como_NUNCA_ficar_SEM_ASSUNTO_com_uma_Mulher"
+      - "Me_de_16_Minutos_e_Vou_Melhorar_Seu_Papo_Em_88"
+      - "O_SEGREDO_pra_flertar_sem_colocar_ela_no_PEDESTAL_Na_pratica"
+
+  - id: obeso_mental
+    name: "O Obeso Mental"
+    description: |
+      Cara que estuda muito (consome conteúdo, lê livro de sedução,
+      assiste todos os vídeos do canal) mas NÃO aplica. Acumula
+      conhecimento como gordura — não queima, não converte em
+      experiência. É um arquétipo central pra Vilaverde porque ele
+      ataca isso explicitamente em quase todo vídeo: 'saber e não
+      fazer é a mesma coisa que não saber'.
+    symptoms:
+      - "Assiste todos os vídeos do canal, ainda não abordou ninguém"
+      - "Compra cursos, faz as aulas, não aplica"
+      - "Sabe explicar teasing e flirting mas trava na vida real"
+      - "Pede 'mais um vídeo, mais detalhes, mais um curso' antes de testar o que tem"
+      - "Confiança verbal alta sobre teoria; performance real zero"
+    consequence: |
+      Frustração crônica. Cada novo curso é placebo. Compra mais
+      cursos pra preencher o vazio. Nunca testa, nunca falha, nunca
+      aprende. A vida social atrofia. Pior: o cara acha que SABE
+      sedução, então não busca ajuda real (pensa que problema é
+      'sorte' ou 'mulher é difícil').
+    antidote: |
+      Forçar execução imediata. Plano prático com prazo. Submeter o
+      cliente a ciclo social que OBRIGUE interação. Lema:
+      'aprender e aplicar, aprender e aplicar'. Cobrar relato
+      depois da abordagem real. Se for cliente mentoria, marcar
+      missão pra próxima call.
+    source_refs:
+      - "OS_DOIS_SEGREDOS_POR_TRAS_DA_CONFIANCA"
+      - "Como_sair_do_OI_pro_encontro_com_qualquer_mulher_jeito_mais_facil"
+
+  - id: pedestal_mulher
+    name: "Pedestalizar a Mulher (Over-Investing)"
+    description: |
+      Comportamento de quem coloca a mulher acima de si na régua
+      social. Sintomas: compensar (restaurante caro), fantasiar
+      futuro (já imagina casamento, filhos), aceitar migalha (date
+      desmarcado em cima da hora e remarca semana seguinte), medo de
+      provocar/discordar, atenção desproporcional. Antagônico ao
+      modo Metralhadora.
+    symptoms:
+      - "Pensa muito antes de mandar cada mensagem"
+      - "Restaurante mais caro 'pra impressionar' no 1º date"
+      - "Fantasia futuro com ela após 2-3 dates"
+      - "Aceita date desmarcado em cima da hora sem cobrar"
+      - "Responde mensagem em segundos toda vez"
+      - "Faz over investing (compra presente desproporcional ao tempo de conhecida)"
+    consequence: |
+      A mulher percebe a desigualdade da balança. Ela sente que ele
+      precisa MUITO dela. Ela perde a atração (atração precisa de
+      tensão, não de submissão). Resultado: ela trata mal, ela
+      cancela mais, ela some, ela pega outro cara.
+    antidote: |
+      Construir abundância (modo Metralhadora). Lembrar: 'relacionamento
+      é balança — ela investe pouquinho, você investe pouquinho'.
+      Aceitar 'que a mulher pode ir embora a qualquer momento' (mas você
+      também pode). Mudar mindset: 'será que eu vou gostar dela?' não
+      'será que ela vai gostar de mim?'
+    source_refs:
+      - "7_Atitudes_Que_Conquistam_Qualquer_Mulher_10_10"
+      - "O_SEGREDO_pra_flertar_sem_colocar_ela_no_PEDESTAL_Na_pratica"
+
+  - id: pular_barrinha_intimidade
+    name: "Pular a Barrinha da Intimidade (Zero ao 100 no Final)"
+    description: |
+      Erro de execução no primeiro encontro. Cara passa o date inteiro
+      no zero (sem contato físico, sem CVC, sentado de frente, sem
+      mudar de lugar) e tenta pular pro 100% (beijo) no final. Não
+      funciona porque a mulher é volume, não interruptor. Resultado:
+      ela vira o rosto, fala 'vamos com calma', friendzona o cara.
+    symptoms:
+      - "Date 3 horas sentado mesa de frente sem encostar"
+      - "Não levanta pra cumprimentar quando ela chega"
+      - "Cumprimenta como amigo (não escala intimidade no aperto/abraço)"
+      - "Não faz brincadeiras com toque físico durante o date"
+      - "Tenta beijar no ponto de ônibus/no Uber no final"
+    consequence: |
+      Mulher vira rosto, dá bochecha, fala 'vamos com calma'. Cara
+      forçou e questiona ('por que você não quer me beijar?').
+      Vergonha mútua. Caso clássico Vilaverde: a francesa do
+      Buckingham Palace.
+    antidote: |
+      Aplicar CVC (Contato Visual + Voz e Ritmo + Contato Físico) +
+      4 passos do pré-beijo. Mudar de lugar pelo menos 1x durante o
+      date. Aplicar rotina anel/tatuagem como ápice de toque físico.
+      Tratar mulher como volume, não interruptor.
+    source_refs:
+      - "3_coisas_que_voce_DEVE_fazer_no_1_encontro"
+      - "4_PASSOS_PARA_BEIJAR_E_CRIAR_INTIMIDADE_COM_UMA_MULHER_MuriloVilaverde"
+
+  - id: small_talk_only
+    name: "Só Small Talk (Entrevista de Emprego)"
+    description: |
+      Conversa morre porque cara não sai do papo neutro. 'Oi tudo
+      bem? Tudo. Como foi seu dia? Bom. O que você gosta de fazer?
+      Eu gosto de assistir filme. Que tipo de filme?' Padrão
+      pergunta-resposta interminável. Sem pico de emoção, sem
+      provocação, sem flerte. Vira interrogatório policial.
+    symptoms:
+      - "Quase todas as mensagens são perguntas fechadas"
+      - "Sem teasing, sem flirting"
+      - "Conversa dura 10-15 mensagens e some"
+      - "Mulher manda kkk de educação, sem investir"
+      - "Mulher só dá likezinho em mensagem em vez de responder"
+    consequence: |
+      Mulher cansa rápido. Conexão zero. Conversa some. Volta a
+      sumir mesmo que pegue Instagram. Cara culpa 'mulher tá
+      difícil hoje em dia' mas o problema é o papo.
+    antidote: |
+      Bloco de Interação em cada turno: pico de emoção (teasing ou
+      flirting) + pergunta aberta (não fechada). Identificar conteúdo
+      em 1º e 2º plano (não só o que ela disse, mas o que está
+      tangencial: hobbies, lugar, vibe). Aplicar '2T 1F' ou '1T 1F'.
+    source_refs:
+      - "Como_NUNCA_ficar_SEM_ASSUNTO_com_uma_Mulher"
+      - "Aprenda_COMO_DESPERTAR_INTERESSE_em_uma_mulher"
+
+  - id: preencher_silencio
+    name: "Preencher o Silêncio no Encontro"
+    description: |
+      Quando há silêncio no date, o cara inseguro preenche por
+      ansiedade. Fala merda, puxa assunto totalmente desconexo,
+      quebra o contato visual. Resultado: demonstra fraqueza,
+      perde a vantagem natural de ser o homem (figura intimidadora
+      naturalmente).
+    symptoms:
+      - "Sempre que tem 5 segundos de silêncio, ele puxa assunto"
+      - "Quebra o contato visual quando o silêncio acontece"
+      - "Fala merda quando força a falar (ele mesmo reconhece depois)"
+      - "Linguagem corporal de quem quer fugir (corpo virado pro lado)"
+    consequence: |
+      A mulher percebe o nervosismo dele e fica desconfortável
+      também. Tensão sexual evapora. Quem deveria sentir intimidação
+      no silêncio é ela (biologicamente o homem é a figura
+      intimidadora) — mas ele inverte isso.
+    antidote: |
+      Aguentar o silêncio. Manter contato visual com leve sorriso.
+      Deixar a mulher quebrar (ela vai — quem se sente intimidado
+      quebra primeiro). Aprender a usar silêncio como ferramenta de
+      tensão sexual.
+    source_refs:
+      - "COMO_MANDAR_BEM_NO_PRIMEIRO_ENCONTRO_mesmo_sendo_timido"
+
+  - id: falar_mal_da_ex
+    name: "Falar Mal da Ex no Primeiro Encontro"
+    description: |
+      Um dos 3 segredos que NUNCA contar pra mulher no início. Cara
+      vai pro date com mulher nova e gasta tempo terceirizando culpa
+      ('minha ex era preguiçosa, não me dava atenção, isso e aquilo').
+      Resultado: a mulher percebe que ele é bebê chorão que não
+      lidera o relacionamento.
+    symptoms:
+      - "Conta história longa da ex sem ser perguntado"
+      - "Coloca a ex como vilã, ele como vítima"
+      - "Reclama de relacionamentos passados"
+      - "Não se responsabiliza pelos próprios erros do passado"
+    consequence: |
+      A mulher (especialmente a feminina, especialmente leste
+      europeia) percebe falta de masculinidade. 'E por que você
+      nunca terminou com ela? E por que você não se posicionou?'
+      Atração morre. Caso real Vilaverde: a russa de Londres que
+      esfriou do dia pra noite após ele se vulnerabilizar demais.
+    antidote: |
+      Assumir responsabilidade. 'Foi um relacionamento difícil, eu
+      cometi erros, hoje eu sou outro homem'. Nunca culpar a ex.
+      Resgate da masculinidade: capitão do barco. Heurística mestre:
+      ser forte primeiro, vulnerável depois.
+    source_refs:
+      - "NUNCA_conte_esses_3_Segredos_sobre_voce_pra_uma_mulher"
+
+  - id: contar_inseguranças
+    name: "Contar Inseguranças no Primeiro Encontro"
+    description: |
+      Outro dos 3 segredos. Cara se abre demais cedo demais. Conta
+      que tá inseguro com trabalho, com dinheiro, com físico. Pensa
+      que está sendo 'autêntico' ou 'vulnerável'. Resultado: a
+      mulher feminina busca segurança, e ele entregou o oposto.
+    symptoms:
+      - "No 1º-3º date, conta problemas de trabalho/grana/família"
+      - "Diz 'eu não sei se vou conseguir' sobre projetos"
+      - "Pede opinião sobre próprios problemas pessoais"
+      - "Trata o date como sessão de terapia"
+    consequence: |
+      A mulher esfria. Ela já tem inseguranças próprias — não vai
+      adicionar as dele. Ela espera segurança do homem. Heurística
+      Vilaverde: 'ser forte atrai, ser vulnerável conecta — mas
+      depois, não no começo'.
+    antidote: |
+      Ser 'o homem do tá tudo bem' no início. Vulnerabilidade só
+      após relacionamento estabelecido. Trabalhar inseguranças em
+      terapia/com amigos homens — não com mulher nova.
+    source_refs:
+      - "NUNCA_conte_esses_3_Segredos_sobre_voce_pra_uma_mulher"
+
+  - id: contar_medos
+    name: "Contar Medos no Primeiro Encontro"
+    description: |
+      Terceiro dos 3 segredos. Cara fala de medo de não prover, de
+      perder emprego, de não ser capaz de cuidar de família. Exercício
+      mental Vilaverde: imagina que você tem uma filha — você quer que
+      ela saia com um homem fraco?
+    symptoms:
+      - "Verbaliza medos sobre futuro financeiro/profissional"
+      - "Conta sonho que não acha que vai realizar"
+      - "Fala 'tenho medo de não conseguir'"
+      - "Pessimismo em relação ao próprio futuro"
+    consequence: |
+      Mulher associa ele com fraqueza. Quebra atração definitivamente.
+      Ela não vai 'matar' o cara — mas vai começar a sumir, esfriar,
+      desmarcar dates.
+    antidote: |
+      Ser forte no começo. Lidar com medos em silêncio (terapia,
+      amigos homens, processo interno). Ao falar de planos, falar com
+      certeza ('vou fazer isso', não 'eu queria conseguir fazer').
+    source_refs:
+      - "NUNCA_conte_esses_3_Segredos_sobre_voce_pra_uma_mulher"
+
+  - id: ciclo_social_fechado
+    name: "Ciclo Social Fechado (Academia com Fone, Escola)"
+    description: |
+      Cara acha que está em ciclo social mas falta um dos 3 critérios
+      (alta frequência, obrigação de interagir, alta rotatividade).
+      Academia com fone falha no critério 2 (não obriga interação).
+      Ensino médio falha no critério 3 (sem rotatividade).
+    symptoms:
+      - "Vai pra academia todo dia mas com fone, nunca fala com ninguém"
+      - "Mesmo grupo de amigos há 5 anos sem entrada de gente nova"
+      - "Trabalho onde só interage com 3 colegas fixos"
+      - "Reclama 'eu já tenho ciclo social' mas zero gente nova"
+    consequence: |
+      Cara fica preso no zero. Sem flow social treinado. Sem
+      mulheres novas. Energia social atrofia. Quando o final de
+      semana chega, ele trava na balada.
+    antidote: |
+      Entrar em ciclo social que cumpre OS TRÊS critérios: alta
+      frequência + obrigação de interagir + alta rotatividade.
+      Vilaverde recomenda: artes marciais (jiu-jitsu, boxe), aula
+      de dança, esporte coletivo, clube de leitura, igreja com
+      células ativas.
+    source_refs:
+      - "4_Habitos_que_me_fizeram_pegar_+200_GRINGAS"
+      - "Me_de_13_minutos_e_eu_vou_APAGAR_seu_medo_de_chegar_em_mulher"
+
+  - id: balde_furado_instagram
+    name: "Balde Furado (Instagram Mal Feito)"
+    description: |
+      Não importa quantas mulheres caem no seu balde (matches,
+      seguidores, conhecidas) se o balde tá furado. Sem fotos
+      atuais, sem stories, sem lifestyle visível, sem variedade —
+      todas vão escapar.
+    symptoms:
+      - "Fotos do feed: 2015 e 2018, mais nada"
+      - "Foto de perfil é anime ou meme"
+      - "Sem stories há semanas"
+      - "Stories só de motivacional/citações"
+      - "Bio vazia ou estranha"
+    consequence: |
+      Mulher que dá match no Tinder vai no Instagram, não te segue
+      de volta, não responde DM. Mulher abordada na rua troca
+      Instagram mas nunca interage. Você joga energia em outros
+      canais e tudo vaza pelo balde.
+    antidote: |
+      Arrumar Instagram pra ontem. Postar 4-7 stories por semana com
+      variedade (academia, comida, viagem, momento social, hobby).
+      Atualizar foto de perfil. Compor feed com 6-9 fotos recentes
+      que mostram lifestyle.
+    source_refs:
+      - "4_Habitos_que_me_fizeram_pegar_+200_GRINGAS"
+      - "Como_Sair_Do_ZERO_e_Marcar_1-2_Encontros_Toda_Semana_Depois_De_Um_Termino_Guia_Definitivo"
+
+  - id: pedir_instagram_sem_pretexto
+    name: "Pedir Instagram do Nada (Sem Convite Indireto Antes)"
+    description: |
+      Cara faz interação razoável, conversa fluida, e do nada
+      pergunta 'posso pegar seu Instagram?' Sem convite indireto
+      antes. Resultado: ela troca o contato por educação, mas não
+      tem motivo pra responder DM depois. Quando ele manda, vira
+      'só mais um estranho do Instagram'.
+    symptoms:
+      - "Aborda, conversa 5min, e pula direto pro 'posso pegar seu Insta?'"
+      - "Não cria 'plano' antes (convite indireto)"
+      - "Pega Instagram como meta final, não como meio"
+    consequence: |
+      Mulher dá Instagram, não responde DM, ou responde seco. Sem
+      gancho narrativo (encontro lúdico), a conversa nasce sem
+      contexto. Mais um match esquecido.
+    antidote: |
+      Aplicar passo 3 antes do 4: convite indireto/encontro lúdico
+      ('a gente devia tomar uma'). Depois pega Instagram como MEIO
+      pra realizar o plano. Quando manda DM, liga ao plano criado
+      ('e aí, pronta pra tomar aquela cerveja?')
+    source_refs:
+      - "Como_sair_do_OI_pro_encontro_com_qualquer_mulher_jeito_mais_facil"
+      - "COMO_ABORDAR_UMA_MULHER_NA_RUA_-_Mostrei_na_pratica"
+
+  - id: cantadinha_pronta
+    name: "Cantadinha Pronta / Frase Mágica"
+    description: |
+      Cara busca a 'frase secreta' que vai fazer mulher se apaixonar.
+      Procura no Google, paga e-book, decora cantadas ('seu pai é
+      padeiro?'). Vilaverde RIDICULARIZA isso constantemente. Não
+      existe cantada que funciona — o que importa é COMO você fala,
+      não O QUE fala.
+    symptoms:
+      - "Procura 'as 50 cantadas que mais funcionam'"
+      - "Decora frase e fala robotizado"
+      - "Acha que existe 'gatilho primitivo' da mente feminina"
+      - "Pensa muito mais em o que falar do que em como falar"
+    consequence: |
+      Mulher percebe que é decorado e ri. Ou pior — ele entrega
+      cantada com voz insegura, e vira piada de pedreiro. Caso de
+      Vilaverde: traduzia cantada brasileira pra inglês e falava
+      pra gringa (resultado catastrófico).
+    antidote: |
+      Mudar foco: o COMO importa muito mais que o O QUE. Frame +
+      linguagem corporal + confiança. Trocar 'cantada' por 'gancho
+      bem feito + boa pergunta aberta'. Aprender que 'depois do oi
+      tudo bem, todo mundo esquece como você chegou'.
+    source_refs:
+      - "O_Que_Falar_Nos_Primeiros_60_Segundos_Da_Abordagem_Funciona_Todas_As_Vezes"
+      - "Me_de_13_minutos_e_eu_vou_APAGAR_seu_medo_de_chegar_em_mulher"
+
+  - id: nightlife_first
+    name: "Priorizar Nightlife (Balada) Como Canal Principal"
+    description: |
+      Cara que só pensa em sábado pra pegar mulher. Investe tudo na
+      balada. Não trabalha outros canais. Resultado: passa a semana
+      sem nada, vai com sede ao pote no sábado, trava porque tá
+      fora de flow, volta pra casa de mãos vazias e culpa 'as
+      mulheres'.
+    symptoms:
+      - "Vida social inteira concentrada no sábado à noite"
+      - "Bebe pra criar coragem"
+      - "Energia investida em comprar roupa cara, alugar mesa"
+      - "Não usa Tinder, não aborda na rua, não está em ciclo social"
+    consequence: |
+      Resultado baixíssimo. Cara gasta dinheiro com tabu (bebida,
+      mesa, Uber) sem retorno. Frustração. Auto-imagem afundada.
+      Volta na semana seguinte fazendo o mesmo.
+    antidote: |
+      Trocar prioridade: Code Approach + Ciclo Social + Tinder ANTES
+      de Nightlife. Nightlife é gasolina de abundância, não canal
+      principal. Trabalhar canais de aquisição diversificados.
+    source_refs:
+      - "Como_Retomar_Sua_S3xual_Depois_de_Anos_em_um_Relacionamento_passo_a_passo"
+      - "Como_Achar_uma_Mulher_de_Valor_na_era_da_PUT4RIA"
+
+  - id: foco_no_alvo_em_grupo
+    name: "Focar Só no Alvo em Abordagem de Grupo"
+    description: |
+      Cara aborda grupo de mulheres e foca 100% no alvo (a bonita),
+      ignorando ou tratando mal as amigas. Resultado: as amigas
+      bloqueiam, e a mulher (Maria-vai-com-as-outras) não fica nem
+      se quiser.
+    symptoms:
+      - "Só faz contato visual com o alvo"
+      - "Não brinca com as amigas"
+      - "Trata amigas como obstáculo"
+      - "Ignora amiga 'cock blocker' em vez de conquistar"
+    consequence: |
+      Amiga decide o destino. Se a amiga não te aprova, o alvo não
+      fica. Frustração crônica em abordagem de grupos.
+    antidote: |
+      Foco nas amigas primeiro (especialmente a 'cock blocker').
+      Teasing com todas. Criar piadas internas com o grupo. Só
+      DEPOIS converter pro alvo. A aprovação da amiga vira sinal
+      verde.
+    source_refs:
+      - "O_que_FAZER_quando_a_MULHER_te_responde_SECA_passo_a_passo"
+
+  - id: lutar_contra_o_cerebro
+    name: "Lutar Contra o Próprio Cérebro (Em Vez de Cooperar)"
+    description: |
+      Cara tenta vencer o medo na hora H ('eu vou abordar, não
+      importa o que minha cabeça diga'). Mas o cérebro racionaliza
+      mais rápido que ele consegue argumentar. Resultado: cara
+      sempre perde a negociação interna.
+    symptoms:
+      - "Argumentação mental longa antes de abordar ('mas e se… ah, melhor não')"
+      - "Negociação que dura minutos enquanto outro cara pega"
+      - "Pós-pode-arrependimento 'da próxima vez eu vou'"
+    consequence: |
+      Cara nunca aborda. Cérebro sempre ganha. Auto-imagem afundada.
+      Identidade limitante reforçada ('eu sou tímido').
+    antidote: |
+      Não LUTAR — em vez disso, COOPERAR/CONTORNAR. Entrar em ciclo
+      social que OBRIGA interação (sem opção de não falar). Aplicar
+      regra dos 3 segundos. Aceitar que vai sentir o medo SEMPRE, e
+      ir mesmo assim — 'se acomodar com o frio na barriga'.
+    source_refs:
+      - "Me_de_13_minutos_e_eu_vou_APAGAR_seu_medo_de_chegar_em_mulher"
+      - "Nunca_Mais_Perca_Oportunidades_-_O_que_Fazer_Quando_Uma_Mulher_Olha_Para_Voce_Passo_a_Passo"

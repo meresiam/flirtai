@@ -1,0 +1,26 @@
+# RAG FlirtAI — graph+vector ETL/retrieval
+# Python 3.11+ (testado em 3.14; fastembed usa onnxruntime, sem torch).
+
+# --- core ---
+psycopg[binary]>=3.2.0
+pgvector>=0.3.0
+PyYAML>=6.0.1
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+tenacity>=8.0.0
+
+# --- embedding default: LOCAL, gratis, offline (ONNX, sem torch) ---
+fastembed>=0.3.0
+
+# --- concept extraction (Stage 2) + antidote (Stage 4) ---
+# Provider default = gemini, chamado via REST (stdlib urllib) -> SEM dependencia.
+# anthropic so e necessario se CONCEPT_PROVIDER=anthropic:
+# anthropic>=0.39.0
+
+# --- embedding providers OPCIONAIS (so se EMBEDDING_PROVIDER=voyage|openai) ---
+# voyageai>=0.2.4      # descomente p/ usar voyage-3-large (pago)
+# openai>=1.40.0       # descomente p/ usar text-embedding-3-large (pago)
+
+# Nota: NAO usamos apache-age-python. O grafo eh acessado via psycopg chamando
+# a funcao SQL cypher() do Apache AGE (ver graph.py). Menos uma dependencia
+# e zero risco de wheel ausente.

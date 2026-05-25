@@ -1,0 +1,372 @@
+# FlirtAI KB — Donadelli — Anti-Patterns
+# O que NÃO fazer, segundo Donadelli. Este é o coração do contraponto:
+# todo o "Caminho A" do FlirtAI (técnica pura, PUA, manipulação rasa)
+# aparece aqui como anti-pattern. Mas com nuance — Donadelli ataca a
+# técnica DESLIGADA do substrato, não a leitura situacional em si.
+
+schema_version: 1.0
+generated: 2026-05-25
+
+mind_id: donadelli
+philosophical_axis: trabalho_interno
+
+anti_patterns:
+  - id: pornografia_compulsiva
+    name: "Consumo Compulsivo de Pornografia"
+    description: >
+      O anti-pattern raiz de Donadelli. Não é só 'ver pornô às vezes' —
+      é o consumo diário/repetido que SEQUESTRA o circuito dopaminérgico.
+      Donadelli começou aos 9 anos, viciado por uma década, chegou a
+      5x/dia. Definição operacional: 'se você não consegue ficar 7 dias
+      sem ver, você é viciado'.
+    symptoms:
+      - "Não consegue ficar 7 dias sem consumir"
+      - "Abre 20-30 abas em uma sessão"
+      - "Escala — soft → hard → fetiches extremos → conteúdo problemático"
+      - "Olhos escuros (zumbi), pele ruim, baixa libido com pessoa real"
+      - "Pensa em ex-cenas durante o dia, em momentos não-sexuais"
+      - "Sente nojo após gozar, mas volta no dia seguinte"
+      - "Vê mulheres reais como 'menos' que as do pornô"
+    consequence: >
+      Diminuição de matéria cinzenta (memória, foco, função motora).
+      Sensibilidade dopaminérgica reduzida = 'zumbi drogado' onde a
+      vida real perde sabor. Disfunção erétil precoce. Baixa autoestima.
+      Falta de motivação. Problemas reais com mulheres (não consegue
+      manter atração genuína). Em casos extremos — escalada para
+      conteúdo problemático (incluindo pedofilia, segundo relatos de
+      'alunos' que Donadelli recebeu).
+    antidote: >
+      Hard Mode NoFap por 90 dias (reboot completo). Cold turkey — sem
+      redução gradual. Cortar TODOS os gatilhos visuais (Instagram,
+      nudes via WhatsApp). Substituir por trabalho/treino/leitura.
+      Estudar a ciência (Your Brain on Porn) para criar repulsa
+      racional.
+    source_refs:
+      - "À Deriva — autoanálise de Donadelli, descrição clínica, citação Gary Wilson"
+      - "À Deriva — escalada para conteúdo extremo, casos de alunos"
+      - "LifeHacker — sintomatologia completa pós-NoFap"
+
+  - id: masturbacao_como_alivio_emocional
+    name: "Masturbação como Regulador Emocional"
+    description: >
+      Usar masturbação como ferramenta de regulação de estado — para
+      'dormir', 'tirar a ansiedade', 'aliviar tensão'. Não é o ato em si
+      o problema (Donadelli concorda com Sadhguru que masturbação NÃO
+      deve ser condenada moralmente), mas o uso COMPULSIVO como
+      escapismo emocional.
+    symptoms:
+      - "Masturbação após cada conflito/estresse"
+      - "Masturbação para dormir (vira sonífero)"
+      - "Masturbação por tédio (sábado de tarde, sem o que fazer)"
+      - "Associações neuro-comportamentais — chuva = masturbação, fim de semana = punheta"
+      - "Sentir 'preciso' aliviar sem desejo sexual genuíno"
+    consequence: >
+      Drena a energia que deveria estar canalizada. Reforça padrão de
+      escapismo (nunca aprende a sentar com emoção). Cria neuro-associações
+      contextuais difíceis de desfazer. Mesmo SEM pornografia, mantém
+      o circuito dopaminérgico sequestrado.
+    antidote: >
+      Identificar o GATILHO (não o ato). Substituir resposta — quando
+      gatilho aparecer, fazer A) banho frio, B) exercício curto, C)
+      respiração profunda, D) caminhada. Hard Mode quebra o circuito.
+      Meditação para tolerar a emoção sem fugir.
+    source_refs:
+      - "À Deriva — 'tédio, gatilhos do ambiente, neuroassociação chuva-masturbação'"
+      - "À Deriva — 'sente a emoção, observe o pensamento, mas não se identifique'"
+
+  - id: tecnica_sem_substrato
+    name: "Buscar Técnica Antes de Trabalho Interno"
+    description: >
+      Anti-pattern central para o FlirtAI. Homem viciado em pornografia,
+      sem propósito, sem energia, sem aura — tenta APRENDER TÉCNICA
+      DE CONQUISTA (PUA, scripts, peacocking, neg) como se fosse a chave.
+      Donadelli vê isso como tratar SINTOMA quando a causa é interna.
+      Mulher detecta a desconexão. Mesmo se 'funciona' uma vez, não
+      sustenta.
+    symptoms:
+      - "Consome conteúdo de PUA / red-pill compulsivamente"
+      - "Quer scripts prontos para cada situação"
+      - "Acumula 'técnicas' sem aplicar consistentemente"
+      - "Tenta 'parecer' confiante (postura, voz grave, neg) sem o ser"
+      - "Frustração quando técnica não funciona ('a teoria estava certa')"
+      - "Internaliza que 'mulher é problema a resolver com método'"
+    consequence: >
+      Investe tempo/energia em algo que não muda o substrato. Reforça
+      identidade de 'caçador' instrumental (mulher como objeto). Mesmo
+      vitórias pontuais não trazem satisfação — porque o vazio interno
+      não foi tocado. Em alguns casos vira manipulação genuína (cuidado
+      filosófico que Donadelli não articula explicitamente, mas que está
+      implícito).
+    antidote: >
+      Pare TUDO de conteúdo de conquista por 90 dias. Foco em
+      NoFap + treino + propósito + meditação. Volte a conhecer mulheres
+      SEM agenda — só conversar como ser humano. Quando o substrato
+      mudar, as interações mudam sozinhas. 'Atrai mais mulheres sem
+      saber por quê' é relato comum de praticantes de NoFap.
+    source_refs:
+      - "Inferência forte do corpus inteiro — Donadelli nunca ensina script de campo"
+      - "LifeHacker — 'tem fama, poder, carisma, influência sem falar, somente com sua aura'"
+      - "À Deriva — repetidamente posiciona atração como consequência energética"
+    conflict_with:
+      - "greene:opening_techniques"
+      - "strauss:routine_stack"
+
+  - id: sexo_casual_como_substituto
+    name: "Sexo Casual Compulsivo (Trocar Pornografia por Mulher Real)"
+    description: >
+      Praticante de NoFap que, ao sentir o pico de energia da fase
+      inicial, ATACA Tinder/baladas para 'finalmente colocar em prática'.
+      Donadelli alerta — você só substituiu o vício, não saiu dele.
+      Caçar mulher virou a nova droga. Cada nova mulher = novo hit
+      dopaminérgico = mesmo loop com fantasia de 'progresso'.
+    symptoms:
+      - "Múltiplas parceiras casuais em curto intervalo"
+      - "Sensação de vazio pós-coito (mesmo padrão da pornografia)"
+      - "Conta corpos/conquistas como métrica de masculinidade"
+      - "Sem conexão emocional — 'só transo, não me apego'"
+      - "Volta a recair em pornografia entre encontros"
+      - "Treino aumenta mas só para 'parecer' mais atraente, não pelo próprio mérito"
+    consequence: >
+      Não resolve o vazio de fundo. Energia que deveria ser canalizada
+      pra propósito sai pelo orgasmo. Cria identidade rasa baseada em
+      validação externa. Compromete capacidade futura de relacionamento
+      profundo (cérebro condicionado à novidade).
+    antidote: >
+      Substituir vício por trabalho/criação, não por outra forma de
+      sexo. Período de retiro romântico (3-6 meses sem buscar) durante
+      reboot inicial. Quando voltar, mira em conexão genuína, não
+      em coleção. Tantra/karezza em relacionamento estável (não soma
+      de aventuras).
+    source_refs:
+      - "À Deriva — 'a ideia não é substituir um vício com outro, é substituir com algo produtivo'"
+
+  - id: identidade_macho_machao
+    name: "Identidade Machista / 'Quem Guarda Leite é Vaca'"
+    description: >
+      Resistência cultural brasileira ao NoFap que Donadelli identifica:
+      o homem que se sente AMEAÇADO pela ideia de retenção e ataca
+      com 'bicha', 'guarda leite é vaca', 'sou macho, bato punheta'.
+      Donadelli vê isso como FRAGILIDADE EGOICA disfarçada de bravura.
+      O cara está se masturbando para um homem comendo uma mulher
+      e se considera 'machão' por isso — paradoxo cômico.
+    symptoms:
+      - "Reage com agressão verbal a ideia de NoFap"
+      - "Faz piada 'gay' sobre quem retém ('é viado')"
+      - "Defende compulsivamente o direito de bater punheta"
+      - "Identifica masculinidade com quantidade de gozo/sexo"
+      - "Sentir-se ofendido pessoalmente ao ouvir crítica à pornografia"
+      - "Citar 'biologia masculina' para justificar comportamento compulsivo"
+    consequence: >
+      Permanece preso no vício, sem nunca testar. Egoicamente protegido
+      contra possibilidade de mudança. Confunde fraqueza (escravidão ao
+      impulso) com força (controle masculino). Geralmente correlaciona
+      com baixa autoestima de fundo — quanto mais frágil internamente,
+      mais agressiva a reação.
+    antidote: >
+      Não evangelize quem não pediu (heurística separada). Para o
+      próprio sujeito — questionar quando se sentir ofendido. 'Por que
+      essa ideia me ameaça tanto?'. Reframe — masculinidade real é
+      CONTROLE do impulso, não escravidão a ele.
+    source_refs:
+      - "À Deriva — 'quem guarda leite é vaca, sou macho, bato punheta — essas coisas'"
+      - "À Deriva — 'o cara fica com a bermuda nos joelhos se masturbando pra um cara comendo uma mina e se acha machão'"
+
+  - id: homem_sem_proposito
+    name: "Homem Sem Propósito ('Tempo Livre = Oficina do Diabo')"
+    description: >
+      Donadelli identifica o homem moderno típico — vai ao trabalho que
+      odeia, volta, scrolla, masturba, dorme, repete. Sem propósito que
+      transcenda o ciclo de sobrevivência+prazer. Esse é o substrato
+      perfeito para vício, depressão, ansiedade. Sem propósito, a mente
+      sabotadora não tem o que fazer SENÃO sabotar.
+    symptoms:
+      - "Não consegue articular o 'porquê' do seu trabalho/vida"
+      - "Domingos vazios sentem-se ameaçadores (precisa preencher com algo)"
+      - "Tempo livre = ansiedade ou compulsão (nunca paz)"
+      - "Inveja de pessoas com missão clara"
+      - "'Se eu tivesse mais dinheiro/tempo eu...' (sem nunca completar a frase)"
+      - "Procrastinação crônica em tudo que importa"
+    consequence: >
+      Toda técnica de mudança esbarra na falta de propósito (sem
+      razão pra sustentar disciplina). Recaída em vício é INEVITÁVEL
+      porque a mente precisa de alvo. Vida vira sequência de paliativos.
+    antidote: >
+      Começar pelo descobrimento do propósito — não esperar 'iluminação'.
+      Experimentar. O que faria mesmo sem ganhar nada? O que te indigna?
+      O que você sabe fazer melhor do que a média? Propósito não cai do
+      céu — é construído via ação e reflexão. Donadelli encontrou o dele
+      no YouTube/coaching depois de patinar muito.
+    source_refs:
+      - "À Deriva — 'tempo livre é a oficina do diabo. Sua mente foi feita pra te fuder'"
+      - "À Deriva — 'recentemente comecei a falar mais sobre propósito... a coisa mais poderosa que elimina recaída'"
+
+  - id: davi_de_bata_pa_casa
+    name: "Síndrome do Davi (Fugir da Batalha)"
+    description: >
+      Referência bíblica que Donadelli usa: rei Davi, no DIA da batalha,
+      ficou em casa. Da janela viu Bate-Seba, caiu em adultério, mandou
+      matar o general. O homem que evita a 'batalha' (seu propósito,
+      desafio, trabalho árduo) é arrastado pelo desejo sexual descontrolado.
+      Sintoma: dia esvaziado de propósito → pico de tesão → catástrofe.
+    symptoms:
+      - "Adiar tarefas importantes e simultaneamente ficar mais excitado"
+      - "Tesão sobe SOLITARIAMENTE quando deveria estar trabalhando"
+      - "Fantasias sexuais durante períodos de procrastinação"
+      - "Buscar drama relacional para escapar de responsabilidade"
+      - "Adúltero conveniente — começa a desejar outras quando está fugindo do trabalho real"
+    consequence: >
+      Cascata destrutiva — pequena fuga vira grande problema. Tesão
+      desviado vira instrumento de auto-sabotagem. Donadelli vê isso
+      como mecanismo psicológico universal masculino, não só religioso.
+    antidote: >
+      'Vá pra batalha'. Quando perceber tesão subindo em momento
+      improvável → red flag de fuga. Pergunta-se: 'do que estou
+      fugindo agora?'. Retorna pra ação difícil. Calendário cheio de
+      compromissos significativos reduz drasticamente o tempo de janela
+      para a auto-sabotagem.
+    source_refs:
+      - "À Deriva — parábola completa de Davi: 'não seja Davi. Você precisa ir pra batalha'"
+
+  - id: identidade_desperta_anti_matrix
+    name: "Identidade 'Desperto' / 'Anti-Matrix' Soberba"
+    description: >
+      Auto-anti-pattern que Donadelli CONFESSA ter caído. Após despertar
+      via psicodélicos + espiritualidade + NoFap, embarcou em teorias
+      conspiratórias, postura 'anti-matrix', desprezo pelo 'gado'. Hoje
+      reconhece como nova matrix — apenas trocou de bolha, ganhou
+      identidade superior, perdeu humildade epistêmica.
+    symptoms:
+      - "Sente-se superior a quem ainda consome pornografia / não medita"
+      - "Usa jargão de 'desperto' como marca de identidade"
+      - "Acredita em conspiração ampla sem evidência específica"
+      - "Despreza democracia/instituições sem entender o que substitui"
+      - "Solidão crescente — alienação dos 'inconscientes'"
+      - "Não consegue mais conversar com pessoas 'normais'"
+    consequence: >
+      Isolamento social. Auto-validação em câmara de eco. Perda da
+      capacidade de mudar de ideia (toda crítica vira 'manipulação da
+      matrix'). Donadelli aponta — estudos mostram que crentes em
+      conspiração são extremamente solitários.
+    antidote: >
+      Humildade epistêmica forçada — periodicamente PROCURE oposições
+      à sua visão. Sócrates: 'só sei que nada sei'. Cuidar para que
+      NoFap/espiritualidade não vire ideologia. Manter pé no mundo real
+      (relações com pessoas comuns, trabalho concreto, contribuição).
+    source_refs:
+      - "À Deriva — autocrítica completa: 'isso em si é outra matrix, criando rótulos pra sentir superioridade'"
+      - "À Deriva — 'pessoas que acreditam em conspiração são extremamente solitárias'"
+
+  - id: pessoas_como_pixels
+    name: "Relacionar-se com Pessoas como se Fossem Pixels"
+    description: >
+      Sintoma do cérebro pornificado — incapacidade de tratar mulher
+      real como pessoa real. O homem visualiza, fantasia, projeta cenas
+      de pornô na situação, espera a mina performar como atriz, fica
+      frustrado quando ela é... humana. Donadelli identifica isso como
+      espécie de despersonalização sutil.
+    symptoms:
+      - "Espera que parceira faça 'sons de atriz' no sexo"
+      - "Tenta posições inviáveis que viu em filme"
+      - "Decepciona-se quando mulher real não é 'tão sexy' quanto fantasia"
+      - "Visualiza pornô MENTALMENTE durante sexo real"
+      - "Frustra-se com homens 'normais' (corpo, ritmo, pelos)"
+      - "Compara constantemente parceira com atrizes/influencers"
+    consequence: >
+      Sabotagem da intimidade. Nenhuma mulher real consegue competir
+      com fantasia infinita. Recaída em pornografia para 'compensar'.
+      Parceira sente que está sendo comparada (e está). Em casos
+      severos — disfunção erétil com mulher real, mantida com pornô.
+    antidote: >
+      Hard Mode (corte de TODO estímulo visual). 90 dias mínimo de
+      reset. Tantra para reconectar com presença real durante sexo.
+      Conversar com parceira sobre o problema (não esconder). Ler
+      'Your Brain on Porn' para entender o mecanismo neurológico.
+    source_refs:
+      - "À Deriva — 'pixels que constroem imagem de outras pessoas, eu lá com calças no joelho suando'"
+      - "À Deriva — 'depois de um tempo soft porn não te satisfaz mais, você precisa de mais'"
+
+  - id: ejaculacao_como_finalidade_unica
+    name: "Ejaculação como Único Sentido do Sexo"
+    description: >
+      Pornografia ENSINOU ao cérebro masculino que sexo TERMINA em
+      ejaculação. É o final inevitável da 'cena'. Donadelli identifica
+      essa programação como fonte de ejaculação precoce, sexo apressado,
+      perda da capacidade de prazer sustentado. Não é biologia — é
+      condicionamento.
+    symptoms:
+      - "Ansiedade durante sexo para 'chegar lá'"
+      - "Não consegue desfrutar das fases intermediárias"
+      - "Ejaculação precoce frequente"
+      - "Sexo dura 5-15 minutos rotineiramente"
+      - "Após ejacular, perde TODO interesse instantaneamente"
+      - "Não entende para que serviria 'sexo sem orgasmo'"
+    consequence: >
+      Sexo medíocre, repetitivo, mecânico. Parceira frequentemente
+      insatisfeita (média de orgasmo feminino baixa). Períodos
+      refratários longos atrapalham conexão. Cérebro reforça associação
+      sexo=ejaculação=fim, tornando tantra/karezza quase impossível
+      sem reset.
+    antidote: >
+      Hard Mode + Tantra. Praticar conscientemente sexo SEM orgasmo.
+      Foco em respiração, presença, troca. Ressignificar o ato como
+      MEDITAÇÃO em dois, não como corrida ao clímax.
+    source_refs:
+      - "À Deriva — 'se você ancorar pensamento ah, finalidade gozar. Não é. Pornografia estabeleceu isso'"
+      - "À Deriva — 'pornografia sempre termina com ejaculação, isso programou seu cérebro'"
+
+  - id: drogas_pesadas_como_atalho
+    name: "Drogas Pesadas como Atalho Espiritual"
+    description: >
+      Donadelli é PRÓ-psicodélicos com set/setting (LSD, cogumelos, DMT,
+      ayahuasca). Mas é claramente CONTRA opioides, cocaína, anfetamina
+      como atalho para 'sentir vivo'. Sua própria narrativa — abusou
+      delas na Alemanha, quase overdose, virada via crise. Atalho
+      químico para fugir é diferente de exploração consciente.
+    symptoms:
+      - "Uso recreativo frequente de drogas duras (cocaína, opióides)"
+      - "Uso de estimulantes (modafinil, anfetamina) para 'produtividade'"
+      - "Psicodélicos sem preparo (sem set/setting, com mente perturbada)"
+      - "Buscar 'overcoming' via química, não via prática"
+      - "Confundir efeito da droga com transformação real"
+    consequence: >
+      Curto prazo — pico de prazer/produtividade. Médio — tolerância,
+      necessidade de doses maiores. Longo — danos neurológicos, vício,
+      possibilidade de overdose. Mascara o trabalho interno em vez
+      de fazê-lo. Bad trips em psicodélicos podem traumatizar.
+    antidote: >
+      Para drogas duras — abstinência. Substituir 'rush' por NoFap
+      (que dá pico de testosterona natural). Para psicodélicos — só
+      com preparo (set/setting), só esporádico, só em contexto seguro,
+      só para INTEGRAR experiência (não para escapar).
+    source_refs:
+      - "À Deriva — narrativa do abuso na Alemanha, quase overdose, virada"
+      - "À Deriva — explicação detalhada de set/setting para psicodélicos"
+
+  - id: redes_sociais_como_pornografia_soft
+    name: "Redes Sociais como Pornografia Soft / Hipersexualização Difusa"
+    description: >
+      Instagram, TikTok, etc. NÃO são neutros — funcionam como
+      pornografia soft. Mulheres seminuas, poses pornográficas (que
+      Donadelli identifica como exportadas da pornografia para a
+      cultura), dopamina constante de imagens sexuais. Mesmo sem
+      visitar PornHub, o usuário típico de Instagram CONSOME estímulo
+      sexual diariamente.
+    symptoms:
+      - "Stories cheios de mulheres em pose sexual"
+      - "Following biased para influenciadoras seminuas"
+      - "Engajamento com OnlyFans / camgirls / venda de nude"
+      - "Hipersensibilidade visual — qualquer foto excita"
+      - "Diminuição da capacidade de tesão por mulher 'comum'"
+    consequence: >
+      Mesmo praticando NoFap formal, o circuito dopaminérgico continua
+      sendo bombardeado. Reboot incompleto. Comparação constante de
+      mulheres reais com filtradas. Tempo perdido em scroll que
+      poderia ser canalizado para propósito.
+    antidote: >
+      Hard Mode inclui CORTE de redes sociais com perfis sexualizados.
+      Limpeza brutal de seguidos. Em casos sérios — Monk Mode (sem
+      Instagram). Substituir scroll por leitura, exercício, conversa
+      real, criação.
+    source_refs:
+      - "À Deriva — 'Anitta rebolando, Cardi B, Nicki Minaj — princípios da pornografia se espalharam para dentro da cultura'"
+      - "À Deriva — 'Instagram já é conteúdo quase sexual, só não tem pau ali'"

@@ -1,0 +1,327 @@
+---
+mind_id: krausche
+category: diagnostics
+generated: 2026-05-25
+notes: |
+  Leitura de situação — como decifrar o que tá acontecendo a partir
+  de sinais observáveis. Krausche tem MUITO conteúdo sobre linguagem
+  corporal, sinais de direct, e diagnóstico pré-aproximação.
+  Confiança alta/média/baixa indica quanto material o corpus dá pra
+  cada leitura.
+---
+
+diagnostics:
+  - id: ela_te_olhou_de_volta
+    situation: "Você olhou pra ela à distância, ela retribuiu o olhar"
+    signals_to_read:
+      - "Quanto tempo ela sustentou (1 seg = casual, 3+ seg = forte)"
+      - "Ela desviou e voltou a olhar? (segunda olhada = validação)"
+      - "Ela sorriu antes ou depois de desviar?"
+      - "Postura corporal dela depois do contato (tronco virou pra você ou se fechou?)"
+    interpretation_options:
+      - reading: "Sustentou 3+ seg, sorriu, manteve postura aberta — ela tá afim"
+        confidence: alta
+        next_move: |
+          Vai AGORA, não dá tempo dela 'esfriar' ou outro cara
+          chegar. Opener direto: 'você não vai ficar me olhando de
+          longe e não vir falar comigo, né? Eu que tive que vir aqui.'"
+      - reading: "Olhou rápido, desviou, não sorriu — curiosidade neutra"
+        confidence: media
+        next_move: |
+          Espera mais um sinal antes de chegar. Mantém presença
+          no campo de visão dela. Se segunda olhada vier com
+          sorriso, aborda. Se não, deixa pra lá."
+      - reading: "Olhou, postura fechou, virou pro lado, foi pro celular"
+        confidence: alta
+        next_move: |
+          Aborta. Não é interesse — pode ser checagem de ambiente
+          ('quem é aquele cara olhando?'). Próximo alvo."
+    source_refs:
+      - "OS_PRINCIPAIS_SINAIS_DE_ATRACAO_QUE_A_MULHER_DEMONSTRA_Linguagem_Corporal"
+
+  - id: ela_sumiu_no_direct
+    situation: "Conversa por Insta/Tinder esfriou — ela tá demorando pra responder ou parou de responder"
+    signals_to_read:
+      - "Última resposta dela teve calor ou foi protocolar?"
+      - "Quanto tempo passou (24h, 2-3 dias, semana)?"
+      - "Ela tá ativa nos stories / TL (você consegue ver)?"
+      - "Você perguntou alguma coisa, ou só mandou 'oi tudo bem' / 'como foi seu dia'?"
+    interpretation_options:
+      - reading: "Você mandou mensagem chata ('pai da mina') e ela tá saturada"
+        confidence: alta
+        next_move: |
+          Não fica mandando 'oi sumida'. Espera 2-3 dias, manda
+          algo de ALTO valor (meme específico, observação sobre
+          algo que ela postou). Calibrar frequência."
+      - reading: "Ela perdeu interesse por outra coisa (outro cara, vida cheia)"
+        confidence: media
+        next_move: |
+          Tenta uma vez mais com algo provocativo/curiosidade.
+          Se zero retorno, deixa. Não force. Krausche: 'quando ela
+          tá enrolando muito, ela não tem interesse em ver você'."
+      - reading: "Conversa nunca esquentou de verdade — você cobrou demais cedo"
+        confidence: media
+        next_move: |
+          Análise: nas suas primeiras 5 msgs você fez 4 perguntas?
+          Pediu encontro antes de calor existir? Recomeça do
+          básico — comentário em stories aleatório."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "O_QUE_OS_HOMENS_NAO_TEM_CORAGEM_DE_PERGUNTAR_PARA_AS_MULHERES"
+
+  - id: ela_te_chama_de_amigo
+    situation: "Mulher você quer te chamou de 'amigo' / 'meu amigo'"
+    signals_to_read:
+      - "Foi uma vez ou está sendo repetitivo?"
+      - "Tom: brincadeira ou definição categórica?"
+      - "Linguagem corporal dela quando diz: distante ou casual?"
+      - "Ela faz 'amizade ativa' com você (pede conselho sobre outros caras) ou é genérico?"
+    interpretation_options:
+      - reading: "Primeira vez, casual, sem tom definidor — só linguagem de proximidade"
+        confidence: media
+        next_move: |
+          Reage IMEDIATAMENTE com brincadeira ('me chama de amor,
+          não de amigo'). Não dramatiza, não força. Sinaliza que
+          você se vê em outra categoria, mas sem cobrança."
+      - reading: "Repetitivo + ela pede conselho sobre outros caras pra você"
+        confidence: alta
+        next_move: |
+          Friendzone estabelecida. Saída requer movimento radical:
+          parar de ser disponível como confidente, fazer ela
+          sentir distância, criar tensão sexual via brincadeira/
+          provocação que ela não tá acostumada a receber de você.
+          Ou aceitar a categoria."
+      - reading: "Tom carinhoso, mas com sinais físicos/emocionais de mais ('amigo' vira ironia)"
+        confidence: baixa
+        next_move: |
+          Pode ser que ela use 'amigo' como blindagem mas tem
+          interesse real. Teste: brincadeira provocativa pra ver
+          se ela engaja ou recua. Se engaja, é blindagem; se
+          recua, é categoria mesmo."
+    source_refs:
+      - "O_QUE_FAZER_QUANDO_ELA_TE_CHAMA_DE_AMIGO"
+
+  - id: ela_no_grupo_de_amigas
+    situation: "Você quer abordar uma mulher específica mas ela está em grupo"
+    signals_to_read:
+      - "Tamanho do grupo (2 = manejável, 4+ = mais difícil)"
+      - "Alguma delas parece chefe / âncora social?"
+      - "A alvo já te olhou ou tá só conversando?"
+      - "Grupo tá animado/aberto ou fechado/protegido?"
+    interpretation_options:
+      - reading: "Grupo animado, alvo já te olhou, 2-3 amigas"
+        confidence: alta
+        next_move: |
+          Chegue no GRUPO, não na alvo direta. Engaje no que
+          elas estão conversando. Em 5-10 min ative o foco na
+          alvo (callback de algo específico dela)."
+      - reading: "Grupo fechado, postura defensiva, alvo te ignora"
+        confidence: alta
+        next_move: |
+          Não force. Krausche: 'às vezes a mulher tá interessada
+          mas o AMBIENTE não permite — alguém que ela conhece,
+          medo de pareces afim na frente das amigas'. Pega Insta
+          dela depois ou abre depois quando ela tiver fora do grupo."
+      - reading: "Grupo grande (4+), você não tem reps de abordagem em grupo"
+        confidence: media
+        next_move: |
+          Risco alto, recompensa medida. Considere esperar momento
+          de fragmentação (uma ou duas saem pro banheiro/bar) e
+          abordar resto reduzido."
+    source_refs:
+      - "PERCA_SUA_TIMIDEZ_DE_UMA_VEZ_POR_TODAS..._-_Aula_do_curso_Alem_da_Conquista"
+      - "COMO_INICIAR_UMA_CONVERSA_COM_AS_MULHERES_DE_FORMA_CRIATIVA"
+
+  - id: linguagem_corporal_durante_conversa
+    situation: "Você já tá conversando com ela, quer ler se vale escalar"
+    signals_to_read:
+      - "Tronco/corpo dela: virado pra você ou pro lado?"
+      - "Pés: apontando pra você ou pra saída?"
+      - "Mãos: gesticulando / tocando algo dela / mexendo no cabelo, ou cruzadas?"
+      - "Olhar: focado em você, dividido com celular, ou procurando amigas?"
+      - "Sorriso: ativo (ela ri das suas frases) ou cortês (forçado)?"
+    interpretation_options:
+      - reading: "Corpo virado, pés apontados, mexendo no cabelo, sorriso ativo, olha sua boca às vezes"
+        confidence: alta
+        next_move: |
+          Pode escalar. Provocação leve + toque em zona neutra
+          (ombro, braço). Se ela retribui ou aceita sem recuar,
+          partir pra próxima etapa em 5-10 min."
+      - reading: "Corpo de lado, celular toda hora, procurando amigas, sorriso cortês"
+        confidence: alta
+        next_move: |
+          Aborta antes do não. 'Tudo bem, vou ali com meus
+          amigos, depois a gente se fala' — sai com compostura,
+          mantém ambiente social, próximo alvo."
+      - reading: "Misto: corpo virado mas no celular, sorri mas não puxa assunto"
+        confidence: baixa
+        next_move: |
+          Ela pode estar tímida, ocupada com algo (mensagem da
+          amiga), ou processando se gosta. Faça pergunta aberta
+          interessante, NÃO encoste, espere mais 5 min. Se sinais
+          melhoram, escala. Se piora, sai."
+    source_refs:
+      - "OS_PRINCIPAIS_SINAIS_DE_ATRACAO_QUE_A_MULHER_DEMONSTRA_Linguagem_Corporal"
+      - "PERCA_O_MEDO_DA_REJEICAO_-_ABORDAGEM_PARA_NUNCA_MAIS_TOMAR_FORA"
+
+  - id: date_emergencia_da_amiga
+    situation: "No date, a mulher recebe ligação dizendo que tem 'emergência' e precisa ir"
+    signals_to_read:
+      - "Quão urgente parecia a 'emergência' (genuína ou produzida)?"
+      - "Postura dela durante a ligação (aliviada ou preocupada)?"
+      - "Ela já tinha sinalizado desconforto durante o date?"
+      - "Você falou da ex / monopolizou conversa / tentou avançar muito rápido?"
+    interpretation_options:
+      - reading: "Ligação no meio do date, ela sai aliviada, conversa estava morna antes"
+        confidence: alta
+        next_move: |
+          É a 'estratégia da amiga liga' que Krausche cita no
+          vídeo dele — a colega de quarto fez exatamente isso. Ela
+          não tá afim. Aceita educadamente, não cobre re-encontro,
+          analisa o que deu errado pro próximo."
+      - reading: "Ligação genuína (perceptível pelo tom dela), preocupação real"
+        confidence: media
+        next_move: |
+          Ofereça ajuda se cabe, demonstre empatia, NÃO cobre
+          continuidade do date. Marque re-encontro dias depois
+          quando passar. Se ela ressuscitar contato, era genuína."
+      - reading: "Ela inventou desculpa mas vacila (não tem certeza se quer sair)"
+        confidence: baixa
+        next_move: |
+          'Se você precisa ir, vai tranquila. Mas se quiser ficar
+          mais um pouco, eu adoraria.' Dá a opção. Se ela escolhe
+          sair, respeita; se fica, o jogo continua mas você
+          precisa recalibrar."
+    source_refs:
+      - "COMO_CRIAR_CONEXAO_COM_QUALQUER_MULHER_ATRAVES_DO_METODO_DESENROLADO"
+
+  - id: ela_no_perfil_dela_e_padrao_dela
+    situation: "Antes de mandar primeira mensagem em direct/Tinder — diagnosticar perfil dela"
+    signals_to_read:
+      - "Fotos: aventureira (viagem, esporte) ou comportada (família, restaurante)?"
+      - "Destaques: tem ou não? Quais temas?"
+      - "Frequência de post: ativa diária / semanal / abandonado?"
+      - "Bio: emoji genérico ou frase específica?"
+      - "Tipo de conta: pública / privada / só amigos?"
+    interpretation_options:
+      - reading: "Ativa, bio específica, destaques temáticos (treino, viagem, hobby)"
+        confidence: alta
+        next_move: |
+          MATERIAL FÁCIL. Abridor: callback específico de
+          destaque/bio. Ex: 'fiquei sabendo que tem umas delícias
+          de Minas por aí'. Conversa abre rápido."
+      - reading: "Conta privada, low profile, poucos posts"
+        confidence: media
+        next_move: |
+          Mulher reservada — ela GOSTA do low profile. Aborda
+          mais sutil, sem cantada agressiva. 'Oi, gostei do seu
+          perfil pelo que dá pra ver, queria trocar uma ideia'.
+          Krausche: 'a Pamela é low profile, gosta de cara low
+          profile também'."
+      - reading: "Perfil cheio de selfie + biquíni + lugar caro"
+        confidence: media
+        next_move: |
+          Concorrência altíssima. Você só fura a inbox dela com
+          algo muito não-óbvio. Não comente as fotos de biquíni.
+          Espere stories aleatório (livro, café, paisagem).
+          Comentário tem que ser INSANELY diferenciado."
+    source_refs:
+      - "COMO_CHEGAR_NA_MENINA_PELO_INSTAGRAM"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+
+  - id: ela_acabou_de_terminar_relacionamento
+    situation: "Você descobre que ela terminou relacionamento recentemente"
+    signals_to_read:
+      - "Quanto tempo desde o término (semana, mês, 3-6 meses)?"
+      - "Quanto ela menciona o ex (1x casual ou em loop)?"
+      - "Ela quer 'conversar' ou 'sair pra esquecer'?"
+      - "Ela busca chamada de atenção em redes sociais (indireta pro ex)?"
+    interpretation_options:
+      - reading: "Recém-terminada, fala muito do ex, busca 'conversar'"
+        confidence: alta
+        next_move: |
+          RED FLAG. Krausche é claro: 'você vai virar escada,
+          tapa-buraco'. Mantém amizade superficial se quiser,
+          mas não invista emocional ou se posicione como
+          parceiro. Quando o ex volta, você é descartado."
+      - reading: "Terminou há 3-6 meses, menciona casualmente sem peso"
+        confidence: media
+        next_move: |
+          Risco médio. Avalie: ela tá VIVA de novo (saindo,
+          investindo em si, com hobby novo) ou ainda lambendo
+          feridas? Vivendo = pode rolar. Lambendo = espera mais."
+      - reading: "Terminou há 1+ ano, fala como passado fechado, tem vida própria"
+        confidence: alta
+        next_move: |
+          Verde. Mulher resolvida tem condições reais de se
+          envolver. Krausche: 'procure pessoa bem consigo mesma,
+          ela vai fazer questão de você'."
+    source_refs:
+      - "ELA_ACABOU_DE_TERMINAR_COM_O_EX_O_QUE_FAZER_-_SE_LIVRE_DA_DEPENDENCIA_EMOCIONAL"
+
+  - id: ela_no_date_quer_continuar_ou_ir
+    situation: "Date rolando — você precisa ler se ela tá querendo continuar (sair pra outro lugar, hotel/casa) ou ir embora"
+    signals_to_read:
+      - "Tempo decorrido (1h = muito cedo, 3h+ = sinal por si só)"
+      - "Toque entre vocês (espontâneo dela ou só você?)"
+      - "Olhar pra boca (sinal forte de vontade de beijar)"
+      - "Postura: relaxada / inclinada pra você / mexendo no cabelo, ou rígida / verifica horas no celular"
+      - "Iniciativa: ela puxa assunto novo quando termina ou tá deixando você carregar?"
+    interpretation_options:
+      - reading: "Toque retribuído, olhar pra boca, postura aberta, 2h+ no date"
+        confidence: alta
+        next_move: |
+          'Vamos pra um lugarzinho diferente, ficar mais à
+          vontade?' (frase REAL que Krausche cita). Direto,
+          gentil, opção de 'não' sem peso. Se ela hesita, pivô
+          pra próximo encontro: 'então fica pra outro dia'."
+      - reading: "Toque ausente, ela verifica celular, postura rígida"
+        confidence: alta
+        next_move: |
+          Encerra com elegância. 'Foi muito legal te conhecer,
+          te levo em casa?'. Não pressiona. Mantém porta aberta
+          pra futuro encontro sem cobrança."
+      - reading: "Misto — toques tem mas hesitante, olhar dividido"
+        confidence: baixa
+        next_move: |
+          Tirar pressão. Krausche: 'tira o significado de
+          obrigação'. Verbaliza: 'a noite tá boa, sem pressa de
+          nada, se você quiser ficar mais um pouco eu fico, se
+          quiser ir tudo bem'. Devolve controle. Frequentemente
+          ela escolhe ficar."
+    source_refs:
+      - "5_COISAS_PARA_NAO_FAZER_NA_HORA_DO_S3X"
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+      - "COMO_CRIAR_CONEXAO_COM_QUALQUER_MULHER_ATRAVES_DO_METODO_DESENROLADO"
+
+  - id: ela_te_seguiu_de_volta_no_insta
+    situation: "Você seguiu primeiro, ela retribuiu mas não veio falar"
+    signals_to_read:
+      - "Ela curte seus stories? Com que frequência?"
+      - "Ela responde stories teus? Ou só observa?"
+      - "Stories dela: ela posta coisa 'pra você ver' (indiretas, lugares que sabe que você curte)?"
+      - "Mensagens diretas: zero da parte dela?"
+    interpretation_options:
+      - reading: "Segue de volta + curte stories regularmente + nunca manda DM"
+        confidence: media
+        next_move: |
+          Interesse passivo. Ela tá esperando você puxar. Aborda
+          em algum stories aleatório dela (não biquíni). Krausche:
+          'me ajuda a te ajudar' — ela quer que você dê o
+          próximo passo."
+      - reading: "Segue de volta, posta indiretas que parecem 'pra você', mas nunca responde stories tuas"
+        confidence: alta
+        next_move: |
+          Jogo de espelhamento. Ela quer que você puxe primeiro
+          mas também testa se você presta atenção nas indiretas.
+          Aborda fazendo referência a algo que ela postou que
+          'pareceu' indireta — não obviamente."
+      - reading: "Aceitou follow back, nunca interage com teu conteúdo"
+        confidence: media
+        next_move: |
+          Volume baixo de interesse. Pode ser educação social
+          (aceita follow back de qualquer um). Não invista
+          muito. Tenta uma boa puxada e se nada retorna, deixa."
+    source_refs:
+      - "COMO_CHEGAR_NA_MENINA_PELO_INSTAGRAM"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"

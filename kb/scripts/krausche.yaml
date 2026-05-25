@@ -1,0 +1,340 @@
+---
+mind_id: krausche
+category: scripts
+generated: 2026-05-25
+notes: |
+  Falas/cantadas/respostas LITERAIS extraídas do corpus. Não
+  parafraseadas. Vocabulário do Krausche preservado. Cada script tem
+  variantes de tom (estratégico, autêntico, cômico, direto) quando ele
+  demonstrou variações.
+
+  Aviso operacional pro agente FlirtAI que consumir isso: scripts
+  exatos do Krausche são úteis como ANDAIME, mas a tese central dele
+  é que cantada copiada sem o frame correto NÃO funciona. Sempre
+  combinar com framework de leitura situacional.
+---
+
+scripts:
+  - id: cantada_aeroporto
+    situation: "Abordagem em aeroporto / sala de embarque"
+    variants:
+      - tone: comico
+        text: "Ué, agora eu não sabia que eu pegava o avião na sala de embarque. — [ela: 'como assim?'] — É, você fica moscando, eu pego esse avião aqui."
+        context_notes: |
+          Trocadilho: 'avião' como gíria pra mulher bonita. Usar
+          em pé na sala, com sorriso. Funciona porque conecta
+          ambiente (aeroporto) com a metáfora.
+    source_refs:
+      - "APRENDA_A_CRIAR_E_USAR_CANTADAS_E_NUNCA_MAIS_SAIA_DA_NOITE_ZERADO"
+
+  - id: cantada_balada_musica
+    situation: "Abordagem em balada / festa com música tocando"
+    variants:
+      - tone: comico
+        text: "Você sabe que música é essa? — [ela: 'qual?'] — A do nosso primeiro beijo."
+        context_notes: |
+          Krausche cita que essa tem 5M views no TikTok e 7M no
+          Instagram. Funciona porque é curtíssima, instala futuro
+          ('nosso primeiro beijo') e dá saída pra brincar.
+    source_refs:
+      - "APRENDA_A_CRIAR_E_USAR_CANTADAS_E_NUNCA_MAIS_SAIA_DA_NOITE_ZERADO"
+
+  - id: cantada_acidente_constrangedor
+    situation: "Mulher passou por constrangimento (caiu, tropeçou, errou na frente da galera)"
+    variants:
+      - tone: comico
+        text: "É por isso que você não pode ficar sem mim. — [ela: 'hã, como assim?'] — É, se eu tivesse do seu lado com certeza a gente estaria de mão dada. E você não teria o risco de quase cair da escada e se machucar toda."
+        context_notes: |
+          Variação do princípio 'transformar constrangimento dela
+          em piada que reposiciona ele como solução'. Funciona quando
+          o constrangimento é leve (tropeço, escada, derramar bebida)."
+      - tone: autentico
+        text: "[Ela bateu cabeça no vidro] Ele bate a própria cabeça no vidro de propósito → dá risada → 'também vim aqui passar vergonha'."
+        context_notes: |
+          Empatia em ação. Não verbal. Cara faz a vergonha junto
+          em vez de só comentar. Krausche relata: ela disse 'cara
+          você é incrível, você é muito engraçado, ninguém tinha
+          chegado em mim assim de uma forma tão diferente'."
+    source_refs:
+      - "4_COISAS_QUE_VOCE_NUNCA_DEVE_FAZER_AO_CHEGAR_EM_UMA_MULHER"
+
+  - id: cantada_uberlandia_pao_queijo
+    situation: "Match no Tinder / direct com mulher de outra cidade"
+    variants:
+      - tone: estrategico
+        text: "[Ela: 'oi tudo, você é daqui de UD?'] Não, tô aqui em UD. — [ela puxou conversa sobre pão de queijo] — Cheguei aqui e foi a primeira coisa que pedi. Pedi um pão de queijo recheado na padaria Vila Carioca. Nunca mais como o de São Paulo. Vou ter que voltar aqui sempre. E goiabada com queijo é muito bom também, com um vinhozinho."
+        context_notes: |
+          Demonstra: análise prévia (sabe que ela é de UD), referência
+          a lugar específico (vira parte do social), instalação de
+          antecipação ('vou ter que voltar') e gancho final ('com um
+          vinhozinho' como sugestão velada de date). Conversa Tinder
+          real do Krausche que virou date no dia seguinte."
+    source_refs:
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: gatilho_curiosidade_tres_coisas
+    situation: "Conversa em direct / Tinder onde quer abrir curiosidade"
+    variants:
+      - tone: estrategico
+        text: "Tem três coisas que eu quero experimentar aqui: queijo, trança e empada. [não diz a terceira]"
+        context_notes: |
+          Krausche usa esse pattern especificamente — listar duas
+          coisas reais E uma 'mistério'. Ela vai PERGUNTAR. Você
+          ganha próximo turno de conversa de graça. Adaptável a
+          qualquer tema."
+    source_refs:
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: cantada_oitava_maravilha
+    situation: "Resposta a cantada da própria mulher (jogo de cantada)"
+    variants:
+      - tone: comico
+        text: "[Ela: 'goiabada com queijo fresco é a oitava maravilha do mundo'] Mentira, é a nona. A oitava é você."
+        context_notes: |
+          Patterns: ela faz cantada/elogio indireto, ele acha
+          espaço pra reverter sem perder o jogo. Funciona quando
+          ela demonstrou abertura primeiro."
+      - tone: comico
+        text: "[Ela deu uma cantada pra ele] Você só não é mais considerada a oitava maravilha do mundo, sabe por quê? Porque você não vai mais ser do mundo. Você vai ser minha."
+        context_notes: |
+          Variação com declaração de posse semi-lúdica. Funciona em
+          contexto onde já tem calor."
+    source_refs:
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: marcacao_de_date_direta
+    situation: "Conversa esquentou, hora de marcar encontro"
+    variants:
+      - tone: direto
+        text: "Tá na hora da gente resolver isso, né? — [pausa] — Quinta-feira às 20h te pego."
+        context_notes: |
+          Krausche cita como exemplo de fechamento em 4 frases.
+          Funciona quando: (1) calor já demonstrado, (2) você
+          afirmou seu valor antes, (3) sem espaço pra 'talvez'.
+          Não pergunta — declara."
+      - tone: estrategico
+        text: "Me passa o seu WhatsApp."
+        context_notes: |
+          Frase exata dele depois de 30+ min de conversa boa no
+          Tinder. NÃO pedir 'pode me passar', 'tudo bem se eu...?'.
+          Declarar."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: cantada_quimica
+    situation: "Conversa com tópico técnico / científico / químico"
+    variants:
+      - tone: comico
+        text: "Eu sempre pergunto pra ela se ela entende um pouco sobre química. — Eu queria saber se você sabe qual que é a fórmula da água. — [ela: 'H2O'] — Se você entende isso, por que eu não consigo entender a química que rola em mim final."
+        context_notes: |
+          Krausche cita como cantada que ele leva pra qualquer
+          situação. Funciona porque pega palavra do dia a dia
+          ('química') e vira metáfora afetiva."
+    source_refs:
+      - "BATALHA_DE_CANTADAS_-_DESENROLANDO_AO_VIVO"
+
+  - id: cantada_hotel
+    situation: "Conversa sobre viagem / lugar"
+    variants:
+      - tone: comico
+        text: "Quando você viaja, gosta de hotel? — [ela: 'gosto'] — E você sabe qual o hotel mais bonito do mundo? — [ela: 'aquele que tem você?'] — Não. O teu sorriso.
+        context_notes: |
+          Pattern: pergunta-armadilha onde a resposta óbvia ('o que
+          tem você') é redirecionada pra elogio dela. Krausche usa
+          em entrevista ao vivo. Sustenta jogo de cantada."
+    source_refs:
+      - "BATALHA_DE_CANTADAS_-_DESENROLANDO_AO_VIVO"
+
+  - id: cantada_balao_anfitria
+    situation: "Conversa Tinder onde quer marcar encontro inusitado"
+    variants:
+      - tone: direto
+        text: "Bora andar de balão?"
+        context_notes: |
+          Frase REAL com que Krausche marcou primeiro date com a
+          namorada dele (Luana). Quebra padrão total (não é
+          restaurante/bar). Funciona porque é tão inusitado que
+          vira história. Adaptar a contexto: 'bora correr', 'bora
+          surfar', 'bora pular de paraquedas' — qualquer coisa
+          ativa."
+    source_refs:
+      - "CHAMEI_A_GATA_DA_ACADEMIA_PARA_TREINAR_COMIGO_-_O_PAPO_RENDEU"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: reacao_amigo_no_direct
+    situation: "Ela te chamou de 'amigo' — saída de friendzone imediata"
+    variants:
+      - tone: comico
+        text: "Nossa, tem tanta coisa boa pra me chamar, vai me chamar logo de amigo? Me chama de amor."
+        context_notes: |
+          Krausche descreve isso como movimento padrão dele. Nunca
+          dramatizar, nunca cobrar — virar a brincadeira. Sinaliza
+          que você se vê em outra categoria, mas com leveza."
+      - tone: comico
+        text: "Amigo não. Seu bebê. Ou amor dessa vida. Escolhe um."
+        context_notes: |
+          Versão mais leve, dá opções. Ela tem que escolher e ao
+          escolher, ela já saiu da categoria 'amigo'."
+    source_refs:
+      - "O_QUE_FAZER_QUANDO_ELA_TE_CHAMA_DE_AMIGO"
+
+  - id: abordagem_indireta_timido_em_grupo
+    situation: "Cara tímido chegando em grupo de mulheres em festa"
+    variants:
+      - tone: autentico
+        text: "Gente, tô morrendo de vergonha, sou super tímido, então eu ter vindo aqui falar com vocês já é um ponto, então me valorizem, viu? Acabei de me perder dos meus amigos, não sei onde eles estão, posso ficar aqui com vocês um pouquinho? Ah, e não sei dançar também, tá? Então não vão rir de mim."
+        context_notes: |
+          Auto-deprecação calculada. Sinaliza vulnerabilidade
+          (timidez é confessada), pede permissão (frame de igual),
+          já estabelece humor ('me valorizem'). Krausche cita como
+          o opener favorito dele em contextos onde ele simulava
+          ser tímido pra testar o método."
+    source_refs:
+      - "PERCA_SUA_TIMIDEZ_DE_UMA_VEZ_POR_TODAS..._-_Aula_do_curso_Alem_da_Conquista"
+
+  - id: contato_olho_no_olho_abordagem
+    situation: "Ela tava te olhando de longe, você sustentou olhar, ela sorriu — abordar"
+    variants:
+      - tone: direto
+        text: "Você não vai ficar me olhando de longe e não vai vir falar comigo, né? Eu que tive que vir aqui falar com você?"
+        context_notes: |
+          Frame de inversão: 'EU é que tive que vir até VOCÊ'.
+          Funciona porque ela validou interesse via olhar — ele só
+          tá nomeando o que aconteceu. Resposta clássica dela:
+          'sou tímida' → 'com esse sorrisão nem parece'."
+      - tone: comico
+        text: "Mas sei lá, é bom que você já começou sorrindo, porque se você ficar comigo, sua vida inteira vai ser sorrindo."
+        context_notes: |
+          Sequência ao opener acima. Vira o sorriso em promessa de
+          futuro. Cantada-frase de fechamento de primeira troca."
+    source_refs:
+      - "OS_PRINCIPAIS_SINAIS_DE_ATRACAO_QUE_A_MULHER_DEMONSTRA_Linguagem_Corporal"
+
+  - id: elogio_de_acessorio_callback
+    situation: "Mulher tem acessório/tatuagem peculiar que conecta com algo seu"
+    variants:
+      - tone: estrategico
+        text: "Não é possível que você colocou esse brinco só pra combinar com o meu colar."
+        context_notes: |
+          Caso real do colar de cobra / brinco de cobrinha que
+          Krausche cita. Coincidência visual real (não inventada)
+          → conexão imediata + ela validou estilo dele. Pode
+          adaptar: 'esse tênis combina com o meu', 'essa cor é a
+          mesma da minha camisa'."
+      - tone: comico
+        text: "Alguém tem que ser estiloso, né? Inclusive, adorei o seu estilo. Aonde você se trocou? Não tinha luz, não?"
+        context_notes: |
+          Elogio + provocação imediata ('não tinha luz' = brincando
+          que ela tá estranha). Krausche cita como exemplo de
+          quebra do 8 ao 80 — não vira só elogio, vira jogo."
+    source_refs:
+      - "PERCA_O_MEDO_DE_CHEGAR_EM_MULHER_BONITA"
+      - "AS_3_MELHORES_FORMAS_DE_ELOGIAR_UMA_MULHER"
+
+  - id: cantada_arvore_genealogica
+    situation: "Mulher com tatuagem de árvore / ramos / planta"
+    variants:
+      - tone: comico
+        text: "Caralho, velho, adorei sua tatuagem de árvore. Eu queria muito plantar uma árvore com você. Vamos? — [confusão] — Uma árvore genealógica."
+        context_notes: |
+          Patterns: pega elemento visual real, faz suposição
+          ambígua (parece sexual), revela inocência (genealógica).
+          Funciona pelo ritmo de reveal. Krausche aplicou na festa
+          universitária Arena Pós-Jogos."
+    source_refs:
+      - "LANCEI_O_ROBO_DESENROLADO_E_LEVEI_UM_SEGUIDOR_PARA_TESTAR_NA_FESTA_UNIVERSITARIA_-_ARENA_POS_JOGOS"
+
+  - id: cantada_signo_advogada
+    situation: "Conversa onde ela tem 'cara de algo' (advogada, médica, etc)"
+    variants:
+      - tone: comico
+        text: "Você tem uma cara muito específica. Você parece advogada, sabia? É que você tem um jeito que vai resolver nosso caso."
+        context_notes: |
+          Suposição + reviravolta no 'nosso caso' (relacional, não
+          jurídico). Adaptável: médica ('cuidar do meu coração'),
+          médica ('cuidar do meu coração'), professora ('me ensinar
+          a viver'). Pattern: profissão como metáfora pra dinâmica
+          dos dois."
+    source_refs:
+      - "LANCEI_O_ROBO_DESENROLADO_E_LEVEI_UM_SEGUIDOR_PARA_TESTAR_NA_FESTA_UNIVERSITARIA_-_ARENA_POS_JOGOS"
+
+  - id: meme_assincrono_pensei_em_voce
+    situation: "Conversa que esfriou, você quer reaquecer sem 'oi tudo bem'"
+    variants:
+      - tone: autentico
+        text: "[Foto/meme/imagem qualquer que tem conexão com algo dela] Acabei de lembrar de você — [contextualização breve, 1 frase]."
+        context_notes: |
+          Krausche usa muito: 'segurando um copo que vi que você
+          tem igual' (foto do copo), meme do tema dela, foto de
+          treino se ela curte academia. Princípio: gesto pequeno,
+          alto sinal de presença mental, sem cobrar resposta."
+      - tone: comico
+        text: "Mais um dia que eu tô treinando aqui sem você."
+        context_notes: |
+          Foto da academia. Pattern: declarar 'sem você' em
+          atividade casual sugere ele te quer junto, sem pesar."
+    source_refs:
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: cantada_5_mensagens_match
+    situation: "Match novo no Tinder, marcar date em poucas frases"
+    variants:
+      - tone: estrategico
+        text: "MSG 1: Nossa, eu não sei o que a gente tava fazendo tanto tempo longe um do outro. — [ela: 'também não sei'] — MSG 2: Então tá na hora da gente resolver isso, né? — [ela: 'bora'] — MSG 3: Quinta-feira às 20h te pego."
+        context_notes: |
+          Krausche cita explicitamente: 'marquei um date usando
+          cinco frases'. Funciona com mulher que já demonstrou
+          calor pelo match. Não funciona se ela tá fria — aí
+          precisa de conversa pra esquentar antes."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: cantada_carrinho_policia_stories
+    situation: "Stories dela onde você não sabe o que comentar"
+    variants:
+      - tone: comico
+        text: "[Manda emoji de carrinho de polícia 🚓 e sirene 🚨] — [ela: '???'] — É que eu fiquei preso nesses stories. Mas eu queria mesmo é ficar preso no seu coração.
+        context_notes: |
+          Cantada que aluno do Krausche enviou pro grupo dele.
+          Pattern: gesto ambíguo (emoji estranho) → ela vai
+          perguntar → você revela o trocadilho. Compromisso baixo
+          de risco, recompensa alta se ela engaja."
+    source_refs:
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+
+  - id: cantada_signo_de_virgem_beijo
+    situation: "Conversa sobre signo / astrologia"
+    variants:
+      - tone: comico
+        text: "Qual seu signo? — [ela: 'sou de virgem, por que?'] — É verdade que dizem por aí que as pessoas do signo de virgem beijam muito bem? — [ela: 'quer experimentar pra tirar sua opinião?']"
+        context_notes: |
+          Pattern: pergunta sobre estado dela (signo) + suposição
+          provocativa (beijam bem?). Ela tem espaço pra entrar no
+          jogo. Krausche cita conversa de aluno onde ela
+          literalmente respondeu 'quer experimentar'. Adaptável a
+          estado (cidade, profissão, hobby): 'é verdade que
+          carioca beija bem?'."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: cantada_perfil_arrumada_date
+    situation: "Stories/foto onde ela tá vestida/arrumada"
+    variants:
+      - tone: comico
+        text: "Então é assim que você vai vestida pro nosso primeiro date?"
+        context_notes: |
+          Krausche reage no vídeo: 'essa abordagem aqui é muito
+          boa, matadora'. Funciona porque (1) elogia indiretamente
+          o look dela, (2) instala antecipação ('nosso primeiro
+          date'), (3) deixa ela responder com calor ('depende',
+          'tô esperando você marcar')."
+      - tone: comico
+        text: "[Variação] Sempre que uma mulher estiver arrumada: 'Vestida de amor da sua vida?'"
+        context_notes: |
+          Krausche cita como matadora também. Mais curta, mais
+          arriscada (ou ela ri, ou ignora). Use quando já tem
+          algum calor."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"

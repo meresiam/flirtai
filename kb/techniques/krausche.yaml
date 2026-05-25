@@ -1,0 +1,426 @@
+---
+mind_id: krausche
+category: techniques
+generated: 2026-05-25
+notes: |
+  Manobras concretas e nomeadas. Falas LITERAIS são preservadas onde
+  ele exemplifica. Vocabulário do Krausche: 'desenrolar', 'rolê',
+  'mina', 'troca de ideia', 'tridente', 'desenrolado'.
+---
+
+techniques:
+  - id: abordagem_via_oportunidade_situacional
+    name: "Abordagem via Oportunidade (não Cantada Genérica)"
+    description: |
+      Em vez de chegar com cantada de inbox, espera/cria evento
+      situacional que vira o abridor: ela tropeçou, bateu cabeça no
+      vidro, está num grupo rindo, está com acessório peculiar.
+      Você comenta o evento, vira o evento na conversa, e usa como
+      conexão de pertencimento ('eu também').
+    script_examples:
+      - "[Ela bateu cabeça no vidro e tava constrangida com a galera rindo] → Ele bate a própria cabeça no vidro de propósito → faz rir → diz 'também vim aqui passar vergonha' → ela: 'você é incrível, ninguém tinha chegado em mim assim'"
+      - "[Ela tropeçou na escada do banheiro] → ela passa por ele depois → 'é por isso que você não pode ficar sem mim... se eu tivesse do seu lado a gente estaria de mão dada e você não teria caído'"
+      - "[Mulher fazendo fofoca em grupo] → 'cara, o que vocês estão fofocando aí? Me conta que eu também quero saber'"
+    when:
+      - "Cold approach em ambiente público com dinâmica de grupo"
+      - "Quando você não tem leitura específica dela ainda"
+      - "Pra tornar a abordagem indistinguível de coincidência social"
+    risk: |
+      Se você forçar oportunidade que não existiu, soa ensaiado e
+      cringe. Tem que ser observação real ou criação plausível. E
+      se o evento envolve constrangimento dela, tem que aliviar,
+      nunca debochar."
+    mastery_signal: |
+      Ela passa de 'estranho me abordando' pra 'pessoa que entendeu
+      o momento' em uma frase. Risada genuína, postura abre, tronco
+      vira pra você."
+    source_refs:
+      - "4_COISAS_QUE_VOCE_NUNCA_DEVE_FAZER_AO_CHEGAR_EM_UMA_MULHER"
+      - "3_ASSUNTOS_PARA_SEDUZIR_A_MULHER_NA_CONVERSA"
+
+  - id: gatilho_de_antecipacao_futuro_juntos
+    name: "Gatilho de Antecipação (Instalar Futuro Junto)"
+    description: |
+      Falar como se 'a gente' fosse uma realidade próxima, mesmo
+      sem nem ter encontrado. Inconscientemente ela começa a
+      construir mentalmente o cenário de vocês juntos. Não é
+      promessa, é instalação de imagem mental.
+    script_examples:
+      - "'Vou ter que voltar aqui sempre' [pra cidade dela]"
+      - "'Você vai ter que me apresentar as coisas boas da cidade. Tem que ser uma boa anfitriã'"
+      - "'Tem três coisas que eu quero experimentar aqui: queijo, trança e empada' [não diz a terceira]"
+      - "'No nosso primeiro date você vai assim?'"
+      - "'Tô na hora da gente resolver isso, né? Quinta às 20h te pego'"
+    when:
+      - "Conversa de direct que já passou da primeira troca"
+      - "Quando ela já demonstrou pelo menos um sinal de interesse"
+      - "Pra encurtar caminho até marcar encontro sem 'pedir'"
+    risk: |
+      Cedo demais soa intrusivo ('quem é esse cara falando como se
+      a gente já tivesse algo?'). Calibrar pelo nível de calor que
+      ela já demonstrou."
+    mastery_signal: |
+      Ela responde JÁ DENTRO da premissa ('tudo bem, te apresento'
+      ou 'rsrs, me leva então') em vez de questionar ('por que você
+      vai voltar?')."
+    source_refs:
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: suposicao_provocativa
+    name: "Suposição Provocativa (Pergunta com Hipótese Errada)"
+    description: |
+      Em vez de perguntar aberto ('você gosta de vinho?'), você
+      AFIRMA uma hipótese (provavelmente errada) e força ela a
+      corrigir. A correção dela é mais reveladora que a resposta a
+      pergunta aberta. Funciona porque humanos preferem corrigir
+      do que iniciar tópico.
+    script_examples:
+      - "'Você tem cara de quem gosta de café bem docinho' [ela: 'não, gosto amargo']"
+      - "'Você não tem cara de quem gosta de vinho seco' [ela: 'nossa, amo vinho seco' ou 'realmente, prefiro doce']"
+      - "'Tenho certeza que você é taurina' [mesmo que não seja — ela corrige, mas você já abriu o tópico signo]"
+      - "[Stories dela com livro de biquíni] 'Duvido que você já leu algum desses livros'"
+    when:
+      - "Resposta de stories sem contexto óbvio"
+      - "Início de conversa com pouco material pra trabalhar"
+      - "Pra puxar um tema (signo, gosto, hábito) sem fazer pergunta direta"
+    risk: |
+      Se a suposição for ofensiva ('você tem cara de quem nunca leu
+      um livro'), ela fecha. Tem que ser suposição leve, com tom de
+      brincadeira, em tópico não-sensível."
+    mastery_signal: |
+      Ela corrige rindo e CONTINUA o tópico ('na verdade gosto de
+      X, e você?')."
+    source_refs:
+      - "COMO_CHEGAR_NA_MENINA_PELO_INSTAGRAM"
+      - "AS_3_MELHORES_FORMAS_DE_ELOGIAR_UMA_MULHER"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+
+  - id: chamada_de_video_inesperada
+    name: "Chamada de Vídeo Inesperada (Quebra de Padrão Pré-Date)"
+    description: |
+      No meio da conversa por mensagem (especialmente quando vocês
+      não se falaram o dia todo), você liga de vídeo sem aviso. Ela
+      para o que tá fazendo, sua atenção vira 100% dela por aquele
+      tempo, e a intimidade salta — é o mais próximo de estar com
+      ela presencialmente sem ter encontrado.
+    script_examples:
+      - "Mensagem padrão antes (texto / áudio / foto bobinha) → escalonamento natural → áudio → ligação só áudio → vídeo do nada"
+      - "'Eu pegava do nada, do nada, do nada, e o que eu fazia? Me ligava. Chamada de vídeo. Cara, chamada de vídeo, a mulher para o que tá fazendo pra falar contigo'"
+    when:
+      - "Mensagem rolando há dias com calor mas sem encontro marcado"
+      - "Pra acelerar intimidade antes do primeiro date (chega no date sem ser estranho)"
+      - "Aluno cuja conversa em texto não converte em date — vídeo quebra padrão"
+    risk: |
+      Cedo demais (depois de 3 mensagens) é invasivo. Mulher mais
+      reservada pode achar 'ousadia' demais. Calibrar: tem que já
+      ter base de áudio/foto antes do vídeo."
+    mastery_signal: |
+      Ela atende (não rejeita), e a conversa vira 30min-2h. Quando
+      você marca date depois, ela vai 'porque já sente que conhece
+      você'."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: callback_de_perfil
+    name: "Callback de Perfil (Análise + Comentário Específico)"
+    description: |
+      Antes de mandar qualquer mensagem, abrir o perfil dela
+      (Instagram, Tinder, etc), olhar destaques, biografia, gostos.
+      Trazer pra primeira mensagem um detalhe NÃO-ÓBVIO (não
+      biquíni, não 'gata') — preferencialmente um destaque,
+      uma marca, um lugar específico.
+    script_examples:
+      - "[Ela tem destaque de Florianópolis] → 'puta, eu mexi lugar aqui, vejo a hora de voltar' [se você é de outra cidade] ou 'já experimentou X aqui?' [se vocês são da mesma]"
+      - "[Ela tem loja de doce mineiro chamado 'Delícias de Minas'] → 'fiquei sabendo que tem umas delícias de minas por aí. E nem é da sua loja que eu tô falando'"
+      - "[Ela compartilhou música no stories] → 'cara, amo essa música, inclusive olha do minuto 2:02 ao 2:10' [com trecho específico]"
+    when:
+      - "Primeira mensagem em direct"
+      - "Comentário em foto/stories"
+      - "Match novo em Tinder/Bumble"
+    risk: |
+      Soar stalker se você cita coisa muito antiga ou muito
+      específica ('vi sua foto de 2019 com seu primo'). Limitar a
+      conteúdo público recente, e sempre dropar como observação,
+      não como dossiê."
+    mastery_signal: |
+      Resposta dela tem energia ('caraca, ninguém comentou isso' /
+      'nossa, você prestou atenção'). Conversa abre num tópico
+      específico, não em small talk."
+    source_refs:
+      - "COMO_CHEGAR_NA_MENINA_PELO_INSTAGRAM"
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: cantada_via_callback_visual
+    name: "Cantada via Callback do Acessório/Roupa"
+    description: |
+      Ela tá com um acessório/tatuagem peculiar. Você comenta como
+      conexão ('eu também tenho X', 'meu colar combina com seu
+      brinco'). Conexão visual estabelece similaridade =
+      similaridade gera atração.
+    script_examples:
+      - "[Ela com brinco de cobrinha, ele com colar de cobra] → 'não é possível que você colocou esse brinco só pra combinar com o meu colar'"
+      - "[Festa de laranja, ele de laranja, ela de laranja] → 'a gente nem veio combinando. Agora eu só quero sair se for assim'"
+      - "[Ela com tatuagem de árvore nas costas, ele com amigo na balada universitária] → 'adorei sua tatuagem de árvore. Eu queria muito plantar uma árvore com você. Uma árvore genealógica'"
+    when:
+      - "Cold approach em balada/bar"
+      - "Quando ela tem algo visualmente peculiar que ninguém comentou"
+    risk: |
+      Coincidência forçada (você dizer que tem tatuagem igual quando
+      não tem) é descoberta na hora — ela pede pra ver. Só funciona
+      se for verdade ou se a 'coincidência' é leve o suficiente pra
+      virar piada."
+    mastery_signal: |
+      Ela ri, sente vista pelo detalhe, e devolve com elogio
+      ('nossa, gostei do seu estilo')."
+    source_refs:
+      - "AS_3_MELHORES_FORMAS_DE_ELOGIAR_UMA_MULHER"
+      - "PERCA_O_MEDO_DE_CHEGAR_EM_MULHER_BONITA"
+      - "LANCEI_O_ROBO_DESENROLADO_E_LEVEI_UM_SEGUIDOR_PARA_TESTAR_NA_FESTA_UNIVERSITARIA_-_ARENA_POS_JOGOS"
+
+  - id: provocacao_e_toque_em_zona_neutra
+    name: "Provocação + Toque em Zona Neutra (Escalada Física)"
+    description: |
+      Antes de pedir beijo, você faz brincadeira/piada e durante a
+      brincadeira encosta em zona neutra (ombro, braço, cotovelo,
+      lateral da mão). Lê a reação dela (recua? mantém? recíproca?).
+      Cada toque valida pra próxima fase. Você nunca pede beijo —
+      você partilha pra beijo quando a escalada chegou.
+    script_examples:
+      - "[Na academia, ele fala que tem cicatriz de tubarão na lateral, mentira, leva mão dela pra mostrar] 'A bonita me deu uma facada aqui, olha' — risada, primeiro toque"
+      - "Provocação verbal: 'ah, então você gosta de aviso' (sobre alguma fala dela) seguido de cutucada no ombro ou apoio leve no braço"
+      - "Brincadeira de adivinhação: 'que horas são? sem olhar o celular' → ela erra → 'então beijo' (consequência leve, mas validação pra escalada)"
+    when:
+      - "Em rolê quando o papo já tá fluido"
+      - "Date depois de assunto destensionar"
+      - "Antes de qualquer transição pra beijo"
+    risk: |
+      Encostar em zona não-neutra (perna, lateral do corpo, cintura)
+      cedo demais é leitura errada. E mesmo zona neutra precisa de
+      reciprocidade — se ela recua uma vez, recuar você."
+    mastery_signal: |
+      Toque retribuído (ela apoia no braço dele, encosta no ombro),
+      olhar pra boca, postura aberta. Aí beijo é gesto natural,
+      não pedido."
+    source_refs:
+      - "PERCA_SUA_TIMIDEZ_DE_UMA_VEZ_POR_TODAS..._-_Aula_do_curso_Alem_da_Conquista"
+      - "CHAMEI_A_GATA_DA_ACADEMIA_PARA_TREINAR_COMIGO_-_O_PAPO_RENDEU"
+
+  - id: storytelling_em_vez_de_curriculo
+    name: "Storytelling em Vez de Currículo"
+    description: |
+      Quando você precisa contar algo sobre você, conta como
+      história (cena, conflito, humor), não como lista
+      ('sou gerente de banco, ganho X, tenho carro Y'). A história
+      cria emoção, listagem cria competição. Storytelling permite
+      ela 'experimentar' você sem você se vender.
+    script_examples:
+      - "[Falando de viagem] 'Quando eu fui pra Europa, eu não sabia falar inglês. Fiquei preso no banheiro e gritava em português porque ninguém abria a porta'"
+      - "[Conexão com mineiros] 'Cheguei aqui em UD e pedi pão de queijo recheado naquela padaria Vila Carioca. Nunca mais como o de São Paulo. Vou ter que voltar aqui sempre'"
+      - "[Sobre cantadas] 'Eu tava no aeroporto, na sala de embarque. Eu falei: ué, agora eu não sabia que eu pegava o avião na sala de embarque'"
+    when:
+      - "Date com momentos de silêncio"
+      - "Resposta a 'me fala sobre você' em direct"
+      - "Pra criar conexão sobre experiência semelhante (ela conta dela, você conta a sua)"
+    risk: |
+      Storytelling longo demais vira monólogo. Calibrar pra 1-2
+      minutos no presencial, 3-5 frases em texto. Sempre devolver
+      pra ela depois ('e você, já passou por isso?')."
+    mastery_signal: |
+      Ela ri ou se identifica ('caraca, comigo também aconteceu...')
+      e CONTRIBUI com história dela. Conversa virou troca, não
+      pitch."
+    source_refs:
+      - "3_ASSUNTOS_PARA_SEDUZIR_A_MULHER_NA_CONVERSA"
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+      - "APRENDA_A_CRIAR_E_USAR_CANTADAS_E_NUNCA_MAIS_SAIA_DA_NOITE_ZERADO"
+
+  - id: meme_e_callback_assincrono
+    name: "Meme / Foto-Callback Assíncrono"
+    description: |
+      No meio do dia (sem conversa rolando), você manda um meme,
+      uma foto de algo banal, ou observação ('vi um copo igual ao
+      seu, segurando aqui agora'). Sinaliza que você pensou nela
+      sem cobrar resposta. Quebra o padrão 'oi tudo bem' por
+      iniciativa leve.
+    script_examples:
+      - "[Você num restaurante] Foto do prato: 'tenho certeza que o seu fica melhor'"
+      - "[Você no treino] Selfie de academia: 'mais um dia que eu treino aqui sem você'"
+      - "[Encontrou meme do tema favorito dela] Compartilha + 'lembrei de você na hora'"
+    when:
+      - "Conversa que esfriou mas você não quer chamar diretamente"
+      - "Direct novo onde você não quer cair em 'oi'"
+      - "Pra alimentar presença mental dela durante a semana antes do encontro"
+    risk: |
+      Memes ruins (genéricos, fora do gosto dela) sinalizam pouco
+      cuidado. Quem manda meme tem que entender o universo dela
+      (animais, séries, humor específico)."
+    mastery_signal: |
+      Ela responde com energia ('hahaha SÓ' / 'amei demais' /
+      'eu queria') e PUXA o tópico. Você não força conversa,
+      ela puxa."
+    source_refs:
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: abertura_em_grupo_como_disco_voador
+    name: "Abertura em Grupo Mista (Pertencimento, Não Direta)"
+    description: |
+      Quando ela tá em grupo, chegar nela direto fragiliza (ela
+      precisa atuar pras amigas). Chegue no GRUPO. Engaje no que o
+      grupo já tava conversando. Vire amigo do grupo. Depois,
+      identifique qual deu mais abertura — só aí migra foco.
+    script_examples:
+      - "'Gente, eu tava ali olhando de longe e vi que vocês são as pessoas mais legais desse rolê. Posso ficar aqui com vocês?'"
+      - "'O que vocês estão fofocando aí? Me conta que eu também quero saber'"
+      - "[Sendo tímido em rolê] 'Gente, tô morrendo de vergonha, sou super tímido, então eu ter vindo aqui falar com vocês já é um ponto, então me valorizem, viu? Acabei de me perder dos meus amigos'"
+    when:
+      - "Mulher alvo está com 2+ amigas"
+      - "Cara cronicamente tímido que trava no 1-on-1"
+      - "Festa universitária / balada / festinha onde grupos são bem definidos"
+    risk: |
+      Você fica preso no grupo amigável e nunca migra pra alvo — é
+      friendzone coletiva. Tem que ter momento de virada (depois
+      de 10-15 min) onde você migra foco pra ela."
+    mastery_signal: |
+      Grupo te aceita rapidinho, e depois de alguns minutos elas
+      mesmas 'abrem espaço' pra você falar com a alvo (saem pro
+      banheiro, vão pegar bebida)."
+    source_refs:
+      - "PERCA_SUA_TIMIDEZ_DE_UMA_VEZ_POR_TODAS..._-_Aula_do_curso_Alem_da_Conquista"
+      - "3_ASSUNTOS_PARA_SEDUZIR_A_MULHER_NA_CONVERSA"
+
+  - id: saida_de_friendzone_via_brincadeira
+    name: "Saída de Friendzone via Brincadeira Imediata"
+    description: |
+      Quando ela te chama de 'amigo', você reage NA HORA,
+      brincando. 'Nossa, tem tanta coisa boa pra me chamar, vai me
+      chamar logo de amigo? Me chama de amor.' A brincadeira
+      reposiciona sem dramatizar — você sinaliza que não aceita a
+      categoria, mas sem peso emocional.
+    script_examples:
+      - "[Ela: 'tá, amigo'] → ele: 'amigo não. Seu bebê. Ou amor dessa vida. Escolhe um'"
+      - "[Ela: 'meu amigo'] → ele: 'tem tanto nome bonito que eu mereço, vai me chamar logo de amigo?'"
+      - "Acompanhar com cantada/brincadeira que sinaliza atração ('amigo é a Ju [outra pessoa], comigo é diferente')"
+    when:
+      - "Direct/WhatsApp onde ela usou 'amigo' uma vez"
+      - "Pessoalmente em rolê quando ela apresenta você como amigo"
+    risk: |
+      Reação muito forte ('amigo? mas eu quero ser muito mais que
+      amigo!') vira drama, soa carente. Tem que ser leve, com
+      sorriso/emoji, sem cobrança."
+    mastery_signal: |
+      Ela ri, recategoriza ('ok, amorzinho então'), e a próxima
+      mensagem dela já vem com mais calor."
+    source_refs:
+      - "O_QUE_FAZER_QUANDO_ELA_TE_CHAMA_DE_AMIGO"
+
+  - id: pos_rejeicao_descolamento_via_amizade
+    name: "Pós-Rejeição: Migrar pra Amizade do Grupo (Não Cair em Loop)"
+    description: |
+      Se você lê sinal negativo OU se ela já te disse não, você não
+      sai do rolê derrotado. Recategoriza a interação como amizade,
+      mantém ela na sua rede social, e MIGRA foco pra outras
+      mulheres do mesmo grupo. Krausche faz isso explicitamente.
+    script_examples:
+      - "'Tudo bem, então a gente fica de boa, vocês são gente boa demais, vou ali com meus amigos um pouco e a gente se trompa'"
+      - "[Continua conversando casualmente, sem demonstrar incômodo] → expandir conversa pra amiga dela que tá sinalizando mais"
+      - "'Quando eu comecei a entender os sinais negativos, eu nunca mais tomei um não. Porque se ela não quiser ficar comigo, eu vou ficar num nível de amizade com ela e expandir essa conversa pra rodinha'"
+    when:
+      - "Sinal negativo lido cedo (postura, esquiva, celular)"
+      - "Rejeição explícita mas amigável"
+      - "Festa onde você quer manter ambiente social, não queimar grupo"
+    risk: |
+      Se você é orgulhoso ou ressentido, sai. Mas isso queima
+      reputação social ('aquele cara levou fora e saiu'). Manter
+      compostura é skill."
+    mastery_signal: |
+      Você sai do grupo no mesmo nível de energia social que
+      entrou, e tem 1+ contato/conexão nova mesmo sem ficar com
+      a alvo."
+    source_refs:
+      - "OS_PRINCIPAIS_SINAIS_DE_ATRACAO_QUE_A_MULHER_DEMONSTRA_Linguagem_Corporal"
+      - "PERCA_O_MEDO_DA_REJEICAO_-_ABORDAGEM_PARA_NUNCA_MAIS_TOMAR_FORA"
+
+  - id: cantada_palavra_chave
+    name: "Cantada-Palavra-Chave (Conexão Lexical com Ambiente)"
+    description: |
+      Pegar uma palavra/conceito do ambiente (aeroporto, química,
+      música, restaurante, cor) e construir cantada que conecta
+      essa palavra à ela. Não é cantada genérica decorada — é
+      improviso baseado em algo concreto da cena.
+    script_examples:
+      - "[Aeroporto, sala de embarque] 'Eu não sabia que eu pegava o avião na sala de embarque... você fica moscando, eu pego esse avião' (mulher = avião)"
+      - "[Numa balada com música tocando] 'Sabe que música é essa? — Qual? — A do nosso primeiro beijo'"
+      - "[Falando de hotel/viagem] 'Qual o hotel mais bonito do mundo? — Aquele que tem você? — Não. O teu sorriso'"
+      - "[Química] 'Qual é a fórmula da água? — H2O. — Se você entende isso, por que eu não consigo entender a química que rola entre a gente?'"
+    when:
+      - "Improviso em campo (balada, bar, encontro acidental)"
+      - "Resposta criativa a stories"
+      - "Pra demonstrar que você não decora — você cria"
+    risk: |
+      Conexão forçada ou trocadilho ruim sai pior que cantada pronta.
+      Tem que ter algum 'aha' no movimento — palavra do ambiente
+      → conexão com ela → reviravolta lúdica."
+    mastery_signal: |
+      Ela ri E tenta retribuir ('caraca, essa foi boa', 'agora eu
+      vou ter que pensar em uma'). Ela entrou no jogo."
+    source_refs:
+      - "APRENDA_A_CRIAR_E_USAR_CANTADAS_E_NUNCA_MAIS_SAIA_DA_NOITE_ZERADO"
+      - "BATALHA_DE_CANTADAS_-_DESENROLANDO_AO_VIVO"
+
+  - id: calibragem_de_frequencia_no_direct
+    name: "Calibragem de Frequência (Pouco e Alto Valor)"
+    description: |
+      Mensagens em direct: NÃO falar o dia inteiro. Mandar pouco com
+      alto valor (1-3 mensagens significativas) em vez de muito com
+      baixo valor (oi, como foi seu dia, o que tá fazendo). Cada
+      mensagem precisa abrir tópico ou avançar tópico.
+    script_examples:
+      - "Acordou: nada. Meio-dia: nada. 14h: 'acabei de lembrar de você, vi um copo igual ao seu, segurando aqui agora' [foto] — abre tópico"
+      - "Resposta dela chegou às 18h. Ele responde em horas diferentes (não imediato), com conteúdo relevante"
+      - "Boa noite só se já tem base afetiva. Senão, dispensável"
+    when:
+      - "Direct/WhatsApp inicial (1ª-3ª semana de contato)"
+      - "Match novo que você quer manter quente sem queimar"
+      - "Conversa que tá ficando 'pai da mina'"
+    risk: |
+      Sumir 3 dias = ela esquece. Mensagem zero e silêncio são
+      diferentes — você precisa de PRESENÇA com calibragem.
+      Default: 1-2 mensagens por dia com substância."
+    mastery_signal: |
+      Ela responde rápido quando você manda. Ela puxa assunto às
+      vezes (sinal de presença mental dela em você). Você nunca
+      'force feed' conversa."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+
+  - id: pre_perfil_otimizado
+    name: "Pré-Trabalho: Otimização de Perfil Social"
+    description: |
+      Antes de qualquer interação com mulher, o perfil precisa
+      sinalizar status, estilo, vida. Não é vaidade — é
+      pré-validação. Quando ela vai te 'stalkar' (e ela vai),
+      perfil ruim mata antes da primeira mensagem.
+    script_examples:
+      - "Foto de perfil onde o ROSTO ocupa pelo menos 60% do frame, não 5%"
+      - "Não seguir MAIS gente do que te segue — sinaliza low status"
+      - "Bio sem emoji genérico — frase específica, hobby identificável"
+      - "Stories com vida (treino, viagem, comida, amigos) — 'cara, eu sou alguém que faz coisa'"
+      - "Não usar arroba feia (underline duplo, números aleatórios)"
+    when:
+      - "Aluno cujo direct não converte mesmo com mensagem boa"
+      - "Match no Tinder mas ela não responde — possível problema de perfil"
+      - "Como pré-requisito do Método Desenrolado"
+    risk: |
+      Otimização demais (filtro pesado, fotos só de gym) sinaliza
+      tentativa. Tem que parecer natural, mostrar variedade
+      (treino + viagem + amigo + comida + 1-2 sérias)."
+    mastery_signal: |
+      Mulher entra no seu perfil, sai com 'esse cara tem vida'.
+      Match rate sobe, mensagem inicial converte mais, ela aceita
+      sair mais rápido."
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "8_RESPOSTAS_QUE_TODOS_HOMENS_QUEREM_SABER_DAS_MULHERES"

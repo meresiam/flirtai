@@ -1,0 +1,1037 @@
+---
+mind_id: pedrinho_uol
+category: scripts
+generated: 2026-05-25
+notes: |
+  Pedrinho UOL é mind script-puro. Esse arquivo é o NÚCLEO da extração — 50+ cantadas literais
+  capturadas do corpus de 60 clips. Cantadas preservadas EXATAMENTE como faladas, em PT-BR coloquial.
+  Categorização por situação: cantada_visual (gatilho roupa/aparência), cantada_contextual (gatilho
+  ambiente/objeto), cantada_jogo_palavras (trocadilho/dupla intenção), cantada_pet (apelido/nome),
+  cantada_omegle (cenário webcam/distância), cantada_pesquisa (frame "pesquisa/pergunta"),
+  cantada_papel (frame profissão fictícia), cantada_bizarra (situação fabricada absurda).
+---
+
+scripts:
+
+  # ============================================================
+  # CANTADA_PESQUISA — frame "tô fazendo uma pesquisa"
+  # Quebra-gelo clássico do Pedrinho: aborda com pretexto de pesquisa
+  # ============================================================
+
+  - id: cantada_pesquisa_um_ano
+    situation: aborda mulher no shopping com frame de pesquisa neutra, depois vira cantada
+    variants:
+      - tone: comico
+        text: |
+          Opa moça! Tudo bem? Eu tô fazendo uma pesquisa com as meninas aqui do shopping.
+          Posso fazer uma pesquisa com você? — O que você pretende estar fazendo daqui a um ano?
+          [após resposta dela] O que você acha de estar completando um ano de namoro comigo?
+          Pra gente começar pelo primeiro beijo hoje, daqui a um ano a gente tá fazendo um aninho.
+        context_notes: "Setup neutro (pesquisa) → punchline romântica. Geralmente arranca riso e até selinho na reação."
+    source_refs:
+      - Oq_vc_acha_cantadas_cantadas
+
+  - id: cantada_pesquisa_gato_de_botas
+    situation: pesquisa absurda como quebra-gelo antes de cantada real
+    variants:
+      - tone: comico
+        text: |
+          Posso fazer uma pesquisa com você? Como que é seu nome? Você já viu o novo Gato de Botas?
+          [após "não"] Obrigado. [vai embora, depois volta] Moço, e agora? Isso aqui foi só pra quebrar o gelo.
+        context_notes: "Pesquisa idiota propositalmente — confessar que era só pretexto vira piada e abre conversa real."
+    source_refs:
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol
+
+  - id: cantada_pesquisa_filmes
+    situation: aborda como se fosse pesquisa de plataforma de streaming
+    variants:
+      - tone: comico
+        text: |
+          Uma pesquisa dos filmes que quer assistir. Aqui tem três: Cavaleiros do Zodíaco,
+          Morte do Demônio, Guardiões das Galáxias. Qual desse é seu favorito?
+        context_notes: "Pretexto longo de promoção de filme — eventualmente vira cantada disfarçada."
+    source_refs:
+      - O_FINAL_pedrinhuol_viral_cantadas_humor_xavecos
+
+  # ============================================================
+  # CANTADA_VISUAL — gatilho na aparência/roupa
+  # ============================================================
+
+  - id: cantada_beleza_toda
+    situation: ela está produzida ou notavelmente bonita
+    variants:
+      - tone: comico
+        text: |
+          Deixa eu te falar, como que você arrumou isso aí? — O quê? — Essa beleza toda.
+        context_notes: "Abertura padrão Pedrinho. Setup ambíguo (pode ser sobre objeto) → reveal sobre ela."
+    source_refs:
+      - COMO_cantadas_pedrinhuol
+      - O_FINAL_cantadas_pedrinhuol
+
+  - id: cantada_show_de_beleza
+    situation: ela está visualmente impactante; comparar a um show
+    variants:
+      - tone: comico
+        text: |
+          Quanto que tá esse ingresso? — Que ingresso? — Pra esse show de beleza que você tá dando.
+        context_notes: "Funciona em ambiente público. Frame: ela como atração paga."
+    source_refs:
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+      - PAPO_DE_UNDAAIA_cantadas_pedrinhuol
+
+  - id: cantada_costureira
+    situation: ela está com um vestido bonito
+    variants:
+      - tone: comico
+        text: |
+          Bonito esse vestido. Sua mãe é costureira? — [não] — É que ela te fez na minha medida.
+        context_notes: "Cantada clássica reciclada. Sempre eficiente em primeiro contato."
+    source_refs:
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol
+
+  - id: cantada_brigadeiro
+    situation: comentar o vestido com analogia comestível
+    variants:
+      - tone: comico
+        text: |
+          Sabe o que está parecendo com esse vestido? Está parecendo brigadeiro de festa.
+          É quando não tem ninguém vendo e dá vontade de pegar.
+        context_notes: "Analogia comestível + dupla leitura ('pegar' = brigadeiro/ela)."
+    source_refs:
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol
+
+  - id: cantada_coberta_de_beleza
+    situation: frio/inverno, ela vestida bem
+    variants:
+      - tone: comico
+        text: |
+          O frio tá chegando, mas você nem deve estar preocupada, né? — Por quê? —
+          É que você tá sempre coberta de beleza.
+        context_notes: "Trocadilho com 'coberta' (agasalho/elogio). Funciona em qualquer clima frio."
+    source_refs:
+      - O_FINAL_cantadas_pedrinhuol_festajunina
+      - O_FINAL_MAN_KSKSK_cantadas_pedrinhuol
+
+  - id: cantada_perdi_a_linha
+    situation: pretexto de costureira ou referência a tecido/roupa
+    variants:
+      - tone: comico
+        text: |
+          Você tem o número de alguma costureira? É que depois que eu te vi eu perdi a linha.
+        context_notes: "Trocadilho 'linha' (costura/raciocínio). Reciclável em qualquer cenário."
+    source_refs:
+      - Voce_sabe_o_preco_de_um_cantadas_pedrinhuol
+      - O_FINAL_cantadas_pedrinhuol_festajunina
+
+  - id: cantada_neymar_sorriso
+    situation: ela tem um sorriso bonito
+    variants:
+      - tone: comico
+        text: |
+          Parece que eu te conheço de algum lugar. [não é daqui?] Ah, então acho que é seu sorriso.
+          Sabe o que ele parece? O Neymar no Santos. Que é impossível de esquecer.
+        context_notes: "Comparação esportiva inesperada vira elogio. Boa pra audiência futebolística."
+    source_refs:
+      - Seu_sorriso_parece_o_Neymar_no_Santos_pedrinhuol_cantadas
+      - UMA_PALAVRA_UMA_CANTADA_cantadas_pedrinhuol
+
+  - id: cantada_dentista_boca_aberta
+    situation: comentar sorriso bonito
+    variants:
+      - tone: comico
+        text: |
+          Nossa, teu sorriso é muito bonito. Você é dentista? — Não. — É que você me deixou de boca aberta.
+        context_notes: "Setup pergunta inocente → punchline elogio. Padrão clássico Pedrinho."
+    source_refs:
+      - TUDO_PASSA_MENOS_A_VONTADE_DE_TE_PEGAR_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_PAPEL — assume profissão/papel fictício
+  # ============================================================
+
+  - id: cantada_uber
+    situation: pega telefone fingindo falar com alguém antes de abordar
+    variants:
+      - tone: comico
+        text: |
+          Eu virei Uber, moça. Virei Uber, me passa o número pra eu te pegar.
+        context_notes: "Trocadilho 'pegar' (passageiro/dela). Funciona como segunda fase de abordagem."
+    source_refs:
+      - EMPOLGUEI_DPS_DO_BJ_cantadas_pedrinhuol
+
+  - id: cantada_motorista
+    situation: ela pergunta o nome dele
+    variants:
+      - tone: comico
+        text: |
+          Meu nome? Pode me chamar de motorista, moça. É que eu tô querendo direto ao ponto.
+        context_notes: "Reinterpretação do nome como função sexual indireta. Direto."
+    source_refs:
+      - Pode_me_chamar_de_MOTORISTA_cantadas_pedrinhuol
+
+  - id: cantada_superman
+    situation: programa/cenário de pergunta-resposta, frame 'cantada ousada'
+    variants:
+      - tone: comico
+        text: |
+          Eu sou o Superman, se você quiser eu te mostro o aço. E aí, bora voar comigo?
+          Vou te levar às alturas. Bota o parede, eu te garanto que você vai ver o que é aço.
+        context_notes: "Cantada de palco/programa. Sexualizada via personagem."
+    source_refs:
+      - 2_HORAS_cantadas_pedrinhuol
+
+  - id: cantada_flash
+    situation: cenário rápido, pouca conversa
+    variants:
+      - tone: comico
+        text: |
+          Eu sou o Flash! — Por que Flash? Você corre? —
+          É que eu sou o homem mais rápido do mundo, entendeu? Gosto em 3 segundos.
+        context_notes: "Auto-deprecação cômica como cantada. Inverte 'rápido = bom' em piada."
+    source_refs:
+      - Porque_flash_._._._cantadas_pedrinhuol_viral_comedia_humor_
+
+  - id: cantada_aluguel_coracao
+    situation: cobrar 'dívida' fictícia pra abordar
+    variants:
+      - tone: comico
+        text: |
+          Tá me devendo um dinheiro. Você acha que é de graça morar no meu coração?
+          Essa boca toda pra cá dela. O mínimo é o quê? Não, tem que dar um beijinho.
+        context_notes: "Frame credor/devedor fictício → cobra em beijo. Funcionou (corpus mostra beijo)."
+    source_refs:
+      - TIVE_Q_COBRAR_O_ALUGUEL_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_PESQUISA visual (filtro / detector)
+  # ============================================================
+
+  - id: cantada_filtro_mexendo
+    situation: stories Instagram OU presencial — comentar 'filtro'
+    variants:
+      - tone: comico
+        text: |
+          Que filtro é esse que você usa que fica mexendo? — Tô com nada agora. — Não, mexendo comigo.
+        context_notes: "Cantada para stories — best practice anti-curtir-e-sumir. Também serve presencial."
+    source_refs:
+      - 3_MELHORES_RESPOSTAS_STORIES_P_ELA_pedrinhuol_cantadas
+      - TA_EXPLICADO_cantadas_pedrinhuol_live
+
+  - id: cantada_detector_principesa
+    situation: aborda usando 'detector' fictício como pretexto
+    variants:
+      - tone: comico
+        text: |
+          [Laís] É boticário? Qual que é essa maquiagem que você passou, que você ficou com a cara
+          do amor da minha vida? Meu detector funcionou. Só que eu vi teu celular no bolso, tá com
+          problema, é que tá faltando o meu número nele.
+        context_notes: "Ponte: elogio aparência → tech vibe → pedido de número."
+    source_refs:
+      - MEU_DETECTOR_DE_cantadas_pedrinhuol
+
+  - id: cantada_celular_quebrado
+    situation: pedir número com pretexto absurdo
+    variants:
+      - tone: comico
+        text: |
+          Conserta meu celular, tá com problema. Tá faltando o seu número.
+        context_notes: "Versão curta, direta. Cantada-pretexto explícita."
+    source_refs:
+      - Pode_me_chamar_de_MOTORISTA_cantadas_pedrinhuol
+
+  - id: cantada_relogio_errado
+    situation: pedir número com pretexto de horário
+    variants:
+      - tone: comico
+        text: |
+          Que horas são? — [diz] — Tá errado o teu relógio. — Por quê? — Porque aqui tá na
+          hora de passar o seu número.
+        context_notes: "Setup banal → punchline numérica. Pedido de número disfarçado."
+    source_refs:
+      - cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_JOGO_PALAVRAS — trocadilhos e ambiguidades
+  # ============================================================
+
+  - id: cantada_provador
+    situation: ambiente de loja, brinca com 'provador'
+    variants:
+      - tone: comico
+        text: |
+          Sabe onde que é o provador de mulher? — Não. — Esse aqui é o... posso provar?
+          Um selinho assim?
+        context_notes: "Trocadilho 'provador' (loja/sexual). Pede selinho via piada."
+    source_refs:
+      - ANOOTA_cantadas_pedrinhuol
+
+  - id: cantada_engraçadinho_onibus
+    situation: ela diz que gosta de 'engraçadinho'
+    variants:
+      - tone: comico
+        text: |
+          É melhor um feio engraçadinho? Porque você vai rindo, vai rindo, vai rindo. Uma hora você
+          cansa, né? Aí você tem que sentar. É igual andar de ônibus, uma hora você senta.
+        context_notes: "Auto-deprecação ('feio engraçadinho') + analogia ousada com sentar no colo."
+    source_refs:
+      - ANOOTA_cantadas_pedrinhuol
+
+  - id: cantada_juros
+    situation: pedindo algo emprestado / despedida
+    variants:
+      - tone: comico
+        text: |
+          Antes de você ir embora, se você me emprestar, eu posso te devolver com juros. — O quê? — Um beijo.
+        context_notes: "Trocadilho financeiro → beijo. Setup curto, punchline rápida."
+    source_refs:
+      - ANOTA_cantadas_pedrinhuol
+
+  - id: cantada_troco_pra_20
+    situation: ela rejeitou ou avalia
+    variants:
+      - tone: comico
+        text: |
+          Você tem troco pra 20? Porque você nota 10.
+        context_notes: "Cantada elementar reciclada. Useable como abertura ou rebote."
+    source_refs:
+      - E_o_virou_cantadas_pedrinhuol
+
+  - id: cantada_quadrada_rola
+    situation: pergunta absurda como abertura
+    variants:
+      - tone: comico
+        text: |
+          Você é quadrada? — Não, por quê? — Então rola?
+        context_notes: "Trocadilho geométrico. Pergunta absurda → punchline 'rola então'."
+    source_refs:
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+      - cantadas_pedrinhuol
+
+  - id: cantada_quanto_custa_coracao
+    situation: abertura com pergunta surpreendente
+    variants:
+      - tone: comico
+        text: |
+          Tu sabe quanto custa, em média, um coração? Um coração custa cerca de 230 mil.
+          Só que o meu aqui eu te dou de graça, moça.
+        context_notes: "Estatística inventada → oferta sentimental. Cria curiosidade antes do reveal."
+    source_refs:
+      - Voce_sabe_o_preco_de_um_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_PET — apelido ou jogo com nome dela
+  # ============================================================
+
+  - id: cantada_pode_chamar_de_amor
+    situation: ela diz o nome
+    variants:
+      - tone: comico
+        text: |
+          Pamela? Ah, pode chamar de amor.
+        context_notes: "Substituição do nome dela por 'amor'. Padrão Pedrinho recorrente."
+    source_refs:
+      - TUDO_PASSA_MENOS_A_VONTADE_DE_TE_PEGAR_cantadas_pedrinhuol
+      - O_FINAL_cantadas_pedrinhuol
+      - UNICO_BOMBOM_QUE_EU_QUERIA_cantadas_pedrinhuol
+
+  - id: cantada_chamar_de_vida
+    situation: ela é bonita, ele dispara apelido
+    variants:
+      - tone: comico
+        text: |
+          Posso te chamar de vida? — Oi? — Eu só não te chamo de vida porque a minha vida é uma bosta.
+        context_notes: "Auto-deprecação humorística depois do apelido carinhoso. Quebra clichê."
+    source_refs:
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+      - QUAL_ALARME_EU_COLOCO_cantadas_pedrinhuol
+
+  - id: cantada_chamar_de_carta
+    situation: ela dá apelido pra brincar com 'pré-conexão'
+    variants:
+      - tone: comico
+        text: |
+          Pode me chamar de carta. — Por que carta? — Pode dar meu selinho.
+        context_notes: "Trocadilho selinho (carta/beijo). Reaproveita ambiguidade da palavra."
+    source_refs:
+      - dia_76467_tentando_achar_um_amor_cantadas_pedrinhuol
+
+  - id: cantada_chamar_de_um_dia
+    situation: ela pergunta o nome dele
+    variants:
+      - tone: comico
+        text: |
+          Pode me chamar de um dia, que eu tô querendo direto ao ponto. Amanhã quando eu vou
+          te mandar bom dia, que número que eu mando?
+        context_notes: "Trocadilho 'um dia' (nome/futuro). Vira pedido de número."
+    source_refs:
+      - ta_viajando_no_tempo_cantadas_pedrinhuol
+
+  - id: cantada_sara_feridas
+    situation: ela se chama Sara
+    variants:
+      - tone: comico
+        text: |
+          Será que a Sara, Sara essas feridas, quer ficar longe de você?
+        context_notes: "Trocadilho com o nome 'Sara' / verbo 'sarar'. Específico do nome."
+    source_refs:
+      - Quer_ir_num_casamento_cantadas_pedrinhuol
+
+  - id: cantada_nader
+    situation: ela diz nome estrangeiro
+    variants:
+      - tone: comico
+        text: |
+          Que chique, moça! Nader! Sabe o que é Nader? Minha vida sem você, moça! Ah, é Nader!
+        context_notes: "Trocadilho fonético (Nader/nada-é). Aproveita som do nome."
+    source_refs:
+      - tem_orado_muito_cantadas_pedrinhuol
+
+  - id: cantada_principesa_tchutchuca_princhuca
+    situation: criar apelido próprio pra ela
+    variants:
+      - tone: comico
+        text: |
+          Você me chama de quem? — De Princhuca. — Existem as princesas e as tchutchucas.
+          Você é uma Princhuca.
+        context_notes: "Apelido autoral. Mistura categorias (princesa/tchutchuca). Marca registrada."
+    source_refs:
+      - O_FINAL_cantadas_pedrinhuol_@Rhuanda
+
+  # ============================================================
+  # CANTADA_BIZARRA — situação fabricada absurda
+  # ============================================================
+
+  - id: cantada_namorada_sumiu
+    situation: fabrica história de namorada perdida
+    variants:
+      - tone: comico
+        text: |
+          Tava caminhando com a minha namorada aqui pelo parque e aí ela sumiu. Ela aparece com você
+          assim, ela é bem bonita. Ela tá atrás de você, moça.
+        context_notes: "Cria expectativa de outra pessoa → reveal que é ela. Surpresa funciona como rir-disfarça."
+    source_refs:
+      - ANOTA_cantadas_pedrinhuol
+
+  - id: cantada_dormir_com_anjos
+    situation: abordagem em local público
+    variants:
+      - tone: comico
+        text: |
+          Opa moça, tudo bem? Aqui ó, minha mãe mandou eu dormir com os anjos, vamos?
+        context_notes: "Trocadilho 'dormir com os anjos' (dormir junto). Frase materna ressignificada."
+    source_refs:
+      - O_FINAL_MAN_KSKSK_cantadas_pedrinhuol
+
+  - id: cantada_fila_do_seu_beijo
+    situation: fila pública (Mac, restaurante)
+    variants:
+      - tone: comico
+        text: |
+          Gente, essa aqui é a fila do Mac? — É. — E pro seu beijo? É onde? Tô fazendo uma lista
+          aqui das bocas que eu quero beijar esse ano. Olha que engraçado, tá escrito aqui só a sua.
+        context_notes: "Frame 'lista de beijos' fingida. Funciona em qualquer fila."
+    source_refs:
+      - O_FINAL_MN_cantadas_pedrinhuol
+
+  - id: cantada_de_0_a_10
+    situation: provoca rebote inesperado
+    variants:
+      - tone: comico
+        text: |
+          De 0 a 10, qual a chance de você me dar um beijinho? — 11.
+        context_notes: "Joga a bola pra ela quantificar. Resposta pode virar viral (11)."
+    source_refs:
+      - O_FINAL_MN_cantadas_pedrinhuol
+
+  - id: cantada_alarme_iphone
+    situation: assumir intimidade fictícia
+    variants:
+      - tone: comico
+        text: |
+          Você tem iPhone? Você manja de alarme do iPhone? Eu configurei pra acordar as 9 da manhã.
+          Mas eu queria saber como que eu configuro pra acordar do seu lado.
+        context_notes: "Pretexto tech → reveal romântico. Padrão setup-banal/punchline."
+    source_refs:
+      - QUAL_ALARME_EU_COLOCO_cantadas_pedrinhuol
+
+  - id: cantada_uma_palavra
+    situation: pede uma palavra aleatória pra improvisar
+    variants:
+      - tone: comico
+        text: |
+          Fala uma palavra, qualquer uma que vier na cabeça. — Câmera. — Essa câmera aqui não
+          tem lente, mas acho que não precisa, né? Porque meu foco é você.
+        context_notes: "Improvisação ao vivo. Mostra confiança em transformar qualquer palavra em cantada."
+    source_refs:
+      - UMA_PALAVRA_UMA_CANTADA_cantadas_pedrinhuol
+
+  - id: cantada_uma_palavra_agua
+    situation: variação do mesmo formato
+    variants:
+      - tone: comico
+        text: |
+          Fala uma palavra. — Água. — Tem água aí? Não? Putz, como que você pode me ajudar?
+          Que eu queria matar a sede beijando a moça.
+        context_notes: "Mesmo formato 'uma palavra' improvisando. Reciclável com qualquer noun."
+    source_refs:
+      - UMA_PALAVRA_UMA_CANTADA_cantadas_pedrinhuol
+
+  - id: cantada_inaugurar_relacionamento
+    situation: aborda fingindo ser estrangeiro
+    variants:
+      - tone: comico
+        text: |
+          Cheguei agora no Brasil, queria saber quando que vai inaugurar nosso relacionamento.
+        context_notes: "Frame estrangeiro perdido → pergunta cantada. Pretexto territorial."
+    source_refs:
+      - QUANDO_VAI_INAUGURAR_cantadas_pedrinhuol
+
+  - id: cantada_atrasado_na_sua_vida
+    situation: chega 'atrasado' como abertura
+    variants:
+      - tone: comico
+        text: |
+          Eu ia até pedir desculpa por chegar atrasado na sua vida. Mas tudo que é bom demora pra acontecer.
+        context_notes: "Auto-elogio disfarçado. Coloca-se como 'coisa boa' que valeu a espera."
+    source_refs:
+      - QUANDO_VAI_INAUGURAR_cantadas_pedrinhuol
+
+  - id: cantada_passou_pra_desejar
+    situation: abertura clichê reciclada
+    variants:
+      - tone: comico
+        text: |
+          Poderia estar roubando, poderia estar matando, mas só estou passando aqui para desejar
+          uma ótima quinta-feira. — Hoje é terça. — Ah, é terça? Ah, então só passando para te
+          desejar mesmo.
+        context_notes: "Recupera clichê do WhatsApp e adapta presencial com erro proposital. Vira piada."
+    source_refs:
+      - So_passando_pra_te_desejar_msm_cantadas_pedrinhuol
+
+  - id: cantada_doce_beijinho
+    situation: oferecer 'doce' que vira beijo
+    variants:
+      - tone: comico
+        text: |
+          Você gosta de doce? — Gosto. — É, então eu trouxe pra você aqui, ó. Um beijinho.
+        context_notes: "Pretexto comestível → entrega beijinho. Direta, presencial."
+    source_refs:
+      - O_FINAL_cantadas_pedrinhuol_@Rhuanda
+
+  - id: cantada_minha_medida_coracao
+    situation: comentar tamanho/altura dela
+    variants:
+      - tone: comico
+        text: |
+          Você tem quanto de altura? — [responde] — Coincidência. Aqui no meu coração tem uma
+          medida que tem o seu tamanho. Você não tá afim de entrar?
+        context_notes: "Pergunta inocente (altura) → reveal romântico. Reutilizável."
+    source_refs:
+      - QUAL_SUA_ALTURA_VIDA_cantadas_pedrinhuol
+
+  - id: cantada_consegue_segurar_colo
+    situation: provocação fingindo querer carregar
+    variants:
+      - tone: comico
+        text: |
+          Será que você consegue me segurar no colo? — Claro que não. — Ah que pena, que eu queria
+          falar pros meus amigos que eu andei de avião.
+        context_notes: "Provoca recusa → punchline auto-deprecativa-cômica. Inverte gênero do colo."
+    source_refs:
+      - Pode_me_chamar_de_MOTORISTA_cantadas_pedrinhuol
+
+  - id: cantada_treinar_pra_que
+    situation: ambiente de academia
+    variants:
+      - tone: comico
+        text: |
+          O que adianta eu treinar pra ficar forte quando eu te vejo fraquinho?
+        context_notes: "Frame fitness. Auto-deprecação com inversão (eu treino, mas você me derruba)."
+    source_refs:
+      - OQ_ADIANTA_EU_TREINAR_cantadas_pedrinhuol
+
+  - id: cantada_beijo_fitness
+    situation: academia / contexto fitness
+    variants:
+      - tone: comico
+        text: |
+          Você tá fazendo muita academia, hein? Vamos dar um beijo fitness?
+          Aquele que você beija já dá vontade de tirar a roupa e fazer um cardio.
+        context_notes: "Trocadilho exercício/sexual. Específico do contexto academia."
+    source_refs:
+      - BEIJO_FITNESS_cantadas_pedrinhuol
+
+  - id: cantada_construir_futuro
+    situation: ela diz a profissão (engenheira/arquiteta)
+    variants:
+      - tone: comico
+        text: |
+          Você é engenheira? Vamos construir um futuro lindo.
+        context_notes: "Aproveita profissão dela como gancho. Reusable: troque profissão pela função."
+    source_refs:
+      - So_passando_pra_te_desejar_msm_cantadas_pedrinhuol
+
+  - id: cantada_arquiteto_vende_beijo
+    situation: profissão dela é arquiteta/vendedora
+    variants:
+      - tone: comico
+        text: |
+          Arquiteto projeta. O corretor vende casa. O açougueiro vende carne. Se eu te chamar,
+          você vende beijo?
+        context_notes: "Sequência lógica → pergunta-cantada no final. Aproveita profissão."
+    source_refs:
+      - A_ULTIMA_CANTADA_cantadas_pedrinhuol_@Rhuanda
+
+  - id: cantada_devolve_se_nao_gostar
+    situation: pedir beijo com 'garantia'
+    variants:
+      - tone: comico
+        text: |
+          Dá um beijinho pra gente se conhecer. Se você não gostar, você me devolve.
+        context_notes: "Frame compra-com-garantia. Reduz risco aparente pra ela."
+    source_refs:
+      - A_ULTIMA_CANTADA_cantadas_pedrinhuol_@Rhuanda
+      - Seu_sorriso_parece_o_Neymar_no_Santos_pedrinhuol_cantadas
+
+  # ============================================================
+  # CANTADA_MAE — frame 'minha mãe quer uma nora'
+  # ============================================================
+
+  - id: cantada_mae_quer_nora
+    situation: ambiente de loja ou presente
+    variants:
+      - tone: comico
+        text: |
+          Não sei se você vai conseguir me ajudar. Minha mãe tinha que dar um presente de Natal
+          pra ela. Posso mandar a foto do presente? — Beleza. — É que ela quer uma nora.
+        context_notes: "Frame ajuda → reveal proposta. Recorrente. Funciona em loja/presente."
+    source_refs:
+      - Pode_me_atender_cantadas_pedrinhuol
+      - QUAL_SUA_ALTURA_VIDA_cantadas_pedrinhuol
+      - Tem_como_tirar_uma_foto_minha_e_da_minha_namorada_cantadas_ped
+
+  - id: cantada_casamento_noiva
+    situation: pedir companhia pra evento
+    variants:
+      - tone: comico
+        text: |
+          A mãe tá me enchendo o saco pra eu ir num casamento e eu não tenho com quem ir.
+          Você não topa ir comigo? — Madrinha? — Não, de noiva.
+        context_notes: "Setup convite normal → punchline absurdamente direta. Padrão Pedrinho."
+    source_refs:
+      - Quer_ir_num_casamento_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_GANHO_PRESENTE — bombom, ovo de páscoa, doce
+  # ============================================================
+
+  - id: cantada_bombom_pascoa
+    situation: páscoa / data sazonal de doce
+    variants:
+      - tone: comico
+        text: |
+          Eu não ganhei nenhum ovo de páscoa. Mas não tem importância, porque o bombonzinho
+          que eu queria era você.
+        context_notes: "Trocadilho doce → ela como prêmio. Sazonal mas memorável."
+    source_refs:
+      - UNICO_BOMBOM_QUE_EU_QUERIA_cantadas_pedrinhuol
+
+  - id: cantada_chocolate_garoto
+    situation: ela diz que gosta de chocolate
+    variants:
+      - tone: comico
+        text: |
+          Você gosta de chocolate? — Gosto. — Então leva esse garoto pra casa.
+        context_notes: "Trocadilho marca de chocolate (Garoto) com 'cara'. Direto e curto."
+    source_refs:
+      - UNICO_BOMBOM_QUE_EU_QUERIA_cantadas_pedrinhuol
+
+  - id: cantada_coelhinho_pascoa
+    situation: páscoa / pedir foto
+    variants:
+      - tone: comico
+        text: |
+          Pode tirar uma foto sua? — Pode. — Depois eu vou mandar para o Coelhinho da Páscoa.
+          Eu estava perguntando que bombom que eu queria de presente.
+        context_notes: "Frame 'mandar foto pra coelhinho' → ela como bombom. Funciona próximo à páscoa."
+    source_refs:
+      - O_FINAL_@thimagroo_cantadas_pedrinhuol
+
+  - id: cantada_presente_beijo
+    situation: comentar roupa/aparência
+    variants:
+      - tone: comico
+        text: |
+          Você merecia até um presente. Pena que eu não consigo embrulhar meu beijo.
+          Pode ser sem embrulho mesmo?
+        context_notes: "Frame presente → beijo como entrega. Pede aceite com 'sem embrulho'."
+    source_refs:
+      - O_FINAL_cantadas_viral
+
+  # ============================================================
+  # CANTADA_FUTURO/SONHO — visão de futuro juntos
+  # ============================================================
+
+  - id: cantada_sonho_acordar_com_voce
+    situation: pretexto onírico
+    variants:
+      - tone: comico
+        text: |
+          Eu ando num sonho meio estranho, acordando assim estranho. Hoje eu acordei com sono.
+          Aí amanhã eu queria acordar com você.
+        context_notes: "Setup vago (sonho) → reveal romântico. Cantada padrão recorrente."
+    source_refs:
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol
+      - O_FINAL_cantadas_viral
+
+  - id: cantada_amor_da_sua_vida_espelho
+    situation: pretexto cotidiano matinal
+    variants:
+      - tone: comico
+        text: |
+          Hoje eu acordei cedo, fui escovar os dentes, olhei pro espelho e você não sabe quem
+          que eu vi. — O amor da sua vida.
+        context_notes: "Setup banal → joga punchline pra ela completar. Manipulação verbal."
+    source_refs:
+      - O_FINAL_cantadas_viral
+
+  - id: cantada_tempo_parou
+    situation: conversando sobre tempo/dias passando
+    variants:
+      - tone: comico
+        text: |
+          Você acredita que o tempo voa? — Eu acredito. — Eu comecei a desacreditar, porque
+          depois que eu fiquei do seu lado, parece que o tempo parou.
+        context_notes: "Pergunta filosófica → reveal romântico. Setup-punchline clássico."
+    source_refs:
+      - Tem_como_tirar_uma_foto_minha_e_da_minha_namorada_cantadas_ped
+
+  - id: cantada_o_que_e_seu_ta_guardado
+    situation: conversa filosófica de provérbio
+    variants:
+      - tone: comico
+        text: |
+          Você acredita que o que é seu tá guardado? — Eu acredito. — Então, também comecei a
+          desacreditar, porque eu tô aqui, moça.
+        context_notes: "Provérbio popular → reveal que é ela. Manipula crença em 'destino'."
+    source_refs:
+      - Tem_como_tirar_uma_foto_minha_e_da_minha_namorada_cantadas_ped
+
+  - id: cantada_camera_frontal
+    situation: ela tira foto / está com celular
+    variants:
+      - tone: comico
+        text: |
+          Você sabe a diferença da câmera frontal pra você? — Qual? — A câmera frontal mostra
+          meu reflexo em você. Eu só tô vendo meu futuro.
+        context_notes: "Trocadilho 'reflexo/futuro'. Aproveita situação visual real."
+    source_refs:
+      - dia_76467_tentando_achar_um_amor_cantadas_pedrinhuol
+
+  - id: cantada_bola_de_cristal
+    situation: situação de adivinhação ou metáfora
+    variants:
+      - tone: comico
+        text: |
+          Tô tirando no futuro. Parece até uma bola de cristal, moça. Eu tô vendo um futuro
+          brilhante. O que eu tô vivendo com você aqui é um presente.
+        context_notes: "Trocadilho 'presente' (tempo/oferenda). Místico-comico."
+    source_refs:
+      - ta_viajando_no_tempo_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_SERIE_BEIJO — formato 'série de beijo'
+  # ============================================================
+
+  - id: cantada_serie_de_beijo
+    situation: conversa sobre filme/série
+    variants:
+      - tone: comico
+        text: |
+          Sabe qual que é a série que eu mais gosto? A série de beijo que eu vou dar na sua boca.
+        context_notes: "Trocadilho streaming. Forma curta e direta. Reutilizado em vários clips."
+    source_refs:
+      - EMPOLGUEI_DPS_DO_BJ_cantadas_pedrinhuol
+      - Vamo_comecar_essa_serie_._._._cantadas_pedrinhuol_viral_come
+
+  - id: cantada_filme_terror_fora
+    situation: conversa sobre filmes / 'filme de terror'
+    variants:
+      - tone: comico
+        text: |
+          Você tá com um filme de terror legal aí? — O de terror? — Só se for ela me dando fora.
+        context_notes: "Auto-deprecação cômica como cantada. Mostra carisma vulnerável."
+    source_refs:
+      - O_FINAL_cantadas_viral
+
+  - id: cantada_musica_um_beijo_gostoso
+    situation: ela gosta de sertanejo
+    variants:
+      - tone: comico
+        text: |
+          Tem uma dupla muito boa que lançou uma música pro carnaval. Chama 'Um Beijo Gostoso'.
+          Pode divulgar a dupla? — Quem é? — Eu e você.
+        context_notes: "Pretexto promoção musical → reveal dupla = eles. Sazonal carnaval."
+    source_refs:
+      - ESSA_MUSICA_E_BRABA_KKK_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_DESPEDIDA / NÚMERO
+  # ============================================================
+
+  - id: cantada_pegar_numero_atrapalhar
+    situation: pedindo número com humor
+    variants:
+      - tone: comico
+        text: |
+          Mas e aí, posso pegar seu número? Vou ficar te atrapalhando.
+        context_notes: "Honestidade cômica — admite que vai atrapalhar. Desarma o 'não'."
+    source_refs:
+      - ANOOTA_cantadas_pedrinhuol
+
+  - id: cantada_aliança_namoro_combina
+    situation: comentar roupa/look dela
+    variants:
+      - tone: comico
+        text: |
+          Sabe o que combina muito com essa roupa? Nossa aliança de namoro.
+        context_notes: "Acelera o frame relacionamento ao absurdo. Funciona arrancando riso."
+    source_refs:
+      - O_FINAL_cantadas_pedrinhuol
+
+  - id: cantada_caneta_historia
+    situation: ela tem caneta / papel
+    variants:
+      - tone: comico
+        text: |
+          Por que você carrega uma caneta? É pra escrever nossa história?
+        context_notes: "Objeto qualquer → reveal romântico. Reusable: troque caneta por outro objeto."
+    source_refs:
+      - MEU_DETECTOR_DE_cantadas_pedrinhuol
+      - O_FINAL_cantadas_pedrinhuol_@Rhuanda
+
+  # ============================================================
+  # CANTADA_REBOTE / ELA REJEITOU
+  # ============================================================
+
+  - id: cantada_eu_nao_sou_educado
+    situation: ela rejeita dizendo 'não confunde ser educado com dar em cima'
+    variants:
+      - tone: comico
+        text: |
+          Bem como eu te elogiei, mas não precisa confundir ser educado com dar em cima não.
+          — Não posso. — Eu não sou educado!
+        context_notes: "Inverte expectativa: assume que estava dando em cima mesmo. Sincericídio cômico."
+    source_refs:
+      - Nao_confunde_ser_educado_com_dar_em_cima_nao_cantadas_viral
+
+  - id: cantada_feito_pra_voce_itau
+    situation: ela disse 'feito pra mim'
+    variants:
+      - tone: comico
+        text: |
+          Eu sou o quê? Igual o Itaú! Feito pra você! Se é feito pra mim, não tá beijando a
+          minha boca, por quê?
+        context_notes: "Captura slogan de banco e vira pedido de beijo. Pop reference."
+    source_refs:
+      - Nao_confunde_ser_educado_com_dar_em_cima_nao_cantadas_viral
+
+  - id: cantada_louco_eu_fiquei_sem_graca
+    situation: ela rebateu / ela tá hesitando
+    variants:
+      - tone: comico
+        text: |
+          Tô louco, eu fiquei sem graça! Se eu for, você vai dar ou você vai falar não?
+          Tenta a sorte!
+        context_notes: "Honestidade cômica. Joga responsabilidade da resposta nela."
+    source_refs:
+      - Nao_confunde_ser_educado_com_dar_em_cima_nao_cantadas_viral
+
+  # ============================================================
+  # CANTADA_DESEJO/CRENÇA — místico/religioso cômico
+  # ============================================================
+
+  - id: cantada_amor_a_primeira_vista
+    situation: ela é de outra cidade/estado
+    variants:
+      - tone: comico
+        text: |
+          Amor a primeira vista, você acredita? — Sim. — Ah, eu também tô começando a acreditar.
+          Não acreditava muito não, moça, mas depois que eu te vi, tô apaixonada aqui.
+        context_notes: "Pergunta filosófica → confissão. Padrão setup-reveal."
+    source_refs:
+      - Pode_me_chamar_de_MOTORISTA_cantadas_pedrinhuol
+
+  - id: cantada_deus_proposito_lindo
+    situation: ano novo / virada / pretexto religioso
+    variants:
+      - tone: comico
+        text: |
+          Dá a mão aqui. Eu creio que em 2025, Deus tem um propósito lindo pra você. — Amém.
+          — Prazer, propósito.
+        context_notes: "Frame religioso → reveal nome = propósito. Bem específico mas viral."
+    source_refs:
+      - O_FINAL_cantadas_viral
+
+  - id: cantada_chuva_deus_chorando
+    situation: chovendo / clima
+    variants:
+      - tone: comico
+        text: |
+          Você sabe o que é essa chuva? É Deus chorando que nós não tá junto.
+        context_notes: "Pretexto climático → romance dramático. Funciona em chuva."
+    source_refs:
+      - TOCA_E_PASSA_cantadas_pedrinhuol
+
+  - id: cantada_pelo_amor_de_deus_beijo
+    situation: depois de invocar 'Deus'
+    variants:
+      - tone: comico
+        text: |
+          Você acredita em Deus? — Eu acredito. — Então, pelo amor de Deus, moça, me dá um beijo.
+        context_notes: "Sequência fé → pedido. Religião como gatilho de aceite."
+    source_refs:
+      - dia_76467_tentando_achar_um_amor_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_CONTEXTUAL — gancho em ambiente
+  # ============================================================
+
+  - id: cantada_van_escolar
+    situation: ela tem 'pé bonito' / pretexto físico
+    variants:
+      - tone: comico
+        text: |
+          Você não é van escolar, mas eu vou te encher de criança. 6, 7. Não sei se eu aguento
+          tanto filho assim, não.
+        context_notes: "Cantada ousada/sexual. Mais agressiva, depende do clima da abordagem."
+    source_refs:
+      - VOCE_NAO_E_VAN_ESCOLAR_._._._._cantadas_pedrinhuol_viral_comedi
+
+  - id: cantada_vasco_vascaina
+    situation: ela menciona time / camisa Vasco
+    variants:
+      - tone: comico
+        text: |
+          Eu sou a Vascaína. — Ai, meu nome é Vasco, moça. Não, tô brincando, meu nome não é Vasco,
+          mas se você beijar, tu ama.
+        context_notes: "Aproveita time pra construir trocadilho 'tu ama / Tuiuti'."
+    source_refs:
+      - A_ULTIMA_CANTADA_cantadas_pedrinhuol_@Rhuanda
+      - O_FINAL_cantadas_pedrinhuol_@Rhuanda
+
+  - id: cantada_corintiana_play
+    situation: ela é corintiana
+    variants:
+      - tone: comico
+        text: |
+          Eu sabia que você era corintiana. Aperta o play.
+        context_notes: "Frase fanfic — trocadilho com hino. Específico do contexto futebolístico."
+    source_refs:
+      - Seu_sorriso_parece_o_Neymar_no_Santos_pedrinhuol_cantadas
+
+  - id: cantada_perdi_foco
+    situation: pergunta inocente sobre tempo no local
+    variants:
+      - tone: comico
+        text: |
+          Você está aqui faz tempo? — Faz tempo. — É que eu perdi um negócio. Perdi meu foco a
+          hora que ela chegou, tô tentando achar.
+        context_notes: "Pretexto perdido → reveal romântico. Setup que envolve a galera."
+    source_refs:
+      - Perdi_um_negocio_cantadas_pedrinhuol
+
+  - id: cantada_deusa_grega
+    situation: ela é etérea / pretexto viagem
+    variants:
+      - tone: comico
+        text: |
+          Esses dias eu fui pra Grécia. Não voltei com nada. Queria ter voltado com uma recordação.
+          Não tem como eu tirar uma foto do lado dessa deusa grega.
+        context_notes: "Pretexto viagem → reveal ela como 'deusa'. Pede foto pra ficar com ela."
+    source_refs:
+      - QUAL_ALARME_EU_COLOCO_cantadas_pedrinhuol
+
+  - id: cantada_portugues_espelho
+    situation: ele finge ser estrangeiro
+    variants:
+      - tone: comico
+        text: |
+          Esse negócio da cultura dos portugueses e dos brasileiros — eles trocaram o ouro pelos
+          espelhos. Quando eu olhei pro espelho aqui em Portugal, eu dei de cara com o amor da sua vida.
+        context_notes: "Frame histórico → reveal romântico. Funciona com 'fingir ser estrangeiro'."
+    source_refs:
+      - Voce_sabe_o_preco_de_um_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_PESADA / EMPOLGADA — mais sexual
+  # ============================================================
+
+  - id: cantada_minha_vida_uma_bosta
+    situation: variação cômica auto-deprecativa
+    variants:
+      - tone: comico
+        text: |
+          Quanto que tá esse ingresso? Pra esse show de beleza que você tá dando.
+          Eu tô morrendo com a Ana, vem cá.
+        context_notes: "Inclui audiência (amiga dela) na conversa. Tática 'cooptar a wing dela'."
+    source_refs:
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+
+  - id: cantada_apoia_eu_amiga
+    situation: ela está com amiga, ele coopta a amiga
+    variants:
+      - tone: comico
+        text: |
+          Apoia eu com ela, Ana. Você deixa ela passar o número dela pra mim?
+        context_notes: "Pede aliança com a amiga. Tática diferente: usa wing dela como aliada."
+    source_refs:
+      - cantadas_pedrinhuol
+
+  - id: cantada_vc_e_vizinha_da_minha_mae
+    situation: fingir reconhecer ela
+    variants:
+      - tone: comico
+        text: |
+          Você lembra de mim? Eu tô confundindo. É você, você é vizinha da minha mãe.
+          Vocês moram do lado.
+        context_notes: "Confusão fabricada como quebra-gelo. Pretexto cara-conhecida."
+    source_refs:
+      - VC_E_VIZINHA_DA_MINHA_MAE_cantadas_pedrinhuol
+
+  - id: cantada_tudo_passa_vontade
+    situation: feriado / dia comum
+    variants:
+      - tone: comico
+        text: |
+          Passou a Páscoa, passou o Tiradentes, passou o feriado, passou tudo. Mas a vontade de
+          pegar, não passa.
+        context_notes: "Letra de Caetano ressignificada. Sazonal mas adaptável a qualquer feriado."
+    source_refs:
+      - TUDO_PASSA_MENOS_A_VONTADE_DE_TE_PEGAR_cantadas_pedrinhuol
+
+  # ============================================================
+  # CANTADA_QUEBRA_DE_EXPECTATIVA — diagnóstico de stories
+  # ============================================================
+
+  - id: cantada_stories_beleza_nao_some
+    situation: stories Instagram, 24h+ depois
+    variants:
+      - tone: comico
+        text: |
+          Stories não somem? Depois de 24 horas, ela vai ver o tempo que ela postou, vai achar
+          que é repetido. — Mas essa beleza aí não vai sumir da minha cabeça tão cedo, princesa.
+        context_notes: "Stories já expirado → cantada chega como 'reaparecimento'. Quebra expectativa temporal."
+    source_refs:
+      - 3_MELHORES_RESPOSTAS_STORIES_P_ELA_pedrinhuol_cantadas
+
+  - id: cantada_stories_estilo_camiseta
+    situation: stories Instagram, ela com roupa nova
+    variants:
+      - tone: comico
+        text: |
+          Você que é expert em estilo, pode me ajudar? Qual camiseta você me recomendaria?
+          — Pra qual situação? — Pra conquistar você.
+        context_notes: "Pretexto consulta de moda → reveal romântico. Ela responde primeiro, depois revela."
+    source_refs:
+      - 3_MELHORES_RESPOSTAS_STORIES_P_ELA_pedrinhuol_cantadas

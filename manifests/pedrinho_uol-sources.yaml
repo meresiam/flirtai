@@ -1,0 +1,79 @@
+---
+mind_id: pedrinho_uol
+display_name: Pedrinho UOL
+origin: br
+tier: flavor
+philosophical_alignment: hybrid
+priority: P2
+generated: 2026-05-23
+notes: |
+  Tier 3 (niche). TikTok @pedrinhuol (7.5M followers / 147M likes).
+  Cantadas, carnaval, abordagens cômicas, omegle. Brief: "Foco: humor/quebra-gelo
+  cômico (não framework)".
+
+  Handle real no TikTok é @pedrinhuol (sem o segundo 'o'), apesar do "uol"
+  no nome artístico — confirmado via yt-dlp.
+
+  Volume na fonte: 764 clips. Coletei top 100 mais recentes (timestamp
+  descendente). Cada clip é ~15-90s — ~1.5h áudio total. Suficiente pra
+  capturar padrão de cantada cômica + reações.
+
+  Pedrinho NÃO é mind pra extrair framework. É pra extrair:
+  - Estoque de cantadas cômicas (catalogar literalmente)
+  - Estrutura "setup → punchline" (quebra-gelo bem-humorado)
+  - Reação da gata cômica (laughter elicitation)
+---
+
+# Pedrinho UOL — Fontes Públicas
+
+## Tier 1 — TikTok (download primário)
+
+- **TikTok oficial:** https://www.tiktok.com/@pedrinhuol
+  - 764 vídeos no perfil, coletamos top 100 mais recentes
+  - Cada clip: 15-90s
+  - Total estimado: ~1.5h áudio
+
+## Tier 2 — YouTube compilações (terceiros)
+
+- **10 Melhores CANTADAS do PEDRINHOUOL (TikTok/Reels):**
+  https://www.youtube.com/watch?v=MiAwZh-NEFM
+  - NOTA: não baixamos por padrão — é compilação de terceiro, pode ter
+    conteúdo redundante com o que já capturamos do perfil. Avaliar depois
+    se vale.
+
+## Plano de coleta
+
+```
+Fase 1.1 — Download yt-dlp top 100 TikTok (clips individuais)
+  → corpus/pedrinho_uol/raw/audio/<clip>.mp3
+  → 100 arquivos / ~1.5h áudio total
+
+Fase 1.2 — Whisper PT-BR (clipes curtos, PT-BR coloquial, áudio rua/festa)
+  → ~15-30K tokens
+
+Fase 1.3 — Consolidação
+  → corpus/pedrinho_uol/processed/full-corpus.md
+  → estrutura por categoria: cantada_visual, cantada_audio,
+    cantada_situacional, omegle, festa
+```
+
+## Volume estimado final
+- ~15-30K tokens (volume pequeno, mas alta densidade de scripts curtos)
+
+## Particularidades técnicas
+- TikTok requer curl_cffi instalado (`pip install curl_cffi`) pra impersonação
+  passar; já está OK no env atual
+- Áudios curtos = Whisper roda RÁPIDO
+- Pode ter clips só com música/legenda (sem fala) — Whisper devolve vazio,
+  filtrar depois
+
+## Particularidades de extração
+- Marcar cada cantada como `script_record`:
+  - situation: visual_trigger | audio_trigger | contextual | omegle | festa
+  - tone: comico (sempre — esse é o mind)
+  - setup: contexto + observação
+  - punchline: a cantada em si
+  - reaction: como a gata reage (riso, fora, beijo, ignora)
+- NÃO buscar framework formal — esse mind É script puro
+- Cross-referenciar com Krausche/Vilaverde (que também usam cantadas mas
+  com framework por trás)

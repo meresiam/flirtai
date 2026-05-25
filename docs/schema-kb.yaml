@@ -1,0 +1,118 @@
+# FlirtAI KB Schema v1
+# Define a estrutura de saída de cada mind processado
+
+schema_version: 1.0
+generated: 2026-05-23
+
+mind_record:
+  # Metadata
+  mind_id: string  # ex: "robert_greene"
+  display_name: string  # ex: "Robert Greene"
+  origin: enum [usa, br]
+  tier: enum [foundation, depth, flavor]  # ordem de prioridade
+  philosophical_alignment: enum [greene_axis, glover_axis, hybrid]
+
+  source_material:
+    - type: enum [book, podcast, youtube, newsletter, article, instagram, tiktok, course]
+      title: string
+      url: string
+      duration_or_pages: int
+      acquired: bool
+      transcript_path: string
+      notes: string
+
+  # Núcleo extraído
+  frameworks:
+    - id: string  # ex: "9_seducer_archetypes"
+      name: string
+      description: string  # 1-2 frases
+      structure: list  # componentes/etapas
+      when_to_use: list[string]  # situações
+      examples: list
+      source_refs: list  # de onde foi extraído
+
+  heuristics:
+    - id: string  # ex: "create_polarity"
+      rule: string  # 1 frase imperativa
+      rationale: string  # por quê funciona
+      when: list[string]  # situações
+      counter_example: string  # quando NÃO aplicar
+      source_refs: list
+
+  techniques:
+    - id: string  # ex: "the_disinterest"
+      name: string
+      description: string
+      script_examples: list  # falas/comportamentos concretos
+      when: list[string]
+      risk: string  # como pode dar errado
+      mastery_signal: string  # como saber que tá fazendo certo
+      source_refs: list
+
+  anti_patterns:
+    - id: string  # ex: "supplication"
+      name: string
+      description: string
+      symptoms: list  # como identificar em si mesmo
+      consequence: string
+      antidote: string  # técnica/heurística que corrige
+      source_refs: list
+
+  scripts:
+    - id: string
+      situation: string  # ex: "primeira_mensagem_match_tinder"
+      variants:
+        - tone: enum [estrategico, autentico, comico, direto]
+          text: string
+          context_notes: string
+      source_refs: list
+
+  diagnostics:
+    - id: string  # ex: "ela_sumiu_3_dias"
+      situation: string
+      signals_to_read: list  # o que observar
+      interpretation_options: list
+        - reading: string
+          confidence: enum [alta, media, baixa]
+          next_move: string
+      source_refs: list
+
+  case_studies:
+    - id: string
+      title: string
+      narrative: string  # história ilustrativa
+      lessons: list[string]
+      source_refs: list
+
+  # Posicionamento filosófico
+  signature_phrases: list  # citações marcantes
+  paradoxes: list  # contradições aparentes
+  obsessions: list  # temas que sempre voltam
+  blindspots: list  # o que esse mind NÃO vê / ignora
+
+# Synthesis (cross-mind, gerado após processar todos)
+synthesis_record:
+  universal_principles:
+    - id: string
+      principle: string
+      confirmed_by: list  # mind_ids
+      strength: enum [strong, moderate, weak]
+
+  disagreements:
+    - id: string
+      topic: string
+      positions:
+        - mind_id: string
+          position: string
+          reasoning: string
+      flirtai_decision: string  # qual posição o agente adota e quando
+      situational_rules: list  # quando usar uma vs outra
+
+  situation_index:
+    # Mapeamento situação → frameworks/heurísticas/técnicas relevantes
+    - situation_id: string  # ex: "primeira_mensagem"
+      relevant_frameworks: list  # ids
+      relevant_heuristics: list
+      relevant_techniques: list
+      relevant_scripts: list
+      relevant_diagnostics: list

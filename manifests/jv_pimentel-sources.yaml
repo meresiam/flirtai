@@ -1,0 +1,90 @@
+---
+mind_id: jv_pimentel
+display_name: JV Pimentel (Jotave)
+origin: br
+tier: flavor
+philosophical_alignment: hybrid
+priority: P2
+generated: 2026-05-23
+status: BLOCKED — needs manual URL collection
+notes: |
+  TIER 2 (volume + persona forte). 60K IG. Estilo cafajeste-carismático,
+  festa/balada. Brief: "Foco: persona/tom (não framework) — captura forma
+  de falar, banter, sagacidade verbal de balada".
+
+  PROBLEMA TÉCNICO (2026-05-23):
+  - TikTok @jvpimeentel: "private or has embedding disabled"
+  - Instagram @jvpimeentel/reels: yt-dlp Instagram extractor está quebrado
+    (HTTP 403)
+  - instaloader também recebe 403 (precisa de login autenticado)
+  - YouTube: o handle "JOTAVÊ" no YT é um músico de forró diferente, não é
+    ele
+
+  Não temos perfis públicos scrapeáveis com API/yt-dlp pra esse mind.
+
+  ALTERNATIVAS pra desbloquear:
+  1. Coleta manual: rolar perfil @jvpimeentel no IG/TT, copiar 30-50 URLs
+     individuais de Reels/clips, colar em manifests/youtube_urls/jv_pimentel.txt
+     — yt-dlp consegue baixar Reel individual sem precisar listar o perfil
+  2. instaloader com login: instaloader -l <minha_conta> jvpimeentel
+     (cuidado com rate-limit / risco de ban)
+  3. Skip por ora — JV é Tier 2 com peso menor; o agente FlirtAI funciona
+     sem ele se Krausche + Vilaverde + Erick cobrirem o "modo balada"
+---
+
+# JV Pimentel (Jotave) — Status
+
+## Perfis públicos identificados
+
+- **Instagram:** https://www.instagram.com/jvpimeentel/ (60K)
+- **TikTok:** https://www.tiktok.com/@jvpimeentel
+- **X/Twitter:** https://x.com/jvpimeentel
+
+## Bloqueios técnicos enfrentados
+
+| Tentativa | Comando | Erro |
+|---|---|---|
+| TikTok via yt-dlp | `yt-dlp tiktok.com/@jvpimeentel` | "private or has embedding disabled" |
+| IG via yt-dlp | `yt-dlp instagram.com/jvpimeentel/` | "Unsupported URL" |
+| IG via yt-dlp + cookies | `yt-dlp --cookies-from-browser chrome instagram.com/jvpimeentel/` | "Unable to extract data" |
+| IG via instaloader | `instaloader jvpimeentel` | "Profile does not exist" (403 Forbidden em graphql) |
+
+## Próximos passos sugeridos
+
+```
+PATH A — Coleta manual (recomendado se quiser JV mesmo)
+  1. Abre @jvpimeentel no IG via browser do usuário
+  2. Scroll de Reels, copia 30-50 URLs de posts/reels mais curtidos
+  3. Cola em manifests/youtube_urls/jv_pimentel.txt
+  4. Roda bash scripts/01-download-audio.sh jv_pimentel
+  5. yt-dlp consegue baixar Reel individual sem listar perfil
+
+PATH B — Skip (recomendado se vamos preservar autonomia)
+  1. Não fazer JV agora
+  2. Confiar que Krausche + Vilaverde cobrem "persona balada/banter"
+  3. Marcar JV como opcional na Fase 8 (re-synthesis)
+
+PATH C — Login autenticado (alto risco)
+  1. instaloader -l <conta_descartável> jvpimeentel --reels
+  2. Risco: ban da conta, captcha, cooldown
+  3. Não recomendado sem conta dedicada
+```
+
+## Plano de coleta (quando desbloquear)
+
+```
+Fase 1.1 — yt-dlp em URLs individuais (após coleta manual)
+  → corpus/jv_pimentel/raw/audio/<reel>.mp3
+  → estimativa: 30-50 clips × 30-90s = 30-60min áudio
+
+Fase 1.2 — Whisper PT-BR (clipes curtos, áudio possivelmente ruidoso/festa)
+  → ~30K tokens texto
+
+Fase 1.3 — Consolidação
+  → corpus/jv_pimentel/processed/full-corpus.md
+```
+
+## Volume estimado final
+- BLOQUEADO até coleta manual ou login
+- Se desbloqueado via PATH A: ~30K tokens
+- Foco extração: vocabulário/banter/sagacidade verbal (não framework)

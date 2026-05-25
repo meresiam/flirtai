@@ -1,0 +1,95 @@
+---
+mind_id: robert_greene
+display_name: Robert Greene
+origin: usa
+tier: foundation
+philosophical_alignment: greene_axis
+priority: P0
+generated: 2026-05-23
+notes: |
+  Foco principal de extração: 9 arquétipos do sedutor, 24 manobras do Art of Seduction,
+  48 Laws of Power (aplicável a dinâmica de poder em relacionamento),
+  Mastery (capacidade de leitura de pessoas), Laws of Human Nature.
+
+  Sem PDF dos livros (decisão: só material gratuito).
+  Estratégia: 80%+ do conteúdo virá de entrevistas onde ele explica os frameworks
+  em primeira pessoa. Vantagem: explicação destilada, exemplos contemporâneos.
+  Desvantagem: nuances do livro escapam.
+---
+
+# Robert Greene — Fontes Públicas
+
+## Tier 1 — Site oficial + canais primários (download direto)
+
+### Site oficial
+- **Home:** https://powerseductionandwar.com/
+- **Blog (artigos do próprio Greene):** https://powerseductionandwar.com/blog/
+- **Categoria blog:** https://powerseductionandwar.com/category/blog/
+- **About:** https://powerseductionandwar.com/about/
+- **Books page:** https://powerseductionandwar.com/books/
+- **Newsletter (91K+ assinantes):** https://powerseductionandwar.kit.com/signup
+- **Twitter/X:** https://x.com/robertgreene
+
+### YouTube canal oficial
+- **Canal:** https://www.youtube.com/@RobertGreeneOfficial
+- **Playlist "Robert Greene Interviews":** https://www.youtube.com/playlist?list=PLu15HihogYiCFmRS-FqKHOlWcr37YMGc1
+
+### Podcast próprio
+- **The Robert Greene Podcast (Spotify):** https://open.spotify.com/show/7zaZ0V0n6cYlhpaSaJW94p
+- **Mesmo via Spotify for Creators:** https://creators.spotify.com/pod/profile/robert-greene169/
+
+## Tier 2 — Podcasts longos (1h+) com foco em sedução/poder
+
+- **Mikhaila Peterson #121 — Art of Seduction & Human Psychology (1h+):**
+  https://www.youtube.com/watch?v=ceLuqnK1AVQ
+
+- **Modern Wisdom #383 — 12 Laws of Power & Human Nature:**
+  https://player.fm/series/modern-wisdom/ep-383-robert-greene-12-laws-of-power-human-nature
+
+- **Lewis Howes / School of Greatness — How to Find Love & Master the Art of Seduction:**
+  https://lewishowes.com/relationships/robert-greene-how-to-find-love-master-the-art-of-seduction/
+
+- **Dating Skills Review #47 — Mastering the Art of Seduction:**
+  https://www.datingskillsreview.com/ep-47-mastering-the-art-of-seduction-with-robert-greene/
+
+- **Mixergy — The Master of Power, Seduction and War:**
+  https://mixergy.com/interviews/robert-greene-power-interview/
+
+- **YouTube long-form "Robert Greene on Power, Seduction, War, and Human Nature":**
+  https://www.youtube.com/watch?v=pNjheMXpuJU
+
+## Tier 3 — Sintetizadores e notas (uso secundário)
+
+- **Podcast Notes — Learning Leader (Greene):**
+  https://podcastnotes.org/learning-leader-show/greene-4/
+- **Podchaser appearances index:**
+  https://www.podchaser.com/creators/robert-greene-107Zzr2yxU/appearances
+
+## Plano de coleta
+
+```
+Fase 1.1 — Scrape blog próprio (powerseductionandwar.com)
+  → script python + BeautifulSoup → markdown raw → corpus/greene/raw/blog/
+  → estimativa: 50-100 artigos longos do próprio Greene
+
+Fase 1.2 — Download podcasts/YouTube (yt-dlp + ffmpeg para áudio)
+  → corpus/greene/raw/audio/<episode>.mp3
+  → Tier 1 + Tier 2 = ~15-20 episódios @ avg 1h30 = ~25h áudio
+
+Fase 1.3 — Transcrição Whisper (large-v3, idioma en)
+  → corpus/greene/transcripts/<episode>.md
+  → estimativa: 25h áudio = ~250-300K tokens texto
+
+Fase 1.4 — Consolidação
+  → corpus/greene/processed/full-corpus.md
+  → corpus/greene/processed/by-topic/{seduction,power,human-nature,mastery}.md
+```
+
+## Volume estimado final
+- ~250K-350K tokens (mix blog próprio + transcrições)
+- Suficiente pra extração rigorosa via MMOS cognitive-analyst
+
+## Quem vai escapar (sem livros)
+- Detalhes de cada um dos 24 manobras (livro explora cada uma em capítulo dedicado)
+- Exemplos históricos densos (Cleópatra, Casanova, etc. — biografias do livro)
+- Mitigação: complementar com summaries detalhados públicos (Blinkist tipo, reviews acadêmicos)

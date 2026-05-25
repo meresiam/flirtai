@@ -1,0 +1,659 @@
+---
+mind_id: erick_ronaldo
+category: scripts
+generated: 2026-05-25
+notes: |
+  Scripts EM INGLÊS LITERAL (Erick fala em inglês majoritariamente, em
+  Miami). Cada script inclui context_note em PT-BR explicando uso, vibe,
+  e reação típica observada. O agente FlirtAI pode adaptar pra PT-BR
+  quando o contexto pedir — mas preserva a estrutura/timing original.
+---
+
+scripts:
+  # ============= OPENERS — COMPLIMENT SMILE/EYES/FEATURE =============
+  - id: en_opener_smile_where_did_you_get_that
+    situation: "opener_compliment — cold approach quando ela está sorrindo ou tem sorriso destacável"
+    variants:
+      - tone: estrategico
+        text: "Where did you get that? — [pause] — That smile. It's beautiful."
+        context_notes: |
+          Frase signature do Erick, repete em DEZENAS de approaches. A
+          pausa entre 'where did you get that' e 'the smile' é crítica —
+          ela quase sempre responde 'where did I get what?' (engaja), aí
+          ele entrega a punch. Funciona porque parece pergunta literal
+          de objeto, vira compliment.
+    source_refs:
+      - "How_far_would_you_drive_for_a_sneaky_link"
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_opener_glowing
+    situation: "opener_compliment — quando ela está com roupa colorida ou parece radiante"
+    variants:
+      - tone: direto
+        text: "You're glowing, so I had to come and say hi."
+        context_notes: |
+          Versão minimalista do compliment. Justifica o approach
+          ('I had to') = você não está incomodando, está respondendo a
+          um impulso. Funciona com mulheres bem produzidas que esperam
+          atenção.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: en_opener_shine_diamond
+    situation: "opener_compliment — versão dramática pra mulher visivelmente vaidosa"
+    variants:
+      - tone: comico
+        text: "Hold on, let me — you shine brighter than any diamond I've ever seen."
+        context_notes: |
+          O 'hold on' antes finge espontaneidade. Funciona melhor em
+          ambientes glamour (Brickell, eventos) que em casual. Risco de
+          parecer ensaiado se você não tem cara séria pra entregar.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: en_opener_brighter_than_my_future
+    situation: "opener_compliment — grupo de mulheres, tom auto-depreciativo"
+    variants:
+      - tone: comico
+        text: "You guys look brighter than my future, I'm going to say."
+        context_notes: |
+          Auto-deprecation no fim ('my future' implica que seu futuro é
+          escuro) — humor que desarma sem perder o compliment. Ideal
+          pra grupos onde uma single line precisa atingir várias.
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+
+  - id: en_opener_breath_taken
+    situation: "opener_compliment — caminhando em direção a uma mulher single"
+    variants:
+      - tone: estrategico
+        text: "I don't smoke cigarettes but you took my breath away."
+        context_notes: |
+          Compliment via negação cria contraste e parece mais espontâneo
+          que 'you're so beautiful'. Pode soar over-rehearsed se
+          entregue sem energia.
+    source_refs:
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+
+  - id: en_opener_couldnt_keep_eye_off
+    situation: "opener_compliment — quando você fez eye contact prévio com ela"
+    variants:
+      - tone: estrategico
+        text: "Quick question — is there something in my eye? No? Are you sure? Like positive? Because I couldn't keep my eye off you."
+        context_notes: |
+          Setup-payoff: pergunta literal absurda ('algo no meu olho?') vira
+          punchline ('couldn't keep my eye off you'). Engaja porque ela
+          tenta responder com seriedade.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_opener_freckles
+    situation: "opener_compliment — mulher com sardas/feature física pontuável"
+    variants:
+      - tone: autentico
+        text: "I love your freckles, by the way."
+        context_notes: |
+          Curto, casual, específico. Funciona porque sarda é feature
+          que pouca gente comenta — ela percebe que você reparou em
+          algo que outros ignoram.
+    source_refs:
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+      - "I_m_6_feet_can_I_get_your_number"
+
+  # ============= OPENERS — PROPS/PRETEXTS =============
+  - id: en_opener_height_survey
+    situation: "opener_question — cold approach faculdade/rua/campus"
+    variants:
+      - tone: estrategico
+        text: "Quick question — how tall are you? [She answers]. Well, I'm 6 feet and I was wondering if I could get your number."
+        context_notes: |
+          Híbrido pretext+ask. A pergunta inicial é absurdamente neutra
+          (survey-like) e a transição direto pro number ask cria
+          contraste cômico. Funciona MUITO bem se você tem a altura;
+          desmonta se não tem.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: en_opener_stealing_policy
+    situation: "opener_pretext_pun — campus universitário (Vanderbilt etc)"
+    variants:
+      - tone: comico
+        text: "Hi, this is so random but, like, do you know what the stealing policy is here? — The stealing policy? — Yeah, like stealing — because you stole my heart."
+        context_notes: |
+          Setup absurdo ('política de roubo da faculdade') que vira
+          piada de cantada. Ela engaja tentando responder com
+          seriedade, e a punch line desarma. Funciona melhor em campus
+          (ambiente formal vira contraste).
+    source_refs:
+      - "PICKING_UP_CONFIDENCE_IN_NASHVILLE"
+
+  - id: en_opener_only_10_i_see
+    situation: "opener_pickup_classic — estado USA por estado"
+    variants:
+      - tone: comico
+        text: "Are you from Tennessee? Because you're the only 10 I see."
+        context_notes: |
+          Pickup line clássica americana. Erick usa em viagens (Nashville,
+          Texas etc) — funciona porque a cidade onde está vira o pun.
+          Sempre entregue COM SORRISO largo, nunca sério.
+    source_refs:
+      - "PICKING_UP_CONFIDENCE_IN_NASHVILLE"
+
+  - id: en_opener_calendar_book_date
+    situation: "opener_prop — calendário gigante na rua/campus"
+    variants:
+      - tone: comico
+        text: "I just had to ask, what are you doing on Friday the 13th? [pulls out giant calendar] My sister gave me this — when are you free? Let me pencil you in."
+        context_notes: |
+          Prop = âncora visual + pretext + envolvimento físico (passa o
+          calendário pra ela segurar). O 'my sister gave me this'
+          justifica o objeto absurdo. Demanda alto comprometimento
+          (custo de carregar) mas converte muito.
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+
+  - id: en_opener_batman_persona
+    situation: "opener_prop — Halloween / fantasia Batman"
+    variants:
+      - tone: comico
+        text: "I'm Batman. Where is she? Where's Rachel? You want to go to the Batcave later? I'll text you a photo under the mask."
+        context_notes: |
+          Persona-prop full commit. Convida pra 'Batcave' (sex
+          subtexto leve). Funciona porque a fantasia legitima o
+          absurdo. Quebrar persona só quando ela pedir.
+    source_refs:
+      - "PICKING_UP_GIRL_S_IN_MY_3_000_DOLLAR_COSTUME"
+
+  - id: en_opener_fake_ticket_too_sexy
+    situation: "opener_prop — fake police ticket na praia"
+    variants:
+      - tone: comico
+        text: "I am so sorry, I just got a call from my supervisor — I have to issue you a ticket. For what? Being too sexy on the beach. It's only $150 — but my number's on here, you text me, the ticket can be revoked. Magic."
+        context_notes: |
+          Frame de autoridade falsa + saída pelo número. Funciona em
+          grupos (efeito coletivo). Importante: chegar leve, anunciar
+          que é piada se o vibe travar. Material físico (ticket) fica
+          com ela = recall maior depois.
+    source_refs:
+      - "Giving_girls_TICKETS_for_being_too_sexy_on_the_beach"
+
+  - id: en_opener_lost_phone_call
+    situation: "opener_pretext_phonenumber — bar/festa, sem cameraman"
+    variants:
+      - tone: comico
+        text: "I lost my phone — like, the guy who has it is coming here right now. I need to call him to see if he's on his way. Can you call this number? [you put phone on ringer in your pocket, your phone rings]"
+        context_notes: |
+          Não é técnica do Erick mas é apresentada por Johnson Max no
+          vídeo dele como alternativa. Erick descarta como 'terrible
+          idea' e prefere o direto. Inclua só como contraste — Erick
+          NÃO faz isso, faz o direto.
+    source_refs:
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+
+  # ============= OPENERS — INTERVIEW/REPORTER =============
+  - id: en_opener_reporting_live
+    situation: "opener_reporter — abordagem com câmera/produção"
+    variants:
+      - tone: estrategico
+        text: "All right, ladies and gentlemen, I'm here reporting live in [South Beach / Brickell / Broadway] with — what's your name? Lovely meeting you. Where are you guys from?"
+        context_notes: |
+          Frame default de praticamente todo vídeo. Cria contexto
+          'entrevista' que dá licença pra approach. Funciona só com
+          câmera real ou alguém parecendo cameraman.
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+      - "How_far_would_you_drive_for_a_sneaky_link"
+
+  - id: en_opener_question_of_the_night_provocative
+    situation: "opener_provocative_question — depois do nome, antes do ask"
+    variants:
+      - tone: comico
+        text: "Well, question of the night — how far would you drive for a Sneaky Link?"
+      - tone: comico
+        text: "Question of the night — when is the last time you cried?"
+      - tone: comico
+        text: "Well, question of the night — what's your body count?"
+      - tone: comico
+        text: "Question of the night — should a guy always make the first move?"
+        context_notes: |
+          Repertório fixo. Cada pergunta serve pra (a) pular 5 etapas
+          de small talk, (b) testar se ela é jogo, (c) gerar conteúdo
+          viralizável. Em DM/Whatsapp adapta pra texto: 'pergunta
+          aleatória — qual última vez você chorou?'
+    source_refs:
+      - "How_far_would_you_drive_for_a_sneaky_link"
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+      - "What_s_your_BODYCOUNT"
+      - "Should_guys_make_the_first_move"
+
+  - id: en_opener_how_can_guy_take_you_home
+    situation: "opener_provocative_question — bar/festa noturna"
+    variants:
+      - tone: comico
+        text: "Question of the night — how can a guy take you home?"
+        context_notes: |
+          Pergunta direta sobre escalada sexual no estilo 'entrevista'.
+          Respostas variam de 'good vibes' até 'a lot of money' — mas
+          a pergunta em si já filtra quem topa o registro.
+    source_refs:
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+
+  # ============= NUMBER CLOSES =============
+  - id: en_close_grab_your_number
+    situation: "number_close — default após 30-60s de interação"
+    variants:
+      - tone: direto
+        text: "Is it cool if I grab your number?"
+        context_notes: |
+          Versão mais frequente do close. 'Grab' (em vez de 'get' ou
+          'have') é casual e implica posse sem peso. 'Is it cool if'
+          dá ela espaço pra dizer não sem ser dramático.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+
+  - id: en_close_can_i_get_your_number
+    situation: "number_close — mais direto, alto-status"
+    variants:
+      - tone: direto
+        text: "Can I get your number?"
+        context_notes: |
+          Versão minimalista. Funciona com mulher que claramente está
+          engajada — não precisa de softener.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: en_close_new_in_town_make_friends
+    situation: "number_close — quando ela hesita ou pergunta por quê"
+    variants:
+      - tone: estrategico
+        text: "I just moved here from Virginia, I'm trying to make new friends."
+        context_notes: |
+          'Make new friends' tira pressão sexual e dá ela permissão pra
+          dar o número sem se sentir 'fácil'. Frame que mantém porta
+          aberta pra escalada depois.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+      - "PICKING_UP_CONFIDENCE_IN_NASHVILLE"
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+
+  - id: en_close_thought_you_were_pretty
+    situation: "number_close — entregue como justificativa simples"
+    variants:
+      - tone: autentico
+        text: "Yeah, I thought you were really pretty — can I get your number?"
+        context_notes: |
+          Versão honesta-direta. Funciona porque admite a motivação
+          sem rodeio. Mais alto-valor que '...sem motivo' porque
+          mostra você sabe o que quer.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_close_holy_crap_youre_beautiful
+    situation: "number_close — direto, alto-energia"
+    variants:
+      - tone: direto
+        text: "Holy crap, you're beautiful. Want to get your number?"
+        context_notes: |
+          Recomendação direta do entrevistado no vídeo. 'Holy crap'
+          como exclamation marca espontaneidade. Funciona porque o
+          choque na voz parece genuíno.
+    source_refs:
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+
+  - id: en_close_pretty_eyes_grab_drink
+    situation: "number_close — formato 'compliment + ação' (date implícita)"
+    variants:
+      - tone: estrategico
+        text: "Hey, you have really pretty eyes — can I take you out? You want to grab a drink sometime?"
+        context_notes: |
+          Salta o número e propõe diretamente a date. Mais forte para
+          mulheres que valorizam intencionalidade. Funciona melhor
+          quando ela demonstrou interesse claro antes.
+    source_refs:
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+
+  # ============= RECOVERY AFTER NO =============
+  - id: en_recovery_jump_off_cliff
+    situation: "recovery_after_no — saída humorada após qualquer rejeição"
+    variants:
+      - tone: comico
+        text: "Damn it. I'm going to go jump off a cliff now. All right, bye. Love you."
+        context_notes: |
+          Ritual signature. Vira a rejeição em piada auto-depreciativa
+          MAS leve. Você sai como 'cara que ri da própria desgraça',
+          não como 'cara que ficou ofendido'. Frame preservado.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: en_recovery_good_ones_always_taken
+    situation: "recovery_after_no — quando ela disse 'tenho namorado'"
+    variants:
+      - tone: comico
+        text: "The good ones always do. Damn it. All right, have a good day."
+        context_notes: |
+          Reposicionamento: ela vira 'a boa', você vira o cara que
+          reconheceu valor. Sem competição, sem drama. Saída em 5s.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: en_recovery_want_a_better_one
+    situation: "recovery_after_no — após 'tenho namorado', se ela tiver vibe lúdica"
+    variants:
+      - tone: comico
+        text: "You want a better one? No? All right."
+        context_notes: |
+          Versão mais arriscada — pode soar arrogante. Usa só quando
+          ela já demonstrou estar topando o humor. Em mulher fechada,
+          isso parece desrespeito.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "PICKING_UP_GIRL_S_IN_MY_3_000_DOLLAR_COSTUME"
+
+  - id: en_recovery_youtube_video_confession
+    situation: "recovery_after_no — confessar pretext após interação"
+    variants:
+      - tone: autentico
+        text: "Hey, I'm sorry — we're just shooting a cringy YouTube video. I'm just trying to show my subscribers you can talk to pretty girls without being scared of them. But I just got rejected. I'm going to go kill myself now. I'm just joking. Have a good day."
+        context_notes: |
+          Reset honesto que vira a rejeição em conteúdo. Funciona
+          porque é vulnerável + bem-humorado. Algumas mulheres MUDAM
+          de ideia depois dessa confissão.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  # ============= REVERSE REJECTION =============
+  - id: en_reverse_astrology_not_compatible
+    situation: "reverse_rejection_astrology — saída-de-frame após ela aceitar dar número"
+    variants:
+      - tone: comico
+        text: "Can I get your number? Wait — first, what's your star sign? — Virgo? — Oh, hell no. We would not be compatible. I am so sorry. Have a good day."
+        context_notes: |
+          Inverte o jogo: ele 'rejeita' depois dela aceitar. Cria
+          curiosidade ('por que ele saiu?'). NÃO converte número, é
+          training-wheel pra músculo de sair antes — mas algumas
+          mulheres respondem com 'wait, but...' e o jogo reabre.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: en_reverse_im_asparagus
+    situation: "reverse_rejection_astrology — versão piada quando ela pergunta o signo dele"
+    variants:
+      - tone: comico
+        text: "I'm an asparagus. Yeah, so we're not compatible, it wouldn't work out. Sorry."
+        context_notes: |
+          Quebra absoluta da lógica do jogo de astrologia.
+          'Asparagus' é palavra escolhida pelo som (semelhante a
+          'aquarius'). Vira a piada toda às custas do próprio frame.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  # ============= PICKUP LINES (CRINGY-AWARE) =============
+  - id: en_pickup_chess_queen
+    situation: "opener_pickup_classic — entregue com self-awareness"
+    variants:
+      - tone: comico
+        text: "Quick question — are you a chess player? — No? — Because I'm looking for a queen."
+        context_notes: |
+          Cantada cafona clássica. Funciona SÓ com entrega lúdica e
+          disclaimer ('my subscribers commented this corny pickup
+          line'). Sozinha não funciona.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_pickup_wifi_connection
+    situation: "opener_pickup_classic — bar/café"
+    variants:
+      - tone: comico
+        text: "Excuse me — are you Wi-Fi? Because I feel a connection."
+        context_notes: |
+          Variante moderna. Mesma regra: precisa de meta-awareness pra
+          não cair.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: en_pickup_triangle_cute
+    situation: "opener_pickup_classic — abordagem random"
+    variants:
+      - tone: comico
+        text: "I'm so sorry, I just wanted to say this is a little weird, but — if you were a triangle, you'd be a cute one."
+        context_notes: |
+          Absurdista. O 'a little weird' antecipa o cringe e dá
+          permissão pra ela rir da bobagem.
+    source_refs:
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_pickup_nissan_all_to_myself
+    situation: "opener_pickup_classic — random no campus/rua"
+    variants:
+      - tone: comico
+        text: "Quick question — are you a Nissan? — A Nissan? — Yeah, because I want you all to myself."
+        context_notes: |
+          Pun fonético em inglês (Nissan ~ 'an issan' ~ 'I want'). Em
+          PT não traduz — precisa adaptar pra trocadilho local.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: en_pickup_rate_you_9
+    situation: "opener_pickup_classic — direto"
+    variants:
+      - tone: comico
+        text: "I would rate you a nine because I'm the one you need."
+        context_notes: |
+          Cantada com twist matemático. 'I'm the one you need' = '1
+          you need' = 9 + 1 = 10. Funciona só se ela pega o jogo
+          numérico — caso contrário fica sem graça.
+    source_refs:
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+
+  - id: en_pickup_jersey_name_number
+    situation: "opener_pickup_sports — quando ela está com camisa esportiva"
+    variants:
+      - tone: comico
+        text: "Do you have a jersey? Because I want to have your name and your number."
+        context_notes: |
+          Pun com camisa esportiva (camisa traz nome e número). Funciona
+          melhor em ambiente que justifica esporte (campus, jogo,
+          praia).
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_pickup_phone_money
+    situation: "opener_pickup_money — quando você quer trocadilho irônico"
+    variants:
+      - tone: comico
+        text: "If you had as much money as your phone number, how much would that be?"
+        context_notes: |
+          Twist indireto pra pedir número via pun matemático. Mais
+          enrolado que valores diretos — usa quando você quer
+          impressionar com inventividade.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_pickup_dreamed_about_you
+    situation: "opener_pickup_smooth — quando você quer parecer enigmático"
+    variants:
+      - tone: estrategico
+        text: "Hi — you look so familiar. We've met before. — No? — Maybe in my dreams."
+        context_notes: |
+          Clássico misterioso. Funciona melhor entregue com tom baixo
+          e meio sério (não sorri demais). A pausa entre 'maybe' e
+          'in my dreams' faz o ritmo.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_pickup_socks_pair
+    situation: "opener_pickup_visual — quando você nota meia/sapato dela"
+    variants:
+      - tone: comico
+        text: "I know we're not socks, but I think we'd make a great pair."
+        context_notes: |
+          Pun visual leve. Mais útil em DM/Tinder do que cold approach
+          (pun precisa de tempo pra registrar).
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_pickup_not_gamer_play_you
+    situation: "opener_pickup_nerdy — quando ela tem vibe nerd/geek"
+    variants:
+      - tone: comico
+        text: "I'm not a gamer, but I wouldn't play you."
+        context_notes: |
+          Inverte expectativa — admite não ser gamer, e usa o verbo
+          'play' (jogar/manipular) com duplo sentido (não te
+          enganaria). Funciona com mulher gamer que pega a referência.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  # ============= EXIT/CLOSE PHRASES =============
+  - id: en_exit_lovely_meeting_love_you
+    situation: "exit_close — saída após fechar número"
+    variants:
+      - tone: autentico
+        text: "Well, lovely meeting you. I love you. All right, bye."
+        context_notes: |
+          Saída signature. 'I love you' é ironia leve mas constante —
+          repete tanto que vira marca. Saída rápida = preserva frame
+          após fechar.
+    source_refs:
+      - "Múltiplos vídeos — padrão universal"
+
+  - id: en_exit_peace_out
+    situation: "exit_close — saída de entrevista/grupo"
+    variants:
+      - tone: direto
+        text: "All right, well that's pretty much it. I love you guys, peace out."
+        context_notes: |
+          Versão grupo/conteúdo. 'Peace out' encerra de forma leve sem
+          aderência.
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+      - "How_far_would_you_drive_for_a_sneaky_link"
+
+  - id: en_exit_kiss_on_cheek_bolivia
+    situation: "exit_physical — quando você quer despedida com contato"
+    variants:
+      - tone: estrategico
+        text: "Well, in my country — I'm from Bolivia — we kiss goodbye on the cheek. — That's a little much. — All right, like this then. [extends hand]"
+        context_notes: |
+          Usa background cultural pra propor contato físico. Se ela
+          aceita = micro-escalation. Se ela recusa = você redireciona
+          pra handshake sem perder face.
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+
+  # ============= LANGUAGE/CULTURAL CONNECTIONS =============
+  - id: en_cultural_que_bola_cuban
+    situation: "rapport_cultural — quando ela diz que é cubana"
+    variants:
+      - tone: autentico
+        text: "Cuban? Que bola hacer? Que bola es ese?"
+        context_notes: |
+          Cumprimento informal cubano = entry-pass pra cubana. Pronuncie
+          relaxado, não tente sotaque perfeito. Se você não é cubano,
+          ela vai rir do esforço — que é o objetivo.
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+
+  - id: en_cultural_pana_marico_venezuelan
+    situation: "rapport_cultural — quando ela diz que é venezuelana"
+    variants:
+      - tone: autentico
+        text: "Venezuela? Pana, marico, chama! Que mas?"
+        context_notes: |
+          Gírias venezuelanas. 'Marico' é informal entre amigos e
+          quebra qualquer formalidade. Cuidado fora desse contexto —
+          gíria forte.
+    source_refs:
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+
+  - id: en_cultural_paisa_arepa_colombian
+    situation: "rapport_cultural — colombiana paisa de Medellín"
+    variants:
+      - tone: autentico
+        text: "Que parte? Medellin? Que mas pues? Mas paisa que una arepa."
+        context_notes: |
+          'Mas paisa que una arepa' = 'mais paisa que uma arepa' —
+          gíria que sinaliza você reconhece a identidade regional. Só
+          funciona com paisa (Antioquia, Medellín).
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+
+  - id: en_cultural_habibi_arab
+    situation: "rapport_cultural — mulher árabe/saudita"
+    variants:
+      - tone: autentico
+        text: "Habibi. That's all I know — you can teach me."
+        context_notes: |
+          'Habibi' é universal árabe. Admitir que só sabe uma palavra
+          + convite pra ela ensinar gera engajamento futuro
+          (conversação continuada).
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: en_cultural_je_taime_french
+    situation: "rapport_cultural — mulher francesa"
+    variants:
+      - tone: autentico
+        text: "France? Je t'aime beaucoup. That's all I know."
+        context_notes: |
+          'Je t'aime beaucoup' significa 'eu te amo muito' — over the
+          top, mas funciona porque ele assume desde o início que é
+          ignorância sincera.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  # ============= TRANSITIONS / FOLLOW-UPS =============
+  - id: en_transition_what_do_you_like_eat
+    situation: "transition_to_date — depois de fechar número"
+    variants:
+      - tone: direto
+        text: "What do you like to eat? — You like sushi? — Sushi? I can buy you a lot of sushi."
+        context_notes: |
+          Setup imediato pra date. 'Buy you a lot of sushi' é leve mas
+          confirma intenção. Não promete restaurante específico ainda
+          — espaço pra negociar via texto.
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+
+  - id: en_transition_helicopter_date
+    situation: "transition_to_date — proposta de date diferenciada"
+    variants:
+      - tone: estrategico
+        text: "What are you doing Thursday? Would you want to go in a helicopter? My buddy owns one, so he asked me if I wanted to go."
+        context_notes: |
+          High-value date proposal. Funciona pelo status implícito
+          ('meu amigo tem helicóptero'). Pode ser substituído por
+          qualquer experiência incomum (barco, evento VIP, etc.).
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: en_transition_komodo_date
+    situation: "transition_to_date — propor restaurante específico Miami"
+    variants:
+      - tone: direto
+        text: "You like Komodo? Have you been to Komodo? I would love to take you on a date."
+        context_notes: |
+          Nome específico de restaurante caro Miami = sinaliza pode
+          pagar + sabe onde levar. Adapte pra restaurante caro da sua
+          cidade.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  # ============= INSTAGRAM REFUSAL =============
+  - id: en_refuse_instagram
+    situation: "soft_refuse — quando ela oferece Insta em vez de número"
+    variants:
+      - tone: direto
+        text: "I don't use Instagram. Instagram is bad for you, very addictive, so I deleted it. It affects your mental health, so I'll get your number instead."
+        context_notes: |
+          Reframe: você não está perdendo acesso, ela está perdendo
+          contato com cara saudável. Justificativa moral
+          ('mental health') torna a recusa palatável.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+      - "Picking_up_girls_with_your_PICKUP_LINES"

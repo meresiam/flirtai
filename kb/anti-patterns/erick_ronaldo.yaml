@@ -1,0 +1,227 @@
+---
+mind_id: erick_ronaldo
+category: anti-patterns
+generated: 2026-05-25
+---
+
+anti_patterns:
+  - id: hesitar_ate_perder_a_janela
+    name: "Hesitação Paralisante (Aprovação > Ação)"
+    description: |
+      O cara vê a mulher, calcula 20 cenários, espera 'o momento certo' —
+      e ela vai embora antes dele se mover. Erick atribui ESSE bloqueio
+      como o #1 motivo do epidemic de male loneliness: '45% of men aged
+      18-25 have never approached a woman in person'.
+    symptoms:
+      - "Você fica girando o copo no bar olhando pra ela há 15 minutos"
+      - "Você ensaia mentalmente a abertura e nunca executa"
+      - "Você espera 'condições ideais' (ela sozinha, sem celular, sorrindo pra você)"
+      - "Você posta 'shot your shot' na bio mas só faz isso pelo DM"
+    consequence: |
+      Zero reps = zero calibração. Sem reps, qualquer rejeição vira
+      catástrofe emocional porque é a única referência. Cara de 30/40 anos
+      sem ter aproximado mulher em pessoa.
+    antidote: |
+      Heurística 'aborde_em_segundos_nao_minutos'. Regra de 3 segundos do
+      Mystery: vê a mulher, conta 3, move. Sem think, sem qualify, sem
+      script perfect. Aprox bait = aprox real.
+    source_refs:
+      - "How_to_transform_your_dating_life_in_just_90_days"
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: compliment_generico
+    name: "Compliment Genérico ('You're Hot')"
+    description: |
+      Chegar com 'you're hot' / 'you're sexy' / 'you're beautiful' (só isso,
+      seco) sinaliza que você não OLHOU pra ela como pessoa. Toda mulher
+      atraente já ouviu isso 100x essa semana. Vira ruído branco.
+    symptoms:
+      - "Você usa o mesmo opener pra qualquer mulher"
+      - "Você não menciona NADA específico sobre ela"
+      - "Você pula direto pra 'can I get your number' sem stop"
+    consequence: |
+      Ela classifica você como 'mais um' em segundos. Mesmo que ela aceite
+      o número (raro), nunca responde DM porque você não criou
+      diferenciação na memória dela.
+    antidote: |
+      Técnica 'compliment_opener_smile' — feature ESPECÍFICA + pergunta
+      retórica ('where did you get that smile?'). Específico prova que
+      você olhou.
+    source_refs:
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: perguntar_demais_antes_de_pedir
+    name: "Interrogatório Sem Fechar"
+    description: |
+      Cara faz 15 perguntas pra 'criar conexão' antes de pedir número —
+      'where are you from? what do you do? what's your major? do you like
+      Miami? have you been to...'. Aos 8 minutos a interação esfriou e
+      pedir número agora é forçado.
+    symptoms:
+      - "Você passou de 3 perguntas seguidas sem dar nenhuma afirmação/compliment"
+      - "Ela começou a dar respostas mono-silábicas ('yeah', 'okay', 'cool')"
+      - "Você está com medo de pedir e está empurrando o momento"
+    consequence: |
+      Ela vai embora dizendo 'foi legal conversar' e você sai sem número,
+      achando que fez tudo certo. Não fez — você não pediu.
+    antidote: |
+      Heurística 'saia_antes_de_exaurir'. Padrão Erick: nome + 1 pergunta
+      + 1 compliment + ASK. Total <90s. Se ela quer aprofundar, ela
+      AGUENTA a conversa via WhatsApp depois.
+    source_refs:
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: aceitar_instagram_sem_briga
+    name: "Aceitar Instagram em Vez de Insistir no Número"
+    description: |
+      Você pede número, ela oferece Instagram, você aceita. Erro. Instagram
+      é onde DMs morrem. Mulher que quer te ver de novo dá número. Quem
+      dá Instagram está te mantendo na lista de 'talvez' indefinidamente.
+    symptoms:
+      - "Você aceita Insta como 'meio termo' sem testar resistência"
+      - "Você manda DM e nunca recebe resposta — pattern em loop"
+      - "Você tem 30 Instas de mulheres e nenhuma data marcada"
+    consequence: |
+      Inbox cheio de seguidoras que não responderam. Você gasta tempo em
+      retrieve mode em vez de approach mode. Frame quebrado.
+    antidote: |
+      Push back leve: 'I don't really use Instagram, it's bad for you,
+      let me get your number instead.' Se ela insiste em Instagram,
+      considere lost cause — toma o Insta como cortesia e segue.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: discutir_namorado
+    name: "Tentar Convencer Sobre o Namorado"
+    description: |
+      Ela diz 'tenho namorado', você pergunta 'ele te trata bem? você é
+      feliz? quanto tempo vocês têm?'. Você está se desqualificando ao
+      tentar competir e dando combustível pra ela reforçar a defesa.
+    symptoms:
+      - "Você faz mais que 1 pergunta sobre o namorado"
+      - "Você tenta 'provar' que ele não merece"
+      - "Você reduz o status dele tentando elevar o seu"
+    consequence: |
+      Você fica memorizado como 'aquele cara grudento que não aceitou
+      não'. Mesmo se ela um dia terminar com o namorado, ela não te chama.
+    antidote: |
+      Heurística 'trate_namorado_como_problema_dele_nao_seu'. Resposta
+      padrão Erick: 'the good ones always do' / 'damn it' / 'I'm gonna
+      go jump off a cliff'. Sai leve, mantém porta entreaberta sem
+      pressão.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "PICKING_UP_GIRL_S_IN_MY_3_000_DOLLAR_COSTUME"
+
+  - id: anunciar_curriculo_logo_de_cara
+    name: "Vender Status Sem Ser Perguntado"
+    description: |
+      Chegar e despejar 'sou advogado, ganho X, dirijo Y, tenho
+      apartamento no Z'. Comportamento de quem sente que NÃO TEM valor
+      intrínseco e precisa comprar atenção. Mulher de alto valor lê isso
+      como red flag de carência.
+    symptoms:
+      - "Você menciona renda/profissão nos primeiros 60 segundos"
+      - "Você cita objetos de valor que ela não perguntou"
+      - "Você usa 'humble brag' ('é, eu acabei de chegar do meu Porsche...')"
+    consequence: |
+      Ela classifica você como 'cara que precisa comprar mulher'. Pior:
+      atrai quem quer pegar do seu bolso, não quem quer estar com você.
+    antidote: |
+      Heurística 'contexto_seu_e_irrelevante_ate_provado'. Só revela
+      status QUANDO perguntada e mesmo assim subestima ('I'm broke
+      college student' / 'my brother sells these shirts'). Status real
+      vaza por outros canais (postura, roupa, redes).
+    source_refs:
+      - "How_to_transform_your_dating_life_in_just_90_days"
+
+  - id: drama_apos_rejeicao
+    name: "Dramatizar a Rejeição na Frente Dela"
+    description: |
+      Você leva 'não', muda de cara, fica chateado visível, pede
+      explicação, fala 'putz, achei que ia rolar', faz cara de coitado.
+      Você acaba de provar que ela acertou em rejeitar.
+    symptoms:
+      - "Sua expressão muda visivelmente após o 'não'"
+      - "Você pergunta 'por quê?' ou 'mas por quê?'"
+      - "Você fica ali parado depois do 'não'"
+    consequence: |
+      Você cimenta a rejeição com prova de fraqueza. Ela conta isso pras
+      amigas. Você sai com prejuízo emocional 3x maior do que precisava.
+    antidote: |
+      Heurística 'trate_rejeicao_como_dado_nao_julgamento'. Script Erick:
+      'I'm going to go jump off a cliff now, alright, bye. Love you.'
+      Sorri, gira, vai. 5 segundos máximo entre o 'não' e você
+      desaparecer.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: limpar_o_pretext_antes_da_hora
+    name: "Quebrar o Pretext Antes da Hora"
+    description: |
+      Você abre com pretext (pesquisa, autoridade, prop) e em 20s você
+      mesmo confessa 'na verdade isso é só uma desculpa pra te conhecer'.
+      Você queimou seu próprio dispositivo. O pretext só funciona enquanto
+      ela 'compra' temporariamente.
+    symptoms:
+      - "Você se sente culpado de estar 'enganando'"
+      - "Você confessa antes dela perguntar"
+      - "Você ri demais do próprio pretext (sinaliza inautenticidade)"
+    consequence: |
+      Sem o pretext, você fica com nada. Ela percebe que a interação foi
+      'manipulação' (não foi, foi jogo) e bloqueia.
+    antidote: |
+      Mantém o pretext ATÉ ela perguntar (e ela vai perguntar quando
+      estiver pronta). Aí confessa com humor ('this is for a cringy
+      YouTube video, sorry'). Confissão depois do engajamento = humor.
+      Confissão antes = covardia.
+    source_refs:
+      - "Giving_girls_TICKETS_for_being_too_sexy_on_the_beach"
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+
+  - id: nao_filtrar_ambiente
+    name: "Aproximar em Ambiente Errado (Trabalho, Funeral, Hospital)"
+    description: |
+      Erick aborda em PRAIA, RUA, BAR, FACULDADE, BRICKELL — ambientes
+      onde mulheres ESPERAM social. Quem leva a técnica pra aeroporto,
+      cartório, hospital, igreja em situação de luto está usando martelo
+      em parafuso.
+    symptoms:
+      - "Você aborda em ambientes formais/profissionais"
+      - "Você aborda mulher que está claramente em mood não-social"
+      - "Você aborda em contexto onde ela NÃO pode sair (atendimento, trabalho)"
+    consequence: |
+      Você é classificado como 'creep que não lê ambiente'. Pior: pode
+      gerar denúncia (assédio em trabalho). Tudo isso evitável.
+    antidote: |
+      Mapa mental: PRAIA/RUA/BAR/CAMPUS = approach OK. TRABALHO DELA /
+      HOSPITAL / TRANSPORTE PÚBLICO MUITO CHEIO = não approach. Em
+      caso de dúvida, pergunta primeiro se ela está livre pra trocar
+      duas palavras.
+    source_refs:
+      - "PICKING_UP_CONFIDENCE_IN_NASHVILLE"
+
+  - id: pickup_line_seca_sem_humor
+    name: "Pickup Line Cafona Sem Auto-Consciência"
+    description: |
+      'Você é Wi-Fi? Porque eu sinto uma conexão.' Falado SECO, sem ironia,
+      sem disclaimer. É o pior de dois mundos: você mostrou que decorou
+      cantada DA INTERNET, e mostrou que não tem humor pra carregar.
+    symptoms:
+      - "Você entrega a pickup line com cara séria"
+      - "Você não enquadra como 'sei que é cafona, mas...'"
+      - "Você espera que a frase em si converta (ela não converte)"
+    consequence: |
+      Ela ri DE você (não COM você). Sai contando pras amigas. Você
+      queimou aquela quadra da cidade.
+    antidote: |
+      Técnica 'cringy_pickup_line_self_aware': SEMPRE acompanha de meta-
+      disclaimer. 'I know this is corny, my subscribers commented this,
+      I had to do it. But seriously, can I get your number?' Humor +
+      sinceridade na sequência = funciona.
+    source_refs:
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"

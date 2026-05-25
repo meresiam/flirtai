@@ -1,0 +1,475 @@
+---
+mind_id: vilaverde
+category: techniques
+generated: 2026-05-25
+notes: |
+  Técnicas táticas — manobras concretas com script, contexto e
+  risco. Vilaverde tem vocabulário PUA fortíssimo: teasing,
+  flirting, picos de emoção, frame, microfantasia, gancho. Capture
+  o vocabulário literal — não traduza.
+---
+
+techniques:
+  - id: teasing
+    name: "Teasing — Provocação como Pico de Emoção Negativo"
+    description: |
+      Manobra central de Vilaverde. Pegar uma informação que a mulher
+      te deu e devolver com peso negativo + elemento cômico. Resultado:
+      tira a validação que ela recebeu desde pequena ('pai falava o
+      quanto ela é linda, professor elogiava, DM cheia de elogios'),
+      cria vácuo emocional, ela busca SUA validação pra preencher esse
+      vácuo. Inversão do nível social. Aplicado via 3Ds: discordar,
+      desvalidar, desafiar.
+    script_examples:
+      - "[Online, ela posta foto no quarto bagunçado]: 'não vai arrumar a cama não? tô de olho 👀 kkkk'"
+      - "[Online, ela posta camisa do Palmeiras]: 'tava pensando em elogiar tua beleza, mas aí vi a camisa do Palmeiras… ECA kkkk'"
+      - "[Online, sueca com luva de boxe na foto do Tinder]: 'qual é a da luva de boxe? virou lutadora? 😂'"
+      - "[Online, ela posta foto na academia]: 'até te chamaria pra um treino, mas acho que você não dá conta kkkk'"
+      - "[Pessoalmente, no date, ela fala que adora macarrão]: '[mão no ombro] olha, eu não dou certo com quem gosta de macarrão'"
+      - "[Pessoalmente, alemã em Lisboa]: 'Mu... rilo. Difícil né? você tem cara de quem não consegue falar nome estrangeiro'"
+    when:
+      - "Primeira mensagem em Tinder/DM (pra se diferenciar dos 50 caras que mandaram 'oi gata')"
+      - "Quando a mulher se valida demais pra você ('eu gosto disso, eu sou daquilo')"
+      - "Quando a interação tá no neutro/morna — precisa do choque negativo pra mexer"
+      - "Especialmente com mulher 9/10 acostumada a validação infinita"
+    risk: |
+      Sem o elemento cômico, vira babaca/redpill/grosseiro. Se exagerar
+      pra mulher de status muito alto, soa arrogante demais. Se
+      subdoses (faz teasing super leve), não causa emoção e ela ignora.
+      Calibragem é arte — precisa ler o nível social dela.
+    mastery_signal: |
+      A mulher começa a SE VALIDAR pra você: 'não, eu jogo basquete
+      mesmo!', 'meu quarto tá assim porque...', 'olha, eu não treino fofo
+      não'. No momento que ela começa a explicar/se justificar, você
+      inverteu o jogo. Indicador também: ela responde rápido, manda
+      texto longo, faz pergunta de volta.
+    source_refs:
+      - "Aprenda_COMO_DESPERTAR_INTERESSE_em_uma_mulher"
+      - "Faca_isso_e_NUNCA_mais_fique_no_VACUO_Passo_a_passo_MuriloVilaverde"
+      - "Como_Conquistar_Mulheres_Extremamente_Bonitas_Faca_Parte_Dos_1"
+
+  - id: flirting
+    name: "Flirting — Elogio Indireto como Pico de Emoção Positivo"
+    description: |
+      Contraparte do teasing. Sobe a emoção. Mas Vilaverde rejeita o
+      'oi gata, você é linda' — isso é gado. O flirting do método é
+      INDIRETO: elogio embutido em brincadeira, em condicional, em
+      combinação ('além de X ainda é Y'), em pressuposição. Mantém o
+      frame de homem que tem opções (não está desesperado), mas dá
+      validação suficiente pra mulher se sentir desejada.
+    script_examples:
+      - "'Além de bonita ainda é lutadora? aí não dá kkkk'"
+      - "'Você vai ter o melhor guia turístico de Lisboa — e ainda brasileiro, então é bom em dose dupla'"
+      - "'Achei alguém pra cuidar de mim — bonita e ainda médica, vai cuidar de mim quando ficar doente, gostei'"
+      - "'Pô, tava até gostando de você, já ia até te elogiar, mas você é corintiana… aí não dá kkkk' (mistura flirting+teasing)"
+      - "[Pessoalmente, no cumprimento]: 'nossa, tá linda' — direto MAS com peito estufado, olho no olho, postura confiante (setando frame)"
+    when:
+      - "Em alternância com teasing — '2T 1F' (2 teasings, 1 flirting) ou '1T 1F'"
+      - "Quando a mulher já entrou no jogo (respondeu, se validou) — agora você dá validação na frequência certa"
+      - "Para suprir a necessidade que toda mulher tem de validação (sem isso ela cansa de só apanhar)"
+      - "Especialmente importante pra cara que veio do redpill (só sabe teaser, não dá validação)"
+    risk: |
+      Direto demais ('você é linda') = gado. Indireto demais ('você
+      tem energia interessante') = elogio de porteiro, sem peso.
+      Frequente demais = pedestaliza, vira validação barata. A regra
+      do '2T 1F' protege do excesso.
+    mastery_signal: |
+      A mulher SORRI/se ilumina quando você faz o flirting. Não
+      'obrigada' mecânico, mas reação genuína: olha pra baixo, dá
+      risadinha, joga cabelo. Online: emoji feliz, kkk, manda mais
+      sobre o assunto. Calibragem certa = ela não percebe que está
+      sendo elogiada (ela acha que está só conversando).
+    source_refs:
+      - "O_SEGREDO_pra_flertar_sem_colocar_ela_no_PEDESTAL_Na_pratica"
+      - "Me_de_16_Minutos_e_Vou_Melhorar_Seu_Papo_Em_88"
+      - "Aprenda_COMO_DESPERTAR_INTERESSE_em_uma_mulher"
+
+  - id: encontro_ludico
+    name: "Convite Indireto / Encontro Lúdico"
+    description: |
+      Convite pra um encontro que NÃO é apresentado como encontro.
+      'A gente deveria tomar uma esses dias', 'eu vou ser seu guia
+      turístico de Lisboa', 'você precisa provar açaí com Nutella, eu
+      te levo'. Mecânica: cria uma justificativa lúdica pro encontro
+      acontecer, sem a pressão de 'sair com cara que acabei de
+      conhecer'. Vilaverde tem uma frase forte sobre isso: 'a mulher
+      adora cair na armadilha, mas odeia pensar que está caindo na
+      armadilha'.
+    script_examples:
+      - "[Cold approach com alemã turista]: 'já que você acabou de chegar em Lisboa, você tem aqui o melhor guia turístico da cidade — e ainda brasileiro'"
+      - "[DM, depois de teasing/flirting já feito]: 'olha, a gente tem que tomar uma cerveja qualquer dia desses, você precisa provar essa porcaria'"
+      - "[Date 1 pra Date 2]: 'a gente tem que ir naquele lugar que você falou que adora — você vai me levar'"
+      - "[Apresentação pra encontro disfarçado]: 'a gente devia ver tal filme, eu tenho lá em casa, é bizarro'"
+    when:
+      - "Depois do gancho e algumas trocas de pico de emoção (interação já estabelecida)"
+      - "Antes de pedir contato — você cria o motivo, depois pede o meio (Instagram) pra realizar"
+      - "Pra ir do encontro 1 pro encontro 2 (com vibe ainda baixa, é mais leve que 'vamos sair de novo')"
+    risk: |
+      Forçado demais soa premeditado. Vago demais ('a gente devia se
+      ver') não fixa nada. Tem que ser sobre algo CONCRETO ligado ao
+      papo que vocês acabaram de ter (mencionou açaí → 'vou te levar
+      no melhor açaí'). Se não tem âncora no papo, vira pedido nu.
+    mastery_signal: |
+      Ela engaja com o conceito lúdico — joga junto. 'Ah é? você acha
+      mesmo que sabe açaí?', 'então tá, eu quero ver esse guia
+      turístico'. Quando ela entra no jogo lúdico, o aceite já tá
+      dado — agora você só precisa do convite direto pra logística.
+    source_refs:
+      - "COMO_ABORDAR_UMA_MULHER_NA_RUA_-_Mostrei_na_pratica"
+      - "Como_sair_do_OI_pro_encontro_com_qualquer_mulher_jeito_mais_facil"
+
+  - id: regra_3_segundos
+    name: "Regra dos 3 Segundos"
+    description: |
+      Técnica clássica do PUA, usada por Vilaverde. No momento que
+      você recebe um sinal de interesse (mulher olha pra você),
+      conta até 3 e VAI. Sem negociação com o cérebro. Quanto mais
+      tempo passa, mais o cérebro racionaliza não-abordagem. A
+      regra força a ação antes do bloqueio mental.
+    script_examples:
+      - "[Mulher olha pra você na rua]: 1, 2, 3 → caminha em direção a ela e fala 'olha, eu tava passando, te achei muito linda e tive que vir falar oi'"
+      - "[Balada, sueca te olha]: NÃO quebra contato visual → brinda/acena → 1, 2, 3 → caminha → 'se você continuar me olhando desse jeito, vou me sentir um pedaço de carne'"
+    when:
+      - "Sinais de interesse explícitos (olhar sustentado, sorriso, brincar com cabelo)"
+      - "Balada, festa, qualquer lugar com sinais não-verbais"
+      - "Quando você sente que vai começar a negociar — quebra a negociação na largada"
+    risk: |
+      Pode acelerar demais e gerar abordagem mal-calibrada. Não vale
+      ignorar contexto óbvio (ela com namorado do lado, ela
+      visivelmente bêbada/triste). Funciona MELHOR como vacina contra
+      procrastinação, não como dogma.
+    mastery_signal: |
+      Você ainda sente o frio na barriga (Vilaverde admite que mesmo
+      depois de 1000 abordagens ainda sente). Mas você VAI mesmo
+      assim, sem deixar o cérebro montar argumento. Indicador de
+      maestria: você nem percebe que aplicou a regra, virou
+      automático.
+    source_refs:
+      - "Nunca_Mais_Perca_Oportunidades_-_O_que_Fazer_Quando_Uma_Mulher_Olha_Para_Voce_Passo_a_Passo"
+      - "Me_de_13_minutos_e_eu_vou_APAGAR_seu_medo_de_chegar_em_mulher"
+
+  - id: contato_visual_treino
+    name: "Treino do Contato Visual como Músculo"
+    description: |
+      Contato visual é tratado como músculo — pode hipertrofiar com
+      treino, atrofiar sem uso. Quando você tenta sustentar contato
+      visual forte sem treino, o cérebro grita 'quebra, quebra, olha
+      pro lado'. Solução: treinar todo dia, em toda interação (mãe,
+      amigo, atendente, colega). E no date, quando cansar, NUNCA olha
+      pra baixo (sinal de submissão) — olha pra boca dela, pro outro
+      olho, ou simula olhar pra alguém atrás.
+    script_examples:
+      - "[Treino base, dia a dia]: ao falar com qualquer um, olha no olho da pessoa, mantém"
+      - "[No date, momentos de cansaço]: olha da boca dela pra olho dela, alterna entre olhos"
+      - "[No date, pausa estratégica]: finge olhar pra alguém atrás dela, 'desconversa' (Vilaverde admite usar isso)"
+      - "[Pré-beijo]: olha no olho dela enquanto dá beijo na bochecha, mantém depois — se ela quebra contato visual, ainda não tá pronta"
+    when:
+      - "Todos os dias — músculo precisa treino contínuo"
+      - "Date — fundamental, especialmente nos silêncios"
+      - "Cumprimento inicial — peito estufado, sorriso, olho no olho"
+      - "Pré-beijo — diagnóstico final (ela mantém ou quebra)"
+    risk: |
+      Sustentar contato visual sem confiança = creepy/intenso demais
+      = mulher fica desconfortável. Treinar com pessoas que você não
+      conhece em contexto inadequado = problema. Foco no treino
+      diário com gente que já te conhece.
+    mastery_signal: |
+      Você consegue sustentar contato visual com mulher bonita SEM o
+      cérebro gritar pra quebrar. Você ESCOLHE quando quebrar (não é
+      forçado). No date, você nota que QUEM tá olhando pra baixo é
+      ela.
+    source_refs:
+      - "3_coisas_que_voce_DEVE_fazer_no_1_encontro"
+      - "Nunca_Mais_Perca_Oportunidades_-_O_que_Fazer_Quando_Uma_Mulher_Olha_Para_Voce_Passo_a_Passo"
+
+  - id: voz_baixa_energia
+    name: "Voz de Baixa Energia no Encontro"
+    description: |
+      Você tem duas versões: alta energia (com amigos, contando
+      piada, falando em público) e baixa energia. Pro encontro, deixa
+      a alta em casa. Voz calma, com pausas, com silêncio entre
+      frases, timbre calibrado. Transmite confiança. A versão alta
+      vira ansiedade no encontro — comediante forçado, palhaço
+      tentando entreter.
+    script_examples:
+      - "[Versão alta — NÃO no date]: voz subindo, gesticulando, gritos, 'olha, é uma loucura, EU TAVA LÁ E—' "
+      - "[Versão baixa — SIM no date]: 'olha… [pausa] eu adoro esse tipo de lugar [pausa] te trazer aqui foi acerto'"
+      - "[Antes do beijo]: fala bem baixinho, perto da orelha dela, frase curta"
+    when:
+      - "Primeiro encontro, sempre"
+      - "Em qualquer momento onde quer construir tensão sexual"
+      - "Conversa íntima (depois que vocês passaram pra um lugar mais quieto)"
+    risk: |
+      Baixa energia demais = monótono, vira sussurro estranho,
+      cansativo. Tem que ter cadência — pausa, silêncio, voltar com
+      ênfase. Não é monotom — é cadência calma.
+    mastery_signal: |
+      A mulher se inclina pra você (pra ouvir melhor). Ela baixa a
+      voz dela também (espelhamento). O ritmo da conversa fica
+      lento mas não chato.
+    source_refs:
+      - "3_coisas_que_voce_DEVE_fazer_no_1_encontro"
+
+  - id: prova_nao_ameaca
+    name: "Provar que Não é Ameaça (Educação como Quebra-Guarda)"
+    description: |
+      Manobra de abertura de cold approach. Três palavras: 'desculpa
+      atrapalhar [contexto]'. Abaixa a guarda da mulher em segundos.
+      Único momento da conquista onde você se 'rebaixa' (pede
+      desculpa, é submisso). É estratégico — depois disso, todo o
+      resto é dominância.
+    script_examples:
+      - "[Mulher tomando café]: 'desculpa atrapalhar seu café, eu não costumo fazer isso'"
+      - "[Mulher com fone]: 'desculpa atrapalhar sua música, eu sei que é chato, mas eu tava passando aqui e—'"
+      - "[Mulher andando na rua]: 'desculpa por estar te incomodando, eu não costumo fazer isso, mas—'"
+      - "[Mulher trabalhando]: 'olha, eu sei que você tá trabalhando, mas eu não podia passar sem—'"
+    when:
+      - "Toda abordagem fria sem contexto prévio"
+      - "Especialmente Brasil/locais onde mulher é assediada constantemente"
+      - "Setup obrigatório antes do gancho/elogio"
+    risk: |
+      Pode soar fraco se for arrastado ou repetido (3 vezes 'desculpa'
+      = patético). É uma vez no início e segue. Não pode entrar em
+      modo súplica.
+    mastery_signal: |
+      Você nota visualmente a guarda dela abaixar — ombros relaxam,
+      sorriso volta, ela vira o corpo na sua direção. Ela responde
+      sem hostilidade ('tudo bem, sem problema') — sinal verde pra
+      continuar.
+    source_refs:
+      - "O_Que_Falar_Nos_Primeiros_60_Segundos_Da_Abordagem_Funciona_Todas_As_Vezes"
+      - "COMO_ABORDAR_UMA_MULHER_NA_RUA_-_Mostrei_na_pratica"
+
+  - id: push_apos_convite_dela
+    name: "Push após Convite da Mulher (Inverter Frame Final)"
+    description: |
+      Quando a mulher te convida pra sair na mesma noite (depois de
+      você ter gerado picos de emoção bem feitos), você NÃO aceita
+      direto. Faz push — finge ter outros planos. 'Ah, hoje eu vou
+      sair com uns amigos'. Resultado: ela investe mais ('mas no meio
+      de uma quarta?'), o que comprova que ela está investida e te
+      permite jogar 'agora você que está me julgando' como teasing
+      adicional.
+    script_examples:
+      - "[Alemã em Lisboa, te convida pra sair hoje]: 'ah, hoje eu vou sair com uns amigos'"
+      - "[Ela reage]: 'mas no meio de uma quarta?'"
+      - "[Você joga de volta]: 'então agora você tá me julgando?' (teasing) → ela explica → você fecha: 'tá bom, eu te chamo'"
+    when:
+      - "Final de cold approach quando a mulher já demonstrou interesse alto"
+      - "Quando você quer MAXIMIZAR o pico de emoção antes de fechar (não só pegar — fazer ela ficar viciada)"
+      - "NÃO use se a interação tá frágil (vai parecer rejeição real)"
+    risk: |
+      Se calibrar errado, ela aceita o 'não' e some. Tem que ler
+      muito bem o nível de investimento dela antes — só usa quando
+      ela já está visivelmente investida (sorrindo, fazendo
+      perguntas de volta, espelhamento corporal).
+    mastery_signal: |
+      Ela INSISTE — 'ah, mas a gente podia se encontrar amanhã então'.
+      Quando ela vira a proativa do agendamento, você ganhou frame.
+    source_refs:
+      - "COMO_ABORDAR_UMA_MULHER_NA_RUA_-_Mostrei_na_pratica"
+
+  - id: rotina_anel_tatuagem
+    name: "Rotina do Anel/Tatuagem (Toque Físico Pretextado)"
+    description: |
+      Toque físico com pretexto, no date. Você nota anel/tatuagem
+      dela, pega na mão dela pra 'olhar melhor'. Resultado: contato
+      físico prolongado, intimidade aumentada, e você pode encadear
+      ('legal essa tatuagem, conta a história'). Vilaverde chama isso
+      de 'ápice do toque físico'.
+    script_examples:
+      - "'Pera, deixa eu ver esse anel' [pega a mão dela] 'que história tem esse?'"
+      - "'Essa tatuagem é legal, mas tem alguma história ou é só estética?' [pega no braço dela]"
+      - "[Combinação] passa a mão no cabelo dela pra 'arrumar atrás da orelha' (segunda rotina)"
+    when:
+      - "Durante o date, quando vibe está boa (NÃO em discussão ou clima esquisito)"
+      - "Quando você já fez toques mais leves (ombro) e quer escalar"
+      - "Antes da etapa 3 do CVC (chegar mais perto)"
+    risk: |
+      Se for cedo demais (primeira mensagem do papo no bar), parece
+      forçado. Se ela tiver linguagem corporal fechada (braço
+      cruzado, corpo virado pro lado), evite. Lê o sinal antes.
+    mastery_signal: |
+      Ela não tira a mão. Mantém olhar (não desvia constrangida).
+      Pode espontaneamente segurar sua mão de volta. Se ela continua
+      o toque ('eu também tenho uma…'), green light total.
+    source_refs:
+      - "4_PASSOS_PARA_BEIJAR_E_CRIAR_INTIMIDADE_COM_UMA_MULHER_MuriloVilaverde"
+
+  - id: postar_stories_estrategico
+    name: "Postar Stories como Aquecimento de Aquário"
+    description: |
+      Stories no Instagram não são vaidade — são ferramenta. Servem
+      pra aquecer mulheres que entraram na sua base (deram match,
+      seguiram, foram abordadas). Quando você manda DM pra elas
+      depois, você não é estranho — você é 'o cara que vai pra
+      academia, come num lugar bacana, tem cachorrinho'. Aplicar 4-5
+      stories diferentes por semana com variedade.
+    script_examples:
+      - "[Segunda]: foto/vídeo da academia, indo treinar"
+      - "[Terça]: pratinho de comida em restaurante decente"
+      - "[Quarta]: passeio com cachorro/momento com família"
+      - "[Quinta]: lifestyle (viagem, programa cultural)"
+      - "[Sexta]: selfie no espelho bem tirada"
+    when:
+      - "Sempre. É infraestrutura, não evento."
+      - "Especialmente importante após adicionar muitas mulheres ao Instagram (cold approach, Tinder)"
+      - "Cliente low-profile relutante — sem isso, balde furado"
+    risk: |
+      Stories muito influenciador/forçado = soa desesperado. Stories
+      muito raros = balde furado, mulher esquece de você. Stories
+      muito frequentes (15 por dia) = cansa. Calibrar pra 4-7 por
+      semana, espalhados.
+    mastery_signal: |
+      Mulheres respondem stories espontaneamente, especialmente as
+      que você não esperava. Stories de comida → 'ai, eu adoro esse
+      lugar, já fui!' Match antigo do Tinder volta a interagir. O
+      balde está cheio e mexendo.
+    source_refs:
+      - "4_Habitos_que_me_fizeram_pegar_+200_GRINGAS"
+      - "Como_Sair_Do_ZERO_e_Marcar_1-2_Encontros_Toda_Semana_Depois_De_Um_Termino_Guia_Definitivo"
+
+  - id: afunilamento_conversa
+    name: "Afunilamento da Conversa pra Atividade Comum"
+    description: |
+      Mecânica de transição entre interação aberta e convite indireto.
+      Você direciona perguntas pra descobrir atividades que ela gosta,
+      cruza com as suas, e descobre uma em comum pra usar de gancho do
+      convite. Pergunta-chave: 'além de X, o que mais você curte
+      fazer?'
+    script_examples:
+      - "[Sobre boxe]: 'além de fingir que é lutadora de boxe de vez em quando, que mais você curte fazer?'"
+      - "[Resposta dela: gosta de tomar uma de vez em quando]: 'opa, eu também — a gente devia sair pra tomar uma'"
+      - "[Padrão geral]: 'tá, e além de [conteúdo dela], o que mais te diverte?'"
+    when:
+      - "Depois de já estar no meio da interação (não no início)"
+      - "Antes de fazer convite indireto — precisa ter o tópico em comum"
+      - "Quando a conversa tá fluida mas você quer direcionar pra fechamento"
+    risk: |
+      Se for muito mecânico ('e qual seu hobby? e mais? e mais?'),
+      vira entrevista. Funde no fluxo natural — peguinha o que ela
+      acabou de mencionar e amplia.
+    mastery_signal: |
+      Ela responde com várias atividades sem pensar. Você acha um
+      ponto em comum facilmente. Ela fica empolgada falando do que
+      gosta (sinal de boa qualidade de papo, não só funil).
+    source_refs:
+      - "Como_NUNCA_ficar_SEM_ASSUNTO_com_uma_Mulher"
+
+  - id: modo_metralhadora
+    name: "Modo Metralhadora (vs Sniper)"
+    description: |
+      Estratégia anti-escassez. Sniper = foco em uma única mulher,
+      gera over-investing. Metralhadora = atirar pra todos os lados —
+      fala com mulher do Tinder, do Instagram, aborda na rua, vai
+      pros ciclos sociais, tudo paralelo. Resultado: quando aparece
+      mulher 9/10, você não pedestaliza porque o telefone tá tocando
+      com outras mulheres. Abundância vira combustível pra confiança.
+    script_examples:
+      - "[Rotina semanal Metralhadora]: 5 matches novos no Tinder por semana / 3 stories respondidos por dia / 2 cold approaches por semana / 1 ciclo social ativo"
+      - "[Mindset]: 'se essa mulher não der certo, eu tenho outras 3 conversando'"
+      - "[NA prática]: enquanto espera uma responder, você não fica olhando o WhatsApp — vai mandar mensagem pras outras 5"
+    when:
+      - "Cliente em fase de abundância (busca putaria, mulher 9/10, mudança recente de cidade)"
+      - "Cliente recém-divorciado/recém-término que precisa reativar volume"
+      - "Cliente que tende a se fixar em uma única mulher (sniper crônico)"
+    risk: |
+      Pode virar Casanova compulsivo se for fundamentalista — perde a
+      capacidade de criar conexão profunda quando encontra mulher de
+      valor. Tem que SABER quando virar a chave (após conexão real
+      → 'muito atenção pra poucas').
+    mastery_signal: |
+      Você naturalmente não esquenta quando uma mulher demora a
+      responder. Não checa Instagram dela compulsivamente. Tem 3-5
+      conversas ativas simultâneas. Quando aparece a mulher 9/10,
+      você não muda de comportamento (continua relaxado).
+    source_refs:
+      - "3_Formas_CONTROVERSAS_de_pegar_MULHERES_BONITAS_A_3_e_OURO"
+      - "O_que_eu_aprendi_abordando_1000_mulheres"
+
+  - id: hot_first_message
+    name: "Primeira Mensagem com Provocação + Pergunta Aberta"
+    description: |
+      Quando você vai mandar a primeira mensagem (DM, match Tinder),
+      a regra é: provocação (teasing) + pergunta aberta sobre algo
+      específico do perfil dela. NUNCA 'oi tudo bem', NUNCA emoji
+      genérico. Sempre referência pessoal ao perfil (foto da
+      academia, foto do quarto, tatuagem) com algum dos 3Ds. Se a
+      foto não dá hook, vira pergunta aberta mais sarcástica ('seu
+      perfil só tem foto sua de frente pro espelho, qual a história?').
+    script_examples:
+      - "[Sueca com basquete no Tinder]: 'qual é a da luva de boxe? virou lutadora? 😂 / quantas vezes tentou essa cesta antes de tirar a foto?'"
+      - "[Foto dela com Corinthians]: 'corintiana? sabia que tinha algo de errado com você kkkk como você consegue?'"
+      - "[Foto do quarto bagunçado]: 'não vai arrumar essa cama? 👀 quando foi a última vez que você arrumou?'"
+    when:
+      - "Toda primeira mensagem em qualquer canal online"
+      - "Especialmente Tinder pra mulher bonita (alta competição, precisa de diferenciação)"
+    risk: |
+      Se exagerar a desvalidação sem elemento cômico, ela manda
+      bloquear. Se for muito específico/invasivo (analisar demais),
+      soa stalker. Calibrar com o ridículo do contexto.
+    mastery_signal: |
+      Ela responde rápido (menos de 1h) e com mensagem longa se
+      explicando. Já é flow positivo. Compara com: 'oi gata' = ela
+      nem abre.
+    source_refs:
+      - "Faca_isso_e_NUNCA_mais_fique_no_VACUO_Passo_a_passo_MuriloVilaverde"
+      - "Aprenda_COMO_DESPERTAR_INTERESSE_em_uma_mulher"
+
+  - id: group_control_focus_friend
+    name: "Controle de Grupo via Amigas (Aprovação Social)"
+    description: |
+      Em abordagem de grupo de 2+ mulheres, foca primeiro nas amigas
+      (especialmente a 'cock blocker' / mais gorda / mais feia), não
+      no alvo. Faz teasing com elas, gera piadas internas, dá
+      validação. O objetivo: virar 'a aprovação da amiga'. Quando a
+      amiga te aprova, o alvo cede (efeito manada — mulher é Maria-
+      vai-com-as-outras). Se a amiga te rejeita, o alvo não fica nem
+      se quiser.
+    script_examples:
+      - "[Aborda grupo de 3]: 'deixa eu adivinhar — qual de vocês é a mãe do rolê? a que dá mais trabalho? aquela que sempre tem a melhor amiga te puxando?'"
+      - "[Cria piada interna com amiga gorda/feia]: 'mãe do rolê, vem cá, você aprova esse cara aqui pra sua amiga?'"
+      - "[Brincadeira de casamento]: 'olha, você vai ser madrinha do nosso casamento, viu? Aprova?'"
+    when:
+      - "Abordagem de grupos 2-4 mulheres"
+      - "Quando o alvo está com amiga claramente protetora"
+      - "Em festa/balada/ciclo social fechado"
+    risk: |
+      Se faz teasing pesado com a amiga gorda e ela se ofende
+      genuinamente, grupo inteiro vira contra você. Manter sempre o
+      elemento cômico, validar a amiga (não só zoar). Vilaverde
+      reconhece que isso é técnica avançada.
+    mastery_signal: |
+      A amiga rie, entra na piada, e em algum momento ela mesma fala
+      pro alvo 'amiga, vai, ele é gente boa'. Aprovação social
+      explícita.
+    source_refs:
+      - "O_que_FAZER_quando_a_MULHER_te_responde_SECA_passo_a_passo"
+
+  - id: microfantasia
+    name: "Microfantasia (Pré-Visualização Lúdica)"
+    description: |
+      Técnica que Vilaverde menciona como sendo ensinada no método
+      completo. Pintar verbalmente um cenário lúdico com a mulher
+      (vocês juntos em alguma atividade futura), pra criar imagem
+      mental que a faz se sentir já 'na história' antes mesmo de
+      acontecer. 'A mulher adora cair na armadilha mas odeia pensar
+      que está caindo'.
+    script_examples:
+      - "'Imagina nós dois daqui a 3 anos, no nosso 1º ano de casados, a gente brigando porque eu deixei a cozinha bagunçada e você não sabe se é melhor me deixar ou me dar mais uma chance'"
+      - "'Ah é? então a gente devia ir nesse barzinho — eu te pago um drink, você me ensina a falar tcheco, e no final eu desisto e a gente acaba indo no Mc'"
+      - "'Já tô vendo a cena: a gente no parque, eu tentando aprender a andar de skate, você dando risada porque eu caí 4 vezes'"
+    when:
+      - "Quando a interação já está quente, vibe boa"
+      - "Pra escalar de neutro pra intimidade narrativa"
+      - "Antes do convite indireto, pra preparar o terreno"
+    risk: |
+      Cedo demais soa louco/forçado. Microfantasia muito sexual cedo
+      demais é assédio. Tem que ser lúdico/leve, não literal.
+    mastery_signal: |
+      Ela ENTRA na fantasia e adiciona detalhes. 'Não, mas o nosso 1º
+      ano de casados eu já tava te xingando por isso mil vezes…' Quando
+      ela co-cria a narrativa, conexão narrativa estabelecida.
+    source_refs:
+      - "O_HABITO_ESQUECIDO_dos_nossos_avos_que_te_fara_conquistar_uma_namorada"
+      - "COMO_ABORDAR_UMA_MULHER_NA_RUA_-_Mostrei_na_pratica"

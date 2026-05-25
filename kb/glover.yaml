@@ -1,0 +1,1117 @@
+# FlirtAI KB — Dr. Robert Glover
+# Mind extraído como CONTRAPONTO filosófico ao eixo Greene/Strauss-early.
+# Glover é o guardião do frame autêntico — anti-manipulação, anti-Nice Guy.
+# Muitos items aqui têm conflict_with explícito para alimentar synthesis depois.
+
+schema_version: 1.0
+generated: 2026-05-24
+
+mind_id: robert_glover
+display_name: Dr. Robert Glover
+origin: usa
+tier: foundation
+philosophical_alignment: glover_axis
+
+source_material:
+  - type: youtube
+    title: "Dr. Robert Glover on The 21 Report with George Bruno — Full Interview"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: "corpus/glover/transcripts/Dr._Robert_Glover_on_The_21_Report_with_George_Bruno_Full_Interview_4K_UHD.txt"
+    notes: "Entrevista curta, fala sobre autoria de NMMNG, father wound, recovery process. Tom direto, autobiográfico."
+  - type: youtube
+    title: "Boldness in the Era of MeToo — Dr. Robert Glover (21 Convention 2018)"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: "corpus/glover/transcripts/Boldness_in_the_Era_of_MeToo_Dr._Robert_Glover_Free_to_the_World.txt"
+    notes: "Palestra ao vivo. Tese central — boldness, self-limiting beliefs, mulher é wired pra sexo, tribo masculina, ser bom 'ender'. Tom mais provocativo, profano."
+  - type: youtube
+    title: "No More Mr Nice Guy — Robert Glover Interview (Patrick Bet-David)"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: "corpus/glover/transcripts/No_More_Mr_Nice_Guy-_Robert_Glover_Interview.txt"
+    notes: "Interview longo. Cobre Nice Guy etiology, sexualidade infantil, parenting, positive emotional tension, sex como personal growth machine."
+  - type: youtube
+    title: "Rowan Andrews interviews Dr Robert Glover"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: "corpus/glover/transcripts/Rowan_Andrews_interviews_Dr_Robert_Glover.txt"
+    notes: "Coach certificado dele entrevista. Covert contracts em detalhe, neediness, playing your side of the net, Tantra, tribo masculina, AI/conexão masculina."
+
+# =================================================
+# FRAMEWORKS
+# =================================================
+frameworks:
+  - id: nice_guy_syndrome
+    name: "Nice Guy Syndrome"
+    description: >
+      Síndrome internalizada na infância (geralmente 3-5 anos) baseada na crença
+      "há algo errado comigo, preciso virar o que os outros querem pra ser amado".
+      O Nice Guy esconde necessidades, sexualidade e qualquer coisa que possa
+      provocar reação negativa.
+    structure:
+      - "Crença-raiz — 'não sou ok como sou'"
+      - "Estratégia — 'me torno o que ela quer pra ser aprovado'"
+      - "Ocultação — escondo necessidades, sexualidade, raiva, opinião"
+      - "Fachada de bondade — quero parecer o cara legal, generoso, sem conflito"
+      - "Resentimento acumulado — dou muito, recebo pouco, viro passive-aggressive"
+      - "Explosão / victim puke — ou jab cruzado ou desabafo destrutivo depois de meses ruminando"
+    when_to_use:
+      - "Diagnosticar usuário que diz 'fiz tudo certo pra ela' e foi friendzonado/abandonado"
+      - "Detectar padrão de 'eu sou diferente dos outros caras' como red flag"
+      - "Identificar usuário que esconde agenda sexual e tenta 'enganar' o desejo"
+    examples:
+      - "Cara que paga jantar, escuta os problemas dela por horas, faz massagem, e fica revoltado quando não rola sexo"
+      - "Cara que 'tá lá pra ela' como amigo esperando virar namorado"
+      - "Marido que evita conflito por 14 anos, explode num divórcio surpresa"
+    source_refs:
+      - "21 Report interview — 'internalized beliefs at a very young age... there's something wrong with me'"
+      - "NMMNG interview Patrick — descrição clínica do nice guy"
+      - "Rowan Andrews — 'three covert contracts' como engine do Nice Guy'"
+
+  - id: covert_contracts
+    name: "Covert Contracts (Contratos Velados)"
+    description: >
+      Acordos não-declarados que o Nice Guy faz mentalmente com o mundo,
+      esperando que o outro lado cumpra sua parte sem nunca ter combinado nada.
+      Engine central da frustração e do resentimento.
+    structure:
+      - "Contrato 1 — 'se eu for bom, serei amado e as mulheres que desejo vão querer transar comigo'"
+      - "Contrato 2 — 'se eu fizer tudo certo, terei uma vida lisa, sem problemas'"
+      - "Contrato 3 — 'se eu ler a mente dela e dar o que acho que ela quer, ela vai ler a minha e me dar o que acho que quero'"
+    when_to_use:
+      - "Usuário dizendo 'eu fiz tudo X e ela ainda assim Y'"
+      - "Usuário esperando reciprocidade implícita por gestos não-combinados"
+      - "Usuário dando presentes/atenção com expectativa oculta de sexo"
+    examples:
+      - "Lavo a louça → ela vai me dar sexo (Rowan interview — Glover relata isso da própria 2a esposa)"
+      - "Pago o jantar → ela tem que aceitar segunda volta"
+      - "Sou o melhor amigo dela → eventualmente ela vai me ver como homem"
+    source_refs:
+      - "Rowan Andrews — definição dos 3 covert contracts em detalhe"
+      - "21 Report — 'we're not good at letting people give to us'"
+
+  - id: differentiation
+    name: "Differentiation (Diferenciação)"
+    description: >
+      Termo psicológico que Glover usa como sinônimo operacional de autenticidade.
+      Três componentes — perguntar o que EU quero, seguir nisso, e manter mesmo
+      sob pressão externa ou ansiedade interna.
+    structure:
+      - "Passo 1 — perguntar 'o que eu quero? o que é certo pra mim?'"
+      - "Passo 2 — agir sobre essa resposta"
+      - "Passo 3 — sustentar mesmo com flack de mãe/pai/cultura/igreja/cabeça"
+    when_to_use:
+      - "Quando usuário tá 'lemming' — seguindo o que esperam dele"
+      - "Quando usuário muda comportamento pra agradar interlocutor"
+      - "Quando há ansiedade de desagradar paralisando uma decisão"
+    examples:
+      - "Decidir não escutar a parceira reclamar por horas — 'me dá a versão de cara'"
+      - "Triplicar o preço da proposta numa reunião porque agora ele se importa menos com 'ser bom'"
+      - "Recusar texto recorrente da igreja/família sobre 'o que homem deve ser'"
+    source_refs:
+      - "21 Report — definição formal de differentiation"
+      - "NMMNG interview — 'culture encourages fusion; adulthood é aprender a differentiate'"
+
+  - id: setting_the_frame
+    name: "Setting the Tone and Taking the Lead"
+    description: >
+      O homem define o frame da interação, lidera onde vai a relação, não fica
+      gerenciando percepção da mulher. Mulher não consegue seguir onde o homem
+      não lidera — se ele não lidera, ela toma o volante por instinto.
+    structure:
+      - "Tem um plano (nunca chega perguntando 'o que cê quer fazer?')"
+      - "Mostra agenda — incluindo sexual — sem ocultar"
+      - "Comunica o que espera dela ('me trate bem, faça meu mundo bonito')"
+      - "Deixa ela seguir, não pede permissão pra cada movimento"
+      - "Não tenta administrar humor/percepção dela — joga sua side of the net"
+    when_to_use:
+      - "Match novo no app — define rapidamente onde/quando se encontra"
+      - "Primeira mensagem — propõe, não pergunta vaga"
+      - "Relacionamento — quando ela testa, ele segura frame sem perseguir"
+    examples:
+      - "'Quinta 20h no [bar X]. Vai. Te chamo às 19h pra confirmar.'"
+      - "'Já tenho a vida que quero. Se quiser ser o frosting do bolo, ótimo — mas não vou te tratar como bolo.'"
+      - "Em DR — não desviar pra 'me defender'; manter ponto sem agredir"
+    source_refs:
+      - "Boldness palestra — 'a woman can't follow where a man doesn't lead'"
+      - "Rowan Andrews — 'play your own side of the net'"
+      - "NMMNG interview — 'give me the guy version' como técnica de frame"
+
+  - id: positive_emotional_tension
+    name: "Positive Emotional Tension"
+    description: >
+      Mulheres precisam de tensão emocional pra sentir atração e excitação.
+      Nice Guy elimina toda tensão (placa, agrada, resolve) e mata atração.
+      Bad Boy cria tensão NEGATIVA. Solução não é meio-termo — é gerar tensão
+      POSITIVA conscientemente.
+    structure:
+      - "Tensão = pré-requisito biológico da atração feminina, não bug"
+      - "Nice Guy cria zero tensão → tédio + busca da mulher por drama"
+      - "Bad Boy cria tensão negativa (incerteza, ausência, drama) → atração com sofrimento"
+      - "Positive tension = liderança, surpresa, polaridade, não-disponibilidade saudável, presença plena"
+      - "Quando o homem não cria tensão, a mulher cria — geralmente patológica (briga, ciúme, ameaça)"
+    when_to_use:
+      - "Casamento estagnado / 'sex morreu'"
+      - "Match que tá indo morno demais — só simpatia, zero spark"
+      - "Quando ela tá criando drama do nada (sinal de tensão insuficiente vinda do homem)"
+    examples:
+      - "Glover sobre esposa — 'quando outras mulheres flertam comigo, ela fica com ciúmes E excitada — é tensão positiva'"
+      - "Mudar rotina sexual — mesma técnica todo dia mata desejo, varia"
+      - "Sair com amigos sem dar explicação detalhada de horário/quem"
+    source_refs:
+      - "NMMNG interview — Glover detalha tese central do livro que tava escrevendo"
+      - "'Women need emotional tension to feel attraction and arousal toward a man'"
+
+  - id: father_wound
+    name: "Father Wound"
+    description: >
+      Ferida-padrão masculina ligada à figura paterna — pai ausente, crítico,
+      raivoso, ou pai 'nice guy passivo que ensinou a não contrariar mãe'.
+      Frequentemente combinada com mãe que ensinou o filho a 'ser diferente do pai'.
+      A cura passa por reconhecer que o pai 'tava operando no pico dele' — humano falho.
+    structure:
+      - "Pai ausente OU pai problemático (raivoso, alcoólatra, crítico)"
+      - "Mãe que verbaliza 'seja diferente do seu pai'"
+      - "Filho internaliza — não pode ser homem do jeito do pai → vira Nice Guy"
+      - "Adulto carrega resentimento, distância, raiva escondida"
+      - "Cura = reconhecer pai como humano falho operando no pico dele + forgive"
+      - "Recovery muda 'father' → 'friend'"
+    when_to_use:
+      - "Usuário com raiva crônica de homens / autoridade"
+      - "Usuário que esconde toda parte 'masculina dura' por medo de virar o pai"
+      - "Bloqueio pra agir com firmeza por medo de 'parecer com ele'"
+    examples:
+      - "Glover não falou com pai por 15 anos, escreveu carta agradecendo baseball, fez paz pré-morte"
+      - "Amigo do entrevistador — pai batia, filho virou Nice Guy externo, morreu de overdose"
+    source_refs:
+      - "21 Report interview — narrativa pessoal do Glover sobre o pai"
+      - "NMMNG interview — 'my mother raised me to be different from my father — she later apologized'"
+
+  - id: tribe_and_male_initiation
+    name: "Tribe and Male Initiation"
+    description: >
+      Homens evoluíram em tribos por 1.5 milhão de anos. Isolamento masculino é
+      patologia recente. Nenhuma recovery do Nice Guy acontece sozinho — exige
+      grupo de homens, men's coach, men's group. Sem iniciação masculina por
+      outros homens, o cara fica preso no 'nursery' emocional.
+    structure:
+      - "Tribo = não-negociável pra saúde masculina"
+      - "Iniciação tradicional = homens mais velhos tiravam o garoto da mãe, davam tarefa life-threatening, celebravam"
+      - "Substitutos modernos — men's group, BJJ dojo, 12-step, divorce group, dating bootcamp, Mankind Project"
+      - "Acontecimento paradoxal — quanto mais conectado a homens, mais atraente pras mulheres"
+    when_to_use:
+      - "Usuário isolado, doomscrolling, sem amigos homens próximos"
+      - "Usuário tentando 'fazer tudo sozinho' (sinal Nice Guy clássico)"
+      - "Recovery emperrada — falta acountability/witnessing"
+    examples:
+      - "Glover — 'comecei com 1.5 bom amigo, hoje tenho 25-50 caras que pegariam avião se eu chamasse'"
+      - "Mankind Project, BJJ, 12-step, men's group online — todos servem como tribo"
+    source_refs:
+      - "Boldness palestra — tese central sobre worldwide men's movement"
+      - "Rowan Andrews — discussão sobre AI/isolation/men's connection"
+
+  - id: nice_guy_recovery_process
+    name: "Nice Guy Recovery Process"
+    description: >
+      Processo prático de desmontagem do Nice Guy. Não é evento — é prática
+      pra vida toda ('recovering nice guy'). Glover é explícito — slow learners,
+      quick forgetters. Recovery feita em isolamento não funciona.
+    structure:
+      - "1. Find safe people — 12-step, men's group, therapist que entende"
+      - "2. Reveal yourself — começar a falar o que esconde, deixar sair toxic shame"
+      - "3. Make your needs a priority — listar, comunicar, parar de esperar mind-reading"
+      - "4. Set boundaries — aprender a dizer não, não tolerar disrespect"
+      - "5. Live authentically with differentiation — perguntar o que VOCÊ quer"
+      - "6. Take risks — sair da comfort zone, falhar, levantar"
+      - "7. Embrace mistakes — recovery não é perfeição, é recovery"
+      - "8. Surround with people who can give to you — virar bom receiver"
+    when_to_use:
+      - "Usuário diagnosticado como Nice Guy querendo plano de ação"
+      - "Usuário em pós-divórcio/breakup procurando reconstrução"
+    examples:
+      - "Glover — entrou em 12-step pra sex addicts, descobriu que não era sex addict, mas o grupo virou tribo"
+      - "Joined men's group, hired coach, fez MDMA-assisted therapy 3 semanas antes da entrevista Rowan"
+    source_refs:
+      - "21 Report — 'don't try to do this alone'"
+      - "Rowan Andrews — Glover ainda em men's group depois de 30 anos"
+
+# =================================================
+# HEURISTICS
+# =================================================
+heuristics:
+  - id: dont_hide_your_agenda
+    rule: "Não esconda sua agenda sexual — ela percebe e despreza."
+    rationale: >
+      A 'nice guy seduction' (massagem, escutar problemas, sneaking-up via toque)
+      é detectada pela mulher e a repele. Honestidade da intenção (sem agressividade)
+      é mais atrativa que ocultação 'cavalheirosa'.
+    when:
+      - "Primeiras interações com mulher que você deseja"
+      - "Quando se pega 'esperando o momento certo' pra mostrar interesse"
+    counter_example: >
+      Honestidade ≠ assédio. Não é dizer 'quero transar' no minuto 1 — é não
+      DISFARÇAR o desejo de quem você é. A diferença é sutil mas crítica.
+    source_refs:
+      - "NMMNG interview — 'hide my sexual agenda' como erro central"
+      - "Boldness palestra — 'go live this stuff with no attachment to outcome'"
+    conflict_with: [strauss_early]
+
+  - id: be_good_ender_over_good_picker
+    rule: "Aprenda a sair antes de aprender a escolher — ser bom 'ender' cobre múltiplos pecados de ser mau 'picker'."
+    rationale: >
+      Você vai picar mulheres erradas — isso é matemático. O que separa vida boa
+      de vida ruim é a velocidade de cortar perdas. Glover diz que aprender a
+      'end' é talvez a chave nº1 de homens bem-sucedidos em qualquer área.
+    when:
+      - "Date 2 ou 3 mostrando red flags claras"
+      - "Relacionamento de meses dizendo 'isso não está funcionando'"
+      - "Match no app que tá só dando trabalho"
+    counter_example: >
+      Não é ghosting. É comunicar claramente que tá indo embora e ir embora.
+      Ender ≠ desaparecer.
+    source_refs:
+      - "Boldness palestra — 'being a good ender can cover a multitude of sins'"
+    conflict_with: []
+
+  - id: walk_through_open_doors
+    rule: "Quando a porta abrir — entra. Não fica analisando se ela é hot suficiente."
+    rationale: >
+      Um dos maiores fracassos masculinos é NÃO entrar nas portas que abrem —
+      sinais de interesse, propostas, oportunidades. Filtra DEPOIS da entrada,
+      não antes. Filtrar antes é covardia disfarçada de critério.
+    when:
+      - "Mulher demonstrando interesse claro (olhar mantido, aproximação, proposta)"
+      - "Dúvida 'será que ela é minha tipo?' bloqueando ação"
+    counter_example: >
+      Se ela tá visivelmente bêbada/incapacitada ou se há contexto óbvio (chefe,
+      esposa de amigo), porta NÃO está aberta — não é covardia, é integridade.
+    source_refs:
+      - "Boldness palestra — 'walk through open doors'"
+    conflict_with: []
+
+  - id: play_your_side_of_the_net
+    rule: "Jogue só o seu lado da rede. Não tente jogar o lado dela."
+    rationale: >
+      Tentar gerenciar emoções, percepções, humor dela é regressão Nice Guy.
+      Cada um responsável pelo próprio lado. Quando você para de fazer o trabalho
+      emocional dela, ela aprende a fazer — e o relacionamento para de drenar.
+    when:
+      - "Ela tá triggered e você sente impulso de 'fixar' o que ela tá sentindo"
+      - "DR onde você fica tentando provar que não fez o que ela acha que fez"
+      - "Tendência de carregar o humor dela pra você"
+    counter_example: >
+      Indiferença gélida ≠ jogar seu lado. Você pode segurar ela, olhar nos
+      olhos, dizer que ama — e ainda assim não TENTAR resolver o que é dela.
+    source_refs:
+      - "Rowan Andrews — 'play your side of the net' (pickleball metaphor)"
+    conflict_with: []
+
+  - id: be_equally_okay
+    rule: "Esteja igualmente ok se ela tá feliz OU infeliz, se o relacionamento dá certo OU não."
+    rationale: >
+      O Nice Guy é REFÉM do humor dela e do destino da relação. Equanimidade
+      (não indiferença) sobre esses dois eixos é o que neutraliza o impulso de
+      pleasing. Paradoxalmente — quanto mais okay com 'pode acabar', melhor fica.
+    when:
+      - "Briga onde você sente pânico de 'perder ela'"
+      - "Decisão sobre romper algo que claramente não tá funcionando"
+    counter_example: >
+      Equanimidade ≠ frieza performada. É trabalho interno, não pose. Fingir
+      indiferença pra manipular é covert contract novo.
+    source_refs:
+      - "NMMNG interview — 'be equally okay with whether she's happy or unhappy'"
+    conflict_with: []
+
+  - id: dont_listen_to_problems_endlessly
+    rule: "Não escute a versão menina dos problemas dela — peça a versão de cara."
+    rationale: >
+      Tempo gasto escutando ela falar problemas é INVERSAMENTE proporcional à
+      probabilidade de transar com ela. Não é frieza — é não-padrão Nice Guy
+      'mãe terapeuta'. Liderar a conversa é amoroso, não desprezo.
+    when:
+      - "Ela tá ruminando problema sem fim claro"
+      - "Você se pega usando 'escuta empática' como técnica de approval"
+    counter_example: >
+      Em crises reais (luto, demissão pesada) — escuta sim, com presença. A regra
+      é sobre a ruminação cotidiana de problemas sem fim, não momentos de fato.
+    source_refs:
+      - "Boldness palestra — 'rule of thumb' direto do Glover"
+      - "Anedota — terapeuta mulher disse 'you don't have to listen'"
+    conflict_with: []
+
+  - id: live_authentic_life_dont_chase_woman
+    rule: "Construa um bolo de vida grande — e convide ela pra ser a cobertura, não o bolo."
+    rationale: >
+      Mulher detecta neediness biologicamente. Cara cuja vida gira em torno dela
+      é repulsivo. Cara que tem vida cheia (trabalho, amigos, missão, hobbies,
+      tribo) é magnético — sobra dele, não falta.
+    when:
+      - "Cara organizando agenda em volta da disponibilidade dela"
+      - "Cara que quer mensagem o dia inteiro"
+      - "Cara projetando 'a minha vida começa quando ela aparece'"
+    counter_example: >
+      Não é evitar prioridade emocional pra ela. Casamento exige investimento.
+      A regra é sobre o FUNDAMENTO da vida não depender dela.
+    source_refs:
+      - "Rowan Andrews — 'come be the icing on my great cake, not the cake'"
+    conflict_with: []
+
+  - id: surprise_dont_repeat
+    rule: "Não repita o que funcionou da última vez sexualmente — varie."
+    rationale: >
+      Mulher se entedia rápido com mesmo script. Mesma técnica = morte do desejo.
+      Comparação Glover — 'ela usa a mesma roupa pro trabalho um mês?'. Nice Guy
+      acha que 'achou a fórmula' e a repete até matar atração.
+    when:
+      - "Relacionamento longo onde sexo virou rotina"
+      - "Após sexo bom — impulso de 'fazer igualzinho amanhã'"
+    counter_example: >
+      Variar ≠ truques aleatórios. É presença, leitura do momento, não-piloto-automático.
+    source_refs:
+      - "NMMNG interview — metáfora dance leads 'be thinking 2-3 moves ahead'"
+    conflict_with: []
+
+  - id: challenge_self_limiting_beliefs
+    rule: "Caça e desmonta crenças auto-limitantes sobre mulheres antes de qualquer outra coisa."
+    rationale: >
+      Glover viveu décadas com 3 crenças travando ele — 'mulheres não gostam de
+      sexo', 'mulheres acham homem que quer sexo um perv', 'mulheres não me
+      desejam'. Sem matar essas crenças, técnica nenhuma funciona — você emite
+      o sinal mesmo querendo esconder.
+    when:
+      - "Cara que 'já tentou tudo' sem resultado"
+      - "Padrão repetido de 'mulher não me dá bola'"
+      - "Crença não-examinada sobre 'como mulher é'"
+    counter_example: >
+      Não é virar 'positivismo tóxico'. Algumas mulheres não vão te querer — isso
+      não é crença auto-limitante, é realidade. A regra é sobre crenças GENERALIZADAS.
+    source_refs:
+      - "Boldness palestra — Glover lista as 3 crenças que travaram ele 40 anos"
+    conflict_with: []
+
+  - id: be_bold
+    rule: "Boldness > tudo. Mulher se excita biologicamente por ousadia, como você se excita por seios."
+    rationale: >
+      Glover é literal — quando uma mulher vê confiança/ousadia num homem, ela
+      experimenta o MESMO surge de neurochemistry que você experimentaria vendo
+      seios. Não é aprendido — é wired. Boldness é o aphrodisiac universal.
+    when:
+      - "Toda situação onde a tentação é jogar safe"
+      - "Decisão de aproximar, propor, expressar desejo"
+    counter_example: >
+      Boldness ≠ agressividade ≠ desrespeito. É ocupar o próprio espaço sem
+      pedir permissão pra existir.
+    source_refs:
+      - "Boldness palestra — analogia neurochemistry seios/boldness"
+    conflict_with: []
+
+  - id: tribe_first_woman_second
+    rule: "Conecta com homens primeiro. Mulher vem depois — e paradoxalmente, vem mais fácil."
+    rationale: >
+      Cara conectado a tribo masculina forte é magnético. Cara isolado que busca
+      conexão na mulher cria neediness insuportável. Mulher quer encaixar numa
+      vida cheia, não preencher o vazio do cara.
+    when:
+      - "Cara solitário tentando 'arrumar namorada pra ter alguém'"
+      - "Cara que terminou e quer 'pular pra próxima' como cura"
+    counter_example: >
+      Tribo masculina ≠ desculpa pra fugir de relacionamento. É infraestrutura.
+    source_refs:
+      - "Rowan Andrews — tese central sobre worldwide men's movement"
+      - "Boldness palestra — 'we're looking for a tribe'"
+    conflict_with: []
+
+  - id: be_consistent
+    rule: "Faça o que você diz que vai fazer. Sempre."
+    rationale: >
+      Nice Guy é pego mentindo pequenas coisas — disse que ia fazer e não fez,
+      'deixou de fora' detalhes. Mulher detecta. Confiança nasce de consistência
+      micro, não de gestos grandes.
+    when:
+      - "Toda promessa, mesmo pequena"
+      - "Quando você diz 'te ligo em 1h' — liga"
+    counter_example: >
+      Consistência ≠ rigidez sem contexto. Comunicar mudança de plano é integridade —
+      sumir é Nice Guy.
+    source_refs:
+      - "Rowan Andrews — Glover lista promessas que faz à mulher na pre-relationship talk"
+    conflict_with: []
+
+  - id: tell_the_whole_truth
+    rule: "Diga toda a verdade — não esconda 'pra não preocupar ela'."
+    rationale: >
+      Forma mais comum de Nice Guy patologia em casamento — esconder coisas que
+      'podem upset her'. Toda vez que ela descobre depois, destrói confiança
+      mais do que a coisa em si destruiria.
+    when:
+      - "Tentação de omitir gasto, encontro, opinião pra evitar conflito"
+      - "Quando você se pega editando a versão dos fatos"
+    counter_example: >
+      Não é dump emocional bruto. É comunicar — 'tem isso aqui, precisamos falar'.
+      Conteúdo + processo.
+    source_refs:
+      - "NMMNG interview — exemplo direto, esposa fica triggered descobrindo o que ele omitiu"
+    conflict_with: []
+
+# =================================================
+# TECHNIQUES
+# =================================================
+techniques:
+  - id: pre_relationship_declaration
+    name: "Pre-Relationship Declaration"
+    description: >
+      Em vez de deixar relacionamento se formar por inércia, declare na hora
+      que parece estar virando algo — exatamente o que você é, o que oferece,
+      o que espera. Reframe completo do dating moderno.
+    script_examples:
+      - "'Se a gente continuar se vendo, aqui vai o que você pode esperar de mim — vou ser consciente, vou prestar atenção em mim, em você, em nós. Vou setar o tom e liderar. Vou aparecer com um plano. Nunca vou perguntar 'o que você quer fazer hoje?'. Vou ser honesto — tudo que eu te disser vai ser verdade. Vou ser transparente — você vai saber o que eu penso, sinto, quero, espero de você e o que tá me incomodando.'"
+      - "'O que eu espero de você? Já tenho a vida coberta. Só me trate bem e faça meu mundo bonito.'"
+    when:
+      - "Date 3-5 quando dá pra ver que tá engatando"
+      - "Quando ela pergunta 'o que a gente é?'"
+    risk: >
+      Pode soar arrogante / 'coach' se entregue com tom errado. Tem que vir de
+      lugar genuíno de autoconhecimento, não de script decorado.
+    mastery_signal: >
+      A mulher reage com 'nenhum homem me falou isso antes' + curiosidade real,
+      não sarcasmo. Ela começa a se perguntar como pode ser 'o frosting'.
+    source_refs:
+      - "Rowan Andrews — Glover relata literalmente esse script"
+    conflict_with: []
+
+  - id: pre_sex_talk
+    name: "Pre-Sex Talk"
+    description: >
+      Antes de roupas saírem, conversa de 3 minutos sobre proteção, STI,
+      preferências, e — crucialmente — sobre tirar o peso de performance.
+      Reframe sex de 'transação que pode dar errado' pra 'exploração compartilhada'.
+    script_examples:
+      - "'Parece que as roupas vão sair. Vamos conversar um minuto — proteção, o que cada um curte, o que tá fora.'"
+      - "'Às vezes com parceira nova eu não consigo manter ereção. E aí? Que tal a gente só ficar pelado, explorar os corpos um do outro, ver onde vai dar — sem pressão de performance?'"
+    when:
+      - "Primeira vez com nova parceira"
+      - "Sexo após período longo sem"
+      - "Parceira visivelmente ansiosa com sexo"
+    risk: >
+      Cara sem conexão genuína pode entregar como técnica fria e matar o
+      momento. Tem que vir de presença, não de cálculo.
+    mastery_signal: >
+      Ela visivelmente relaxa, expressão de alívio. Sexo flui melhor — sem
+      performance pressure, ereção vem naturalmente, ela permite mais.
+    source_refs:
+      - "Rowan Andrews — Glover detalha essa técnica como descoberta no pós-divórcio"
+    conflict_with: []
+
+  - id: ask_for_guy_version
+    name: "Ask For the Guy Version"
+    description: >
+      Quando ela começa a desabafar problema ruminante, em vez de virar terapeuta,
+      liderar — pedir versão condensada, direta. Não recusa de escuta — redirecionamento
+      pra dinâmica masculina-feminina, não materna-filhote.
+    script_examples:
+      - "'Você quer que eu seja seu cara, né? Então vem cá — me dá a versão de cara. Não quero a versão de menina, quero a versão de cara.'"
+      - "'Resume pra mim em 2 frases o que aconteceu e o que você quer fazer.'"
+    when:
+      - "Ruminação de problema sem fim claro"
+      - "Quando você se pega tendo que escutar a 5a versão da mesma fofoca"
+    risk: >
+      Pode soar desprezivo se entregue sem afeto. Faz com toque (mão no rosto,
+      olho-no-olho) — assertividade afetuosa.
+    mastery_signal: >
+      Ela ri, relaxa, e condensa de fato. Ou ela percebe que tava ruminando e
+      muda de assunto sozinha.
+    source_refs:
+      - "Boldness palestra — script direto Glover usa"
+    conflict_with: []
+
+  - id: revealing_self_in_safe_container
+    name: "Revealing Self in a Safe Container"
+    description: >
+      Técnica central da recovery — escolher contexto seguro (men's group, terapeuta,
+      coach) pra começar a verbalizar o que sempre escondeu. Toxic shame perde
+      poder quando dita em voz alta pra alguém que não reage com julgamento.
+    script_examples:
+      - "Compartilhar em men's group — 'tem isso de mim que eu sempre escondi — [insere]'"
+      - "Glover relata cara compartilhando aos 50 que tinha roubado um car stereo aos 15 — grupo respondeu 'irmão, todo mundo fez merda em adolescente' — toxic shame morreu na hora"
+    when:
+      - "Início da recovery do Nice Guy"
+      - "Quando há vergonha persistente sobre algo específico do passado"
+    risk: >
+      Container errado (parceira como terapeuta, amigo blue-pill, internet
+      pública) pode REFORÇAR a vergonha. Container importa mais que conteúdo.
+    mastery_signal: >
+      Sensação de alívio físico após compartilhar. Padrão de pensamento sobre
+      a coisa muda — não é mais 'a prova que sou ruim', é 'coisa que aconteceu'.
+    source_refs:
+      - "NMMNG interview — case study car stereo, 12-step group"
+      - "21 Report — Glover relata sua própria entrada em 12-step"
+    conflict_with: []
+
+  - id: father_reconciliation_letter
+    name: "Father Reconciliation"
+    description: >
+      Processo deliberado de fazer paz com pai (vivo ou morto) — listar o que
+      ele DEU, escrever/dizer o reconhecimento, fazer luto pelo que ele NÃO
+      conseguiu dar. Reframe 'pai-vilão' → 'humano falho operando no pico dele'.
+    script_examples:
+      - "Carta/email — 'Pai, quero te agradecer por X, Y, Z. Essas coisas abençoaram minha vida.'"
+      - "Glover escreveu sobre baseball — começou reconciliação que durou anos antes do pai morrer"
+    when:
+      - "Father wound ativo bloqueando recovery"
+      - "Raiva crônica de figura de autoridade"
+      - "Antes que o pai morra (Glover enfatiza)"
+    risk: >
+      Se pai ainda é abusivo ATIVO, reconciliação é prematura — primeiro
+      proteção, depois processo. Não é forçar relação ruim a continuar.
+    mastery_signal: >
+      Aceitação 'isso é tudo que ele consegue dar' sem amargura. Capacidade
+      de receber o que ele oferece sem cobrar o que ele não tem.
+    source_refs:
+      - "21 Report — Glover narra processo completo com seu pai"
+    conflict_with: []
+
+  - id: joining_a_tribe
+    name: "Joining a Tribe"
+    description: >
+      Ação operacional — entrar em grupo masculino regular dentro de 30 dias.
+      Não escolher 'o perfeito' — escolher um e ENTRAR. Iterar depois. BJJ,
+      12-step, Mankind Project, men's group online, divorce group — qualquer
+      coisa com presença masculina regular.
+    script_examples:
+      - "Procurar 'men's group [cidade]' OU 'Mankind Project [cidade]'"
+      - "BJJ academy mais próxima — primeiro treino esta semana"
+      - "12-step program relevante (AA, SAA, etc) — uma reunião esta semana"
+    when:
+      - "Isolamento masculino crônico"
+      - "Após qualquer ruptura grande (divórcio, demissão, luto)"
+      - "Início da recovery"
+    risk: >
+      Procurar 'o grupo perfeito' = paralisia. Algumas tribos vão ser ruins —
+      sai e entra em outra. Não desistir do conceito por causa de uma má experiência.
+    mastery_signal: >
+      Cara consegue ligar pra 3+ homens às 3 da manhã com confiança que
+      atenderiam. Tem rotina regular (semanal/quinzenal) com homens.
+    source_refs:
+      - "Rowan Andrews — 'de 1.5 amigo a 25-50 caras que pegariam avião'"
+    conflict_with: []
+
+  - id: positive_tension_via_polarity
+    name: "Creating Positive Tension via Polarity"
+    description: >
+      Em vez de tentar nivelar (Nice Guy) ou criar drama (Bad Boy), criar
+      polaridade masculina-feminina ativa — liderança, surpresa, presença
+      plena, não-disponibilidade saudável, manter próprios projetos/tribo/missão.
+    script_examples:
+      - "Sair com amigos sem dar relatório minucioso"
+      - "Mudar plano espontaneamente — 'pega a bolsa, vamos sair'"
+      - "Não responder mensagem na hora, sem ansiedade de explicar"
+      - "Demonstrar desejo direto (não via massagem-sneaky) — 'te quero agora'"
+    when:
+      - "Relacionamento que virou amizade morna"
+      - "Match no app onde a conversa tá morrendo de simpatia"
+      - "Casamento onde sexo desapareceu"
+    risk: >
+      Sem genuinidade, vira manipulação calculada — exatamente o que Glover
+      condena em pickup. Polaridade tem que vir de vida REAL, não de jogo.
+    mastery_signal: >
+      Ela demonstra excitação espontânea sem você ter que 'trabalhar pra isso'.
+      Iniciativa sexual dela aumenta. Drama negativo diminui.
+    source_refs:
+      - "NMMNG interview — desenvolvimento da tese de positive emotional tension"
+    conflict_with: [strauss_early]
+
+# =================================================
+# ANTI-PATTERNS
+# =================================================
+anti_patterns:
+  - id: covert_contract_giving
+    name: "Covert Contract Giving"
+    description: >
+      Dar com expectativa oculta de retorno específico, sem nunca ter combinado.
+      Engine do resentimento crônico do Nice Guy.
+    symptoms:
+      - "Pensamento 'fiz X, agora ela TEM que fazer Y'"
+      - "Resentimento crescendo depois de favores que ninguém pediu"
+      - "Lista mental de 'tudo que eu fiz por ela'"
+      - "Sensação de injustiça constante na relação"
+    consequence: >
+      Ressentimento → passive-aggressive → explosão ou ghosting interno. Mulher
+      sente a manipulação e se afasta. Cara culpa ela.
+    antidote: "[heuristics:tell_the_whole_truth, techniques:pre_relationship_declaration] — declare antes o que oferece e o que espera, ou desista do oferecimento"
+    source_refs:
+      - "Rowan Andrews — definição clínica dos 3 covert contracts"
+    conflict_with: [greene, strauss_early]
+
+  - id: nice_guy_seduction
+    name: "Nice Guy Seduction"
+    description: >
+      Tentar seduzir escondendo agenda sexual — virar amigo, escutar problemas,
+      esperar 'ela perceber sozinha que merece sexo'. Friendzone autoinfligida.
+    symptoms:
+      - "Postar-se como 'amigo dela' enquanto deseja ela"
+      - "Massagem como pretexto pra avançar"
+      - "Escutar problemas dela por horas esperando turn-on"
+      - "'Eu sou diferente dos outros caras' como pitch"
+    consequence: >
+      Friendzone permanente. Ela respeita você muito pra te ver como homem.
+      Ressentimento explode anos depois.
+    antidote: "[heuristics:dont_hide_your_agenda, heuristics:be_bold] — torna desejo legível desde o início, sem agressividade"
+    source_refs:
+      - "NMMNG interview — Glover descreve sua própria 'nice guy seduction' na faculdade"
+    conflict_with: [strauss_early]
+
+  - id: managing_her_emotions
+    name: "Managing Her Emotions"
+    description: >
+      Tentar controlar humor, opinião, percepção dela — 'jogar o lado dela da rede'.
+      Esgota o homem, atrofia ela, mata polaridade.
+    symptoms:
+      - "Pânico quando ela tá brava"
+      - "Reescrever o que diz pra não 'provocar reação'"
+      - "Sentir-se responsável pelo humor dela"
+      - "Investigar humor antes de qualquer pedido"
+    consequence: >
+      Ela aprende impotência emocional (não desenvolve regulação própria). Ele
+      vira gestor emocional 24/7. Polaridade morre. Sexo morre.
+    antidote: "[heuristics:play_your_side_of_the_net, heuristics:be_equally_okay]"
+    source_refs:
+      - "Rowan Andrews — caso do cliente passando weekend gerenciando 2 mulheres"
+    conflict_with: []
+
+  - id: hiding_truth_to_avoid_conflict
+    name: "Hiding Truth to Avoid Conflict"
+    description: >
+      Esconder gastos, opiniões, planos, conversas — pra evitar reação dela.
+      Cada omissão descoberta destrói mais confiança do que a verdade original
+      teria destruído.
+    symptoms:
+      - "Editar mentalmente o que conta"
+      - "Pegar 'caminho mais longo' pra não dizer o que vai aborrecer"
+      - "Esconder pequenas coisas — almoço, gasto, conversa"
+    consequence: >
+      Casamento de mentira. Quando ela descobre (sempre descobre), reação é
+      desproporcional — não pela coisa, pela mentira.
+    antidote: "[heuristics:tell_the_whole_truth, frameworks:differentiation]"
+    source_refs:
+      - "NMMNG interview — esposa de Glover triggered ao descobrir o que ele omitia"
+    conflict_with: [greene]
+
+  - id: needless_and_wantless_persona
+    name: "Needless and Wantless Persona"
+    description: >
+      Performar ser homem 'sem necessidades' enquanto internamente é totalmente
+      needy. Repelente. Mulher detecta a mangueira emocional escondida e foge.
+    symptoms:
+      - "'Não preciso de nada' como mantra"
+      - "Desconforto em receber presentes/elogios"
+      - "Bad receiver — dificuldade dizer 'sim, obrigado'"
+      - "Frustração crescendo porque ninguém 'adivinha' o que precisa"
+    consequence: >
+      Mulher sente que 'algo tá errado' sem saber o quê. Repulsa inexplicável.
+      Cara fica mais needy ainda porque nunca recebe.
+    antidote: "[frameworks:nice_guy_recovery_process — make needs a priority, become a good receiver]"
+    source_refs:
+      - "Rowan Andrews — 'I'm still working on being a good receiver after 35 years'"
+    conflict_with: []
+
+  - id: passive_aggression_and_victim_puke
+    name: "Passive Aggression and Victim Puke"
+    description: >
+      Padrões de saída do resentimento acumulado — jab passivo (sarcasmo,
+      indireta, sabotar combinado) OU explosão tardia ('victim puke') vomitando
+      meses de ruminação de uma vez.
+    symptoms:
+      - "Concordar verbalmente e não fazer"
+      - "Indireta cortante seguida de 'tava brincando'"
+      - "Explosão sobre algo que aconteceu há 6 meses sem nunca ter sido falado"
+      - "Tratamento silencioso prolongado"
+    consequence: >
+      Ela vive insegura — 'pareço bem mas nunca sei quando vem'. Confiança em
+      ruínas. Ex de Glover citada — 'preferia um asshole, pelo menos sei que vai me tratar mal sempre'.
+    antidote: "[heuristics:tell_the_whole_truth] em tempo real + [frameworks:nice_guy_recovery_process]"
+    source_refs:
+      - "21 Report — narrativa da ex-esposa de Glover"
+    conflict_with: []
+
+  - id: trying_to_fix_her
+    name: "Trying to Fix Her"
+    description: >
+      Sentir responsabilidade por consertar problemas/feridas dela. Vira pai-terapeuta
+      em vez de homem. Mata desejo dela (filha não deseja pai).
+    symptoms:
+      - "Soluções não-pedidas pra problemas dela"
+      - "Carregar parceira 'broken' pensando que vai 'curar com amor'"
+      - "Sentir orgulho de 'ser tudo pra ela'"
+    consequence: >
+      Ela infantiliza, não evolui. Atração some. Cara esgota. Termina em
+      crise — ela vai querer 'crescer' e ele vira figura paterna a ser deixada.
+    antidote: "[heuristics:play_your_side_of_the_net]"
+    source_refs:
+      - "NMMNG interview — Glover sobre próprios padrões de problem-solver na esposa atual"
+    conflict_with: []
+
+  - id: nice_guy_at_work
+    name: "Nice Guy at Work (Committee of Mediocrity)"
+    description: >
+      Mesma dinâmica do Nice Guy em relacionamento, projetada em carreira —
+      não rocar o barco, não pedir aumento, ajudar todo mundo enquanto seus
+      projetos atrasam, evitar visibilidade. Curso do próprio Glover —
+      'Nice Guys Don't Finish Last, They Rot in Middle Management'.
+    symptoms:
+      - "Outros menos competentes promovidos na sua frente"
+      - "Trabalho de outros caindo na sua mesa"
+      - "'Committee of mediocrity' na cabeça — 'não te destaca, não arrisca'"
+      - "Imposter syndrome bloqueando aceitação de oportunidades"
+    consequence: >
+      Carreira estagnada em middle management. Frustração financeira crônica.
+      Ressentimento contra empresa/colegas que 'roubaram seu lugar'.
+    antidote: "[heuristics:be_bold, frameworks:differentiation] aplicados a carreira"
+    source_refs:
+      - "Rowan Andrews — Glover narra curso e padrão"
+    conflict_with: []
+
+  - id: isolation_as_strategy
+    name: "Isolation as Strategy"
+    description: >
+      Tentar resolver vida sozinho — recovery solo, problemas relacionais sem
+      mentoria, autodesenvolvimento via consumo passivo de conteúdo. Patologia
+      contemporânea masculina mais perigosa segundo Glover.
+    symptoms:
+      - "Zero amigos homens próximos"
+      - "Consumir podcast/livro sem aplicar nem testar com outros"
+      - "'Não preciso de terapia/grupo, eu resolvo'"
+      - "Vícios em conteúdo online (porn, doom, vídeos) como substituto de conexão"
+    consequence: >
+      Recovery não acontece. Padrões Nice Guy se reforçam. Saúde mental degrada.
+      Glover cita estatísticas — depressão, suicídio, isolamento masculino subindo.
+    antidote: "[techniques:joining_a_tribe, frameworks:tribe_and_male_initiation]"
+    source_refs:
+      - "Rowan Andrews — tese sobre AI/isolamento/conexão masculina"
+      - "Boldness palestra — 'we're looking for a tribe'"
+    conflict_with: []
+
+  - id: chasing_validation_through_sex
+    name: "Chasing Validation Through Sex"
+    description: >
+      Usar sex (especialmente conquista) como prova de valor pessoal. Variante
+      moderna do Nice Guy — usar técnicas de pickup pra preencher buraco de
+      auto-aprovação.
+    symptoms:
+      - "Contar parceiras como score"
+      - "Crash emocional após rejeição"
+      - "Sexo vazio pós-conquista"
+      - "Body count como medida de masculinidade"
+    consequence: >
+      Vícios variados (porn, conquistas, validação). Incapacidade de presença
+      em sexo real. Misoginia latente como defesa.
+    antidote: "[frameworks:nice_guy_recovery_process] + reframe sex como personal growth machine, não validação"
+    source_refs:
+      - "NMMNG interview — Glover sobre sex como personal growth, não performance"
+    conflict_with: [strauss_early]
+
+# =================================================
+# SCRIPTS
+# =================================================
+scripts:
+  - id: bowing_out_after_red_flag
+    situation: "Date 2-3 mostrando red flag clara (drama, manipulação, valores incompatíveis)"
+    variants:
+      - tone: autentico
+        text: "Olha, gostei de te conhecer, mas tô percebendo que a gente quer coisas diferentes. Vou parar por aqui — sem mágoa, te desejo o melhor."
+        context_notes: "Direto, sem ghosting, sem explicação longa. Modelo 'good ender'."
+      - tone: direto
+        text: "Não vai rolar continuar. Cuida."
+        context_notes: "Versão mais curta — quando contexto exige cortar limpo (relação curta, sinais ruins claros)"
+    source_refs:
+      - "Boldness palestra — princípio do 'good ender'"
+
+  - id: declining_to_be_emotional_dump
+    situation: "Parceira começa ruminação longa sobre mesmo problema pela 5a vez"
+    variants:
+      - tone: autentico
+        text: "Vem cá. [pega no rosto, olho-no-olho] Eu te amo e tô aqui. Me dá a versão de cara — em 2 frases o que aconteceu e o que cê quer fazer. Eu não consigo te ajudar com 30 minutos de ruminação."
+        context_notes: "Toque + frame + liderança. Não é frieza, é redirecionamento masculino."
+    source_refs:
+      - "Boldness palestra + Rowan Andrews — combinação de táticas"
+
+  - id: pre_relationship_terms
+    situation: "Date 4-5, claramente engatando, hora de definir frame"
+    variants:
+      - tone: autentico
+        text: "Se a gente continuar se vendo, quero te dizer o que esperar de mim. Vou ser consciente, vou setar o tom, vou liderar. Vou aparecer com plano, não vou perguntar 'o que cê quer fazer hoje'. Tudo que eu te disser vai ser verdade. Você vai saber o que eu penso, sinto, quero, e o que tá me incomodando. O que eu espero de você? Já tenho a vida coberta. Me trate bem, faça meu mundo bonito."
+        context_notes: "Pode parecer arrogante se entregue mecânico. Tem que vir de lugar real."
+    source_refs:
+      - "Rowan Andrews — Glover relata texto literal"
+
+  - id: setting_a_first_date
+    situation: "Match novo no app, hora de tirar do app pra encontro"
+    variants:
+      - tone: direto
+        text: "Quinta 20h, [lugar específico]. Te chamo às 19h pra confirmar."
+        context_notes: "Sem 'cê pode?', sem opções múltiplas. Liderança. Se ela não puder, ela propõe alternativa."
+      - tone: autentico
+        text: "Conversa por mensagem cansa. Quinta às 20h tô no [lugar]. Vai lá."
+        context_notes: "Versão mais provocativa, polaridade ativa"
+    source_refs:
+      - "Boldness + setting the frame — extrapolação operacional"
+
+  - id: father_reconciliation_letter
+    situation: "Cara querendo iniciar reconciliação com pai vivo"
+    variants:
+      - tone: autentico
+        text: "Pai, escrevo só pra te dizer obrigado por [coisa específica que ele DEU — esporte, ofício, presença em algum momento]. Isso me marcou e abençoou minha vida. Tô grato. Beijo."
+        context_notes: "Curto. Específico. Sem cobrança. Sem expectativa de resposta. Abre porta sem forçar."
+    source_refs:
+      - "21 Report — Glover narra sua própria carta sobre baseball"
+
+  - id: declining_to_explain_oneself
+    situation: "Parceira acusa você de algo que você não fez, pressionando explicação"
+    variants:
+      - tone: autentico
+        text: "[pega nas mãos, olho-no-olho] Já falei o que aconteceu. Eu te amo. Não vou ficar provando inocência. Se você quer pensar uma coisa diferente, é seu direito — mas eu não vou correr atrás disso."
+        context_notes: "Play your side of the net em prática. Sem agressão, sem fuga, sem capitulação."
+    source_refs:
+      - "Rowan Andrews — Glover sobre esposa Latina e ciúme"
+
+# =================================================
+# DIAGNOSTICS
+# =================================================
+diagnostics:
+  - id: am_i_a_nice_guy
+    situation: "Auto-diagnóstico — sou um Nice Guy?"
+    signals_to_read:
+      - "Penso 'sou diferente dos outros caras'"
+      - "Escondo necessidades, opiniões, desejos pra evitar reação negativa"
+      - "Esperarei retorno por gestos não-combinados (covert contracts)"
+      - "Tenho histórico de explosões depois de meses ruminando"
+      - "Mulheres me dizem 'difícil de te presentear/dar pra você'"
+      - "Tenho dificuldade em receber elogio/ajuda"
+      - "Padrão de friendzone — desejo mulher que me vê 'como amigo'"
+      - "Carreira estagnada por não 'rocar barco'"
+    interpretation_options:
+      - reading: "Nice Guy clássico"
+        confidence: alta
+        next_move: "[frameworks:nice_guy_recovery_process] — começa por techniques:joining_a_tribe"
+      - reading: "Traços Nice Guy em domínio específico (só trabalho OU só relacionamento)"
+        confidence: media
+        next_move: "Foca recovery no domínio afetado primeiro"
+      - reading: "Algumas características mas no geral diferenciado"
+        confidence: baixa
+        next_move: "Recovery contínua via heuristics pontuais, sem alarme"
+    source_refs:
+      - "NMMNG interview + 21 Report — síntese de sinais"
+
+  - id: she_is_creating_drama
+    situation: "Parceira tá criando drama do nada — ciúme, briga, ameaça"
+    signals_to_read:
+      - "Há quanto tempo sem você criar tensão positiva intencional?"
+      - "Você tá agradando excessivamente, evitando conflito?"
+      - "Sua vida tá centrada nela (sem tribo, sem missão, sem hobbies próprios)?"
+      - "Você tá previsível demais (rotina sexual, conversa, agenda)?"
+    interpretation_options:
+      - reading: "Tensão insuficiente vinda de você — ela tá criando negativa pra ter conexão"
+        confidence: alta
+        next_move: "[frameworks:positive_emotional_tension] + [techniques:positive_tension_via_polarity]"
+      - reading: "Problema real dela (saúde mental, evento externo) que precisa de presença sua"
+        confidence: media
+        next_move: "Presença com [heuristics:play_your_side_of_the_net] — não fixar, mas estar"
+      - reading: "Incompatibilidade fundamental, drama crônico que não responde"
+        confidence: baixa
+        next_move: "[heuristics:be_good_ender_over_good_picker] — considerar saída"
+    source_refs:
+      - "NMMNG interview — positive emotional tension framework"
+
+  - id: she_says_im_passive_aggressive
+    situation: "Parceira/pessoa próxima te chama de passive-aggressive"
+    signals_to_read:
+      - "Você diz que vai fazer e não faz?"
+      - "Dá indireta seguida de 'tava brincando'?"
+      - "Acumula coisas sem falar e explode depois?"
+      - "Tratamento silencioso quando incomodado?"
+      - "Sarcasmo crítico disfarçado de humor?"
+    interpretation_options:
+      - reading: "Confirmação Nice Guy syndrome — passive aggression é o sintoma de superfície"
+        confidence: alta
+        next_move: "[frameworks:nice_guy_syndrome] + [heuristics:tell_the_whole_truth] em tempo real"
+      - reading: "Acusação manipulativa dela sem base"
+        confidence: baixa
+        next_move: "Verificar via 3o feedback (amigo homem, terapeuta) — não descartar de cara"
+    source_refs:
+      - "21 Report — Glover relata exatamente essa narrativa com 2a esposa"
+
+  - id: i_keep_attracting_broken_women
+    situation: "Padrão repetido de mulheres needy/broken/dramáticas"
+    signals_to_read:
+      - "Você se sente atraído por 'salvar' mulher?"
+      - "Mulheres saudáveis te acham 'sem graça'?"
+      - "Você confunde drama com paixão?"
+      - "Sua identidade tá ligada a ser 'o cara que conserta'?"
+    interpretation_options:
+      - reading: "Padrão Nice Guy — atraindo o que confirma a estratégia 'sou útil → sou amado'"
+        confidence: alta
+        next_move: "[frameworks:nice_guy_recovery_process] + [anti_patterns:trying_to_fix_her]"
+      - reading: "Falta de [heuristics:be_good_ender] — você atrai normalmente mas não corta cedo"
+        confidence: media
+        next_move: "Trabalhar exit strategy, não atração"
+    source_refs:
+      - "NMMNG interview — 'we tend to pick women in needy, broken state'"
+
+# =================================================
+# CASE STUDIES
+# =================================================
+case_studies:
+  - id: glover_own_2nd_marriage
+    title: "Glover's 2nd Marriage — 14 anos, sem sexo, virou catalisador"
+    narrative: >
+      Glover casou-se com mulher 'gorgeous' (descrição própria). Na lua-de-mel
+      ela disse 'que bom que agora a gente não precisa fingir gostar de sexo'.
+      14 anos de marriage com sexo escasso, ele em padrão Nice Guy clássico —
+      tentando agradar, escondendo necessidades, evitando conflito. Ela
+      eventualmente disse 'todo mundo te acha um cara legal, mas você é
+      passive-aggressive. Vai buscar ajuda ou eu vou embora'. Ele se diagnosticou
+      como sex addict (errado), entrou em 12-step de sex addicts, descobriu que
+      não era — mas o grupo virou primeira tribo masculina dele. Daí saiu NMMNG.
+    lessons:
+      - "Casamento ruim como 'big stick upside the head' — gratidão tardia pelo catalisador"
+      - "Diagnóstico próprio pode estar errado mas a busca por ajuda abre caminho"
+      - "Não dá pra fingir 'gostar' de algo (Nice Guy treina máscara, esposa cansou)"
+      - "Tribo masculina entra acidentalmente — escolha do contexto importa mais que do diagnóstico"
+    source_refs:
+      - "21 Report + NMMNG interview + Rowan Andrews — Glover relata múltiplas vezes"
+
+  - id: glover_dating_in_late_40s
+    title: "Glover Late 40s — Dating Pós-Divórcio com Novo Sistema Operacional"
+    narrative: >
+      Pós 2o divórcio, Glover (final dos 40s, careca, grisalho, baixa T,
+      falência em curso, não 'specimen') se viu 'spoiled by choice'. Mulheres
+      vindo até ele, propondo, ficando nuas em primeiros encontros. A mudança?
+      Tinha matado as 3 crenças auto-limitantes ('mulheres não gostam de sexo,
+      mulheres acham homem-que-quer-sexo um perv, mulheres não me desejam'),
+      tava bold ('foda-se, vou viver como quero'), e walking through open doors
+      (não filtrava antes — entrava e via). Aprendeu pre-sex talk + pre-relationship
+      declaration. Mulheres respondiam: 'nunca tive sexo assim'.
+    lessons:
+      - "Crenças auto-limitantes destravadas valem mais que aparência/idade/dinheiro"
+      - "Boldness é universalmente atraente (Glover comprovou no próprio corpo aos 47)"
+      - "Walk through open doors > filtrar antecipadamente"
+      - "Pre-sex talk + pre-relationship declaration funcionam — mulheres recebem com alívio"
+      - "Inversão paradoxal — quanto MENOS needy, mais elas desejam"
+    source_refs:
+      - "Boldness palestra + Rowan Andrews — narrativa detalhada"
+
+  - id: car_stereo_shame
+    title: "The Car Stereo Shame — Como Toxic Shame Se Desfaz em Container Seguro"
+    narrative: >
+      Em workshop, Glover perguntou ao grupo qual era a 'vergonha mais profunda
+      — coisa que se descobrissem te rejeitariam'. Um homem adulto, negro,
+      grandalhão, Nice Guy clássico, compartilhou que aos 15 anos roubou um
+      som de carro. Carregou isso a vida toda como 'prova de que sou ruim'.
+      O grupo respondeu 'irmão, todo mundo fez merda em adolescente — isso é
+      normal'. Outros começaram a compartilhar próprias merdas adolescentes.
+      Toxic shame morreu na hora. O cara teve experiência liberadora.
+    lessons:
+      - "Toxic shame só sobrevive em isolamento — morre quando exposta a container seguro"
+      - "Vergonhas 'únicas' geralmente são experiências universais"
+      - "Container importa — grupo masculino seguro > parceira > internet pública"
+      - "Verbalizar > processar mentalmente"
+    source_refs:
+      - "NMMNG interview com Patrick Bet-David"
+
+  - id: clients_weekend_managing_two_women
+    title: "O Cliente Que Gastou Weekend Inteiro Gerenciando Duas Mulheres"
+    narrative: >
+      Cliente de Glover em arranjo ENM (ethically non-monogamous) levou duas
+      parceiras pra weekend de celebração de venda da empresa dele. Em vez de
+      curtir o próprio sucesso, passou os dias inteiros gerenciando emoções
+      das duas (gatilhos de irmã mais velha/mais nova) — não cuidou de si.
+      Glover trabalhou com ele 'e se você só jogasse o SEU lado da rede?
+      Deixasse elas processarem o trigger sozinhas, sentirem hurt/disappointed,
+      e encontrarem o caminho de volta?'
+    lessons:
+      - "Tentar gerenciar emoções dos outros = forma sofisticada de Nice Guy"
+      - "Permitir que pessoas sintam desconforto é amoroso, não cruel"
+      - "Quando você joga só seu lado, elas desenvolvem capacidade de jogar o delas"
+      - "Tribo conta mesmo em arranjos não-tradicionais — princípio é o mesmo"
+    source_refs:
+      - "Rowan Andrews"
+
+  - id: glover_father_reconciliation
+    title: "Glover e o Pai — Reconciliação pelo Baseball"
+    narrative: >
+      Mãe de Glover criou ele 'pra ser diferente do pai' (depois se desculpou).
+      Pai era moody, crítico, com mood disorder. Glover não falou com pai por
+      15 anos. Em determinado momento (lendo artigo sobre baseball no jornal),
+      lembrou que pai ensinou ele baseball — escreveu carta agradecendo isso
+      especificamente. Começaram a tomar café juntos 1-2x por ano. Glover
+      chegou à conclusão 'meu pai é humano falho operando no pico dele — isso
+      é tudo que vou conseguir dele, e tá ok'. Pai teve AVC, ficou em hospice
+      2 semanas — Glover lá todo dia, beijo na bochecha, 'obrigado pai'.
+    lessons:
+      - "Reconciliação não exige pai 'consertar' o passado — exige aceitar o que ele consegue dar"
+      - "Específico (baseball) > genérico (sentimentos vagos)"
+      - "Forgive father = forgive yourself = permitir ser homem falho também"
+      - "Better late than never — fazer antes que o pai morra é regalo pra você"
+    source_refs:
+      - "21 Report — narrativa completa"
+
+# =================================================
+# POSICIONAMENTO FILOSÓFICO
+# =================================================
+signature_phrases:
+  - "I'm a recovering nice guy — and I'm still working at it."
+  - "A woman can't follow where a man doesn't lead."
+  - "Be the cake of a life and invite a great woman to be the icing — not the cake."
+  - "If I'm a good guy, I'll be liked and loved, and the women I want to have sex with will want to have sex with me. (That covert contract doesn't work.)"
+  - "There is a direct inverse relationship between the amount of time a man spends listening to a woman talk about her problems and the likelihood he's going to get laid by her."
+  - "Don't try to do this alone. We need a tribe."
+  - "Women need emotional tension to feel attraction and arousal toward a man."
+  - "Walk through open doors."
+  - "Play your own side of the net."
+  - "Being a good ender can cover a multitude of sins for being a bad picker."
+  - "Live life on your terms with no attachment to outcome."
+  - "Most of the problems we men have had with women and sex are historically of our own making."
+  - "Nice guys are often anything but nice."
+  - "Don't talk about red pill with women — just live it."
+  - "What I do, write, and put out — it's my autobiography. I just use other men's stories to tell my own."
+
+paradoxes:
+  - "Nice Guys (que se vendem como bondosos) são frequentemente os menos confiáveis — porque tudo neles é uma mentira pra ganhar aprovação."
+  - "Quanto menos needy você é, mais a mulher te quer — mesmo que precise menos dela."
+  - "Mulheres são wired pra mais sexo, com mais parceiros, mais frequente do que homens — mas a cultura/religião/auto-repressão criou aparência inversa."
+  - "Ser 'bom ender' (capaz de sair) torna você melhor parceiro do que ser 'bom picker' (capaz de escolher certo)."
+  - "Recovery do Nice Guy nunca termina — sempre 'recovering'. Mas vida fica massivamente melhor mesmo sem 'cura'."
+  - "Forgiving o pai (vê-lo como humano falho) liberta você pra ser homem falho também."
+  - "Quanto mais conectado a outros homens (tribo), mais atraente pras mulheres — não menos."
+  - "Tentar manipular percepção dela aumenta a chance dela perceber a manipulação."
+  - "Crear tensão positiva ativamente é mais amoroso do que tentar fazer tudo confortável."
+
+obsessions:
+  - "Autenticidade vs. máscara"
+  - "Tribo masculina (acima de qualquer técnica individual)"
+  - "Father wound e reconciliação geracional"
+  - "Covert contracts como root cause de resentment"
+  - "Differentiation (perguntar 'o que EU quero')"
+  - "Mulher como criatura biologicamente sexual (contra repressão histórica)"
+  - "Boldness como aphrodisiac universal"
+  - "Self-limiting beliefs como bloqueio nº1"
+  - "Sex como personal growth machine (não validação, não performance)"
+  - "Ser bom 'ender'"
+  - "Recovery contínua, lifetime work"
+
+blindspots:
+  - "Subestima poder de mise-en-scène, narrativa, primeira impressão estratégica — vê tudo isso como 'manipulação Nice Guy'"
+  - "Não tem framework pra leitura tática de mensagem/situação (mais filosofia, menos tática operacional)"
+  - "Pouco material sobre fases iniciais de conquista (matching, primeira mensagem, sair do app) — assume que se você 'tiver vida cheia', mulheres vêm"
+  - "Tese 'mulheres são wired pra mais sexo' tem fundamento experiencial pessoal, não acadêmico — Glover admite ('I have experience, not statistics')"
+  - "Subestima diferenças culturais — modelo é fortemente baseado em homem americano-classe-média"
+  - "Pouco sobre como construir frame inicial quando você ainda NÃO tem 'cake of life' — sugestão circular (seja autêntico → mulheres vêm → você vira autêntico)"
+  - "Posição quase ideológica contra qualquer técnica de pickup, mesmo as eticamente defensáveis"
+  - "Pouca discussão sobre dating online / dating moderno (corpus é majoritariamente pré-AI, contextos in-person)"
+  - "Recovery model assume disponibilidade de men's group, terapeuta, tribo — não cobre quem não tem acesso"
+
+# FIM

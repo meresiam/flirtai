@@ -1,0 +1,994 @@
+# FlirtAI KB — Neil Strauss
+# Extraído de 6 transcrições (~38K palavras) cobrindo o arco completo:
+# early phase (The Game, 2005, era PUA) → late phase (The Truth, 2015, pós-autenticidade)
+# Cada item carrega phase_origin: early | late | both
+
+mind_id: neil_strauss
+display_name: Neil Strauss
+origin: usa
+tier: foundation
+philosophical_alignment: hybrid
+
+source_material:
+  - type: youtube
+    title: "ASK MYSTERY — Current TV expose on The Game with Neil Strauss and Mystery"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: corpus/strauss/transcripts/ASK_MYSTERY_Current_TV_does_an_expose_on_the_book_The_Game_with_Neil_Strauss_and_Mystery.txt
+    notes: "Early phase pura — Mystery Method em campo (Las Vegas boot camp), explicação de openers/negs/peacocking/3 stages."
+  - type: youtube
+    title: "Neil Strauss Picks Up Jessica Alba on Jimmy Kimmel"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: corpus/strauss/transcripts/Neil_Strauss_Picks_Up_Jessica_Alba_on_the_Jimmy_Kimmel_show_PROVES_The_Game_works.txt
+    notes: "Demonstração ao vivo — 'name 3 things about yourself (not looks/job)', cat-string theory, Britney Spears story."
+  - type: podcast
+    title: "Why The World's #1 Pickup Artist Left The Game Behind — Modern Wisdom Clip"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: corpus/strauss/transcripts/Why_The_World_s_1_Pickup_Artist_Left_The_Game_Behind_Neil_Strauss_Modern_Wisdom.txt
+    notes: "Summary pós-Truth — autenticidade, terapia, reparenting, NVC, sex addiction rehab."
+  - type: podcast
+    title: "A Bit of Optimism com Simon Sinek — The Definition of Success"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: corpus/strauss/transcripts/The_Definition_of_Success_with_author_Neil_Strauss_A_Bit_of_Optimism_Podcast.txt
+    notes: "Late phase — insight 'eles estão preocupados com o que você pensa deles', healthy shame, emotional incest, validation flip."
+  - type: podcast
+    title: "The Truth About Women & Relationships — Neil Strauss (Modern Wisdom full)"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: corpus/strauss/transcripts/The_Truth_About_Women_Relationships_-_Neil_Strauss_World_s_1_Pickup_Artist.txt
+    notes: "Núcleo da fase late — LMS reframe, enmeshment, attachment, 3-step healing formula, reparenting, NVC, locus of control."
+  - type: podcast
+    title: "Dating Changes When You Realise This — Modern Wisdom Clip"
+    url: ""
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: corpus/strauss/transcripts/Dating_Changes_When_You_Realise_This_-_Ex_Pickup_Artist_Neil_Strauss.txt
+    notes: "Clip — LMS desconstrução, height = safety, cynicism safety blanket."
+
+# ============================================================
+# FRAMEWORKS
+# ============================================================
+frameworks:
+  - id: mystery_method_3_stages
+    name: "Mystery Method — 3 Stages (Attraction → Comfort → Seduction)"
+    description: "Toda interação progride por 3 estágios sequenciais. Pular um (ou apressar) quebra o set. Modelo backward-engineered do que naturais fazem inconsciente."
+    structure:
+      - "ATTRACTION — gerar interesse via negs, disinterest, push-pull. Status flip: você precisa não ser percebido como 'lower status' default."
+      - "COMFORT — sentar, fazer perguntas reais, achar pontos em comum, criar bonding emocional. Antes disso ela não vai pra cama com você."
+      - "SEDUCTION — escalar fisicamente. Counterintuitive pra cara analítico, mas funciona se as duas fases anteriores estão sólidas."
+    when_to_use:
+      - "Interação cold (não conhece a mulher, sem contexto prévio)"
+      - "Cara que sempre cai na friend zone — precisa do mapa explícito"
+      - "Quando há grupo (set) envolvido — ordem é: opener pro grupo → atrair → isolar → conforto → escalar"
+    examples:
+      - "Las Vegas boot camp Mystery: aluno abre grupo de 5, faz neg na target, cria atração por 5min, isola pro lado pra conforto, e só depois fecha número."
+      - "Style com Jessica Alba: opener desafiador ('me diga 3 coisas que não sejam aparência'), comfort via ela vender ela mesma, seduction implícita via demonstração de domínio."
+    source_refs:
+      - "ASK MYSTERY Current TV expose (Mystery + Strauss demonstrando em Vegas)"
+      - "Jimmy Kimmel — Strauss explicando 'broad strokes' pra Alba"
+    phase_origin: early
+
+  - id: opener_indirect_approach
+    name: "Indirect Opener (não-hitting-on)"
+    description: "Você NUNCA abre admitindo interesse romântico. Abre como se fosse uma opinião casual, fato curioso ou pergunta. O objetivo do opener é só fazer ela falar — não vender, não impressionar."
+    structure:
+      - "Frame: 'preciso de uma opinião rápida sobre algo'"
+      - "Conteúdo: pergunta de relacionamento de terceiros, fato esquisito, polêmica leve"
+      - "Time limit implícito: 'preciso voltar pros meus amigos em 30 segundos'"
+      - "Inclui o grupo todo (se for set) — nunca isola a target no opener"
+    when_to_use:
+      - "Aproximação em ambiente social (bar, balada, evento)"
+      - "DMs frias no Instagram quando ela não te segue"
+      - "Quando ela é claramente acima da média e já é abordada o tempo todo"
+    examples:
+      - "'Preciso de uma opinião feminina rápida — minha amiga descobriu que o namorado dela mente sobre a idade. Termina ou não?'"
+      - "'Vocês acreditam em fantasma? Acabei de ter uma discussão idiota com meus amigos.'"
+    source_refs:
+      - "Current TV — Mystery explicando: 'A ideia do opener não é fazer ela gostar de você. É só fazer ela falar.'"
+    phase_origin: early
+
+  - id: three_step_healing_formula
+    name: "Three-Step Healing Formula (rewire your patterns)"
+    description: "Quem repete os mesmos padrões em relacionamentos precisa de 3 camadas combinadas. Uma sozinha não resolve."
+    structure:
+      - "DEEP INTENSIVE — 1-2x por ano um workshop emocional pesado (The Meadows Survivors Program, Hoffman Process). 'Exorcismo de feridas de infância'. Sai do ambiente, rasga o band-aid."
+      - "WEEKLY MAINTENANCE — men's group ou terapia em grupo (5-6 caras no mesmo nível + 1 terapeuta dividido). Mais barato que individual, mais eficaz, sem onde se esconder."
+      - "IN-THE-MOMENT TOOLS — ferramentas de bolso pra crise (reparenting, widen-the-gap stimulus-response, NVC, name-the-trigger)."
+    when_to_use:
+      - "Cara que continua atraindo o mesmo tipo de mulher tóxica"
+      - "Padrão de reação repetida em qualquer relação (ciúme, controle, abandono, suffocation)"
+      - "Pós-divórcio ou pós-término doloroso, antes de voltar a 'gamificar'"
+    examples:
+      - "Strauss: Meadows program → exorcismo dos padrões da mãe enmeshing → men's group semanal → reparenting toolkit no dia-a-dia."
+    source_refs:
+      - "The Truth About Women & Relationships — Modern Wisdom full"
+    phase_origin: late
+
+  - id: enmeshment_vs_abandonment
+    name: "Enmeshment vs Abandonment (the invisible wound)"
+    description: "Trauma parental tem 2 formas, não 1. Abandonment todo mundo reconhece. Enmeshment é o oposto invisível: o pai/mãe SE APOIA no filho emocionalmente. Falsamente empoderador, por isso quase ninguém vê."
+    structure:
+      - "ABANDONMENT: pai não está presente (física ou emocionalmente). Criança aprende 'meus needs não importam, ninguém vem'."
+      - "ENMESHMENT: pai está hiperpresente, mas USA o filho como terapeuta/parceiro emocional. Criança aprende 'meu papel é cuidar/consertar/aliviar o outro'."
+      - "Sintoma adulto enmesh: escolhe parceiros-projeto pra consertar, sente sufocado por afeto real, foge quando relacionamento fica intenso."
+      - "Sintoma adulto abandon: não pede ajuda, evita vulnerabilidade, anestesia."
+    when_to_use:
+      - "Diagnóstico em homem que 'não sabe por que sempre foge quando fica sério'"
+      - "Cara que data damaged women pra consertar e depois fica ressentido"
+      - "Validar histórico: 'sua mãe te ligava chorando do casamento dela? te fazia massagear o pescoço dela? não te deixou morar com sua namorada na faculdade?' = enmeshment provável"
+    examples:
+      - "Strauss em terapia: terapeuta listou timeline 0-17, identificou que mãe queria 'estar num relacionamento com ele' = emotional incest. Explicou todo padrão de fuga de intimidade dele."
+      - "Mulher com tattoo 'daddy's little girl' — clássico marcador de enmeshment paterno."
+    source_refs:
+      - "The Truth About Women & Relationships — bloco sobre attachment e enmeshment"
+      - "A Bit of Optimism com Simon Sinek — Strauss falando 'emotional incest'"
+    phase_origin: late
+    conflict_with:
+      - "robert_greene (Art of Seduction — não considera trauma como variável central)"
+
+  - id: locus_of_control_internal
+    name: "Internal Locus of Control (the only lever)"
+    description: "Você só controla suas reações. Tudo que você gasta tentando mudar a mulher / o mundo / a cultura é energia desperdiçada. Mudar você muda o sistema (porque relação é sistema)."
+    structure:
+      - "External locus: 'mulheres são assim, por isso desisto' / 'a culpa é dela' / 'a cultura é tóxica'"
+      - "Internal locus: 'estou reagindo a isso. Por quê? Que pensamento isso gerou? Como mudo minha resposta?'"
+      - "Trabalho: parar de reagir → conseguir avaliar se o problema é você ou ela. Antes disso, impossível diagnosticar."
+    when_to_use:
+      - "Cara cínico que blames mulheres/feminismo/apps"
+      - "Antes de terminar — você não pode julgar a relação enquanto está reativo"
+      - "Quando quer mudar parceira — substitui pela única coisa que funciona: mudar você, sistema reorganiza"
+    examples:
+      - "Strauss: 'Não dá pra saber se o problema na relação é você ou ela até você parar de reagir a ela.'"
+    source_refs:
+      - "The Truth About Women & Relationships"
+    phase_origin: late
+
+# ============================================================
+# HEURISTICS
+# ============================================================
+heuristics:
+  - id: scarcity_creates_value
+    rule: "Se vem fácil demais, perde valor — torne-se mais difícil de conseguir."
+    rationale: "Cat string theory (Mystery): humanos atribuem valor proporcional ao esforço gasto. Mulher bonita é abordada o tempo todo por caras suplicando — vira ruído. Quem se mostra indisponível vira sinal."
+    when:
+      - "Toda primeira interação com mulher acostumada a ser perseguida"
+      - "Quando você sente impulso de elogiar/agradar/responder rápido"
+      - "Resposta a mensagens — não responder em 30 segundos é heurística básica"
+    counter_example: "NÃO aplicar quando ela já demonstrou interesse genuíno claro e está num momento vulnerável — virar 'difícil' aí queima goodwill. Usar só na fase de calibração inicial."
+    source_refs:
+      - "Jimmy Kimmel — Strauss: 'The best way to get someone is to pretend like you don't want it.'"
+    phase_origin: early
+
+  - id: flip_the_selling
+    rule: "Faça ELA se vender pra você — não você se vender pra ela."
+    rationale: "Default masculino é exibir conquistas/trabalho/qualidades = baixa status, comportamento de candidato. Inversão (pedir pra ela listar o que ela tem de interessante além da aparência) muda o frame inteiro: você vira o avaliador."
+    when:
+      - "Primeiro encontro / primeiras mensagens"
+      - "Quando ela é objetivamente mais desejada que você (looks, status)"
+      - "Sempre que sentir vontade de mencionar seu trabalho legal/realização"
+    counter_example: "Não usar na fase de conforto avançada — aí já não é display, é conexão. Manter o flip eternamente vira teatro vazio (lição da fase late)."
+    source_refs:
+      - "Jimmy Kimmel — Strauss com Jessica Alba: 'Me diga 3 coisas sobre você que me façam querer te conhecer — e não pode ser aparência nem o que você faz.'"
+    phase_origin: early
+
+  - id: validate_dont_extract
+    rule: "Dê validação. Não tente extrair validação."
+    rationale: "Todo mundo está andando preocupado com o que VOCÊ está pensando deles. Você acha que estão te julgando — eles acham que você está julgando eles. Inverter isso (você dá validação, não pede) destrava conexão imediata e elimina ansiedade social."
+    when:
+      - "Aproximação cold (você ansioso achando que vai ser julgado)"
+      - "Quando perceber que está performando pra impressionar"
+      - "Em qualquer interação — incluindo balconistas, motorista, garçom (treino)"
+    counter_example: "Validação ≠ bajulação. Não vire o cara que elogia tudo — vira chato. Validação é fazer o outro se sentir visto/ouvido/entendido, não 'que vestido lindo'."
+    source_refs:
+      - "A Bit of Optimism com Sinek — Strauss: 'Most freeing insight: instead of taking validation, give validation.'"
+    phase_origin: late
+
+  - id: dont_chase_the_surface
+    rule: "Não busque o que ela diz que quer — busque o que está POR BAIXO."
+    rationale: "Mulher diz 'quero alguém 1,80m' = ela quer segurança. Diz 'com dinheiro' = quer competência. Diz 'com status' = quer não-vergonha social. Strauss 1,68m e nariz grande virou guru — porque entregava o substrato (competência social, presença, segurança emocional) sem ter a superfície."
+    when:
+      - "Quando deficiências físicas/financeiras te paralisam"
+      - "Lendo um perfil de app com 'lista' explícita"
+      - "Coach de cara que diz 'sou baixinho então não tenho chance'"
+    counter_example: "Não é desculpa pra negligenciar a superfície quando dá pra trabalhar nela (roupa, corpo, higiene, voz). É 'também treine o substrato' — não 'só treine o substrato'."
+    source_refs:
+      - "Dating Changes When You Realise This — Modern Wisdom"
+      - "The Truth About Women — LMS reframe"
+    phase_origin: both
+
+  - id: model_naturals_dont_invent
+    rule: "Tudo é engenharia reversa do que naturais fazem inconsciente — você não está inventando, está copiando."
+    rationale: "PUA não criou seduction do zero. Observou quem nasce bom com mulher e codificou. Isso libera o neurodivergente: você pode APRENDER o que outros têm de fábrica. Strauss explícito: 'Eu precisava de alguém me dizendo onde colocar o corpo, o que falar.'"
+    when:
+      - "Cara analítico/ND paralisado por 'não me sinto natural'"
+      - "Quando o aluno se julga por precisar de script"
+      - "No onboarding do FlirtAI — desestigmatizar usar técnica"
+    counter_example: "Eventualmente você precisa internalizar e 'jogar fora as regras'. Strauss: 'Aprende as regras e depois joga elas fora.' Se ficar décadas no script, vira robô (Lord of the Flies do fim do livro Game)."
+    source_refs:
+      - "The Truth About Women — Strauss: 'I see it as a lot of neurodivergent people trying to learn how to socially interact, including myself.'"
+    phase_origin: both
+
+  - id: you_attract_your_level
+    rule: "Você atrai gente no seu nível de auto-estima — sempre."
+    rationale: "Nathaniel Branden (Strauss cita): we attract people at our level of self-esteem. Quando alguém reclama do parceiro, a pergunta é: 'em que aspecto você É equivalente?'. Você pode ser flip side da mesma moeda — ainda é a mesma moeda."
+    when:
+      - "Cara que reclama de mulher tóxica recorrente"
+      - "Cara que diz 'só atraio louca' = você está no nível das loucas, ponto"
+      - "Antes de gastar grana em coach de pickup — primeiro elevar baseline interno"
+    counter_example: "Não usar pra culpar vítimas de relacionamento abusivo. Aqui falamos de padrão recorrente, não evento isolado."
+    source_refs:
+      - "The Truth About Women — Strauss citando Branden 'we attract our level'"
+    phase_origin: late
+
+  - id: cynicism_is_safety_blanket
+    rule: "Cinismo é o cobertor de segurança — quem nunca tenta nunca sente dor de falhar."
+    rationale: "Black pill, MGTOW, 'mulher só quer Chad' = todos racionalizações pra não tentar e não machucar. Sour grapes existencial. Identificar o cinismo em si é pré-requisito pra ação."
+    when:
+      - "Cara que ataca quem está tendo sucesso com mulher"
+      - "Cara que justifica não tentar com teoria evolutiva pessimista"
+      - "Quando você se pega comparando seu trabalho pra baixo com o de alguém melhor"
+    counter_example: "Cuidado: nem todo skepticism é cinismo. Saudável duvidar de gurus, dating advice ruim, AI hype. Diferença: cinismo trava ação, skepticism informa ação."
+    source_refs:
+      - "Dating Changes When You Realise This — 'cynicism safety blanket'"
+    phase_origin: late
+
+  - id: conflict_recovery_is_health
+    rule: "Relacionamento saudável NÃO é zero conflito. É a velocidade de recuperação do conflito."
+    rationale: "Casal sem conflito = parallel relationship (duas vidas separadas no mesmo teto). Tóxico de outro jeito. Métrica real: depois da briga, quanto tempo até voltar ao baseline de afeto?"
+    when:
+      - "Diagnosticar saúde de relação atual"
+      - "Quando o cara romantiza ex que 'nunca brigava'"
+      - "Pré-compromisso — testar capacidade de reparação"
+    counter_example: "Não vale pra abuso emocional/físico. Aí não é conflito saudável, é dano."
+    source_refs:
+      - "The Truth About Women — Strauss: 'A healthy relationship is how quickly you recover from conflict.'"
+    phase_origin: late
+
+  - id: dont_argue_to_change_her_mind
+    rule: "Nunca brigue pra convencer ela do seu ponto — honre o que está vivo NELA."
+    rationale: "Tentar convencer ativa defesa. Mesmo se você 'ganhar', perde. A realidade dela é o pensamento+sentimento dela. Você pode honrar sem concordar."
+    when:
+      - "Briga que loopa sem resolver"
+      - "Quando ela está magoada e você quer 'explicar' que está errada"
+      - "Crítica pública sobre você que vc quer rebater"
+    counter_example: "Não vale pra mentira ou manipulação ativa contra você. Aí defende. Mas distingue: a percepção dela vs ataque contra você."
+    source_refs:
+      - "The Truth About Women — bloco NVC e 'perspective is her truth'"
+    phase_origin: late
+
+  - id: spiritually_wrong_to_manipulate
+    rule: "Manipulação em relacionamento sério (não na fase de aproximação) é espiritualmente errado."
+    rationale: "Strauss explícito: técnica pra abrir conversa = neutra. Técnica continuada DENTRO da relação sem o outro saber = split em você. Você vira o vegan que come carne escondido. Não sustenta."
+    when:
+      - "Decisão de continuar gameficando depois de namorar"
+      - "Quando aluno pergunta 'uso negs na minha mulher?'"
+      - "Tentação de aplicar push-pull pra resolver crise"
+    counter_example: "Auto-manipulação (reframe interno tipo 'estou no comando da manipulação') é OK e útil — é diferente de manipular o outro."
+    source_refs:
+      - "The Truth About Women — 'any form of manipulation where the other isn't aware is spiritually wrong'"
+    phase_origin: late
+    conflict_with:
+      - "robert_greene (Art of Seduction trata manipulação como neutra/desejável)"
+
+  - id: tomorrow_you_test
+    rule: "Antes de decidir: pergunte 'o que o você-amanhã ia querer que o você-hoje fizesse?'"
+    rationale: "Regret minimization em horizonte curto. Pergunta clássica 'no leito de morte' é abstrata demais — amanhã é tangível. Funciona pra comida, álcool, mensagem impulsiva, sexo casual."
+    when:
+      - "Vontade de mandar mensagem rancorosa"
+      - "Decisão de transar com alguém errado"
+      - "Stalking ex no Instagram às 2h da manhã"
+    counter_example: "Não usar como muleta pra evitar TODA ação espontânea. Amanhã-você também ia querer ter beijado quando deu certo."
+    source_refs:
+      - "The Truth About Women — Modern Wisdom"
+    phase_origin: late
+
+# ============================================================
+# TECHNIQUES
+# ============================================================
+techniques:
+  - id: the_neg
+    name: "Neg (backhanded micro-disqualifier)"
+    description: "Comentário ambíguo, levemente ofensivo OU desinteressado, dirigido à target de alto valor, pra QUEBRAR o status default dela (ela está acostumada com elogio). NÃO é insulto — é micro-disqualifier que dispara curiosidade ('por que ele não me achou perfeita?')."
+    script_examples:
+      - "'Que unhas legais. São postiças?' (dito casualmente, sem hostilidade)"
+      - "'Você é fofa, mas tem cara de quem dá trabalho.' (sorriso)"
+      - "'Eu ia te dar minha mão, mas mudei de ideia. Isso é nojento. Você lambeu a palma da mão ou o quê, sua tarada?' (cita Mystery)"
+      - "'Você é a versão menos exibida da sua amiga, né?' (em set)"
+    when:
+      - "Mulher claramente above-average acostumada a ser abordada"
+      - "Aproximação cold em ambiente social"
+      - "Quando ela testa você esperando que você se renda"
+    risk: "Tom errado vira insulto real = ela vai embora e/ou amigo dela te dá um soco. Não funciona em mulher de auto-estima muito baixa (interpreta literal e fecha). Não funciona via texto se ela não te conhece (sem tom de voz, vira agressão)."
+    mastery_signal: "Ela ri E pergunta o que você quis dizer / começa a se justificar / começa a flertar de volta tipo 'sério, você é babaca'. Quando ela tenta provar que NÃO é o que você insinuou, o neg funcionou."
+    source_refs:
+      - "Current TV — Mystery demonstrando 'que tal hand thing' com target"
+      - "Jimmy Kimmel — Strauss: 'sometimes 'I think you're absolutely disgusting' is better than a generic compliment'"
+    phase_origin: early
+
+  - id: peacocking
+    name: "Peacocking (visual hook)"
+    description: "Usar item visual distintivo (chapéu, colar, pulseira excêntrica) que serve de gancho de conversa orgânico — outras pessoas iniciam contato comentando. Inverte direção de abordagem."
+    script_examples:
+      - "Mystery: chapéu de pelúcia preto, óculos escuros à noite, unha pintada"
+      - "Versão moderna sutil: anel grande conversation-starter, tatuagem visível com história, jaqueta com patches"
+    when:
+      - "Ambiente noturno onde competir por atenção visual é viável"
+      - "Cara que quer ser abordado em vez de abordar"
+      - "Festivais, baladas, eventos lifestyle"
+    risk: "Overdose vira ridículo (Mystery virou meme). Calibre por ambiente — jantar fino não pede chapéu peludo. Brasil 2026: tom muito mais sutil que original."
+    mastery_signal: "Pessoas (incluindo mulheres) comentam o item espontaneamente sem você puxar."
+    source_refs:
+      - "Current TV expose + Jimmy Kimmel (Strauss explicando peacocking pra Jessica Alba)"
+    phase_origin: early
+
+  - id: open_the_group_not_the_target
+    name: "Open the Group, Not the Target"
+    description: "Mulher bonita raramente está sozinha. Abrir direto na target = você é só mais um. Abrir o GRUPO INTEIRO (incluindo amigas e até amigos homens), ganhar o grupo, e SÓ DEPOIS se voltar pra target — ela quer sua atenção porque você não deu de cara."
+    script_examples:
+      - "Chega no grupo de 4: 'Pessoal, preciso de uma opinião rápida, vocês são meu júri popular...'"
+      - "Dirige opener pras AMIGAS primeiro, faz neg na target sem olhar direto pra ela"
+      - "Conquista a amiga mais 'obstáculo' (geralmente a amiga ciumenta) cedo — ela vira sua aliada"
+    when:
+      - "Set de 2+ mulheres"
+      - "Set misto (homens + mulheres) — ganhar os caras é crítico ou eles te bloqueiam"
+      - "Ambiente onde target está com 'protetores'"
+    risk: "Demora muito no grupo e perde a janela. Target pode ir embora. Calibre: 5-10 min no grupo, depois isola via 'vamos ali ver isso rapidinho'."
+    mastery_signal: "Amiga da target começa a 'wingar' por você — pergunta tipo 'mas você é solteiro?'. Sinal verde pra escalar com target."
+    source_refs:
+      - "Current TV — Mihow explicando set work em Vegas"
+    phase_origin: early
+
+  - id: cat_string_theory
+    name: "Cat-String Theory (push-pull)"
+    description: "Gato persegue cordinha que se MOVE pra longe — se você joga na cara dele, ele ignora. Mesma psicologia humana: interesse abertamente declarado mata desejo. Alternar puxar/empurrar mantém ela engajada."
+    script_examples:
+      - "Conversa boa fluindo → você de repente: 'Espera, preciso voltar pros meus amigos.' (push) Volta 20 min depois com algo pra ela. (pull)"
+      - "Ela manda mensagem longa → você responde curto e some 4h → volta com algo personalizado."
+      - "Beija ela → para → continua conversando normalmente como se nada → ela busca de novo"
+    when:
+      - "Sentir que você está chasing mais do que ela"
+      - "Conversa indo bem demais cedo demais (red flag de desinteresse futuro)"
+      - "Depois de você ter dado um 'sim' grande (encontro confirmado), criar uma micro-incerteza"
+    risk: "Push exagerado vira hot-cold abusivo. Cara ansioso usa push pra autoboicotar. Diferença: você puxa por estratégia consciente, não por medo de intimidade."
+    mastery_signal: "Ela começa a perguntar 'cadê você?', 'sumiu', 'tava esperando sua mensagem'. Inverteu-se a polaridade."
+    source_refs:
+      - "Jimmy Kimmel — Strauss explicando Mystery's cat string theory"
+    phase_origin: early
+
+  - id: demonstrate_authority_over_her_world
+    name: "Demonstrate Authority Over Her World"
+    description: "Em vez de falar de você, FALAR DELA — ler linguagem corporal dela, ler micro-expressões, fazer 'cold reading' sobre o tipo de pessoa que ela é. Cria sensação de 'ele me VÊ'. Técnica do Ross Jeffries."
+    script_examples:
+      - "'Pelo jeito que você está sentada e como ajeitou o cabelo agora, aposto que você é mais introvertida do que aparenta.'"
+      - "'Você tem a expressão de quem foi a filha responsável da família, né?'"
+      - "'Posso ver pelo seu olho que você decide rápido — eu hein, perigoso isso.'"
+    when:
+      - "Conversa morna que precisa de tensão"
+      - "Quando ela está dando respostas sim/não/'não sei' (Britney Spears mode)"
+      - "Mulher acostumada a ser elogiada — chocante quando você analisa em vez de bajular"
+    risk: "Errar grosseiramente o cold reading queima. Treine com leituras genéricas-mas-direcionadas (Forer effect). Não vire 'cigano da feira'. Tom: observador casual, não vidente."
+    mastery_signal: "Ela pede pra desligar o gravador (literal — Britney Spears com Strauss) e começa a se abrir / contar coisa pessoal espontaneamente."
+    source_refs:
+      - "Jimmy Kimmel — Strauss explicando técnica de Ross Jeffries, caso Britney Spears"
+    phase_origin: early
+
+  - id: name_three_things_flip
+    name: "Name 3 Things (sell-flip opener)"
+    description: "Pergunta direta que força a mulher a se vender pra você, eliminando aparência/profissão. Inverte o jogo de display."
+    script_examples:
+      - "'Me diga 3 coisas sobre você que me façam querer te conhecer melhor — e não pode ser nada sobre aparência nem sobre o que você faz.'"
+      - "Variante BR: 'Esquece o trabalho e o look. Me convence em 3 frases por que você é interessante.'"
+    when:
+      - "Mulher above-average / muito assediada / celebridade"
+      - "Primeira mensagem em app quando ela respondeu 'oi' seco"
+      - "Conversa boring no primeiro encontro"
+    risk: "Pode soar arrogante se entregue com tom errado — entregue com SORRISO e curiosidade real, não desafio agressivo. Mulher de baixa auto-estima pode travar."
+    mastery_signal: "Ela ri, pensa, responde com 3 coisas — e DEPOIS te pergunta pra você responder igual. Selo de qualidade: ela quer se VENDER pra você."
+    source_refs:
+      - "Jimmy Kimmel — Strauss aplicando em Jessica Alba ao vivo"
+    phase_origin: early
+
+  - id: time_constraint_opener
+    name: "Time Constraint (built-in escape)"
+    description: "No opener, deixar claro que você TEM que sair logo. Reduz pressão dela ('ele não vai colar a noite inteira'), reduz pressão sua ('se der errado, eu já tinha que ir mesmo'), aumenta seu valor (você tem outras coisas)."
+    script_examples:
+      - "'Oi, tenho 30 segundos antes de voltar pros meus amigos, mas preciso saber sua opinião sobre...'"
+      - "'Tenho que ir daqui a pouco mas vendo você aqui pensei que valia perguntar isso...'"
+    when:
+      - "Sempre na primeira aproximação"
+      - "DMs frias de Instagram (versão: 'tô passando rápido por aqui...')"
+      - "Ela parece desconfiada da sua intenção"
+    risk: "Esquecer de QUEBRAR o time constraint depois. Se a conversa engatou, em algum momento você precisa sinalizar 'mudei de ideia, vou ficar mais um pouco' — caso contrário você some e perde."
+    mastery_signal: "Ela é quem te puxa pra continuar: 'já tem que ir mesmo?' = inversão de polaridade ocorreu."
+    source_refs:
+      - "Current TV — Mystery method opener structure"
+    phase_origin: early
+
+  - id: reparenting
+    name: "Reparenting (in-the-moment trigger fix)"
+    description: "Quando você reage emocionalmente a algo que sua parceira faz (ela te abraça e você se sufoca, ela cobra e você quer fugir) — pausa, identifica que essa reação é do seu pai/mãe, e fala com você mesmo como o pai/mãe que você PRECISAVA, não o que teve."
+    script_examples:
+      - "Trigger: ela te abraça e você sente sufocado. Reparenting: 'Ela não é sua mãe. Isso é afeto, não é demanda. Você pode receber. Está seguro.'"
+      - "Trigger: ela diz 'você nunca tá presente'. Reparenting: 'Ela não é seu pai criticando. É uma pessoa pedindo conexão. Você pode ouvir sem se defender.'"
+    when:
+      - "Reação emocional desproporcional ao estímulo"
+      - "Repetição de padrão de fuga ou explosão"
+      - "Quando o corpo dispara antes do cérebro entender"
+    risk: "Sem terapia base, fica difícil identificar o trigger. Precisa de prática. Não substitui workshop intensivo (etapa 1 do 3-step healing)."
+    mastery_signal: "Espaço entre estímulo e resposta começa a alargar. Você nota a tensão chegando ANTES de explodir."
+    source_refs:
+      - "The Truth About Women — bloco detalhado de tools"
+    phase_origin: late
+
+  - id: widen_stimulus_response_gap
+    name: "Widen Stimulus-Response Gap"
+    description: "Quando emoção sobe (raiva, ansiedade, vergonha) — você FÍSICA-mente pausa. Pede pra ir ao banheiro, levanta da cadeira, troca de posição. Quebra o loop reativo."
+    script_examples:
+      - "Brigando ao telefone, sentindo aperto no peito: 'Espera um segundo, já volto.' Larga, anda 30s, respira, retorna."
+      - "Numa conversa presencial difícil: levanta, troca de lugar, fala consigo 'novo momento, nova pessoa', volta."
+      - "Shinzen Young see-hear-feel: limpa pra-brisas mental antes de responder."
+    when:
+      - "Ansiedade física antes da fala impulsiva"
+      - "Sensação de tightness no peito ou eletricidade nos pulsos (sinais do corpo)"
+      - "Discussão escalando"
+    risk: "Pode ser interpretada como desligamento/fuga se você desaparece sem explicar. Comunique: 'preciso de 1 minuto pra eu não falar besteira'."
+    mastery_signal: "Você consegue responder em vez de reagir 80%+ do tempo em conversas tensas."
+    source_refs:
+      - "The Truth About Women — Strauss + Williamson trocando técnicas"
+    phase_origin: late
+
+  - id: nonviolent_communication
+    name: "Nonviolent Communication (NVC) — honor what's alive"
+    description: "Em vez de criticar/julgar/diagnosticar/punir/recompensar, você nomeia O QUE ESTÁ VIVO NO OUTRO (emoção + necessidade) e abre pergunta colaborativa. Marshall Rosenberg."
+    script_examples:
+      - "Ela: 'Você não me dá atenção.' Você (NVC): 'Parece que você tá chateada. Tá precisando de mais conexão?' Ela: 'É.' Você: 'O que faria você sentir mais conectada esse mês?'"
+      - "Ela: 'Você ficou no celular 20 min.' Você (NVC, NÃO defensivo): 'Você sentiu falta da minha presença, né? Quer fazer algo agora só nós dois?'"
+    when:
+      - "Crítica vinda dela que normalmente disparava defensiva"
+      - "Briga loopando sem resolução"
+      - "Qualquer momento que você ia 'explicar por que ela está errada'"
+    risk: "Soar terapêutico/falso se mecanizar. Tem que vir de curiosidade real. Não usar como técnica pra calar ela ('honrar o que está vivo' não é gaslighting elegante)."
+    mastery_signal: "Briga que ia durar 2h dissolve em 10 minutos. Ela diz 'obrigada por ouvir'."
+    source_refs:
+      - "The Truth About Women — exemplo do casal sobre 'você não me dá atenção'"
+    phase_origin: late
+
+  - id: turnaround_self_accusation
+    name: "Turnaround (Byron Katie)"
+    description: "Toda acusação que você faz mentalmente sobre outro = aplica em você primeiro. 'Ela é chata' → 'Em que momento EU sou chato?'. Sempre acha. Quebra projeção."
+    script_examples:
+      - "Pensamento: 'Ela nunca está presente.' Turnaround: 'Em que momento EU não estou presente pra ela?' (lista 3 exemplos reais)"
+      - "Pensamento: 'Ela é egoísta.' Turnaround: 'Em que situações EU sou egoísta com ela?'"
+    when:
+      - "Spiral de pensamento negativo sobre parceira"
+      - "Antes de mandar mensagem rancorosa"
+      - "Antes de terminar uma relação por 'culpa dela'"
+    risk: "Não é pra anular crítica legítima. Se ela ESTÁ realmente sendo abusiva, turnaround vira auto-flagelação. Use quando você reconhece que está reativo, não quando há ameaça real."
+    mastery_signal: "Você admite 70%+ das acusações como aplicáveis a você também. Frustração baixa antes mesmo da conversa."
+    source_refs:
+      - "The Truth About Women — Strauss citando Byron Katie's 4 questions + turnaround"
+    phase_origin: late
+
+  - id: third_party_compliments_training
+    name: "Three-Strangers Validation Drill"
+    description: "Pra curar ansiedade social: meta diária de fazer 3-4 pessoas se sentirem MELHOR sobre si mesmas via comentário kind. Inverte foco de 'estou sendo julgado' pra 'estou observando o que dá pra elogiar'."
+    script_examples:
+      - "Barista: 'Você tem uma energia muito boa de manhã, isso é raro.'"
+      - "Pessoa no elevador com look interessante: 'Curti seu jeito de combinar isso.'"
+      - "Motorista de Uber: 'Você dirige super bem, dá uma calma.'"
+    when:
+      - "Cara com fobia social"
+      - "Cara que se acha 'invisível' pras mulheres"
+      - "Período de cura pós-rejeição"
+    risk: "NÃO pode ser elogio com agenda de extrair algo. Se você espera retorno, vira creepy. Se for genuíno e o outro não retribuir — TUDO BEM. Não é troca."
+    mastery_signal: "Você sai de casa sem ansiar pelo julgamento dos outros. Foca em quem MERECE seu validation."
+    source_refs:
+      - "A Bit of Optimism — Strauss: exercise to give 3-4 people validation per day"
+    phase_origin: late
+
+  - id: dont_ask_outcomes_chain
+    name: "Don't Be Right, Ask 'Who?' Disarm"
+    description: "Resposta a crítica antagônica que neutraliza via curiosidade colaborativa em vez de defesa."
+    script_examples:
+      - "Critica: 'Você não chama X tipo de pessoa no seu pod.' Resposta: 'Interessante. Quem você sugeriria?'"
+      - "Aplicação relacional: 'Você nunca planeja nada.' Resposta: 'Tem razão, mereço a crítica. O que você queria fazer esse mês?'"
+    when:
+      - "Crítica online ou em grupo"
+      - "Crítica de parceira que normalmente te coloca defensivo"
+      - "Quando reconhece que vai entrar em loop de 'estar certo'"
+    risk: "Não é pra concordar com bullshit. É pra abrir colaboração genuína. Se a pessoa não tem nada construtivo a oferecer, ela cala — o que também resolve."
+    mastery_signal: "Críticas viram conversas. Parceira fala 'gostei que você ouviu sem se defender'."
+    source_refs:
+      - "The Truth About Women — Williamson ensinando técnica, Strauss validando"
+    phase_origin: late
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - id: supplication
+    name: "Supplication (puppy dog)"
+    description: "Comportamento de candidato suplicante: elogios excessivos, disponibilidade total, sacrifício de planos pra ela, validation-seeking constante."
+    symptoms:
+      - "Responde mensagem em <30s sempre"
+      - "Cancela planos próprios pra encaixar ela"
+      - "Elogia 5+ vezes na primeira interação"
+      - "Pergunta 'tudo bem?' várias vezes"
+      - "Justifica decisões dele pra ela"
+    consequence: "Ela perde atração imediata. Vira amigo (LJBF — let's just be friends speech). Mesmo se ela ficar, você vira projeto de pena dela — ressentimento de ambos os lados."
+    antidote: "scarcity_creates_value + flip_the_selling + time_constraint_opener"
+    source_refs:
+      - "Current TV — Strauss descrevendo 'a guy who always got the LJBF speech'"
+    phase_origin: early
+
+  - id: trying_to_impress_logically
+    name: "Logical Impressing (smart-guy trap)"
+    description: "Cara analítico que tenta vencer atração via demonstração intelectual: fala de trabalho, conquistas, conhecimento, opinião informada."
+    symptoms:
+      - "Conta o que faz no primeiro encontro com detalhes"
+      - "Cita livros / cita IQ implícito"
+      - "Discorda dela em política/filosofia pra mostrar pensamento crítico"
+      - "Resolve problemas dela em vez de só ouvir"
+    consequence: "Atração não responde a lógica. Você se torna 'inteligente mas sem química'. Ela vai pra cama com o burro carismático e te chama pra desabafar depois."
+    antidote: "model_naturals_dont_invent (atração é pré-verbal) + validate_dont_extract"
+    source_refs:
+      - "Current TV — 'New York Times writer, engineering student, intelligent guys whose logic isn't helping them meet women'"
+    phase_origin: both
+
+  - id: trying_to_change_partner
+    name: "Trying to Change Your Partner"
+    description: "Energia gasta em fazer ela mudar (parar de ciumar, vestir diferente, conversar mais) — sempre falha, sempre gera ressentimento."
+    symptoms:
+      - "Lista mental de 'se ela só mudasse X...'"
+      - "Sugestões disfarçadas de feedback"
+      - "Comparação com outras mulheres"
+      - "Discussões recorrentes sobre o mesmo tema dela"
+    consequence: "Você vira o pai/mãe crítico que ela teve na infância. Ela se defende, escala, ou se cala e te despreza. Relacionamento entra em modo guerra fria."
+    antidote: "locus_of_control_internal — você muda, sistema muda. Ela vai notar e se ajustar SEM você pedir."
+    source_refs:
+      - "The Truth About Women — 'all that energy people put into changing their partner never works'"
+    phase_origin: late
+
+  - id: dating_a_project
+    name: "Dating a Project (enmesh trap)"
+    description: "Escolha consistente de parceiras 'que precisam ser consertadas'. Sintoma de enmeshment infantil — você só sabe amar consertando."
+    symptoms:
+      - "Padrão de atrair mulher em crise (vício, depressão, situação financeira ruim, ex tóxico)"
+      - "Empolgação alta no início ('eu posso ajudar ela')"
+      - "Ressentimento crescente quando ela não 'evolui'"
+      - "Sentir-se vazio quando ela está bem (não precisa de você)"
+    consequence: "Você não se relaciona — você terapeutiza. Ela ou nunca melhora (você é cúmplice da estagnação dela) ou melhora e te deixa (porque o vínculo era a doença, não vocês)."
+    antidote: "enmeshment_vs_abandonment (diagnóstico) + three_step_healing_formula (cura) + reparenting (no momento)"
+    source_refs:
+      - "The Truth About Women — Strauss falando sobre padrão enmeshed → date projects"
+    phase_origin: late
+
+  - id: pickup_persona_burnout
+    name: "Pickup Persona Burnout"
+    description: "Cara fica anos jogando perfeitamente, dorme com muitas mulheres, e percebe: 'consigo o que quero, mas o que quero não me vê'. Vazio existencial pós-validação. Lord of the Flies do fim do livro Game."
+    symptoms:
+      - "Sucesso medido em conquistas numericamente"
+      - "Sente-se ator entre uma conquista e outra"
+      - "Mulheres atraídas amam o personagem, não você"
+      - "Vergonha íntima cresce mesmo com 'vitórias' externas"
+      - "Vício em validação que nunca sacia"
+    consequence: "Strauss foi pra rehab de sex addiction. Outros desenvolvem cinismo, depressão, ou se tornam coaches tóxicos de outros caras. Em qualquer trajetória: distância entre quem você é e quem você performa = unhappiness garantida."
+    antidote: "three_step_healing_formula + spiritually_wrong_to_manipulate + transition pra autenticidade gradual (NÃO largar tudo de uma vez — perde a base social que a técnica deu)"
+    source_refs:
+      - "Why The World's #1 Pickup Artist Left The Game Behind — sex addiction rehab"
+      - "Dating Changes When You Realise This — disenchantment of early-2010s PUAs"
+    phase_origin: late
+
+  - id: external_locus_blame
+    name: "External Locus / Blame Spiral"
+    description: "Atribuir todo problema relacional a fatores fora de você: mulheres mudaram, apps quebraram tudo, cultura é tóxica, feminismo, hipergamia."
+    symptoms:
+      - "Consume conteúdo black pill / MGTOW"
+      - "Diz 'desisti de mulher' como flex"
+      - "Justifica falta de tentativa com teoria"
+      - "Hostilidade a quem está conseguindo"
+    consequence: "Você nunca melhora porque definiu o problema como insolúvel. Espiral de cinismo + isolamento + raiva."
+    antidote: "internal_locus_of_control + cynicism_is_safety_blanket (reconhecer o mecanismo)"
+    source_refs:
+      - "Dating Changes When You Realise This — bloco completo"
+    phase_origin: late
+
+  - id: split_self
+    name: "Split Self (vegan-who-eats-meat)"
+    description: "Você mantém um personagem público (rico, confiante, viajado) diferente do real. Cria split interno que mina auto-estima silenciosamente."
+    symptoms:
+      - "Ansiedade quando alguém pode 'descobrir' a verdade sobre você"
+      - "Edita seletivamente posts/conversas"
+      - "Vergonha íntima crescente mesmo em 'sucesso' externo"
+      - "Atração só funciona com gente que não te conhece direito"
+    consequence: "Você atrai gente que ama a fantasia, não você. Quando intimidade real aparece (relacionamento longo), você foge ou sabota."
+    antidote: "stop_chasing_the_surface (trabalha o substrato real) + healthy doses of vulnerability"
+    source_refs:
+      - "The Truth About Women — analogia 'influencer pushing vegan diet while eating meat'"
+    phase_origin: late
+
+  - id: zero_conflict_relationship
+    name: "Zero-Conflict Relationship (parallel lives)"
+    description: "Relacionamento que 'nunca briga' é frequentemente duas pessoas vivendo vidas separadas sob mesmo teto. Tóxico porque deatachament passa por paz."
+    symptoms:
+      - "Nenhuma discussão em meses"
+      - "Você não sabe nada novo sobre ela em semanas"
+      - "Sexo escasso ou puramente mecânico"
+      - "Vocês não fazem decisões importantes juntos"
+    consequence: "Eventualmente um dos dois explode/trai/some. Ou ambos definham juntos em mediocridade emocional."
+    antidote: "conflict_recovery_is_health (métrica certa) + NVC (briga produtiva)"
+    source_refs:
+      - "The Truth About Women — 'a relationship with zero conflict is a warning sign'"
+    phase_origin: late
+
+# ============================================================
+# SCRIPTS
+# ============================================================
+scripts:
+  - id: opener_cold_approach
+    situation: "Aproximação cold em bar/balada/evento social"
+    variants:
+      - tone: estrategico
+        text: "Pessoal, preciso de uma opinião feminina super rápida — tenho 1 minuto antes de voltar pros meus amigos. Vocês acham que mentir sobre a idade no app de namoro é deal-breaker ou todo mundo faz?"
+        context_notes: "Inclui grupo, time constraint, tema de relacionamento de terceiros (não-ameaçador), pergunta polêmica leve"
+      - tone: direto
+        text: "Não vou ficar muito tempo, mas precisei vir falar com você. Tem alguma coisa em você que me chamou atenção — não sei o quê ainda. (pausa, olha) Me convence em 3 frases por que vale a pena descobrir."
+        context_notes: "Late-phase Strauss — assume vulnerabilidade calculada. Funciona melhor com mulher de 28+ que detesta game óbvio."
+      - tone: comico
+        text: "Oi. Olha, eu pareço o cara dos namorados, eu sei. Mas juro que sou só o cara dos finais bons. Posso te incomodar com uma pergunta esquisita?"
+        context_notes: "Autoirônico, baixa defesa. Boa pra Brasil onde tom americano agressivo não cola."
+    source_refs:
+      - "Mystery Method opener + Strauss late phase authenticity flip"
+    phase_origin: both
+
+  - id: first_message_app
+    situation: "Primeira mensagem em app de namoro depois do match"
+    variants:
+      - tone: estrategico
+        text: "[nome dela], teste rápido: me dá 3 razões pra eu querer te conhecer que não sejam aparência nem o que você faz. Aviso: sou rigoroso."
+        context_notes: "Versão Jessica Alba name-3-things. Funciona em mulher que recebe 200 matches/semana e está cansada do 'oi'."
+      - tone: comico
+        text: "Já bati o martelo: você é a pessoa mais interessante que apareceu hoje. Agora você tem 2 mensagens pra confirmar ou desconfirmar."
+        context_notes: "Frame: você decidiu, ela precisa provar. Push-pull leve."
+      - tone: direto
+        text: "Oi. Não vou fazer charme de app. Você me chamou atenção. Topa um café terça ou quinta de tarde?"
+        context_notes: "Late-phase: pula todo o jogo. Funciona em mulher 30+ ou em quem você JÁ tem evidência clara de interesse."
+    source_refs:
+      - "Jimmy Kimmel name-3-things + Strauss philosophy contra 'admin de Tinder'"
+    phase_origin: both
+
+  - id: she_went_silent_3_days
+    situation: "Ela sumiu por 3 dias depois de estar engajada"
+    variants:
+      - tone: estrategico
+        text: "(NADA. Você não manda mensagem. Espera. Se ela voltar em 5-7 dias, responde como se nada tivesse acontecido — sem cobrança.)"
+        context_notes: "Mystery: 'silence is the most powerful tool'. Cobrança = confirma seu interesse alto + falta de opções."
+      - tone: direto
+        text: "Sumiu né. Sem stress. Quando voltar, me chama. Tô por aqui."
+        context_notes: "Comunica que você notou MAS não está investido. Funciona melhor que silêncio se vocês já tinham marcado algo."
+      - tone: autentico
+        text: "(Manda só depois de ela voltar, se voltar:) 'Boa ouvir de você. Confesso que pensei que tinha ficado estranho do nosso último papo. Tudo bem por aí?'"
+        context_notes: "Late-phase Strauss — vulnerabilidade controlada. Só usa se ela já demonstrou histórico de honestidade emocional. NÃO usa com mulher de jogo."
+    source_refs:
+      - "Mystery Method (silence) + Strauss late (calibrated vulnerability)"
+    phase_origin: both
+
+  - id: ela_reclama_pouca_atencao
+    situation: "Parceira (já estabelecida) cobra: 'Você não me dá atenção'"
+    variants:
+      - tone: autentico
+        text: "Parece que você está chateada. Tá precisando de mais conexão, é isso? (espera ela falar) — O que faria você se sentir mais conectada esse mês?"
+        context_notes: "NVC clássico. Honra a emoção dela ANTES de defender você. Quase sempre dissolve a briga."
+      - tone: direto
+        text: "Você tem razão em parte. Posso fazer pergunta antes? Quando você diz 'pouca atenção', tem um momento específico que te marcou essa semana? Quero entender pra ajustar."
+        context_notes: "Pede dado em vez de defender. Mostra que você tomou a sério sem assumir culpa total."
+    source_refs:
+      - "The Truth About Women — exemplo literal de NVC com casal"
+    phase_origin: late
+
+  - id: she_tests_you_in_set
+    situation: "Em grupo, target faz pergunta-teste pra testar seu valor ('você mora aqui?' / 'o que você faz?' / 'cadê seu sotaque?')"
+    variants:
+      - tone: comico
+        text: "Curioso esse interrogatório. Você tá tipo coletando perfil pra vender pro Tinder, é isso? (sorri, vira pra amiga dela:) Ela é sempre assim direta ou hoje é dia especial?"
+        context_notes: "Vira o teste contra ela, inclui a amiga, deflect leve. Status flip clássico."
+      - tone: direto
+        text: "Pergunta padrão. Vou responder, mas só se você fizer o mesmo: o que você faz? (espera ela responder) — Cool. Eu faço X. Próximo tópico."
+        context_notes: "Responde mas exige reciprocidade. Move pra próximo tópico = você controla pacing."
+    source_refs:
+      - "Mystery Method handling shit tests"
+    phase_origin: early
+
+  - id: pos_primeiro_beijo_quase
+    situation: "Quase beijou no primeiro encontro mas não rolou — próxima mensagem"
+    variants:
+      - tone: comico
+        text: "Sobrevivi à nossa quase-tragédia ontem (você sabe do que tô falando). Quinta tem mais — você escolhe se vai pra evitar ou repetir."
+        context_notes: "Nomeia o momento sem peso, deixa próxima escolha CLARAMENTE com ela mas com proposta concreta. Push-pull elegante."
+      - tone: direto
+        text: "Ontem foi bom. Quinta às 20h, quero te ver de novo."
+        context_notes: "Late-phase: zero jogo, máxima clareza. Funciona se química era real."
+    source_refs:
+      - "Strauss late + Mystery escalation logic"
+    phase_origin: both
+
+  - id: relacionamento_em_crise
+    situation: "Parceira: 'Acho que devemos terminar / dar um tempo'"
+    variants:
+      - tone: autentico
+        text: "Ok. Antes de qualquer decisão, posso pedir uma coisa? Me conta o que está vivo em você agora — não os argumentos, o sentimento. Eu só quero entender, não vou rebater."
+        context_notes: "NVC pesado. Tira do modo argumento. Quase sempre revela que é uma necessidade específica não atendida, não real wish de terminar."
+      - tone: direto
+        text: "Entendi. Não vou tentar te convencer do contrário, isso te desrespeitaria. Mas antes, me responde: você está reagindo a algo específico dessa semana ou é coisa acumulada de meses?"
+        context_notes: "Reconhece autonomia dela + busca diagnóstico. Não suplica, não threatens."
+    source_refs:
+      - "The Truth About Women — Strauss aplicando 'stop reacting, seek to understand'"
+    phase_origin: late
+
+# ============================================================
+# DIAGNOSTICS
+# ============================================================
+diagnostics:
+  - id: ela_sumiu_apos_set_quente
+    situation: "Vocês trocaram bem por 2 semanas, marcaram encontro, ela cancela last-minute e some"
+    signals_to_read:
+      - "Velocidade de resposta caiu nos últimos 3 dias?"
+      - "Mensagens dela ficaram mais curtas/menos emoji?"
+      - "Ela parou de iniciar conversa?"
+      - "Cancelamento veio com proposta de remarcar específica OU só 'depois a gente combina'?"
+    interpretation_options:
+      - reading: "Perdeu interesse genuíno (encontrou outra coisa/pessoa, ou seu jogo perdeu mojo)"
+        confidence: alta
+        next_move: "Silêncio total por 7 dias. Não cobra, não pergunta. Se voltar = chance real. Se não voltar = next."
+      - reading: "Crise interna dela (trabalho, família, ansiedade) — não é sobre você"
+        confidence: media
+        next_move: "Manda UMA mensagem curta sem agenda em 3-4 dias: 'Sumiu. Espero que esteja tudo bem por aí.' Sem cobrança, sem proposta. Se ela explicar = ouve sem julgar."
+      - reading: "Teste — ela quer ver se você corre atrás (perigoso, mas existe)"
+        confidence: baixa
+        next_move: "Não correr. Test passes when you don't perform."
+    source_refs:
+      - "Mystery Method + Strauss late phase silence philosophy"
+    phase_origin: both
+
+  - id: relacionamento_estabelecido_morno
+    situation: "Namoro/casamento de 1-3 anos, sexo caiu, conversas mecânicas, sem briga MAS sem tesão"
+    signals_to_read:
+      - "Última briga real foi há quantos meses?"
+      - "Você ainda se interessa pelo que ela contou hoje sobre o dia dela?"
+      - "Vocês fazem decisões grandes juntos ou paralelamente?"
+      - "Existe segredo ativo (financeiro, emocional, físico)?"
+      - "Quando foi a última vez que ela te surpreendeu — pra bom ou pra ruim?"
+    interpretation_options:
+      - reading: "Parallel relationship — duas vidas separadas sob um teto. Saúde piorando silenciosamente."
+        confidence: alta
+        next_move: "Iniciar conflito produtivo. Levantar UM tema real que você vinha evitando, com NVC. Métrica: vocês recuperam em <24h depois da briga? Se sim, há relação. Se não, próximo passo: terapia de casal."
+      - reading: "Fase normal de plateau pós-honeymoon — precisa de novidade compartilhada"
+        confidence: media
+        next_move: "Plano de 3 experiências novas juntos em 30 dias (viagem, aula, projeto). Reativa novelty + bonding."
+      - reading: "Você está enmesh-fugindo da intimidade real — disfarçado de 'rotina'"
+        confidence: media
+        next_move: "Reparenting + workshop intensivo (Meadows-tier). Foco em VOCÊ, não nela."
+    source_refs:
+      - "The Truth About Women — 'parallel relationship' bloco + conflict-recovery metric"
+    phase_origin: late
+
+  - id: padrao_repete_3_relacionamentos
+    situation: "Última 3+ parceiras seguiram mesmo arco (você apaixonado → ela parece perfeita → 6 meses → revela ser tóxica do mesmo jeito → você sai destruído)"
+    signals_to_read:
+      - "As 3 mulheres compartilham traço da sua mãe/pai?"
+      - "Você foi quem 'consertava' nas 3?"
+      - "Você fugiu antes do conflito virar resolução nas 3?"
+      - "Você se sente atraído fisicamente por mulher emocionalmente saudável? OU acha 'sem química'?"
+    interpretation_options:
+      - reading: "Enmeshment-driven pattern — você só sente atração com quem replica o trauma original"
+        confidence: alta
+        next_move: "Three-step healing formula completo. NÃO entrar em nova relação sério por 6-12 meses. Workshop intensivo OBRIGATÓRIO antes de namorar de novo."
+      - reading: "Abandonment-driven pattern — você sabota quando intimidade vira segura"
+        confidence: alta
+        next_move: "Terapia individual + men's group. Focar em tolerância à intimidade segura, não em técnica de dating."
+      - reading: "Self-esteem baixo crônico — você atrai pessoas no seu nível"
+        confidence: alta
+        next_move: "Trabalho de auto-estima ANTES de mais qualquer dating. Brandon's principle: você atrai seu nível. Eleva o nível e o pool muda automaticamente."
+    source_refs:
+      - "The Truth About Women — bloco completo de attachment + Brandon"
+    phase_origin: late
+
+  - id: ela_aceita_mas_parece_tepida
+    situation: "Marcou encontro com você mas parece morna — aceita tudo, não sugere nada, energia neutra"
+    signals_to_read:
+      - "Ela faz perguntas sobre você OU só responde as suas?"
+      - "Ela menciona outros caras/ex com frequência?"
+      - "Pupila dilata quando você fala olhando nos olhos?"
+      - "Ela toca acidentalmente (braço, joelho, ombro) durante a conversa?"
+    interpretation_options:
+      - reading: "Saiu por gentileza/curiosidade, sem interesse real — vai recusar segundo encontro"
+        confidence: media
+        next_move: "Não force segundo encontro. Quebre o padrão com algo inesperado AINDA nesse encontro (mudança de ambiente, desafio físico leve tipo arcade, declaração calibrada de 'você é diferente do que esperei'). Se polaridade não mudar em 30min = aceita e segue."
+      - reading: "Atração presente mas ela tem barreira (relacionamento recente, trauma, ambivalência sobre você)"
+        confidence: media
+        next_move: "Não pressiona. Termina o encontro CEDO ('preciso voltar pra X'). Não tenta beijar. Manda mensagem 24h depois propondo algo específico. Se ela aceitar = barreira foi situacional, não você."
+      - reading: "Ela é introvertida/ansiosa social e está engajada mas sem mostrar"
+        confidence: baixa
+        next_move: "Reduza intensidade. Faça perguntas sobre interesses específicos dela (não trabalho/família, hobby de verdade). Mulher ansiosa abre quando sente que você ouve sem demandar."
+    source_refs:
+      - "Mystery IOI/IOD reading + Strauss late on calibrated vulnerability"
+    phase_origin: both
+
+  - id: voce_sempre_friendzone
+    situation: "Padrão: você conhece, ela adora, viram amigos próximos, ela namora outro e desabafa com você"
+    signals_to_read:
+      - "Você sinaliza interesse romântico CEDO ou espera 'criar amizade primeiro'?"
+      - "Você toca ela fisicamente (kino: ombro, braço, mão) desde o início?"
+      - "Você cria tensão sexual (olhar, comentário levemente picante) OU mantém tudo platônico?"
+      - "Você está disponível 24/7 emocionalmente pra ela ANTES de virar parceiro?"
+    interpretation_options:
+      - reading: "Você sinaliza-disponibilidade-emocional sem sinalizar-interesse-romântico — clássico friend zone manufatura"
+        confidence: alta
+        next_move: "Em até 3 encontros sociais, MOSTRA interesse romântico explicitamente: olhar prolongado, comentário tipo 'se a gente fosse coisa, seria perigoso' OU toque escalado OU convite que é claramente date (não 'sair com a galera'). Forçar a categorização."
+      - reading: "Você está com auto-estima baixa e usa friend zone como abrigo (evita rejeição real)"
+        confidence: alta
+        next_move: "Trabalho interno antes de mais nada. Reading: 'cynicism safety blanket' aplica — você prefere amigo-pra-sempre a tentar e arriscar."
+      - reading: "Falta atração física (corpo, voz, presença) genuína dela por você"
+        confidence: media
+        next_move: "Honesta auto-avaliação: trabalho corpo/estilo/presença em paralelo. Mas LEMBRA: Strauss 1,68 + nariz grande virou guru. Substrato (presença, confiança, frame) compensa muito."
+    source_refs:
+      - "Current TV — Strauss describing his pre-Game friend-zone pattern"
+    phase_origin: both
+
+# ============================================================
+# CASE STUDIES
+# ============================================================
+case_studies:
+  - id: britney_spears_interview
+    title: "A entrevista da Britney Spears que virou jogo"
+    narrative: |
+      Strauss entrevista Britney Spears pra revista. Ela dá respostas 'yes/no/I don't care' — o modo robô-celebridade dela. Em vez de aceitar, Strauss FLIPA pro game: começa a ler linguagem corporal dela em voz alta, faz 'cold reading' sobre o tipo de pessoa que ela é, demonstra autoridade sobre o mundo DELA (técnica do Ross Jeffries). Faz mind-reading básico + truque de mágica. Em 15 minutos, Britney pede pra desligar o gravador e começa a desabafar pessoalmente. No fim da entrevista, ELA pede pra trocar números.
+    lessons:
+      - "Status assumido NÃO importa — mulher de altíssimo status responde aos mesmos triggers"
+      - "Demonstrate authority over her world > demonstrate authority sobre o seu próprio"
+      - "Romper o script padrão dela (entrevista jornalística) com um padrão psicológico diferente quebra a defesa"
+      - "Cold reading + interesse demonstrado em quem ela é (não na fama) = catalisador universal"
+    source_refs:
+      - "Jimmy Kimmel — Strauss contando a história ao vivo pra Jessica Alba"
+    phase_origin: early
+
+  - id: jessica_alba_live_demo
+    title: "Demonstração ao vivo com Jessica Alba"
+    narrative: |
+      Strauss no Jimmy Kimmel. Kimmel desafia: 'tenta com a Jessica'. Strauss inicia com 'não vou fazer talk-show game', estabelece frame de não estar performando. Depois faz pivot: 'Jessica, se eu te pedisse pra me dar 3 coisas sobre você que me façam querer te conhecer melhor — e não pode ser aparência nem o que você faz — o que você diria?' Alba pensa, lista (lealdade, confiabilidade, trabalho duro). Strauss valida E faz neg ('eu disse pra não ser sobre o que faz'). Alba RI e se reposiciona. Kimmel comenta 'ela está se vendendo pra você'. Alba reconhece: 'isso é o que pessoas inteligentes que conversam comigo fazem.'
+    lessons:
+      - "Em 60 segundos de TV, technique inverte polaridade entre o convidado top-tier e o jornalista nerd"
+      - "Mulher de muito alto valor responde a SER VALIDADA POR ALGO QUE NÃO É O ÓBVIO (não-aparência, não-fama)"
+      - "Frame inicial 'não estou jogando' é parte do jogo — meta-frame eficaz"
+      - "Mesma técnica funciona com mulher famosa quanto com mulher de bar — psicologia é universal"
+    source_refs:
+      - "Jimmy Kimmel show — episódio com Strauss e Alba"
+    phase_origin: early
+
+  - id: strauss_meadows_therapy
+    title: "O dia que Strauss descobriu emotional incest"
+    narrative: |
+      Pós-game, Strauss foi pra The Meadows (Arizona) — rehab de sex addiction. Terapeuta pediu pra fazer timeline 0-17 anos: peak positives e peak negatives. Strauss sentou, escreveu. Terapeuta olhou e disse: 'sabe por que você nunca teve relacionamento saudável? Sua mãe queria estar num relacionamento com você. Tem nome — emotional incest.' Strauss sentiu corpo confirmando antes da mente entender. Memórias bateram: mãe entrando no quarto pra reclamar do pai, ele massageando a mão dela, sendo proibido de morar com namorada na faculdade. Tudo fez sentido. Não foi consciente — foi pre-verbal, raiz de toda fuga de intimidade.
+    lessons:
+      - "Técnica de pickup era SINTOMA, não causa. Causa: trauma específico de enmeshment materno."
+      - "Workshop intensivo (não talk therapy semanal) destrava insights que anos de conversa não destravam"
+      - "Diagnóstico correto requer terapeuta treinado em trauma — termo 'emotional incest' não está no léxico popular ainda"
+      - "Corpo sabe antes da mente — 'felt the truth of it' é sinal de diagnóstico real"
+    source_refs:
+      - "A Bit of Optimism com Sinek — Strauss contando a cena"
+      - "The Truth About Women — versão expandida"
+    phase_origin: late
+
+  - id: post_game_callers
+    title: "Quando os Chads ligaram pro Strauss"
+    narrative: |
+      Depois que The Game virou bestseller, Strauss começou a receber ligações de exatamente as pessoas que ele queria ser quando começou o livro: caras alto, lindos, famosos, ricos. Atores, músicos, gente que parecia ter tudo. Eles tinham EXATAMENTE os mesmos problemas, medos, e insegurança que Strauss (5'6, nariz grande, nerd) achou que eram só dele. 'Esses caras que tinham looks, money, status — me ligando pra pedir conselho. Mesma merda. Achei que estava sozinho com aquilo.'
+    lessons:
+      - "Looks/money/status são entry tickets, não solução — todo mundo carrega o mesmo material psicológico"
+      - "LMS (Looks/Money/Status black pill) é falácia: quem tem LMS sabe que não resolve, quem não tem fantasia que resolveria"
+      - "História que você conta sobre si mesmo > circunstâncias objetivas"
+      - "Insegurança é universal — a diferença é se você processa ou se finge"
+    source_refs:
+      - "Dating Changes When You Realise This + The Truth About Women"
+    phase_origin: late
+
+  - id: strauss_amazing_divorce
+    title: "O 'amazing divorce' de Strauss"
+    narrative: |
+      Strauss e ex-mulher se divorciaram há ~5 anos. Em vez de relação tóxica, são best friends + co-parents. Celebram aniversário do 'D-Day' juntos com o filho. Decidiram ter SEGUNDO filho juntos via inseminação (turkey baster, literal) — ela não é mais parceira romântica/sexual, mas é a melhor co-parent possível. Filho do primeiro casamento ganhou 'segunda casa' como upgrade (não como perda). Lição: divórcio pode ser saudável se a métrica é serviço-aos-envolvidos, não 'até a morte nos separe'.
+    lessons:
+      - "Relacionamento pode evoluir pra forma diferente sem virar trauma"
+      - "Para a criança: continuidade do amor de ambos + value-add (não loss) = divórcio saudável é possível"
+      - "Saúde relacional é mais sobre velocidade de adaptação que sobre forma específica (monogamia/poly/co-parenting)"
+      - "Self-knowledge dos dois (terapia, trabalho interno) é pré-requisito — sem isso, divórcio amigável é fantasia"
+    source_refs:
+      - "The Truth About Women — Strauss falando do D-anniversary"
+    phase_origin: late
+
+  - id: nyc_writer_to_style
+    title: "Average Frustrated Chump vira Style"
+    narrative: |
+      Strauss antes do Game: jornalista do New York Times, escreveu livros com Marilyn Manson, Mötley Crüe, Jenna Jameson. Acesso total a backstage de qualquer banda. Estratégia: dava backstage passes pra mulheres esperando virar algo. Elas pegavam, diziam 'thanks', e iam pra trás do palco fazer o que iam fazer COM OS OUTROS. Strauss escolheu Vassar College (faculdade de mulheres) achando que aumentaria odds — saiu virgem. Tour com Mötley Crüe: a única pessoa que ele beijou foi Tommy Lee (na bochecha). Conclusão: acesso ≠ atração. Recursos ≠ resultado. Foi quando aceitou o convite do editor pra investigar PUAs.
+    lessons:
+      - "Acesso sem habilidade social não converte — milhares de caras com mesma trajetória"
+      - "Estratégia 'estar perto de mulheres bonitas' (Vassar) sem habilidade = friend zone industrial"
+      - "Quem você é socialmente > onde você está fisicamente"
+      - "Para o cara analítico/ND, técnica explícita é o caminho — não 'just be yourself'"
+    source_refs:
+      - "Current TV expose + Jimmy Kimmel + A Bit of Optimism (3 versões da mesma origem)"
+    phase_origin: early
+
+# ============================================================
+# SIGNATURE PHRASES
+# ============================================================
+signature_phrases:
+  - "The sad truth about people is, if it comes to us too easily, we don't think it has any value."
+  - "The harder we have to work for something, the more value we put on it."
+  - "I'm disqualifying myself and disarming the obstacles."
+  - "Instead of trying to take validation from other people, give people validation."
+  - "While we're all walking around worried about what people think of us, what we don't realize is they're worried about what we think of them."
+  - "You don't know whether the problem in your relationship is you or your partner until you stop reacting to your partner."
+  - "Any form of manipulation where the other person isn't aware of the game and the end goals is spiritually wrong."
+  - "A relationship with zero conflict is a warning sign."
+  - "A healthy relationship is how quickly you recover from the conflict."
+  - "We love what's familiar — that's why we keep choosing the same wound."
+  - "All that energy people put into changing their partner never works. Change yourself and the system changes."
+  - "Looks, money, status might get your foot in the door — but it's who you are that keeps you in the door."
+  - "Cynicism is a safety blanket — never trying means never feeling the pain of failure."
+  - "We attract people who are at our level of self-esteem."
+  - "Talk to yourself like the parent you needed, not the parent you had."
+  - "Those who are married to the spirit of their generation are doomed to become widows in the next."
+  - "I can quite easily game attraction — but it's much more difficult to game connection."
+  - "Connected detachment — care fully, hold lightly."
+  - "What would tomorrow-you want today-you to do?"
+
+# ============================================================
+# PARADOXES
+# ============================================================
+paradoxes:
+  - "Atração precisa de técnica MANIPULATIVA pra abrir; mas relacionamento real precisa de TRANSPARÊNCIA total. O cara desenrolado opera nos dois modos sem virar hipócrita."
+  - "Quanto MAIS você quer ser visto/validado, MENOS você é. Quanto MAIS você dá validação aos outros, MAIS você é visto."
+  - "Você precisa de auto-estima pra atrair alguém de auto-estima — mas auto-estima se constrói também através de atrair alguém. Paradoxo de partida que se resolve via incremento mútuo."
+  - "Strauss é o cara que ESCREVEU o livro de pickup que validou neurodivergentes E o cara que depois disse que tudo aquilo era sintoma de trauma. Ambas verdades coexistem."
+  - "Insegurança é universal entre caras (incluindo Chads). Mas COMPARTILHAR insegurança no momento errado mata atração. Calibration paradox."
+  - "O cara mais 'autêntico' pós-Truth ainda usa técnica — só que a técnica agora é VULNERABILIDADE CALIBRADA, que é tecnicamente outra forma de jogo."
+  - "Divórcio pode ser ato de amor mais saudável que continuar casado. Continuar casado pode ser ato de medo disfarçado de virtude."
+  - "Você só conhece sua auto-imagem real quando alguém te ama de verdade — e aí o trauma de enmeshment dispara fuga. Intimidade revela e ameaça simultaneamente."
+
+# ============================================================
+# OBSESSIONS
+# ============================================================
+obsessions:
+  - "Engenharia reversa de habilidade social — 'naturais' fazem inconsciente o que dá pra codificar"
+  - "Validation como combustível e como veneno — você precisa dar, evitar pedir"
+  - "Trauma parental como causa raiz de TODOS os padrões de relacionamento adulto (enmeshment + abandonment)"
+  - "Stories we tell ourselves — você vive na narrativa, não nos fatos"
+  - "Locus of control interno como única alavanca real"
+  - "Authenticity vs Personality split — a saúde mental colapsa no gap entre quem você é e quem performa"
+  - "Cynicism como mecanismo de defesa contra dor de tentar"
+  - "Reparenting como técnica universal pra desativar gatilhos herdados"
+  - "Survival/preparedness (Strauss tem livro 'Emergency') — agência sobre o próprio destino também física"
+  - "Curiosidade pelas histórias humanas extremas (sedutoras russas, seitas, missing persons) — mesmo metabolismo investigativo do Game aplicado pra outros temas"
+
+# ============================================================
+# BLINDSPOTS
+# ============================================================
+blindspots:
+  - "Estética/fitness/biohacking — Strauss não fala quase nada sobre construção de presença FÍSICA (corpo, voz, postura). Para FlirtAI complementar com material de quem cobre essa dimensão."
+  - "Hierarquia de status masculina entre homens — Strauss é todo sobre dinâmica homem-mulher, mas pouco sobre dinâmica homem-homem (Greene cobre isso melhor)."
+  - "Dinheiro como vetor — Strauss minimiza 'money/status' como entry ticket, mas em mercado de mating real (especialmente BR top-tier), capital e capacidade financeira pesam mais do que ele admite."
+  - "Aplicabilidade fora do contexto americano/coastal — Mystery Method foi calibrado pra bar/balada urbana USA dos anos 2000. Validade pra Brasil 2026 (cultura, religião, jeitinho) precisa adaptação."
+  - "Manipulação consciente entre 2 jogadores informados — Strauss declara isso 'spiritually wrong'. Mas relações reais em mercado de seleção feminina BRASILEIRO 2026 têm jogo de ambos os lados. Tratar como 'errado' é ingenuidade."
+  - "Casos onde a mulher ESTÁ jogando — Strauss tende a interpretar comportamento feminino como autêntico/ferido, raramente como estratégico. FlirtAI precisa balanço (Greene's seductress archetypes complementa)."
+  - "Curto prazo vs longo prazo — Strauss late phase é todo sobre relacionamento longo. Para usuário FlirtAI focado em hookup/casual, princípios late phase podem soar morais demais. Manter separation."
+  - "Dating apps modernos (Tinder/Bumble/Hinge/apps brasileiros) — Strauss menciona en passant, sem playbook específico de mensagem. Gap a ser preenchido por outros minds."
+  - "Geração Z digital natives — Strauss é Gen X. Linguagem, refs e dinâmicas TikTok/OnlyFans/parasocial só entram superficialmente. Outro mind precisa cobrir."
+  - "Espiritualidade aplicada — embora cite 'connected detachment' e 'spiritually wrong', Strauss não desenvolve framework espiritual robusto. Filosofia ocidental + alguns nudges budistas, sem profundidade."

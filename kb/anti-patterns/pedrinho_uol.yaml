@@ -1,0 +1,73 @@
+---
+mind_id: pedrinho_uol
+category: anti-patterns
+generated: 2026-05-25
+notes: |
+  Anti-patterns INFERIDOS por contraste — o que Pedrinho NÃO faz, e o que mata cantadas dele
+  quando outros tentam copiar.
+---
+
+anti_patterns:
+
+  - id: cantada_sem_gancho_situacional
+    name: Cantada decorada sem gancho situacional
+    description: |
+      Disparar cantada universal/genérica sem amarração com algo SOBRE ELA ou o ambiente
+      naquele momento. 'Você caiu do céu?' / 'Te dói algum lugar? Não? Tipo onde caíste do céu'
+      ditas sem contexto físico viram piada de chat de Tinder mortalmente datada.
+    symptoms:
+      - "Você usaria a MESMA cantada com qualquer mulher daquele dia"
+      - "A cantada não menciona nada que ela está vestindo, fazendo, dizendo"
+      - "Ela responde com cara de 'já ouvi isso 30 vezes'"
+      - "Você se sente que está cumprindo script, não improvisando"
+    consequence: |
+      Percepção de baixa inteligência verbal e baixa atenção. Ela arquiva você como mais um
+      'cantador genérico do Instagram'. Resultado: educação fria, não engajamento real.
+    antidote: |
+      Aplicar a heurística 'gancho_situacional_sempre'. Antes de abrir a boca, identificar 1 detalhe
+      ÚNICO daquela situação (roupa específica, objeto na mão, lugar, sotaque, contexto). Construir
+      a punchline em cima desse detalhe.
+    source_refs:
+      - corpus consolidado pedrinho_uol (por contraste — todas funcionam por gancho)
+
+  - id: exigir_reacao_positiva
+    name: Levar rejeição/silêncio a sério (perder o frame cômico)
+    description: |
+      Após a punchline, se ela não rir ou der fora, mudar o tom pra defensivo/sério/ofendido.
+      Pedir explicação, justificar a cantada, tentar 'recuperar' explicando o que quis dizer.
+      Isso transforma o que era piada em pedido de validação fracassado.
+    symptoms:
+      - "'Ah, era só uma brincadeira...'"
+      - "Ficar explicando o trocadilho"
+      - "Insistir 'mas você não achou engraçado?'"
+      - "Mudar de bem-humorado pra pedinte em 2 segundos"
+    consequence: |
+      O caráter de jogo desaparece. Ela percebe que você ESTAVA tentando impressionar e a falha
+      machucou. Resultado: você queima a interação E o ambiente (audiência percebe).
+    antidote: |
+      Aplicar heurística 'rir_proprio_desarma_cringe' COM compromisso. Se não pegar, ria do
+      próprio erro, agradeça e SIGA. Não tente reverter — vai para a próxima. O Pedrinho do
+      corpus literalmente sai e aborda outra. Isso é o frame correto.
+    source_refs:
+      - Nao_confunde_ser_educado_com_dar_em_cima_nao_cantadas_viral (modelo de como rebater rejeição)
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+
+  - id: cantada_longa_sem_pivot
+    name: Setup-monólogo longo sem espaço pra resposta dela
+    description: |
+      Construir setup elaborado que dura 30+ segundos sem dar abertura pra ela responder.
+      Vira monólogo de stand-up que ela escuta passiva — e se a punchline não fechar, ela
+      não tem nada investido pra defender o riso.
+    symptoms:
+      - "Setup com mais de 2 frases sem pergunta direta"
+      - "Você fala fala fala e ela só assente"
+      - "Quando vem a punchline, ela parece confusa porque perdeu o fio"
+    consequence: |
+      Ela desengaja antes do punchline. Cantada cai no vácuo. Pior: você passa de espirituoso
+      pra prolixo. Sem o COMMIT verbal dela ('tá', 'sim', 'aham'), a punchline não tem o pivot.
+    antidote: |
+      Aplicar heurística 'prefira_pergunta_resposta_unica'. Setup curto (1 frase) + pergunta
+      concreta. Esperar a resposta dela. Ela responde → você dispara punchline. Padrão Pedrinho:
+      setup ≤ 7 palavras, pergunta, espera, pivot, punchline ≤ 12 palavras.
+    source_refs:
+      - corpus consolidado pedrinho_uol (todas seguem pergunta-resposta-punchline)

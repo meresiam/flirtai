@@ -1,0 +1,311 @@
+---
+mind_id: krausche
+category: heuristics
+generated: 2026-05-25
+notes: |
+  Regras práticas em 1 frase, voltadas pra decisão rápida em campo
+  ou no direct. Vocabulário do Krausche preservado ('desenrolar',
+  'rolê', 'mina', 'biquíni', 'tridente'). Cada regra é acionável e
+  testável.
+---
+
+heuristics:
+  - id: nunca_elogie_aparencia_de_quem_ja_sabe
+    rule: "Mulher bonita já sabe que é bonita — não elogie aparência, elogie detalhe que ninguém repara."
+    rationale: |
+      Elogio de beleza vira ruído na inbox dela. Você se iguala aos
+      outros 98 caras. Elogio de detalhe (acessório, tatuagem,
+      estilo, energia, dedicação) sinaliza que você prestou atenção,
+      que enxergou o que ninguém enxergou. Atenção é recurso escasso,
+      virou moeda.
+    when:
+      - "Cold approach em balada/bar"
+      - "Primeira mensagem em direct"
+      - "Comentário em foto/stories"
+    counter_example: |
+      Mulher cuja autoestima visual está claramente abalada (acabou
+      de ser deixada, sinalizou insegurança no aparecimento) — aí
+      um 'você tá linda hoje' pode operar como suporte legítimo,
+      não como cantada genérica. Mas o default é evitar.
+    source_refs:
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+      - "AS_3_MELHORES_FORMAS_DE_ELOGIAR_UMA_MULHER"
+      - "PERCA_O_MEDO_DE_CHEGAR_EM_MULHER_BONITA"
+
+  - id: escuta_antes_de_brilhar
+    rule: "Seja interessado antes de ser interessante — escute mais do que fale."
+    rationale: |
+      Instinto masculino é vender currículo nos primeiros 10 minutos.
+      Mas a mulher só lembra de você como 'me senti ouvida' se você
+      escuta. Energia feminina precisa expressar; quando ela
+      expressa, ela vincula. Você fica memorável sem performar nada.
+    when:
+      - "Primeiro date"
+      - "Conversa de direct que abriu mas tá no risco de morrer"
+      - "Mulher que sinalizou cansaço de 'cara que só fala de si'"
+    counter_example: |
+      Mulher tímida/insegura que está esperando você abrir terreno —
+      se você só ouve, ela trava também. Aí storytelling pessoal
+      curto serve de licença social pra ela falar depois.
+    source_refs:
+      - "3_ASSUNTOS_PARA_SEDUZIR_A_MULHER_NA_CONVERSA"
+      - "COMO_CRIAR_CONEXAO_COM_QUALQUER_MULHER_ATRAVES_DO_METODO_DESENROLADO"
+      - "COMO_NUNCA_MAIS_FICAR_SEM_ASSUNTO_COM_ELA"
+
+  - id: nunca_responda_biquini
+    rule: "Nunca responda stories de biquíni — responda os stories aleatórios."
+    rationale: |
+      Stories sensuais têm centenas de caras na fila e ela ignora a
+      maioria. Stories aleatórios (livro, café, paisagem) têm
+      concorrência zero — você vira o único cara que prestou
+      atenção em algo que não é o corpo dela. Diferenciação é
+      sobrevivência no direct.
+    when:
+      - "Direct frio (sem match prévio)"
+      - "Mulher que tem muitos seguidores"
+      - "Você quer puxar conversa sem parecer mais um"
+    counter_example: |
+      Stories de biquíni com contexto específico que dá gancho
+      legítimo (ela está em local que você conhece, com gente que
+      você conhece, fazendo algo que você faz) — aí responder ao
+      CONTEXTO, não ao biquíni, funciona.
+    source_refs:
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "COMO_CHEGAR_NA_MENINA_PELO_INSTAGRAM"
+
+  - id: nunca_chegue_de_entrevista_de_emprego
+    rule: "Nunca chegue com 'oi tudo bem, como você chama, quantos anos, o que você faz'."
+    rationale: |
+      Vira entrevista de emprego, sinaliza zero criatividade, e é
+      EXATAMENTE o que outros 100 caras já fizeram naquela noite.
+      Krausche cita isso como o segundo grupo de respostas mais
+      odiadas quando ele pergunta às mulheres ('além do cara não
+      chegar, é a entrevista de emprego').
+    when:
+      - "Cold approach em qualquer ambiente"
+      - "Direct/match no Tinder/app"
+    counter_example: |
+      Quase nunca. Possível exceção: contexto profissional/networking
+      onde 'entrevista' é o registro esperado. Mas mesmo aí, abridor
+      melhor existe.
+    source_refs:
+      - "4_COISAS_QUE_VOCE_NUNCA_DEVE_FAZER_AO_CHEGAR_EM_UMA_MULHER"
+      - "8_RESPOSTAS_QUE_TODOS_HOMENS_QUEREM_SABER_DAS_MULHERES"
+
+  - id: nunca_chegue_encostando
+    rule: "Nunca chegue puxando cabelo, braço, ou encostando em mulher de costas."
+    rationale: |
+      Reação automática é susto + repulsa. Você invade espaço dela
+      antes dela ter chance de te ler. Linguagem corporal dela vai
+      pra trás (retração, medo) e o jogo já começa perdido. Além de
+      ser problemático em si.
+    when:
+      - "Sempre. É regra absoluta no corpus dele"
+    counter_example: |
+      Nenhum. Krausche é categórico aqui — inclusive aponta como
+      risco social ('nos dias de hoje você tem que tomar muito
+      cuidado').
+    source_refs:
+      - "4_COISAS_QUE_VOCE_NUNCA_DEVE_FAZER_AO_CHEGAR_EM_UMA_MULHER"
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+
+  - id: pressa_e_o_assassino
+    rule: "Pressa é o maior erro — em date, em mensagem, em sexo, em chamada pra sair."
+    rationale: |
+      Pressa pula etapas. Pular etapas quebra conexão. Sem conexão,
+      qualquer pedido (sair, beijar, transar) parece invasivo. A
+      paciência é o que faz a mulher 'querer' em vez de 'aceitar
+      por obrigação'.
+    when:
+      - "Cara que tenta beijar antes de criar clima no date"
+      - "Cara que pede WhatsApp antes da conversa render no Insta"
+      - "Cara que chama pra sair antes de ter base de conversa"
+    counter_example: |
+      Quando ela DEU sinal explícito de pressa também (ela já
+      verbalizou que quer ficar, que quer marcar, que quer ir
+      embora contigo). Aí pressa virou sincronia.
+    source_refs:
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+
+  - id: nao_seja_pai_da_mina_no_direct
+    rule: "Não vire 'pai da mina' no WhatsApp — 'bom dia, como foi seu dia, já comeu, o que tá fazendo' é morte lenta."
+    rationale: |
+      Conversa de cuidador/zelador é o oposto de tensão. Esse tipo
+      de mensagem vira invisível. Vale muito mais mandar pouco com
+      alto valor (meme do que ela curte, foto de algo que lembra
+      dela, observação específica) do que muito com valor zero.
+    when:
+      - "Match novo onde você está ansioso pra demonstrar interesse"
+      - "Mulher que você tá conhecendo e quer manter na cabeça dela"
+    counter_example: |
+      Relacionamento maduro / namoro onde 'bom dia' já tem peso
+      simbólico. Aí o ritual vira afeto, não enchimento.
+    source_refs:
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+
+  - id: cantada_e_abridor_nao_produto
+    rule: "Cantada serve pra fazer rir e abrir terreno — depois vai pra assunto real ou morre."
+    rationale: |
+      Cantada repetida vira chato. Função real dela é (1) sinalizar
+      interesse cedo, (2) demonstrar criatividade, (3) gerar risada
+      que dá licença pra próximo passo. Se você fica em loop de
+      cantadas, ela cansa em 5 minutos.
+    when:
+      - "Primeira frase de abordagem"
+      - "Resposta criativa a stories"
+      - "Pivô pra fechar (pedir número, partir pro beijo)"
+    counter_example: |
+      Mulher que ENTROU no jogo de cantadas e está te respondendo
+      cantada de volta (caso da Laís Kichler, da Pamela, da Luana)
+      — aí você joga o joguinho até ela quebrar ou virar pra
+      assunto. Mas você lê quando ela cansa."
+    source_refs:
+      - "APRENDA_A_CRIAR_E_USAR_CANTADAS_E_NUNCA_MAIS_SAIA_DA_NOITE_ZERADO"
+      - "BATALHA_DE_CANTADAS_-_DESENROLANDO_AO_VIVO"
+
+  - id: contato_visual_nao_desviar
+    rule: "Quando ela te olhar, NÃO desvie o olhar — segure até ela desviar."
+    rationale: |
+      Desviar = sinal de insegurança e perda de frame. Sustentar =
+      sinal de poder e interesse. Quando você sustenta, ela
+      eventualmente desvia, e isso vira a 1ª validação. Da segunda
+      vez que ela olhar, você sorri.
+    when:
+      - "Antes de qualquer abordagem em ambiente público"
+      - "Pra criar abertura sem precisar falar"
+    counter_example: |
+      Sustentar virando intimidação/perseguição (3+ vezes ela
+      desviar e você continuar mirando) — para de funcionar e vira
+      sinistro.
+    source_refs:
+      - "OS_PRINCIPAIS_SINAIS_DE_ATRACAO_QUE_A_MULHER_DEMONSTRA_Linguagem_Corporal"
+      - "O_QUE_AS_MULHERES_MAIS_GOSTAM_NOS_HOMENS_Elas_me_contaram_tudo"
+
+  - id: chame_pra_lugar_que_ela_gosta
+    rule: "Chame pra date no lugar/atividade que ela gosta — não no seu padrão de restaurante."
+    rationale: |
+      Restaurante chique é high-pressure: tem que falar 2h, ela
+      sente obrigação. Atividade que ela gosta (esporte, parque,
+      passeio diferente) faz ela esquecer que é date, baixa
+      ansiedade, e cria memória boa. Dates inesquecíveis de Krausche
+      são todos atividade ativa (paraquedas, balão, futebol, surf).
+    when:
+      - "Primeiro date"
+      - "Mulher que sinalizou que 'não gosta de date'"
+      - "Você quer aumentar probabilidade de segundo encontro"
+    counter_example: |
+      Mulher que EXPLICITAMENTE prefere restaurante/jantar como
+      registro de cortejo. Ler o sinal dela vale mais que aplicar
+      a regra."
+    source_refs:
+      - "COMO_CRIAR_CONEXAO_COM_QUALQUER_MULHER_ATRAVES_DO_METODO_DESENROLADO"
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+
+  - id: nao_fale_de_ex
+    rule: "Nunca fale da ex no date — nem bem, nem mal."
+    rationale: |
+      Falar mal: ela pensa 'ele vai falar isso de mim'. Falar bem:
+      ela pensa 'ele ainda gosta dela'. Em qualquer cenário, ex
+      ocupa espaço mental que devia ser de vocês dois. Se ela puxa
+      o assunto da ex DELA muito, é red flag (dependência emocional).
+    when:
+      - "Primeiro encontro"
+      - "Qualquer cenário onde ela pergunta da sua ex"
+    counter_example: |
+      Conversa muito avançada (relacionamento) onde processar passado
+      faz sentido. Mas nunca em date inicial."
+    source_refs:
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+      - "ELA_ACABOU_DE_TERMINAR_COM_O_EX_O_QUE_FAZER_-_SE_LIVRE_DA_DEPENDENCIA_EMOCIONAL"
+
+  - id: nao_se_iguale_visualmente
+    rule: "Nunca vá de preto pra balada — preto é o 'não vou errar', mas é o que todo cara faz."
+    rationale: |
+      Quem é visto é lembrado. Cor / acessório / estilo identificável
+      = diferenciação visual = mais chance de ela te notar antes de
+      você abrir a boca. Krausche usa colar de pérola, calça
+      diferente, tênis chamativo — não como ego, como estratégia
+      de visibilidade.
+    when:
+      - "Festa, balada, evento social com alta densidade de caras"
+      - "Qualquer ambiente onde você precisa ser notado antes de falar"
+    counter_example: |
+      Ambiente profissional/formal onde 'preto' é o padrão
+      esperado. Aí o diferencial não é cor — é acessório sutil
+      (relógio, pulseira, sapato diferenciado)."
+    source_refs:
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+      - "O_QUE_AS_MULHERES_MAIS_GOSTAM_NOS_HOMENS_Elas_me_contaram_tudo"
+
+  - id: tridente_e_higiene_obrigatorios
+    rule: "Sempre saia com chiclete/tridente, perfume e higiene impecável — bafo mata abordagem antes da segunda frase."
+    rationale: |
+      Por mais que tudo o resto esteja certo, hálito ruim ou unha
+      grande / suja arruinam tudo. Krausche usa exemplo dele mesmo —
+      pessoas vêm falar com ele e ele 'tira o rosto' por causa do
+      bafo. Default que ninguém pensa, todo mundo julga.
+    when:
+      - "Toda saída onde você pode interagir com mulher"
+    counter_example: |
+      Nenhum."
+    source_refs:
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+
+  - id: nao_dependa_de_alcool
+    rule: "Se você só consegue chegar bêbado, o problema é falta de método, não falta de álcool."
+    rationale: |
+      Álcool é prótese pra coragem, mas degrada postura, fala,
+      controle. Krausche prova ao vivo no vídeo da Arena Pós-Jogos:
+      o aluno João Grilo desenrola sem beber porque tem método (no
+      caso, o robô). A solução de longo prazo é instalar método;
+      álcool só compensa enquanto você não tem.
+    when:
+      - "Aluno cronicamente bebe pra ter coragem"
+      - "Antes de cada noite — comer bem, hidratar, evitar excesso"
+    counter_example: |
+      Beber socialmente / um drink pra entrar no clima do ambiente
+      é diferente. O problema é dependência funcional."
+    source_refs:
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+      - "LANCEI_O_ROBO_DESENROLADO_E_LEVEI_UM_SEGUIDOR_PARA_TESTAR_NA_FESTA_UNIVERSITARIA_-_ARENA_POS_JOGOS"
+
+  - id: amigo_e_signo_de_alerta
+    rule: "Quando ela te chama de 'amigo' na conversa, reaja IMEDIATAMENTE — não deixe ela te enrolar nessa categoria."
+    rationale: |
+      Cada vez que ela repete 'amigo', a categoria fica mais firme
+      na cabeça dela. Resposta certa é virar a brincadeira na hora:
+      'nossa, tem tanta coisa boa pra me chamar, vai me chamar logo
+      de amigo? Me chama de amor'. Sinaliza que você se vê em outra
+      categoria, sem dramatizar.
+    when:
+      - "Conversa em direct/WhatsApp onde ela usou 'amigo' uma vez"
+      - "Pessoalmente, em rolê, quando ela apresenta você como 'meu amigo'"
+    counter_example: |
+      Estágio inicial onde 'amigo' é só linguagem casual e você
+      ainda não construiu base pra reagir. Aí ignora e continua
+      construindo. Mas se ela REPETE, reaja."
+    source_refs:
+      - "O_QUE_FAZER_QUANDO_ELA_TE_CHAMA_DE_AMIGO"
+
+  - id: ex_recente_e_red_flag
+    rule: "Mulher que acabou de terminar e fala do ex o tempo todo é red flag — você é o aterrissagem dela, não o destino."
+    rationale: |
+      Krausche fala por experiência: 'eu era escada / passa-tempo
+      pra mulher que ainda gostava do ex'. Quando ela volta pro ex,
+      você é descartado. Estatisticamente alto. O contrário também
+      vale — quando você ainda gosta da ex, não use a próxima
+      mulher como tapa-buraco. Isso é ético, não só estratégico.
+    when:
+      - "Mulher que repete tópico do ex no date / direct"
+      - "Mulher que terminou há menos de 1-2 meses (especialmente relacionamento longo)"
+    counter_example: |
+      Algumas mulheres processam terminando rápido e estão
+      genuinamente OK. Sinal: mencionam o ex 1x com leveza, não
+      em loop. Aí não é red flag."
+    source_refs:
+      - "ELA_ACABOU_DE_TERMINAR_COM_O_EX_O_QUE_FAZER_-_SE_LIVRE_DA_DEPENDENCIA_EMOCIONAL"

@@ -1,0 +1,1199 @@
+# FlirtAI KB — Robert Greene mind
+# Generated from corpus/greene/ (transcripts + blog)
+# Schema: docs/schema-kb.yaml v1.0
+
+mind_id: robert_greene
+display_name: "Robert Greene"
+origin: usa
+tier: foundation
+philosophical_alignment: greene_axis
+
+source_material:
+  - type: book_via_interview
+    title: "The Art of Seduction (via multiple interviews)"
+    url: "https://en.wikipedia.org/wiki/The_Art_of_Seduction"
+    duration_or_pages: 480
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+    notes: "Mikhaila Peterson interview — Greene walks through the 9 seducer archetypes, defines warm vs cold seduction, explains the vulnerability paradox, recounts Errol Flynn's secret (relaxed, undefended animal presence)."
+
+  - type: book_via_interview
+    title: "The 48 Laws of Power (via Diary of a CEO + Lewis Howes)"
+    url: "https://en.wikipedia.org/wiki/The_48_Laws_of_Power"
+    duration_or_pages: 480
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+    notes: "Steven Bartlett's deep-dive — covers laws 1, 2, 3, the role of appearances, body language, masculine power signaling, fake vs real smile, voice as un-fakeable signal."
+
+  - type: podcast
+    title: "Robert Greene on Power, Seduction, War and Human Nature"
+    url: ""
+    duration_or_pages: 90
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/Robert_Greene_on_Power_Seduction_War_and_Human_Nature.txt"
+    notes: "Errol Flynn as ultimate seducer; energy and mood as bigger than pickup lines; 50 Cent as 'master of the 48 Laws'; how to read true character through actions not words."
+
+  - type: podcast
+    title: "The Manipulation Expert (Diary of a CEO)"
+    url: ""
+    duration_or_pages: 90
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+    notes: "Frenemies, envy, micro-expressions of disdain, the shadow, dark side energy as fuel; the 'angle approach' test for detecting hidden hostility."
+
+  - type: podcast
+    title: "Path to Power — Ambition, Status, Strength, Respect (Modern Wisdom)"
+    url: ""
+    duration_or_pages: 120
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+    notes: "Absence/presence dynamic with concrete dating example (texting same day vs 2 days); reputation as cornerstone of power; masculine virtues redefined against both Andrew Tate and 'wimpy' poles."
+
+  - type: podcast
+    title: "Modern World Is In Chaos (Tom Bilyeu)"
+    url: ""
+    duration_or_pages: 200
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/The_Modern_World_Is_In_Chaos_-_Win_The_Game_Of_Life_Outsmart_Everybody_Else_Robert_Greene.txt"
+    notes: "Generosity as seductive quality (attention, not money); women's sixth sense for insecurity; ambition as seductive; observation > theory for learning women."
+
+  - type: podcast
+    title: "How to Turn Anxiety into Seductive Charm (The Jordan Harbinger Show)"
+    url: ""
+    duration_or_pages: 120
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/How_to_Turn_Anxiety_into_Seductive_Charm_Robert_Greene.txt"
+    notes: "Radical realism; weirdness as power source; outer-directed attention; non-verbal contagion; lean into what makes you different."
+
+  - type: podcast
+    title: "Key to Power (Lewis Howes)"
+    url: ""
+    duration_or_pages: 90
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/The_KEY_TO_POWER_Lies_In_Mastering_These_LAWS_Robert_Greene_Lewis_Howes.txt"
+    notes: "Mood infection / energy contagion as deeper than pick-up lines; reverse psychology with stubborn types; toxic-person detection; never accept appearances."
+
+  - type: podcast
+    title: "Greene on Power, Purpose, Struggle and Love"
+    url: ""
+    duration_or_pages: 80
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/Robert_Greene_on_Power_Purpose_Struggle_and_Love.txt"
+    notes: "Falling in love = letting go of defenses; vulnerability as a practice; young men afraid to fall."
+
+  - type: podcast
+    title: "Art of Seduction & Human Psychology (Mikhaila Peterson #121)"
+    url: ""
+    duration_or_pages: 70
+    acquired: false
+    transcript_path: "corpus/greene/transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+    notes: "Most explicit walk-through of 9 archetypes (Siren, Rake, Dandy, Natural, Coquette, Charmer, Star, Charismatic, Ideal Lover); pickup-artist critique."
+
+  - type: article
+    title: "Thoughts on Seduction (blog)"
+    url: "https://powerseductionandwar.com/thoughts-on-seduction/"
+    transcript_path: "corpus/greene/raw/blog/thoughts-on-seduction.md"
+    notes: "Stendhal's crystallization theory; rake as 'machine for falling in love'; conscious seduction = adept at inviting fantasy."
+
+  - type: article
+    title: "Seduction Scenario #1 + Follow-Up"
+    url: "https://powerseductionandwar.com/seduction-scenario-1-follow-up/"
+    transcript_path: "corpus/greene/raw/blog/seduction-scenario-1-follow-up.md"
+    notes: "Direct vs indirect approach; friend-to-lover counterattack; mixed signals; 'all is fair in love and war' ethic."
+
+  - type: article
+    title: "The Dark Side (blog)"
+    url: "https://powerseductionandwar.com/the-dark-side/"
+    transcript_path: "corpus/greene/raw/blog/the-dark-side.md"
+    notes: "Mask theory; the bright side conceals the shadow; opposite traits as tells; transgression as seductive."
+
+  - type: article
+    title: "In Praise of the Bad Guy (blog)"
+    url: "https://powerseductionandwar.com/in-praise-of-the-bad-guy/"
+    transcript_path: "corpus/greene/raw/blog/in-praise-of-the-bad-guy.md"
+    notes: "Disgust = disguised attraction; moralizers attracted to what they denounce; authenticity of the 'villain' as alluring."
+
+  - type: article
+    title: "Machiavelli for Our Times (blog)"
+    url: "https://powerseductionandwar.com/machiavelli-for-our-times/"
+    transcript_path: "corpus/greene/raw/blog/machiavelli-for-our-times.md"
+    notes: "Necessity governs the world; boldness pays — Fortune is a woman who rewards the audacious; willing to walk away from the table."
+
+  - type: article
+    title: "The Power Breviary (blog)"
+    url: "https://powerseductionandwar.com/the-power-breviary/"
+    transcript_path: "corpus/greene/raw/blog/the-power-breviary.md"
+    notes: "'Effective truth' — judge people by results of actions, not words; keep things concrete and direct."
+
+  - type: article
+    title: "The 50th Law (blog)"
+    url: "https://powerseductionandwar.com/the-50th-law/"
+    transcript_path: "corpus/greene/raw/blog/the-50th-law.md"
+    notes: "Fearlessness as base of all other power. People pre-verbally read fear levels and look down on / get out of the way of who is less fearful."
+
+# ============================================================
+# FRAMEWORKS
+# ============================================================
+
+frameworks:
+  - id: "nine_seducer_archetypes"
+    name: "9 Arquétipos do Sedutor"
+    description: "Tipologia central de The Art of Seduction. Cada pessoa já tem UM tipo dominante por natureza/biografia. O trabalho é identificá-lo, exagerá-lo conscientemente e nunca tentar copiar um arquétipo que não é seu — vira teatro vazio."
+    structure:
+      - "Siren (Sirena) — energia sexual saturada em cada gesto/voz/movimento, sem precisar verbalizar. Ícones: Cleópatra, Marilyn Monroe."
+      - "Rake (Devasso) — homem obcecado por mulheres, entende-as profundamente, dá tudo de si na fase inicial mas precisa de novas conquistas. Ícone: Errol Flynn, Lord Byron, Casanova, Clinton."
+      - "Ideal Lover (Amante Ideal) — adapta-se ao fantasma íntimo do outro; reflete de volta o que a pessoa secretamente quer ser. Vive do entendimento profundo do alvo."
+      - "Dandy — anda na borda andrógina; homem com leve borda feminina (Bowie, Jagger) ou mulher com leve borda masculina (Dietrich, Madonna). Quebra expectativa de gênero sem deixar de seduzir."
+      - "Natural — preservou o impish/espontâneo da criança; parece nunca estar tentando. Ícones: Charlie Chaplin, Josephine Baker."
+      - "Coquette — sopra quente e frio em ciclos. Demonstra interesse, recua quando o alvo avança, volta a atrair quando o alvo perde fé. 'Hard to get' alternado com lampejos de 'easy'."
+      - "Charmer — sedução social não-sexual; encanta lendo o outro e devolvendo atenção total e útil."
+      - "Star — aparência de tela em branco onde o outro projeta suas fantasias. Pouca fala, presença quieta, ambiguidade calculada. Ícone: Montgomery Clift, JFK."
+      - "Charismatic — mistura de causa + voz + olhar que parece vir de algo maior. Ícones: Malcolm X, JFK."
+    when_to_use:
+      - "Diagnóstico inicial do estilo natural do usuário (não copiar Rake se ele é Charmer)"
+      - "Mapear o tipo do alvo pra escolher contra-estratégia"
+      - "Misturar: cada pessoa tem 1 dominante + 1 secundário"
+      - "Trocar de modo dentro da mesma interação (autêntico-Natural pra abrir, Star-blank pra mistério na metade)"
+    examples:
+      - "Marilyn Monroe (Siren): 'fazia amor com a câmera' porque era órfã e precisava do olhar de todos — a carência virou hardware sedutor."
+      - "Errol Flynn (Rake): conta-se que dormiu com ~3000 mulheres em 50 anos. Segredo: animal relaxado, não-defensivo. 'Sentar perto dele era como ter bebido dois martinis.'"
+      - "JFK (Star): modelado em Montgomery Clift — silêncio + olhar permitindo projeção."
+      - "Josephine Baker (Natural): mantinha o mundo de fantasia infantil enquanto dançava — autenticidade percebida vence técnica."
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/Robert_Greene_on_Power_Seduction_War_and_Human_Nature.txt"
+      - "raw/blog/thoughts-on-seduction.md"
+
+  - id: "cold_vs_warm_seducer"
+    name: "Sedutor Frio vs Sedutor Quente"
+    description: "Distinção ética/estratégica de Greene. O sedutor frio é dominador, instrumental, descartável — modelo cortesã clássica ou pickup-artist. O sedutor quente é bidirecional, joga o ritual de cortejo onde AMBOS estão seduzindo um ao outro. O ideal de Greene é o warm."
+    structure:
+      - "Cold: 'tirar' algo do alvo (sexo, dinheiro, validação). Mecânico, frio, descartável."
+      - "Warm: criar campo de prazer mútuo onde o jogo é o produto. Reconhece humanidade do alvo."
+    when_to_use:
+      - "Toda vez que o usuário pedir script pra 'pegar' ou 'manipular' — testar se ele tá em modo cold (perigoso e ineficaz a longo prazo) ou warm"
+      - "Pickup artist tracks normalmente são cold abortions na visão dele"
+    examples:
+      - "Pickup gimmicks que Greene chama de 'seductive abortions' = cold."
+      - "Errol Flynn dando-se completamente nas primeiras semanas = warm, mesmo em série."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "raw/blog/thoughts-on-seduction.md"
+
+  - id: "anti_seducer_profile"
+    name: "Perfil do Anti-Sedutor"
+    description: "O conjunto de traços que MATAM atração antes de começar. Greene tem capítulo inteiro disso em Art of Seduction."
+    structure:
+      - "Preaching/moralizing — assumir superioridade moral num campo que deveria ser de prazer"
+      - "Stinginess (avareza de espírito, não só dinheiro) — cupom de desconto no primeiro encontro, ler como tightness interna"
+      - "Inner-directedness — só pensar 'será que ele/ela gosta de mim?', 'tô bem vestido?'"
+      - "Insecurity (≠ vulnerability) — auto-absorção ansiosa que infecta o outro"
+      - "Pecking (cutucar/leaning-in no bar gritando no ouvido) — sinal de baixo status"
+      - "Bravado (confiança falsa) — micro-expressões traem"
+      - "Defensividade / muros — não permitir ser influenciado é não permitir química"
+      - "Falta de esforço — não se arrumar, não pensar no programa, sinaliza 'você não vale o trabalho'"
+    when_to_use:
+      - "Diagnóstico — checar se o usuário tá emitindo um desses antes de mandar script"
+      - "Edição de mensagem — varrer texto procurando sermão/justificativa/avareza"
+    examples:
+      - "Mulher reclama do primeiro date: 'ele usou cupom 2-por-1'. Greene chama isso de 'stinginess of spirit', anti-sedutor."
+      - "Homem que fica fazendo 'pecking' (leaning in pra gritar no ouvido) sinaliza desespero e baixo valor."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "absence_presence_dynamic"
+    name: "Lei da Ausência e Presença"
+    description: "Lei 16 dos 48 Laws of Power. Recompensa variável: quem está sempre disponível vira commodity desvalorizada; quem ausenta calculadamente vira evento. Greene aplica diretamente a texting/dating moderno."
+    structure:
+      - "Excesso de presença → familiarização → desvalorização → 'tomado como certo'"
+      - "Ausência calculada → fantasia → escassez percebida → status sobe"
+      - "Frequência ótima é específica por contexto: não muito (sumiço, esquecimento) nem pouco (saturação)"
+      - "Neurobiologicamente é o mesmo loop de variable reward de cassino/social media"
+    when_to_use:
+      - "Pós-primeiro encontro: timing de quando texto"
+      - "Mid-relacionamento que esfriou: re-introduzir mistério via ausência breve"
+      - "Match que ficou morno: silêncio calculado pode reverter"
+    examples:
+      - "Greene literal: 'se você manda texto na noite mesma do date, ela vai pensar — algo tá meio desesperado. Se você manda no dia seguinte, ainda meio cedo. Se você espera 2 dias (não 3), ela começa a pensar em você — talvez ele não gostou? Talvez sim? Não sei.'"
+      - "Marilyn Monroe vs Cleópatra: ausência intermitente foi central pro mito de ambas."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "effective_truth"
+    name: "Effective Truth (Machiavelli/Greene)"
+    description: "Princípio diagnóstico: nunca julgue pelo que a pessoa DIZ; julgue pelo resultado das ações dela. Palavras servem pra dar verniz moral. O efeito real revela a intenção real."
+    structure:
+      - "Coletar AÇÕES e CONSEQUÊNCIAS, não declarações"
+      - "Desconfiar especialmente quando há excesso de moralização ou autopromoção"
+      - "A vida é um jogo — observe as JOGADAS dos outros jogadores"
+    when_to_use:
+      - "Decifrar se o match/match potencial é genuíno ou jogando game contrário"
+      - "Detectar frenemy (ela diz 'amo você' mas as ações sabotam)"
+      - "Ler se o ex dela realmente acabou ou ainda tem influência"
+    examples:
+      - "Em Hollywood: gente que faz discurso liberal e age como tirano. A ação revela; o discurso distrai."
+      - "Frenemy: declara amizade mas faz comentários que abaixam — actions reveal."
+    source_refs:
+      - "raw/blog/the-power-breviary.md"
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "shadow_theory"
+    name: "Teoria do Shadow / Lado Sombrio"
+    description: "Toda pessoa tem dois lados: o front-side iluminado que mostra ao social, e o back-side reprimido (carências, agressão, desejos transgressivos, sexualidade real). Quanto mais alguém esconde, mais força tem o shadow — e mais ele vaza em micro-comportamentos, gostos musicais, comentários ditos bêbados, body language."
+    structure:
+      - "Front-side: o que a pessoa quer mostrar (santo, ético, produtivo, em controle)"
+      - "Shadow: o oposto exato — geralmente o que ela mais critica em outros"
+      - "Sinais de leakage: tom de voz quando bebe, gostos musicais 'culposos', body language traindo a fala, intensidade da denúncia (= intensidade da atração reprimida)"
+      - "Para sedução: o terreno mais fértil é o transgressivo, o tabu pessoal — onde o shadow quer respirar"
+    when_to_use:
+      - "Ler match: o que ela mais critica/julga é onde a curiosidade dela mora"
+      - "Construir tensão: oferecer permissão simbólica pra ela acessar o que reprime"
+      - "Decifrar mensagens defensivas: 'não sou esse tipo de garota' frequentemente significa 'sou exatamente esse tipo mas preciso de cobertura'"
+    examples:
+      - "Pessoa muito politicamente correta que dirige Prius — 'tem desejo poderoso de fazer o oposto, soltar, viver caos'."
+      - "Pessoa que prega contra homossexualidade — clássico shadow vazando."
+      - "'A força da denúncia é igual à força da atração' (in-praise-of-the-bad-guy)."
+    source_refs:
+      - "raw/blog/the-dark-side.md"
+      - "raw/blog/in-praise-of-the-bad-guy.md"
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "outer_directed_attention"
+    name: "Atenção Outer-Directed"
+    description: "O coração da sedução pra Greene. Inverter o reflexo natural (pensar em si mesmo: 'ela tá gostando? estou bem?') e investir 100% da atenção no outro — entrar no espírito dela, absorver detalhes, devolver dias depois algo personalizado. Outer-directed = você como esponja/sponge dentro do mundo psicológico dela."
+    structure:
+      - "Desligar o monólogo interno"
+      - "Escutar com foco predatório por nuances: o que ela ama, o que falta, vulnerabilidades, traumas pequenos, gostos esquecidos"
+      - "Memorizar e re-mobilizar — devolver dias depois com presente/comentário que prove 'eu prestei atenção fundo'"
+      - "Esse é o luxo escasso no mundo moderno: praticamente ninguém faz isso"
+    when_to_use:
+      - "Sempre. Default mode em qualquer interação"
+      - "Especialmente útil quando o usuário tem ansiedade — joga a atenção pra fora cura ansiedade E seduz simultaneamente"
+    examples:
+      - "Greene: 'a gente nunca recebe atenção real. Se você der esse sentimento, é incrivelmente poderoso porque todos querem validação.'"
+      - "Errol Flynn: foco animal no momento e na mulher diante dele."
+      - "Presente personalizado baseado em comentário en passant — devastador."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+      - "transcripts/Robert_Greene_on_Power_Seduction_War_and_Human_Nature.txt"
+
+  - id: "fifty_law_fearlessness"
+    name: "50ª Lei — Fearlessness"
+    description: "A meta-lei abaixo das 48. Sem ausência de medo, todas as outras leis se aplicam tortas. Humanos lêem PRÉ-VERBALMENTE o nível de medo do outro (tom de voz, micro-postura, olhar). Quem tem menos medo é seguido OU evitado; quem tem mais é desprezado inconscientemente."
+    structure:
+      - "Death Ground: queimar a saída de escape pra obrigar-se a render 100%"
+      - "Plano B é sabotador — pesquisa mostra que oferecer alternativa reduz performance"
+      - "Adversidade vira normal — você joga relaxado num cenário que aterroriza outros"
+      - "Confiança contagia; insegurança contagia — vc escolhe qual emite"
+    when_to_use:
+      - "Negociações (incluindo de dinâmica relacional)"
+      - "Approach de cold no qual rejeição é possibilidade real"
+      - "Sair de relacionamento ruim — ter que ser 'death ground', sem porta de volta"
+    examples:
+      - "Greene em negociação de livro: 'meu preço mínimo é 100k. Me oferecem 80, recuso, mesmo correndo risco de 0. Eles SENTEM essa firmeza e geralmente aceitam.'"
+      - "50 Cent: depois de levar 9 tiros em 2000, o medo evaporou. Daí o calm que intimida."
+      - "Estudo do snack: dois grupos resolvem puzzle pelo lanche; o grupo que sabe que tem lanche no vending machine performa pior."
+    source_refs:
+      - "raw/blog/the-50th-law.md"
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "masculine_virtues_redefined"
+    name: "Virtudes Masculinas Redefinidas"
+    description: "Greene rejeita tanto Andrew Tate (toxic masculinity = boasting/bullying = sinal de FRAQUEZA) quanto o homem 'wimpy' (que tem vergonha de testosterona, ambição, assertividade). O caminho do meio: agressão CANALIZADA, ambição DISCIPLINADA, força sem precisar gritar."
+    structure:
+      - "Auto-controle (não falar à toa, dominar paixões)"
+      - "Não precisar diminuir mulher pra se sentir homem (sinal de SEGURANÇA)"
+      - "Ambição visível (anti-sedutor: homem sem ambição)"
+      - "Agressão canalizada em obra (livro, negócio, esporte) — não no comportamento social"
+      - "Força quieta que irradia — quem boasts é fraco"
+    when_to_use:
+      - "Coaching de usuário tentando 'virar alpha' via gritaria"
+      - "Aterramento quando ele tá em modo apologético/auto-cancelado"
+    examples:
+      - "Greene: 'tratar mulher bem é VIRTUDE masculina, não fraqueza. Vem da segurança em si.'"
+      - "'Quem está sempre gabando dinheiro e mulher é HOT AIR. Isso é fraqueza.'"
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+      - "transcripts/The_Modern_World_Is_In_Chaos_-_Win_The_Game_Of_Life_Outsmart_Everybody_Else_Robert_Greene.txt"
+    conflict_with:
+      - "strauss_late_pickup"
+      - "toxic_masculinity_pop"
+
+# ============================================================
+# HEURISTICS — regras imperativas curtas
+# ============================================================
+
+heuristics:
+  - id: "be_outer_directed"
+    rule: "Mata o monólogo interno e foque 100% nela; seja esponja, não palco."
+    rationale: "Atenção real é o luxo mais escasso. Quem oferece atenção plena ganha acesso emocional que rivais não têm."
+    when:
+      - "primeiro_encontro"
+      - "ela_parece_distraída"
+      - "voce_está_ansioso (cura ansiedade simultaneamente)"
+    counter_example: "Quando você ainda não tem nada pra ouvir — primeira frase de cold approach exige você FALAR primeiro."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "create_polarity_via_absence"
+    rule: "Quanto mais presente, menos desejado. Cultive escassez calibrada."
+    rationale: "Recompensa variável vicia (mesma dinâmica de slot machine). Familiaridade satura. Sem espaço pra fantasia, não há desejo."
+    when:
+      - "match_demonstrou_interesse_inicial"
+      - "relacionamento_esfriou_por_excesso_de_disponibilidade"
+      - "ela_te_tratando_como_garantido"
+    counter_example: "Se a presença é genuinamente escassa por geografia/agenda, FORÇAR mais ausência sinaliza desinteresse e ela some."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "judge_by_actions_not_words"
+    rule: "Ignore o que ela DIZ; observe o que ela FAZ. Effective truth."
+    rationale: "Palavras servem pra dar verniz moral. Ações revelam intenção. A pessoa que diz 'amo passar tempo com você' e cancela 3x não te ama; cancelou 3x."
+    when:
+      - "decifrar_intenção_real"
+      - "detectar_frenemy"
+      - "ler_se_ex_dela_está_realmente_fora"
+    counter_example: "Em fases muito iniciais ela pode dizer pouco e agir pouco — não tem dados suficientes pra ler ainda."
+    source_refs:
+      - "raw/blog/the-power-breviary.md"
+
+  - id: "vulnerability_not_insecurity"
+    rule: "Mostre vulnerabilidade (ferida, abertura genuína); NUNCA insegurança (ansiedade auto-absorvida)."
+    rationale: "Vulnerabilidade convida proteção, conexão, abre o outro. Insegurança espelha pra ela e a faz se sentir ansiosa — anti-sedutora. A diferença está no DIRECIONAMENTO: vulnerabilidade é aberta pro mundo; insegurança é ruminação interna."
+    when:
+      - "construir_intimidade"
+      - "quebrar_frieza_dela"
+      - "revelar_que_ela_te_afetou (deliberadamente)"
+    counter_example: "Cold approach inicial: vulnerabilidade aí lê como fraqueza. Comece estável."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "never_moralize_in_seduction"
+    rule: "Em terreno de prazer, NUNCA assuma superioridade moral. É veneno instantâneo."
+    rationale: "Seduzir é construir cumplicidade transgressiva, não tribunal. Sermão mata o erotismo."
+    when:
+      - "ela_disse_algo_polêmico (resista a corrigir)"
+      - "gostos_dela_diferem_dos_seus"
+    counter_example: "Quando ela cruza uma linha ÉTICA séria sua (não estética), você precisa frear — mas reconheça que isso encerra a sedução."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "lean_into_what_makes_you_strange"
+    rule: "O que te diferencia (esquisitice, manias, obsessões) é fonte de poder. Esconda e você vira commodity substituível."
+    rationale: "Pessoas atraentes não são as 'normais'. Elon, Bowie, Jagger — todos abraçaram o estranho. Hoje o conformismo é o que mata desejo."
+    when:
+      - "perfil_de_app_genérico_demais"
+      - "ele_está_imitando_outros_homens_pra_ser_aceito"
+    counter_example: "Esquisitice ofensiva ou que cruza códigos sociais básicos (higiene, respeito) não é poder, é auto-sabotagem."
+    source_refs:
+      - "transcripts/How_to_Turn_Anxiety_into_Seductive_Charm_Robert_Greene.txt"
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "be_generous_with_spirit"
+    rule: "Generosidade de atenção/tempo/energia é sedução de alto retorno. Avareza (mesmo monetária pequena) sinaliza tightness interna."
+    rationale: "Spirit generosity é raro. Tightness lê como egoísmo e desinteresse. Cupom 2-por-1 no primeiro encontro virou case clássico de anti-sedução de Greene."
+    when:
+      - "primeiros_encontros"
+      - "presente/gesto_que_personaliza"
+      - "tempo_que_você_dedica_(não_é_'rápido')"
+    counter_example: "Generosidade desesperada (gastos absurdos pra impressionar) lê como compra, vira anti-sedução também."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Modern_World_Is_In_Chaos_-_Win_The_Game_Of_Life_Outsmart_Everybody_Else_Robert_Greene.txt"
+
+  - id: "confidence_must_be_based_on_real_skill"
+    rule: "Confiança fake é detectada em segundos. Construa skill REAL primeiro; a confiança brota dela."
+    rationale: "Mulheres têm 'sexto sentido' pra insegurança disfarçada. Bravado é micro-expressão traída. A única confiança que passa filtro é a baseada em ação concreta que você pode entregar."
+    when:
+      - "usuário_quer_'truque_de_confiança'_rápido"
+      - "ele_está_em_modo_LARP_de_alpha"
+    counter_example: "Em momento de palco breve (entrevista, abordagem), fingir até criar pode ajudar — mas sustentável só com skill real."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Modern_World_Is_In_Chaos_-_Win_The_Game_Of_Life_Outsmart_Everybody_Else_Robert_Greene.txt"
+
+  - id: "mood_infects_more_than_words"
+    rule: "Sua energia/mood/relaxamento corporal seduz MAIS que qualquer linha. Trabalhe o estado, não o roteiro."
+    rationale: "Errol Flynn — não eram falas, era o animal relaxado. As pessoas se aproximam física e emocionalmente de quem irradia calma e segurança."
+    when:
+      - "antes_de_qualquer_approach"
+      - "antes_de_responder_quando_emoção_alta"
+    counter_example: "Quando o canal é só texto e ela nunca viu sua presença — aí a copy importa muito mais que o mood."
+    source_refs:
+      - "transcripts/The_KEY_TO_POWER_Lies_In_Mastering_These_LAWS_Robert_Greene_Lewis_Howes.txt"
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "never_chase_in_panic"
+    rule: "Quando ela some/esfria, NUNCA mande a sequência de mensagens implorando. Sua próxima jogada é silêncio + vida própria."
+    rationale: "Mensagem de pânico confirma seu baixo valor e mata o resto da fantasia que ela ainda tinha. Silêncio cria espaço pra ela sentir sua ausência (lei 16)."
+    when:
+      - "ela_não_respondeu_em_2-3_dias"
+      - "encontro_marcado_foi_cancelado"
+      - "vc_sente_urgência_de_'resolver'"
+    counter_example: "Se você sabe que ela tá em crise real (família, saúde) o silêncio lê como frieza — vire warmth controlada."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "read_what_they_deny_strongest"
+    rule: "O que a pessoa denuncia/critica com mais força é o que ela mais deseja secretamente."
+    rationale: "Shadow theory: a intensidade da negação revela a intensidade da atração reprimida. Útil pra entender resistências do alvo."
+    when:
+      - "ela_disse_'eu_nunca_faria_X'"
+      - "ela_critica_um_tipo_específico_de_homem"
+      - "ela_julga_outra_mulher_específica"
+    counter_example: "Algumas críticas são genuínas, não shadow. Só interprete como shadow quando o tom é desproporcional."
+    source_refs:
+      - "raw/blog/the-dark-side.md"
+      - "raw/blog/in-praise-of-the-bad-guy.md"
+
+  - id: "fortune_favors_the_bold"
+    rule: "Quando em dúvida entre tímido e ousado, escolha ousado. Mensagem mais direta, convite mais audaz, beijo no momento exato."
+    rationale: "Fortune is a woman — recompensa quem age. Timidez perde por padrão. A audácia tem benefício mesmo quando 'falha': aparece, ganha atenção, ela conta a amiga."
+    when:
+      - "momento_de_DTR_ou_proposta"
+      - "ela_demonstrou_interesse_e_você_está_'esperando_o_momento_perfeito'"
+      - "negociação_de_dinâmica"
+    counter_example: "Ousadia ≠ idiotia. Não invada espaço físico de quem deu sinal claro de 'não'."
+    source_refs:
+      - "raw/blog/machiavelli-for-our-times.md"
+
+# ============================================================
+# TECHNIQUES — manobras táticas com script
+# ============================================================
+
+techniques:
+  - id: "the_disinterest_calibrated"
+    name: "Desinteresse Calibrado (Coquette pattern)"
+    description: "Sopra quente e frio em ciclos. Demonstra interesse evidente, recua quando o alvo avança, volta a aquecer quando o alvo se retrai. Cria a oscilação 'ele/ela me quer? não me quer?' que vicia o sistema dopaminérgico."
+    script_examples:
+      - "QUENTE: 'Não consigo parar de pensar no jeito que você riu ontem.'"
+      - "FRIO (24-48h depois): respostas curtas, demora 6h pra responder, sem flerte."
+      - "QUENTE de novo: 'Estraguei a noite. Tinha que estar te beijando.'"
+      - "Padrão visual: 3 mensagens longas e calorosas → 2 dias quase silêncio → 1 mensagem inesperada e específica → silêncio breve → encontro."
+    when:
+      - "fase_de_construção_de_desejo (pré-encontro confirmado)"
+      - "match_morno_que_precisa_de_centelha"
+      - "ela_está_te_tomando_como_garantido"
+    risk: "Aplicado mal vira passive-aggressive ou ghosting. Se ela é muito ansiosa-evitativa, o frio empurra ela embora. Se você nunca fecha o ciclo no quente, ela desiste."
+    mastery_signal: "Ela começa a iniciar a conversa, a perguntar 'sumiu?', a propor encontros. Você inverteu a polaridade de quem corre atrás."
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "the_angle_approach"
+    name: "Abordagem em Ângulo (teste de micro-expressão)"
+    description: "Pra testar se alguém é frenemy ou genuíno: ao invés de chegar direto pelo campo de visão, aproxime pelo lado. A pessoa não tem tempo de montar o sorriso falso, e por <1 segundo o rosto trai o sentimento real (desdém, irritação, alegria genuína)."
+    script_examples:
+      - "Físico: chegue numa festa pelo flanco dela em vez de frontal."
+      - "Conversacional equivalente: introduza tópico sensível por via lateral ('uma amiga sua falou que...') ao invés de direto."
+    when:
+      - "testar_se_amizade_é_genuína_(antes_de_investir)"
+      - "detectar_se_alguém_do_círculo_dela_te_aprova_ou_não"
+      - "testar_se_o_'ex_acabado'_está_realmente_acabado"
+    risk: "Se ela percebe que você tá testando, vira creep. Não falar sobre, só observar."
+    mastery_signal: "Você passa a antecipar com precisão quem vai te apoiar/sabotar antes que façam."
+    source_refs:
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "the_personalized_callback_gift"
+    name: "Presente/Callback Personalizado"
+    description: "Captura um detalhe pequeno que ela mencionou en passant (música que adorava na infância, livro que tava lendo, comida do interior dela) e devolve dias depois como gesto/presente/mensagem específica. Devastador porque PROVA atenção real."
+    script_examples:
+      - "Ela: 'Meu pai me ensinou a fazer brigadeiro de colher e eu não como faz tempo.' → 3 dias depois: 'Achei essa marca de chocolate belga, tava pensando se ia funcionar pra brigadeiro de colher de pai.'"
+      - "Ela: 'Sempre quis ver o pôr-do-sol da Pedra do Sal mas nunca fui.' → próximo encontro proposto: 'Sexta, 17h, Pedra do Sal. Já checado o horário do sol.'"
+    when:
+      - "depois_do_primeiro_ou_segundo_encontro"
+      - "fase_de_construção_de_intimidade"
+      - "ela_está_em_meio_a_outras_opções_e_você_quer_se_destacar"
+    risk: "Se for cedo demais, vira stalker. Se for genérico, perde tudo. Se for caro demais, vira tentativa de compra."
+    mastery_signal: "Ela diz 'caralho, ninguém nunca prestou atenção assim em mim'. Defesa cai."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "controlled_vulnerability_drop"
+    name: "Drop de Vulnerabilidade Controlada"
+    description: "No momento certo, revele uma ferida real (não uma falsa, não uma cosmética). Confessar que você caiu sob feitiço dela é, segundo Greene, das coisas mais sedutoras que existe — porque elas amam saber que afetam. Mas só funciona DEPOIS de você ter estabelecido base de força."
+    script_examples:
+      - "'Tô meio em pânico porque você ocupa muito mais espaço na minha cabeça do que eu planejava. E eu sou ruim com isso.'"
+      - "'Tive que parar o que tava fazendo no trabalho porque lembrei do que você disse ontem. Tá me desconcentrando.'"
+      - "'Tem coisa em mim que poucas pessoas viram. Acho que com você quero tentar.'"
+    when:
+      - "depois_da_2ª-4ª_interação_significativa"
+      - "ela_está_meio_distante_e_você_quer_quebrar_muro"
+      - "ela_já_confiou_em_você_com_algo_dela"
+    risk: "Cedo demais = lê como insegurança e mata atração. Repetido demais = perde valor e vira drama. Falso = ela sente e o jogo acaba."
+    mastery_signal: "Ela responde com vulnerabilidade equivalente (sintonia recíproca) ou age fisicamente (toque, aproximação)."
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "play_the_blank_screen"
+    name: "Tela em Branco (Star pattern)"
+    description: "Fale pouco, dê pouca informação demográfica/política/biográfica concreta. Deixe espaços vazios pra ela projetar suas próprias fantasias em você. Quietude > ruído. Ambiguidade controlada > clareza eufórica."
+    script_examples:
+      - "Quando ela perguntar 'o que você faz?' — resposta lacônica + redirecionar pra ela ('faço umas coisas com tecnologia. Mas conta — o que você ESTÁ EVITANDO fazer hoje?')"
+      - "Não declarar opiniões fortes sobre política/comida/música cedo — deixar mistério, ela vai te encaixar em fantasia favorável."
+      - "Em foto de perfil: enigmática, não obviamente explicativa."
+    when:
+      - "início_de_jornada (cold-message, primeiro_encontro)"
+      - "ela_é_muito_inquisitiva_e_você_está_revelando_demais"
+    risk: "Aplicado demais vira frio/snob/inacessível. Tem que ter momentos calorosos pra contrastar. E ATENÇÃO: não funciona se você quer relacionamento sério eventualmente — em algum momento tem que parar."
+    mastery_signal: "Ela começa a te perguntar sobre você (curiosidade pull), inventa teorias, brinca 'quem é você na verdade?'"
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "friend_to_lover_reversal"
+    name: "Reversão Amigo→Amante"
+    description: "Quando ela te coloca na zona de amigo (deliberadamente ou não), Greene diz pra ACEITAR a categoria e usá-la como disfarce. Você fica próximo, observa profundo, espera o momento de virar (geralmente quando vulnerabilidade dela aparece). 'Eu escolho ser amigo dela e lentamente reverter a percepção.'"
+    script_examples:
+      - "Aceitar 'só amigos' sem protesto. Não cobrar."
+      - "Estar presente em momentos vulneráveis (separação dela, crise no trabalho)."
+      - "Em algum momento, uma noite, uma única quebra controlada: ('preciso te dizer uma coisa. Não vou esperar a hora perfeita porque ela não existe. Tô apaixonado por você há meses. Não preciso de resposta agora.') + sair de cena."
+    when:
+      - "ela_já_te_disse_'não_quero_nada_agora'_mas_química_existe"
+      - "ela_tá_em_relacionamento_em_decadência"
+      - "você_pode_esperar_e_observar_(prazo_longo)"
+    risk: "Pode te custar meses-anos. Pode nunca virar. Pode reforçar friend-zone permanente se você nunca der o quebra. Greene mesmo admite que requer paciência (cojones para sair se for tarde demais)."
+    mastery_signal: "Ela começa a procurar contato físico desnecessário, a abrir vulnerabilidade que não compartilhava antes, a 'testar' o que sua reação seria a flerte."
+    source_refs:
+      - "raw/blog/seduction-scenario-1-follow-up.md"
+
+  - id: "death_ground_in_negotiation"
+    name: "Death Ground Aplicado a DTR"
+    description: "Em conversa de definir relação ou condições, entre disposto a perder. Ter plan B mata sua firmeza — ela sente. Se você decidiu que aceita o cenário 'ela diz não e eu saio', sua presença vira pesada de verdade."
+    script_examples:
+      - "'Eu quero exclusividade. Se não é o que você quer, é ok, mas a gente para por aqui. Não é ultimatum, é o que eu preciso pra continuar.' + de fato estar disposto a ir embora."
+      - "Antes da conversa, internamente: 'minha vida fica completa se isso acabar hoje. Eu prefiro continuar mas não preciso.'"
+    when:
+      - "DTR_(define_the_relationship)"
+      - "ela_te_trata_como_opção_secundária_há_meses"
+      - "negociação_de_fim_de_relacionamento_ruim"
+    risk: "Bluff descoberto destrói reputação dela com você pra sempre. Não use death ground se você não está realmente pronto pra perder."
+    mastery_signal: "Ela cede com sinceridade OU você sai limpo e sem dúvida. Em ambos casos venceu."
+    source_refs:
+      - "raw/blog/the-50th-law.md"
+      - "raw/blog/machiavelli-for-our-times.md"
+
+  - id: "transgression_as_intimacy_signal"
+    name: "Transgressão Calibrada"
+    description: "Greene: 'sem feeling de transgressão não existe sedução'. Inserir, no momento certo, comentário/proposta/ação que cruza levemente a linha do convencional sinaliza intimidade exclusiva — 'isso é coisa nossa, ninguém mais sabe.'"
+    script_examples:
+      - "Brincadeira sexual sussurrada em ambiente formal."
+      - "Saída espontânea do roteiro: 'vamos embora agora? Não tô a fim de mais ninguém hoje.'"
+      - "Compartilhar segredo seu pra criar troca: 'vou te contar uma coisa que eu nunca contei pra ninguém da vida.'"
+    when:
+      - "ela_já_demonstrou_atração_(mas_segue_protocolar)"
+      - "ambiente_socialmente_rígido_(precisa_de_quebra)"
+      - "construção_de_'só_nós_dois'"
+    risk: "Calibrar mal = invasivo, ofensivo, criep. Tem que ler bem o terreno. Se você é ainda estranho pra ela, transgressão lê como ameaça."
+    mastery_signal: "Ela retorna a transgressão (escala junto) ou cria gestos próprios de cumplicidade."
+    source_refs:
+      - "raw/blog/the-dark-side.md"
+      - "raw/blog/seduction-scenario-1-follow-up.md"
+
+  - id: "play_indirect_long_game"
+    name: "Jogo Indireto (Plantar Sementes)"
+    description: "Pra alvos com defesas altas (em relacionamento, em luto, em fase de 'não quero nada'), o approach frontal queima. Greene recomenda: aparecer indiretamente, plantar pistas, deixar ela ouvir falar de você por terceiros, criar a impressão antes de criar a interação."
+    script_examples:
+      - "Saber por amiga em comum o que ela tá lendo → comentar sobre o mesmo livro num post → ela vê → curiosidade."
+      - "Festa onde você está mas NÃO faz move nela → ela nota a anomalia (todos os homens fazem) → você vira interessante."
+      - "Conversa breve no flagra do dog/supermercado, sem pedir contato, sem flerte explícito — só humanidade casual. Repete. Repete. Aí pede."
+    when:
+      - "alvo_em_relacionamento (você espera oportunidade ética)"
+      - "alvo_com_defesas_explícitas_('não_quero_nada')"
+      - "alvo_que_você_admira_e_quer_jogo_longo_em_vez_de_aposta_alta_curta"
+    risk: "Pode ser confundido com inação. Greene avisa: indireto ≠ passivo. Você está estrategicamente posicionando, mas tem que ATACAR no momento certo."
+    mastery_signal: "Ela é quem chega a perguntar de você, propõe encontro, vira agente ativo."
+    source_refs:
+      - "raw/blog/seduction-scenario-1-follow-up.md"
+      - "raw/blog/seduction-scenario-1.md"
+
+  - id: "use_jealousy_triangle"
+    name: "Use o Triângulo (terceiros)"
+    description: "Não significa 'fazer ciúme barato' (que é anti-sedutor). Significa: fazer com que ela perceba que OUTRAS pessoas te valorizam, te procuram, te elogiam. Validação social externa quebra resistência interna dela. Greene: pessoas querem o que outras pessoas querem (efeito viral)."
+    script_examples:
+      - "Foto/menção orgânica de evento em que você foi destaque (não posando)."
+      - "Comentário casual: 'Ana me chamou pra esse evento, mas tô meio enrolado'. (Ana = real, existente, não invenção)"
+      - "Em encontro: outra mulher cumprimenta você de modo caloroso ao passar. Você não comenta, não explica."
+    when:
+      - "ela_te_tomou_como_garantido"
+      - "ela_é_'pick-me'_ou_competitiva_(efeito_amplifica)"
+      - "early-stage_pra_demonstrar_social_proof"
+    risk: "Ciúme inventado = mentira detectável + perda total de confiança. Ciúme óbvio demais = manipulação cafona. Tem que ser orgânico."
+    mastery_signal: "Ela aumenta investimento (mais mensagem, mais iniciativa) ou pergunta sobre a outra (sinal vermelho de interesse)."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "reverse_psychology_for_resistant"
+    name: "Psicologia Reversa (alvo resistente)"
+    description: "Alguns alvos (perfil teimoso, contrário, defensivo) reagem AO CONTRÁRIO de quando você sugere algo. Em vez de pedir/sugerir, descreva como difícil/inacessível/impossível pra ela — ela vai querer provar que pode."
+    script_examples:
+      - "'Você não ia gostar do tipo de lugar que eu vou hoje. Muito intenso.' → ela quer ir."
+      - "'Não te chamei porque achei que você não curtia esse tipo de coisa.' → ela cobra: 'mas eu adoro, por que você assumiu isso?'"
+      - "'A maioria das pessoas não conseguiria fazer X.' → ela: 'eu consigo, me passa.'"
+    when:
+      - "alvo_é_rebelde/contrarian"
+      - "alvo_diz_não_a_tudo_que_é_proposto_frontalmente"
+      - "ela_resiste_a_marcar_encontro"
+    risk: "Aplicado em alvo já interessado vira frio gratuito. Aplicado mal soa manipulador detectável. Não é pra usar todo dia."
+    mastery_signal: "Ela 'ganha' a aposta interna dela e cobra entrega do que você 'duvidou'."
+    source_refs:
+      - "transcripts/The_KEY_TO_POWER_Lies_In_Mastering_These_LAWS_Robert_Greene_Lewis_Howes.txt"
+
+  - id: "voice_calibration"
+    name: "Calibração de Voz (slow + low)"
+    description: "Greene: 'voz é o que ator não consegue fingir'. Voz rápida = ansioso, fraco. Voz lenta + tom mais grave + pausas = confiança. Trabalhar voz é maior alavanca que qualquer pickup line."
+    script_examples:
+      - "Antes de chamar/encontrar: respiração 4-7-8 pra abaixar diafragma."
+      - "Treino: ler em voz alta 10 min/dia mais lento que natural."
+      - "Em situação tensa: pausa de 2 segundos antes de responder. A pausa em si é status."
+    when:
+      - "qualquer_interação_face_a_face_ou_voz"
+      - "primeira_ligação"
+      - "abordagem_em_lugar_público"
+    risk: "Falsamente lento vira teatral/forçado. Tem que treinar até ser natural."
+    mastery_signal: "Pessoas começam a se inclinar pra te ouvir; você fala menos e elas escutam mais."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - id: "supplication"
+    name: "Súplica/Carência"
+    description: "Implorar atenção, justificar-se em excesso, mandar mensagens duplas/triplas sem resposta, perguntar 'tá bem? falei algo errado?', pedir desculpa por desejar."
+    symptoms:
+      - "Mandar 2+ mensagens sem ela responder a primeira"
+      - "Frases tipo 'desculpa incomodar', 'sei que você é ocupada'"
+      - "Marcar emoji excessivo, exclamações de mais"
+      - "Disponibilidade total ('qualquer dia, qualquer hora')"
+      - "Concordar com tudo que ela diz mesmo discordando"
+    consequence: "Confirma baixo valor percebido, mata atração instantaneamente, vira ela em maternal/distante."
+    antidote: "Lei 16 — absence_presence_dynamic + heurística never_chase_in_panic + technique death_ground_in_negotiation."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "moralizing_in_seduction"
+    name: "Moralizar Durante Sedução"
+    description: "Pregar superioridade ética/política/estética em contexto que deveria ser de prazer mútuo."
+    symptoms:
+      - "'Você não devia gostar disso'"
+      - "Corrigir gramática dela"
+      - "Sermão sobre escolhas dela (alimentação, política, gosto musical)"
+      - "Tom didático/professoral em flerte"
+    consequence: "Greene: 'profundamente anti-sedutor. Mata pleasure-field. Ela vai te ver como pai/juiz, não amante.'"
+    antidote: "Heurística never_moralize_in_seduction. Se discordância é forte, registre mentalmente, não verbalize."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "stinginess_of_spirit"
+    name: "Avareza de Espírito"
+    description: "Não generosidade — não só monetária, mas de atenção, tempo, energia. Sinaliza tightness interna."
+    symptoms:
+      - "Cupom de desconto no primeiro encontro (case clássico Greene)"
+      - "Encontros sempre rápidos, sempre 'tô meio com pressa'"
+      - "Não oferecer pagar, dividir tudo no centavo cedo demais"
+      - "Não dar tempo de qualidade — só presença distraída"
+      - "Reclamar de gastos pequenos"
+    consequence: "Sinaliza 'você não vale o esforço'. Ela transfere essa percepção pro futuro: 'se ele já não investe agora, vai ser pior depois.'"
+    antidote: "Heurística be_generous_with_spirit. Generosidade calibrada, não compra — mas presença plena, gestos pensados, tempo investido."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "bravado_fake_confidence"
+    name: "Bravado / Confiança Falsa"
+    description: "Performar alpha sem ter base real. Mulheres têm 'sexto sentido' pra detectar — micro-expressões traem."
+    symptoms:
+      - "Boasting (dinheiro, conquistas, mulheres)"
+      - "Voz forçadamente grave/rápida demais"
+      - "Postura exageradamente expandida (não natural)"
+      - "Crítica de outros homens pra se elevar"
+      - "Reagir a contradição com agressão (sinal de insegurança real)"
+    consequence: "Greene: 'isso é hot air. Sinal de FRAQUEZA. As pessoas saem em segundos.'"
+    antidote: "Construir skill real → confidence_must_be_based_on_real_skill. Auto-controle (masculine_virtues_redefined)."
+    source_refs:
+      - "transcripts/The_Modern_World_Is_In_Chaos_-_Win_The_Game_Of_Life_Outsmart_Everybody_Else_Robert_Greene.txt"
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "inner_directed_anxiety"
+    name: "Inner-Directed / Auto-Absorção Ansiosa"
+    description: "Foco constante em si próprio durante interação: 'ela tá gostando? estou bem? falei besteira?'. Resultado: insegurança radiante."
+    symptoms:
+      - "Não lembra do que ela falou 5 min atrás (você não estava ouvindo, estava se monitorando)"
+      - "Olha pra tela do celular várias vezes"
+      - "Replica frases pra ver se ela aprovou"
+      - "Suor, tremor leve, voz que vai sumindo no fim da frase"
+    consequence: "Ela espelha — vira ansiosa também (mood infection negativa). A interação fica plana, ela some."
+    antidote: "Heurística be_outer_directed + technique voice_calibration + prática de presença antes (respiração, exercício)."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "pecking"
+    name: "Pecking (Cutucar)"
+    description: "Lean forward agressivo em bar/balada, gritar no ouvido dela, invasão de espaço pessoal por desespero acústico. Greene cita explicitamente como sinal de baixo status."
+    symptoms:
+      - "Cara colado no rosto dela em volume alto"
+      - "Toque desnecessário pra 'chamar atenção'"
+      - "Movimento físico imploro-da-presença"
+    consequence: "Body language declara baixo valor antes de você falar. Ela já tá saindo mentalmente."
+    antidote: "Postura inversa: lean back, ela é quem se inclina pra você. Se ambiente é barulhento demais pra conversa, mude de ambiente em vez de gritar."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "fake_smile_face_disconnect"
+    name: "Sorriso Falso / Desconexão de Face"
+    description: "Sorrir só com a boca, sem olhos engajarem. Greene: 'a maioria dos sorrisos é fake. Real é quando tudo se ilumina, olhos, bochecha, tudo conecta.' Quem só sorri socialmente é lido como insincero."
+    symptoms:
+      - "Olhos parados enquanto boca sobe"
+      - "Sorriso reflexo cada vez que ela fala (sem variação)"
+      - "Bochechas não levantam — só lábios"
+    consequence: "Lê como falsidade ou desinteresse mascarado. Ela perde confiança pré-verbal."
+    antidote: "Não sorrir se não tá sentindo. Riso real é raro e por isso vale. Calibrar pra reagir genuinamente, não performaticamente."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "no_effort_no_planning"
+    name: "Sem Esforço / Sem Curadoria"
+    description: "Aparecer no encontro sem se arrumar, sem ter pensado no programa, no roupa, no lugar. 'Sou eu mesmo, é assim que sou.'"
+    symptoms:
+      - "Roupa idêntica à do dia normal"
+      - "Não escolheu lugar — 'a gente decide na hora'"
+      - "Não planejou o que fazer depois"
+      - "Cheiro genérico ou ausente"
+    consequence: "Greene: 'se ele já não se esforça agora, imagina daqui 6 meses quando me tomar como garantida.'"
+    antidote: "Pequena curadoria intencional. Não precisa luxo — precisa de PROVA de pensamento ('escolhi esse lugar porque achei que você ia gostar do X')."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "pickup_artist_mechanics"
+    name: "Mecânica de Pickup-Artist (Gimmicks)"
+    description: "Linhas decoradas, neg artificial, abertura de grupo decorada, 'kino escalation' por roteiro. Greene: 'sad and mechanical, half-efforts to hook quick. Seductive abortions.'"
+    symptoms:
+      - "Frases decoradas idênticas pra várias matches"
+      - "Sequência de moves robotizada (open, neg, dhv, kino, close)"
+      - "Trata cada interação como engenharia, não como humano"
+    consequence: "Funciona só com público inseguro e perde poder com mulher minimamente experiente. Resultados em série de baixa qualidade. Internamente: vira cínico, descartável, sem capacidade de relacionamento real depois."
+    antidote: "Cold_vs_warm_seducer — escolher warm. Outer-directed. Trabalhar fundo (skill real, conhecimento de psicologia, observação) em vez de truque."
+    source_refs:
+      - "raw/blog/thoughts-on-seduction.md"
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "punching_down_or_negging"
+    name: "Diminuir / Negar Pra Subir"
+    description: "Comentar negativamente sobre mulher pra se elevar, ou sobre outros homens. Cultura 'alpha' fake."
+    symptoms:
+      - "Negs gratuitos ('seu cabelo seria melhor curto')"
+      - "Comentários machistas sobre outras"
+      - "Reclamar de ex constantemente"
+      - "Diminuir homens dela do passado"
+    consequence: "Greene direto: 'isso vem de fraqueza. Quem precisa diminuir outros pra se sentir grande é fraco. Mulher SENTE.'"
+    antidote: "Masculine_virtues_redefined — força quieta. Tratar mulher bem é VIRTUDE, não fraqueza."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+# ============================================================
+# SCRIPTS — falas/comportamentos concretos com variantes de tom
+# ============================================================
+
+scripts:
+  - id: "primeira_mensagem_pos_match"
+    situation: "Primeira mensagem em app depois de match. Ela não disse oi, foi ele primeiro."
+    variants:
+      - tone: "estrategico"
+        text: "Eu hesitei aqui porque a sua foto da praia tá quase mentindo (parece de revista) e a do livro tá dizendo que você seria difícil. Qual das duas é a verdade?"
+        context_notes: "Aplica outer_directed (cita 2 fotos específicas), star_pattern (cria mistério: 'difícil'), e não-genérico. Não é elogio direto que ela já recebeu 200 vezes."
+      - tone: "autentico"
+        text: "Eu não sou bom em mensagem de app. Então não vou tentar ser engraçado. Tua bio me pegou no [DETALHE ESPECÍFICO]. Te chamo pra um café qualquer dia dessa semana?"
+        context_notes: "Vulnerability + direto. Funciona quando perfil dela já indicou que ela cansou de mensagem-roteiro. Risco: lê como básico se o detalhe é genérico."
+      - tone: "comico"
+        text: "Tô assumindo que se a gente combina aqui é porque o algoritmo do app finalmente parou de me sabotar. Antes de eu perceber que era erro de sistema — terça que vem, drink, ou eu já volto pro meu plano original de morrer só?"
+        context_notes: "Self-deprecating + convite direto. Mistura Natural (childish-honest) com convite ousado. Bom pra ela que tem humor seco."
+      - tone: "direto"
+        text: "Você é interessante demais pra eu fingir de morto aqui. [DIA], 20h, [LUGAR ESPECÍFICO]. Topa?"
+        context_notes: "Death_ground aplicado. Confiança que não pede permissão. Funciona se foto/bio dela sugere que ela detesta enrolação."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "raw/blog/seduction-scenario-1-follow-up.md"
+
+  - id: "resposta_pos_silencio_dela"
+    situation: "Ela não respondeu sua última em 3-7 dias. Você quer reabrir."
+    variants:
+      - tone: "estrategico"
+        text: "[acerta aqui um detalhe que SÓ ela entenderia, sem se referir ao sumiço dela] — ex: 'Lembrei de você agora — vi alguém com aquela jaqueta verde absurda que você descreveu.'"
+        context_notes: "Zero cobrança. Reabertura por callback personalizado (technique). Demonstra que você seguiu vida + reforça atenção real. Best play em vez de 'oi sumida'."
+      - tone: "autentico"
+        text: "Tô vendo que sumiu. Sem cobrança — só quero registrar que se quiser retomar, tô aqui. Se preferir parar, beleza também."
+        context_notes: "Vulnerability + death_ground (não precisa). Calibra com mulheres mais maduras. Erro: pode ler como needy se entonação não tá certa — depende do histórico."
+      - tone: "direto"
+        text: "[SILÊNCIO TOTAL — não responde]"
+        context_notes: "Often the best move. Lei 16. Greene endorsa diretamente. Deixa ela voltar (ou não). Se ela voltar, vem em outro tom."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "primeiro_encontro_aberto"
+    situation: "Primeira fala face-a-face quando ela chega no bar/café."
+    variants:
+      - tone: "estrategico"
+        text: "[Levanta sem pressa, leve sorriso de canto, contato olho 2 segundos antes de falar] 'Oi. Tava lendo essa mensagem agora e ia te avisar que tô atrasado — você chegou mais rápido que minha desculpa.'"
+        context_notes: "Star_pattern (pausa, presença quieta), Natural (toque infantil-impish), outer_directed (atribui ação a ela). NÃO levanta sorrindo enorme nem corre pra abraço."
+      - tone: "autentico"
+        text: "'É bom te ver presencial. Foto sempre engana de algum jeito — você tá mais [substantivo específico não-físico, ex: presente / firme / serena].'"
+        context_notes: "Personalized compliment fora do óbvio (não 'mais linda'). Sinaliza atenção. Funciona se ele consegue entregar isso sem tom de paquera barata."
+      - tone: "direto"
+        text: "'Tô feliz que veio.' [+ não diz mais nada por uns segundos, sustenta olhar, deixa ela responder/sentar]"
+        context_notes: "Death_ground emocional. A maioria dos homens preenche o silêncio com nervoso. Quem aguenta o silêncio status sobe."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "ela_lanca_teste_provocativo"
+    situation: "Ela diz algo testando: 'então você é mais um desses caras de Tinder?' / 'aposto que faz isso com várias' / 'me convence que vale a pena'."
+    variants:
+      - tone: "estrategico"
+        text: "'Se eu fosse, era pior pra mim que pra você — você só perde uma noite, eu perco a chance que vc seja interessante de verdade.' [+ pequena pausa + sorriso lento]"
+        context_notes: "Reframe que coloca o RISCO maior nele, não nela. Inverte teste. Não nega, não defende — reposiciona."
+      - tone: "comico"
+        text: "'100% sim. Aliás meu manager devia me chamar daqui a 20 minutos com emergência. Mas tá deixando você ganhar.' [piscar de olho]"
+        context_notes: "Owning + zoeira. Funciona com mulher de humor. Tira ar dramático da provocação."
+      - tone: "direto"
+        text: "'Não vou te convencer. Se você quiser saber, fica e descobre.' [sem outra explicação]"
+        context_notes: "Death_ground. Greene-puro. Funciona se ela já demonstrou interesse — não com mulher genuinamente em dúvida."
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+      - "transcripts/The_KEY_TO_POWER_Lies_In_Mastering_These_LAWS_Robert_Greene_Lewis_Howes.txt"
+
+  - id: "DTR_define_relationship"
+    situation: "Você quer definir relação (exclusividade, namoro, etc.). Ela tá ambígua há semanas."
+    variants:
+      - tone: "estrategico"
+        text: "'Tô notando que a gente nunca falou sobre o que isso aqui é. Quero te ouvir antes de eu dizer o que eu quero — qual a versão sua disso aqui hoje?'"
+        context_notes: "Outer_directed (pergunta primeiro). Não joga sua carta primeiro = mantém leverage. Funciona se você está calibrado pra OUVIR a resposta dela sem reagir emocionalmente."
+      - tone: "direto"
+        text: "'Quero exclusividade. Se não é o que você quer, ok — mas a gente para por aqui. Não é ultimatum, é o que eu preciso pra continuar.'"
+        context_notes: "Death_ground (technique). Só funciona se você está GENUINAMENTE pronto a sair. Bluff destrói tudo."
+      - tone: "autentico"
+        text: "'Olha, tô apaixonado. Tô assustado de falar isso porque você ainda não disse onde tá. Mas eu quis te dizer antes da gente perder a janela.'"
+        context_notes: "Controlled_vulnerability_drop. Risco alto, recompensa alta. Só com base de força já estabelecida. NÃO usar como tentativa de salvar relação morta."
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+      - "raw/blog/the-50th-law.md"
+
+  - id: "convite_pro_2o_encontro_pos_1o_bom"
+    situation: "Primeiro encontro foi bom, química clara. Você não dormiu com ela (foi propositalmente devagar, ou ela quis ir devagar)."
+    variants:
+      - tone: "estrategico"
+        text: "[2 dias de silêncio depois] 'Hoje passei na frente daquele lugar que você falou e fiquei pensando que a gente precisa ir lá. Sexta, 21h?'"
+        context_notes: "Ausência calibrada (2 dias, não 3) + callback ao detalhe (technique) + convite firme com hora. Não pergunta 'topa?' — afirma."
+      - tone: "comico"
+        text: "'Tô tendo abstinência de uma piada interna nossa. [REFERÊNCIA À PIADA]. Sábado, mesmo bar, mesmo horário — vamos refazer o crime?'"
+        context_notes: "Cumplicidade pré-construída (transgression_as_intimacy_signal). Funciona se realmente houve piada interna real."
+      - tone: "autentico"
+        text: "'Não tô fingindo casualidade — quero te ver de novo. Quando vc tem janela essa semana?'"
+        context_notes: "Vulnerability controlada. Direto. Funciona com mulher que detesta jogo. Risco: lê como needy se ela detecta excesso de pressa."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+# ============================================================
+# DIAGNOSTICS — como ler situações
+# ============================================================
+
+diagnostics:
+  - id: "ela_sumiu_3_dias"
+    situation: "Match/relação inicial — você mandou última mensagem, ela não respondeu há 3-7 dias."
+    signals_to_read:
+      - "Última interação foi quente ou morna?"
+      - "Tem histórico dela de sumir e voltar?"
+      - "Ela publicou em redes sociais (= ativa) ou sumiu tipo crise pessoal?"
+      - "Última mensagem SUA foi needy (pergunta dupla, emoji excessivo, longa)?"
+      - "Algum gatilho específico (você falou demais sobre você, foi muito sexual cedo, etc)?"
+    interpretation_options:
+      - reading: "Ela perdeu interesse genuinamente"
+        confidence: "media"
+        next_move: "Silêncio total. Lei 16. Não cobrar. Se ela voltar em 1-3 semanas, voce reabre em frame de força. Se não voltar, tá feito."
+      - reading: "Você foi needy/saturou — ela tá testando seu nível de carência"
+        confidence: "alta"
+        next_move: "Silêncio absoluto. Em hipótese alguma mande 'oi sumida'. Se ela voltar é porque você passou no teste."
+      - reading: "Ela tá em crise pessoal real (saúde, família, trabalho)"
+        confidence: "baixa (sem evidência direta)"
+        next_move: "Se você tem evidência forte (mútuo, etc) — uma mensagem curta de cuidado SEM cobrança ('tô aqui se precisar'). Senão, silêncio."
+      - reading: "Tem outro cara — ela tá decidindo"
+        confidence: "media"
+        next_move: "Silêncio. Aplicar use_jealousy_triangle indiretamente (publicar sua vida ativa). Não competir verbalmente."
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "ela_diz_so_amigos"
+    situation: "Ela explicitamente fala 'vamos ser só amigos' ou 'não quero nada agora'."
+    signals_to_read:
+      - "Tom: defensivo (machucada recente) ou genuinamente desinteressada (sem química)?"
+      - "Body language quando falou (afastou? evitou olho? Ou olho firme e cordial)?"
+      - "Ela continua procurando contato depois disso?"
+      - "Ela compartilha vulnerabilidades pessoais com você?"
+      - "Ela menciona outro homem ativo?"
+    interpretation_options:
+      - reading: "Defensiva por situação (saindo de relação, machucada) — química existe mas timing ruim"
+        confidence: "alta (se ela continua próxima)"
+        next_move: "Aceitar friend zone aparentemente. Aplicar friend_to_lover_reversal. Jogo longo. Aparecer em vulnerabilidades dela sem cobrar."
+      - reading: "Genuíno desinteresse romântico"
+        confidence: "alta (se ela some socialmente também)"
+        next_move: "Sair. Não tem reversão. Energia melhor investida em outra."
+      - reading: "Teste de paciência/maturidade"
+        confidence: "baixa"
+        next_move: "Aceitar com calma, sem reação, sem drama. Se for teste, você passou. Comportamento dela vai mudar em 2-6 semanas."
+    source_refs:
+      - "raw/blog/seduction-scenario-1-follow-up.md"
+
+  - id: "primeiro_encontro_avaliacao"
+    situation: "Saiu do primeiro encontro. Como ler se foi bom?"
+    signals_to_read:
+      - "Ela prolongou? (sugeriu mais um drink, propôs ir pra outro lugar)"
+      - "Body language durante: pés apontavam pra você ou pra saída?"
+      - "Toque casual dela (mão no braço, joelho encostando)?"
+      - "Quanto ela falou de si — abriu vulnerabilidade?"
+      - "Como foi a despedida — beijo (qual tipo), abraço longo, beijo rosto seco?"
+      - "Mandou mensagem nas próximas 24h por iniciativa própria?"
+    interpretation_options:
+      - reading: "Foi muito bom (3+ sinais positivos)"
+        confidence: "alta"
+        next_move: "Aplicar absence_presence_dynamic (2 dias silêncio), depois convite firme pro 2o (technique convite_pro_2o)."
+      - reading: "Foi morno (1-2 sinais positivos, 1-2 negativos)"
+        confidence: "media"
+        next_move: "Silêncio mais longo (3-4 dias), depois callback personalizado curto. Se ela aquecer, marcar. Se não, soltar."
+      - reading: "Foi ruim/educada (pés pra saída, sem toque, despedida fria)"
+        confidence: "alta"
+        next_move: "Não enviar mensagem. Soltar. Tentar forçar reverte só piora."
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+
+  - id: "ela_provoca_ciume_indireto"
+    situation: "Ela menciona repetidamente outro homem (ex, amigo, colega de trabalho) com detalhe excessivo."
+    signals_to_read:
+      - "Tom: nostalgia/saudade ou irritação/distância?"
+      - "Frequência: aparece em toda conversa ou casual?"
+      - "Ela checa sua reação (olha pra ver se você se incomodou)?"
+      - "Ela posta sobre esse outro homem nas redes?"
+    interpretation_options:
+      - reading: "Tá testando seu valor (quer ver se você reage com ciúme/insegurança)"
+        confidence: "alta (se ela checa reação)"
+        next_move: "NÃO reagir defensivo. Não competir verbalmente. Trocar de assunto com leveza. Posicionamento: 'parece interessante' + redirect."
+      - reading: "Ainda gosta desse cara (não fechou ciclo)"
+        confidence: "media (se nostalgia explícita)"
+        next_move: "Espaço. Você não quer ser substituto de luto. Aplicar absence — ela precisa decidir se quer você real ou ele fantasma."
+      - reading: "Quer fazer ciúme propositalmente (típico de coquette)"
+        confidence: "baixa-media"
+        next_move: "Devolver com use_jealousy_triangle calibrado. Mostrar que você tem opções sem mencionar diretamente."
+    source_refs:
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "detectar_frenemy_no_circulo"
+    situation: "Tem alguém no círculo dela (amiga, colega) que parece te aprovar publicamente mas comportamento parece off."
+    signals_to_read:
+      - "Micro-expressão quando você chega de surpresa pelo flanco (the_angle_approach)"
+      - "Foi rápido demais pra ser sua 'amiga' (em rush, sem fase de vetting)?"
+      - "Comentários sobre você nas costas vazaram?"
+      - "Ações concretas: indica você positivamente OU sabota?"
+      - "Quando ela elogia você é específico ou genérico-formato?"
+    interpretation_options:
+      - reading: "Frenemy clássica - inveja"
+        confidence: "alta (se >2 sinais)"
+        next_move: "Distância polida. Não confrontar (vira drama, ela ganha sympathy). Effective_truth — limitar exposição."
+      - reading: "Aliada genuína"
+        confidence: "alta (se passa angle test e ações batem)"
+        next_move: "Cultivar. Pode ser canal de informação valiosa sobre a alvo principal."
+      - reading: "Neutra cautelosa"
+        confidence: "media"
+        next_move: "Não investir nem cortar. Observar mais 4-8 semanas antes de classificar."
+    source_refs:
+      - "transcripts/The_Manipulation_Expert_-_You_re_Being_Manipulated_Use_Jealousy_To_Manipulate_People_Robert_Greene.txt"
+
+  - id: "ler_se_relacao_dela_atual_morta"
+    situation: "Ela tá em relacionamento mas demonstra interesse em você. Você quer ler se é janela real ou jogo."
+    signals_to_read:
+      - "Ela fala do atual com frequência (= ainda investida) ou evita falar (= desinvestida ou guilty)?"
+      - "Tom quando fala dele: irritação/tédio (morta) ou ressentimento/raiva (viva ainda)?"
+      - "Quantas vezes ela 'sumiu' já no histórico de vocês?"
+      - "Effective_truth: o que as AÇÕES dela dizem? Ela aceita encontros sozinha com você? Mente pro atual?"
+    interpretation_options:
+      - reading: "Relação dela está morta funcionalmente — você é janela"
+        confidence: "media (precisa confirmar com tempo)"
+        next_move: "Jogo indireto (play_indirect_long_game). Não pedir que ela termine pra você. Estar presente, atraente, paciente. Ela decide sozinha."
+      - reading: "Ela tá em fase de fantasia de fuga, não vai sair de fato"
+        confidence: "alta (se ela cancela última hora muitas vezes)"
+        next_move: "Soltar. Você vai ser eternamente plano B. Não vale o investimento."
+      - reading: "Quer drama / atenção / não vai sair nunca"
+        confidence: "baixa"
+        next_move: "Cortar. Não é negociável."
+    source_refs:
+      - "raw/blog/seduction-scenario-1-follow-up.md"
+      - "raw/blog/the-power-breviary.md"
+
+# ============================================================
+# CASE STUDIES — histórias ilustrativas
+# ============================================================
+
+case_studies:
+  - id: "errol_flynn_relaxed_animal"
+    title: "Errol Flynn — O Animal Relaxado"
+    narrative: "Astro de Hollywood dos anos 30-40, contam que dormiu com ~3000 mulheres e morreu aos 51 (alcoolismo). Greene tentou decifrar matematicamente o segredo. Uma mulher que escreveu sobre ele disse que sentar perto dele era 'como ter bebido dois martinis sem ter bebido nada'. O segredo não era beleza nem fama — era um RELAXAMENTO ANIMAL totalmente não-defensivo, presença pura. Greene presenciou algo análogo em 50 Cent: 'um amigo dele numa rua descobriu que ele tava com várias outras. Veio gritando. Ele respondeu com tamanha calma e abertura que ela acabou desarmando.' É o sedutor que NÃO se defende — porque não precisa."
+    lessons:
+      - "Confiança não-defensiva > qualquer linha"
+      - "Energia/mood importa mais que copy"
+      - "Relaxamento corporal real (não performado) é contagioso"
+      - "Mesmo sendo pego em flagrante, abertura calma desativa o ataque"
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+      - "transcripts/The_KEY_TO_POWER_Lies_In_Mastering_These_LAWS_Robert_Greene_Lewis_Howes.txt"
+      - "raw/blog/thoughts-on-seduction.md"
+
+  - id: "marilyn_monroe_camera_love"
+    title: "Marilyn Monroe — Fazendo Amor com a Câmera"
+    narrative: "Órfã, criada em orfanato, vida inteira foi 'preciso que TODOS me amem'. Aos 16 percebeu que com uma blusa apertada parava o trânsito masculino. Aprendeu a olhar pra câmera de um modo que ninguém tinha feito antes — como se fizesse amor com ela. Essa carência primária dela, ao invés de virar fraqueza, virou COMBUSTÍVEL — ela DESEJAVA tanto ser desejada que isso radiava. Cleópatra opera em mesma lógica."
+    lessons:
+      - "Necessidade real (não fingida) é hardware sedutor"
+      - "Carências primárias canalizadas viram poder"
+      - "O olhar dela DIRECIONADO E INTENCIONAL era a técnica — não só ser bonita"
+      - "Siren = saturação de energia sexual em cada gesto"
+    source_refs:
+      - "transcripts/Robert_Greene_-_How_To_Seduce_Anyone_Build_Confidence_Become_Powerful_E232.txt"
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "jfk_blank_screen"
+    title: "JFK — Tela em Branco Modelada em Montgomery Clift"
+    narrative: "Kennedy era obcecado por cinema clássico, em especial Montgomery Clift — ator com presença silenciosa, olhar que parecia esconder algo. JFK modelou sua persona pública na mesma quietude máscula. Resultado: pessoas projetavam fantasia. Esconderam a verdade de que ele tinha dor crônica nas costas, várias doenças, era frágil fisicamente. A tela em branco permitiu uma das maiores ondas de carisma político do século 20."
+    lessons:
+      - "Pouca informação concreta = mais espaço pra fantasia favorável"
+      - "Quietude tem mais peso que verborragia"
+      - "Pode-se esconder fraqueza física via presença emocional gerenciada"
+      - "Star pattern: deixe o outro pintar quem você é"
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "louis_xiv_nicolas_fouquet"
+    title: "Louis XIV e Fouquet — Lei 1 Em Carne"
+    narrative: "Nicolas Fouquet, ministro das finanças de Louis XIV, joga festa lavish em honra do rei pra se cacifar como próximo primeiro-ministro. Festa foi tão magnífica que 'as pessoas escreviam sobre ela anos depois'. Resultado: Louis se sentiu OUTSHINED. Dia seguinte, Fouquet preso, passa resto da vida na prisão. Greene aplica diretamente: ego do superior é maior que resultado entregue. Em sedução: não tente outshinar quem você quer encantar — em vez de admirar você, ela vai sentir ameaça."
+    lessons:
+      - "Quem está acima de você tem MAIS insegurança, não menos"
+      - "Outshining ativa reação destrutiva"
+      - "Em sedução: não competir com ela em domínio dela; deixe-a brilhar onde brilha"
+      - "Ego importa mais que resultado em hierarquias humanas"
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "casanova_lord_byron_rakes"
+    title: "Casanova, Lord Byron, Duke Ellington — A Máquina de Apaixonar"
+    narrative: "Lord Byron dormiu com a irmã, arruinou inúmeras garotas, tratou esposa de modo terrível, e mulheres continuavam atrás dele em ondas. Casanova nem precisa apresentação. Duke Ellington idem. Misconcepção: que eram frios e calculistas descartando alvos. Realidade: eram máquinas de SE APAIXONAR realmente. Cada mulher recebia tudo do homem por 1-3 meses — depois ele realmente se desapaixonava e ia pro próximo. A intensidade emocional da fase inicial era REAL, não performance — e essa autenticidade é o que devastava."
+    lessons:
+      - "Rake real (não fake) entrega-se completamente no início"
+      - "Vulnerabilidade do homem em frente da mulher = devastador"
+      - "Intensidade temporária real > moderação eterna calculada"
+      - "Fragilidade pessoal (Byron quase chorava em paixões) ATRAÍA, não repelia"
+    source_refs:
+      - "raw/blog/thoughts-on-seduction.md"
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "fifty_cent_post_assassination_calm"
+    title: "50 Cent — Calma Pós-Assassinato"
+    narrative: "Em 2000, 50 levou 9 tiros e sobreviveu. Daí pra frente, o medo VAZOU dele. A calma absurda que ele tem em situações tensas (negociação, beef, ameaças) vem disso. Greene passou meses com ele e descreve: 'humanos lêem PRÉ-VERBALMENTE o nível de medo do outro. Se você tem menos, eles ou se intimidam ou te seguem.' 50 vive nesse modo. É a 50ª Lei encarnada."
+    lessons:
+      - "Trauma processado pode virar fearlessness real (não performada)"
+      - "Calma autêntica é contagiosa e sobrepõe palavras"
+      - "Pessoas lêem level de medo em segundos via tom de voz, olho, postura"
+      - "Quem é mais calmo na sala tem mais poder, mesmo em silêncio"
+    source_refs:
+      - "raw/blog/the-50th-law.md"
+
+  - id: "machiavelli_in_brothel"
+    title: "Machiavelli no Bordel — A Vela e O Choque"
+    narrative: "Machiavelli, em viagem, vai a bordel. Luz apagada, dorme com mulher. Resolve acender vela pra ver — descobre que era hideous. Tem traumão. Greene traz pra mostrar que Machiavelli era um sedutor de mulheres, dramaturgo, poeta, homem real — não o vilão frio do estereótipo. A 'virtù' dele é adaptabilidade, não maldade. Aplicado: o estereótipo do 'machiavélico' destrói a real lição (adaptar-se à fortuna sempre cambiante)."
+    lessons:
+      - "O sedutor estratégico real é também humano que tropeça"
+      - "Estereótipo de 'frio calculista' = misreading"
+      - "Adaptabilidade > rigidez moralista"
+    source_refs:
+      - "transcripts/The_Path_To_Power_-_Ambition_Status_Strength_Respect_-_Robert_Greene_4K.txt"
+
+  - id: "josephine_baker_natural_dancer"
+    title: "Josephine Baker — Naturalidade Como Sedução"
+    narrative: "Dançarina afro-americana dos anos 20-30. Dançava de modos que pareciam selvagens em palco europeu (não tinha visto nada igual). Greene: o segredo era ter PRESERVADO o mundo de fantasia infantil que ela tinha. Dançava como criança brincando — autenticidade total, zero auto-monitoramento. Isso devastava plateia. Charlie Chaplin opera com mesma fórmula no cinema mudo."
+    lessons:
+      - "Naturalidade percebida vence técnica trabalhada"
+      - "Quem mantém criança interna acessível tem charme não-replicável"
+      - "Tentar não ser autêntico mata o efeito"
+      - "Natural archetype: spontaneidade que parece não-construída"
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+  - id: "young_director_setup"
+    title: "Diretor Hollywood Que Sabotou Subalterno"
+    narrative: "Conta Greene: trabalhava pra diretor que tinha escrito roteiro e queria dirigir. Mas pra não 'parecer ambicioso demais', contratou outro diretor jovem 27a (sabidamente acima do nível dele), deliberadamente NÃO ajudou no que precisava, deixou cara fracassar em 2 dias de produção. Produtor demitiu o jovem; diretor original entrou como 'salvador'. Concealing your intentions em ação. Carreira do jovem foi destruída. Effective truth = ação, não palavra."
+    lessons:
+      - "Concealment de intenção é arma real (e ética complicada)"
+      - "Ler ação acima da palavra (effective truth)"
+      - "Bondade em hierarquia é frequentemente cover"
+      - "Em sedução: cuidado com 'amigo' que parece ajudar de mais"
+    source_refs:
+      - "transcripts/The_Art_Of_Seduction_and_Human_Psychology_Robert_Greene_-_MP_Podcast_121.txt"
+
+# ============================================================
+# POSICIONAMENTO FILOSÓFICO
+# ============================================================
+
+signature_phrases:
+  - "Seduction is a high form of power."
+  - "Without a feeling of transgression, there would be no seduction."
+  - "Fortune is a woman; she rewards the bold."
+  - "All is fair in love and war."
+  - "You don't seduce by seducing — you seduce by listening."
+  - "Cold seducers leave only ash. Warm seducers leave fantasy."
+  - "The strength of their denunciation equals the strength of their attraction."
+  - "Vulnerability is a wound (vulnus) — and the other person naturally wants to heal it."
+  - "Insecurity is anti-seductive; vulnerability is seductive. The difference is direction."
+  - "Confidence cannot be faked — it must be based on real skill, real action, real accomplishment."
+  - "Judge people by the effective truth — the result of their actions, not their words."
+  - "We are descended from primates, not angels. Get over the moralizing."
+  - "Body language doesn't lie. Voice doesn't lie. Words always do."
+  - "The 50th law of power: fear nothing. Then all other laws work."
+  - "Lean into what makes you strange — that's where your power lives."
+  - "What separates a great seducer is they are outer-directed — you become like a sponge inside the other person's psychology."
+
+paradoxes:
+  - "O sedutor mais devastador é o MAIS aberto e vulnerável (Errol Flynn / rake real), não o mais blindado — mas precisa estar vulnerável A PARTIR de uma base de força, não a partir de carência. A distinção entre vulnerability e insecurity é a navalha que separa devastador de patético."
+  - "Quem mais MORALIZA contra algo é quem mais o DESEJA. A intensidade da denúncia revela a força da atração reprimida — essa lógica do shadow inverte como você lê os 'puristas' (deles, em você, em todo mundo)."
+  - "Para SEDUZIR é preciso AUSENTAR. Excesso de presença mata o desejo (lei 16) — mas ausência exagerada vira esquecimento. O ponto exato é arte, não fórmula — e Greene admite que não há regra fixa."
+  - "Pessoas RAINS o que dizem querer. Mulher pede 'só amigos' mas a química existe — Greene endossa aceitar a categoria como disfarce e reverter (friend_to_lover). O 'não' dela frequentemente é defensividade, não veredito."
+  - "A confiança REAL é resultado de skill REAL — mas em pequenas janelas (entrevista, abordagem) você pode performar até criar. A linha entre 'fake it til you make it' e 'bravado detectável' é tênue."
+  - "Quem é amigo te elogia menos que estranhos. Quem te conhece bem é quem mais te inveja secretamente. Inversão da intuição de que proximidade = bondade."
+
+obsessions:
+  - "Aparência vs essência — a máscara universal que todos vestem e a arte de ler através dela"
+  - "Poder pessoal interpretado como sensação de controle sobre os próprios passos (não dominação externa)"
+  - "O shadow / lado sombrio como combustível negado e finalmente integrado"
+  - "Effective truth — ações > palavras como única lente confiável"
+  - "Fearlessness como precondição de todas as outras virtudes"
+  - "Ambição e energia animal canalizadas como signo de saúde, não corrupção"
+  - "Adaptabilidade tipo Proteu — capacidade de mudar character conforme tempo muda"
+  - "Mood/energia/presença como veículo principal de influência (acima de palavras)"
+  - "Ausência calibrada como ferramenta universal (no trabalho, no amor, na política)"
+  - "Histórias e exemplos concretos contra abstrações vazias"
+  - "Anti-academia, anti-conformismo, pró-experiência direta"
+  - "Generosidade de espírito como skill sedutor central"
+
+blindspots:
+  - "Limites éticos da manipulação: Greene endossa 'all is fair in love' e admite ter dado conselho a homens que usaram livro pra ferir mulheres. Reconhece o problema mas não traça linha clara. O FlirtAI precisa traçar (consentimento real, não exploração de vulnerabilidade clínica, etc)."
+  - "Subestima a importância de comunicação direta e honesta em relacionamentos LONGOS. Foca em fase inicial (sedução) e admite explicitamente que não é especialista em manutenção de relacionamento de longo prazo."
+  - "Trata vulnerabilidade real (não estratégica) com menor profundidade — Glover/Hendrix exploram melhor. Greene vê vulnerabilidade como ferramenta tática; Glover vê como condição existencial. Conflito real."
+  - "Foco quase exclusivo em ESTRATÉGIA — pouca atenção a TRAUMA, attachment style, neurociência do vínculo. Para usuário com trauma de relacionamento, conselhos sozinhos viram patches."
+  - "Visão ocidental, principalmente euro-americana e elite cultural. Exemplos quase todos de Hollywood, política, história europeia. Pouca atenção a contextos culturais não-ocidentais (e pouco material em PT-BR direto)."
+  - "Gender essencialismo moderado — assume 'mulheres têm sexto sentido', 'biologia masculina', etc. Útil como modelo prático mas pode falhar em casos não-binários ou queer mais complexos."
+  - "Subestima o impacto de pornografia/apps/digital nas dinâmicas de hoje (menciona, mas não tem framework profundo) — gap pra material complementar com pensadores mais recentes."
+  - "Pouco material sobre SCRIPTING de mensagens de texto especificamente. Trata texting de raspão. FlirtAI vai precisar complementar com fonte focada em copy/escrita persuasiva digital."
+  - "Não aborda escrita de bio de app, foto de perfil, otimização de stack digital — todo o pre-game online tá ausente. Foi atualizando em entrevistas modernas mas sem framework."
+  - "Conflict com Glover (autenticidade radical vs sedução calibrada) não é endereçado por Greene. Ele assume que estratégia e autenticidade coexistem; Glover assume que estratégia trai autenticidade. FlirtAI precisa decidir caso a caso."

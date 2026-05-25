@@ -1,0 +1,86 @@
+---
+mind_id: vilaverde
+display_name: Murilo Vilaverde
+origin: br
+tier: depth
+philosophical_alignment: greene_axis
+priority: P0
+generated: 2026-05-23
+notes: |
+  PUA brasileiro de fato — "abordei +3000 mulheres de +40 países", auto-rotulado
+  como "maior comunidade de sedução do mundo com +10K alunos". Equivalente
+  brasileiro do Strauss early.
+
+  Canal YouTube @murilovilaverde_ tem 158 vídeos — mistura de vídeos longos
+  explicando técnica (método estruturado), Reality Shows transformando
+  tímidos em sedutores, e análises de interação ao vivo em campo internacional
+  (gringas, viagens).
+
+  Conteúdo é PT-BR mas títulos publicados em inglês — sugere targeting
+  global. Vai pra greene_axis (técnica + frame consciente).
+---
+
+# Murilo Vilaverde — Fontes Públicas
+
+## Tier 1 — Canal próprio (download primário)
+
+- **YouTube oficial:** https://www.youtube.com/channel/UCByvQuOKhclsav500nAJeyw
+  - Handle alternativo: https://www.youtube.com/@murilovilaverde_
+  - 158 vídeos disponíveis (132 com >=5min)
+  - Distribuição: 46 vídeos 5-10min, 69 vídeos 10-20min, 17 vídeos >20min
+  - Total estimado: ~30h de áudio
+  - Conteúdo: Reality Shows ("Transformei 2 Anti-Sociais em 24h"), análises de
+    pickup com gringas, ensinos de método, reactions e bate-boca com nichos
+    rivais (Nerd Sedutor exposed)
+
+- **Instagram:** https://www.instagram.com/vilaverdemurilo (265K seguidores)
+- **Facebook:** https://www.facebook.com/murilo.vilaverde.5/
+
+## Tier 2 — Vídeos canônicos de framework (já mapeados)
+
+- **The story of the man who can win over any woman | Vilaverde Analysis:**
+  https://www.youtube.com/watch?v=HOrYM_TgfjI (24min)
+- **Como Sair Do ZERO e Marcar 1-2 Encontros Toda Semana Depois De Um Término:**
+  https://www.youtube.com/watch?v=ylmzyo8QhYU (18min)
+- **Tom Holland como abordar mulher em 2026:**
+  https://www.youtube.com/watch?v=cHaP8m-ne7Y (17min)
+- **Brad Pitt como abordar mulher em 2026 (parte 1+2):**
+  https://www.youtube.com/watch?v=q4_rambC3No
+  https://www.youtube.com/watch?v=UkqEDfFaq0g
+- **Never Miss Opportunities Again — What to Do When a Woman Looks at You:**
+  https://www.youtube.com/watch?v=0UsMhXiY-eE (20min)
+- **De Medianos Para Super Atraentes (Reality Show #3):**
+  https://www.youtube.com/watch?v=BaP-TBrGkxg
+
+## Plano de coleta
+
+```
+Fase 1.1 — Download yt-dlp canal completo (158 vídeos)
+  → corpus/vilaverde/raw/audio/<video>.mp3
+  → ~30h áudio total
+
+Fase 1.2 — Whisper PT-BR large-v3
+  → corpus/vilaverde/transcripts/<video>.txt
+  → estimativa ~350-450K tokens texto
+
+Fase 1.3 — Consolidação com tags
+  → corpus/vilaverde/processed/full-corpus.md
+  → tags: campo, framework, reality_show, reaction, gringa, mentoria
+```
+
+## Volume estimado final
+- ~350-450K tokens (alto volume + framework explícito + casos reais)
+
+## Particularidades técnicas
+- yt-dlp funciona no canal por ID (não pelo handle @murilovilaverde_ direto —
+  channel ID UCByvQuOKhclsav500nAJeyw é o caminho seguro)
+- Sem cookies necessárias
+- Áudios variados: alguns são vídeos didáticos (limpo), outros campo (ruidoso)
+- Whisper pode ter dificuldade com clipes de campo — esperar transcrição
+  parcial ali. Aceitar.
+
+## Particularidades de extração
+- Marcar `phase: [field, methodology, reaction]` em cada extract
+- Extrair vocabulário próprio (ele cita conceitos do mundo PUA traduzidos)
+- Identificar conflito ideológico com "Nerd Sedutor" (vídeo "Did Nerd Sedutor
+  talk badly about me?") — sinaliza onde Vilaverde diverge de outros nichos

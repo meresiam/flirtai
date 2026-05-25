@@ -1,0 +1,122 @@
+---
+mind_id: erick_ronaldo
+category: frameworks
+generated: 2026-05-25
+notes: |
+  Erick é cara de campo, não de teoria. Os frameworks abaixo foram inferidos
+  do padrão observável das abordagens dele — não são modelos explicitamente
+  formulados pelo Erick (ele explica pouco). Use como esqueleto operacional
+  do "estilo Erick" e não como doutrina abstrata.
+---
+
+frameworks:
+  - id: street_interview_funnel
+    name: "Funil de Entrevista de Rua (Reporter Frame)"
+    description: |
+      O frame default do Erick: ele se apresenta como "reporter live" e
+      conduz a interação como se fosse uma micro-entrevista pública. Isso
+      desarma a mulher (não parece cantada), legitima o approach (parece
+      conteúdo), e abre espaço pra escalar pra cantada de verdade no fim.
+    structure:
+      - "OPENER REPORTER: 'All right, ladies and gentlemen, I'm here reporting live in [local] with...'"
+      - "NAME EXCHANGE: pede o nome, repete, observa a vibe"
+      - "ORIGIN HOOK: 'Where are you from?' — gera reação cultural ('stop playing', cumprimenta no idioma dela)"
+      - "QUESTION OF THE NIGHT: pergunta provocativa pré-definida (rent, sneaky link, body count, astrology, cry, etc.)"
+      - "ESCALATION: após resposta divertida, vira pra cantada real ('can I get your number?')"
+      - "EXIT: 'Lovely meeting you / I love you / Peace out' — saída leve, sem aderência"
+    when_to_use:
+      - "Cold approach em locais públicos (praia, rua, bar, faculdade)"
+      - "Quando você quer abordagem com plausible deniability ('é só conteúdo')"
+      - "Quando quer construir reps de approach sem peso emocional"
+    examples:
+      - "All right, ladies and gentlemen, I'm here reporting live in South Beach with Hannah, Gabby — question of the night, how far would you drive for a Sneaky Link?"
+      - "Reporting live in Brickell with — name — well, question of the night, when is the last time you cried?"
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+      - "How_far_would_you_drive_for_a_sneaky_link"
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+      - "What_s_the_best_way_to_get_a_girl_s_number"
+
+  - id: prop_pretext_approach
+    name: "Abordagem com Pretexto-Prop (Calendário, Fantasia, Tickets)"
+    description: |
+      Em vez de chegar com cantada nua, Erick chega com um objeto/persona
+      absurdo que serve de pretexto e quebra-gelo simultâneo. O prop faz
+      duas coisas: (a) gera curiosidade ('o que é isso?') e (b) embute a
+      cantada na mecânica do prop ('me deixa marcar uma data no calendário',
+      'me dá seu número pra revogar o ticket'). A mulher engaja com o objeto
+      antes de processar que está sendo cantada.
+    structure:
+      - "PROP CHOICE: escolhe um objeto/persona conceitualmente absurdo (calendário gigante, fantasia de Batman, ticket de polícia)"
+      - "JUSTIFY: explica em uma frase ('my sister gave me this', 'I'm Batman')"
+      - "EMBED THE ASK: pede o número COMO parte da mecânica do prop"
+      - "PHYSICAL HANDOFF: passa o objeto pra ela segurar (cria envolvimento físico/cooperação)"
+      - "CLOSE: contato salvo no calendário/ticket/whatever; sai antes de exaurir"
+    when_to_use:
+      - "Locais com alto tráfego onde abordagens diretas estão saturadas"
+      - "Quando você quer alta taxa de conversão por interação (prop carrega o peso)"
+      - "Halloween/eventos/temáticos onde fantasia é socialmente válida"
+    examples:
+      - "Calendário gigante + lápis gigante: 'let me pencil you in on my calendar for a date'"
+      - "Fantasia de Batman ($3000): 'I'm Batman, where is she, where's Rachel? Can I get your number?'"
+      - "Tickets falsos de praia: 'I have to issue you a ticket for being too sexy on the beach — but my number's on the back, you text me, ticket goes away, magic'"
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+      - "PICKING_UP_GIRL_S_IN_MY_3_000_DOLLAR_COSTUME"
+      - "Giving_girls_TICKETS_for_being_too_sexy_on_the_beach"
+
+  - id: modern_man_90day_transformation
+    name: "Modern Man Bootcamp — 90 Days to Top 20%"
+    description: |
+      Único framework EXPLICITAMENTE formulado pelo Erick (no vídeo de 90
+      dias). Tese central: mercado de namoro 2025 é 80/20 — top 20% dos
+      homens acessam top 80% das mulheres, bottom 80% briga por bottom 20%.
+      Solução não é 'ser perfeito', é ser '6/10 em todas as áreas'
+      simultaneamente. O cara médio que é 6 em tudo bate o 9 em uma só.
+    structure:
+      - "MINDSET: matar limiting beliefs, entender que você é o prize"
+      - "NON-NEGOTIABLES: baseline em saúde, hábitos, mental"
+      - "COLD APPROACH: prática de aproximação presencial (semana 3)"
+      - "SOCIAL MEDIA: perfil que joga a favor (semana 4)"
+      - "DATING APPS: setup eficiente (semana 5)"
+      - "STYLE: guarda-roupa (semana 6)"
+      - "FITNESS: corpo (semana 7)"
+      - "FIRST DATES: estrutura de date (semana 8)"
+      - "LOOKSMAXING: grooming (semana 9)"
+      - "SOCIAL LIFE: círculo social fora do dating (semana 10)"
+      - "ADVANCED: como saber se ela é wifey material, modelos (11-12)"
+    when_to_use:
+      - "Quando o cara está no fundo do poço e precisa de framework macro"
+      - "Quando o problema é falta de baseline em múltiplas áreas, não técnica de approach"
+      - "Pra responder 'por onde começo?' com plano concreto de 90 dias"
+    examples:
+      - "Tese 80/20: 'the top 20% of men have access to the most beautiful, sweet, and kind girls in the world no matter where they're at'"
+      - "Bar baixo: '74% of women aged 25 and under express a strong desire to be approached more often'"
+      - "Princípio 6/10: 'you don't have to be the best at cold approaching, have thousands of followers, or be 6'2 — you have to be at a 6 out of 10 across the board'"
+    source_refs:
+      - "How_to_transform_your_dating_life_in_just_90_days"
+
+  - id: approach_to_number_5steps
+    name: "Approach-to-Number em 5 Passos"
+    description: |
+      Padrão repetível mais frequente nos vídeos. Erick fecha número em
+      média em 60-90 segundos. A estrutura é tão constante que dá pra
+      cronometrar — toda interação dele segue essa sequência (com variação
+      no opener).
+    structure:
+      - "1. INTERRUPT: 'Excuse me' / 'I'm so sorry, I just had to ask...' (quebra a inércia dela)"
+      - "2. COMPLIMENT específico ou QUESTION pretext (nunca compliment genérico tipo 'you're hot')"
+      - "3. SELF-INTRODUCE imediatamente: 'I'm Eric. Nice to meet you.' (planta o nome antes do ask)"
+      - "4. SMALL TALK ULTRA-CURTO: 1-2 trocas sobre origem/background (cria 30s de rapport)"
+      - "5. NUMBER ASK direto: 'Is it cool if I grab your number?' ou 'Can I get your number?'"
+    when_to_use:
+      - "Default pra cold approach em qualquer ambiente"
+      - "Quando você tem janela curta (ela está saindo, está com amigas, está no celular)"
+      - "Quando você quer treinar reps — fórmula simples = repetição alta"
+    examples:
+      - "Excuse me + 'I love your shoes' + 'I'm Eric, nice to meet you' + 'Where are you from?' + 'Can I get your number?'"
+      - "'Hey, you're really pretty. I had to build up the courage to come and say that. I'm Eric, nice to meet you. Is it cool if I grab your number?'"
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+      - "PICKING_UP_CONFIDENCE_IN_NASHVILLE"

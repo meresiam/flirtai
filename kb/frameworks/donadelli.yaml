@@ -1,0 +1,249 @@
+# FlirtAI KB — Matheus Donadelli (AlphaSpirit)
+# Mind extraído como CONTRAPONTO ao eixo técnica/PUA.
+# Donadelli é o "trabalho_interno first" — atração vem como CONSEQUÊNCIA
+# de transmutação energética + propósito + masculinidade espiritual, não
+# como técnica de campo. Marca filosófica primária: glover_axis com tempero
+# espiritualista oriental (taoísmo/hinduísmo).
+
+schema_version: 1.0
+generated: 2026-05-25
+
+mind_id: donadelli
+display_name: Matheus Donadelli (AlphaSpirit)
+origin: br
+tier: flavor
+philosophical_alignment: glover_axis
+philosophical_axis: trabalho_interno
+
+source_material:
+  - type: youtube
+    title: "Matheus Donadelli (AlphaSpirit) #029 — À Deriva Podcast com Arthur Petry"
+    url: "https://www.youtube.com/watch?v=EeUAlA_UC04"
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: "corpus/donadelli/transcripts/Matheus_Donadelli_AlphaSpirit_029_A_Deriva_Podcast_com_Arthur_Petry.txt"
+    notes: |
+      Episódio principal (~3h). Cobre origem do vício em pornografia aos
+      9 anos, descoberta do NoFap aos 19 na Alemanha, transmutação sexual
+      (Napoleon Hill), tantra, retenção seminal, modos easy/hard/monk,
+      psicodélicos (LSD/cogumelos/DMT), meditação, propósito, espiritualidade
+      oriental, libido como energia vital, crítica à indústria pornográfica,
+      veganismo/vegetarianismo, alimentação. Tom: filosófico, vulnerável,
+      autobiográfico, anti-PUA por omissão (nunca fala em técnica de campo).
+  - type: youtube
+    title: "POR QUE ELE EXCLUIU O CANAL? — Matt Alphaspirit (canal Match)"
+    url: "https://www.youtube.com/watch?v=kvZHm6z3i0A"
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: "corpus/donadelli/transcripts/Matt_Donadelli_Alpha_Spirit_-_POR_QUE_ELE_EXCLUIU_O_CANAL_Matt_Alphaspirit_No_fap.txt"
+    notes: |
+      Análise de terceiro (não é Donadelli falando). Fã homenageando após
+      Donadelli deletar canal AlphaSpirit. Útil apenas como contexto sobre
+      impacto cultural do trabalho dele. Não usar para extração direta de
+      heurística — só como signal de recepção.
+  - type: youtube
+    title: "NO FAP E A ENERGIA SEXUAL SAGRADA — MATT DONADELLI (LifeHacker Talks)"
+    url: "https://www.youtube.com/watch?v=5SFlF-998hg"
+    duration_or_pages: 0
+    acquired: true
+    transcript_path: "corpus/donadelli/transcripts/NO_FAP_E_A_ENERGIA_SEXUAL_SAGRADA_MATT_DONADELLI_LIFEHACKER_TALKS.txt"
+    notes: |
+      Entrevista densa e estruturada (~45min). Define os 3 modos de NoFap
+      (easy/hard/monk), reboot de 90 dias, fatores que dificultam (libido,
+      gatilhos reais vs mentais, vício prévio), pico testosterona dia 7
+      (+145%), ritual matinal (banho frio, meditação, café consciente),
+      minimalismo, memento mori, propósito. Tom mais didático/professoral.
+
+# =================================================
+# FRAMEWORKS
+# =================================================
+frameworks:
+  - id: transmutacao_sexual
+    name: "Transmutação Sexual (Alquimia Interna)"
+    description: >
+      Princípio central do método AlphaSpirit, herdado de Napoleon Hill
+      ("Think and Grow Rich") com raízes no Antigo Egito, Grécia (alquimia),
+      hinduísmo (kundalini) e taoísmo (chi/ki). A energia sexual NÃO deve
+      ser descarregada por masturbação/ejaculação rotineira — deve ser
+      RETIDA e CANALIZADA ("transmutada") em propósito, criatividade,
+      trabalho, presença, magnetismo. Pareto: "Se você quer dinheiro, você
+      ganha mais dinheiro. Se você se interessa por sedução, pega mais
+      mulheres. Porque você tem toda essa energia vital." A atratividade é
+      EFEITO COLATERAL, não objetivo.
+    structure:
+      - "Energia sexual = forma mais potente de energia vital (acima de amor, fama, dinheiro)"
+      - "Sem retenção — energia se dissipa via ejaculação/masturbação → indivíduo fica zumbi/depressivo/sem propósito"
+      - "Com retenção — energia se acumula → indivíduo precisa CANALIZAR (transmutar) ou recai"
+      - "Canalização = trabalho, criação, propósito nobre, treino, projeto"
+      - "Resultado emergente — fama, poder, carisma, aura, presença (citação direta dos Upanishads que ele cita)"
+      - "Reabastecimento — sono, alimentação, contato com natureza, meditação"
+    when_to_use:
+      - "Usuário em fase de reset (recém-saído de relacionamento, autoestima baixa, sem propósito)"
+      - "Usuário viciado em pornografia que pede 'como pegar mulher'"
+      - "Usuário que tenta truque/script e fracassa repetidamente — sinal de que falta substrato energético"
+      - "Diagnosticar 'homem sem aura' — energia drenada por sexo casual, pornô, doomscrolling"
+    examples:
+      - "Steve Jobs (ídolo de Donadelli) — transava sem ejacular para manter energia criativa"
+      - "Gênios listados por Napoleon Hill — Edison, Ford, Bell — todos 'masterizaram' transmutação"
+      - "O próprio Donadelli — ficou anos sem transar, virou criador de conteúdo bem-sucedido"
+    source_refs:
+      - "À Deriva — 'Napoleon Hill descobriu que todos esses indivíduos masterizaram a arte da transmutação sexual'"
+      - "À Deriva — 'você transforma energia sexual etérica em criatividade'"
+      - "LifeHacker — 'utilizar toda essa energia sexual acumulada... para transmutar por meio de alquimia interna'"
+
+  - id: tres_modos_nofap
+    name: "Três Modos de NoFap (Easy / Hard / Monk)"
+    description: >
+      Framework didático criado por Donadelli para estratificar a prática
+      de NoFap conforme o nível de comprometimento e contexto de vida
+      (solteiro vs casado, viciado heavy vs leve, foco em produtividade
+      vs espiritualidade). Cada modo corta um nível mais profundo de
+      estímulo dopaminérgico.
+    structure:
+      - "Easy Mode (modo fácil) — corta pornografia + masturbação. Sexo com ejaculação PERMITIDO. Indicado para casados/comprometidos. Ganho: pico testosterona dia 7 (+145%)."
+      - "Hard Mode (modo duro / retenção seminal) — corta pornografia + masturbação + ejaculação. Sexo permitido sem orgasmo (tantra/karezza). Corta também estímulo visual: Instagram, nudes, mensagens sexuais. É o jejum de dopamina aplicado ao sexual."
+      - "Monk Mode (modo monge) — Hard Mode + corta TUDO que distrai: celular, redes sociais, eletrônicos, contato com mulheres. Voltado a espiritualidade pura e desenvolvimento do espírito."
+    when_to_use:
+      - "Iniciante viciado pesado → começar direto no HARD (Donadelli recomenda 'cold turkey' como fumantes)"
+      - "Casado que quer manter intimidade conjugal → EASY"
+      - "Indivíduo em retiro/sabático/recuperação profunda → MONK por 30-90 dias (reboot completo)"
+      - "Atleta antes de competição / criador antes de lançamento importante → HARD temporário"
+    examples:
+      - "O próprio Donadelli — começou easy, evoluiu para hard, atualmente Hard com namorada (sexo sem ejacular)"
+      - "Reboot de 90 dias — período padrão para reset completo do circuito dopaminérgico"
+    source_refs:
+      - "LifeHacker — explicação completa dos três modos com prescrição por contexto"
+      - "À Deriva — 'parar de fumar a estratégia mais eficaz é cold turkey, parar de vez'"
+
+  - id: ritual_matinal_alphaspirit
+    name: "Ritual Matinal AlphaSpirit"
+    description: >
+      Sequência de práticas matinais que estruturam o dia "vencedor". Premissa:
+      "os primeiros 15 minutos vão determinar o resto do seu dia". Cada
+      elemento é uma micro-prática de disciplina/presença que reforça o
+      frame de homem alinhado com propósito.
+    structure:
+      - "Noite anterior — visualizar o próximo dia + anotar o que precisa ser feito (calendário) + dormir 22h sem celular"
+      - "Acordar — mentalidade 'esse é meu dia, abraço esse dia'"
+      - "Banho frio — sofrimento voluntário, fortalece psique"
+      - "Meditação — respiração consciente (foco na pausa entre inalação/exalação)"
+      - "Café da manhã íntimo — sem celular, sem distração, presença total no ato de comer"
+      - "Trabalho — mínimo 8h focadas no propósito"
+      - "Treino físico — final do dia (~18h)"
+      - "Noite — organização do próximo dia, leitura, sem tela 1h antes de dormir"
+    when_to_use:
+      - "Usuário reclamando que 'todos os dias parecem iguais' / falta de progresso"
+      - "Usuário com sintomas de procrastinação crônica"
+      - "Base mínima para qualquer outro framework funcionar (substrato disciplina)"
+    examples:
+      - "Donadelli pratica isso diariamente, atribui produtividade do canal a essa rotina"
+    source_refs:
+      - "LifeHacker — descrição completa do ritual matinal e noturno"
+      - "À Deriva — banho frio mencionado como prática de resiliência"
+
+  - id: libido_como_energia_vital
+    name: "Libido = Energia Vital (Chi/Ki/Kundalini/Líbido)"
+    description: >
+      Framework conceitual que UNIFICA múltiplas tradições sob uma mesma
+      ideia: a energia sexual é a MESMA energia vital descrita pelo
+      taoísmo (chi/ki), hinduísmo (kundalini, serpente), psicanálise
+      (líbido de Freud) e cristianismo (Espírito). Não é só desejo —
+      é o combustível primário do organismo, da criatividade e da
+      consciência. Manipular essa energia = manipular tudo na sua vida.
+    structure:
+      - "Nível 1 (físico) — testosterona, vigor, vitalidade, ereção"
+      - "Nível 2 (mental) — foco, criatividade, ambição, drive"
+      - "Nível 3 (emocional) — amor, afeto, conexão, magnetismo"
+      - "Nível 4 (espiritual) — kundalini, presença, aura, transcendência"
+      - "Os dois nervos (ida feminino + pingala masculino) conectam chakra basal à glândula pineal — via física da energia"
+    when_to_use:
+      - "Explicar para usuário cético POR QUE NoFap funciona (não é moralismo, é fisiologia + energia)"
+      - "Diagnosticar usuário com baixo magnetismo — provavelmente está drenando líbido"
+      - "Justificar por que sexo casual frequente NÃO resolve solidão masculina"
+    examples:
+      - "Hindus — kundalini como serpente subindo a coluna"
+      - "Taoístas — chi/ki como sopro vital"
+      - "Freud — líbido não é só desejo sexual, é energia psíquica geral"
+    source_refs:
+      - "À Deriva — 'libido = energia psíquica, Freud já reconheceu quase 100 anos atrás'"
+      - "À Deriva — explicação ida/pingala/kundalini"
+      - "À Deriva — 'desejo sexual o mais poderoso de todos. Depois amor. Depois fama/dinheiro/sucesso' (Napoleon Hill)"
+
+  - id: lei_atracao_pensamento_emocao
+    name: "Lei da Atração (Pensamento + Emoção = Manifestação)"
+    description: >
+      Donadelli aplica versão pragmática da Lei da Atração (Joseph Murphy,
+      Napoleon Hill, Joe Dispenza) com base em "experiência de Princeton"
+      sobre intenção mudando codificação quântica. NÃO é wishful thinking —
+      a fórmula é PENSAMENTO + EMOÇÃO FORTE (especialmente sexual ou amor)
+      + PRAZO concreto = realidade manifestada. Conexão direta com
+      transmutação sexual: a energia retida CARREGA o pensamento.
+    structure:
+      - "Decidir o que quer (específico, mensurável)"
+      - "Definir PRAZO (sem prazo = não acontece)"
+      - "Visualizar o estado FINAL como se já fosse realidade ('fake it till you make it')"
+      - "Carregar a visualização com emoção forte — preferencialmente sexual ou amor"
+      - "Repetir todo dia (subconsciente reprograma)"
+      - "Agir alinhado ('o subconsciente atrai circunstâncias' mas você executa)"
+    when_to_use:
+      - "Usuário com meta concreta (encontrar parceira de longo prazo, mudar carreira)"
+      - "Antes de eventos de alto risco (encontro importante, apresentação)"
+      - "Anti-procrastinação — visualizar-se já fazendo a tarefa antes de fazer"
+    examples:
+      - "Donadelli — 'sabia desde os 12 anos que era pessoa sucedida' (afirmação inconsciente)"
+      - "Empreendedores que usam 'fake it till you make it' como estratégia consciente"
+    source_refs:
+      - "À Deriva — Lei da Atração explicada via Joseph Murphy / O Poder do Subconsciente"
+      - "À Deriva — 'pensamento + emoção em um → mover montanhas' (Evangelho de São Tomé)"
+      - "À Deriva — experiência Princeton sobre intenção alterando codificação quântica"
+
+  - id: propositio_como_antidoto_recaida
+    name: "Propósito como Antídoto Universal à Recaída"
+    description: >
+      Tese tardia de Donadelli ('recentemente comecei a falar mais sobre
+      propósito') — propósito digno e nobre é a única coisa que ELIMINA
+      definitivamente a recaída em pornografia, vícios e comportamento
+      compulsivo. Premissa: 'tempo livre é a oficina do diabo. Por quê?
+      Porque a sua mente foi feita pra te fuder.' Sem propósito, mente
+      sabotadora vence. Com propósito, mente fica ocupada construindo.
+    structure:
+      - "Identificar o propósito (algo que você FARIA mesmo sem ganhar nada)"
+      - "Estruturar o dia em torno dele (calendário cheio = pouco espaço pra cair)"
+      - "Tornar visível progresso (métricas, journaling, public commitment)"
+      - "Sacrificar prazeres curtos pelo propósito (NoFap é uma das sacrifícios)"
+    when_to_use:
+      - "Usuário em recaída crônica que já tentou todas as técnicas comportamentais"
+      - "Usuário com excesso de tempo livre (desempregado, férias, sabbático)"
+      - "Diagnóstico raiz quando técnica isolada não resolve"
+    examples:
+      - "Davi da Bíblia — ficou em casa em vez de ir pra batalha, viu Bate-Seba, caiu em adultério, matou general"
+      - "Donadelli pós-canal — propósito de ajudar homens substituiu vícios"
+    source_refs:
+      - "À Deriva — 'recentemente comecei a falar mais sobre propósito, porque é a coisa mais poderosa que elimina a recaída de vez'"
+      - "À Deriva — parábola de Davi: 'você precisa ir pra batalha. Ou seja, você precisa seguir seu propósito'"
+
+  - id: tantra_karezza_sexo_sem_ejaculacao
+    name: "Tantra / Karezza (Sexo sem Ejaculação)"
+    description: >
+      Prática avançada do Hard Mode aplicada DENTRO de relacionamento.
+      Sexo é praticado como ato meditativo e energético, com presença total,
+      SEM visar orgasmo masculino. O homem retém o sêmen, mantém ereção
+      por horas, e ambos se alimentam da energia trocada. Donadelli pratica
+      atualmente. Premissa: 'a finalidade do ato sexual NÃO é ejacular' —
+      essa é programação da pornografia.
+    structure:
+      - "Pré-requisito — já estar fora do vício em pornografia (sem associação 'sexo termina em gozo')"
+      - "Ressignificação — sexo é presença, troca energética, conexão; não é descarga"
+      - "Técnica — respiração lenta, atenção ao corpo, pausas, evitar pico de excitação"
+      - "Comunicação com parceira — explicar o porquê, alinhar expectativas"
+      - "Múltiplas 'rodadas' fundidas em uma única sessão de horas"
+    when_to_use:
+      - "Homem em relacionamento estável que quer combinar intimidade + retenção"
+      - "Homem queixando-se de ejaculação precoce (NoFap + tantra resolve)"
+      - "Casal querendo aprofundar conexão erótica para além do mecânico"
+    examples:
+      - "Steve Jobs (ídolo) — transava sem ejacular; esposa relata frustração"
+      - "Donadelli e namorada atual — combinaram 'não vou gozar mais, preciso da energia'"
+    source_refs:
+      - "À Deriva — explicação completa de tantra/karezza, citação Steve Jobs"
+      - "À Deriva — 'se você ancorar pensamento ah, finalidade gozar. Não é. Pornografia estabeleceu isso'"

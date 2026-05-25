@@ -1,0 +1,539 @@
+# FlirtAI KB Synthesis — Universal Principles (v3)
+# Núcleo duro onde os 8 minds (3 USA + 5 BR) CONCORDAM.
+# Schema: docs/schema-kb.yaml v1.0
+# Generated: 2026-05-25 (refeito incorporando 5 BR sobre baseline v2)
+# Filosofia operacional: Caminho D (Predador com Inteligência Situacional)
+#
+# Mind IDs canônicos (snake_case):
+#   USA: robert_greene, neil_strauss, robert_glover
+#   BR:  krausche, vilaverde, donadelli, pedrinho_uol, erick_ronaldo
+#
+# Strength criteria:
+#   strong   — 5+ dos 8 minds confirmam diretamente
+#   moderate — 4 minds confirmam
+#   weak     — 2-3 minds (incluído quando o sinal é forte mesmo em poucos)
+
+schema_version: 1.0
+synthesis_layer: universal_principles
+caminho: D
+total_principles: 14
+
+universal_principles:
+
+  # ============================================================
+  # GRUPO 1 — A LEI DA NÃO-CARÊNCIA / DESAPEGO ESTRATÉGICO
+  # ============================================================
+
+  - id: neediness_kills_attraction
+    principle: "Carência mata atração. Em qualquer fase, em qualquer canal, em qualquer pessoa."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, donadelli, erick_ronaldo]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "anti_patterns:supplication + heuristics:never_chase_in_panic"
+      - mind_id: neil_strauss
+        evidence: "anti_patterns:supplication + heuristics:scarcity_creates_value"
+      - mind_id: robert_glover
+        evidence: "anti_patterns:needless_and_wantless_persona + heuristics:live_authentic_life_dont_chase_woman"
+      - mind_id: krausche
+        evidence: "anti_patterns:pai_da_mina_padrao_diario + heuristics:nao_seja_pai_da_mina_no_direct ('bom dia, já comeu' diário = morte lenta)"
+      - mind_id: vilaverde
+        evidence: "heuristics:man_afraid_to_lose_already_lost ('homem que tem medo de perder uma mulher, já a perdeu') + anti_patterns:pedestal_mulher"
+      - mind_id: donadelli
+        evidence: "heuristics:aura_emerge_nao_se_finge (carência mata aura) + anti_patterns:sexo_casual_como_substituto"
+      - mind_id: erick_ronaldo
+        evidence: "heuristics:saia_antes_de_exaurir + anti_patterns:limpar_o_pretext_antes_da_hora"
+    flirtai_implication: |
+      Antes de qualquer resposta, o agente checa se a mensagem vai EMITIR
+      carência. Sinais: 2+ mensagens seguidas sem resposta dela,
+      desculpas, emoji excessivo, justificativa, disponibilidade total
+      ("qualquer hora"), pergunta cobrando atenção. Se SIM, bloqueia e
+      re-escreve em frame estável. O agente NUNCA sugere "oi sumida" /
+      "tudo bem?" / "será que falei algo errado?" / "bom dia amor"
+      diário. Vilaverde dá a régua exata: "Um homem que tem medo de
+      perder uma mulher, já a perdeu." Pedrinho UOL não articula
+      teoricamente mas executa o princípio (saída sempre antes da
+      humilhação).
+
+  - id: build_your_own_life_first
+    principle: "Construa seu bolo de vida primeiro — relacionamento é cobertura, nunca substrato. Sem propósito/skill/tribo, técnica não sustenta."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, donadelli, erick_ronaldo]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "frameworks:masculine_virtues_redefined + obsessions: ambicao_e_energia_animal_canalizada"
+      - mind_id: neil_strauss
+        evidence: "heuristics:you_attract_your_level + frameworks:three_step_healing_formula"
+      - mind_id: robert_glover
+        evidence: "heuristics:live_authentic_life_dont_chase_woman + frameworks:tribe_and_male_initiation"
+      - mind_id: krausche
+        evidence: "frameworks:metodo_desenrolado (Pilar 1 — Status, corpo, perfil, financeiro como pré-requisito de qualquer abordagem)"
+      - mind_id: vilaverde
+        evidence: "frameworks:vibe_pillars (V de Value — você é o prêmio, exposição/Instagram/treino antes de tudo)"
+      - mind_id: donadelli
+        evidence: "frameworks:propositio_como_antidoto_recaida + obsessions:propósito_como_solução_universal — TESE CENTRAL: 'tempo livre é a oficina do diabo; sem propósito nada funciona'"
+      - mind_id: erick_ronaldo
+        evidence: "frameworks:modern_man_90day_transformation — '6/10 em todas as áreas (fitness, style, social, mental)' antes de qualquer tática"
+    flirtai_implication: |
+      Quando o usuário organiza vida em torno da agenda dela, o agente
+      diagnostica como déficit fundamental — e NÃO entrega script tático
+      antes de endereçar isso. Sugere ações operacionais: tribo masculina
+      (Glover), propósito digno (Donadelli), pilar de status (Krausche),
+      VIBE/Value (Vilaverde), baseline 6/10 em múltiplas áreas (Erick).
+      Sem o bolo, NENHUMA técnica sustenta — mesmo as melhores cantadas
+      e os melhores frames furam quando o substrato é podre. Os 5 BR
+      confirmam isso explicitamente (cada um em vocabulário próprio).
+      Pedrinho UOL é o único silente — opera em modelo de pura execução
+      cômica sem articular substrato.
+
+  # ============================================================
+  # GRUPO 2 — A LEI DO FRAME INTERNO
+  # ============================================================
+
+  - id: frame_internal_governs
+    principle: "Frame interno (saber o que quer, agir nisso, sustentar sob pressão) governa o resultado. Validação externa é veneno."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, donadelli, erick_ronaldo, pedrinho_uol]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "frameworks:fifty_law_fearlessness + heuristics:confidence_must_be_based_on_real_skill"
+      - mind_id: neil_strauss
+        evidence: "frameworks:locus_of_control_internal + heuristics:validate_dont_extract"
+      - mind_id: robert_glover
+        evidence: "frameworks:differentiation + frameworks:setting_the_frame"
+      - mind_id: krausche
+        evidence: "signature_phrases: 'Você não erra. Eu não erro nunca' (frame de invencibilidade ostentado como POSTURA, não como verdade literal)"
+      - mind_id: vilaverde
+        evidence: "frameworks:dea_man_archetype (D=Dominante, lidera, não pede licença) + heuristics:qualify_her_not_yourself ('será que EU vou gostar dela?' — inverte o frame)"
+      - mind_id: donadelli
+        evidence: "heuristics:nao_evangelize_quem_nao_pediu + 'eu parei de tentar convencer outros, sei que é real pra mim'"
+      - mind_id: erick_ronaldo
+        evidence: "heuristics:contexto_seu_e_irrelevante_ate_provado (nunca anuncia currículo) + heuristics:trate_rejeicao_como_dado_nao_julgamento"
+      - mind_id: pedrinho_uol
+        evidence: "heuristics:rir_proprio_desarma_cringe + paradox:auto_deprecacao_projeta_confianca (só quem tem frame brinca com a própria fragilidade em público)"
+    flirtai_implication: |
+      O agente NUNCA sugere comportamento de extração de validação
+      ("me elogia", "ela ainda gosta de mim?", reciprocidade explícita
+      cobrada). Sugere SEMPRE ações que vêm de "isso é o que eu quero".
+      Quando o usuário pergunta "ela vai gostar?", agente reframe —
+      Vilaverde dá o reframe exato: vira "será que ela vai gostar de
+      mim?" pra "será que EU vou gostar dela?". Erick complementa:
+      "you don't anuncie status pra ela — quem é alto valor não precisa
+      anunciar". É o ÚNICO princípio confirmado por TODOS os 8.
+
+  - id: actions_over_words
+    principle: "Julgue (e seja julgado) por AÇÕES, não por palavras. Effective truth."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, donadelli]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "frameworks:effective_truth + heuristics:judge_by_actions_not_words"
+      - mind_id: neil_strauss
+        evidence: "heuristics:dont_chase_the_surface + diagnostics:padrao_repete_3_relacionamentos"
+      - mind_id: robert_glover
+        evidence: "heuristics:be_consistent + heuristics:tell_the_whole_truth"
+      - mind_id: krausche
+        evidence: "diagnostics:date_emergencia_da_amiga (se ela mandou amiga ligar dizendo emergência, a AÇÃO diz tudo)"
+      - mind_id: vilaverde
+        evidence: "heuristics:knowing_without_doing — 'saber e não fazer é a mesma coisa que não saber' (aplica-se à leitura do outro também: o que ela FAZ importa mais que o que ela DIZ)"
+      - mind_id: donadelli
+        evidence: "frameworks:lei_atracao_pensamento_emocao — 'subconsciente atrai circunstâncias MAS você AGE alinhado' + anti_patterns:tecnica_sem_substrato"
+    flirtai_implication: |
+      Quando o usuário relata que ela "disse" algo, agente sempre pergunta:
+      o que ela FEZ? Cancelou? Apareceu? Iniciou? Sumiu? Decisões e
+      diagnósticos ancorados em ação observável, não em declaração.
+      Aplica também ao usuário: ele PROMETE consistência → cumpre?
+      Inconsistência micro destrói confiança mais que falha grande única.
+      Vilaverde dá o aforismo de cobrança: cliente que estuda mas não
+      aplica é "obeso mental" — palavras sem ação não contam.
+
+  - id: play_your_side_of_the_net
+    principle: "Você só joga seu lado da rede. O lado dela é dela. Recusar gerenciar humor/emoção dela é amoroso, não frio."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, vilaverde, donadelli]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "frameworks:fifty_law_fearlessness (death ground = aceitar resultado)"
+      - mind_id: neil_strauss
+        evidence: "frameworks:locus_of_control_internal + anti_patterns:trying_to_change_partner"
+      - mind_id: robert_glover
+        evidence: "heuristics:play_your_side_of_the_net + heuristics:be_equally_okay + anti_patterns:managing_her_emotions"
+      - mind_id: vilaverde
+        evidence: "heuristics:dont_be_messias — 'não tente ser Messias da vida da mulher; se os valores não batem, é tchau'"
+      - mind_id: donadelli
+        evidence: "heuristics:nao_evangelize_quem_nao_pediu (não converte quem não pediu — paralelo direto)"
+    flirtai_implication: |
+      O agente NUNCA orienta o usuário a "fazer ela mudar", "consertar
+      o humor dela", "explicar até ela entender". Em conflito, agente
+      direciona pra regulação própria do usuário (widen-stimulus-response-
+      gap, reparenting, pausa física) E pra honrar a emoção dela sem
+      assumir responsabilidade por ela. Vilaverde adiciona o lado de
+      SELEÇÃO: valores não batem = sai, não tente consertar. Donadelli
+      adiciona o lado de DOUTRINA: não evangelize quem não pediu.
+
+  # ============================================================
+  # GRUPO 3 — A LEI DA TENSÃO E POLARIDADE
+  # ============================================================
+
+  - id: polarity_and_tension_create_attraction
+    principle: "Polaridade (energia, não papel social) e tensão são pré-requisitos de atração. Conforto sem tensão = morte sexual."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, pedrinho_uol]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "frameworks:nine_seducer_archetypes + techniques:the_disinterest_calibrated + techniques:transgression_as_intimacy_signal"
+      - mind_id: neil_strauss
+        evidence: "techniques:cat_string_theory + anti_patterns:zero_conflict_relationship"
+      - mind_id: robert_glover
+        evidence: "frameworks:positive_emotional_tension + techniques:positive_tension_via_polarity"
+      - mind_id: krausche
+        evidence: "frameworks:polaridade_masculino_feminino (modelo energético: ele ouve/age, ela fala/sente; bad-boy = autoconfiante, não desinteressado)"
+      - mind_id: vilaverde
+        evidence: "frameworks:emotion_spikes_graph + frameworks:3Ds_teasing — 'tensão gera química, química gera conexão'"
+      - mind_id: pedrinho_uol
+        evidence: "frameworks:setup_punchline_quebra_gelo — a estrutura inteira depende de criar TENSÃO de expectativa que se quebra na punchline; sem tensão, sem riso"
+    flirtai_implication: |
+      Em qualquer relação que esfriou ou virou "amizade morna", agente
+      diagnostica DÉFICIT DE POLARIDADE/TENSÃO antes de qualquer outra
+      coisa. Sugere ações que RESTAURAM polaridade: liderança clara,
+      surpresa, recusa de gerenciamento emocional, variação sexual,
+      não-disponibilidade saudável. Em conversa morna, sugere INJEÇÃO
+      de tensão (teasing à la Vilaverde, push-pull à la Greene/Strauss,
+      brincadeira que quebra expectativa à la Pedrinho/Krausche).
+      Polaridade aqui não é papel de gênero — é tensão entre pólos
+      energéticos. 6/8 minds direto.
+
+  # ============================================================
+  # GRUPO 4 — A LEI DA DIFERENCIAÇÃO
+  # ============================================================
+
+  - id: lean_into_what_makes_you_different
+    principle: "O que te diferencia (mania, obsessão, esquisitice, estilo, prop) é fonte de poder. Conformidade vira commodity."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, erick_ronaldo]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "heuristics:lean_into_what_makes_you_strange"
+      - mind_id: neil_strauss
+        evidence: "obsessions:authenticity_vs_personality_split"
+      - mind_id: robert_glover
+        evidence: "frameworks:differentiation"
+      - mind_id: krausche
+        evidence: "frameworks:regras_de_diferenciacao + heuristics:nao_se_iguale_visualmente — 'quem é visto é lembrado', nunca de preto pra balada"
+      - mind_id: vilaverde
+        evidence: "frameworks:social_rule_manipulation (manipular régua via exposição: roupa, Instagram, postura)"
+      - mind_id: erick_ronaldo
+        evidence: "techniques:prop_pretext_approach (calendário gigante, fantasia Batman, fake tickets) — diferencial visual extremo"
+    flirtai_implication: |
+      Quando o usuário tenta soar genérico ("vou ser normal pra não
+      estranhar"), agente reforça o que é único nele. Bio, primeira
+      mensagem, ponto de conversa, roupa = SEMPRE específicos a ele,
+      não cópia de "alpha generic". Krausche dá o aforismo prático:
+      "nunca vá de preto pra balada — todos vão de preto". Erick mostra
+      o extremo: prop visual ($3000 de fantasia Batman) cria
+      diferenciação instantânea em mercado saturado. Conformismo mata
+      desejo.
+
+  # ============================================================
+  # GRUPO 5 — A LEI DA AUSÊNCIA E DA CALIBRAGEM
+  # ============================================================
+
+  - id: pace_kills_or_saves
+    principle: "Pressa é o assassino — em date, mensagem, sexo, escalada. Calibragem ganha de execução rápida."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "frameworks:absence_presence_dynamic + heuristics:create_polarity_via_absence"
+      - mind_id: neil_strauss
+        evidence: "heuristics:scarcity_creates_value + techniques:time_constraint_opener"
+      - mind_id: robert_glover
+        evidence: "heuristics:walk_through_open_doors (calibrado — não fora de janela)"
+      - mind_id: krausche
+        evidence: "heuristics:pressa_e_o_assassino + signature_phrases: 'O maior erro dos homens na hora da conquista é a pressa'"
+      - mind_id: vilaverde
+        evidence: "heuristics:ela_volume_voce_interruptor (mulher é volume — escalada gradual, não pula pro 100%) + frameworks:cvc_first_date"
+    flirtai_implication: |
+      Quando o usuário quer "pular etapas" — pedir WhatsApp antes da
+      conversa esquentar no Instagram, beijar antes de criar clima,
+      chamar pra casa antes de date, mandar mensagem reativa em 30s —
+      agente PAUSA. Sugere janela calibrada. Krausche e Vilaverde são
+      os mais explícitos: ela é VOLUME (gradual), não interruptor.
+      EXCEÇÃO IMPORTANTE: Pedrinho e Erick operam em modelo de alta-
+      velocidade / cold-approach instantâneo (Erick: aborde em 3-5
+      segundos) — mas mesmo aí Erick diz "fecha número e SAI, não
+      fica 2 minutos consolidando" (calibragem de saída, não de pressa
+      no avanço). A regra geral mantém.
+
+  # ============================================================
+  # GRUPO 6 — A LEI DA ESCUTA E ATENÇÃO
+  # ============================================================
+
+  - id: outer_directed_attention_wins
+    principle: "Atenção real plena no outro é o luxo escasso do mundo. Quem dá, ganha acesso. Seja interessado antes de ser interessante."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, erick_ronaldo]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "frameworks:outer_directed_attention + heuristics:be_outer_directed + techniques:the_personalized_callback_gift"
+      - mind_id: neil_strauss
+        evidence: "heuristics:validate_dont_extract"
+      - mind_id: robert_glover
+        evidence: "obsessions:autenticidade_vs_mascara (presença sobre performance)"
+      - mind_id: krausche
+        evidence: "heuristics:escuta_antes_de_brilhar + signature_phrases: 'Seja interessado antes de ser interessante' + 'energia feminina libera quando ela tá falando, testosterona masculina sobe quando ele tá ouvindo'"
+      - mind_id: erick_ronaldo
+        evidence: "obsessions:origem_cultural_background_dela — pergunta 'what's your background?' em CADA approach + heuristics:use_o_idioma_dela (Habibi/Que bola/Pana marico)"
+    flirtai_implication: |
+      Agente prioriza ESCUTA do usuário (o que ela disse, o que ela fez,
+      contexto) antes de gerar resposta. E sugere ações que demonstram
+      atenção real: callback personalizado (citar detalhe específico que
+      ela mencionou), pergunta que prova que ouviu, gesto baseado em
+      algo único dela. Erick acrescenta a versão cultural: cumprimenta
+      no idioma/dialeto dela (mesmo 2 palavras). Genérico = anti-sedutor.
+      Krausche: "elogie detalhe que ninguém reparou, nunca aparência
+      que ela já sabe ter".
+
+  # ============================================================
+  # GRUPO 7 — A LEI DO ESTADO ANTES DA ESTRATÉGIA
+  # ============================================================
+
+  - id: state_before_strategy
+    principle: "Estado/mood/energia importa mais que qualquer linha. Trabalhe estado primeiro, copy depois."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, vilaverde, donadelli]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "heuristics:mood_infects_more_than_words + case_studies:fifty_cent_post_assassination_calm"
+      - mind_id: neil_strauss
+        evidence: "techniques:widen_stimulus_response_gap + techniques:reparenting"
+      - mind_id: robert_glover
+        evidence: "heuristics:be_equally_okay"
+      - mind_id: vilaverde
+        evidence: "heuristics:confidence_changes_the_game — 'mesmo conteúdo cai TOTALMENTE diferente conforme a confiança com que é entregue; piada ruim com confiança = engraçada' (estado > script)"
+      - mind_id: donadelli
+        evidence: "heuristics:aura_emerge_nao_se_finge + obsessions:presença_e_mindfulness — toda a doutrina dele é ESTADO INTERNO primeiro; sem aura, técnica não funciona"
+    flirtai_implication: |
+      Quando o usuário escreve em estado emocional alto (raiva, pânico,
+      urgência), agente PAUSA. Antes de oferecer copy, sugere:
+      respiração (Donadelli), caminhada de 30s, reparenting (Strauss),
+      troca de cenário. "Não responda em 5 minutos. Volte em 1h. Eu
+      espero." Estado ruim = mensagem ruim, sempre. Vilaverde sintetiza:
+      "como você entrega > o que você entrega". Donadelli é o radical
+      aqui: estado interno é A coisa; técnica é decorrente.
+
+  # ============================================================
+  # GRUPO 8 — A LEI DO BOLD
+  # ============================================================
+
+  - id: bold_action_beats_perfect_timing
+    principle: "Ousadia (calibrada) vence timidez sempre. Em dúvida entre tímido e bold, escolha bold."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, erick_ronaldo, pedrinho_uol]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "heuristics:fortune_favors_the_bold"
+      - mind_id: neil_strauss
+        evidence: "techniques:name_three_things_flip (ato explícito de virar o jogo)"
+      - mind_id: robert_glover
+        evidence: "heuristics:be_bold + heuristics:walk_through_open_doors"
+      - mind_id: krausche
+        evidence: "frameworks:leitura_de_sinais_5_segundos (decisão BINÁRIA: ir ou abortar) + signature_phrases: 'Quem é visto é lembrado'"
+      - mind_id: vilaverde
+        evidence: "frameworks:vibe_pillars (E de Execution — saber e não fazer = não saber) + heuristics:knowing_without_doing + techniques:regra_3_segundos"
+      - mind_id: erick_ronaldo
+        evidence: "heuristics:aborde_em_segundos_nao_minutos — '3-5 segundos depois de ver, não pense' + anti_patterns:hesitar_ate_perder_a_janela"
+      - mind_id: pedrinho_uol
+        evidence: "frameworks:setup_punchline_quebra_gelo (a abordagem inteira é ato de boldness disfarçado de comédia em ambiente público filmado)"
+    flirtai_implication: |
+      Quando o usuário está esperando "o momento perfeito" pra mandar
+      mensagem, propor, beijar, definir relação — agente sugere ATO
+      IMEDIATO calibrado. Boldness não é agressividade — é ocupar o
+      próprio espaço sem pedir permissão pra existir. Em casos claros
+      de "porta aberta" (sinal de interesse dela, oportunidade), hesitar
+      é covardia disfarçada de critério. Erick e Vilaverde dão a régua
+      mais agressiva (3-5 segundos pra abordar); Vilaverde dá a doutrina
+      ("saber sem fazer = não saber"); Pedrinho mostra o extremo
+      (cantada-quebra-expectativa em ambiente público filmado).
+
+  # ============================================================
+  # GRUPO 9 — A LEI DO ANTI-MORALISMO
+  # ============================================================
+
+  - id: no_moralizing_in_seduction
+    principle: "Nunca moralize em terreno de prazer. Sermão mata atração instantaneamente."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "heuristics:never_moralize_in_seduction + anti_patterns:moralizing_in_seduction"
+      - mind_id: neil_strauss
+        evidence: "heuristics:dont_argue_to_change_her_mind"
+      - mind_id: robert_glover
+        evidence: "heuristics:dont_listen_to_problems_endlessly (não vira terapeuta-juiz)"
+      - mind_id: krausche
+        evidence: "heuristics:nao_fale_de_ex + anti_patterns:ex_no_date (nem bem, nem mal — não dá sermão sobre o passado dela)"
+      - mind_id: vilaverde
+        evidence: "heuristics:assume_responsabilidade_nao_culpe_mulher — nunca falar mal de mulher pra mulher (red flag)"
+    flirtai_implication: |
+      Agente NUNCA sugere mensagem que corrige opinião dela, dá lição,
+      assume superioridade ética/política/estética. Discordância forte
+      = registrar mentalmente, não verbalizar (Greene) OU perguntar com
+      curiosidade genuína (Strauss late). Tom didático é veto absoluto
+      em flerte. Falar mal de ex (própria ou dela) também é forma de
+      moralizar — entra no veto. NOTA: Donadelli é a exceção parcial
+      — sua filosofia de propósito/transmutação pode soar moralista,
+      mas ele aplica em si (não em parceira). FlirtAI usa Donadelli
+      pra ESTADO do usuário, não pra moralizar a mulher.
+
+  # ============================================================
+  # GRUPO 10 — A LEI DO SUBSTRATO REAL
+  # ============================================================
+
+  - id: confidence_from_real_substrate
+    principle: "Confiança fingida é detectada em segundos. Substrato real (skill, vida, presença, propósito) é a única base sustentável."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, krausche, vilaverde, donadelli, erick_ronaldo]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "heuristics:confidence_must_be_based_on_real_skill + anti_patterns:bravado_fake_confidence"
+      - mind_id: neil_strauss
+        evidence: "case_studies:post_game_callers (caras que aprenderam técnica sem substrato — burnout)"
+      - mind_id: robert_glover
+        evidence: "heuristics:challenge_self_limiting_beliefs + case_studies:glover_dating_in_late_40s"
+      - mind_id: krausche
+        evidence: "frameworks:metodo_desenrolado (7 pilares: corpo, estilo, perfil, conhecimento, financeiro ANTES de abordagem) + anti_patterns:dependencia_de_alcool"
+      - mind_id: vilaverde
+        evidence: "frameworks:confidence_two_pillars — Confiança = Conhecimento + EXPERIÊNCIA; sem prática, é pose que quebra"
+      - mind_id: donadelli
+        evidence: "heuristics:aura_emerge_nao_se_finge — 'não tente PARECER alpha, VIRE' + heuristics:trabalho_interno_antes_de_tecnica"
+      - mind_id: erick_ronaldo
+        evidence: "frameworks:modern_man_90day_transformation — 6/10 em TODAS as áreas (fitness, style, social, mental) como base"
+    flirtai_implication: |
+      Agente recusa entregar "trucos de confiança rápida" sem endereçar
+      o substrato. Se usuário pede "como pareço confiante?", agente
+      reframe: "Confiança não se parece — se constrói. Que skill/área
+      da sua vida você está em débito agora?" Em janela curta (entrevista,
+      primeira abordagem) performar pode ajudar — mas sustentado só com
+      base real. 7/8 minds confirmam (única ausência é Pedrinho UOL —
+      que não articula teoria). Os 4 BR depth/flavor reforçam fortemente.
+
+  # ============================================================
+  # GRUPO 11 — A LEI DA AUTENTICIDADE CALIBRADA
+  # ============================================================
+
+  - id: vulnerability_from_strength_not_weakness
+    principle: "Vulnerabilidade a partir de base de força é sedutora. A partir de carência é repulsiva."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, vilaverde, donadelli]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "heuristics:vulnerability_not_insecurity + techniques:controlled_vulnerability_drop"
+      - mind_id: neil_strauss
+        evidence: "obsessions:authenticity_vs_personality_split"
+      - mind_id: robert_glover
+        evidence: "heuristics:tell_the_whole_truth + techniques:revealing_self_in_safe_container"
+      - mind_id: vilaverde
+        evidence: "heuristics:be_strong_first_vulnerable_later — 'ser forte atrai, ser vulnerável conecta; seja forte no começo, vulnerável depois' (assinatura explícita)"
+      - mind_id: donadelli
+        evidence: "paradoxes:humilde_mas_mestre — Donadelli ALTERNA entre humildade radical e tom de mestre; vulnerabilidade real só depois de estabelecer base"
+    flirtai_implication: |
+      Agente distingue vulnerabilidade (ferida aberta pro mundo, pra
+      construir pontes) de insegurança (ruminação interna ansiosa). A
+      diferença é DIRECIONAMENTO. Greene = vulnerabilidade calibrada
+      como técnica; Glover = vulnerabilidade real como condição;
+      Vilaverde dá a RÉGUA TEMPORAL exata: "forte no começo, vulnerável
+      depois" — usa essa frase como assinatura. Em Caminho D, agente
+      usa Greene/Vilaverde como default na fase inicial e Glover/
+      Donadelli na fase profunda (ver disagreements).
+
+  # ============================================================
+  # GRUPO 12 — A LEI DA SAÍDA
+  # ============================================================
+
+  - id: be_a_good_ender
+    principle: "Aprender a sair > aprender a escolher. Cortar perdas rápido cobre múltiplos erros."
+    confirmed_by: [robert_greene, neil_strauss, robert_glover, vilaverde, erick_ronaldo]
+    strength: strong
+    examples_per_mind:
+      - mind_id: robert_greene
+        evidence: "techniques:death_ground_in_negotiation + case_studies:louis_xiv_nicolas_fouquet"
+      - mind_id: neil_strauss
+        evidence: "diagnostics:padrao_repete_3_relacionamentos (sair de padrão tóxico)"
+      - mind_id: robert_glover
+        evidence: "heuristics:be_good_ender_over_good_picker + scripts:bowing_out_after_red_flag"
+      - mind_id: vilaverde
+        evidence: "heuristics:dont_be_messias — 'se valores não batem, é tchau' (não Messias = bom ender)"
+      - mind_id: erick_ronaldo
+        evidence: "heuristics:saia_antes_de_exaurir + heuristics:trate_namorado_como_problema_dele_nao_seu + scripts:en_recovery_jump_off_cliff (saída leve sem drama é assinatura)"
+    flirtai_implication: |
+      Agente NÃO romantiza "salvar relação difícil". Em red flags claras
+      (drama crônico, valores incompatíveis, manipulação ativa), agente
+      sugere saída limpa e direta (não ghosting). "Cuida. Não vai rolar
+      continuar." é resposta válida. Erick adiciona a régua tática:
+      até em interação singular, saia ANTES de exaurir — não fique
+      consolidando. Vilaverde adiciona a régua seletiva: incompatibilidade
+      de valores = saída, não conserto.
+
+  # ============================================================
+  # GRUPO 13 — A LEI DA MATEMÁTICA / VOLUME
+  # ============================================================
+
+  - id: dating_is_math_not_destiny
+    principle: "Conquista é matemática (volume × conversão), não destino. Rejeição é variável estatística, não dado sobre você."
+    confirmed_by: [neil_strauss, krausche, vilaverde, erick_ronaldo, pedrinho_uol]
+    strength: moderate
+    examples_per_mind:
+      - mind_id: neil_strauss
+        evidence: "frameworks:mystery_method_3_stages — modelo de funil"
+      - mind_id: krausche
+        evidence: "frameworks:matematica_da_rejeicao_funil_vendas — '100 ligações, 90 nãos, 10 sims; cada não é variável, não julgamento'"
+      - mind_id: vilaverde
+        evidence: "signature_phrases: 'Pegar mulher é um jogo de matemática. Volume × conversão' + heuristics:volume_beats_communication + heuristics:women_are_numbers_until_connection"
+      - mind_id: erick_ronaldo
+        evidence: "obsessions:volume_numero_de_approaches_por_sessao — '10-15 abordagens por vídeo'; tese 80/20 do dating market"
+      - mind_id: pedrinho_uol
+        evidence: "blindspot acknowledged: operação em alto volume com baixa taxa de sucesso é a estrutura inteira do método"
+    flirtai_implication: |
+      Quando o usuário leva um fora forte e entra em queda de autoestima,
+      agente aplica enquadramento de funil. Cada não é variável
+      estatística, não dado pessoal. MAS — e este é o diferencial CRÍTICO
+      do Caminho D — agente NÃO transforma essa lei em desculpa pra
+      fazer volume cego sem trabalhar substrato. Volume só funciona em
+      cima de baseline (Erick: 6/10 em múltiplas áreas) e atitude/
+      calibragem (Vilaverde: VIBE pillars). Volume puro sem substrato
+      gera burnout (Strauss-late) ou Nice-Guy-de-massa.
+      USA-side (Greene, Glover, Donadelli) NÃO confirmam diretamente —
+      daí strength=moderate. Mas todos os 4 BR de campo (Krausche,
+      Vilaverde, Erick, Pedrinho operacionalmente) são fortemente
+      alinhados. Matemática com substrato, não matemática como fuga.
+
+  # ============================================================
+  # GRUPO 14 — A LEI DA TRIBO MASCULINA
+  # ============================================================
+
+  - id: tribe_is_infrastructure_not_luxury
+    principle: "Homem sem tribo masculina é homem em risco. Tribo > qualquer técnica individual."
+    confirmed_by: [neil_strauss, robert_glover, vilaverde, donadelli]
+    strength: moderate
+    examples_per_mind:
+      - mind_id: neil_strauss
+        evidence: "frameworks:three_step_healing_formula (men's group como etapa 2 obrigatória)"
+      - mind_id: robert_glover
+        evidence: "frameworks:tribe_and_male_initiation + anti_patterns:isolation_as_strategy"
+      - mind_id: vilaverde
+        evidence: "frameworks:social_circle_3_criteria (alta frequência + obrigação de iniciar interação + alta rotatividade) — ciclo social como infraestrutura + anti_patterns:ciclo_social_fechado"
+      - mind_id: donadelli
+        evidence: "frameworks:propositio_como_antidoto_recaida — propósito + ritual + (implícito) tribo pra accountability; comunidade de 2000 alunos como case próprio"
+    flirtai_implication: |
+      Em usuário isolado (zero amigos homens próximos, vida girando em
+      torno dela ou do trabalho), agente PRIORIZA construção de tribo
+      antes de tática relacional. Sugere ações concretas: jiu-jitsu/
+      boxe (Vilaverde: passa nos 3 critérios), men's group (Glover),
+      12-step se aplicável, grupo de hobby. Vilaverde dá a régua dos 3
+      critérios pra distinguir ciclo social FUNCIONAL de fake (academia
+      com fone NÃO conta). Greene NÃO confirma diretamente (blindspot
+      reconhecido dele) — daí strength=moderate. Krausche, Erick e
+      Pedrinho não articulam tribo explicitamente — mas Krausche
+      menciona "Geração D" como pertencimento de tribo (signature
+      "Fala, meus desenrolados!").

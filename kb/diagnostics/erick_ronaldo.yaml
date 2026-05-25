@@ -1,0 +1,236 @@
+---
+mind_id: erick_ronaldo
+category: diagnostics
+generated: 2026-05-25
+---
+
+diagnostics:
+  - id: ela_riu_antes_de_responder
+    situation: "Após abertura (compliment ou pickup line), ela ri ANTES de responder verbalmente"
+    signals_to_read:
+      - "Riso espontâneo, não forçado"
+      - "Eye contact mantido após o riso"
+      - "Postura abre (cruza pernas pra você, gira tronco)"
+      - "Mãos relaxadas (não cruzadas no peito)"
+    interpretation_options:
+      - reading: "High receptividade — ela achou genuíno e atrativo"
+        confidence: alta
+        next_move: |
+          Acelera pro number close em <60s. Não enrola com mais
+          perguntas — quanto mais tempo entre o riso e o ask, mais
+          chance dela racionalizar o impulso.
+      - reading: "Riso de simpatia social (não atração)"
+        confidence: media
+        next_move: |
+          Faz UMA pergunta de calibração ('what's your background?')
+          pra ver se ela engaja além do polite. Se ela retorna
+          pergunta de volta, é interesse. Se ela termina com 'cool',
+          é polidez — saia.
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: ela_tenta_oferecer_instagram
+    situation: "Após pedir número, ela diz 'I can give you my Instagram'"
+    signals_to_read:
+      - "Frase ofereceu Insta sem você pedir = ela ainda não decidiu"
+      - "Tom da fala (apologético vs neutro vs entusiasmado)"
+      - "Linguagem corporal durante a oferta (recuando vs aproximando)"
+    interpretation_options:
+      - reading: "Soft rejection — ela está te dando saída elegante"
+        confidence: media
+        next_move: |
+          Aceita Insta como cortesia, finaliza rápido, NÃO insiste.
+          DM follow-up provavelmente vai morrer — não invista
+          emocionalmente.
+      - reading: "Teste de filtro — ela está vendo se você cede"
+        confidence: media
+        next_move: |
+          Push back leve: 'I don't really use Instagram, can I get
+          your number instead?' Se ela ri e dá número, era teste e
+          você passou.
+      - reading: "Genuíno desconforto com dar número a estranho"
+        confidence: baixa
+        next_move: |
+          Aceita Insta, mas marca encontro físico no DM em <48h. Se
+          ela topa, era genuíno. Se enrola, era soft rejection.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+
+  - id: ela_disse_tenho_namorado
+    situation: "Em qualquer ponto da interação, ela menciona namorado/marido"
+    signals_to_read:
+      - "TIMING da menção (logo no início vs depois de engajar)"
+      - "Tom (defensivo vs casual vs com pena)"
+      - "Linguagem (specific vs generic) — 'meu namorado' vs 'estou comprometida'"
+      - "O que ela faz DEPOIS de dizer (vai embora vs continua conversando)"
+    interpretation_options:
+      - reading: "Hard rejection — não tem namorado, é só desculpa"
+        confidence: alta
+        next_move: |
+          Aceita ('the good ones always do') e sai. Tentar 'desmascarar'
+          é prova de baixo valor. Próxima.
+      - reading: "Realmente tem namorado mas a relação está fria"
+        confidence: baixa
+        next_move: |
+          NÃO entra na brecha. Sai com elegância — se ela quiser, ela
+          procura. Você não quer ser plano B de namoro alheio.
+      - reading: "Tem namorado MAS topa amizade/networking real"
+        confidence: media
+        next_move: |
+          Se interação foi rica, vale Instagram como contato neutro
+          (NÃO número). Sem expectativa, sem investimento. Se ela um
+          dia ficar disponível, ela lembra.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "PICKING_UP_GIRL_S_IN_MY_3_000_DOLLAR_COSTUME"
+
+  - id: ela_passa_numero_sem_hesitar
+    situation: "Você pediu número, ela respondeu 'yeah' instantâneo e digitou no seu celular"
+    signals_to_read:
+      - "Velocidade de resposta (sem pausa = alto interesse)"
+      - "Ela pegou seu celular sem hesitar"
+      - "Ela digitou número completo (não falso)"
+      - "Ela testou o número ligando/perguntando 'put my name'"
+    interpretation_options:
+      - reading: "Alto interesse — ela quer continuar"
+        confidence: alta
+        next_move: |
+          Sai em <30s. Texto inicial em 24-48h, NÃO no mesmo dia
+          (compõe expectativa). Propõe encontro físico no segundo
+          ou terceiro texto.
+      - reading: "Coletando números (collector behavior)"
+        confidence: baixa
+        next_move: |
+          Difícil de detectar. Cuide tom do primeiro texto pra
+          calibrar — se ela responde em <2h com perguntas, é genuíno.
+          Se enrola, era collector.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: ela_perguntou_sobre_voce
+    situation: "Durante a interação, ela faz pergunta sobre você sem você ter perguntado dela"
+    signals_to_read:
+      - "Tipo de pergunta (curiosidade pessoal vs polidez)"
+      - "Profundidade (superficial vs investigativa)"
+      - "Ela escuta a resposta ou interrompe com nova pergunta"
+    interpretation_options:
+      - reading: "Genuíno interesse — ela quer saber mais"
+        confidence: alta
+        next_move: |
+          Responde direto mas NÃO se alonga. Resposta de 1 frase
+          + devolve com pergunta sobre ela. Mantém o ritmo dela
+          investigando, você se revelando aos poucos.
+      - reading: "Polite small talk"
+        confidence: media
+        next_move: |
+          Resposta + número ask logo em seguida. Não estende.
+    source_refs:
+      - "How_to_transform_your_dating_life_in_just_90_days"
+
+  - id: ela_riu_ALTO_da_pickup_line
+    situation: "Você entregou pickup line cafona, ela GARGALHOU"
+    signals_to_read:
+      - "Volume do riso (alto = topou jogo, baixo = nervosismo social)"
+      - "Ela bate em você de leve durante o riso (sinal kinesthetic positivo)"
+      - "Ela responde com piada de volta"
+    interpretation_options:
+      - reading: "Ela topou o registro lúdico"
+        confidence: alta
+        next_move: |
+          Continua nesse register, evite ficar 'sério'. Faz mais 1
+          piada e pede número enquanto ela está rindo ('was that
+          smooth? can I get your number?').
+      - reading: "Riso nervoso polite"
+        confidence: media
+        next_move: |
+          Calibra pra modo sério em 30s. Pergunta substantiva, vê
+          se ela engaja. Se não, sai antes.
+    source_refs:
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: ela_perguntou_pelo_seu_youtube
+    situation: "Durante/após a interação ela pergunta sobre câmera, YouTube, TikTok"
+    signals_to_read:
+      - "Curiosidade neutra vs entusiasmo (fan-mode)"
+      - "Ela pede o handle (sinal de querer follow-up online)"
+      - "Ela pergunta se vai ser postado (vergonha vs entusiasmo)"
+    interpretation_options:
+      - reading: "Quer se manter conectada via redes"
+        confidence: alta
+        next_move: |
+          Dá o handle, mas REPETE pedido de número. 'Yeah follow me,
+          but let me also get your number so I can text you when it
+          posts.'
+      - reading: "Vergonha de aparecer no vídeo"
+        confidence: media
+        next_move: |
+          Garante que vai blur/cortar se ela quiser. Independente,
+          número ainda é foco — vídeo é distração.
+    source_refs:
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+      - "Giving_girls_TICKETS_for_being_too_sexy_on_the_beach"
+
+  - id: ela_responde_seca_yeah_okay_cool
+    situation: "Suas perguntas estão recebendo respostas mono-silábicas"
+    signals_to_read:
+      - "Olhar dela (no celular vs no você)"
+      - "Postura (saindo vs ficando)"
+      - "Ela faz contra-pergunta? (não = ela quer encerrar)"
+    interpretation_options:
+      - reading: "Disinterest — ela quer ir embora"
+        confidence: alta
+        next_move: |
+          Encerra em 10s. NÃO faça nova pergunta. Sai com 'all right,
+          have a great day'. Aprende: você ficou tempo demais.
+      - reading: "Timidez genuína (introverted)"
+        confidence: baixa
+        next_move: |
+          Tira pressão — para de fazer perguntas, faz uma observação
+          casual sobre o ambiente. Se ela relaxa, era timidez.
+          Continua mais 30s.
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"
+
+  - id: grupo_de_amigas_validou_voce
+    situation: "Você está em interação com mulher X e as amigas dela começam a engajar com você"
+    signals_to_read:
+      - "Amigas riem/respondem suas piadas"
+      - "Amigas perguntam coisas sobre você"
+      - "Amiga 'protetora' relaxa postura defensiva"
+    interpretation_options:
+      - reading: "Validação social aceita — você passou no filtro do grupo"
+        confidence: alta
+        next_move: |
+          Foca em X agora — número close direto. Amigas vão facilitar,
+          não bloquear.
+      - reading: "Amigas estão competindo pela sua atenção (pode invejar X)"
+        confidence: media
+        next_move: |
+          Não desvia foco. Quem você está abordando merece foco. X
+          percebe e fica safe — amigas respeitam.
+    source_refs:
+      - "Giving_girls_TICKETS_for_being_too_sexy_on_the_beach"
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+
+  - id: ela_repete_pickup_pra_amiga
+    situation: "Ela vira pra amiga e repete o que você disse, gargalhando"
+    signals_to_read:
+      - "Tom da repetição (zoeira admirada vs zoeira pejorativa)"
+      - "Amiga responde com curiosidade ou descarta"
+    interpretation_options:
+      - reading: "Você virou material — ela gostou e está mostrando"
+        confidence: alta
+        next_move: |
+          Aceita a brincadeira ('was that really that bad?'). Mantém
+          frame leve. Número close em 30s.
+      - reading: "Zoeira de descarte — ela está construindo distância"
+        confidence: media
+        next_move: |
+          Lê a postura corporal — se ela está afastando o corpo, é
+          descarte. Sai com 'all right, have a great day' antes de
+          virar entretenimento à custa.
+    source_refs:
+      - "PICKING_UP_GIRLS_WITH_MY_BIG_A_CALENDER_PENCIL"

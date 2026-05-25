@@ -1,0 +1,98 @@
+---
+mind_id: pedrinho_uol
+category: case-studies
+generated: 2026-05-25
+notes: |
+  Cantadas que viraram momento notável dentro do corpus — ou pela criatividade do setup,
+  pela resposta dela, ou pela escalada que rendeu beijo/número. Narrativa preserva ordem real.
+---
+
+case_studies:
+
+  - id: case_aluguel_do_coracao
+    title: "Cobrando aluguel do coração — fabricação fictícia que rendeu beijo"
+    narrative: |
+      Pedrinho aborda uma desconhecida na rua fingindo que ela está devendo dinheiro a ele.
+      'Achou que você não ia me encontrar, né? Tá me devendo um dinheiro e fica aí andando
+      pra lá e pra cá.' Ela responde confusa: 'eu lembro?'. Ele insiste no frame por 15 segundos,
+      apelando pra audiência ('vocês acreditam que essa mina tá me devendo um dinheiro?'),
+      construindo expectativa pesada de cobrança. Aí faz o pivot: 'Você acha que é de graça morar
+      no meu coração? Essa boca toda pra cá dela. O mínimo é o quê? Tem que dar um beijinho.'
+      Ela ri e dá o beijo. Gol-comemoração do Cristiano Ronaldo no áudio.
+    lessons:
+      - "Fabricação inverossímil mantida com cara séria por 15s cria pressão narrativa máxima"
+      - "Cooptar audiência durante o setup amplifica a pressão sobre a alvo"
+      - "Pivot do 'sério-cômico' para 'flerte-pedindo-beijo' tem que vir EXATAMENTE no pico de constrangimento"
+      - "Pedir 'mínimo / aluguel' transforma beijo em concessão de baixo custo (parece justo)"
+    source_refs:
+      - TIVE_Q_COBRAR_O_ALUGUEL_cantadas_pedrinhuol
+
+  - id: case_de_zero_a_dez_onze
+    title: "De 0 a 10, qual a chance? — 11"
+    narrative: |
+      Cantada na fila do McDonald's. Setup curto e direto: 'gente, essa é a fila do Mac? E pro
+      seu beijo, é onde? Tô fazendo lista das bocas que quero beijar esse ano — olha que engraçado,
+      tá escrito aqui só a sua.' Ela ri. Ele segue: 'vou fazer uma pergunta e você vai achar que
+      eu tô te querendo. Supondo que eu queira assim, você quer?'. Ela responde 'não'. Ele aceita
+      ('e foi, moça?') e finge intimidade fictícia ('você não lembra que a gente ficou?'). Ela
+      ri mais. Aí ele dispara: 'de 0 a 10, qual a chance de você me dar um beijinho?'. Ela
+      responde '11'. A resposta vira o momento — viraliza por ela ter QUEBRADO a escala dele.
+    lessons:
+      - "Quando ela responde 'não' a uma cantada, NÃO aceitar como rejeição final — sustentar o jogo cômico"
+      - "Sequência de cantadas pequenas (3-4 em fila) acumula engajamento até ela 'render-se' no jogo"
+      - "Quantificação ('de 0 a 10') força ela a participar ATIVAMENTE — ela tem que dar uma resposta"
+      - "Resposta dela que QUEBRA a regra do jogo proposto = sinal máximo de engajamento (ela está co-criando)"
+    source_refs:
+      - O_FINAL_MN_cantadas_pedrinhuol
+
+  - id: case_neymar_no_santos
+    title: "Seu sorriso parece o Neymar no Santos"
+    narrative: |
+      Aborda uma desconhecida na rua com setup 'parece que eu te conheço de algum lugar'.
+      Ela diz que não é daqui. Ele pivot: 'então acho que é seu sorriso. Sabe o que ele parece?
+      O Neymar no Santos. Que é impossível de esquecer.' Ela ri encantada com a referência
+      esportiva inesperada. Ele encadeia múltiplas cantadas em sequência ('vou te chamar de Puskas
+      / esse beijo vai ser o mais bonito do mundo'). Construção de elogio sobre elogio, todos
+      ancorados na metáfora futebolística. Ela engaja porque é metáfora ORIGINAL — não 'sorriso
+      lindo' genérico.
+    lessons:
+      - "Comparação a referência esportiva masculina aplicada a mulher CRIA originalidade — quebra clichê de elogio rosa"
+      - "Empilhar 3-4 cantadas dentro do MESMO frame (futebol) constrói coesão e mostra inteligência verbal"
+      - "Pra audiência masculina (TikTok), referência futebolística amplifica engajamento dos viewers"
+      - "Elogio metafórico vale mais que elogio direto — exige decodificação dela = engajamento ativo"
+    source_refs:
+      - Seu_sorriso_parece_o_Neymar_no_Santos_pedrinhuol_cantadas
+
+  - id: case_um_ano_de_namoro
+    title: "O que você pretende daqui a um ano? — Namorando comigo"
+    narrative: |
+      Aborda no shopping com frame de 'pesquisa'. Ela aceita. Ele pergunta o que ela pretende
+      daqui a um ano. Ela responde com seriedade: 'trabalhando muito, viajando, feliz'. Ele
+      faz o pivot: 'O que você acha de estar completando um ano de namoro comigo? Pra gente
+      começar pelo primeiro beijo hoje, daqui a um ano a gente tá fazendo um aninho.' Ela ri
+      muito. Ele empurra: 'a gente já pode casar, né?'. Ela diz: 'até antes, sou bem criativa'.
+      Ele pede selinho e ela dá.
+    lessons:
+      - "Setup 'pesquisa' funciona porque dá pretexto socialmente aceito pra ela parar e responder"
+      - "Pergunta de FUTURO (1 ano) força ela a se projetar — depois fica fácil substituir a projeção dela pela sua"
+      - "Acelerar relacionamento ao ABSURDO (casamento já?) em ritmo de piada permite ela topar em ritmo de piada também"
+      - "Resposta dela 'sou bem criativa' = co-construção máxima — ela já está jogando o jogo"
+    source_refs:
+      - Oq_vc_acha_cantadas_cantadas
+
+  - id: case_brigadeiro_de_festa
+    title: "Esse vestido parece brigadeiro de festa"
+    narrative: |
+      Aborda começando com 'posso fazer uma pesquisa' (Gato de Botas) — quebra-gelo absurdo
+      e admite que era só quebra-gelo. Aí elogia o vestido: 'sua mãe é costureira? é que ela
+      te fez na minha medida'. Ela engaja. Ele encadeia outra: 'sabe o que está parecendo esse
+      vestido? Posso falar aqui? Está parecendo brigadeiro de festa. É quando não tem ninguém
+      vendo e dá vontade de pegar.' A dupla cantada (costureira → brigadeiro) cria escalada:
+      primeiro elogio neutro, segundo elogio com SUBTEXTO físico. Ela ri das duas.
+    lessons:
+      - "Confessar que o quebra-gelo inicial era artificial DESARMA a defesa dela — ela passa a confiar nas próximas falas"
+      - "Empilhar cantadas em sequência (3-cantadas-em-1-minuto) cria momentum que cantada isolada não cria"
+      - "Analogia comestível pra mulher = trocadilho de 'pegar' aceito como flerte sem virar grosso"
+      - "Pedir 'permissão' antes da cantada mais ousada ('posso falar?') é tática de cumplicidade"
+    source_refs:
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol

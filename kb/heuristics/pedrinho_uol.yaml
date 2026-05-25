@@ -1,0 +1,125 @@
+---
+mind_id: pedrinho_uol
+category: heuristics
+generated: 2026-05-25
+notes: |
+  Heurísticas práticas INFERIDAS do comportamento observado. Pedrinho não verbaliza regras —
+  ele executa. Essas são as regras implícitas que o padrão de cantadas demonstra.
+---
+
+heuristics:
+
+  - id: nunca_anuncia_intencao
+    rule: "Nunca anuncie a cantada antes de executá-la — a quebra de expectativa É a cantada."
+    rationale: |
+      O efeito cômico depende de a mulher NÃO esperar a virada romântica. Se ela já sabe que vem
+      cantada, o cérebro arma defesa antes do impacto. Por isso o setup tem que parecer
+      genuinamente uma pesquisa, pergunta inocente ou observação banal.
+    when:
+      - "Abordagem fria em rua/shopping/festa"
+      - "Resposta a stories — pergunta neutra antes do flerte"
+      - "Qualquer situação onde a mulher pode rejeitar de antemão"
+    counter_example: |
+      Em contextos onde a intenção JÁ está clara (Tinder, namoro online, ela já topou conversar),
+      o setup-pesquisa fica artificial e perde graça. Vai direto.
+    source_refs:
+      - 3_MELHORES_RESPOSTAS_STORIES_P_ELA_pedrinhuol_cantadas
+      - corpus consolidado pedrinho_uol
+
+  - id: gancho_situacional_sempre
+    rule: "Toda cantada precisa de gancho no AGORA — roupa dela, ambiente, objeto, profissão."
+    rationale: |
+      Cantada sem gancho situacional vira piada decorada qualquer. Com gancho, parece improviso
+      espontâneo só pra ela. Aumenta percepção de inteligência verbal e relevância.
+    when:
+      - "Primeiro contato presencial"
+      - "Stories — sempre referenciar o que ela acabou de postar"
+      - "Quando quiser parecer espontâneo e não 'script copy-paste'"
+    counter_example: |
+      Cantadas universais clássicas (tipo 'troco pra 20 / nota 10') funcionam, mas têm teto baixo.
+      Pra resultado melhor, customize para o contexto dela.
+    source_refs:
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol
+      - QUAL_ALARME_EU_COLOCO_cantadas_pedrinhuol
+
+  - id: rir_proprio_desarma_cringe
+    rule: "Ria da própria cantada antes da reação dela — você lidera o tom de 'isso é piada'."
+    rationale: |
+      Se ela percebe que você está se levando a sério, rejeição vira humilhação. Se você
+      já tratou como piada, rejeição vira só uma brincadeira que não emplacou. Você controla
+      a leitura emocional do momento.
+    when:
+      - "Sempre após punchline"
+      - "Especialmente quando ela hesita em reagir"
+      - "Em ambientes com audiência (festa, rua, grupo)"
+    counter_example: |
+      Quando a cantada PEGA e ela engaja sério (não cômica), parar de rir e sustentar olhar
+      vira o passo seguinte. Riso eterno mata oportunidade de escalada real.
+    source_refs:
+      - Nao_confunde_ser_educado_com_dar_em_cima_nao_cantadas_viral
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+
+  - id: pedir_beijo_como_piada
+    rule: "Pedir beijo direto enquadrado como piada arranca beijo real."
+    rationale: |
+      Pedido sério de beijo no primeiro contato tem alta taxa de rejeição (compromisso emocional).
+      Pedido enquadrado como punchline cômica ('se não gostar, devolve' / 'mereceu um selinho')
+      reduz custo aparente da concessão dela. Ela pode dar como brincadeira e ainda assim valer.
+    when:
+      - "Após primeira cantada que arrancou riso real"
+      - "Quando ela engaja e mostra disposição"
+      - "Em ambientes públicos onde ela tem 'desculpa' pra topar (carnaval, festa)"
+    counter_example: |
+      Em ambientes íntimos (jantar, segundo encontro), o pedido cômico fica infantil.
+      Trocar por escalada física não-verbal.
+    source_refs:
+      - A_ULTIMA_CANTADA_cantadas_pedrinhuol_@Rhuanda
+      - TIVE_Q_COBRAR_O_ALUGUEL_cantadas_pedrinhuol
+
+  - id: auto_deprecacao_aumenta_confianca
+    rule: "Auto-deprecação cômica em alta-frequência sinaliza confiança REAL, não baixa."
+    rationale: |
+      'Minha vida é uma bosta' / 'só se for ela me dando fora' / 'eu sou o homem mais rápido,
+      gosto em 3 segundos' — só quem está MUITO seguro consegue brincar com a própria falha.
+      Mulher decodifica isso como abundance mindset disfarçado.
+    when:
+      - "Cantada cujo punchline central você quer suavizar"
+      - "Reação dela ambígua — você 'desarma' admitindo fraqueza"
+      - "Para diferenciar de cantadas decoradas robotizadas"
+    counter_example: |
+      Auto-deprecação SEM cantada ou flerte misturado vira lamento. Tem que carregar tom irônico
+      e estar dentro de moldura de jogo.
+    source_refs:
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+      - Porque_flash_._._._cantadas_pedrinhuol_viral_comedia_humor_
+
+  - id: ambiente_publico_amplifica
+    rule: "Em ambiente público com audiência, a cantada ganha pressão social a favor."
+    rationale: |
+      Mulher abordada em frente a outras pessoas tem incentivo SOCIAL pra dar uma reação positiva
+      ou pelo menos sorrir — rejeição grossa em público também a custa socialmente.
+      Pedrinho EXPLORA isso filmando em festas, ruas, lojas, grupos.
+    when:
+      - "Festas (carnaval, baladas, blocos)"
+      - "Lojas e shoppings com fluxo"
+      - "Filas (fila do Mac, fila pra entrar)"
+    counter_example: |
+      Privado / DM Instagram / mensagem direta → mesma cantada vai render bem menos.
+      Sem audiência, ela pode ignorar sem custo. Adapte o repertório.
+    source_refs:
+      - corpus consolidado pedrinho_uol
+
+  - id: prefira_pergunta_resposta_unica
+    rule: "Setup deve forçar resposta dela — pergunta direta, fácil de responder, sem fuga."
+    rationale: |
+      Setup que termina em pergunta concreta ('tudo bem?' 'pode tirar foto?' 'que horas são?')
+      força resposta. Resposta dela é o COMMIT que torna o pivot pra punchline natural.
+      Setup-monólogo sem pergunta perde ela em 3 segundos.
+    when:
+      - "Primeira frase de qualquer abordagem fria"
+      - "Quando você quer garantir 5-10s de atenção dela"
+    counter_example: |
+      Em conversas já fluindo, perguntas constantes viram interrogatório. Lá já se pode
+      afirmar / observar / contar.
+    source_refs:
+      - corpus consolidado pedrinho_uol

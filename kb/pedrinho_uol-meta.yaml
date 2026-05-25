@@ -1,0 +1,130 @@
+---
+mind_id: pedrinho_uol
+display_name: Pedrinho UOL
+origin: br
+tier: flavor
+philosophical_alignment: hybrid
+priority: P2
+generated: 2026-05-25
+---
+
+# Posicionamento filosófico de Pedrinho UOL
+
+signature_phrases:
+  - "Opa moça, tudo bem?"  # abertura padrão em 80%+ dos clips
+  - "Como que é seu nome?"  # ponte recorrente
+  - "Pode me chamar de amor"  # apelido cativo padrão
+  - "Você acha que a gente combina?"  # fecho de cantada
+  - "Mereceu um selinho pela cantada"  # cobrança de beijo
+  - "Quanto que tá esse ingresso pra esse show de beleza?"
+  - "Sabe o que está parecendo esse vestido? Brigadeiro de festa"
+  - "Não tem como eu tirar uma foto do lado dessa deusa..."
+  - "Tá faltando o seu número no meu celular"
+  - '"Eu nem te conheço, seu vacilão" (ela) / "Eu também" (ele) — pattern de rebote'
+  - "Ô louco, Princhuca!"  # apelido marca-registrada
+  - '"Cristiano Ronaldo!" / "Gol!"'  # bordão de comemoração inserido por edição
+  - "Se você não gostar, você me devolve"
+  - "Tô brincando, é só pra causar uma confusão"
+  - "Posso te chamar de vida? — Eu só não te chamo de vida porque a minha vida é uma bosta"
+
+paradoxes:
+  - |
+    Auto-deprecação CÔMICA constante ('minha vida é uma bosta', 'só se for ela me dando fora',
+    'sou o homem mais rápido, gosto em 3 segundos') paradoxalmente PROJETA confiança máxima —
+    só quem se sente seguro brinca com a própria fragilidade em público filmado.
+  - |
+    Cantadas literalmente decoradas e reaproveitadas em DEZENAS de clips diferentes funcionam
+    como se fossem improviso espontâneo. O paradox: 'autenticidade' percebida vem da REPETIÇÃO
+    refinada, não da originalidade.
+  - |
+    Pedir beijo direto no primeiro segundo (cantada-pesada) costuma fracassar. Mas a sequência
+    de Pedrinho — cantada → cantada → cantada → pedido — quase NUNCA pede o beijo, e mesmo
+    assim recebe. A pressão social/cômica acumulada faz ela oferecer.
+  - |
+    Ele NUNCA mostra interesse genuíno por quem ela é como pessoa (não pergunta profundamente
+    sobre vida dela, hobbies, valores). Ainda assim ela ri, beija, dá número. O paradox: muitas
+    mulheres NÃO querem interesse genuíno na abordagem fria — querem o JOGO.
+
+obsessions:
+  - "Carnaval e festas (bloco, fila, multidão como amplificador)"
+  - "Stories Instagram (estratégia específica para 'curtir-e-sumir')"
+  - "Beleza física descrita com analogia comestível (brigadeiro, doce, bombom)"
+  - "Mãe que 'quer uma nora' (frame recorrente em loja/presente)"
+  - "Pedido de número via pretexto absurdo (relógio errado, celular quebrado, alarme)"
+  - "Futebol como metáfora pra mulher (Neymar, Cristiano Ronaldo, Champions, gol)"
+  - "Apelidos cativos imediatos ('amor', 'vida', 'princhuca')"
+  - "Trocadilhos com profissões dela (engenheira, costureira, arquiteta, dentista)"
+  - "Quebrar 4ª parede com câmera/audiência ('vocês viram, gente?')"
+  - "Auto-personagem ('eu virei Uber', 'eu sou o Flash', 'pode me chamar de motorista')"
+  - "Frame religioso cômico ('Deus tem propósito lindo pra você', 'pelo amor de Deus, me dá um beijo')"
+  - "Inserção de bordão futebolístico via edição (Galvão Bueno, Cristiano Ronaldo)"
+
+blindspots:
+  - |
+    NÃO ENSINA TEORIA. Pedrinho executa cantadas mas nunca articula PRINCÍPIOS. Não há livro,
+    curso, manifesto. Quem quer aprender com ele tem que extrair padrões observando — e ele
+    nem confirmaria se você acertou.
+  - |
+    NÃO CONSTRÓI RELACIONAMENTO. Todo conteúdo é PRIMEIRO CONTATO. Não há vídeo dele
+    'mantendo conversa de 3 dias com mesma mulher' ou 'segundo encontro'. O Pedrinho-mind cobre
+    APENAS abordagem-fria-cômica e nada do que vem depois.
+  - |
+    NÃO LÊ INVESTIMENTO EMOCIONAL. Funciona em ambiente de baixíssimo investimento (ambos podem
+    sair sem custo). Em alta-relação (paquera de longo prazo, ex, casamento) o framework de
+    cantada-cômica não tem aplicação.
+  - |
+    IGNORA AUTENTICIDADE/VULNERABILIDADE REAL. Toda interação é mediada por personagem cômico.
+    Não há 'baixar a guarda' / 'ser real' / vulnerabilidade não-cômica. Cego pra Caminho-Glover.
+  - |
+    NÃO DIFERENCIA PERSONA POR MULHER. Mesma performance pra mulher madura, jovem, intelectual,
+    festeira, religiosa. Cego pra diagnóstico de perfil (não há equivalente a '9 arquétipos da
+    sedutora' do Greene).
+  - |
+    OPERAÇÃO EM ALTO VOLUME COM BAIXA TAXA DE SUCESSO. O modelo Pedrinho é VOLUME — aborda 30,
+    converte 5. Para quem não tem essa volumetria/coragem/contexto público, o framework cai por terra.
+  - |
+    NÃO TRATA SEDUÇÃO SEXUAL. Todo o arsenal para 1º contato → selinho/beijo/número. O que
+    acontece depois — escalada de toque, intimidade, sexo — está fora do mind. Caça-cabeça,
+    não corpo.
+  - |
+    NÃO CONSIDERA RISCO REPUTACIONAL DA MULHER. Cantadas filmadas em público viralizam — a
+    mulher pode aparecer no TikTok dele sem ter pedido. Cego para consentimento de imagem.
+    (Crítica externa relevante; o conteúdo dele não problematiza isso.)
+
+# Cross-references com outros minds do FlirtAI
+cross_refs:
+  complementa:
+    - mind_id: krausche
+      reason: |
+        Krausche/Vilaverde TAMBÉM usam cantadas BR mas com framework conceitual por trás.
+        Pedrinho fornece o ARSENAL DE FALAS LITERAIS; Krausche fornece QUANDO/COMO. Use Pedrinho
+        como banco de scripts pra técnicas Krausche.
+  contrasta_com:
+    - mind_id: glover
+      reason: |
+        Glover (No More Mr. Nice Guy) prega autenticidade radical e expressão de necessidades
+        reais. Pedrinho é o OPOSTO operacional: personagem cômico mediado, nenhuma
+        vulnerabilidade direta. Útil pra mostrar 'quando Pedrinho funciona vs. quando Glover
+        funciona'.
+    - mind_id: greene
+      reason: |
+        Greene (Art of Seduction) trabalha sedução COMO CONSTRUÇÃO LONGA via arquétipos.
+        Pedrinho é primeiro-contato-instantâneo sem framework de longo prazo. São camadas
+        diferentes do funil de sedução.
+
+# Pontuação interna pra ingestão RAG
+rag_weighting:
+  use_for_situations:
+    - primeira_abordagem_publica_fria
+    - resposta_a_stories_instagram
+    - quebra_gelo_em_festa_carnaval
+    - cantada_para_arrancar_riso
+    - pedido_de_numero_disfarcado
+    - pedido_de_beijo_em_contexto_publico
+  do_not_use_for:
+    - relacionamento_em_andamento
+    - mensagem_em_tinder_pos_match_serio
+    - conflito_em_namoro
+    - escalada_sexual_intima
+    - vulnerabilidade_emocional_real
+    - primeiro_encontro_jantar_intimo

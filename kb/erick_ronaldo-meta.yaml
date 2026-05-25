@@ -1,0 +1,203 @@
+---
+mind_id: erick_ronaldo
+display_name: Erick Ronaldo
+origin: br
+tier: flavor
+philosophical_alignment: greene_axis
+generated: 2026-05-25
+
+source_material:
+  - type: youtube
+    title: "Erick Ronaldo — Top 21 vídeos curados"
+    url: https://www.youtube.com/c/ErickRonaldo
+    duration_or_pages: 540
+    acquired: true
+    transcript_path: corpus/erick_ronaldo/processed/full-corpus.md
+    notes: |
+      21 vídeos curados do canal oficial (1M+ subs). Mais longo:
+      "PICKING_UP_GIRLS_IN_AUSTRALIA" (~29min). Conteúdo principalmente
+      em inglês, gravado em Miami (Brickell, South Beach) + viagens
+      pontuais. ~94K palavras transcritas.
+---
+
+# Posicionamento Filosófico
+
+signature_phrases:
+  - en_quote: "Where did you get that? — That smile. It's beautiful."
+    pt_context: |
+      Compliment-opener signature, repetido em DEZENAS de vídeos. Vira
+      catchphrase da marca dele.
+
+  - en_quote: "All right, ladies and gentlemen, I'm here reporting live in [local] with..."
+    pt_context: |
+      Frame default de todo vídeo entrevista. Posicionamento de
+      'reporter' que legitima socialmente a abordagem.
+
+  - en_quote: "Stop playing."
+    pt_context: |
+      Reação universal a qualquer coisa que ela diz. Vira tique
+      verbal mas funciona — sinaliza 'eu não levo a sério' e mantém
+      o registro lúdico.
+
+  - en_quote: "I'm going to go jump off a cliff now."
+    pt_context: |
+      Saída ritualizada após rejeição. Vira a derrota em piada
+      auto-depreciativa. Preserva frame ao admitir defeat sem drama.
+
+  - en_quote: "The good ones always do / The good ones are always taken."
+    pt_context: |
+      Resposta padrão pra 'tenho namorado'. Reposicionamento: ela vira
+      'a boa', você o cara que reconhece valor. Sem competir.
+
+  - en_quote: "Lovely meeting you. I love you. All right, bye."
+    pt_context: |
+      Saída padrão depois de fechar número. 'I love you' é ironia
+      leve mas constante — vira marca registrada.
+
+  - en_quote: "Peace out."
+    pt_context: |
+      Encerramento de vídeos e de grupos. Casual, sem aderência.
+
+  - en_quote: "I'm trying to show my subscribers you can talk to pretty girls without being scared of them."
+    pt_context: |
+      Auto-narrativa que ele usa quando confessa o pretext de
+      câmera. Vulnerabilidade calculada — admite que isso ainda é
+      'cringy' pra ele.
+
+  - en_quote: "You guys are too sexy on the beach, you're making everyone look bad."
+    pt_context: |
+      Catchphrase do bit dos tickets falsos. Compliment disfarçado de
+      reprimenda.
+
+  - en_quote: "I just moved here from Virginia, I'm trying to make new friends."
+    pt_context: |
+      Frame default quando ela hesita em dar número. Tira pressão
+      sexual e dá ela permissão pra 'só dar número'.
+
+paradoxes:
+  - paradox: "Cara que diz 'I love you' pra TODAS — repete o jogo, mas afirma genuíno"
+    explanation: |
+      Erick usa 'I love you' como saída universal — bate em todas. Em
+      tese isso desvaloriza a frase. Na prática, ele consegue
+      entregar com tom que SOA genuíno mesmo sendo repetido. Paradox:
+      a frase é template, mas a vibe é real. Quem assiste vídeos
+      em sequência percebe o template; ela, no momento, só recebe a
+      vibe.
+
+  - paradox: "Confiança total + Auto-deprecation constante"
+    explanation: |
+      Ele aborda com confiança absoluta mas também fala 'I'm ugly and
+      fat' / 'I'm bad' / 'I'm going to go jump off a cliff'.
+      Conviver com ambos é o segredo: alto valor é tão estabelecido
+      que self-deprecation vira humor, não vulnerabilidade real.
+
+  - paradox: "Vende curso ($MMB) ensinando 'self-improvement', mas o que ele FAZ é volume + pretext"
+    explanation: |
+      No vídeo de 90 dias ele defende framework macro (estilo,
+      fitness, dating apps, social circle). Mas o que ele DEMONSTRA
+      em campo é volume de cold approach com pretexts repetidos. O
+      curso é Greene; a prática é Strauss/Mystery early.
+
+  - paradox: "Brasileiro vendendo American street game pra americanos"
+    explanation: |
+      Identidade dual: nasceu em Virginia, pais boliviano + mexicano,
+      mora em Miami. Aborda em inglês principalmente, mas usa
+      origens latinas como conexão cultural ('I'm from Bolivia', 'mi
+      mamá es mexicana'). Vende-se como americano cosmopolita pra
+      audiência americana — e isso é o diferencial que um americano
+      puro não teria.
+
+obsessions:
+  - obsession: "Miami (lifestyle, locais, vibe)"
+    detail: |
+      'Reporting live in South Beach / Brickell / Wynwood' aparece em
+      praticamente todo vídeo. Miami não é só locação — é PERSONA. O
+      cara de Miami é o cara de high-status implícito. Restaurantes
+      caros (Komodo, Strawberry Moon), bairros premium (Brickell),
+      eventos.
+
+  - obsession: "Volume — número de approaches por sessão"
+    detail: |
+      Ele faz 10-15 abordagens em cada vídeo de campo. A mensagem
+      consistente: dating é game de números, e o cara médio faz '3
+      reps por ano'. Volume é o cheat code.
+
+  - obsession: "Number close (não Instagram, não date direto, NÚMERO)"
+    detail: |
+      Number close é o KPI dele. Aceita Instagram só como backup. A
+      date só vem depois via texto. Número primeiro é sempre — é a
+      moeda do jogo.
+
+  - obsession: "Origem cultural / background dela"
+    detail: |
+      Em CADA approach ele pergunta 'what's your background?' e ativa
+      conhecimento da cultura dela. Cubana, venezuelana, colombiana,
+      árabe, francesa, italiana — ele tem 1 frase em cada. Essa
+      curiosidade ativa cria conexão imediata.
+
+  - obsession: "Self-improvement framework (modern man, 80-20, top 20%)"
+    detail: |
+      Vendido no curso MMB. Tese: cara médio que vira 6/10 em todas
+      áreas bate top 20%. Identidade aspiracional, não atual.
+
+  - obsession: "Provas sociais (camera, audience, subscribers)"
+    detail: |
+      Mencionar 'I'm at 1M followers, trying to hit 1M YouTube subs'
+      em quase todo vídeo. Sinaliza status pra a mulher e pra a
+      audiência simultaneamente. Loop de validation.
+
+blindspots:
+  - blindspot: "Pós-número / follow-up via texto"
+    detail: |
+      Erick NUNCA mostra o que acontece DEPOIS do número. Ele fecha,
+      diz 'I'll text you', e o vídeo termina. Sem conteúdo sobre
+      como converter número em date real, em sex, em namoro. Toda a
+      arsenal dele é approach-to-number — depois disso, deserto.
+
+  - blindspot: "Conexão profunda / vulnerabilidade real"
+    detail: |
+      O modo Erick é leve, lúdico, performático. Não tem registro de
+      conversas profundas, intimidade emocional construída. Quando
+      uma mulher mostra dor real (perdeu filho, ex morreu), ele
+      desconverta com gracejos ('just talk to God'). Falta de
+      profundidade.
+
+  - blindspot: "Relacionamento longo / wifey material reverso"
+    detail: |
+      Ele fala muito sobre 'finding a wife' e 'wifey material', mas
+      nunca mostra como FAZ relacionamento durar. O que ele
+      demonstra é catch-and-release. Lesson missing: como
+      DEScongestionar a vida sexual e investir em UMA pessoa.
+
+  - blindspot: "Sexual escalation / kissing / closing pra cama"
+    detail: |
+      Conteúdo 100% PG-13. Number close + 'I'll text you'. Nada
+      sobre kino escalation, primeiro beijo, levar pra casa,
+      morning-after. Lacuna enorme pro agente: usuário que pergunta
+      'como faço primeiro beijo' não encontra resposta no corpus
+      Erick.
+
+  - blindspot: "Lidar com mulher de alto valor que NÃO topa o jogo"
+    detail: |
+      O corpus Erick é viésado pra mulher que TOPA o approach lúdico.
+      Quando ele tenta com mulher executiva, séria, ou já estabelecida
+      profissionalmente, a técnica não rola — e ele não tem plano
+      B. Sai com 'jump off a cliff' e segue. Tudo bem pra ele
+      (volume cobre), mas o agente precisa saber: existe mulher pra
+      quem essa técnica não é o caminho.
+
+  - blindspot: "Aproximação fora de Miami / non-cosmopolitan"
+    detail: |
+      Mesmo nos vídeos de viagem (Austrália, Nashville, DC), o
+      ambiente é cosmopolita. Cidade pequena, interior, ambiente
+      conservador — não há corpus Erick. Técnica precisa de massa
+      crítica de mulheres expostas a interações públicas
+      desencanadas.
+
+  - blindspot: "Online dating / Tinder / Hinge / Bumble como skill central"
+    detail: |
+      Ele MENCIONA dating apps no curso, mas não DEMONSTRA. Todo o
+      campo dele é cold approach IRL. Para usuário do agente FlirtAI
+      cujo principal canal É online, Erick contribui pouco
+      diretamente — princípios universais valem (specific compliment,
+      direct ask, leave) mas script literal é tudo IRL.

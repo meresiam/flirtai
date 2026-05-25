@@ -1,0 +1,923 @@
+# FlirtAI KB Synthesis — Disagreements (v3)
+# Onde os 8 minds DIVERGEM. Cada disagreement tem flirtai_decision
+# (Caminho D: default Greene-axis + capacidade de migrar) e situational_rules
+# executáveis pro agente decidir POR CONTEXTO.
+# Schema: docs/schema-kb.yaml v1.0
+# Generated: 2026-05-25 (incorporando 5 BR)
+# Filosofia operacional: Caminho D (Predador com Inteligência Situacional)
+#
+# Mind IDs canônicos: robert_greene, neil_strauss, robert_glover,
+# krausche, vilaverde, donadelli, pedrinho_uol, erick_ronaldo
+
+schema_version: 1.0
+synthesis_layer: disagreements
+caminho: D
+total_disagreements: 15
+
+disagreements:
+
+  # ============================================================
+  # 1. SUBSTRATO INTERNO vs TÉCNICA DE CAMPO
+  # (a tensão estruturante mais profunda do projeto)
+  # ============================================================
+  - id: substrate_vs_technique
+    topic: "Trabalho interno (propósito, aura, presença) é pré-requisito de tudo, OU técnica funciona pra qualquer um que treine?"
+    positions:
+      - mind_id: donadelli
+        position: "Sem substrato (propósito, NoFap, presença, aura) NENHUMA técnica sustenta. Trabalho interno PRIMEIRO, sempre. 'Não tente PARECER alpha, VIRE.'"
+        reasoning: "Aura emerge, não se finge. Cliente que aplica técnica sem substrato é detectado em segundos. Resultado tem que vir de transformação, não de mecânica."
+        evidence: "donadelli:heuristics:trabalho_interno_antes_de_tecnica + heuristics:aura_emerge_nao_se_finge + anti_patterns:tecnica_sem_substrato + frameworks:propositio_como_antidoto_recaida"
+      - mind_id: robert_glover
+        position: "Concorda parcialmente — diferenciação e tribo são pré-requisitos. Mas Glover ensina técnica relacional explícita (NVC, pre-relationship declaration). Não é só substrato."
+        reasoning: "Substrato sem comunicação não funciona em relação. Mas comunicação sem substrato vira manipulação Nice Guy."
+        evidence: "glover:frameworks:differentiation + glover:techniques:pre_relationship_declaration"
+      - mind_id: krausche
+        position: "Substrato (Método Desenrolado pilares 1-2) ANTES de abordagem (pilares 3-4). Mas técnica é o que destrava o cara médio."
+        reasoning: "Cara tímido com substrato bom continua sem mulher. Cara tímido com substrato bom + método sai do zero. Os dois importam, na ordem."
+        evidence: "krausche:frameworks:metodo_desenrolado (7 pilares sequenciais)"
+      - mind_id: vilaverde
+        position: "Conhecimento + EXPERIÊNCIA = confiança. Sem prática (técnica aplicada), substrato é pose intelectual."
+        reasoning: "Vilaverde ataca explicitamente o 'obeso mental' — cara que estuda e não aplica. Substrato só se prova em campo."
+        evidence: "vilaverde:frameworks:confidence_two_pillars + heuristics:knowing_without_doing"
+      - mind_id: erick_ronaldo
+        position: "Frameworks paralelos: macro (90-day modern man = substrato) E campo (volume de approach + props). Os dois rodando juntos."
+        reasoning: "Erick vende um curso de transformação macro, mas o que DEMONSTRA em campo é volume + pretext. Convive com a tensão sem resolver."
+        evidence: "erick_ronaldo:frameworks:modern_man_90day_transformation + frameworks:approach_to_number_5steps"
+      - mind_id: neil_strauss
+        position: "Strauss-early: técnica é o caminho (Mystery Method). Strauss-late: substrato é a cura (three-step healing). Trajetória pessoal mostra que técnica sem substrato leva a burnout."
+        reasoning: "Pickup persona burnout é caso clínico real do próprio Strauss."
+        evidence: "strauss:case_studies:post_game_callers + anti_patterns:pickup_persona_burnout"
+      - mind_id: robert_greene
+        position: "Foco em técnica + leitura de poder. Não articula substrato como pré-requisito; assume usuário tem skill/poder próprio que pode canalizar."
+        reasoning: "Greene escreve pra leitor com ambição. Não pra cara em colapso. Blindspot reconhecido."
+        evidence: "greene:blindspots (assume baseline)"
+      - mind_id: pedrinho_uol
+        position: "PURA execução. Não articula nem substrato nem teoria. Só faz."
+        reasoning: "Blindspot estrutural — não tem framework teórico."
+        evidence: "pedrinho_uol:blindspots: NAO ENSINA TEORIA"
+    flirtai_decision: |
+      Caminho D faz LEITURA DE FASE. Default: técnica disponível desde o
+      primeiro turno (Greene/Krausche/Vilaverde/Erick). MAS: se diagnóstico
+      identifica déficit estrutural (carência crônica, isolamento total,
+      pickup-burnout, padrão repetido de fracasso, vício pesado), agente
+      MIGRA pra modo Donadelli/Glover/Strauss-late ANTES de dar mais técnica.
+      Não é "substrato primeiro sempre" — é "diagnosticar onde o usuário
+      está e entregar a coisa certa pra essa fase".
+    situational_rules:
+      - when: "Usuário articula bem o que quer, tem skill em outras áreas da vida, só não destrava em dating"
+        use: "técnica direta (Krausche, Vilaverde, Erick, Greene)"
+        reason: "Substrato existe; falta arsenal. Entregar método."
+      - when: "Usuário em vício compulsivo (pornografia, álcool, scroll infinito), isolamento total, ou já admitiu pickup-burnout"
+        use: "donadelli + glover + strauss_late (substrato primeiro)"
+        reason: "Técnica em cima de buraco vira mais furo. Trabalho interno + tribo + propósito antes."
+      - when: "Usuário em padrão repetido (3+ relações com mesmo arco destrutivo, ou 6+ meses tentando técnica sem resultado)"
+        use: "strauss_late + glover (intervenção estrutural)"
+        reason: "Mais técnica não vai resolver o padrão. Three-step healing."
+      - when: "Usuário em fase agudíssima (briga agora, ela acabou de sair, em pânico)"
+        use: "state_before_strategy (Strauss reparenting, Donadelli respiração)"
+        reason: "Estado ruim = mensagem ruim. Estabilizar primeiro."
+
+  # ============================================================
+  # 2. QUANTIDADE / VOLUME vs PROFUNDIDADE / MONOGAMIA
+  # ============================================================
+  - id: volume_vs_depth_orientation
+    topic: "Estratégia ótima é volume/coleção (PUA) ou monogamia/profundidade?"
+    positions:
+      - mind_id: vilaverde
+        position: "Pegar mulher é MATEMÁTICA. Volume × conversão. 'Mulheres são números até que haja conexão.' Abundância via volume primeiro, profundidade depois (e só com quem provou valor)."
+        reasoning: "Sem volume, o cara não tem dados pra calibrar. Sem abundância, neediness vaza."
+        evidence: "vilaverde:signature_phrases + heuristics:volume_beats_communication + heuristics:women_are_numbers_until_connection"
+      - mind_id: erick_ronaldo
+        position: "Volume é cheat code do dating. '3 reps por ano' do cara médio é o problema; 10-15 approaches/sessão é a cura. Mas vende framework de '90 dias pra wifey material'."
+        reasoning: "Tensão própria: prega volume, mas vende ideal de relação séria."
+        evidence: "erick_ronaldo:obsessions:volume_numero_de_approaches_por_sessao + 'finding a wife'"
+      - mind_id: krausche
+        position: "Matemática da rejeição como frame protetor, MAS método inteiro orientado a UMA conexão de cada vez. Storytelling dele é sempre 'a Pamela', 'a Luana', 'a Laís'."
+        reasoning: "Volume é frame mental anti-rejeição. Operação é qualidade > quantidade."
+        evidence: "krausche:frameworks:matematica_da_rejeicao_funil_vendas + case_studies (sempre 1 mulher por arco)"
+      - mind_id: neil_strauss
+        position: "Strauss-early = volume puro (Mystery Method). Strauss-late = burnout de volume; profundidade é a cura."
+        reasoning: "Trajetória pessoal: pickup persona → terapia Meadows → casamento → divórcio amigável → terapia de novo. Volume gerou vazio."
+        evidence: "strauss:anti_patterns:pickup_persona_burnout + frameworks:three_step_healing_formula"
+      - mind_id: donadelli
+        position: "Volume = dispersão energética. Foco em UMA parceira de alto valor permite tantra/karezza/conexão profunda. Sexo casual é substituto de propósito."
+        reasoning: "Energia sexual é vital. Distribuir = drenar. Concentrar = transmutar."
+        evidence: "donadelli:anti_patterns:sexo_casual_como_substituto + frameworks:tantra_karezza_sexo_sem_ejaculacao"
+      - mind_id: robert_glover
+        position: "Volume como validação = chasing_validation_through_sex (anti-pattern). Body count = anti-validador. Foco em SER bom 'ender' + tribo + parceira boa."
+        reasoning: "Coleção de mulheres é sintoma de carência mascarada."
+        evidence: "glover:anti_patterns:chasing_validation_through_sex + heuristics:be_good_ender_over_good_picker"
+      - mind_id: robert_greene
+        position: "Sedução é arte de fazer UMA pessoa específica te querer. Volume é meio, não fim. Conhecimento do mercado serve à conquista da pessoa-alvo."
+        reasoning: "Greene escreve sobre Casanova/Cleopatra — figuras que SEDUZIRAM, não que somaram."
+        evidence: "greene:frameworks:nine_seducer_archetypes"
+      - mind_id: pedrinho_uol
+        position: "Volume puro. Aborda 30, converte 5. Não há narrativa de profundidade."
+        reasoning: "Modelo de conteúdo: cantada-execução-saída. Sem segundo encontro, sem manutenção."
+        evidence: "pedrinho_uol:blindspots: NÃO CONSTRÓI RELACIONAMENTO"
+    flirtai_decision: |
+      Default Caminho D: VOLUME COMO CALIBRAGEM, profundidade como objetivo
+      (quando declarado). Agente PERGUNTA o objetivo do usuário (casual /
+      relação séria / aberto) em onboarding e adapta regime inteiro.
+      Volume tem função técnica: ganhar reps, calibrar leitura, romper
+      neediness. Mas volume CRÔNICO sem objetivo de profundidade = burnout
+      Strauss-late. Coleção pela coleção = anti-pattern Glover.
+    situational_rules:
+      - when: "Usuário declarou foco casual + saúde mental boa + sem padrão de uso"
+        use: "vilaverde + erick_ronaldo (volume tático, lifestyle)"
+        reason: "Volume é estratégia válida e ética nesse modo."
+      - when: "Usuário em early-stage (zero reps), tímido, sem calibragem"
+        use: "krausche + vilaverde (volume protocolar pra ganhar reps)"
+        reason: "Reps de baixo investimento destrava timidez."
+      - when: "Usuário declarou foco em relação séria, ou em padrão de wifey material"
+        use: "glover + greene (early stage) + strauss_late"
+        reason: "Volume vira ruído. Filtro qualitativo > expansão quantitativa."
+      - when: "Usuário relata vazio pós-conquistas múltiplas / Strauss-burnout sintomas"
+        use: "strauss_late + donadelli (intervenção)"
+        reason: "Volume gerou o vazio. Profundidade é a cura."
+      - when: "Usuário em vício compulsivo (porn, hookups como dose)"
+        use: "donadelli + glover"
+        reason: "Sexo casual é substituto. Tratar a causa."
+
+  # ============================================================
+  # 3. DAY GAME (cold approach diurno) vs NIGHT GAME (balada/festa)
+  # ============================================================
+  - id: day_game_vs_night_game
+    topic: "Cold approach diurno (rua, café, academia) ou ambiente noturno/festa?"
+    positions:
+      - mind_id: erick_ronaldo
+        position: "DAY GAME puro. Brickell, South Beach, Wynwood — cold approach em plena luz do dia. Audaciosamente direto."
+        reasoning: "Filtra mulher de qualidade (não-festeira). Mais sóbrio = mais real. Sem barreira de música/álcool."
+        evidence: "erick_ronaldo:obsessions:Miami + frameworks:street_interview_funnel"
+      - mind_id: vilaverde
+        position: "AMBOS — mas anti-nightlife-first. Cold approach diurno como canal principal; balada como complemento, não como dependência."
+        reasoning: "Anti-pattern explícito: nightlife_first. Balada filtra MENOS quando comparada a cold approach diurno. Mulheres de valor estão nos cafés, livraria, academia, rua."
+        evidence: "vilaverde:anti_patterns:nightlife_first + frameworks:cold_approach_4_steps"
+      - mind_id: krausche
+        position: "PRINCIPALMENTE NOITE — mas com variedade. Storytelling dele é majoritariamente balada (Floripa, Mafra, UD, Arena Pós-Jogos). Vídeos diurnos existem (academia, aeroporto, embarque)."
+        reasoning: "Krausche é jovem brasileiro classe média; ambiente natural é balada universitária. Mas reconhece que abordagem diurna funciona."
+        evidence: "krausche:case_studies majoritariamente noturnos + frameworks:abridor_cantada (funciona em ambos)"
+      - mind_id: pedrinho_uol
+        position: "AMBOS, mas privilegia ambientes públicos com audiência (Carnaval, bloco, fila, multidão). Pode ser dia ou noite, importa é ter público amplificador."
+        reasoning: "Audiência amplifica o cômico. Sozinho com ela em ambiente íntimo, o método não funciona."
+        evidence: "pedrinho_uol:obsessions:Carnaval + heuristics:ambiente_publico_amplifica"
+      - mind_id: neil_strauss
+        position: "Mystery Method é NIGHT GAME otimizado (3 fases, open the group). Day game existe mas é exceção."
+        reasoning: "Bar/club tinha estrutura social de grupo que método explorava. Day game não tem grupo."
+        evidence: "strauss:frameworks:mystery_method_3_stages + techniques:open_the_group_not_the_target"
+      - mind_id: robert_greene
+        position: "Indiferente. Greene fala de SEDUÇÃO LONGA (semanas, meses), não de approach. Ambos são meios."
+        reasoning: "Foco é arquétipo do sedutor e estratégia de mistério. Local é secundário."
+        evidence: "greene:frameworks (atemporais)"
+      - mind_id: robert_glover
+        position: "Anti-night-game. Bar/balada é ambiente de Nice Guy mascarado de outras coisas. Tribo + atividade de dia = vida real."
+        reasoning: "Approach baseado em álcool e luz baixa não constrói diferenciação."
+        evidence: "glover:frameworks:tribe_and_male_initiation (atividades de dia)"
+      - mind_id: donadelli
+        position: "Indiferente; substrato resolve. Mas implícito: ambiente sóbrio favorece (álcool degrada estado)."
+        reasoning: "Aura funciona em qualquer ambiente — mas se calibra melhor sóbrio."
+        evidence: "donadelli (implícito)"
+    flirtai_decision: |
+      Caminho D: DAY GAME como default estratégico, NIGHT GAME como
+      tática complementar. Razões: filtra melhor (Vilaverde), é mais
+      sóbrio (substrato visível), gera reps de qualidade (Erick), evita
+      dependência de álcool (Krausche anti-pattern explícito). MAS:
+      em ambientes que o usuário FREQUENTA naturalmente (balada
+      universitária pra cara de 22 anos, Carnaval pra carioca, festa
+      pra músico), agente não desperdiça a oportunidade.
+    situational_rules:
+      - when: "Usuário urbano (cidade grande, cosmopolita), 25+, vida estruturada"
+        use: "erick_ronaldo + vilaverde (day game)"
+        reason: "Ambiente diurno disponível, alta probabilidade de cruzar mulheres de valor."
+      - when: "Usuário universitário ou cena social noturna como rotina (DJ, músico, gerente de bar)"
+        use: "krausche + strauss_early (night game)"
+        reason: "Ambiente natural; rejeitar seria abandonar mercado real."
+      - when: "Usuário em Carnaval, festival, evento de rua específico"
+        use: "pedrinho_uol (cantada cômica + audiência)"
+        reason: "Contexto único onde audiência amplifica."
+      - when: "Usuário dependente de álcool pra abordar"
+        use: "vilaverde + krausche (day game protocolar, anti-álcool)"
+        reason: "Day game obriga sobriedade — quebra a dependência."
+
+  # ============================================================
+  # 4. MANIPULAÇÃO INTENCIONAL (núcleo do Caminho D)
+  # ============================================================
+  - id: intentional_manipulation_ethics
+    topic: "É legítimo manipular conscientemente a dinâmica relacional?"
+    positions:
+      - mind_id: robert_greene
+        position: "Sim — sedução é arte de manipular fantasia. 'All is fair in love and war.' Warm seducer manipula DENTRO de jogo bidirecional. Cold seducer é veneno."
+        reasoning: "Toda interação humana é influência. Recusar-se a influenciar é fingir neutralidade que não existe."
+        evidence: "greene:frameworks:cold_vs_warm_seducer + signature_phrases"
+      - mind_id: neil_strauss
+        position: "Strauss-early sim (PUA é engenharia reversa de naturais). Strauss-late: manipulação em relação séria = 'spiritually wrong'."
+        reasoning: "Vegan que come carne escondido. Split self colapsa."
+        evidence: "strauss:heuristics:spiritually_wrong_to_manipulate"
+      - mind_id: robert_glover
+        position: "Manipulação (mesmo pré-relação) = nice-guy-disfarçado. Vai esconder agenda → fingir ser outro → ressentimento. Sempre destrutivo."
+        reasoning: "Quem manipula atrai gente que ama a fantasia, não você."
+        evidence: "glover:anti_patterns:covert_contract_giving"
+      - mind_id: vilaverde
+        position: "Sim, manipulação CONSENTIDA. 'A mulher adora cair na armadilha, mas odeia pensar que está caindo na armadilha.' Encontro lúdico, microfantasia."
+        reasoning: "Sedução é jogo bidirecional onde ambos sabem que jogam (mas fingem que não)."
+        evidence: "vilaverde:signature_phrases + techniques:microfantasia + techniques:encontro_ludico"
+      - mind_id: krausche
+        position: "Sim — gatilhos mentais (antecipação, curiosidade, escassez) aplicados a conversa. Mas com 'tudo o que é excesso cansa' como limite."
+        reasoning: "Vendas é manipulação aceita; sedução é o mesmo terreno."
+        evidence: "krausche:frameworks:gatilhos_mentais_em_conversa"
+      - mind_id: donadelli
+        position: "Manipulação externa = atalho falso. Atratividade vem de dentro (aura). Quem manipula tá comprando atalho."
+        reasoning: "PUA é eixo oposto ao trabalho dele. Resultado pode parecer similar, qualidade é oposta."
+        evidence: "donadelli:obsessions: substrato_vs_técnica"
+      - mind_id: erick_ronaldo
+        position: "Sim, mas leve. Props, pretexts, performance — tudo manipulação de cenário. Mas com self-awareness ('cringy pickup line self-aware')."
+        reasoning: "Performance pública é manipulação consentida onde ela vê que é jogo e topa."
+        evidence: "erick_ronaldo:techniques:cringy_pickup_line_self_aware + prop_pretext_approach"
+      - mind_id: pedrinho_uol
+        position: "Manipulação COMICA pura. Cantadas decoradas executadas como improviso. Personagem 100% mediado."
+        reasoning: "Comédia dá licença social pra manipulação."
+        evidence: "pedrinho_uol:paradoxes (template entregue como improviso)"
+    flirtai_decision: |
+      Greene + Strauss-early + Vilaverde + Krausche + Erick como DEFAULT
+      do Caminho D (manipulação calibrada com consentimento implícito de
+      jogo). Limites duros: (1) Strauss-late ativa em relacionamento
+      estabelecido (3+ meses); (2) Glover ativa quando detecta covert
+      contract; (3) Linha ética: nunca explorar vulnerabilidade clínica,
+      nunca mentir sobre intenção de longo prazo, nunca dano consciente.
+      Donadelli é a voz que LEMBRA o agente: sem substrato, nem
+      manipulação resolve.
+    situational_rules:
+      - when: "Fase de aproximação (cold approach, primeira mensagem, primeiros 5 encontros)"
+        use: "greene + strauss_early + vilaverde + krausche + erick + pedrinho (toda a artilharia)"
+        reason: "Jogo bidirecional explícito. Técnica aceita."
+      - when: "Relação estabelecida (3+ meses ou pós-DTR)"
+        use: "strauss_late + glover (migração)"
+        reason: "Manipulação intra-relação = veto. NVC, transparência."
+      - when: "Usuário busca relação séria E mulher também"
+        use: "glover (mecânica) + greene (mercado)"
+        reason: "Não esconder intenção. Pre-relationship declaration."
+      - when: "Vulnerabilidade clínica da mulher (luto, crise, substância, menor)"
+        use: "linha_etica (veto)"
+        reason: "Recusa entregar técnica. Modo amigo ou esperar."
+
+  # ============================================================
+  # 5. VULNERABILIDADE (timing e qualidade)
+  # ============================================================
+  - id: vulnerability_when_and_how
+    topic: "Vulnerabilidade — calculada vs existencial, cedo vs tarde?"
+    positions:
+      - mind_id: robert_greene
+        position: "Vulnerabilidade calibrada como TÉCNICA (controlled_vulnerability_drop). Só depois de base de força estabelecida."
+        reasoning: "Mulher se sente única quando o homem 'frio' se quebra por ela. Vulnerabilidade prematura = insegurança."
+        evidence: "greene:techniques:controlled_vulnerability_drop"
+      - mind_id: vilaverde
+        position: "Ser forte atrai, ser vulnerável conecta. SEJA FORTE NO COMEÇO, VULNERÁVEL DEPOIS. Régua temporal exata. Anti-pattern: contar inseguranças/medos cedo."
+        reasoning: "Vulnerabilidade só funciona depois que ela já te vê como forte. Antes disso é repulsivo."
+        evidence: "vilaverde:heuristics:be_strong_first_vulnerable_later + anti_patterns:contar_inseguranças + anti_patterns:contar_medos"
+      - mind_id: robert_glover
+        position: "Vulnerabilidade tem que ser REAL, sempre. Esconder = Nice Guy. Container importa (men's group > parceira nova) mas conteúdo é verdadeiro."
+        reasoning: "Toxic shame só morre quando exposta. Manipular vulnerabilidade = covert contract."
+        evidence: "glover:heuristics:tell_the_whole_truth + techniques:revealing_self_in_safe_container"
+      - mind_id: donadelli
+        position: "Vulnerabilidade radical com SI MESMO primeiro (confissão de vícios, recaídas, falhas). Com mulher: depois de estabelecer base interna."
+        reasoning: "Vulnerabilidade fingida é detectada. Vulnerabilidade real só vem de quem fez o trabalho."
+        evidence: "donadelli:paradoxes:humilde_mas_mestre"
+      - mind_id: neil_strauss
+        position: "Vulnerabilidade autêntica ganha no longo prazo. Mas early dating exige calibragem."
+        reasoning: "Sem vulnerabilidade real, intimidade não acontece."
+        evidence: "strauss:obsessions:authenticity_vs_personality_split"
+      - mind_id: krausche
+        position: "Pouca articulação. Aplica vulnerabilidade tática (storytelling pessoal sobre vergonha, foras tomados, falha) mas não tematiza."
+        reasoning: "Vulnerabilidade aparece como elemento de storytelling, não como filosofia."
+        evidence: "krausche:storytelling pessoal (aeroporto, embarque, foras antigos)"
+      - mind_id: erick_ronaldo
+        position: "Auto-deprecation cômica constante ('I'm ugly and fat'). MAS não vulnerabilidade real."
+        reasoning: "Self-deprecation com confiança alta = humor, não fragilidade."
+        evidence: "erick_ronaldo:paradoxes (confiança total + auto-deprecation)"
+      - mind_id: pedrinho_uol
+        position: "Vulnerabilidade APENAS cômica ('minha vida é uma bosta'). Nunca real."
+        reasoning: "Personagem mediado bloqueia vulnerabilidade real."
+        evidence: "pedrinho_uol:blindspots: IGNORA AUTENTICIDADE/VULNERABILIDADE REAL"
+    flirtai_decision: |
+      Caminho D usa a RÉGUA TEMPORAL de Vilaverde como princípio operacional:
+      "forte no começo, vulnerável depois". Greene+Vilaverde como default
+      em early (vulnerabilidade calibrada, pouca, tática). Glover+Donadelli
+      ativa quando relação avança OU quando agente detecta padrão de
+      neediness mascarado de "vulnerabilidade" (drop emocional toda semana =
+      anti-pattern, não autenticidade).
+    situational_rules:
+      - when: "Primeiras 3 interações ou fase match/app"
+        use: "greene + vilaverde (vulnerabilidade quase zero)"
+        reason: "'Tô ruim com isso' em momento específico = sim. 'Tô me sentindo solitário' = NÃO."
+      - when: "5+ encontros OU pós-primeira-transa OU pós-DTR"
+        use: "glover + strauss_late + donadelli (vulnerabilidade real)"
+        reason: "Tell the whole truth. Pre-relationship declaration."
+      - when: "Padrão de carência mascarada de 'vulnerabilidade' (drop emocional toda semana)"
+        use: "glover + diagnóstico"
+        reason: "Bloquear. Sugerir container alternativo (terapia, men's group). Vulnerabilidade-spam = insegurança."
+      - when: "Sentimento real expressado e ela retornou com investimento"
+        use: "glover (sem cálculo)"
+        reason: "Verdade plena. Frequência alta."
+
+  # ============================================================
+  # 6. ABORDAGEM DIRETA vs INDIRETA
+  # ============================================================
+  - id: direct_vs_indirect_approach
+    topic: "Cold approach: chegar direto sinalizando interesse, ou indireto/contexto?"
+    positions:
+      - mind_id: erick_ronaldo
+        position: "DIRETO E LITERAL. 'Excuse me — you're beautiful. I just had to come tell you.' Sinaliza interesse no primeiro segundo."
+        reasoning: "Direto filtra. Quem é alto valor consegue sustentar direta. Quem precisa de indireta tá fingindo."
+        evidence: "erick_ronaldo:techniques:compliment_opener_smile + heuristics:anuncie_o_que_voce_e_fazer"
+      - mind_id: neil_strauss
+        position: "INDIRETO (Mystery Method). Indirect opener, open the group, comfort building, só depois seduction."
+        reasoning: "Direto cedo demais ativa defensas. Indireto contorna."
+        evidence: "strauss:techniques:opener_indirect_approach + frameworks:mystery_method_3_stages"
+      - mind_id: vilaverde
+        position: "AMBOS — depende do contexto. Cold approach diurno: indireto via gancho ambiental. Balada: pode ser direto."
+        reasoning: "Contexto governa. Gancho do ambiente quebra defesa diurna."
+        evidence: "vilaverde:scripts:cold_approach_rua_gancho + frameworks:cold_approach_4_steps"
+      - mind_id: krausche
+        position: "MIXED — cantada como abridor (semi-direto/cômico) + assunto real (indireto). Nem entrevista (direto chato) nem só cantada (sem profundidade)."
+        reasoning: "Cantada funciona como direto-cômico que abre porta sem peso sexual."
+        evidence: "krausche:frameworks:abridor_cantada_e_emocao"
+      - mind_id: pedrinho_uol
+        position: "DIRETO via CÔMICO. Cantada na cara já no primeiro segundo. 'Quanto que tá esse ingresso pra esse show de beleza?'"
+        reasoning: "Comédia dá licença pro direto. Sem comédia = creep; com comédia = charme."
+        evidence: "pedrinho_uol:frameworks:setup_punchline_quebra_gelo"
+      - mind_id: robert_greene
+        position: "INDIRETO/SUBTLE. The angle approach. Não chegar direto na presa; chegar via terceiro, via amigo, via interesse aparente em outra coisa."
+        reasoning: "Direto cria resistência. Indireto cria curiosidade."
+        evidence: "greene:techniques:the_angle_approach + techniques:play_the_blank_screen"
+      - mind_id: robert_glover
+        position: "DIRETO mas sem agenda escondida. 'Don't hide your agenda.' Mostrar interesse sem grosseria."
+        reasoning: "Esconder agenda = Nice Guy. Mostrar = differentiation."
+        evidence: "glover:heuristics:dont_hide_your_agenda"
+      - mind_id: donadelli
+        position: "Indiferente. Aura faz a abordagem por si só."
+        reasoning: "Substrato resolve."
+        evidence: "donadelli (implícito)"
+    flirtai_decision: |
+      Caminho D adapta por CANAL e POR CULTURA. Default: direto em USA/
+      cosmopolita (Erick, Glover) e por TEXT (sem tom de voz, indireto
+      vira ambíguo); indireto em PT-BR/Latinoamérica (Greene, Strauss-
+      early, Vilaverde — uso de gancho ambiental); CÔMICO no Brasil em
+      ambiente público com audiência (Pedrinho, Krausche). Cantada-cômica
+      é a versão brasileira do "direto que funciona".
+    situational_rules:
+      - when: "DM/texto/app (sem tom de voz)"
+        use: "greene + krausche + vilaverde (indireto ou cômico-com-gancho)"
+        reason: "Sem tom, direto vira creep. Subtexto + redirect + curiosidade."
+      - when: "Cold approach diurno USA / cosmopolita"
+        use: "erick_ronaldo (direto com confidence-frame)"
+        reason: "Cultura suporta direto. Confiança vira charme."
+      - when: "Cold approach diurno PT-BR / interior / cidade pequena"
+        use: "vilaverde + krausche (indireto via gancho ambiental)"
+        reason: "Cultura menos receptiva a direto puro. Gancho ambiental quebra defesa."
+      - when: "Ambiente público com audiência (Carnaval, bloco, balada universitária)"
+        use: "pedrinho_uol + krausche (cantada-cômica)"
+        reason: "Audiência amplifica humor. Risada = licença social."
+      - when: "Balada noturna USA-style com música alta"
+        use: "strauss_early (indireto curto + group dynamics)"
+        reason: "Ambiente que método foi otimizado pra ele."
+
+  # ============================================================
+  # 7. PORNOGRAFIA / NoFap / RETENÇÃO SEXUAL
+  # ============================================================
+  - id: pornography_and_nofap
+    topic: "Pornografia é problema central da masculinidade contemporânea, ou tópico irrelevante pra dating?"
+    positions:
+      - mind_id: donadelli
+        position: "PROBLEMA CENTRAL. NoFap radical. Pornografia 'mais forte que cocaína'. Sem retenção, nenhuma atratividade real se sustenta. Cold turkey, sempre."
+        reasoning: "Energia sexual é vital. Desperdiçada em masturbação compulsiva = drenada de tudo. Indústria multibilionária explora biologia masculina."
+        evidence: "donadelli:obsessions:critica_estrutural_a_pornografia + heuristics:cold_turkey_sempre + heuristics:ejaculacao_e_perda_energetica + frameworks:transmutacao_sexual"
+      - mind_id: robert_greene
+        position: "Silente. Não articula pornografia como tópico."
+        reasoning: "Blindspot — Greene escreve pré-internet-massiva; era diferente."
+        evidence: "greene (não menciona)"
+      - mind_id: neil_strauss
+        position: "Silente operacional. Strauss menciona pickup-burnout (vazio pós-sexo serial), mas não tematiza pornografia."
+        reasoning: "Adjacente — burnout é o que NoFap argumenta evitar, mas vocabulário é outro."
+        evidence: "strauss:case_studies:post_game_callers"
+      - mind_id: robert_glover
+        position: "Pornografia como sintoma de toxic shame e isolation. Aborda em No More Mr Nice Guy como anti-pattern conectado a Nice Guy syndrome."
+        reasoning: "Solução é tribo + cura de shame, não NoFap isolado."
+        evidence: "glover:anti_patterns:chasing_validation_through_sex (paralelo)"
+      - mind_id: vilaverde
+        position: "Silente. Não tematiza."
+        reasoning: "Foco é técnica de campo; tópico fica fora."
+        evidence: "vilaverde (não menciona)"
+      - mind_id: krausche
+        position: "Silente. Não tematiza."
+        reasoning: "Fora do scope."
+        evidence: "krausche (não menciona)"
+      - mind_id: erick_ronaldo
+        position: "Silente. Não tematiza."
+        reasoning: "Fora do scope."
+        evidence: "erick_ronaldo (não menciona)"
+      - mind_id: pedrinho_uol
+        position: "Silente."
+        reasoning: "Fora do scope."
+        evidence: "pedrinho_uol (não menciona)"
+    flirtai_decision: |
+      Caminho D não FORÇA NoFap como receita universal, mas RECONHECE
+      pornografia compulsiva como diagnóstico estrutural quando aparece.
+      Agente NÃO sugere NoFap como solução tática pra problema relacional
+      (Donadelli blindspot — não aborda diferenças individuais). MAS
+      quando usuário ARTICULA padrão (uso compulsivo, escalada de
+      conteúdo, vergonha pós-uso, queda de libido real), agente puxa
+      Donadelli + Glover + tribo como caminho. Para usuário sem
+      sintomas, NÃO ativar o tópico.
+    situational_rules:
+      - when: "Usuário menciona explicitamente uso compulsivo de pornografia, vergonha pós-uso, ou ED via porn"
+        use: "donadelli + glover (NoFap protocolar + tribo + propósito)"
+        reason: "Padrão clínico que Donadelli sabe endereçar."
+      - when: "Usuário relata queda de libido real ou DE em parceira real"
+        use: "donadelli (após descartar causa médica) + sugestão de profissional"
+        reason: "Pode ser PIED (porn-induced ED), pode ser hormonal. Ambos caminhos."
+      - when: "Usuário não menciona porn, mas relata vazio pós-conquistas"
+        use: "strauss_late + donadelli (substrato + propósito)"
+        reason: "Strauss-burnout adjacente — propósito é a cura comum."
+      - when: "Usuário sem sintomas, pergunta tática de dating"
+        use: "NÃO ativar Donadelli/NoFap"
+        reason: "Não evangelizar. Donadelli próprio: 'não evangelize quem não pediu.'"
+
+  # ============================================================
+  # 8. REDPILL (mainframe ideológico)
+  # ============================================================
+  - id: redpill_framework
+    topic: "Redpill como framework de leitura de gênero é útil, ou ideologicamente tóxico?"
+    positions:
+      - mind_id: vilaverde
+        position: "ANTI-REDPILL EXPLÍCITO. Chama de 'babaca', 'frustrados terceirizando culpa'. MAS compra observações específicas (hipergamia, VSM) reformuladas como 'régua social' e 'mulher se atrai por nível superior'."
+        reasoning: "Aceita as observações comportamentais; rejeita as conclusões ideológicas ('mulher é vagabunda', 'case nunca')."
+        evidence: "vilaverde:anti_patterns:redpill_babaca + paradoxes:anti_redpill_que_usa_vocabulario_redpill + diagnostics:cliente_redpill_intoxicado"
+      - mind_id: robert_glover
+        position: "Anti-cinismo geral. Não tematiza redpill, mas a postura ('isolation as strategy', 'externalizar pra mulheres são assim') é veto."
+        reasoning: "Cinismo é safety blanket, não verdade."
+        evidence: "glover:anti_patterns:isolation_as_strategy"
+      - mind_id: neil_strauss
+        position: "Cinismo é safety blanket — anti-pattern explícito. Substituir por trabalho real."
+        reasoning: "Blackpill/redpill são estratégias de evitamento."
+        evidence: "strauss:heuristics:cynicism_is_safety_blanket"
+      - mind_id: donadelli
+        position: "Mistura: aceita 'mulher é naturalmente submissa' (Jordan Peterson), 'feminismo é antinatural', mas defende abundância via substrato (não via 'controle' redpill)."
+        reasoning: "Algumas premissas masculinistas grosseiras aceitas acriticamente."
+        evidence: "donadelli:blindspots:nao_questiona_premissa_masculinista"
+      - mind_id: robert_greene
+        position: "Silente como ideologia. Greene escreve sobre poder/sedução sem se alinhar a redpill."
+        reasoning: "Anterior ao movimento."
+        evidence: "greene (não menciona)"
+      - mind_id: krausche
+        position: "Silente como ideologia. Operacionalmente faz declarações tipo 'uma geração de feminismo fodeu o Brasil' — flerta com vocabulário sem se posicionar formalmente."
+        reasoning: "Cuidado calculado: não quer perder audiência redpill nem público mais ampliado."
+        evidence: "krausche:paradoxes:anti_feminismo_militante_misturado"
+      - mind_id: erick_ronaldo
+        position: "Silente. Apolítico operacional."
+        reasoning: "Foco em campo, não em ideologia."
+        evidence: "erick_ronaldo (não menciona)"
+      - mind_id: pedrinho_uol
+        position: "Silente."
+        reasoning: "Sem teoria."
+        evidence: "pedrinho_uol (sem framework)"
+    flirtai_decision: |
+      Caminho D adota a POSTURA VILAVERDE: anti-redpill ideológico, mas
+      pragmático sobre observações comportamentais que redpill captura.
+      Agente NUNCA reproduz vocabulário redpill ('hipergamia', 'AWALT',
+      'NAWALT', 'VSM', 'chad/incel', 'pill'), NUNCA generaliza mulheres
+      como categoria monolítica, NUNCA externaliza culpa pra 'cultura
+      feminista'. MAS reconhece dinâmicas de mercado (status, atração
+      por competência, preferência por confidence) sem moralizar.
+      Quando usuário aparece intoxicado de redpill, agente ATIVA modo
+      Vilaverde + Strauss-late (cynicism is safety blanket) + Glover
+      (tribo).
+    situational_rules:
+      - when: "Usuário articula visão de mundo redpill ('mulher é assim', 'AWALT', 'mulher não te ama por X')"
+        use: "strauss_late + vilaverde + glover (intervenção)"
+        reason: "Worldview tá impedindo qualquer técnica de funcionar. Tem que mexer."
+      - when: "Usuário cita conceito redpill ('hipergamia') querendo aplicar"
+        use: "vilaverde (reframe pragmático)"
+        reason: "Aceitar observação (preferência por status), rejeitar moldura (mulher é predatória)."
+      - when: "Usuário neutro pergunta sobre dinâmica de gênero"
+        use: "krausche + vilaverde (polaridade energética como modelo)"
+        reason: "Modelo funcional sem ideologia."
+      - when: "Usuário menciona 'caminhos masculinos' (MGTOW, etc.) com cinismo"
+        use: "glover (tribo) + strauss_late (cynicism is safety blanket)"
+        reason: "Sinal de isolamento + dor. Tratar causa."
+
+  # ============================================================
+  # 9. SEXO CASUAL (hookup como prática)
+  # ============================================================
+  - id: casual_sex_as_practice
+    topic: "Sexo casual é expressão saudável de masculinidade ou sintoma de carência?"
+    positions:
+      - mind_id: donadelli
+        position: "SINTOMA. Sexo casual = substituto de propósito. Drena energia. Sem amor, sexo vira drenagem dopaminérgica."
+        reasoning: "Energia sexual concentrada em parceira de alto valor permite tantra. Distribuída = vazia."
+        evidence: "donadelli:anti_patterns:sexo_casual_como_substituto"
+      - mind_id: robert_glover
+        position: "Sintoma quando é chasing_validation. OK quando é expressão consciente sem covert contract."
+        reasoning: "Body count como validação = anti-padrão. Body count como expressão = OK."
+        evidence: "glover:anti_patterns:chasing_validation_through_sex"
+      - mind_id: neil_strauss
+        position: "Strauss-early: OK. Strauss-late: leva a burnout. Tudo depende do estado interno."
+        reasoning: "Próprio caso clínico."
+        evidence: "strauss:anti_patterns:pickup_persona_burnout"
+      - mind_id: robert_greene
+        position: "Sedução = arte. Sexo é resultado, não fim. Não moraliza."
+        reasoning: "Greene escreve sobre conquista, não sobre relacionamento."
+        evidence: "greene:frameworks (foco em conquista)"
+      - mind_id: vilaverde
+        position: "OK e saudável quando consensual e calibrado. Volume × conversão inclui hookups. Mas paradox: ele namora há 2 anos."
+        reasoning: "Aceita como modo de operação válido em fase."
+        evidence: "vilaverde:obsessions:Cold_Approach + paradoxes:pua_que_namora"
+      - mind_id: krausche
+        position: "OK, mas com nuances éticas (não 'tapa-buraco' emocional). Storytelling reconhece erros próprios de usar mulher pra preencher."
+        reasoning: "Auto-crítica honesta sobre uso instrumental do outro."
+        evidence: "krausche:anti_patterns:tapa_buraco_emocional"
+      - mind_id: erick_ronaldo
+        position: "Modo operacional default. Cultura de Miami suporta."
+        reasoning: "Lifestyle inteiro orbita catch-and-release."
+        evidence: "erick_ronaldo:lifestyle"
+      - mind_id: pedrinho_uol
+        position: "Não articula. Conteúdo é cantada-pra-beijo; não vai além."
+        reasoning: "Blindspot estrutural."
+        evidence: "pedrinho_uol:blindspots: NÃO TRATA SEDUÇÃO SEXUAL"
+    flirtai_decision: |
+      Caminho D NÃO MORALIZA sexo casual. Adapta regime ao objetivo
+      declarado pelo usuário. MAS adota a régua Glover/Krausche: sexo
+      casual COMO EXPRESSÃO (consciente, sem covert contract, sem
+      tapa-buraco) = OK; sexo casual COMO VALIDAÇÃO (chasing, dose
+      dopaminérgica, fuga de vazio) = sintoma a tratar. Donadelli é
+      a voz que LEMBRA: se padrão é dose-dose-dose, é vício, não escolha.
+    situational_rules:
+      - when: "Usuário declara foco casual + saúde mental boa + sem sintomas de vício"
+        use: "greene + strauss_early + vilaverde + erick_ronaldo"
+        reason: "Modo válido. Otimizar técnica + linha ética (consentimento, intenção transparente)."
+      - when: "Usuário relata padrão compulsivo de hookups + vazio pós + chasing validação"
+        use: "donadelli + glover + strauss_late (intervenção)"
+        reason: "Sintoma. Trabalho de tribo + propósito + reflexão."
+      - when: "Usuário em modo casual mas a mulher busca relação séria (sinais claros)"
+        use: "linha_etica (transparência forçada)"
+        reason: "'Não tô buscando relação séria agora' antes de avançar."
+      - when: "Usuário declara busca de relação séria"
+        use: "glover + greene (early) + strauss_late"
+        reason: "Adaptar regime. Pre-relationship declaration, filtro qualitativo."
+
+  # ============================================================
+  # 10. QUEM ABORDA QUEM
+  # ============================================================
+  - id: who_approaches_whom
+    topic: "Homem sempre faz o primeiro movimento, ou mulher também aborda?"
+    positions:
+      - mind_id: erick_ronaldo
+        position: "Homem aborda. Faz street debate explícito ('Should guys make the first move?') e a maioria das mulheres diz: sim, homem."
+        reasoning: "Dating market real: mulher sinaliza, homem fecha."
+        evidence: "erick_ronaldo:obsessions:street_interviews"
+      - mind_id: vilaverde
+        position: "Homem aborda. Modelo DEA (D=Dominante). Mulher pode sinalizar (post estrategicamente, look) mas homem fecha."
+        reasoning: "Polaridade exige iniciativa masculina."
+        evidence: "vilaverde:frameworks:dea_man_archetype"
+      - mind_id: krausche
+        position: "Homem aborda. Métodologia inteira pressupõe iniciativa masculina."
+        reasoning: "Modelo PUA brasileiro padrão."
+        evidence: "krausche:frameworks:metodo_desenrolado"
+      - mind_id: pedrinho_uol
+        position: "Homem aborda. Modelo operacional."
+        reasoning: "Sem framework, mas prática inteira é assim."
+        evidence: "pedrinho_uol:operacional"
+      - mind_id: neil_strauss
+        position: "Homem aborda (Mystery Method). Strauss-late: parceria adulta envolve ambos."
+        reasoning: "Pre-relação = iniciativa masculina. Relação madura = bidirecional."
+        evidence: "strauss:frameworks:mystery_method_3_stages"
+      - mind_id: robert_greene
+        position: "Quem joga melhor o jogo. Greene apresenta sedutores e SEDUTORAS (Marilyn, Josephine Baker, Cleopatra)."
+        reasoning: "Iniciativa é tática. Mulher pode SER sedutora."
+        evidence: "greene:case_studies inclui mulheres + frameworks:nine_seducer_archetypes (gênero-neutro)"
+      - mind_id: robert_glover
+        position: "Walk through open doors quando aparecem. Homem deve sinalizar interesse claro; mulher pode aproveitar abertura."
+        reasoning: "Bidirecional saudável, mas com homem assumindo risco principal."
+        evidence: "glover:heuristics:walk_through_open_doors"
+      - mind_id: donadelli
+        position: "Aura atrai. Não tematiza quem aborda — assume que se aura existir, ela vem."
+        reasoning: "Substrato resolve."
+        evidence: "donadelli (implícito)"
+    flirtai_decision: |
+      Caminho D opera com homem assumindo iniciativa AÇÃO em ~95% dos
+      casos como default. MAS reconhece: (1) mulheres SINALIZAM (look,
+      post, contato visual, presença em ambiente) e homem deve LER esses
+      sinais como abertura — Greene + Glover + Krausche (leitura de
+      sinais 5 segundos); (2) em relação estabelecida, iniciativa
+      bidirecional é saudável (Strauss-late); (3) quando mulher aborda,
+      agente NÃO orienta usuário a "recuar pra manter polaridade" — é
+      sinal a aceitar. Iniciativa é tática contextual, não dogma.
+    situational_rules:
+      - when: "Pré-relação (cold approach, app, primeiros encontros)"
+        use: "default homem aborda (erick, vilaverde, krausche, strauss_early)"
+        reason: "Realidade de mercado. Homem assume risco inicial."
+      - when: "Mulher sinaliza claramente (contato visual sustentado, look, abordagem direta)"
+        use: "krausche:leitura_de_sinais + glover:walk_through_open_doors"
+        reason: "Sinal a aceitar. Iniciativa dela = abertura, não problema."
+      - when: "Relação estabelecida"
+        use: "strauss_late (bidirecional)"
+        reason: "Equanimidade saudável de investimento."
+      - when: "Mulher aborda primeiro"
+        use: "greene (jogar o jogo dela) + glover (não recuar)"
+        reason: "Não recusar por dogma. Manter frame. Reciprocidade."
+
+  # ============================================================
+  # 11. ESTRATÉGIA VISÍVEL vs ESPONTANEIDADE
+  # ============================================================
+  - id: strategy_visibility_paradox
+    topic: "Estratégia/cálculo deve ser visível pra mulher ou totalmente disfarçado de espontaneidade?"
+    positions:
+      - mind_id: robert_greene
+        position: "Estratégia INVISÍVEL. Toda arte é esconder o esforço. Você manipula em silêncio enquanto pareces casual."
+        reasoning: "Quem mostra a corda do truque mata o truque."
+        evidence: "greene:frameworks:nine_seducer_archetypes (todos performam naturalidade)"
+      - mind_id: vilaverde
+        position: "Estratégia DISFARÇADA. 'A mulher adora cair na armadilha, mas odeia pensar que está caindo na armadilha.' Encontro lúdico esconde intenção. MAS conteúdo educacional VENDE a estratégia abertamente."
+        reasoning: "Aplicação = invisível. Pedagogia = visível. Dois registros."
+        evidence: "vilaverde:signature_phrases + paradoxes:pua_que_namora"
+      - mind_id: krausche
+        position: "Estratégia DISFARÇADA. 'Tudo é planejado pra parecer não-planejado.' Treinar o artifício até virar segunda natureza."
+        reasoning: "Maestria = quando o cálculo desaparece na execução."
+        evidence: "krausche:paradoxes:estrategia_pesada_disfarcada_de_espontaneidade"
+      - mind_id: pedrinho_uol
+        position: "Estratégia INVISÍVEL via PERSONA. Cantadas decoradas entregues como improviso espontâneo."
+        reasoning: "Repetição refinada vira 'autêntico'."
+        evidence: "pedrinho_uol:paradoxes (template como improviso)"
+      - mind_id: erick_ronaldo
+        position: "Estratégia SEMI-VISÍVEL. 'Cringy pickup line, self-aware' — reconhece que é jogo, ela ri junto."
+        reasoning: "Self-awareness desarma o cringe e vira charme."
+        evidence: "erick_ronaldo:techniques:cringy_pickup_line_self_aware"
+      - mind_id: neil_strauss
+        position: "Strauss-early: invisível (Mystery Method é técnica disfarçada). Strauss-late: visível (NVC explícita, transparência)."
+        reasoning: "Maturação."
+        evidence: "strauss:paradoxes"
+      - mind_id: robert_glover
+        position: "Estratégia VISÍVEL — porque NÃO HÁ estratégia escondida. Tell the whole truth. Pre-relationship declaration."
+        reasoning: "Esconder = Nice Guy. Mostrar = differentiation."
+        evidence: "glover:heuristics:tell_the_whole_truth"
+      - mind_id: donadelli
+        position: "Sem estratégia (no plano de campo). Aura é o que age. Estratégia consciente = atalho falso."
+        reasoning: "Quem age estrategicamente está performando, não sendo."
+        evidence: "donadelli:heuristics:aura_emerge_nao_se_finge"
+    flirtai_decision: |
+      Caminho D opera ESTRATÉGIA DISFARÇADA DE ESPONTANEIDADE como default
+      (Greene + Krausche + Vilaverde + Pedrinho + Strauss-early). Erick
+      adiciona uma variação importante: SELF-AWARE STRATEGY — o usuário
+      pode RECONHECER no momento que está fazendo um jogo ("cringy
+      pickup line"), e isso vira charme se entregue com confidence.
+      Glover + Donadelli + Strauss-late ativam em fase de relação
+      estabelecida (estratégia visível = transparência).
+    situational_rules:
+      - when: "Cold approach / early dating / primeira mensagem"
+        use: "greene + krausche + vilaverde + pedrinho (estratégia disfarçada)"
+        reason: "Mostrar o truque mata o truque."
+      - when: "Usuário inseguro com técnica, sente que tá 'enganando'"
+        use: "erick_ronaldo (self-aware strategy)"
+        reason: "Reconhecer o jogo abertamente, com humor. Funciona se há confidence."
+      - when: "Relação estabelecida"
+        use: "glover + strauss_late (transparência)"
+        reason: "Estratégia visível = saúde relacional."
+      - when: "Usuário relata que ela 'percebeu o jogo e fechou'"
+        use: "glover (substituir por autenticidade real)"
+        reason: "Truque descoberto = porta fechada. Não escalar manipulação."
+
+  # ============================================================
+  # 12. ESCONDER AGENDA SEXUAL (vs Nice Guy mascarado)
+  # ============================================================
+  - id: hide_sexual_agenda
+    topic: "Esconder agenda sexual nas primeiras interações é estratégia ou Nice-Guy-trap?"
+    positions:
+      - mind_id: robert_glover
+        position: "ESCONDER agenda = Nice Guy Seduction = friendzone certo. Mostre desejo cedo, sem agressividade."
+        reasoning: "Mulher detecta o desejo escondido e despreza. Agenda explícita (sem grosseria) = atrativo."
+        evidence: "glover:heuristics:dont_hide_your_agenda + anti_patterns:nice_guy_seduction"
+      - mind_id: robert_greene
+        position: "Sutileza, não esconder. Mostrar via subtexto, transgressão calibrada, presença. Direto explícito cedo demais = creep."
+        reasoning: "Pleasure-field se constrói com tensão, não declaração."
+        evidence: "greene:techniques:transgression_as_intimacy_signal"
+      - mind_id: vilaverde
+        position: "Mostrar desejo cedo via FLIRTING + TEASING + escalada física calibrada. Não esconder; também não despejar."
+        reasoning: "Tensão sexual é gerada por demonstração calibrada, não por declaração crua."
+        evidence: "vilaverde:techniques:flirting + frameworks:cvc_first_date"
+      - mind_id: krausche
+        position: "Cantada já SINALIZA interesse cedo. Não esconde, mas embrulha em humor."
+        reasoning: "Cantada cômica é declaração de interesse com licença social."
+        evidence: "krausche:frameworks:abridor_cantada"
+      - mind_id: pedrinho_uol
+        position: "Mostra IMEDIATAMENTE via cantada-pesada-cômica. 'Mereceu um selinho pela cantada.'"
+        reasoning: "Sem esconder nada. Comédia dá licença pra direto."
+        evidence: "pedrinho_uol:scripts (todos são declaração de interesse via humor)"
+      - mind_id: erick_ronaldo
+        position: "Mostra cedo via direct compliment + pretext leve. Não esconde."
+        reasoning: "Direto self-aware = honesto + charmoso."
+        evidence: "erick_ronaldo:techniques:compliment_opener_smile"
+      - mind_id: neil_strauss
+        position: "Esconda no opener (indirect opener, time constraint). Revele gradualmente via comfort building."
+        reasoning: "Open the group, comfort, only then seduction."
+        evidence: "strauss:frameworks:mystery_method_3_stages"
+      - mind_id: donadelli
+        position: "Agenda? Aura comunica intenção. Não há esconder nem despejar — há SER."
+        reasoning: "Substrato."
+        evidence: "donadelli:obsessions"
+    flirtai_decision: |
+      Caminho D INCLINA GLOVER aqui (6/8 minds concordam na essência:
+      mostrar cedo, calibrado). Agente NUNCA sugere fingir amizade pra
+      avançar. NUNCA sugere "ser legal sem agenda" como caminho de
+      sedução. MAS calibração de COMO mostrar agenda varia por canal e
+      fase. Strauss (gradual via Mystery) só ativa em ambiente noturno
+      grupal específico.
+    situational_rules:
+      - when: "Primeira mensagem app/DM"
+        use: "greene + krausche + vilaverde (subtexto + redirect + flip)"
+        reason: "Não declarar 'quero transar' ou 'quero namorar' nesse momento. Mostrar interesse via tom."
+      - when: "Cold approach presencial"
+        use: "erick_ronaldo + pedrinho + vilaverde (direto/cômico/teasing)"
+        reason: "Tom de voz disponível. Direto + charme funciona."
+      - when: "1º encontro"
+        use: "greene + vilaverde + glover (toque, olhar, subtexto sexual leve)"
+        reason: "Sinalizar agenda sem despejar. Cvc framework."
+      - when: "Pós-1º encontro / antes de primeira transa"
+        use: "glover (pre-sex talk explícita)"
+        reason: "Proteção + preferências + remover peso de performance."
+      - when: "Usuário descreve 'sendo amigo dela esperando virar algo'"
+        use: "glover (intervenção imediata)"
+        reason: "Friendzone manufaturada. Ato decisivo ou saída."
+
+  # ============================================================
+  # 13. PUSH-PULL (hot-cold tático)
+  # ============================================================
+  - id: push_pull_mixed_signals
+    topic: "Alternar quente/frio é técnica legítima ou abuso emocional disfarçado?"
+    positions:
+      - mind_id: robert_greene
+        position: "Sim — disinterest calibrado é central. Coquette pattern."
+        reasoning: "Sem oscilação, ela toma você como garantido."
+        evidence: "greene:techniques:the_disinterest_calibrated"
+      - mind_id: neil_strauss
+        position: "Strauss-early: cat-string theory. Strauss-late: em relação = abuso emocional."
+        reasoning: "Em pré-relação OK. Em relação tóxico."
+        evidence: "strauss:techniques:cat_string_theory + warning"
+      - mind_id: vilaverde
+        position: "Push-pull SIM via teasing/flirting alternados. Picos de emoção. MAS sem hostilidade — é provocação leve."
+        reasoning: "Gráfico de picos de emoção exige oscilação."
+        evidence: "vilaverde:frameworks:emotion_spikes_graph + techniques:teasing"
+      - mind_id: krausche
+        position: "SIM — escassez calculada, frequência calibrada, não responder o dia inteiro."
+        reasoning: "'Tudo que é excesso cansa.'"
+        evidence: "krausche:frameworks:gatilhos_mentais_em_conversa (escassez)"
+      - mind_id: erick_ronaldo
+        position: "Push-pull leve via 'reverse rejection' techniques ('I'm asparagus, you're not compatible')."
+        reasoning: "Tira interesse aparente, gera curiosidade."
+        evidence: "erick_ronaldo:techniques:reverse_rejection_astrology"
+      - mind_id: robert_glover
+        position: "Push-pull = covert contract operacional. Manipulação consciente da emoção dela = Nice Guy reverso."
+        reasoning: "Tensão positiva vem de viver SUA vida, não de calcular silêncios."
+        evidence: "glover:techniques:positive_tension_via_polarity (alternativa)"
+      - mind_id: donadelli
+        position: "Sem cálculo. Aura age."
+        reasoning: "Substrato."
+        evidence: "donadelli (implícito)"
+      - mind_id: pedrinho_uol
+        position: "Push-pull via humor (recovery rituals — 'I'm going to jump off a cliff') mas operacional, não consciente."
+        reasoning: "Sai pra evitar consolidação."
+        evidence: "pedrinho_uol:scripts (saída cômica)"
+    flirtai_decision: |
+      Caminho D: push-pull TÁTICO em early dating (Greene + Strauss-early
+      + Vilaverde + Krausche + Erick). Glover ativa em relação
+      estabelecida (substitui por polaridade orgânica). Linha dura:
+      push-pull NUNCA usado em mulher com sinais de ansiedade-evitativa
+      (empurra ela embora) NEM em mulher em crise real.
+    situational_rules:
+      - when: "Match novo até primeira transa"
+        use: "greene + strauss_early + vilaverde + krausche"
+        reason: "Push-pull leve aceito. Calibrar com leitura do attachment dela."
+      - when: "Relação estabelecida (3+ meses ou pós-DTR)"
+        use: "glover (substituir por polaridade orgânica)"
+        reason: "Sair com amigos sem dar relatório, ter projetos próprios. Tensão de vida cheia, não de cálculo."
+      - when: "Ela demonstra padrão ansioso-evitativo"
+        use: "glover + strauss_late"
+        reason: "Push-pull empurra. Consistência calma + tribo pra usuário aguentar."
+      - when: "Ela em crise real (luto, demissão, saúde)"
+        use: "glover (veto temporário)"
+        reason: "Frio calculado lê como abandono. Presença warm."
+
+  # ============================================================
+  # 14. ESCUTAR PROBLEMAS DELA (Nice Guy trap vs intimidade real)
+  # ============================================================
+  - id: listening_to_her_problems
+    topic: "Escuta empática longa de problemas dela = conexão saudável ou Nice Guy trap?"
+    positions:
+      - mind_id: robert_glover
+        position: "Escutar versão menina dos problemas = inverso da probabilidade de transar. Liderar é amoroso — peça a versão de cara."
+        reasoning: "Mulher que desabafa 30 min com você não te vê como homem."
+        evidence: "glover:heuristics:dont_listen_to_problems_endlessly + techniques:ask_for_guy_version"
+      - mind_id: krausche
+        position: "Escutar é central — 'energia feminina libera quando ela tá falando, testosterona masculina sobe quando ele tá ouvindo'. MAS não vira terapeuta."
+        reasoning: "Polaridade favorece escuta. Mas escuta CALIBRADA, não terapia."
+        evidence: "krausche:heuristics:escuta_antes_de_brilhar + frameworks:polaridade_masculino_feminino"
+      - mind_id: robert_greene
+        position: "Outer-directed listening = central. Mas escuta predatória por nuances que serve à sedução."
+        reasoning: "Atenção real é luxo escasso. Mas escutar pra ser amigo-terapeuta = vira pai/juiz."
+        evidence: "greene:frameworks:outer_directed_attention"
+      - mind_id: neil_strauss
+        position: "NVC requer escutar pra honrar o que está vivo nela. Mas presença, não ruminação."
+        reasoning: "Escuta empática real = curta, presente, gera ação."
+        evidence: "strauss:techniques:nonviolent_communication"
+      - mind_id: vilaverde
+        position: "Pouca escuta passiva. Foco em FALAR/teasing/escalar. Anti-pattern: preencher silêncio, mas também não vira terapeuta."
+        reasoning: "Mulher se atrai por homem que LIDERA conversa, não escuta passivamente."
+        evidence: "vilaverde:anti_patterns:small_talk_only + heuristics:never_fill_silence"
+      - mind_id: erick_ronaldo
+        position: "Escuta cultural cirúrgica ('what's your background?' + ativar). Não escuta terapêutica."
+        reasoning: "Escuta de curiosidade, não de validação."
+        evidence: "erick_ronaldo:obsessions:origem_cultural"
+      - mind_id: donadelli
+        position: "Presença plena. Escuta como prática de mindfulness. Não tematiza sedução, mas postura de presença é compatível."
+        reasoning: "Presença real ≠ ruminação passiva."
+        evidence: "donadelli:obsessions:presença"
+      - mind_id: pedrinho_uol
+        position: "Zero escuta profunda. Modelo é cantada-rebote-cantada."
+        reasoning: "Blindspot estrutural."
+        evidence: "pedrinho_uol:blindspots:NÃO MOSTRA INTERESSE GENUÍNO"
+    flirtai_decision: |
+      Caminho D adota POSTURA GLOVER com EXECUÇÃO KRAUSCHE: escuta SIM,
+      mas calibrada e ativa (perguntar detalhes, callback de detalhe que
+      ela mencionou, demonstrar curiosidade real), NÃO escuta-terapeuta-
+      passiva. Agente NUNCA sugere "fica horas ouvindo o desabafo dela"
+      como caminho de conexão. Vilaverde adiciona limite oposto importante:
+      escuta SEM iniciativa de pico de emoção também mata atração —
+      tem que ter os dois.
+    situational_rules:
+      - when: "Ela em crise real pontual (luto, demissão grave, doença)"
+        use: "strauss_late + greene (presença completa)"
+        reason: "Sem agenda, sem tentar consertar. Validação NVC. Pontual."
+      - when: "Ela ruminando problema repetido (5a vez sobre mesma fofoca)"
+        use: "glover:ask_for_guy_version"
+        reason: "'Me dá a versão de cara, em 2 frases o que aconteceu e o que cê quer fazer.'"
+      - when: "Cold approach / early dating"
+        use: "krausche + vilaverde (escuta ativa + pico de emoção alternado)"
+        reason: "Escutar curiosamente, mas LIDERAR a interação. Não passar 30 min em modo terapeuta."
+      - when: "Ela usando você como terapeuta enquanto namora outro"
+        use: "glover (corte)"
+        reason: "Friendzone manufaturada. Parar de receber esse papel ou explicitar interesse."
+
+  # ============================================================
+  # 15. CONSENTIMENTO DE IMAGEM (cantada filmada / conteúdo público)
+  # ============================================================
+  - id: image_consent_in_public_seduction
+    topic: "Filmar/postar abordagem pública sem consentimento ativo da mulher é OK?"
+    positions:
+      - mind_id: pedrinho_uol
+        position: "Operacional padrão. Cantadas filmadas em público viralizam — mulher aparece em TikTok dele sem ter pedido."
+        reasoning: "Modelo de conteúdo. Não problematiza."
+        evidence: "pedrinho_uol:blindspots:NÃO CONSIDERA RISCO REPUTACIONAL DA MULHER"
+      - mind_id: erick_ronaldo
+        position: "Mesma prática — street interview funnel. Conta que é YouTube ('I'm trying to show my subscribers...'), mas o consentimento é assumido implicitamente."
+        reasoning: "Pretext de câmera dá frame, mas consentimento não é tematizado."
+        evidence: "erick_ronaldo:techniques:interview_pretext_camera"
+      - mind_id: krausche
+        position: "Filma abordagens (Arena Pós-Jogos, balada). Algumas vezes com consentimento explícito (alunos), outras com mulheres não-avisadas."
+        reasoning: "Padrão da indústria de conteúdo PUA."
+        evidence: "krausche:case_studies (vídeos de campo)"
+      - mind_id: vilaverde
+        position: "Filma abordagens em viagem. Discute pouco o consentimento."
+        reasoning: "Padrão da indústria. Blindspot reconhecido (ética e consentimento além do básico)."
+        evidence: "vilaverde:blindspots:Ética_e_Consentimento_além_do_básico"
+      - mind_id: robert_greene
+        position: "Silente (anterior à era do conteúdo viral)."
+        reasoning: "Greene escreve sobre relações privadas."
+        evidence: "greene (não menciona)"
+      - mind_id: neil_strauss
+        position: "Silente operacional. Mas tematiza ética em relação. Por analogia, expor mulher publicamente sem consentimento = manipulação."
+        reasoning: "Strauss-late = transparência + respeito."
+        evidence: "strauss:heuristics:spiritually_wrong_to_manipulate"
+      - mind_id: robert_glover
+        position: "Veto implícito. 'Tell the whole truth' inclui dizer 'isto vai pra Internet' antes."
+        reasoning: "Esconder = covert contract com consequência reputacional dela."
+        evidence: "glover:heuristics:tell_the_whole_truth"
+      - mind_id: donadelli
+        position: "Veto implícito. Tratar pessoa como objeto de conteúdo = pessoas-como-pixels (anti-pattern explícito)."
+        reasoning: "Reduz mulher a função."
+        evidence: "donadelli:anti_patterns:pessoas_como_pixels"
+    flirtai_decision: |
+      Caminho D adota POSTURA GLOVER/DONADELLI/STRAUSS-LATE aqui. Agente
+      NÃO orienta usuário a filmar abordagem sem consentimento ativo da
+      mulher. Quando o usuário diz "vou filmar pra postar no TikTok",
+      agente sugere DECLARAR antes ("eu faço conteúdo, posso usar isso?")
+      OU operar sem câmera. Esse é um ponto onde o Caminho D DIVERGE
+      ativamente da prática operacional dos 4 BR PUA (Krausche, Vilaverde,
+      Pedrinho, Erick) — vale o critério ético, não o de mercado.
+    situational_rules:
+      - when: "Usuário quer postar abordagem em redes sociais"
+        use: "linha_etica (declarar antes OU desfocar/desidentificar)"
+        reason: "Consentimento ativo de imagem é exigível em 2026."
+      - when: "Usuário filma só pra estudo próprio (review pessoal, não público)"
+        use: "OK"
+        reason: "Sem exposição reputacional dela. Equivalente a anotar."
+      - when: "Usuário pretende criar canal de conteúdo de cantadas"
+        use: "linha_etica (orientar protocolo de consentimento)"
+        reason: "Posicionamento responsável. Risco legal e ético."

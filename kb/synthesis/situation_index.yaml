@@ -1,0 +1,877 @@
+# FlirtAI KB Synthesis — Situation Index (v3)
+# Mapeamento situação → arsenal disponível (frameworks/heuristics/techniques/
+# scripts/diagnostics dos 8 minds). Lookup rápido pro agente FlirtAI.
+# Schema: docs/schema-kb.yaml v1.0
+# Generated: 2026-05-25 (incorporando 5 BR)
+#
+# Mind IDs canônicos: robert_greene, neil_strauss, robert_glover,
+# krausche, vilaverde, donadelli, pedrinho_uol, erick_ronaldo
+#
+# Formato de cross-ref: <mind_id>:<item_id>
+# Ex: vilaverde:emotion_spikes_graph, krausche:metodo_desenrolado
+
+schema_version: 1.0
+synthesis_layer: situation_index
+caminho: D
+total_situations: 30
+
+situation_index:
+
+  # ============================================================
+  # CATEGORIA 1 — ABORDAGEM PRESENCIAL
+  # ============================================================
+
+  - situation_id: abordagem_dia_publico
+    description: "Cold approach em rua, parque, praia, mall, café — luz do dia, ambiente sóbrio"
+    relevant_frameworks:
+      - "erick_ronaldo:street_interview_funnel"
+      - "erick_ronaldo:approach_to_number_5steps"
+      - "erick_ronaldo:prop_pretext_approach"
+      - "vilaverde:cold_approach_4_steps"
+      - "krausche:leitura_de_sinais_5_segundos"
+      - "greene:absence_presence_dynamic"
+    relevant_heuristics:
+      - "erick_ronaldo:aborde_em_segundos_nao_minutos"
+      - "erick_ronaldo:compliment_especifico_nunca_generico"
+      - "erick_ronaldo:peca_numero_nao_instagram"
+      - "vilaverde:regra_3_segundos"
+      - "greene:fortune_favors_the_bold"
+      - "krausche:contato_visual_nao_desviar"
+    relevant_techniques:
+      - "erick_ronaldo:compliment_opener_smile"
+      - "erick_ronaldo:prop_calendar_pencil"
+      - "erick_ronaldo:height_qualification_pretext"
+      - "vilaverde:teasing"
+      - "vilaverde:flirting"
+      - "krausche:abordagem_via_oportunidade_situacional"
+    relevant_scripts:
+      - "erick_ronaldo:en_opener_smile_where_did_you_get_that"
+      - "erick_ronaldo:en_opener_height_survey"
+      - "erick_ronaldo:en_opener_calendar_book_date"
+      - "vilaverde:cold_approach_rua_gancho"
+      - "vilaverde:cold_approach_mulher_no_cafe"
+      - "vilaverde:cold_approach_mulher_andando"
+    relevant_diagnostics:
+      - "krausche:ela_te_olhou_de_volta"
+      - "vilaverde:cliente_travando_aborgagem"
+    primary_minds: [erick_ronaldo, vilaverde, krausche]
+    flirtai_default_play: |
+      Default: Erick-style direct compliment opener + Vilaverde-style
+      gancho ambiental + Krausche leitura de sinais 5 segundos antes.
+      Princípio bold_action_beats_perfect_timing. Pedir número direto
+      (não Instagram). Saída em 2-3 minutos no máximo (Erick: saia
+      antes de exaurir). NÃO improvisar pretexto longo — direto self-
+      aware funciona melhor.
+
+  - situation_id: abordagem_balada
+    description: "Bar, balada, festa universitária, danceteria — música alta, álcool, grupos"
+    relevant_frameworks:
+      - "strauss:mystery_method_3_stages"
+      - "krausche:abridor_cantada_e_emocao"
+      - "krausche:leitura_de_sinais_5_segundos"
+      - "vilaverde:cold_approach_4_steps"
+    relevant_heuristics:
+      - "krausche:nao_se_iguale_visualmente"
+      - "krausche:tridente_e_higiene_obrigatorios"
+      - "krausche:nao_dependa_de_alcool"
+      - "krausche:nunca_chegue_encostando"
+      - "strauss:scarcity_creates_value"
+      - "vilaverde:focus_amigas_not_target"
+    relevant_techniques:
+      - "strauss:opener_indirect_approach"
+      - "strauss:peacocking"
+      - "strauss:open_the_group_not_the_target"
+      - "strauss:cat_string_theory"
+      - "krausche:abertura_em_grupo_como_disco_voador"
+      - "vilaverde:group_control_focus_friend"
+    relevant_scripts:
+      - "vilaverde:mulher_olhou_balada_primeira_fala"
+      - "krausche:cantada_balada_musica"
+      - "krausche:cantada_acidente_constrangedor"
+    relevant_diagnostics:
+      - "vilaverde:mulher_olhou_balada"
+      - "krausche:ela_te_olhou_de_volta"
+      - "krausche:ela_no_grupo_de_amigas"
+    primary_minds: [krausche, strauss, vilaverde]
+    flirtai_default_play: |
+      Strauss-early framework (open the group, comfort, seduction) +
+      Krausche cantada-cômica como abridor + Vilaverde focus na amiga
+      antes do alvo. Diferenciação visual obrigatória (nunca preto
+      total). Higiene + tridente. NÃO depender de álcool. Leitura de
+      sinais antes de abordar — não tomar fora evitável.
+
+  - situation_id: abordagem_academia
+    description: "Mulher treinando na academia — ambiente que ela frequenta repetidamente"
+    relevant_frameworks:
+      - "krausche:metodo_desenrolado (pilar abordagem em ambiente recorrente)"
+      - "vilaverde:cold_approach_4_steps"
+    relevant_heuristics:
+      - "krausche:nunca_chegue_encostando"
+      - "krausche:nunca_elogie_aparencia_de_quem_ja_sabe"
+      - "krausche:contato_visual_nao_desviar"
+      - "vilaverde:dont_pedestal"
+    relevant_techniques:
+      - "krausche:abordagem_via_oportunidade_situacional"
+      - "vilaverde:teasing"
+    relevant_scripts:
+      - "krausche:contato_olho_no_olho_abordagem"
+      - "vilaverde:response_stories_academia"
+    relevant_diagnostics:
+      - "krausche:ela_te_olhou_de_volta"
+      - "krausche:ela_no_perfil_dela_e_padrao_dela"
+    primary_minds: [krausche, vilaverde]
+    flirtai_default_play: |
+      Academia é ambiente recorrente — risco social maior se errar.
+      NÃO interromper treino. Aguardar pausa natural (bebedouro,
+      espelho, troca de aparelho). Comentário CURTO sobre algo
+      não-óbvio (não aparência, não corpo). Saída rápida com gancho
+      pra próxima vez ("se te vejo de novo, vou perguntar X"). Se
+      contato visual sustentado já aconteceu, abordagem fica leve.
+
+  - situation_id: abordagem_universidade_festa
+    description: "Festa universitária, after, calourada — alvo entre 18-24 anos"
+    relevant_frameworks:
+      - "krausche:abridor_cantada_e_emocao"
+      - "krausche:metodo_desenrolado"
+      - "strauss:mystery_method_3_stages"
+    relevant_heuristics:
+      - "krausche:nunca_chegue_de_entrevista_de_emprego"
+      - "krausche:cantada_e_abridor_nao_produto"
+      - "krausche:nao_dependa_de_alcool"
+    relevant_techniques:
+      - "krausche:abertura_em_grupo_como_disco_voador"
+      - "krausche:provocacao_e_toque_em_zona_neutra"
+      - "pedrinho_uol:cantada_pesquisa"
+    relevant_scripts:
+      - "krausche:cantada_balada_musica"
+      - "krausche:cantada_acidente_constrangedor"
+      - "pedrinho_uol:cantada_pesquisa_um_ano"
+    relevant_diagnostics:
+      - "krausche:ela_no_grupo_de_amigas"
+    primary_minds: [krausche, pedrinho_uol]
+    flirtai_default_play: |
+      Krausche é o nativo desse ambiente. Cantada-cômica como abridor
+      (Krausche+Pedrinho), pivô rápido pra assunto real (3 assuntos
+      Krausche), abertura indireta em grupo de amigas. Tom leve,
+      humor alto, frame de cara que tá curtindo e não precisa.
+
+  # ============================================================
+  # CATEGORIA 2 — APROXIMAÇÃO ONLINE
+  # ============================================================
+
+  - situation_id: primeira_mensagem_tinder
+    description: "Match no Tinder, ela não disse oi, hora de mandar a primeira mensagem"
+    relevant_frameworks:
+      - "krausche:gatilhos_mentais_em_conversa"
+      - "vilaverde:cold_approach_4_steps (adaptado pra texto)"
+      - "greene:absence_presence_dynamic"
+    relevant_heuristics:
+      - "krausche:nunca_chegue_de_entrevista_de_emprego"
+      - "krausche:nunca_elogie_aparencia_de_quem_ja_sabe"
+      - "vilaverde:instagram_only_two_uses"
+      - "greene:lean_into_what_makes_you_strange"
+    relevant_techniques:
+      - "strauss:name_three_things_flip"
+      - "strauss:time_constraint_opener"
+      - "greene:play_the_blank_screen"
+      - "vilaverde:hot_first_message"
+      - "krausche:suposicao_provocativa"
+    relevant_scripts:
+      - "vilaverde:primeira_mensagem_tinder_match_com_dica"
+      - "vilaverde:primeira_mensagem_tinder_match_sem_dica"
+      - "krausche:cantada_5_mensagens_match"
+      - "greene:primeira_mensagem_pos_match"
+      - "strauss:first_message_app"
+    relevant_diagnostics: []
+    primary_minds: [greene, vilaverde, krausche, strauss]
+    flirtai_default_play: |
+      Caminho D: copy ENIGMÁTICA + ancorada na bio/foto dela. Greene's
+      play_the_blank_screen + Vilaverde's hot_first_message + Krausche's
+      suposicao_provocativa. NUNCA "oi tudo bem", NUNCA elogio de
+      aparência. Suposição lúdica que pede correção. Pedir número
+      depois de 5-8 trocas de qualidade (não antes).
+
+  - situation_id: primeira_mensagem_instagram
+    description: "Mulher do Instagram (não-match, perfil público), primeira mensagem fria via DM"
+    relevant_frameworks:
+      - "krausche:protocolo_resposta_de_stories"
+      - "vilaverde:acquisition_channels (balde do Instagram)"
+    relevant_heuristics:
+      - "krausche:nunca_responda_biquini"
+      - "vilaverde:instagram_only_two_uses"
+      - "vilaverde:pedir_instagram_sem_pretexto (anti)"
+    relevant_techniques:
+      - "krausche:callback_de_perfil"
+      - "krausche:cantada_via_callback_visual"
+      - "krausche:suposicao_provocativa"
+    relevant_scripts:
+      - "vilaverde:response_stories_mulher_postou_comida"
+      - "krausche:cantada_carrinho_policia_stories"
+      - "krausche:cantada_perfil_arrumada_date"
+    relevant_diagnostics:
+      - "krausche:ela_no_perfil_dela_e_padrao_dela"
+    primary_minds: [krausche, vilaverde]
+    flirtai_default_play: |
+      Krausche é o melhor da KB pra esse caso. Análise prévia do perfil
+      (não responder biquíni — responder stories aleatórios), suposição
+      provocativa que pede correção, callback de detalhe que ninguém
+      comentaria. Construir intimidade antes de propor encontro.
+
+  - situation_id: responder_story
+    description: "Stories dela apareceu, hora de aproveitar pra puxar conversa"
+    relevant_frameworks:
+      - "krausche:protocolo_resposta_de_stories"
+    relevant_heuristics:
+      - "krausche:nunca_responda_biquini"
+      - "krausche:nunca_chegue_de_entrevista_de_emprego"
+    relevant_techniques:
+      - "krausche:suposicao_provocativa"
+      - "krausche:cantada_via_callback_visual"
+      - "pedrinho_uol:cantada_pesquisa"
+    relevant_scripts:
+      - "vilaverde:response_stories_mulher_postou_comida"
+      - "vilaverde:response_stories_academia"
+      - "krausche:cantada_carrinho_policia_stories"
+      - "pedrinho_uol:cantada_stories_beleza_nao_some"
+    relevant_diagnostics:
+      - "pedrinho_uol:reacao_stories_instagram"
+    primary_minds: [krausche, pedrinho_uol, vilaverde]
+    flirtai_default_play: |
+      ZERO reação de emoji (foguinho/coração = morte). Resposta tem
+      que ser específica ao CONTEÚDO do story (não à foto/biquíni).
+      Suposição lúdica > pergunta direta. Pedrinho pra opção
+      cômica-pesada se contexto público; Krausche pra opção
+      intimista; Vilaverde pra opção teasing.
+
+  - situation_id: match_que_so_responde_seca
+    description: "Match responde 'kkk', 'sla', 'q legal' — não engata"
+    relevant_frameworks:
+      - "vilaverde:emotion_spikes_graph (falta de pico)"
+    relevant_heuristics:
+      - "krausche:cantada_e_abridor_nao_produto"
+      - "vilaverde:never_fill_silence"
+      - "greene:never_chase_in_panic"
+      - "vilaverde:volume_beats_communication"
+    relevant_techniques:
+      - "greene:play_the_blank_screen"
+      - "strauss:cat_string_theory"
+      - "vilaverde:teasing"
+    relevant_scripts:
+      - "krausche:reacao_amigo_no_direct (paralelo)"
+    relevant_diagnostics:
+      - "vilaverde:mulher_responde_seco"
+      - "krausche:ela_sumiu_no_direct"
+    primary_minds: [vilaverde, krausche, greene]
+    flirtai_default_play: |
+      Vilaverde diagnóstico explícito desse caso. Opções: (1) injetar
+      pico de emoção via teasing inesperado; (2) silêncio calibrado
+      (Greene/Strauss) e soltar; (3) reconhecer que talvez não há fit.
+      NÃO escalar com mais perguntas. NÃO mandar 3+ mensagens seguidas.
+      Vilaverde: volume > comunicação — se essa não engata, próxima.
+
+  # ============================================================
+  # CATEGORIA 3 — CONVERSA
+  # ============================================================
+
+  - situation_id: ela_so_responde_curto
+    description: "Conversa engatou mas ela responde 1-2 palavras consistentemente"
+    relevant_frameworks:
+      - "vilaverde:emotion_spikes_graph"
+      - "vilaverde:interaction_block"
+    relevant_heuristics:
+      - "krausche:cantada_e_abridor_nao_produto"
+      - "krausche:nao_seja_pai_da_mina_no_direct"
+      - "vilaverde:never_fill_silence"
+    relevant_techniques:
+      - "vilaverde:teasing"
+      - "vilaverde:afunilamento_conversa"
+      - "greene:play_the_blank_screen"
+      - "strauss:demonstrate_authority_over_her_world"
+    relevant_scripts:
+      - "vilaverde:mulher_demorou_responder"
+    relevant_diagnostics:
+      - "vilaverde:mulher_responde_seco"
+    primary_minds: [vilaverde, krausche]
+    flirtai_default_play: |
+      Vilaverde frameworks emotion_spikes + interaction_block: cada
+      turno do agente tem que conter um PICO (teasing, observação
+      curiosa, mini-storytelling) + pergunta aberta. Sem pico, ela
+      não tem por que investir. Krausche: pouca mensagem com ALTO
+      valor > muita mensagem com baixo valor.
+
+  - situation_id: ficar_sem_assunto
+    description: "Conversa morreu, não sabe o que falar, ela esfriou"
+    relevant_frameworks:
+      - "krausche:tres_assuntos_seducao"
+      - "vilaverde:interaction_block"
+      - "vilaverde:emotion_spikes_graph"
+    relevant_heuristics:
+      - "krausche:escuta_antes_de_brilhar"
+      - "vilaverde:emotion_first_racional_second"
+    relevant_techniques:
+      - "vilaverde:teasing"
+      - "vilaverde:microfantasia"
+      - "krausche:gatilho_de_antecipacao_futuro_juntos"
+      - "krausche:storytelling_em_vez_de_curriculo"
+      - "krausche:meme_e_callback_assincrono"
+    relevant_scripts:
+      - "krausche:meme_assincrono_pensei_em_voce"
+    relevant_diagnostics: []
+    primary_minds: [krausche, vilaverde]
+    flirtai_default_play: |
+      Krausche tem 3 assuntos canônicos (futuro/ambição, viagem, signo).
+      Vilaverde injeta picos de emoção via teasing. Combinar: pergunta
+      aberta sobre futuro + provocação leve sobre resposta dela +
+      storytelling pessoal curto (não currículo). Se ainda não engata,
+      vira anti-pattern Krausche: deixar quieto, mandar meme assíncrono
+      depois ("vi isso e lembrei de você").
+
+  - situation_id: transitar_pra_date
+    description: "Conversa indo bem por mensagem — hora de tirar do app/DM e marcar encontro"
+    relevant_frameworks:
+      - "krausche:date_baixa_pressao"
+      - "vilaverde:cold_approach_4_steps (convite indireto → direto)"
+    relevant_heuristics:
+      - "greene:fortune_favors_the_bold"
+      - "krausche:chame_pra_lugar_que_ela_gosta"
+      - "krausche:pressa_e_o_assassino"
+    relevant_techniques:
+      - "strauss:time_constraint_opener"
+      - "krausche:gatilho_de_antecipacao_futuro_juntos"
+    relevant_scripts:
+      - "glover:setting_a_first_date"
+      - "vilaverde:convite_indireto_apos_papo"
+      - "vilaverde:convite_direto_apos_indireto_aceito"
+      - "krausche:marcacao_de_date_direta"
+    relevant_diagnostics: []
+    primary_minds: [krausche, vilaverde, glover]
+    flirtai_default_play: |
+      Vilaverde 2-passos: convite indireto ("você adoraria esse café
+      aqui") → ela responde com interesse → convite direto com
+      proposta concreta (lugar + dia + hora). Krausche: lugar que ela
+      goste, não restaurante chique. Glover: proposta direta, não
+      múltiplas opções. Bold > timing perfeito.
+
+  - situation_id: como_marcar_o_primeiro_date
+    description: "Hora de propor — lugar, dia, hora — sem soar desesperado ou indeciso"
+    relevant_frameworks:
+      - "krausche:date_baixa_pressao"
+    relevant_heuristics:
+      - "krausche:chame_pra_lugar_que_ela_gosta"
+      - "glover:walk_through_open_doors"
+    relevant_techniques:
+      - "krausche:gatilho_de_antecipacao_futuro_juntos"
+    relevant_scripts:
+      - "glover:setting_a_first_date"
+      - "krausche:marcacao_de_date_direta"
+      - "vilaverde:convite_direto_apos_indireto_aceito"
+    relevant_diagnostics: []
+    primary_minds: [krausche, glover]
+    flirtai_default_play: |
+      Proposta CONCRETA: 1 lugar + 1 dia + 1 hora (não múltiplas
+      opções). Lugar que ela goste, baixa-pressão (Krausche). NÃO
+      "quando você puder", NÃO "se você quiser" — afirmação calibrada.
+      Glover: walk through open doors quando ela sinalizou.
+
+  # ============================================================
+  # CATEGORIA 4 — DATE
+  # ============================================================
+
+  - situation_id: primeiro_date_o_que_fazer
+    description: "Primeiro encontro presencial — planejamento e execução"
+    relevant_frameworks:
+      - "krausche:date_baixa_pressao"
+      - "vilaverde:cvc_first_date"
+      - "vilaverde:pre_kiss_4_steps"
+    relevant_heuristics:
+      - "krausche:pressa_e_o_assassino"
+      - "krausche:chame_pra_lugar_que_ela_gosta"
+      - "krausche:nao_fale_de_ex"
+      - "krausche:tridente_e_higiene_obrigatorios"
+      - "vilaverde:ela_volume_voce_interruptor"
+      - "vilaverde:mudar_local_no_date"
+    relevant_techniques:
+      - "krausche:provocacao_e_toque_em_zona_neutra"
+      - "vilaverde:teasing"
+      - "vilaverde:flirting"
+      - "greene:transgression_as_intimacy_signal"
+    relevant_scripts:
+      - "vilaverde:cumprimento_inicio_date"
+    relevant_diagnostics:
+      - "vilaverde:ela_quer_te_beijar_no_date"
+      - "krausche:ela_no_date_quer_continuar_ou_ir"
+    primary_minds: [krausche, vilaverde]
+    flirtai_default_play: |
+      Krausche atividade ativa (não restaurante chique) + tirar pressão
+      de "tem que ficar". Vilaverde CVC: Contato visual sustentado,
+      Voz baixa-energia, Contato físico em zona neutra (ombro/braço/
+      mão na lombar) escalando gradualmente. Mudar local pelo menos
+      1x (Vilaverde) — cria sensação de tempo expandido. Pré-beijo
+      = 4 passos calibrados. NUNCA falar de ex.
+
+  - situation_id: primeira_escalada_fisica
+    description: "Momento de beijar pela primeira vez — quando e como"
+    relevant_frameworks:
+      - "vilaverde:pre_kiss_4_steps"
+      - "vilaverde:cvc_first_date"
+    relevant_heuristics:
+      - "vilaverde:ela_volume_voce_interruptor"
+      - "greene:fortune_favors_the_bold"
+      - "glover:walk_through_open_doors"
+    relevant_techniques:
+      - "vilaverde:flirting"
+      - "greene:transgression_as_intimacy_signal"
+    relevant_scripts:
+      - "vilaverde:pre_beijo_primeiro_encontro"
+    relevant_diagnostics:
+      - "vilaverde:ela_quer_te_beijar_no_date"
+    primary_minds: [vilaverde, greene]
+    flirtai_default_play: |
+      Vilaverde tem o framework mais completo: (1) 1º contato físico
+      em zona neutra (ombro/braço); (2) toques suaves recorrentes
+      (testar reciprocidade); (3) aproximação progressiva (rosto a
+      30cm); (4) pré-beijo (olhar pra boca, pausa, ir). Ela é VOLUME
+      (gradual), não interruptor. Se sinais verde claros (Vilaverde
+      diagnostics), bold action — não esperar momento perfeito.
+
+  - situation_id: ela_diz_so_amizade_no_date
+    description: "No encontro ela trouxe 'só quero amigos' ou similar"
+    relevant_frameworks:
+      - "glover:differentiation"
+    relevant_heuristics:
+      - "krausche:amigo_e_signo_de_alerta"
+      - "vilaverde:qualify_her_not_yourself"
+      - "greene:never_moralize_in_seduction"
+    relevant_techniques:
+      - "greene:friend_to_lover_reversal"
+      - "krausche:saida_de_friendzone_via_brincadeira"
+    relevant_scripts:
+      - "krausche:reacao_amigo_no_direct"
+      - "vilaverde:ela_disse_friendzone"
+      - "greene:ela_diz_so_amigos"
+    relevant_diagnostics:
+      - "krausche:ela_te_chama_de_amigo"
+    primary_minds: [krausche, vilaverde, glover]
+    flirtai_default_play: |
+      Krausche é categórico: REAJA NA HORA, não deixe enrolar. Vire
+      brincadeira: "nossa, tem tanta coisa boa pra me chamar". Vilaverde:
+      mantenha frame de avaliador (você é o prêmio). Se ela insiste,
+      Glover: seja bom ender — encerre o encontro com graça, sem
+      drama. NÃO suplicar pra "mudar de ideia".
+
+  - situation_id: date_que_nao_evoluiu
+    description: "Encontro aconteceu, não houve beijo, ela foi embora — o que fazer agora"
+    relevant_frameworks:
+      - "greene:absence_presence_dynamic"
+    relevant_heuristics:
+      - "greene:never_chase_in_panic"
+      - "krausche:pressa_e_o_assassino"
+      - "glover:be_good_ender_over_good_picker"
+    relevant_techniques:
+      - "greene:the_personalized_callback_gift"
+    relevant_scripts: []
+    relevant_diagnostics:
+      - "greene:primeiro_encontro_avaliacao"
+      - "strauss:ela_aceita_mas_parece_tepida"
+    primary_minds: [greene, krausche, glover]
+    flirtai_default_play: |
+      Diagnóstico primeiro: foi falta de química real ou cara não
+      escalou? Se cara não escalou (sinais verdes presentes), próximo
+      date com escalada mais ativa. Se química não tava lá, Glover:
+      bom ender, soltar. Greene: silêncio calibrado de 2 dias antes
+      de mensagem, callback gift só se houve química clara.
+
+  # ============================================================
+  # CATEGORIA 5 — TIMING / SUMIÇO
+  # ============================================================
+
+  - situation_id: ela_sumiu_dias
+    description: "Match ativo ou conversa virou silêncio por 3+ dias sem trigger claro"
+    relevant_frameworks:
+      - "greene:absence_presence_dynamic"
+    relevant_heuristics:
+      - "greene:never_chase_in_panic"
+      - "krausche:nao_seja_pai_da_mina_no_direct"
+      - "vilaverde:man_afraid_to_lose_already_lost"
+    relevant_techniques:
+      - "greene:create_polarity_via_absence"
+    relevant_scripts:
+      - "greene:resposta_pos_silencio_dela"
+      - "strauss:she_went_silent_3_days"
+      - "vilaverde:mulher_demorou_responder"
+    relevant_diagnostics:
+      - "greene:ela_sumiu_3_dias"
+      - "krausche:ela_sumiu_no_direct"
+    primary_minds: [greene, krausche, vilaverde]
+    flirtai_default_play: |
+      VETO ABSOLUTO: "oi sumida", "tudo bem?", "será que falei algo
+      errado?". Default = SILÊNCIO TOTAL (Greene). Se passados 7+
+      dias e contexto sugere janela ainda aberta, UMA mensagem com
+      gancho específico (memória compartilhada, não cobrança).
+      Vilaverde: homem com medo de perder já perdeu. Krausche: bom
+      dia diário = morte lenta.
+
+  - situation_id: ela_chamou_de_amigo
+    description: "Em DM ou conversa, ela usou 'amigo' pra te designar"
+    relevant_frameworks:
+      - "glover:differentiation"
+    relevant_heuristics:
+      - "krausche:amigo_e_signo_de_alerta"
+      - "glover:dont_hide_your_agenda"
+    relevant_techniques:
+      - "greene:friend_to_lover_reversal"
+      - "krausche:saida_de_friendzone_via_brincadeira"
+    relevant_scripts:
+      - "krausche:reacao_amigo_no_direct"
+      - "vilaverde:ela_disse_friendzone"
+    relevant_diagnostics:
+      - "krausche:ela_te_chama_de_amigo"
+      - "strauss:voce_sempre_friendzone"
+    primary_minds: [krausche, glover, greene]
+    flirtai_default_play: |
+      Krausche é canônico aqui: reagir IMEDIATAMENTE, não deixar
+      categoria firmar. Vire brincadeira ("me chama de amor"). Se ela
+      insiste = sinal real de friendzone — Glover: ato decisivo
+      (interesse explícito + olhar + toque + proposta) ou saída.
+
+  - situation_id: depois_de_ficar_e_ela_esfriou
+    description: "Rolou beijo/sexo, ela esfriou inexplicavelmente nos dias seguintes"
+    relevant_frameworks:
+      - "greene:absence_presence_dynamic"
+    relevant_heuristics:
+      - "greene:never_chase_in_panic"
+      - "vilaverde:man_afraid_to_lose_already_lost"
+      - "vilaverde:dont_be_messias"
+    relevant_techniques:
+      - "greene:create_polarity_via_absence"
+    relevant_scripts: []
+    relevant_diagnostics:
+      - "strauss:ela_sumiu_apos_set_quente"
+    primary_minds: [greene, strauss, vilaverde]
+    flirtai_default_play: |
+      Strauss tem diagnóstico explícito. Possíveis causas: (1) ela
+      sentiu que o cara ficou needy pós-sexo (mensagem em 5 min,
+      muito investimento súbito); (2) reflexão pessoal dela (regret,
+      contexto); (3) já não tava muito a fim. Resposta sempre = ESPAÇO
+      + vida própria. Não escalar contato. Se ela voltar, frame
+      mantido. Se não, ela tava na fase, não no que importa.
+
+  - situation_id: recuperar_depois_de_termino
+    description: "Relação terminou, usuário quer reabrir"
+    relevant_frameworks:
+      - "glover:nice_guy_recovery_process"
+    relevant_heuristics:
+      - "greene:never_chase_in_panic"
+      - "glover:be_good_ender_over_good_picker"
+      - "vilaverde:dont_be_messias"
+    relevant_techniques:
+      - "strauss:reparenting"
+      - "strauss:widen_stimulus_response_gap"
+    relevant_scripts: []
+    relevant_diagnostics: []
+    primary_minds: [glover, strauss, greene]
+    flirtai_default_play: |
+      Caminho D: 1 TENTATIVA clara possível ("ainda penso em você,
+      podemos conversar?"), depois solta. Strauss: o usuário precisa
+      processar (3-step healing). Glover: be a good ender — se ela
+      decidiu, respeitar. NÃO insistência prolongada (assédio).
+      NÃO suplicar. Vida própria primeiro, abordagem segundo —
+      e só uma vez.
+
+  # ============================================================
+  # CATEGORIA 6 — RELAÇÃO ESTABELECIDA
+  # ============================================================
+
+  - situation_id: ela_quer_definir_cedo
+    description: "Semana 2-4, ela quer rótulo ('o que somos?')"
+    relevant_frameworks:
+      - "glover:setting_the_frame"
+    relevant_heuristics:
+      - "glover:tell_the_whole_truth"
+    relevant_techniques:
+      - "glover:pre_relationship_declaration"
+      - "greene:death_ground_in_negotiation"
+    relevant_scripts:
+      - "glover:pre_relationship_terms"
+      - "greene:DTR_define_relationship"
+    relevant_diagnostics: []
+    primary_minds: [glover, greene]
+    flirtai_default_play: |
+      Caminho D opera em modo Glover aqui (mesmo sendo Greene-axis default).
+      Pre-relationship declaration: dizer o que QUER. Se usuário ainda
+      não sabe, agente pausa pra ele se entender antes de responder.
+      Greene's death_ground apenas se usuário está GENUINAMENTE pronto
+      a sair — sem bluff.
+
+  - situation_id: relacionamento_estabelecido_morno
+    description: "Namoro 1+ ano, sexo caiu, mecânico, sem briga MAS sem tesão"
+    relevant_frameworks:
+      - "glover:positive_emotional_tension"
+      - "vilaverde:emotion_spikes_graph (em relacionamento)"
+    relevant_heuristics:
+      - "glover:surprise_dont_repeat"
+      - "krausche:polaridade_masculino_feminino (manutenção)"
+    relevant_techniques:
+      - "glover:positive_tension_via_polarity"
+      - "strauss:nonviolent_communication"
+      - "vilaverde:teasing (mantido em relacionamento)"
+    relevant_scripts: []
+    relevant_diagnostics:
+      - "strauss:relacionamento_estabelecido_morno"
+      - "vilaverde:relacionamento_estabelecido_em_risco"
+    primary_minds: [glover, vilaverde, strauss]
+    flirtai_default_play: |
+      Diagnóstico: déficit de polaridade. Glover prescribe polaridade
+      orgânica (não tática) — sair com amigos sem dar relatório, ter
+      projetos próprios, surpresa real. Vilaverde mantém teasing/
+      flirting na relação (paradox: ele aplica com namorada de 2 anos).
+      Strauss NVC pra discutir. NUNCA push-pull tático em relação
+      (vira tóxico).
+
+  - situation_id: ela_em_grupo_de_amigas
+    description: "Alvo está em grupo de amigas — como abordar sem queimar"
+    relevant_frameworks:
+      - "strauss:mystery_method_3_stages"
+      - "vilaverde:cold_approach_4_steps"
+    relevant_heuristics:
+      - "vilaverde:focus_amigas_not_target"
+    relevant_techniques:
+      - "strauss:open_the_group_not_the_target"
+      - "krausche:abertura_em_grupo_como_disco_voador"
+      - "vilaverde:group_control_focus_friend"
+    relevant_scripts: []
+    relevant_diagnostics:
+      - "krausche:ela_no_grupo_de_amigas"
+      - "vilaverde:abordagem_de_grupo_com_amiga_chata"
+    primary_minds: [strauss, vilaverde, krausche]
+    flirtai_default_play: |
+      Strauss/Vilaverde concordam: abrir o GRUPO, não o alvo. Focar
+      energia nas amigas primeiro (mostrar que ele é socialmente
+      capaz, sem cara de quem veio só pra ela). Krausche: abertura
+      indireta tipo "perdi meus amigos, posso ficar?". Depois migrar
+      foco gradualmente pro alvo quando amigas validaram.
+
+  - situation_id: ela_disse_estou_comprometida
+    description: "Ela mencionou 'tenho namorado' / 'estou casada'"
+    relevant_frameworks:
+      - "greene:effective_truth"
+    relevant_heuristics:
+      - "erick_ronaldo:trate_namorado_como_problema_dele_nao_seu"
+    relevant_techniques:
+      - "greene:play_indirect_long_game"
+    relevant_scripts:
+      - "vilaverde:ela_disse_tem_namorado"
+      - "erick_ronaldo:en_recovery_good_ones_always_taken"
+    relevant_diagnostics:
+      - "greene:ler_se_relacao_dela_atual_morta"
+      - "erick_ronaldo:ela_disse_tenho_namorado"
+    primary_minds: [erick_ronaldo, greene, vilaverde]
+    flirtai_default_play: |
+      Caminho D: NÃO discutir o namorado (anti-pattern Erick). Erick
+      tem o script canônico: "The good ones always are" — vira
+      compliment, não competição. Vilaverde: "namorado feliz não tá
+      conversando comigo, é problema dele". Greene: play indirect
+      long game se relação dela mostra sinais de morta — sem assédio,
+      plantar semente. Linha ética: NÃO sabotar relação dela.
+
+  # ============================================================
+  # CATEGORIA 7 — MINDSET
+  # ============================================================
+
+  - situation_id: medo_de_rejeicao
+    description: "Usuário trava antes de abordar por medo de fora"
+    relevant_frameworks:
+      - "krausche:matematica_da_rejeicao_funil_vendas"
+      - "krausche:protocolo_perda_de_timidez"
+      - "vilaverde:flow_social_5_steps"
+    relevant_heuristics:
+      - "erick_ronaldo:trate_rejeicao_como_dado_nao_julgamento"
+      - "vilaverde:knowing_without_doing"
+      - "vilaverde:timido_estado_nao_essencia"
+    relevant_techniques:
+      - "vilaverde:regra_3_segundos"
+      - "vilaverde:contato_visual_treino"
+    relevant_scripts:
+      - "vilaverde:bom_dia_treino_de_flow"
+      - "vilaverde:pedir_informacao_treino_de_flow"
+    relevant_diagnostics:
+      - "vilaverde:cliente_travando_aborgagem"
+    primary_minds: [krausche, vilaverde, erick_ronaldo]
+    flirtai_default_play: |
+      Krausche: enquadramento de funil (100 ligações → 90 nãos → 10
+      sims; rejeição = variável, não julgamento). Vilaverde: protocolo
+      de exposição gradual (bom dia desconhecido → pedir info →
+      cold approach mulher). 3 segundos: ver e abordar, sem pensar.
+      Reps geram coragem, não o contrário.
+
+  - situation_id: baixa_autoestima
+    description: "Usuário se sente abaixo do mercado, 'não mereço mulher boa'"
+    relevant_frameworks:
+      - "krausche:metodo_desenrolado (pilar status)"
+      - "erick_ronaldo:modern_man_90day_transformation"
+      - "donadelli:propositio_como_antidoto_recaida"
+      - "glover:tribe_and_male_initiation"
+    relevant_heuristics:
+      - "donadelli:trabalho_interno_antes_de_tecnica"
+      - "vilaverde:qualify_her_not_yourself"
+      - "greene:confidence_must_be_based_on_real_skill"
+    relevant_techniques:
+      - "donadelli:visualizacao_dia_anterior"
+      - "donadelli:meditacao_respiracao_basica"
+      - "glover:joining_a_tribe"
+    relevant_scripts: []
+    relevant_diagnostics:
+      - "donadelli:nivel_de_aura_presenca"
+      - "donadelli:homem_sem_substrato_vs_homem_alinhado"
+    primary_minds: [donadelli, glover, erick_ronaldo, krausche]
+    flirtai_default_play: |
+      Substrato primeiro (Donadelli + Glover). Erick: 6/10 em todas
+      áreas (fitness, style, social, mental). Krausche: 7 pilares
+      Método Desenrolado. Tribo (Glover). Donadelli: propósito.
+      Agente NÃO entrega script tático antes de endereçar buraco
+      estrutural. Pequenas vitórias rápidas (treino, organização,
+      uma habilidade) constroem ground real.
+
+  - situation_id: timidez
+    description: "Usuário cronicamente tímido, congela ao ver mulher bonita"
+    relevant_frameworks:
+      - "krausche:protocolo_perda_de_timidez"
+      - "vilaverde:flow_social_5_steps"
+    relevant_heuristics:
+      - "vilaverde:timido_estado_nao_essencia"
+      - "krausche:nunca_chegue_de_entrevista_de_emprego (libera de ter resposta perfeita)"
+    relevant_techniques:
+      - "vilaverde:regra_3_segundos"
+      - "vilaverde:contato_visual_treino"
+      - "krausche:abordagem_indireta_timido_em_grupo"
+    relevant_scripts:
+      - "vilaverde:bom_dia_treino_de_flow"
+      - "vilaverde:pedir_informacao_treino_de_flow"
+      - "krausche:abordagem_indireta_timido_em_grupo"
+    relevant_diagnostics: []
+    primary_minds: [krausche, vilaverde]
+    flirtai_default_play: |
+      Krausche tem protocolo explícito de 6 fases (conhecimento →
+      reps de conversa não-sexual → abordagem indireta em grupo →
+      leitura de sinais → transição → escalada). Vilaverde 5 etapas
+      paralelas (bom dia → pedir info → cold approach amiga → mulher).
+      Reframe linguístico Vilaverde: "você não É tímido, você ESTÁ".
+
+  - situation_id: saindo_de_um_termino_longo
+    description: "Usuário acabou de sair de relacionamento longo, quer voltar pro mercado"
+    relevant_frameworks:
+      - "strauss:three_step_healing_formula"
+      - "glover:tribe_and_male_initiation"
+    relevant_heuristics:
+      - "krausche:ex_recente_e_red_flag (aplicado a SI)"
+      - "krausche:nao_use_outra_pra_tapa_buraco"
+    relevant_techniques:
+      - "glover:joining_a_tribe"
+      - "strauss:reparenting"
+    relevant_scripts: []
+    relevant_diagnostics:
+      - "vilaverde:cliente_recem_divorciado_ou_termino"
+    primary_minds: [strauss, glover, vilaverde, krausche]
+    flirtai_default_play: |
+      Não pular pra mercado em pânico. Glover: tribo + atividade
+      masculina recorrente + (se aplicável) terapia. Strauss: 3-step
+      healing pode levar meses. Krausche aplica regra ética em si:
+      não usar próxima mulher pra tapa-buraco. Tempo recomendado:
+      30-90 dias de reconstrução antes de dating sério.
+
+  # ============================================================
+  # CATEGORIA 8 — ESPECIAIS
+  # ============================================================
+
+  - situation_id: ela_extremamente_bonita_intimida
+    description: "Mulher visivelmente acima da média de beleza — usuário trava"
+    relevant_frameworks:
+      - "vilaverde:dea_man_archetype"
+    relevant_heuristics:
+      - "krausche:nunca_elogie_aparencia_de_quem_ja_sabe"
+      - "vilaverde:tease_har_for_high_status_women"
+      - "vilaverde:qualify_her_not_yourself"
+      - "vilaverde:dont_pedestal"
+    relevant_techniques:
+      - "vilaverde:teasing"
+      - "vilaverde:prova_nao_ameaca"
+      - "strauss:the_neg (uso parcimônia extrema)"
+      - "erick_ronaldo:compliment_opener_smile (alternativa)"
+    relevant_scripts: []
+    relevant_diagnostics: []
+    primary_minds: [vilaverde, krausche]
+    flirtai_default_play: |
+      Mulher above-average é abordada com elogio o tempo todo —
+      elogio vira ruído. Krausche: NÃO elogiar aparência. Vilaverde:
+      teasing HARD pra mulher de alto status (única exceção onde
+      teasing forte é regra). Frame de avaliador (Vilaverde): você
+      está decidindo se gosta dela, não o contrário. Erick alternativa:
+      direct compliment SELF-AWARE ("I had to come tell you, even
+      if it's cringy"). NÃO neg em texto (vira insulto sem tom).
+
+  - situation_id: ela_com_amigo_proximo_homem
+    description: "Alvo está com amigo homem (não namorado) — possível obstáculo de grupo"
+    relevant_frameworks:
+      - "strauss:mystery_method_3_stages"
+    relevant_heuristics:
+      - "vilaverde:focus_amigas_not_target (adaptado pra amigo)"
+    relevant_techniques:
+      - "strauss:open_the_group_not_the_target"
+    relevant_scripts: []
+    relevant_diagnostics: []
+    primary_minds: [strauss, vilaverde]
+    flirtai_default_play: |
+      Abrir o GRUPO, não o alvo. Endereçar o amigo primeiro com
+      respeito (não competição). Demonstrar valor social (humor,
+      interesse genuíno no grupo). Migrar foco gradualmente.
+      Risco: ele pode ser cunhado-amigo protetor — leitura rápida
+      do papel dele antes de escalar.
+
+  # ============================================================
+  # CATEGORIA 9 — META / SUPORTE
+  # ============================================================
+
+  - situation_id: usuario_em_panico_pos_briga
+    description: "Pós-briga ou conflito — usuário em estado de alta emoção querendo agir"
+    relevant_frameworks: []
+    relevant_heuristics:
+      - "strauss:tomorrow_you_test"
+      - "donadelli:presente_radical"
+      - "greene:never_chase_in_panic"
+    relevant_techniques:
+      - "strauss:widen_stimulus_response_gap"
+      - "strauss:reparenting"
+      - "donadelli:meditacao_respiracao_basica"
+    relevant_scripts: []
+    relevant_diagnostics:
+      - "donadelli:estado_de_recaida_iminente"
+    primary_minds: [strauss, donadelli, greene]
+    flirtai_default_play: |
+      Agente PAUSA. NÃO entregar copy enquanto estado emocional alto.
+      Strauss: widen_stimulus_response_gap, reparenting. Donadelli:
+      respiração 4-7-8 ou Nadi Shodhana. Princípio state_before_strategy.
+      "Não responda em 5 minutos. Volte em 1h. Eu espero." Quando
+      voltar, copy calibrada (Strauss NVC se relação, Greene calm
+      response se cold).
+
+  - situation_id: usuario_isolado_sem_tribo
+    description: "Usuário sem amigos masculinos próximos, vida orbita ela ou trabalho"
+    relevant_frameworks:
+      - "glover:tribe_and_male_initiation"
+      - "vilaverde:social_circle_3_criteria"
+      - "donadelli:propositio_como_antidoto_recaida"
+      - "strauss:three_step_healing_formula"
+    relevant_heuristics:
+      - "vilaverde:ciclo_social_fechado (anti)"
+    relevant_techniques:
+      - "glover:joining_a_tribe"
+    relevant_scripts: []
+    relevant_diagnostics: []
+    primary_minds: [glover, vilaverde, donadelli, strauss]
+    flirtai_default_play: |
+      Glover prioridade absoluta: tribo ANTES de mais tática. Vilaverde
+      dá os 3 critérios pra distinguir ciclo social funcional (alta
+      frequência + obrigação de iniciar interação + alta rotatividade)
+      — academia com fone NÃO conta. Sugestões: BJJ, boxe, men's group,
+      12-step se aplicável, grupo de hobby exigente. Agente AVISA
+      que outras estratégias têm baixo teto sem tribo.

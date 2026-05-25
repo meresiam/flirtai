@@ -1,0 +1,357 @@
+---
+mind_id: vilaverde
+category: frameworks
+generated: 2026-05-25
+notes: |
+  Vilaverde é o PUA brasileiro com método EXPLICITAMENTE estruturado.
+  Diferente do Erick (campo puro) e Pedrinho (intuitivo), ele formaliza
+  tudo em siglas e modelos vendáveis dentro do "Método Vila Verde 2.0".
+  Vocabulário PUA traduzido pra PT-BR é assinatura: "picos de emoção",
+  "teasing", "flirting", "cold approach", "frame", "small talk", "VIBE",
+  "CVC", "DEA", "3Ds". Esse mind opera no greene_axis (técnica + frame
+  consciente) com forte componente de método aplicado de campo.
+---
+
+frameworks:
+  - id: vibe_pillars
+    name: "VIBE — Value, Interaction, Behavior, Execution"
+    description: |
+      O macroframework guarda-chuva do Método Vila Verde. Quatro pilares
+      que um homem precisa dominar pra ter "pelo menos uma mulher por
+      semana". Cada pilar resolve uma camada diferente do problema —
+      percepção de valor, mecânica da interação, postura/persona durante
+      a interação e — o mais crítico — execução real (não só teoria).
+    structure:
+      - "VALUE — Percepção própria de valor; saber que você é o prêmio; trabalhar exposição (Instagram, vestimenta) pra parecer bom"
+      - "INTERACTION — Mecânica do papo: pico de emoção + pergunta aberta em loop, blocos de interação"
+      - "BEHAVIOR — Como se portar: postura DEA (Dominante, Excitante, Abundante), linguagem corporal, calibragem"
+      - "EXECUTION — Sair da teoria e aplicar; 'saber e não fazer é a mesma coisa que não saber'; combate ao 'obeso mental'"
+    when_to_use:
+      - "Diagnóstico de cliente que 'não tem resultado' — checar qual pilar tá fraco"
+      - "Onboarding de homem que tá voltando pro game ou começando do zero"
+      - "Análise reversa pra ver onde uma abordagem específica falhou"
+    examples:
+      - "Cara tem teoria mas não aplica: pilar Execution tá fraco — vira 'obeso mental'"
+      - "Cara aborda mas trava no papo: pilar Interaction (não sabe pico de emoção + pergunta aberta)"
+      - "Cara bonzinho que coloca mulher no pedestal: pilar Behavior (não é DEA)"
+      - "Cara feio que se acha sem valor: pilar Value (percepção de si mesmo errada)"
+    source_refs:
+      - "Como_sair_do_OI_pro_encontro_com_qualquer_mulher_jeito_mais_facil"
+      - "Me_de_16_Minutos_e_Vou_Melhorar_Seu_Papo_Em_88"
+
+  - id: dea_man_archetype
+    name: "Homem DEA — Dominante, Excitante, Abundante"
+    description: |
+      Arquétipo persona-alvo do método. Não é traço de nascimento, é
+      construção comportamental. Três adjetivos que, juntos, definem o
+      homem que "gera química com qualquer mulher em 5 minutos" e que
+      "não passa um final de semana sozinho". Funciona como norte
+      comportamental — quando em dúvida, pergunte: isso me torna mais
+      Dominante, Excitante e Abundante?
+    structure:
+      - "DOMINANTE — Lidera a interação, lidera o rumo da conversa, não pede licença pra existir, não quebra contato visual primeiro"
+      - "EXCITANTE — Gera picos de emoção (positivos via flirting, negativos via teasing), cria montanha-russa emocional, sai do neutro/small talk"
+      - "ABUNDANTE — Tem opções; não tem medo de perder uma mulher; opera em 'modo metralhadora' (várias mulheres ao mesmo tempo) e não 'modo sniper' (foco em uma só)"
+    when_to_use:
+      - "Auto-diagnóstico: qual dos três tá faltando hoje?"
+      - "Quando o homem trava — geralmente é falta de Abundância (escassez)"
+      - "Quando o homem é morno — geralmente é falta de Excitância (não gera pico)"
+      - "Quando o homem é pisado — geralmente é falta de Dominância (não lidera)"
+    examples:
+      - "Cara escasso: 'um homem que tem medo de perder uma mulher, já a perdeu' — vira sniper, foca demais, pedestaliza"
+      - "Cara morno: small talk infinito, vira 'entrevista de emprego', a mulher se entedia"
+      - "Cara não-dominante: preenche silêncio, gagueja, quebra contato visual no encontro"
+    source_refs:
+      - "3_Formas_CONTROVERSAS_de_pegar_MULHERES_BONITAS_A_3_e_OURO"
+      - "4_PASSOS_PARA_BEIJAR_E_CRIAR_INTIMIDADE_COM_UMA_MULHER_MuriloVilaverde"
+
+  - id: emotion_spikes_graph
+    name: "Gráfico de Picos de Emoção (Montanha-Russa Emocional)"
+    description: |
+      Modelo central de Vilaverde. Toda interação tem um eixo X (tempo)
+      e um eixo Y (emoção). A mulher tem que sair do neutro: subir com
+      flirting (pico positivo), descer com teasing (pico negativo),
+      voltar ao neutro pra small talk extrair conteúdo, e repetir. A
+      ciência por trás: picos de emoção liberam dopamina, ativam o
+      sistema límbico, e a mulher associa essa descarga à sua presença
+      — vira "vício". Se você fica neutro o tempo todo, a mulher
+      escolhe outro cara que sabe causar emoção.
+    structure:
+      - "EIXO X — tempo da interação"
+      - "EIXO Y — nível emocional (negativo embaixo, neutro no meio, positivo em cima)"
+      - "FLIRTING — empurra emoção pra cima (elogio indireto, flerte, validação)"
+      - "TEASING — empurra emoção pra baixo (3Ds: discordar, desvalidar, desafiar)"
+      - "SMALL TALK — fica no neutro pra extrair conteúdo (perguntas abertas)"
+      - "ALTERNÂNCIA — não pode ser só positivo (vira gado), nem só negativo (vira redpill babaca)"
+    when_to_use:
+      - "Sempre. É o operador padrão de qualquer interação verbal com mulher"
+      - "Online (Tinder, Instagram DM) — tipicamente formato '2T 1F' (dois teasings, um flirting)"
+      - "Pessoalmente (cold approach, date, balada) — formato '1T 1F' ou '2T 1F' conforme contexto"
+      - "Diagnóstico: mulher tá respondendo seco? Falta pico de emoção. Mulher não responde? Falta pico inicial mais forte."
+    examples:
+      - "Mulher posta foto na academia: 'até te chamaria pra um treino, mas acho que você não dá conta' (teasing-desafio) + KKKK"
+      - "Mulher posta foto com camisa do Palmeiras: 'tava pensando em elogiar tua beleza, mas aí vi a camisa do Palmeiras, ECA' (flirting + teasing)"
+      - "Sueca tentando cesta no basquete (Tinder): 'quantas vezes você tentou fazer essa cesta antes de tirar essa foto?' (teasing-desvalidação)"
+    source_refs:
+      - "Aprenda_COMO_DESPERTAR_INTERESSE_em_uma_mulher"
+      - "Me_de_16_Minutos_e_Vou_Melhorar_Seu_Papo_Em_88"
+      - "Como_NUNCA_ficar_SEM_ASSUNTO_com_uma_Mulher"
+
+  - id: 3Ds_teasing
+    name: "3Ds do Teasing — Discordar, Desvalidar, Desafiar"
+    description: |
+      Operação concreta do teasing. Quando você quer "tirar a validação"
+      da mulher (que ela recebeu desde pequena), aplique um dos três Ds.
+      Cada D pega uma informação que a mulher te deu e devolve com peso
+      negativo + elemento cômico. Resultado: a mulher inverte o jogo e
+      começa a buscar a SUA validação ("agora ela tem que se provar pra
+      você"). Inversão do nível social.
+    structure:
+      - "DISCORDAR — pega X e fala que Y é melhor/superior ('Corinthians? Palmeiras é muito melhor')"
+      - "DESVALIDAR — atribui valor negativo ao que ela é/faz/gosta ('corintiana, sabia que tinha algo de errado com você')"
+      - "DESAFIAR — cria aposta/desafio lúdico em cima ('se o Palmeiras ganhar, eu te levo onde você quiser')"
+      - "ELEMENTO CÔMICO OBRIGATÓRIO — kkkk, emoji, dar risada se for pessoalmente — sem isso vira babaca/assediador"
+    when_to_use:
+      - "Toda vez que você precisa gerar tensão e inverter validação"
+      - "Online: primeira mensagem em Tinder/DM com mulher bonita (alta competição)"
+      - "Pessoalmente: durante cold approach pra abaixar a guarda e inverter frame"
+      - "Especialmente com mulher 9/10 (acostumada a validação infinita — precisa do choque)"
+    examples:
+      - "DISCORDAR: 'Corinthians? Como você consegue torcer pro Corinthians? Palmeiras é muito melhor'"
+      - "DESVALIDAR: 'Você gosta de açaí? Meu Deus, a gente não vai dar certo, açaí tem gosto de terra' (pessoalmente, com risada)"
+      - "DESVALIDAR (online — quarto bagunçado nos stories): 'Não vai arrumar a cama não? Tô de olho' + kkkk"
+      - "DESAFIAR: 'Eu tenho certeza que falo inglês melhor que você, aposto um drink'"
+    source_refs:
+      - "3_Formas_CONTROVERSAS_de_pegar_MULHERES_BONITAS_A_3_e_OURO"
+      - "Como_Conquistar_Mulheres_Extremamente_Bonitas_Faca_Parte_Dos_1"
+      - "Faca_isso_e_NUNCA_mais_fique_no_VACUO_Passo_a_passo_MuriloVilaverde"
+
+  - id: cvc_first_date
+    name: "CVC — Contato Visual, Voz e Ritmo, Contato Físico"
+    description: |
+      Sigla operacional do primeiro encontro. Define o que escala a
+      barrinha da intimidade do 0% (estranho) ao 100% (beijo) durante
+      um date. Sem CVC, você passa o date inteiro no zero e tenta
+      pular pro 100% no final — não funciona porque a mulher não é
+      interruptor (binário), é volume (gradual).
+    structure:
+      - "C de CONTATO VISUAL — fundamental, treina como músculo, transmite confiança; nunca quebra primeiro; se cansar, olha pra boca ou outro olho, NUNCA pra baixo/lado"
+      - "V de VOZ E RITMO — versão de baixa energia (não a versão alta que conversa com amigos): voz calma, pausada, com silêncio entre frases, timbre calibrado"
+      - "C de CONTATO FÍSICO — leva da metade pra frente da barrinha: toque no ombro, empurrãozinho na brincadeira, mão nas costas ao atravessar rua, pegar pela mão pra ver tatuagem/anel, mão na coxa"
+      - "ESCALONAMENTO GRADUAL — mulher é volume, não interruptor; pequenos avanços, observa resposta, segue se ela recíproca"
+    when_to_use:
+      - "Primeiro encontro — qualquer que seja a logística"
+      - "Quando precisa diferenciar 'sedutor que escala com consentimento' de 'assediador que pula direto'"
+      - "Quando o cliente reclama 'fiz tudo certo mas não consegui beijar' — geralmente falta C de Contato Físico durante o date"
+    examples:
+      - "Date no bar: senta de lado (não de frente), perna dela em cima da sua, mão no ombro pra brincadeira, pega na mão pra falar do anel"
+      - "Date no restaurante (mesa de frente): dar mão sobre a mesa, fazer carinho, e MUDAR DE LUGAR (restaurante → caminhada → parque → banco)"
+      - "Pré-beijo: mão no ombro → mão na cintura → beijo na bochecha mantendo contato visual → se ela não vira a cara, ir pra nuca e beijo"
+    source_refs:
+      - "3_coisas_que_voce_DEVE_fazer_no_1_encontro"
+      - "4_PASSOS_PARA_BEIJAR_E_CRIAR_INTIMIDADE_COM_UMA_MULHER_MuriloVilaverde"
+
+  - id: cold_approach_4_steps
+    name: "Os 4 Passos do Cold Approach (Gancho → Interação → Convite Indireto → Convite Direto)"
+    description: |
+      Script formal de uma abordagem fria do oi até pegar o contato.
+      Não é cantadinha pronta — é estrutura. Cada passo cumpre uma
+      função específica e abre o próximo. Pular passo (ex: pedir
+      Instagram sem fazer convite indireto) queima o cartucho.
+    structure:
+      - "1. GANCHO (Hook) — provar que não é ameaça (educação: 'desculpa atrapalhar') + primeiro flirting (elogio indireto pra setar o frame homem-mulher)"
+      - "2. INTERAÇÃO — loop de pico de emoção + pergunta aberta, gerando montanha-russa emocional e extraindo conteúdo"
+      - "3. CONVITE INDIRETO (Encontro Lúdico) — afunilamento da conversa pra uma atividade que vocês fariam juntos, sem logística ('a gente deveria tomar uma')"
+      - "4. CONVITE DIRETO — agora sim, troca o contato pra realizar o plano que vocês 'criaram'; Instagram é MEIO, não FIM"
+    when_to_use:
+      - "Toda abordagem fria (rua, cafeteria, parque, praia, transporte)"
+      - "Adaptação online: gancho = provocação + pergunta aberta sobre algo do perfil dela"
+      - "Pode ser feito em 5-10 minutos (caso da alemã em Lisboa)"
+    examples:
+      - "Gancho (alemã em Lisboa): 'Sorry to bother you, we were passing and I had to come say hi' + 'I'm not a creep'"
+      - "Convite indireto: 'Já que você acabou de chegar, você tem o melhor guia turístico de Lisboa aqui — e ainda brasileiro, então é bom em dose dupla'"
+      - "Convite direto: 'Deixa eu pegar seu Instagram pra te chamar pra te mostrar a cidade'"
+    source_refs:
+      - "COMO_ABORDAR_UMA_MULHER_NA_RUA_-_Mostrei_na_pratica"
+      - "Como_sair_do_OI_pro_encontro_com_qualquer_mulher_jeito_mais_facil"
+      - "O_Que_Falar_Nos_Primeiros_60_Segundos_Da_Abordagem_Funciona_Todas_As_Vezes"
+
+  - id: acquisition_channels
+    name: "Canais de Aquisição (5 Torneiras / Balde do Instagram)"
+    description: |
+      Modelo de funil pra entender DE ONDE vêm as oportunidades de
+      relacionamento. Cinco canais (torneiras), cada um com perfil
+      próprio de mulher que frequenta. O Instagram é o BALDE central
+      onde todos os contatos são depositados. Errar de canal pra
+      qualidade de mulher que você busca = frustração garantida.
+      Vilaverde reformula isso também como "matemática": volume x
+      conversão.
+    structure:
+      - "INSTAGRAM (balde) — onde todos os contatos vão parar; precisa estar bem feito ou o balde fura"
+      - "APLICATIVOS DE RELACIONAMENTO (Tinder, Bumble, Hinge, Inner Circle, Badoo) — gera VOLUME e abundância; mulher ali geralmente busca diversão, NÃO mulher de valor"
+      - "CICLO SOCIAL (esporte coletivo, clube, aula de dança, igreja, faculdade, trabalho) — onde estão mulheres de valor (wife material); volume baixo"
+      - "COLD APPROACH (rua, cafeteria, parque, transporte) — 'ouro'; baixa competição (1v1), permite acessar mulher 9/10 que ignoraria você em outros canais"
+      - "NIGHT GAME (balada, bar, pub, discoteca) — energia ruim, deixa por último; usa como gasolina de abundância"
+    when_to_use:
+      - "Diagnóstico inicial de cliente — perguntar quais canais ele opera e qual está furado"
+      - "Decisão estratégica: cliente busca putaria (Tinder + Nightlife) ou mulher de valor (Ciclo Social + Cold Approach)"
+      - "Cliente recém-divorciado/recém-término voltando pro game — checklist do que precisa reativar"
+    examples:
+      - "Cliente low-profile com Instagram zerado: 'teu balde tá furado, não importa quantas mulheres você joga ali dentro'"
+      - "Cliente que só usa Tinder e reclama que 'só tem vagabunda': canal errado pro objetivo declarado"
+      - "Cliente tímido recém-mudado: priorizar Ciclo Social (alta frequência + obrigação de iniciar interação + alta rotatividade) antes de Cold Approach"
+    source_refs:
+      - "Como_Achar_uma_Mulher_de_Valor_na_era_da_PUT4RIA"
+      - "Como_Retomar_Sua_S3xual_Depois_de_Anos_em_um_Relacionamento_passo_a_passo"
+      - "Como_Sair_Do_ZERO_e_Marcar_1-2_Encontros_Toda_Semana_Depois_De_Um_Termino_Guia_Definitivo"
+
+  - id: social_circle_3_criteria
+    name: "Os 3 Critérios do Ciclo Social Eficaz"
+    description: |
+      Não é qualquer ciclo social que destrava timidez ou gera
+      mulheres. Vilaverde dá três filtros mínimos. Sem os três, é
+      ciclo social furado (academia sozinho com fone, ensino médio
+      fechado). Modelo serve tanto pra cara tímido aquecer flow
+      social quanto pra cara recém-mudado encontrar mulheres de
+      valor.
+    structure:
+      - "ALTA FREQUÊNCIA — encontrar as mesmas pessoas pelo menos 2x por semana (gera familiaridade)"
+      - "OBRIGAÇÃO DE INICIAR A INTERAÇÃO — o ciclo TEM que te forçar a conversar (jiu-jitsu, aula de dança, vôlei); academia com fone NÃO conta"
+      - "ALTA ROTATIVIDADE — gente entrando e saindo continuamente, pra contornar primeiras más impressões e renovar pool"
+    when_to_use:
+      - "Cliente tímido que precisa aquecer flow social com baixo risco"
+      - "Cliente recém-mudado que precisa reconstruir vida social do zero"
+      - "Cliente que reclama 'eu já tenho ciclo social' mas não tem resultado — testar contra os 3 critérios"
+    examples:
+      - "Jiu-jitsu/boxe — todas as 3 condições atendidas (frequência + obrigação de interagir pra treinar + rotatividade alta)"
+      - "Aula de dança — todas as 3 (especialmente boa pra cara que quer mulheres)"
+      - "Academia (NÃO) — frequência sim, mas falta obrigação de interação (fone, mundinho próprio)"
+      - "Ensino médio (NÃO) — frequência sim, obrigação sim, mas rotatividade zero (mesmas pessoas 3 anos)"
+    source_refs:
+      - "4_Habitos_que_me_fizeram_pegar_+200_GRINGAS"
+      - "Me_de_13_minutos_e_eu_vou_APAGAR_seu_medo_de_chegar_em_mulher"
+      - "O_HABITO_ESQUECIDO_dos_nossos_avos_que_te_fara_conquistar_uma_namorada"
+
+  - id: social_rule_manipulation
+    name: "Régua Social e Manipulação de Posicionamento"
+    description: |
+      Reformulação personalista do conceito de VSM (Valor Sexual de
+      Mercado) dos redpills. Vilaverde concorda que a mulher posiciona
+      o homem numa "régua social" (julgamento natural baseado em
+      capacidade de prover/proteger/excitar), mas DIVERGE dos redpills
+      em dois pontos: (a) cada mulher tem régua diferente (não é
+      universal — depende do histórico/trauma dela); (b) você pode
+      MANIPULAR sua posição nessa régua via exposição (Instagram,
+      vestimenta) e via comunicação (teasing inverte hierarquia).
+    structure:
+      - "CONCEITO BASE — a mulher SEMPRE julga o homem; isso é biológico, não é vagabundagem; posiciona ele numa régua"
+      - "4 OBJEÇÕES (cobrem ~90% das mulheres) — É interessante? Tem condição financeira? É sociável? Tem shape/protege?"
+      - "MANIPULAÇÃO VIA EXPOSIÇÃO — Instagram, vestimenta, branding pessoal podem simular as 4 sem você TER de fato"
+      - "MANIPULAÇÃO VIA COMUNICAÇÃO — teasing (3Ds) tira a validação que a mulher tem desde pequena, inverte quem busca quem"
+    when_to_use:
+      - "Cliente que se acha 'sem valor' (feio, pobre, magro) — mostrar que pode manipular a percepção"
+      - "Cliente redpill envenenado que acredita no VSM universal — corrigir pra modelo personalista"
+      - "Cliente que está acima na régua mas não sabe e se rebaixa (faz over-investing, pedestaliza)"
+    examples:
+      - "Cara pobre que parece ter dinheiro via roupa/foto de luxo no Instagram — manipula a régua via exposição"
+      - "Cara sem ciclo social que posta 3 fotos com amigos no bar — manipula percepção de 'sociável'"
+      - "Cara abaixo na régua que faz teasing forte — inverte: a mulher passa a se validar pra ele"
+    source_refs:
+      - "Isso_Define_Se_Uma_Mulher_Vai_TR4NS4R_Com_Voce_Ou_Nao_baseado_na_psicologia_feminina"
+
+  - id: interaction_block
+    name: "Bloco de Interação (Pico de Emoção + Pergunta Aberta)"
+    description: |
+      Unidade atômica da conversa. Todo turno do homem tem que conter
+      duas coisas obrigatórias: (1) um pico de emoção em cima do que
+      ela disse no turno anterior; (2) uma pergunta aberta que extrai
+      mais conteúdo pro próximo bloco. Sem isso, vira interrogatório
+      policial ou comediante forçando. Aplicável online e
+      pessoalmente. É o "feijão com arroz" mecânico do Método.
+    structure:
+      - "PICO DE EMOÇÃO (obrigatório) — flirting ou teasing em cima do conteúdo que ela deu"
+      - "PERGUNTA ABERTA (obrigatória) — começa com 'por que', 'como', 'quando', NUNCA termina em sim/não"
+      - "ALTERNÂNCIA — turno dela responde os dois (responde o pico + responde a pergunta); turno dele faz o mesmo"
+      - "AFUNILAMENTO — usar perguntas pra direcionar a conversa pra atividades em comum (preparação pro convite indireto)"
+    when_to_use:
+      - "Toda mensagem que você manda. Toda fala em date. Toda interação em ciclo social"
+      - "Online: cada DM/match no Tinder = um bloco completo (pico + pergunta)"
+      - "Quando a mulher para de responder, o problema é quase sempre falta de pico OU falta de pergunta aberta"
+    examples:
+      - "Mulher: 'eu jogo basquete'. Você: 'além de bonita ainda é lutadora? aí não dá' (flirting+teasing) + 'como você começou a jogar?' (pergunta aberta)"
+      - "Mulher: 'minha comida preferida é macarrão'. Você: 'olha, eu não dou certo com quem gosta de macarrão' (teasing, com toque no ombro) + 'qual era a comida que tua mãe fazia que você odiava?' (pergunta aberta)"
+    source_refs:
+      - "Como_NUNCA_ficar_SEM_ASSUNTO_com_uma_Mulher"
+      - "Me_de_16_Minutos_e_Vou_Melhorar_Seu_Papo_Em_88"
+      - "Sem_Assunto_com_uma_Mulher_USE_ISSO_tecnica_explicada"
+
+  - id: confidence_two_pillars
+    name: "Confiança = Conhecimento + Experiência"
+    description: |
+      Modelo simples de como construir confiança real (não pose).
+      Dois fatores apenas — saber o que tá fazendo (teoria) e ter
+      feito muitas vezes (experiência). Falta um dos dois = confiança
+      falsa que quebra na primeira pressão. Vilaverde usa analogia
+      do ringue do UFC pra fixar.
+    structure:
+      - "CONHECIMENTO — entender a teoria (picos de emoção, 3Ds, CVC, gancho); sem isso você não sabe o que tá fazendo"
+      - "EXPERIÊNCIA — aplicar a mesma coisa muitas vezes; sem isso, o conhecimento não vira execução"
+      - "REGRA DE OURO — 'saber e não fazer é a mesma coisa que não saber' (o 'obeso mental')"
+    when_to_use:
+      - "Cliente que estudou redpill/sedução anos mas não pega ninguém — falta Experiência"
+      - "Cliente bruto/intuitivo que tem experiência mas é caótico — falta Conhecimento (estrutura)"
+      - "Cliente reclama que travou em momento crítico — auditoria: era falta de teoria ou de prática?"
+    examples:
+      - "Ringue UFC: você no zero, sem treino — não importa quanta vontade você tem, vai apanhar (sem conhecimento)"
+      - "Ringue UFC: 1 ano de treino, primeira luta real — vai tremer e errar (sem experiência ainda)"
+      - "Aborda primeira mulher depois de assistir 100 vídeos teóricos: trava, gagueja, fala merda — porque falta a parte 2"
+    source_refs:
+      - "OS_DOIS_SEGREDOS_POR_TRAS_DA_CONFIANCA"
+
+  - id: pre_kiss_4_steps
+    name: "4 Passos do Pré-Beijo (1º Contato, Toques Suaves, Aproximação, Pré-Beijo)"
+    description: |
+      Operacionalização do que escala a barrinha da intimidade no
+      date. Quatro passos sequenciais — você só passa pro próximo
+      quando o anterior foi cumprido. Pular passos é o que faz o
+      cara passar 3 horas no zero e tentar pular pro 100 no fim,
+      que não funciona.
+    structure:
+      - "1. PRIMEIRO CONTATO — no cumprimento: peito estufado, sorriso, olho no olho, elogio direto (independente do conteúdo do elogio, é setar frame)"
+      - "2. TOQUES SUAVES — durante o date inteiro: mão no ombro em piada, high-five, pegar mão pra ver anel/tatuagem, colocar cabelo atrás da orelha — só quando a vibe tá boa"
+      - "3. CHEGANDO MAIS PERTO — proximidade física: sentar de lado, perna em cima, mudar de local (restaurante → caminhada → parque), aproveitar transições pra encostar"
+      - "4. PRÉ-BEIJO — mão no ombro/cintura, contato visual sustentado, beijo na bochecha mantendo o contato visual; se ela não vira a cara, ir pra nuca e beijo"
+    when_to_use:
+      - "Todo primeiro encontro"
+      - "Diagnóstico: 'tentei beijar e ela virou o rosto' — quase sempre você pulou os passos 2 e 3"
+    examples:
+      - "Date com francesa em Londres (caso do Buckingham Palace): pulou passo 2 e 3, foi direto ao beijo no banco — 'virou o rosto', fora educado"
+      - "Date bem-sucedido: já no cumprimento o cara levanta, abraça, dá beijinhos culturais; durante o date toca no ombro nas brincadeiras; antes do beijo, dá um beijo na bochecha mantendo contato visual"
+    source_refs:
+      - "4_PASSOS_PARA_BEIJAR_E_CRIAR_INTIMIDADE_COM_UMA_MULHER_MuriloVilaverde"
+      - "3_coisas_que_voce_DEVE_fazer_no_1_encontro"
+
+  - id: flow_social_5_steps
+    name: "5 Etapas do Treinamento de Flow Social (Bom Dia → Cold Approach)"
+    description: |
+      Plano gradual pra destravar timidez. Cinco etapas sequenciais,
+      cada uma um pouco mais desconfortável que a anterior. Só passa
+      pra próxima quando se sentir confortável. Aplicado a mulheres
+      que você TEM INTERESSE (não senhorinhas), pra forçar o cérebro
+      a entender que iniciar interação não é harmful.
+    structure:
+      - "1. BOM DIA — só dar bom dia pra mulheres bonitas na rua; iniciar interação básica"
+      - "2. PEDIR INFORMAÇÃO — pegar a interação e estender ela (20-60 segundos); pagar de turista perdido"
+      - "3. FAZER ELOGIO — depois de pedir informação, soltar um elogio simples; setar frame homem-mulher"
+      - "4. TROCAR INSTAGRAM — depois do elogio, pedir contato pra esticar interação"
+      - "5. COLD APPROACH COMPLETO — abordagem à la Vila Verde com gancho, picos de emoção, convite lúdico"
+    when_to_use:
+      - "Cliente tímido absoluto (5-10% de flow social)"
+      - "Cliente recém-divorciado destreinado em comunicação"
+      - "Cliente que tenta pular pro Cold Approach completo e trava sempre"
+    examples:
+      - "Cliente trancado em casa, 5% de flow: começa só com bom dia diário, pula pra próxima quando dar bom dia for fácil"
+      - "Pagar 100 reais de aluguel da comunicação por dia (segunda dá bom dia, terça pede informação, quarta faz elogio…)"
+    source_refs:
+      - "O_HABITO_ESQUECIDO_dos_nossos_avos_que_te_fara_conquistar_uma_namorada"
+      - "Me_de_13_minutos_e_eu_vou_APAGAR_seu_medo_de_chegar_em_mulher"

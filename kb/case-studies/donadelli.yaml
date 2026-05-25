@@ -1,0 +1,258 @@
+# FlirtAI KB — Donadelli — Case Studies
+# Histórias narrativas (auto-biográficas e de alunos) que ilustram
+# os conceitos. Donadelli é vulnerável e narra muito a própria
+# trajetória — boa fonte de case studies de transformação interna.
+
+schema_version: 1.0
+generated: 2026-05-25
+
+mind_id: donadelli
+philosophical_axis: trabalho_interno
+
+case_studies:
+  - id: donadelli_vicio_aos_9
+    title: "A Infância Sequestrada — Vício Aos 9 Anos"
+    narrative: >
+      Donadelli começou a consumir pornografia aos 9 anos de idade
+      (ainda na Alemanha, onde morava desde os 6). Sem maturidade para
+      questionar, normalizou o ato. Durante a década seguinte (até os
+      19), manteve consumo diário, com picos de 5x/dia. Em paralelo,
+      desenvolveu introversão, baixa autoestima, ataques de ansiedade
+      a partir dos 18, problemas para se relacionar (só namorou aos
+      12 brevemente), disfunção erétil precoce. A criança que ficou
+      'travada' nesse circuito é o adolescente isolado do início da
+      narrativa.
+    lessons:
+      - "Pornografia consumida na infância PROGRAMA o cérebro durante janela crítica de desenvolvimento"
+      - "Sintomas comportamentais (ansiedade, isolamento) podem ser efeito de algo aparentemente desconectado"
+      - "Sem auto-reflexão, indivíduo culpa traços de personalidade ('sou tímido') quando a causa é química"
+      - "O 'ponto de partida' de qualquer recovery começa com identificação honesta do início"
+    source_refs:
+      - "À Deriva — 'consumi aos 9 anos já e foi nesse ponto onde me viciei de vez'"
+      - "LifeHacker — 'cara como criança, nem maduro ainda, e isso permaneceu normal'"
+
+  - id: donadelli_virada_aos_19
+    title: "O Despertar Aos 19 — Auto-Observação na Frente do Espelho"
+    narrative: >
+      Donadelli estudava direito em Osnabrück, Alemanha (uma cidade
+      pequena na fronteira com Holanda). Observava colegas produtivos
+      enquanto ele procrastinava extremamente. Decidiu analisar a
+      rotina e identificou a pornografia como elemento fora de lugar.
+      O momento exato da virada foi auto-observativo: durante
+      uma sessão de pornô, fez 'meditação histórica grega' — assumiu
+      terceira perspectiva. Viu-se de fora: 'eu estava lá, com as
+      calças no joelho, suando a bunda na cadeira, no quarto trancado,
+      janelas fechadas, me masturbando. Vi pixels. Vi-me ridículo
+      vendo outro cara fazer um negócio que eu queria fazer.' Esse
+      momento de auto-observação literal foi o pivot.
+    lessons:
+      - "Auto-observação em terceira pessoa é técnica poderosa de interrupção"
+      - "Despertar para o vício geralmente vem por contraste (ver outros produtivos enquanto você procrastina)"
+      - "Não é necessário ter teoria/ciência antes — a experiência fenomenológica do 'isso é ridículo' basta"
+      - "O ato de SE VER no comportamento já é meio caminho para a mudança"
+    source_refs:
+      - "À Deriva — narrativa completa da virada, com detalhes sensoriais"
+
+  - id: donadelli_primeiro_semana_nofap
+    title: "Os Sete Primeiros Dias — A Estação de Trem na Alemanha"
+    narrative: >
+      Após decidir testar NoFap aos 19, Donadelli passou 7 dias sem
+      consumir. No sétimo dia, andava numa estação de trem na
+      Alemanha e teve experiência sensorial sem precedente — andou
+      com 'autoconfiança no público', sentiu-se 'como rei', com
+      ligeireza, energia eufórica 'como se tivesse tomado MDMA'. Foi
+      a primeira evidência fenomenológica direta dos benefícios.
+      Esse dia 7 (que cientificamente coincide com pico de testosterona
+      em ~+145%) virou marco interno — 'agora eu tenho a prova'.
+    lessons:
+      - "O dia 7 é frequentemente o ponto de virada — pico fisiológico real"
+      - "Provas pessoais (vivência) > argumentos racionais (estudos científicos)"
+      - "Um único dia transformador pode ancorar anos de prática"
+      - "Recomendação para iniciantes — 'aguenta os 7 dias, depois você decide se continua'"
+    source_refs:
+      - "À Deriva — narrativa detalhada da estação de trem"
+      - "LifeHacker — 'eu lembro exatamente. eu estava na Alemanha andando numa estação de trem'"
+
+  - id: donadelli_centenas_de_recaidas
+    title: "A Volta Por Cima Sob Centenas de Recaídas"
+    narrative: >
+      Após o despertar, Donadelli levou QUASE DOIS ANOS para estabilizar
+      o NoFap. Relata 'centenas de recaídas' nesse período. O erro
+      inicial foi querer pular para Hard Mode + suplementação com
+      maca peruana, tribulus (estimulantes sexuais) — o que ampliou
+      o desejo e gerou recaídas explosivas. Aprendeu que a estabilização
+      vem em CAMADAS: primeiro tirar pornografia, depois reduzir
+      masturbação, depois retenção seminal. Hoje, alunos dele
+      relatam casos como '5 anos praticando, max ainda 14 dias'.
+      Mensagem central: recaída faz parte. Centenas faz parte.
+    lessons:
+      - "Recovery NÃO é linear — recaídas em massa são parte do processo"
+      - "Não usar estimulantes (maca/tribulus) nas fases iniciais"
+      - "Construção em camadas — começa Easy, evolui para Hard, evolui para Monk"
+      - "Anos podem ser necessários para estabilização real (não semanas)"
+      - "Comparar-se com 'o ideal' destrói. Comparar-se com 'eu de ontem' sustenta."
+    source_refs:
+      - "À Deriva — 'eu tive centenas de recaídas. Centenas. Quase dois anos pra estabilizar'"
+      - "À Deriva — 'tem cara com 5 anos fazendo, último 14 dias'"
+
+  - id: aluno_irma_de_14_anos
+    title: "Caso Limite — O Aluno Olhando para a Irmã"
+    narrative: >
+      Donadelli recebeu mensagem de aluno desesperado: 'tenho uma irmã
+      de 14 anos. Eu tô olhando pra ela.' O cara não era pedófilo
+      pré-existente. Havia escalado dentro da pornografia através de
+      conteúdo cada vez mais extremo (de soft → zoofilia → quase
+      pedofilia), e o cérebro estava começando a transferir o
+      condicionamento para a realidade. Donadelli usa esse caso para
+      ilustrar a tese: pornografia NÃO é entretenimento neutro.
+      Para alguns, é a escala para horror real. Não significa que
+      todo viciado vira pedófilo — significa que o circuito é
+      sequestrável até esse extremo.
+    lessons:
+      - "Pornografia escala — soft não basta mais, busca cada vez mais extremo"
+      - "Em casos extremos, condicionamento neuro-comportamental se transfere para vida real"
+      - "Não é 'só ver vídeo' — é programação neurológica"
+      - "Casos limite servem para ilustrar para o usuário moderado que ele NÃO está livre do mecanismo"
+    source_refs:
+      - "À Deriva — narrativa relatada com gravidade, citação Ted Bundy como paralelo"
+
+  - id: donadelli_psicodelico_lsd_alemanha
+    title: "LSD na Floresta Alemã — A Experiência que Abriu a Mente"
+    narrative: >
+      Aos 20 anos, na Alemanha, Donadelli tomou LSD pela primeira vez
+      sob influência de um amigo russo. Tomou no trem (sem o set/setting
+      adequado), experienciou tudo virar desenho (Mickey Mouse nas
+      pessoas), tempo acelerando ('VHS adiantando'). Foram para uma
+      floresta com outros amigos. Em estado profundo, mediou conflito
+      entre amigos em apuro com a polícia, sentindo-se 'como Jesus
+      Cristo'. À noite, fez 'hipnose' em amigo, colocou frequência
+      432 Hz, falou palavras de encorajamento que 'vieram da alma'.
+      Esse despertar abriu a porta para espiritualidade — Donadelli
+      passou a estudar taoísmo, hinduísmo, meditação.
+    lessons:
+      - "Psicodélicos PODEM ser pivot para despertar espiritual genuíno"
+      - "Set/setting é crítico — Donadelli teve sorte por improvisar"
+      - "Não recomendado sem preparo (Donadelli é claro sobre isso)"
+      - "A experiência VALIDA, mas a transformação real vem da prática diária pós-experiência"
+      - "Donadelli passou a meditar todo dia DEPOIS dessa experiência, não antes"
+    source_refs:
+      - "À Deriva — narrativa LSD completa"
+
+  - id: donadelli_quase_overdose
+    title: "A Quase Overdose Que Forçou a Virada"
+    narrative: >
+      Aos 18-20 anos, Donadelli abusou de drogas pesadas — opioides
+      sintéticos, MDMA, cocaína, anfetamina, modafinil. Um dia, sozinho
+      no apartamento, quase teve overdose de opioides. Lembra de pensar:
+      'eu, sempre inteligente, sempre obediente às normas, sempre
+      generoso — isso NÃO combina comigo. Eu tô aqui, 20 anos,
+      sozinho, quase morrendo por ignorância absoluta.' Esse foi o
+      ponto de virada que o trouxe DE VOLTA à meditação aprendida aos
+      7 anos. A virada não foi calma — foi crise quase fatal.
+    lessons:
+      - "Crises bottom-out são frequentemente o ponto de virada"
+      - "Não é necessário 'tocar o fundo' — mas para alguns é o único caminho"
+      - "A consciência de incoerência ('isso não combina comigo') quebra o ciclo"
+      - "Recursos antigos (meditação dos 7 anos) podem ser reativados"
+    source_refs:
+      - "LifeHacker — narrativa da quase overdose como ponto de virada"
+
+  - id: aluno_mulher_descobre_marido
+    title: "A Esposa Que Descobre o Marido — Crise Conjugal"
+    narrative: >
+      Caso comum que Donadelli relata recebendo: esposa descobre que
+      marido está consumindo pornografia. Imediata espiral psicológica
+      dela — 'será que sou eu? Não sou atraente? Estou falhando?'.
+      Mensagem para o Donadelli: 'Matheus, será que é eu? Não tô tendo
+      sexo com ele, o que faço?'. A esposa assume culpa por algo que
+      é do marido. Donadelli orienta: NÃO é dela. É vício dele. A
+      comunicação honesta é necessária ('foda-se seu ego, admita').
+      Esconder destrói o casamento; admitir possibilita reconstrução.
+    lessons:
+      - "Pornografia no relacionamento ataca AUTOESTIMA da parceira (mesmo que ela não saiba)"
+      - "Mulher tende a internalizar culpa — homem precisa antecipar isso"
+      - "Comunicação aberta sobre vício > ego masculino"
+      - "Pornografia no casamento = adultério funcional (frame moral)"
+      - "Recovery a dois é possível, sozinho é mais difícil"
+    source_refs:
+      - "À Deriva — 'esposa pergunta será que sou eu? Não. Ele precisa eliminar o vício'"
+
+  - id: donadelli_exclui_canal_alphaspirit
+    title: "A Exclusão do Canal — Quando Polêmica Vira Saturação"
+    narrative: >
+      Em algum momento entre 2022-2024 (não documentado no corpus
+      gravado), Donadelli EXCLUIU o canal AlphaSpirit do YouTube
+      após uma polêmica desencadeada por comentário em uma live.
+      O canal Match (fã) faz vídeo tributo descrevendo: 'um comentário
+      que ele respondeu num momento que não tava tão consciente,
+      pessoa aleatória, comentou besteira, deu a estourada'. Após
+      isso, Donadelli sumiu da internet — excluiu canal, Instagram,
+      manteve só TikTok. Permanece coaching via curso pago
+      (alphaspirit.com.br). O caso é study sobre os limites de exposição
+      pública para quem trabalha com tema polarizado.
+    lessons:
+      - "Filosofia anti-PUA gera polêmica desproporcional"
+      - "Reatância egoica do público maior que a do mensageiro"
+      - "Em certo ponto, criador faz cálculo — ganho > perda de exposição?"
+      - "Conteúdo pode 'desaparecer' do mainstream mas permanecer em coaching pago / nicho"
+      - "Donadelli optou por menor exposição com mais profundidade"
+    source_refs:
+      - "Match channel (fan tribute) — 'sumiu da internet de um comentário'"
+      - "manifest/donadelli-sources.yaml — 'Donadelli deletou o canal AlphaSpirit em algum momento'"
+
+  - id: donadelli_namorada_atual_tantra
+    title: "Tantra com Namorada Atual — A Comunicação Direta"
+    narrative: >
+      Em fase atual (2022 quando gravado À Deriva), Donadelli namorava.
+      Decidiu praticar Hard Mode SEM cortar sexo — ou seja, transar
+      sem ejacular. Conversou diretamente com a namorada: 'não vou
+      gozar mais, porque eu preciso dessa energia'. Ela aceitou. Donadelli
+      relata sexo de várias horas, múltiplas 'rodadas' fundidas em
+      uma sessão, sem dor (sem 'blue balls' porque está presente),
+      maior prazer para a parceira. O caso ilustra que tantra/karezza
+      É VIÁVEL em relacionamento real (não só pra monges).
+    lessons:
+      - "Comunicação direta + assumir como decisão própria > pedir permissão tipo Nice-Guy"
+      - "Parceira pode aderir se a apresentação for autêntica e ela for respeitada"
+      - "Tantra requer presença RADICAL — não é técnica, é estado"
+      - "Resultado: sexo de hora a quatro horas sem orgasmo masculino, ambos satisfeitos"
+      - "Não é incompatível com namoro — é evolução do namoro"
+    source_refs:
+      - "À Deriva — 'falei com a namorada, ó, não vou gozar mais, eu consigo várias horas'"
+
+  - id: aluno_5_anos_max_14_dias
+    title: "O Aluno de 5 Anos Praticando, Max 14 Dias"
+    narrative: >
+      Donadelli recebeu mensagem recente: aluno está há CINCO ANOS
+      praticando NoFap e o máximo de streak que consegue ainda é 14
+      dias. O caso ilustra que recovery pode ser EXTREMAMENTE longo
+      para alguns. Donadelli não usa esse caso como derrota — usa
+      como motivo para perseverança. 'Está fazendo melhor que se
+      não estivesse fazendo nada. Cinco anos de tentativa é cinco
+      anos de progresso comparado ao consumo total.'
+    lessons:
+      - "Para alguns, vício prévio é tão profundo que estabilização leva uma DÉCADA ou mais"
+      - "14 dias consistentes é melhor que zero"
+      - "Comparação com curva 'ideal' é destrutiva"
+      - "Perseverança é a virtude central — não velocidade"
+      - "Possibilidade de problemas subjacentes (trauma, transtornos) que requerem terapia profissional"
+    source_refs:
+      - "À Deriva — 'vi um cara também, cinco anos, recebeu ontem a mensagem. Fazendo cinco anos e cara último 14 dias'"
+
+  - id: donadelli_propostas_aos_dois_mil_alunos
+    title: "Os Dois Mil Alunos — Validação Empírica"
+    narrative: >
+      Donadelli relata 'quase dois mil alunos' no curso AlphaSpirit.
+      Quando confrontado com 'isso é pseudociência', a resposta dele
+      é simples — 'basta ir no canal e ver os relatos. Não é
+      brincadeira, é simplesmente testar.' Esse é o argumento empírico
+      pragmático de Donadelli — ao invés de defender teoricamente,
+      aponta para resultados. Os 'alunos' são case studies vivos
+      que Donadelli implicitamente usa como prova social.
+    lessons:
+      - "Pragmatismo > teoria isolada"
+      - "Argumento empírico ('teste por 7 dias') é mais forte que filosófico"
+      - "Comunidade de praticantes é a prova social"
+      - "Não tentar convencer cético — apontar para evidência observável"
+    source_refs:
+      - "À Deriva — 'eu tenho quase dois mil alunos. Transformei vidas. Basta ir no meu canal e ver os relatos'"

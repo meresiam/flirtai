@@ -1,0 +1,89 @@
+# FlirtAI KB — Donadelli — Scripts
+# IMPORTANTE: Donadelli NÃO ensina scripts de campo (primeira mensagem,
+# abordagem, manutenção de interesse, etc.). A filosofia AlphaSpirit é
+# "se você precisa de script, ainda não fez o trabalho interno". Atração
+# emerge de aura/presença, não de fala pré-planejada.
+#
+# O ÚNICO "script" extraível é o INTERNO — auto-comunicação, afirmações,
+# visualizações. Documento aqui esses poucos exemplos para completude
+# da KB, mas o arquivo é deliberadamente magro.
+
+schema_version: 1.0
+generated: 2026-05-25
+
+mind_id: donadelli
+philosophical_axis: trabalho_interno
+
+scripts:
+  - id: afirmacao_eu_sou_forte
+    situation: "self_affirmation_meditacao_basica"
+    variants:
+      - tone: autentico
+        text: "Eu sou forte. Eu sou forte. Eu sou forte."
+        context_notes: >
+          Mantra que Donadelli aprendeu no grupo de meditação aos 7
+          anos na Alemanha. Repetir mentalmente durante meditação,
+          em estado meditativo (não como afirmação intelectual seca).
+          Premissa: combinar a palavra com a SENSAÇÃO corporal de força.
+    source_refs:
+      - "À Deriva — 'eu repetia mentalmente eu sou forte, foi mais uma autoafirmação no estado meditativo'"
+
+  - id: pergunta_proximo_pensamento
+    situation: "interrupcao_de_loop_mental_durante_meditacao"
+    variants:
+      - tone: estrategico
+        text: "Qual vai ser o meu próximo pensamento?"
+        context_notes: >
+          Não é fala — é pergunta MENTAL feita em silêncio. Causa pausa
+          de presença pura. Repetir cada vez que aparece pensamento.
+          Donadelli aprendeu de Douglas Flamino. Ver técnica
+          tecnica_proximo_pensamento.
+    source_refs:
+      - "À Deriva — narrativa completa da técnica"
+
+  - id: terceira_perspectiva
+    situation: "auto_avaliacao_em_momento_de_impulso"
+    variants:
+      - tone: estrategico
+        text: "Como isso ficaria numa foto agora? É a foto de um homem que eu quero ser?"
+        context_notes: >
+          Auto-pergunta no meio de comportamento compulsivo. Funcionou
+          como interruptor para Donadelli na narrativa do momento de
+          virada com pornografia aos 19. Vê-se de fora como se fosse
+          terceiro observando — analisa a cena.
+    source_refs:
+      - "À Deriva — 'me vi naquela cena patética vendo um outro cara fazer um negócio que eu queria fazer'"
+
+  - id: comunicacao_com_parceira_sobre_tantra
+    situation: "explicar_para_parceira_a_escolha_de_nao_ejacular"
+    variants:
+      - tone: autentico
+        text: "Eu preciso dessa energia pro meu trabalho/propósito. Vou ficar X dias sem ejacular — quero continuar transando, mas sem orgasmo da minha parte. Quer experimentar isso comigo?"
+        context_notes: >
+          Único 'script social' implícito no corpus. Donadelli relata
+          conversa real com namorada. Tom é DIRETO, vulnerável, sem
+          pedido de permissão tipo-Nice-Guy. Apresenta como decisão
+          dele, convida ela a participar — não impõe, não pede aprovação.
+    source_refs:
+      - "À Deriva — 'falei com a namorada e tudo mais, ó, não vou gozar mais, porque eu preciso dessa energia'"
+
+  - id: memento_mori_interno
+    situation: "automotivação_matinal_estoica"
+    variants:
+      - tone: estrategico
+        text: "Memento mori. Hoje pode ser o seu último dia. Por que esse mau humor? Por que essa procrastinação?"
+        context_notes: >
+          Mantra/pergunta para uso interno em manhãs apáticas ou
+          momentos de adiamento crônico. Frase estoica que Donadelli
+          adota como combustível de presença/ação. Steve Jobs e Marco
+          Aurélio usavam variações.
+    source_refs:
+      - "LifeHacker — 'memento mori. Lembre-se de sua mortalidade. Steve Jobs fez muitas outras pessoas, Michael Aurelio'"
+
+# NOTA EXPLÍCITA PARA SYNTHESIS:
+# Diferentemente de Greene (frases prontas de poder), Strauss (rotinas
+# de abertura) e até Glover (declarações de necessidade), Donadelli é
+# o mind que LITERALMENTE NÃO ENSINA scripts externos. Quando o FlirtAI
+# encontrar pergunta tipo "que mensagem mando agora?" — Donadelli serve
+# como CONTRAPONTO para perguntar antes "qual é o estado interno desse
+# usuário?". Se o estado interno está podre, nenhum script salva.

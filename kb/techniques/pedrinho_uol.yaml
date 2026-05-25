@@ -1,0 +1,248 @@
+---
+mind_id: pedrinho_uol
+category: techniques
+generated: 2026-05-25
+notes: |
+  Catalogação dos tipos de cantada/manobra que Pedrinho executa, organizados por padrão.
+  Cada técnica abaixo é uma FAMÍLIA de scripts (ver kb/scripts/pedrinho_uol.yaml).
+---
+
+techniques:
+
+  - id: cantada_pesquisa
+    name: Cantada-Pesquisa (frame fake de pesquisa)
+    description: |
+      Aborda com pretexto de 'fazer uma pesquisa' ou 'pergunta neutra' que ela aceita responder
+      por curiosidade ou educação. A pesquisa pode ser real (filmes que ela quer ver), absurda
+      (Gato de Botas) ou romântica disfarçada ('o que você pretende daqui a um ano?'). A resposta
+      dela só serve como ponte pra punchline-cantada que vem em seguida.
+    script_examples:
+      - "Posso fazer uma pesquisa com você? O que você pretende daqui a um ano?"
+      - "Posso fazer uma pesquisa? Você já viu o novo Gato de Botas?"
+      - "Tô fazendo uma pesquisa com as meninas aqui do shopping..."
+    when:
+      - "Abordagem fria em local público (shopping, rua, festa)"
+      - "Quando a mulher está parada/esperando e você precisa de pretexto"
+    risk: |
+      Se a 'pesquisa' for óbvia demais, ela rejeita de cara. Tem que parecer minimamente plausível
+      por 3-5 segundos. Não funciona em mulher que JÁ sabe que você é o cantador.
+    mastery_signal: |
+      Ela responde a pesquisa de forma engajada e ainda RI quando você revela o pivot.
+      Sinal máximo: ela completa a punchline antes de você ('é? eu também acho que combinaríamos').
+    source_refs:
+      - Oq_vc_acha_cantadas_cantadas
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol
+
+  - id: cantada_visual_aparencia
+    name: Cantada-Visual (gancho na aparência/roupa)
+    description: |
+      Comentário sobre algo específico dela (vestido, sorriso, cabelo, altura, beleza) que vira
+      pretexto pra elogio carregado. Geralmente entra como 'pergunta sobre origem do detalhe'
+      seguida de reveal romântico ('sua mãe é costureira? é que ela te fez na minha medida').
+    script_examples:
+      - "Como que você arrumou isso aí? — Essa beleza toda."
+      - "Sua mãe é costureira? — É que ela te fez na minha medida."
+      - "Sabe o que está parecendo esse vestido? Brigadeiro de festa."
+      - "Seu sorriso parece o Neymar no Santos. Impossível de esquecer."
+    when:
+      - "Ela está visivelmente produzida ou tem detalhe notável"
+      - "Primeiro contato presencial"
+    risk: |
+      Comentar aparência sem gancho fica genérico ('você é linda'). Sem um detalhe específico,
+      vira elogio raso. Também: comentário pode soar como 'piropo de obra' se faltar humor.
+    mastery_signal: |
+      Ela sorri e olha pro detalhe que você comentou (toca o vestido, ajeita o cabelo). Indica
+      que ela está processando o elogio como reconhecimento real.
+    source_refs:
+      - COMO_cantadas_pedrinhuol
+      - JA_VIU_O_NOVO_GATO_DE_BOTAS_cantadas_pedrinhuol
+      - Seu_sorriso_parece_o_Neymar_no_Santos_pedrinhuol_cantadas
+
+  - id: cantada_jogo_palavras
+    name: Cantada-Trocadilho (jogo de palavras / dupla intenção)
+    description: |
+      Punchline construída em cima de ambiguidade verbal — palavra com dois sentidos onde o
+      segundo é flerte. 'Provador' (loja/sexual), 'pegar' (Uber/dela), 'sentar' (ônibus/colo),
+      'linha' (costura/raciocínio), 'rola' (geometria/sexual). Aproveita inteligência verbal.
+    script_examples:
+      - "Sabe onde é o provador de mulher? Esse aqui... posso provar?"
+      - "Eu virei Uber, me passa o número pra eu te pegar."
+      - "Você é quadrada? Então rola?"
+      - "Você tem o número de uma costureira? Depois que te vi, perdi a linha."
+    when:
+      - "Quando há contexto pra acionar o duplo sentido (loja, transporte, vestuário)"
+      - "Mulher que parece valorizar inteligência verbal / humor sofisticado"
+    risk: |
+      Trocadilho ruim ou forçado vira piada de tio. Tem que sair limpo e rápido.
+      Também: ambiguidade muito sexual pode passar a linha em primeiro contato.
+    mastery_signal: |
+      Ela CAPTA a ambiguidade e devolve provocação ou trocadilho de volta. Sinal de match verbal.
+    source_refs:
+      - ANOOTA_cantadas_pedrinhuol
+      - EMPOLGUEI_DPS_DO_BJ_cantadas_pedrinhuol
+      - cantadas_pedrinhuol
+
+  - id: cantada_pet_apelido_nome
+    name: Cantada-Apelido (jogar com nome próprio)
+    description: |
+      Aproveita o nome dela (recém-revelado) pra criar trocadilho fonético, OU oferece apelido
+      cativo ('amor', 'vida', 'princhuca'). Cria intimidade artificial-mas-divertida e fixa
+      memória da interação (ela vai lembrar do apelido).
+    script_examples:
+      - "Pamela? Pode chamar de amor."
+      - "Sara? Será que Sara essas feridas...?"
+      - "Pode me chamar de motorista, tô querendo direto ao ponto."
+      - "Existem as princesas e as tchutchucas. Você é uma Princhuca."
+    when:
+      - "Logo após ela revelar o nome"
+      - "Pra quebrar formalidade do '— Prazer, [nome]' inicial"
+    risk: |
+      Trocadilhos forçados com nomes raros / sem rima ficam estranhos. Se não rolar, abandonar
+      e ir pra outro vetor. Apelido carinhoso muito cedo pode soar invasivo.
+    mastery_signal: |
+      Ela ADOTA o apelido (referencia ele de volta) ou pede pra você repetir. Memorização ativa
+      = engajamento.
+    source_refs:
+      - TUDO_PASSA_MENOS_A_VONTADE_DE_TE_PEGAR_cantadas_pedrinhuol
+      - Quer_ir_num_casamento_cantadas_pedrinhuol
+      - O_FINAL_cantadas_pedrinhuol_@Rhuanda
+
+  - id: cantada_papel_personagem
+    name: Cantada-Personagem (assumir papel fictício)
+    description: |
+      Ele assume identidade fake (Superman, Flash, Uber, Motorista, Vasco, estrangeiro) como
+      veículo da cantada. O personagem carrega a piada — ele só vive o papel. Reduz a 'pessoalidade'
+      do pedido e protege ego em caso de rejeição.
+    script_examples:
+      - "Eu sou o Superman, se você quiser eu te mostro o aço."
+      - "Eu sou o Flash. É que sou o homem mais rápido — gosto em 3 segundos."
+      - "Pode me chamar de motorista, tô querendo direto ao ponto."
+      - "Cheguei agora de Portugal, queria saber quando vai inaugurar nosso relacionamento."
+    when:
+      - "Programas/palco (ela sabe que é jogo)"
+      - "Carnaval e festas (ambiente performativo)"
+      - "Quando quer entregar cantada ousada sem expor ego diretamente"
+    risk: |
+      Personagem mal construído fica cringe. Personagem mantido muito tempo desconecta da
+      pessoa real (ela acaba conversando com o personagem, não com você).
+    mastery_signal: |
+      Ela entra no jogo e dá fala dela ('o que tem nas mãos?' / 'apertou play?'). Co-construção
+      do bit.
+    source_refs:
+      - 2_HORAS_cantadas_pedrinhuol
+      - Porque_flash_._._._cantadas_pedrinhuol_viral_comedia_humor_
+      - QUANDO_VAI_INAUGURAR_cantadas_pedrinhuol
+
+  - id: cantada_bizarra_situacao_fabricada
+    name: Cantada-Situação Fabricada (cria cenário inverossímil)
+    description: |
+      Inventa uma situação inexistente como pretexto pra abordar — 'minha namorada sumiu',
+      'minha mãe quer uma nora', 'cobrando aluguel do coração', 'fila do seu beijo'. A absurdez
+      é a piada; a aceitação dela é entrar no jogo.
+    script_examples:
+      - "Tava com minha namorada aqui e ela sumiu... Ela aparece com você... ela tá atrás de você."
+      - "Tá me devendo um dinheiro. Você acha que é de graça morar no meu coração?"
+      - "Essa aqui é a fila do Mac? E pro seu beijo, é onde?"
+      - "Minha mãe mandou eu dormir com os anjos, vamos?"
+    when:
+      - "Quando você consegue manter cara séria por 3-5 segundos"
+      - "Ambiente público que comporta cenário absurdo"
+    risk: |
+      Se a fabricação for muito elaborada e ela não topar o jogo, fica longo e cringe.
+      Cantada-fabricada requer compromisso com o bit; meio-termo morre.
+    mastery_signal: |
+      Ela ENTRA na fabricação ('então me devolve com juros' / 'ah é a fila do meu beijo?').
+      Co-criação narrativa = ela já decidiu jogar junto.
+    source_refs:
+      - ANOTA_cantadas_pedrinhuol
+      - TIVE_Q_COBRAR_O_ALUGUEL_cantadas_pedrinhuol
+      - O_FINAL_MN_cantadas_pedrinhuol
+
+  - id: cantada_pesada_audiencia
+    name: Cantada com cooptação da audiência (incluir amiga/grupo)
+    description: |
+      Quando ela está com amiga(s), incluir a amiga na conversa como aliada. Pedir voto, opinião,
+      'apoio'. Funciona porque a amiga geralmente quer ver a cena viralizar e empurra a alvo.
+    script_examples:
+      - "Apoia eu com ela, Ana. Você deixa ela passar o número pra mim?"
+      - "Você não chipa a gente, Ana? Você não chipa?"
+      - "Vocês não acham que a gente combina, galera?"
+    when:
+      - "Ela está em grupo (2+ pessoas)"
+      - "Você sente que a amiga está engajada/sorrindo"
+    risk: |
+      Se a amiga é hostil ou ciumenta, vira blockerage. Avalie a wing dela antes de cooptar.
+      Também: focar demais na amiga e perder a alvo principal.
+    mastery_signal: |
+      Amiga começa a empurrar pela alvo ('vai, dá o número' / 'ele é fofo'). Aliança virada.
+    source_refs:
+      - cantadas_pedrinhuol
+      - O_FINAL_GRR_KK_cantadas_pedrinhuol
+
+  - id: cantada_serie_beijo_streaming
+    name: Cantada-Série de Beijo (referência a streaming/conteúdo)
+    description: |
+      Trocadilho específico usando vocabulário de streaming/séries — 'a série que eu mais gosto
+      é a série de beijo na sua boca', 'qual filme prefere ver junto comigo?'. Aproveita
+      contexto super contemporâneo (todo mundo assiste streaming).
+    script_examples:
+      - "Sabe qual a série que mais gosto? A série de beijo que eu vou dar na sua boca."
+      - "Você prefere filme ou série? — Série. — Vamos começar uma nova."
+      - "Tem como tirar uma foto pra mandar pro Coelhinho da Páscoa? Tava perguntando que bombom..."
+    when:
+      - "Conversa sobre filme/série/conteúdo já está em curso"
+      - "Mulher mais jovem (geração streaming nativa)"
+    risk: |
+      Trocadilho 'série de beijo' já é meme/cringe em alguns círculos. Funciona em ambiente
+      cômico de TikTok mas pode datar.
+    mastery_signal: |
+      Ela ri da referência e propõe a 'série' de volta. Co-construção da metáfora.
+    source_refs:
+      - EMPOLGUEI_DPS_DO_BJ_cantadas_pedrinhuol
+      - Vamo_comecar_essa_serie_._._._cantadas_pedrinhuol_viral_come
+
+  - id: cantada_pedido_numero_pretexto
+    name: Cantada-Pretexto pra Número (excuse to ask)
+    description: |
+      Em vez de pedir número direto, fabrica pretexto absurdo: 'meu relógio tá errado, está na hora
+      de passar o seu número', 'meu celular tá quebrado, tá faltando seu número'. Reduz peso do
+      pedido por inserir em moldura cômica.
+    script_examples:
+      - "Que horas são? Tá errado teu relógio. Por quê? Tá na hora de passar o seu número."
+      - "Conserta meu celular, tá faltando seu número."
+      - "Posso pegar seu número? Vou ficar te atrapalhando."
+    when:
+      - "Final de interação que correu bem"
+      - "Quando direto seria estranho (formal demais, contexto público)"
+    risk: |
+      Se for cantada de número pra fechar interação morna, ela diz não e você sai com 'L'.
+      Use só quando há sinal de engajamento real anterior.
+    mastery_signal: |
+      Ela dá o número rindo e/ou pede o dele de volta. Reciprocidade ativa.
+    source_refs:
+      - cantadas_pedrinhuol
+      - Pode_me_chamar_de_MOTORISTA_cantadas_pedrinhuol
+
+  - id: cantada_pedido_beijo_devolve
+    name: Cantada-Beijo com Garantia (reduz custo da concessão)
+    description: |
+      Pedir beijo enquadrado como 'experimento sem risco' — 'se não gostar, me devolve' /
+      'mereceu um selinho pela cantada' / 'um beijo de aluguel do meu coração'. Reduz percepção
+      de compromisso emocional dela.
+    script_examples:
+      - "Dá um beijinho pra gente se conhecer. Se você não gostar, você me devolve."
+      - "Mereceu um selinho pela cantada."
+      - "Tá me devendo. Tem que dar um beijinho de aluguel."
+    when:
+      - "Cantada anterior arrancou riso real (não cordialidade)"
+      - "Ambiente público com pressão social a favor (festa, carnaval)"
+      - "Ela demorou demais no riso (sinal de engajamento)"
+    risk: |
+      Pedido prematuro mata clima. Tem que vir DEPOIS de já ter ela rindo. Pedido em ambiente
+      privado (ela sozinha) sem energia certa = constrangimento.
+    mastery_signal: |
+      Ela dá o beijo / oferece a bochecha sem se afastar. Em casos extremos: ela própria propõe.
+    source_refs:
+      - A_ULTIMA_CANTADA_cantadas_pedrinhuol_@Rhuanda
+      - TIVE_Q_COBRAR_O_ALUGUEL_cantadas_pedrinhuol
+      - O_FINAL_cantadas_pedrinhuol

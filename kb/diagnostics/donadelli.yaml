@@ -1,0 +1,280 @@
+# FlirtAI KB — Donadelli — Diagnostics
+# Como LER se um homem está no estado "técnica vai funcionar" vs
+# "técnica NÃO vai resolver, precisa de trabalho interno primeiro".
+# Esses diagnósticos são o que torna Donadelli ÚTIL pro FlirtAI mesmo
+# sem ensinar técnica de campo — ele dá os sinais de QUANDO técnica
+# está prematura.
+
+schema_version: 1.0
+generated: 2026-05-25
+
+mind_id: donadelli
+philosophical_axis: trabalho_interno
+
+diagnostics:
+  - id: homem_sem_substrato_vs_homem_alinhado
+    situation: "Avaliar se usuário precisa de TÉCNICA ou de TRABALHO INTERNO primeiro"
+    signals_to_read:
+      - "Frequência de consumo de pornografia (>= 3x/semana = vício)"
+      - "Consegue ficar 7 dias sem masturbar/consumir? (não = vício)"
+      - "Tem propósito articulável (consegue dizer o que faria por 10 anos mesmo sem ganhar)"
+      - "Energia/disposição física na rotina (pega no peso? acorda cedo?)"
+      - "Pratica algum mindfulness regular (meditação/leitura/treino)"
+      - "Histórico de relacionamentos — só casuais? friendzones repetidos? padrão de ghosting?"
+      - "Conteúdo que consome — só PUA/red-pill, ou diversifica?"
+      - "Aparência de 'zumbi' — olhos escuros, pele ruim, postura corcunda"
+      - "Linguagem usada — fala de mulher como 'alvo' / 'meta' / 'fênea'?"
+    interpretation_options:
+      - reading: "Homem SEM substrato — viciado em pornô, sem propósito, sem energia, busca técnica como atalho mágico"
+        confidence: alta
+        next_move: >
+          NÃO entregar técnica de conquista. Pivotar para diagnóstico
+          do vício, sugerir Hard Mode 30/90 dias, propor descoberta
+          de propósito. Técnica entregue aqui é jogar gasolina em
+          fogo de vazio.
+      - reading: "Homem PARCIALMENTE alinhado — tem propósito, treina, mas ainda recai em pornô esporadicamente"
+        confidence: media
+        next_move: >
+          Pode receber técnica leve (frame, postura, leitura situacional)
+          MAS marcar que a fundação ainda está em construção. Acompanhar
+          com lembretes sobre substrato. Não dar manipulação avançada
+          (negs, isca, jogo de poder) — risco de virar identidade
+          instrumental.
+      - reading: "Homem ALINHADO — propósito claro, NoFap consolidado, treina, lê, medita"
+        confidence: alta
+        next_move: >
+          Liberar arsenal técnico completo (Greene/Strauss-early) com
+          leitura situacional (Caminho D). Aqui Donadelli serve apenas
+          como manutenção/recall, não como freio.
+    source_refs:
+      - "Inferência integrada do corpus — Donadelli nunca explicita esse diagnóstico mas opera por ele"
+
+  - id: estado_de_recaida_iminente
+    situation: "Detectar quando praticante de NoFap está a horas/dias de recair"
+    signals_to_read:
+      - "Procrastinação intensificando ('Davi fugindo da batalha')"
+      - "Tédio crescente, sensação de vazio sem causa identificável"
+      - "Fantasias surgindo durante o dia (não eram comuns antes)"
+      - "Reabertura de Instagram após período de detox"
+      - "Justificativas internas — 'só uma vez não faz mal'"
+      - "Isolamento social aumentando (cancelando compromissos)"
+      - "Sono ruim ou irregular"
+      - "Volta a checar perfis de ex / influencers seminuas"
+      - "Bebida/maconha em excesso"
+    interpretation_options:
+      - reading: "Janela curta de recaída — próximas 24h são críticas"
+        confidence: alta
+        next_move: >
+          Ação IMEDIATA — banho frio, exercício forte, sair de casa.
+          Bloquear aplicativos. Avisar amigo / accountability partner.
+          Meditação curta + visualização do dia seguinte. Não tentar
+          'razão' contra o impulso — ação física quebra o ciclo.
+      - reading: "Padrão semanal — usuário tem um dia específico de recaída"
+        confidence: media
+        next_move: >
+          Identificar o gatilho contextual (chuva? domingo? final de
+          treino? pós-bebida?). Reestruturar a rotina nesse dia
+          (compromisso fixo, atividade incompatível com o vício,
+          ambiente diferente).
+      - reading: "Recaída inevitável estrutural — substrato insuficiente"
+        confidence: alta
+        next_move: >
+          Não tentar 'aguentar' a recaída sozinho. Procurar grupo de
+          apoio, terapia, coaching. O problema é maior que disciplina
+          isolada.
+    source_refs:
+      - "À Deriva — gatilhos contextuais (chuva, fim de semana, tédio)"
+      - "À Deriva — 'janela de recaída' não nomeada mas implícita"
+
+  - id: distincao_libido_natural_vs_compulsao
+    situation: "Saber se desejo sexual é saudável ou se é o circuito dopaminérgico sequestrado"
+    signals_to_read:
+      - "Origem do desejo — pessoa específica vs abstrato/qualquer-mulher?"
+      - "Vem com contexto (proximidade, intimidade, conversa) ou do nada?"
+      - "É periódico/orgânico ou constante/agitado?"
+      - "Vem acompanhado de presença ou de fuga mental?"
+      - "Você sente o desejo no CORPO ou na cabeça?"
+      - "Após satisfeito, há paz ou nova ansiedade?"
+    interpretation_options:
+      - reading: "Libido natural saudável — desejo por pessoa real, com contexto, vivido no corpo"
+        confidence: alta
+        next_move: >
+          Honrar o desejo. Em relacionamento — buscar parceira. Solteiro —
+          OK ter sexo (com presença, não como fuga). Não tratar como
+          algo a 'reprimir'.
+      - reading: "Compulsão dopaminérgica — desejo abstrato/genérico, vem do nada, agitado"
+        confidence: alta
+        next_move: >
+          NÃO satisfazer mecanicamente. Observar sem agir (técnica
+          terceira-perspectiva). Esperar passar. Substituir por
+          atividade física. É o cérebro pedindo 'dose', não o corpo
+          pedindo conexão.
+      - reading: "Misto — não dá pra distinguir claramente"
+        confidence: baixa
+        next_move: >
+          Pausa de 2-3 horas antes de agir. Faça exercício pesado.
+          Se o desejo permanecer e ainda for direcionado a pessoa
+          real, é provavelmente libido. Se evaporou ou trocou de
+          alvo, era compulsão.
+    source_refs:
+      - "À Deriva — 'a libido é uma coisa importante e boa. A pornografia corrompe essa vontade'"
+      - "À Deriva — diferenciação libido natural vs hiper-estímulo"
+
+  - id: identificar_dissonancia_cognitiva
+    situation: "Detectar quando usuário está egoicamente ameaçado por uma ideia (resistência irracional)"
+    signals_to_read:
+      - "Reação emocional desproporcional ao tema"
+      - "Ataques pessoais ao mensageiro (em vez de discutir a ideia)"
+      - "Argumentos circulares e movediços (muda de posição mid-debate)"
+      - "Uso de identidade ('eu sou X, então não pode ser Y')"
+      - "Cita exceções e periféricos para invalidar regra"
+      - "Sente ofensa pessoal ao ouvir crítica sistêmica"
+    interpretation_options:
+      - reading: "Vício ativo defendendo-se via ego — clássico"
+        confidence: alta
+        next_move: >
+          Não tentar convencer. Plantar semente sutil ('teste 7 dias,
+          sem precisar acreditar em nada') e sair do papo. Reforçar
+          confronto = entrincheira mais. Heurística: não evangelize
+          quem não pediu.
+      - reading: "Vergonha não-processada (não vício necessariamente)"
+        confidence: media
+        next_move: >
+          Reduzir o tom de julgamento. Compartilhar vulnerabilidade
+          própria primeiro ('eu também tive esse problema'). Criar
+          espaço seguro para o sujeito reconsiderar sem 'perder'.
+      - reading: "Argumento legítimo — talvez a ideia esteja mesmo errada"
+        confidence: baixa
+        next_move: >
+          Humildade epistêmica. Ouvir o argumento. Verificar se a
+          resistência é egoica ou se está apontando furo real. Donadelli
+          confessou ter caído em conspiração — qualquer um pode estar errado.
+    source_refs:
+      - "À Deriva — 'novas ideias sempre vão trazer dissonância cognitiva, naturalmente vai querer rejeitar essa ideia'"
+      - "À Deriva — 'se o cara ficar brabo, ele tá viciado'"
+
+  - id: nivel_de_aura_presenca
+    situation: "Avaliar magnetismo/presença do usuário (proxy de quanto trabalho interno foi feito)"
+    signals_to_read:
+      - "Como ele relata interações — mulheres olham/abordam espontaneamente?"
+      - "Há quanto tempo está em NoFap consistente?"
+      - "Treina há quanto tempo? Físico reflete?"
+      - "Voz, postura, contato visual (proxies de presença)"
+      - "Capacidade de ficar em silêncio sem ansiedade"
+      - "Faz coisas alheias à validação (hobbies próprios, projetos solo)"
+      - "Quando perguntado o que faz, responde com firmeza ou com dúvida?"
+    interpretation_options:
+      - reading: "Aura baixa — ninguém olha, sempre é ele que aborda, sempre tomando levante"
+        confidence: alta
+        next_move: >
+          Focar 6-12 meses em construção de substrato (NoFap +
+          treino + propósito + meditação). Largar técnica de
+          conquista nesse período. Quando a aura emergir,
+          interações reorganizam-se sozinhas.
+      - reading: "Aura presente mas inconsistente — funciona um dia, falha no outro"
+        confidence: media
+        next_move: >
+          Identificar o que esvazia (qual hábito drena). Geralmente é
+          combinação — uma noite de sono ruim + um vacilo de NoFap +
+          uma semana sem treino = aura zero. Sistematizar a manutenção
+          dos pilares.
+      - reading: "Aura consolidada — pessoas reagem positivamente, atração espontânea"
+        confidence: alta
+        next_move: >
+          Manutenção. Liberar técnica avançada (leitura situacional,
+          escalada, frame). Cuidar para não regredir por arrogância
+          ('agora sou foda, posso relaxar'). Substrato precisa de
+          continuidade.
+    source_refs:
+      - "LifeHacker — 'tem fama, poder, carisma, influência sem falar, somente com sua aura, presença'"
+      - "À Deriva — 'andei super autoconfiante, parecia que tinha tomado MDMA' (no dia 7 de NoFap)"
+
+  - id: identificar_substituicao_de_vicio
+    situation: "Detectar quando praticante de NoFap apenas trocou de vício (sexo casual, jogo, café, etc.)"
+    signals_to_read:
+      - "Aumento de Tinder/baladas pós-início do NoFap"
+      - "Coleção de matches/parceiras sem conexão"
+      - "Vazio crescente apesar de 'estar pegando mais'"
+      - "Novos vícios surgindo (café excessivo, jogo, suplementos, identidade NoFap)"
+      - "Identidade 'sou o cara do NoFap' virando ego"
+      - "Energia ainda parece estar drenando, só não via pornô"
+    interpretation_options:
+      - reading: "Substituição clara — pornô → sexo casual"
+        confidence: alta
+        next_move: >
+          Retiro romântico voluntário (3-6 meses sem buscar). Canalizar
+          energia em projeto/criação. Tantra/karezza só com parceira
+          estável e intencional.
+      - reading: "Substituição lateral — pornô → outras dopaminas (cafeína, jogo, scroll)"
+        confidence: alta
+        next_move: >
+          Estender Hard Mode para incluir essas outras fontes.
+          Dopamine detox amplo. Não cair na ilusão de que 'sem pornô'
+          é suficiente.
+      - reading: "Sem substituição — usuário está canalizando para propósito"
+        confidence: alta
+        next_move: >
+          Manter trajetória. Pode receber técnica/avanço com segurança.
+    source_refs:
+      - "À Deriva — 'a ideia não é substituir um vício com outro'"
+
+  - id: pos_recaida_diagnostic
+    situation: "Como ler o usuário JUSTO depois de recaída em pornografia"
+    signals_to_read:
+      - "Pensamento 'já era, perdi tudo, vou voltar ao vício'"
+      - "Vergonha intensa / abandono do tracker"
+      - "Justificativa estrutural ('eu sabia que não ia conseguir')"
+      - "Aceitação tranquila ('faz parte, recomeço amanhã')"
+      - "Análise do gatilho específico ('foi a chuva, foi o tédio')"
+    interpretation_options:
+      - reading: "Espiral catastrófica — alto risco de abandono total da prática"
+        confidence: alta
+        next_move: >
+          Intervenção rápida — 'recaída faz parte, todo NoFapper teve
+          centenas. O Donadelli teve. Reset agora, hoje, sem esperar
+          segunda-feira. Não é tudo ou nada — é continuação.'
+      - reading: "Recuperação saudável — usuário processou e reset"
+        confidence: alta
+        next_move: >
+          Validar a maturidade. Ajudar a identificar o gatilho específico
+          para prevenir próxima. Sem drama.
+      - reading: "Padrão repetido — recai sempre no mesmo contexto"
+        confidence: media
+        next_move: >
+          Não basta voltar — precisa MUDAR o contexto. Se sempre cai
+          no domingo à tarde sozinho, organizar atividade para domingos.
+          Se cai após álcool, cortar álcool por temporada.
+    source_refs:
+      - "À Deriva — 'eu tive centenas de recaídas, cara. Centenas. Quase dois anos pra estabilizar'"
+      - "À Deriva — 'tem cinco anos fazendo e ainda recai a cada 14 dias'"
+
+  - id: nivel_de_consciencia_geral
+    situation: "Como Donadelli classifica nível de awareness do indivíduo"
+    signals_to_read:
+      - "Capacidade de auto-observação em terceira pessoa"
+      - "Vocabulário emocional (consegue NOMEAR o que sente)"
+      - "Conhece e usa práticas contemplativas (meditação, journaling)"
+      - "Relação com religião/espiritualidade (devocional cego, ateu agressivo, exploratório?)"
+      - "Capacidade de mudar de opinião quando confrontado com evidência"
+      - "Trata pessoas como pessoas ou como funções (atendente, professor, parceira)?"
+    interpretation_options:
+      - reading: "Inconsciência operacional — vive no piloto automático"
+        confidence: alta
+        next_move: >
+          Começar pelo básico. Banho frio. Refeição sem celular. 5 min
+          de respiração. Não tentar entregar espiritualidade pesada —
+          o cara nem sabe ainda que existe outra forma de viver.
+      - reading: "Consciência emergente — começou a perceber padrões"
+        confidence: alta
+        next_move: >
+          Acelerar. Recomendar leituras (Hill, Murphy, Sadhguru).
+          Práticas mais estruturadas. Possibilidade de psicodélicos
+          com preparo (se contexto legal/seguro permitir).
+      - reading: "Identidade espiritual madura"
+        confidence: alta
+        next_move: >
+          Trabalhar manutenção e PROFUNDIDADE. Cuidado com armadilha
+          'desperto/anti-matrix'. Humildade epistêmica. Aplicação prática
+          (não só teoria).
+    source_refs:
+      - "LifeHacker — 'inconsciência como o maior problema' que Donadelli identifica"

@@ -1,0 +1,105 @@
+---
+mind_id: neil_strauss
+display_name: Neil Strauss
+origin: usa
+tier: foundation
+philosophical_alignment: hybrid
+priority: P0
+generated: 2026-05-23
+notes: |
+  Mind com DUALIDADE útil: The Game (2005, PUA puro) → The Truth (2015, autenticidade).
+  Capturar AMBAS as fases é estratégico — o agente vai entender quando técnica de
+  campo entra e quando ela falha.
+
+  Strauss tem muito conteúdo público porque é jornalista por formação (Rolling Stone,
+  NYT). Escreve bem, dá entrevistas longas e claras.
+---
+
+# Neil Strauss — Fontes Públicas
+
+## Tier 1 — Site oficial + materiais primários
+
+- **Site oficial:** https://www.neilstrauss.com/
+- **The Game Has Changed (artigo manifesto pós-The Truth):**
+  https://www.neilstrauss.com/the-game-has-changed/
+- **Super FAQ (Strauss responde dúvidas direto):**
+  https://www.neilstrauss.com/super-faq/
+- **Wikipedia (biografia + bibliografia):**
+  https://en.wikipedia.org/wiki/Neil_Strauss
+
+## Tier 2 — Entrevistas longas modernas (pós-The Truth, evolução do pensamento)
+
+- **Modern Wisdom #789 — Why The World's #1 Pickup Artist Left The Game Behind (May 2024):**
+  https://www.youtube.com/watch?v=QvEC2AVEsVM
+  - Spotify: https://open.spotify.com/episode/7eGKzorQhn84PFvqaP73kh
+  - Apple: https://podcasts.apple.com/lu/podcast/789-neil-strauss-why-the-worlds-1-pickup-artist-left/id1347973549?i=1000656859358
+
+- **A Bit of Optimism — The Definition of Success (Simon Sinek):**
+  https://www.youtube.com/watch?v=3MRGoLqT1T8
+
+- **Modern Wisdom — "Dating Changes When You Realise This — Ex Pickup Artist Neil Strauss":**
+  https://www.youtube.com/watch?v=e4xDdCoMrT0
+
+- **YouTube — "The Truth About Women & Relationships":**
+  https://www.youtube.com/watch?v=W35O0TfnuMw
+
+## Tier 3 — Entrevistas era PUA (The Game) — captura do "Strauss early"
+
+- **Current TV expose com Mystery (raro, histórico):**
+  https://www.youtube.com/watch?v=XkXxQZU_5Qo
+
+- **Art of Charm #200 — Life After The Game:**
+  https://theartofcharm.com/podcast-episodes/episode-200-neil-strauss/
+
+- **Mixergy — How to Create Extreme Rapport:**
+  https://mixergy.com/interviews/neil-strauss-interview/
+
+- **Jimmy Kimmel — Picks Up Jessica Alba (demonstração de técnica):**
+  https://www.youtube.com/watch?v=hC0hrqbhx5M
+
+## Tier 4 — Entrevistas focadas em The Truth
+
+- **The Newman Podcast (2016) — The Truth About Relationships:**
+  https://www.thenewmanpodcast.com/2016/01/neil-strauss-the-truth-interview/
+
+- **Castig.org — Interview on The Truth:**
+  https://castig.org/neil-strauss-interview-on-the-truth/
+
+- **Cultured Vultures — Author of The Game and The Truth:**
+  https://culturedvultures.com/interview-neil-strauss-author-game-truth/
+
+- **Slate review of The Truth:**
+  https://slate.com/culture/2015/10/neil-strauss-the-truth-reviewed.html
+
+## Tier 5 — Resumos/análises
+
+- **Dating Skills Review (Strauss profile):**
+  https://www.datingskillsreview.com/neil-strauss/
+
+## Plano de coleta
+
+```
+Fase 1.1 — Scrape neilstrauss.com (artigos, FAQ, manifesto)
+  → corpus/strauss/raw/site/
+
+Fase 1.2 — Download Tier 2 + 3 + 4 (yt-dlp para vídeos, download direto para podcasts)
+  → corpus/strauss/raw/audio/<episode>.mp3
+  → ~10-12 episódios @ avg 1h = ~12h áudio
+
+Fase 1.3 — Whisper large-v3
+  → corpus/strauss/transcripts/<episode>.md
+  → ~150-200K tokens
+
+Fase 1.4 — Marcar metadata: cada transcript recebe tag {phase: early|late}
+  para distinguir o Strauss-PUA do Strauss-autêntico
+  → corpus/strauss/processed/full-corpus.md
+  → corpus/strauss/processed/by-phase/{early.md, late.md, evolution.md}
+```
+
+## Volume estimado final
+- ~180K-220K tokens
+
+## Particularidade da extração
+- O `cognitive-analyst` deve marcar cada framework/heurística/técnica com:
+  `phase_origin: [early, late, both]`
+  → para o agente do FlirtAI saber se é técnica de "modo caça" ou "modo conexão"

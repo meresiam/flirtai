@@ -1,0 +1,24 @@
+# Postgres 16 com Apache AGE (grafo) + pgvector (vetor) na mesma instancia.
+# Base = imagem oficial do AGE com AGE ja compilado (arm64 nativo, PG 16.10, Debian 13).
+# So adiciona pgvector compilado do source (a base tem pg_config + repo PGDG).
+FROM apache/age:release_PG16_1.6.0
+
+ARG PGVECTOR_VERSION=v0.8.0
+
+# OPTFLAGS="" desliga o -march=native do pgvector: em VM (Colima) o build
+# detecta SIMD do host que o runtime nao expoe -> evita SIGILL (signal 4).
+USER root
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+        build-essential git ca-certificates postgresql-server-dev-16; \
+    git clone --branch "${PGVECTOR_VERSION}" --depth 1 https://github.com/pgvector/pgvector.git /tmp/pgvector; \
+    cd /tmp/pgvector; \
+    make OPTFLAGS=""; \
+    make OPTFLAGS="" install; \
+    rm -rf /tmp/pgvector; \
+    apt-get purge -y --auto-remove build-essential git postgresql-server-dev-16; \
+    rm -rf /var/lib/apt/lists/*
+
+# AGE ja vem compilado na base. As extensoes (CREATE EXTENSION vector / age)
+# sao criadas pelas migrations; o LOAD 'age' eh feito por sessao (db.py).

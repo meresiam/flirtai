@@ -1,0 +1,103 @@
+---
+mind_id: krausche
+display_name: Lucas Krausche (Desenrolado)
+origin: br
+tier: depth
+philosophical_alignment: greene_axis
+priority: P0
+generated: 2026-05-23
+notes: |
+  PRIMEIRO da fila Tier 1 BR — provavelmente o mais denso conceitualmente.
+  Marca "Desenrolado", canal YouTube ativo com vídeos de 5-30min explicando
+  framework (método Desenrolado, abordagens estruturadas, scripts cantadas).
+
+  Posiciona como "psicanalista especialista em relacionamentos" — vai pra
+  greene_axis (estratégia/poder + leitura situacional) com forte componente
+  prática (campo + balada + universidade).
+
+  Captura primária: 120 vídeos do canal próprio @LucasDesenrolado +
+  9 entrevistas longas em podcasts (Sem Groselha, Real Podcast,
+  Entrando na Mente, MHM x2, Ricardo Ventura).
+
+  TikTok @lucaskrausche tem só 117 clips curtos — redundante com YT,
+  pulamos.
+---
+
+# Lucas Krausche (Desenrolado) — Fontes Públicas
+
+## Tier 1 — Canal próprio (download primário)
+
+- **YouTube oficial:** https://www.youtube.com/@LucasDesenrolado
+  - 120 vídeos disponíveis (118 com >=5min)
+  - Distribuição: 45 vídeos 5-10min, 62 vídeos 10-20min, 11 vídeos >20min
+  - Total estimado: ~26h de áudio
+  - Vídeo mais longo: "O SEGREDO COMPLETO PARA DESENROLAR POR MENSAGEM" (~71min)
+
+- **Instagram:** https://www.instagram.com/lkrausche (933K seguidores)
+- **TikTok:** https://www.tiktok.com/@lucaskrausche (117 clips curtos)
+
+## Tier 2 — Entrevistas longas (podcasts) com Krausche como convidado
+
+- **Sem Groselha Podcast #123:** https://www.youtube.com/watch?v=6LJuO7hXZTY
+- **Real Podcast Oficial #208:** https://www.youtube.com/watch?v=j1xfgv0JGX4
+- **Entrando na Mente Podcast #110 (A Arte da Sedução):** https://www.youtube.com/watch?v=wx1ap9J9jko
+- **Ricardo Ventura (De Jogador de Futebol a Mestre em Comunicação):** https://www.youtube.com/watch?v=fMrIgmJxM5I
+- **MHM Podcast (Bastidores do Vai Dar Namoro):** https://www.youtube.com/watch?v=mbtzYDsEsBc
+- **MHM Podcast (Como Começar um Namoro):** https://www.youtube.com/watch?v=tKEBXu6w96E
+- **MHM Podcast (Não Cometa Esses Erros na Balada):** https://www.youtube.com/watch?v=-M2eCm5KsGU
+- **MHM Podcast (O Guia das Cantadas):** https://www.youtube.com/watch?v=vQ4h4RORj4o
+- **Floripa Mil Grau (Vai Dar Namoro):** https://www.youtube.com/watch?v=CrXFsGQp40k
+
+## Source material structured (schema)
+
+```yaml
+source_material:
+  - type: youtube
+    title: "Canal Desenrolado (120 vídeos)"
+    url: "https://www.youtube.com/@LucasDesenrolado"
+    duration_or_pages: 1550  # min
+    acquired: false
+    notes: "Canal próprio — método Desenrolado, vídeos longos com framework"
+
+  - type: podcast
+    title: "Sem Groselha Podcast #123"
+    url: "https://www.youtube.com/watch?v=6LJuO7hXZTY"
+    acquired: false
+
+  - type: podcast
+    title: "Entrando na Mente #110 — A Arte da Sedução"
+    url: "https://www.youtube.com/watch?v=wx1ap9J9jko"
+    acquired: false
+  # ... outros 7 podcasts no batch
+```
+
+## Plano de coleta
+
+```
+Fase 1.1 — Download yt-dlp canal completo + podcasts (Tier 1+2)
+  → corpus/krausche/raw/audio/<video>.mp3
+  → ~129 arquivos / ~30h áudio total
+
+Fase 1.2 — Whisper PT-BR large-v3
+  → corpus/krausche/transcripts/<video>.txt
+  → estimativa ~300-400K tokens texto
+
+Fase 1.3 — Consolidação
+  → corpus/krausche/processed/full-corpus.md
+  → tags por categoria: método, campo, mensagem, mindset, scripts
+```
+
+## Volume estimado final
+- ~300-400K tokens (rico em framework explicado em primeira pessoa)
+- Suficiente pra extração rigorosa via MMOS cognitive-analyst
+
+## Particularidades técnicas
+- yt-dlp funciona nativamente no canal
+- Sem cookies necessárias
+- Vídeos jovens (2019-2025), áudio limpo (não é áudio de balada)
+- Linguagem PT-BR coloquial — Whisper PT large-v3 deve dar conta
+
+## Particularidades de extração (para cognitive-analyst)
+- Marcar técnicas com `context: [balada, mensagem, app_dating, dia]`
+- Distinguir método consciente (vídeo explicativo) vs demonstração em campo (rolê)
+- Buscar nome do "método Desenrolado" e suas etapas formais

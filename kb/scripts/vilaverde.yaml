@@ -1,0 +1,254 @@
+---
+mind_id: vilaverde
+category: scripts
+generated: 2026-05-25
+notes: |
+  Scripts e falas LITERAIS extraídas das abordagens documentadas e
+  análises do Vilaverde. Cada situation tem variantes por tom — o
+  agente FlirtAI pode escolher por contexto situacional. Capture
+  vocabulário próprio (PT-BR com palavras PUA em inglês, jeito
+  natural dele falar). Vilaverde frequentemente alterna PT-BR/EN
+  porque mora na Europa.
+---
+
+scripts:
+  - id: cold_approach_rua_gancho
+    situation: "Primeira fala em abordagem fria na rua"
+    variants:
+      - tone: estrategico
+        text: "Desculpa atrapalhar, eu sei que isso é chato, mas eu não costumo fazer isso. Eu tava passando aqui e te vi, e eu tinha que vir falar oi."
+        context_notes: "Setup default. Prova que não é ameaça via educação + elogio implícito (tinha que vir). Funciona em qualquer contexto."
+      - tone: direto
+        text: "Olha, eu sei que você não me conhece, mas você é bonita pra caralho e eu não ia conseguir passar sem te falar isso."
+        context_notes: "Pra cara já confiante, alta auto-confiança. Risco maior, payoff maior. Use só quando você tem o frame."
+      - tone: autentico
+        text: "Olha, eu nunca faço isso, eu sou tímido pra caralho. Mas eu vi você ali e pensei: se eu não vier, eu vou me arrepender o dia inteiro."
+        context_notes: "Trama a vulnerabilidade como flerte. Bom pra cara mais tímido natural. Funciona pra mulher mais empática."
+      - tone: comico
+        text: "Desculpa, posso te incomodar? Eu juro que não sou esses caras malucos da rua, eu tenho um plano completamente diferente."
+        context_notes: "Auto-deboche desarma. Funciona melhor com mulher relaxada/sorrindo."
+
+  - id: cold_approach_mulher_no_cafe
+    situation: "Abordagem em cafeteria/restaurante onde ela está sentada"
+    variants:
+      - tone: estrategico
+        text: "Desculpa atrapalhar seu café, eu não costumo fazer isso. Mas eu te vi aqui sentada e tive que vir."
+        context_notes: "Cite o que ela está fazendo (café). Prova não-ameaça + interesse pessoal."
+      - tone: autentico
+        text: "Olha, é a primeira vez na minha vida que eu chego numa mulher num café. Você vai ser a primeira."
+        context_notes: "Sinceridade vulnerável. Risco alto, conversão alta quando funciona."
+
+  - id: cold_approach_mulher_andando
+    situation: "Mulher caminhando na rua"
+    variants:
+      - tone: estrategico
+        text: "Desculpa te interromper, eu não costumo fazer isso. Eu tava indo pro outro lado, te vi passando e tive que voltar."
+        context_notes: "Ultrapassa ela PRIMEIRO, vira de frente, NUNCA chega por trás. Educação + sinal de esforço."
+
+  - id: primeiro_elogio_pos_gancho
+    situation: "Logo após abrir interação, primeira validação"
+    variants:
+      - tone: estrategico
+        text: "Você tem uma vibe muito boa, sério, eu tive que vir falar."
+        context_notes: "Elogio sobre vibe (intangível) > elogio sobre corpo. Mais original, menos pedreiro."
+      - tone: autentico
+        text: "Nossa, você é linda."
+        context_notes: "Direto. Funciona SE acompanhado de peito estufado + olho no olho + voz calma. Caso contrário vira gado."
+      - tone: comico
+        text: "Olha, eu juro que não saí de casa pra fazer abordagem, mas você acabou comigo, eu tive que vir."
+        context_notes: "Auto-deboche + elogio implícito. Setting up o frame de homem que tem opções."
+
+  - id: cumprimento_inicio_date
+    situation: "Mulher chega no primeiro encontro"
+    variants:
+      - tone: estrategico
+        text: "[levanta da cadeira] Oi! Nossa, tá gata. [abraça forte, dá dois beijinhos no rosto culturais, peito estufado, olho no olho]"
+        context_notes: "Cumprimentar SEMPRE de pé. Setting frame homem-mulher com toque físico imediato + elogio direto (postura compensa o risco)."
+      - tone: comico
+        text: "[de pé] Caralho, e eu fui burro de te dar a chance de chegar atrasada? Vem cá, olha como você tá."
+        context_notes: "Teasing leve no cumprimento se ela atrasou. Estabelece frame de que você não é babão."
+
+  - id: primeira_mensagem_tinder_match_com_dica
+    situation: "Tinder, match com mulher cujo perfil dá conteúdo"
+    variants:
+      - tone: estrategico
+        text: "[Foto basquete] Quantas vezes você tentou fazer essa cesta antes de tirar essa foto? 😂"
+        context_notes: "Teasing-desvalidação sobre algo específico do perfil. Força ela a se validar ('é porque eu jogo')."
+      - tone: estrategico
+        text: "[Camisa Palmeiras] Tava pensando em elogiar tua beleza, mas aí vi a camisa do Palmeiras… ECA kkkk"
+        context_notes: "Combina flirting + teasing. Camisa de time é hook clássico."
+      - tone: estrategico
+        text: "[Foto na academia] Até te chamaria pra um treino, mas acho que você não dá conta kkkk"
+        context_notes: "Teasing-desafio. Ela vai querer provar que dá conta."
+      - tone: comico
+        text: "[Quarto bagunçado nos stories] Não vai arrumar essa cama não? Tô de olho 👀 kkkk"
+        context_notes: "Teasing-desvalidação leve. Funciona muito em stories pessoais."
+
+  - id: primeira_mensagem_tinder_match_sem_dica
+    situation: "Tinder, match com mulher cujo perfil só tem fotos de espelho"
+    variants:
+      - tone: estrategico
+        text: "Seu perfil só tem foto de espelho, hein. Você tem algum outro hobby ou só fotografia de selfie? kkkk"
+        context_notes: "Pergunta aberta com teasing implícito. Vilaverde usou exatamente quando faltou hook visual."
+
+  - id: response_stories_mulher_postou_comida
+    situation: "Stories da mulher mostrando prato/jantar"
+    variants:
+      - tone: comico
+        text: "Açaí é a melhor comida do mundo? Olha, eu não concordo. Você pôs Nutella, montou tudo errado kkkk"
+        context_notes: "Teasing-discordar. Específico do que ela postou."
+      - tone: estrategico
+        text: "Almoço da realeza, hein. E onde é que tá o convite? kkkk"
+        context_notes: "Flirting indireto + provoca convite. Cria convite indireto sem pedir explicitamente."
+
+  - id: response_stories_academia
+    situation: "Stories da mulher na academia"
+    variants:
+      - tone: estrategico
+        text: "Você tem cara de quem treina fofo kkkk"
+        context_notes: "Teasing-desvalidação. Toca na insegurança comum de mulher na academia."
+
+  - id: convite_indireto_apos_papo
+    situation: "Conversa fluida em qualquer canal, hora de criar pretexto pro encontro"
+    variants:
+      - tone: estrategico
+        text: "Olha, a gente tem que sair pra tomar uma cerveja qualquer dia desses. Você precisa provar essa porcaria."
+        context_notes: "Convite indireto clássico. Use o que vocês conversaram como gancho (no caso cerveja)."
+      - tone: comico
+        text: "Já tô vendo a gente em 3 anos no nosso 1º ano de casados — você gritando comigo porque eu deixei a cozinha bagunçada."
+        context_notes: "Microfantasia + convite indireto. Pinta cenário lúdico."
+      - tone: estrategico
+        text: "Cara, se você gosta tanto disso, a gente tem que ir junto. Você vai ser minha mentora."
+        context_notes: "Cria papel/persona (mentora) que justifica encontro como missão."
+
+  - id: convite_direto_apos_indireto_aceito
+    situation: "Ela aceitou o convite indireto, hora de pegar contato"
+    variants:
+      - tone: estrategico
+        text: "Beleza, já que a gente vai sair, deixa eu pegar seu Instagram pra eu te chamar."
+        context_notes: "Casual, sem peso. Instagram como MEIO pra realizar o plano."
+      - tone: comico
+        text: "Tá, mas se tu me der um Instagram quebrado eu vou denunciar você. Deixa eu te seguir."
+        context_notes: "Teasing antes do pedido. Tira o peso da ação."
+
+  - id: mulher_olhou_balada_primeira_fala
+    situation: "Após contato visual sustentado + sinal não-verbal, chega na mulher na balada"
+    variants:
+      - tone: estrategico
+        text: "Se você continuar me olhando desse jeito, eu vou me sentir um pedaço de carne."
+        context_notes: "Teasing-desvalidação clássico de Vilaverde. Inverte o frame imediatamente — agora ela tem que se defender ('não, eu nem tava te olhando')."
+      - tone: comico
+        text: "Você é assustadora, sabia? Tá me olhando tão fixo que eu pensei que ia perder a mão."
+        context_notes: "Auto-deboche + teasing. Quebra tensão e mantém poder."
+
+  - id: pre_beijo_primeiro_encontro
+    situation: "Final do date, hora de fechar o beijo"
+    variants:
+      - tone: estrategico
+        text: "[Mão no ombro, puxa pra perto, contato visual sustentado, beijo na bochecha mantendo o contato visual, observa reação]"
+        context_notes: "Sem fala. CVC executado. Se ela quebra contato visual = não pronta. Se mantém = vai pra nuca e beijo."
+      - tone: direto
+        text: "[Pega na nuca, olha pra boca dela, olha pro olho, beijo]"
+        context_notes: "Pra quando o CVC já está visivelmente alinhado e ela já tá esperando. Sem hesitação."
+
+  - id: ela_disse_tem_namorado
+    situation: "Mulher diz 'eu tenho namorado' como educated rejection"
+    variants:
+      - tone: estrategico
+        text: "Tudo bem, sem problema. Foi um prazer conhecer você."
+        context_notes: "Aceitar com elegância. Não insistir. Cara confiante não força."
+      - tone: comico
+        text: "Caralho, então eu cheguei tarde. Bom, perdi minha chance, foi um prazer."
+        context_notes: "Auto-deboche dignificado. Sai sem peso, sem ressentimento."
+
+  - id: ela_dramou_voce_para_sair
+    situation: "Ela te convida pra sair na mesma noite, você quer fazer push"
+    variants:
+      - tone: estrategico
+        text: "Ah, hoje eu vou sair com uns amigos. Mas a gente se acerta."
+        context_notes: "Push clássico. Negar convite imediato. Cria scarcity. Use SÓ se ela já tá investida."
+      - tone: comico
+        text: "Olha, hoje à noite eu tô com agenda lotada, mas você passou no meu radar. Eu te chamo."
+        context_notes: "Auto-importância com humor. Estabelece dinâmica de que VOCÊ chama."
+
+  - id: ela_ficou_brava_com_teasing
+    situation: "Ela reagiu mal ao teasing (achou ofensivo)"
+    variants:
+      - tone: autentico
+        text: "Tá, foi brincadeira. Mas se tocou de verdade me avisa."
+        context_notes: "Recuo elegante. Mantém o frame mas reconhece se passou da linha."
+      - tone: comico
+        text: "Caralho, ela levou a sério. Olha, deixa eu te explicar como funciona meu humor pesado…"
+        context_notes: "Auto-deboche da própria provocação. Salva via meta-humor."
+
+  - id: bom_dia_treino_de_flow
+    situation: "Etapa 1 do treino de flow social — bom dia pra mulher bonita na rua"
+    variants:
+      - tone: estrategico
+        text: "Bom dia!"
+        context_notes: "Apenas isso. Olhar no olho, sorriso, vai embora. Etapa 1 pura."
+
+  - id: pedir_informacao_treino_de_flow
+    situation: "Etapa 2 do flow — pedir informação como pretexto"
+    variants:
+      - tone: estrategico
+        text: "Olha, com licença, você sabe onde fica o [lugar próximo]? Tô meio perdido aqui."
+        context_notes: "Pagar de turista. Local plausível. Dura 30-60s."
+
+  - id: pre_call_apos_pegar_instagram
+    situation: "Primeira mensagem no Instagram após pegar contato em cold approach"
+    variants:
+      - tone: estrategico
+        text: "E aí, [referência à brincadeira do encontro]. Tá pronta pra [atividade do convite indireto]? kkkk"
+        context_notes: "Linka direto com o que vocês acordaram. NÃO começa do zero ('oi tudo bem'). Use a piada interna."
+      - tone: comico
+        text: "Olha quem voltou. Você sumiu no Whatsapp mas eu não esqueci de ti."
+        context_notes: "Para após 1-2 dias de espera. Teasing com auto-presença."
+
+  - id: mulher_demorou_responder
+    situation: "Ela demorou pra responder ou foi seca, e você quer manter frame"
+    variants:
+      - tone: estrategico
+        text: "[Não responde imediatamente quando ela voltar. Espera mais tempo que ela demorou. Resposta curta com pico de emoção.]"
+        context_notes: "Não-script verbal — script de timing. Não puxa explicação dela ('por que demorou?')."
+      - tone: comico
+        text: "[Após 4h dela demorar 4 dias] Caralho, achei que tinha sido sequestrada. Tô feliz que tá viva kkkk"
+        context_notes: "Teasing direto sobre o sumiço dela. Funciona se a relação já tem brincadeiras."
+
+  - id: fora_de_flow_volta_pro_game
+    situation: "Cliente recém-divorciado primeira interação real depois de muito tempo"
+    variants:
+      - tone: autentico
+        text: "Olha, é a primeira vez em muito tempo que eu chego numa mulher assim. Eu nem sei direito como tô fazendo isso, só sei que tinha que vir."
+        context_notes: "Vulnerabilidade honesta vira flerte. Funciona pra cara recém-saído de relacionamento longo."
+
+  - id: gringa_lisboa_modelo_completo
+    situation: "Script da abordagem documentada com alemã em Lisboa (referência de execução completa)"
+    variants:
+      - tone: estrategico
+        text: |
+          "Hi! Say hi!" → "Where are you from?" → "Germany!" → "What's your name?"
+          → "Lula." → "Lula? L-O-U-L-A?"
+          [TEASING — quando ela não conseguiu falar seu nome: "Mu-ri-lo. Difícil né? Você tem cara de quem não consegue falar nome estrangeiro"]
+          → "When did you arrive?" → "Four days ago"
+          [FLIRTING] → "Well, I have good news. You just found the best tour guide in Lisbon. A Brazilian one."
+          [CONVITE INDIRETO + DIRETO] → "Deixa eu pegar seu Instagram, assim eu consigo te apresentar a cidade."
+          [PUSH no final] → "Ah, hoje eu vou sair com uns amigos." → ela: "Mas no meio de uma quarta?" → "Então agora você tá me julgando? kkk"
+        context_notes: "Modelo MASTER. Combina gancho + interação (3Ds + flirting) + convite indireto (guia turístico) + convite direto (Instagram) + push final. ~10 minutos."
+
+  - id: massagem_de_ego_call_to_action
+    situation: "Encerramento de qualquer abordagem/conversa sem pressão"
+    variants:
+      - tone: estrategico
+        text: "Foi um prazer te conhecer. Vamos marcar essa cerveja."
+        context_notes: "Sem desespero. Você plantou a semente, vai embora. Sai antes de exaurir."
+
+  - id: ela_disse_friendzone
+    situation: "Ela disse 'a gente é melhor como amigo' ou 'vamos com calma'"
+    variants:
+      - tone: estrategico
+        text: "Tudo bem, sem problema. Foi um prazer."
+        context_notes: "Aceitar com dignidade. NÃO insistir 'por que você não quer me beijar?' (caso clássico Vilaverde — francesa Buckingham Palace)."
+      - tone: comico
+        text: "Tá, então amigos. Mas só pra constar, eu sou péssimo de amigo. Eu te aviso quando mudar de ideia."
+        context_notes: "Reframe leve. Não rejeita o 'não' dela — só sinaliza que você não desaparece."

@@ -1,0 +1,85 @@
+---
+mind_id: erick_ronaldo
+display_name: Erick Ronaldo
+origin: br
+tier: flavor
+philosophical_alignment: greene_axis
+priority: P1
+generated: 2026-05-23
+notes: |
+  Tier 2 (volume + persona forte). 1M IG / 1.8M TikTok. Mora em Miami,
+  abordagens internacionais em inglês principalmente.
+
+  Volume gigante: 538 vídeos YT + 2288 TT clips. Filtrei pra top 80 YT
+  mais longos (>=10min) — ~32h. Brief diz "Foco: abordagens reais, padrões
+  de aproximação", não framework — então selecionei pelos LONGOS (onde tem
+  mais sequência de cantada/conversa completa) e ignorei o short-form
+  (redundante e seria 100h+).
+
+  IMPORTANTE: maior parte é inglês (Miami audience). Whisper PT-BR vai
+  errar bastante — talvez precise rodar com --language en pra essa parte.
+  Avaliar caso a caso na fase 2 (transcrição).
+---
+
+# Erick Ronaldo — Fontes Públicas
+
+## Tier 1 — YouTube (download primário, filtrado)
+
+- **YouTube oficial:** https://www.youtube.com/c/ErickRonaldo
+- **Channel ID:** https://www.youtube.com/channel/UC9PZGwif0PnI4eCC-rF8mxg
+  - 538 vídeos totais — coletamos top 80 mais longos (>=10min)
+  - Total estimado top 80: ~32h de áudio
+  - Vídeo mais longo: "PICKING UP GIRLS IN AUSTRALIA!" (~29min)
+
+## Tier 2 — TikTok (skip — redundante)
+
+- **TikTok:** https://www.tiktok.com/@erickronaldo_ (1.8M)
+  - 2288 vídeos, mas TODOS são <=5min (clips curtos)
+  - Considerados redundantes com o YT (mesmo conteúdo em formato shorter)
+  - Não baixados por padrão. Se quisermos depois pegar persona/tom curtos,
+    rodar coleta separada.
+
+## Tier 3 — Entrevistas sobre ele (referência)
+
+- **Important Miscellaneous Talks — Best Pickup Lines / Why he Started:**
+  https://creators.spotify.com/pod/show/glassford-crossfield/episodes/...
+
+## Plano de coleta
+
+```
+Fase 1.1 — Download yt-dlp top 80 YT longos
+  → corpus/erick_ronaldo/raw/audio/<video>.mp3
+  → ~32h áudio total
+
+Fase 1.2 — Whisper (LANGUAGE DETECTION! talvez en, não pt)
+  → corpus/erick_ronaldo/transcripts/<video>.txt
+  → estimativa ~400K tokens (en + pt misturado)
+
+Fase 1.3 — Consolidação
+  → corpus/erick_ronaldo/processed/full-corpus.md
+  → tags: country, language, approach_type
+```
+
+## Volume estimado final
+- ~400K tokens — alto volume mas semântica mais repetitiva (mesma estrutura
+  de abordagem em loop)
+- Útil pra extrair PADRÕES (não framework) — qual cantada repete, qual reage
+  bem, qual frame entra primeiro
+
+## Particularidades técnicas
+- yt-dlp via canal ID (mais confiável)
+- IDIOMA MISTO — vídeos em PT, EN, ES dependendo do país
+  - Default sugerido: rodar Whisper com `--language auto` (mlx-whisper
+    suporta detecção)
+  - Se sair ruim, separar por título (EN vs PT) e rodar batches
+- Áudios de campo em geral — Whisper vai ter dificuldade em ambientes
+  ruidosos (rua, balada)
+
+## Particularidades de extração
+- Foco em PATTERNS, não THEORY:
+  - Catalogar tipos de abordagem (compliment opener, question opener,
+    challenge opener, situational opener)
+  - Catalogar reações comuns (resistance, engagement, dismissal,
+    counter-question)
+  - Identificar o "tempo" típico (quantos turns até pedir número/insta)
+- Não esperar framework formal — é cara que faz, não cara que explica

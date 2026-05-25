@@ -1,0 +1,7 @@
+# JV Pimentel — coleta bloqueada via API/scrape automático
+# TikTok @jvpimeentel: "private or has embedding disabled"
+# Instagram @jvpimeentel: API quebrada (yt-dlp + instaloader = 403)
+# REQUER coleta manual ou login autenticado (cookies de sessão própria)
+# Adicione URLs aqui no formato:
+#   https://www.tiktok.com/@jvpimeentel/video/<ID>
+#   https://www.instagram.com/p/<shortcode>/

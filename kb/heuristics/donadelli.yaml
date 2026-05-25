@@ -1,0 +1,249 @@
+# FlirtAI KB — Donadelli — Heuristics
+# Regras práticas de masculinidade que NÃO são técnica de campo.
+# Donadelli é o "se você precisa de técnica pra pegar, você ainda não
+# trabalhou o suficiente o seu interno". CONTRAPONTO direto a Greene/Strauss-early.
+# Marca todas com axis trabalho_interno.
+
+schema_version: 1.0
+generated: 2026-05-25
+
+mind_id: donadelli
+philosophical_axis: trabalho_interno
+
+heuristics:
+  - id: trabalho_interno_antes_de_tecnica
+    rule: "Antes de buscar técnica de sedução, elimine o vício em pornografia e estabeleça propósito."
+    rationale: >
+      Técnica aplicada sobre substrato podre (homem viciado, sem energia,
+      sem propósito) é manipulação rasa que a mulher detecta. A energia
+      sexual drenada por pornografia diária deixa o homem como 'zumbi
+      drogado' — sem aura, sem magnetismo, sem coragem real. Nenhum script
+      compensa ausência de presença. A presença vem da retenção + propósito.
+    when:
+      - "Usuário pede primeiro script de conquista antes de admitir vício/baixa autoestima"
+      - "Usuário tentando 'técnica X' que funciona pra todo mundo mas não pra ele"
+      - "Usuário com padrão crônico de friendzone / ghosting"
+    counter_example: >
+      Se o usuário JÁ está há 60+ dias de NoFap, treina, tem propósito claro e
+      ainda assim trava em interações específicas — aí técnica de leitura
+      situacional (Greene/Strauss) é legítima. Não é universal anti-técnica.
+    source_refs:
+      - "À Deriva — todo o frame implícito; sedução nunca é técnica isolada, é consequência energética"
+      - "LifeHacker — 'tem fama, poder, carisma, influência sem falar, só com sua aura, presença'"
+    conflict_with:
+      - "greene:opening_techniques"
+      - "strauss:peacocking"
+      - "strauss:neg_negging"
+
+  - id: cold_turkey_sempre
+    rule: "Para vício (pornografia, redes sociais, drogas), corte de uma vez. Reduzir gradualmente prolonga sofrimento."
+    rationale: >
+      Donadelli adota a posição de cientistas comportamentais que mostraram
+      que parar de fumar é mais eficaz cold turkey do que gradualmente.
+      Aplica o mesmo a pornografia: minimizar não enfraquece o circuito
+      dopaminérgico — só cortar. Mesmo lógica para Instagram, doomscrolling,
+      qualquer comportamento compulsivo.
+    when:
+      - "Usuário admitindo vício e perguntando 'como reduzir aos poucos?'"
+      - "Reset / detox dopaminérgico"
+      - "Saída de relacionamento tóxico (no contact equivalente)"
+    counter_example: >
+      Para hábitos não-aditivos (dieta, sono, exercício) a abordagem gradual
+      pode ser melhor. Cold turkey é regra para CIRCUITO DOPAMINÉRGICO
+      sequestrado, não para tudo.
+    source_refs:
+      - "À Deriva — 'cientistas falam que pra parar de fumar a estratégia mais eficaz é cold turkey'"
+      - "LifeHacker — 'não minimizar, cortar. É mais difícil sim mas é mais eficaz'"
+
+  - id: presente_radical
+    rule: "Pratique presença radical — coma sem celular, conversa sem checar, sexo sem fantasia mental."
+    rationale: >
+      Inconsciência (estar 'pilotando no automático') é o veneno raiz
+      diagnosticado por Donadelli. Toda manipulação externa (indústria
+      pornográfica, redes sociais, fast food) explora a ausência de
+      presença. A volta à presença = reganho de soberania. E presença
+      genuína É magnetismo (mulher sente o homem que está 100% ali).
+    when:
+      - "Usuário queixando-se de procrastinação / distração crônica"
+      - "Usuário que não consegue 'ler' a mulher na hora (perde sinais)"
+      - "Antes de momentos críticos (encontros, decisões, entrevistas)"
+    counter_example: >
+      Presença RADICAL pode virar paralisia se o usuário tem TDAH severo
+      ou ansiedade aguda. Nestes casos, presença leve com âncoras
+      (respiração) antes de presença heavy de meditação.
+    source_refs:
+      - "LifeHacker — 'esteja lá, esteja presente. Tome um café, sinta o líquido descendo sua garganta'"
+      - "À Deriva — toda a passagem sobre mindfulness budista, monkey mind"
+
+  - id: ejaculacao_e_perda_energetica
+    rule: "Trate cada ejaculação como gasto consciente, não como descarga automática."
+    rationale: >
+      Período refratário biológico é ~14 dias para homeostasia completa
+      (recuperação de neurotransmissores, testosterona, foco, energia).
+      Ejacular todo dia = viver permanentemente em déficit energético.
+      Não é proibição — é CONTABILIDADE. 'Você quer trocar essa energia
+      por 3 segundos de prazer?'
+    when:
+      - "Antes de decidir gozar — pausa para perguntar se vale a pena"
+      - "Em períodos de criação intensa (lançamento, projeto, prova)"
+      - "Atletas antes de competição"
+    counter_example: >
+      Período de descanso/férias onde produtividade não é o foco — gozar
+      é legítimo, faz parte da homeostasia. Não vire neurótico do controle.
+    source_refs:
+      - "À Deriva — 'período refratário 14 dias até atingir homeostasia'"
+      - "À Deriva — 'eu preciso ser criativo. Se você tiver emprego seguro de boa, mas pra mim eu preciso dessa energia'"
+
+  - id: aura_emerge_nao_se_finge
+    rule: "Aura/presença é resultado de estado interno, não de postura aprendida. Não tente parecer alpha — VIRE."
+    rationale: >
+      'Posing' de masculinidade (ombros pra trás, voz grave forçada,
+      olhar duro) sem substrato é detectado em segundos. Mulher sente
+      a frequência energética antes de processar a aparência. A única
+      forma de aura genuína é via NoFap + treino + propósito + meditação.
+      É construção de meses, não pose de minutos. Contraste direto com
+      lógica Strauss-early de 'peacocking'.
+    when:
+      - "Usuário tentando 'parecer mais confiante'"
+      - "Antes de eventos importantes — focar em estado, não em postura"
+      - "Quando técnica de body language não está funcionando"
+    counter_example: >
+      Postura física DECENTE (não corcunda) e roupa adequada são higiene
+      básica, não pose. Não confundir com peacocking. Donadelli não nega
+      o básico — nega o teatral.
+    source_refs:
+      - "LifeHacker — 'tem fama, poder, carisma, influência sem falar, somente com sua aura, presença'"
+      - "À Deriva — toda crítica a 'querer ser aquele cara' (a fantasia da pornografia)"
+    conflict_with:
+      - "strauss:peacocking"
+      - "strauss:fake_it_till_make_it_alpha"
+
+  - id: prazos_concretos
+    rule: "Toda meta precisa de prazo. Sem prazo, subconsciente não trabalha — só fica desejando."
+    rationale: >
+      Heurística pragmática herdada de Napoleon Hill. 'Quanto dinheiro
+      você quer? Em quanto tempo?' Sem prazo, a mente trata como devaneio
+      e nada engaja. Com prazo, vira urgência e o subconsciente começa a
+      atrair circunstâncias / a pessoa começa a agir.
+    when:
+      - "Qualquer meta declarada — relacionamento, dinheiro, físico"
+      - "Quando usuário diz 'um dia eu vou...'"
+      - "Reset / reinício de jornada (definir 30/60/90 dias para checkpoints)"
+    counter_example: >
+      Prazos rígidos demais podem virar tirania ansiogênica. Use prazo como
+      norte, não como cerca. Permitir ajuste após reflexão honesta — não
+      após primeira dificuldade.
+    source_refs:
+      - "À Deriva — 'qual a soma de dinheiro? exata. E que prazo? sem prazo cara, boa sorte. 10 anos você não vai ter manifestado'"
+
+  - id: questionar_normal_e_higiene_mental
+    rule: "Faça periodicamente terceira-perspectiva sobre seu comportamento — 'como isso ficaria numa foto?'"
+    rationale: >
+      A técnica filosófica que SACOU Donadelli aos 19 (auto-observação
+      enquanto se masturbava → 'isso é ridículo, eu de bermuda no joelho
+      corcunda na frente de pixels'). É a meditação histórica grega:
+      assumir perspectiva de terceiro e analisar a cena. Funciona pra
+      qualquer comportamento compulsivo — comer, scroll, beber.
+    when:
+      - "Suspeita de vício / comportamento compulsivo"
+      - "Antes de tomar decisão importante (zoom out de perspectiva)"
+      - "Quando algo 'feels off' mas você não consegue articular"
+    counter_example: >
+      Aplicado obsessivamente vira auto-vigilância narcísica e paralisa.
+      Use em momentos pontuais, não como estado permanente.
+    source_refs:
+      - "À Deriva — 'meditação histórica, assumir terceira perspectiva, os gregos faziam isso'"
+      - "À Deriva — narrativa do momento da virada aos 19 com pornografia"
+
+  - id: nao_substituir_vicio_por_vicio
+    rule: "Sair de pornografia NÃO é virar 'caçador compulsivo de mulher real'. Isso é trocar vício por vício."
+    rationale: >
+      Heurística específica para a transição NoFap → vida real. Muitos
+      praticantes, ao sentir o pico de energia da semana 1-2, atacam
+      Tinder/baladas como se fosse o novo prêmio. Donadelli alerta: você
+      apenas mudou a substância — continua refém do circuito dopaminérgico.
+      Substitua por algo PRODUTIVO (criação, treino, projeto), não por
+      sexo de validação.
+    when:
+      - "Usuário em primeiras semanas de NoFap empolgado para 'colocar em prática'"
+      - "Usuário que já trocou pornografia por sexo casual e segue insatisfeito"
+      - "Detecção de 'novidade' como motor (cada nova mulher = novo vício)"
+    counter_example: >
+      Se o usuário está SOLTEIRO há muito tempo, sem qualquer conexão
+      real, COMEÇAR a sair e conhecer pessoas não é vício — é restaurar
+      vida social normal. Bom senso na aplicação.
+    source_refs:
+      - "À Deriva — 'a ideia não é substituir um vício com outro, é substituir com algo produtivo'"
+
+  - id: alimentacao_e_substrato
+    rule: "Alimentação importa — vegetarianismo/veganismo é opcional, mas comida industrial sabota energia sexual."
+    rationale: >
+      Donadelli é vegetariano por filosofia ('não preciso mais matar
+      animais nesse estágio de evolução'). Mais importante: o substrato
+      físico (testosterona, foco, energia) depende de alimentação real.
+      Comida processada + fast food = mesmo zumbi que pornografia faz.
+      Suplementação base: multivitamínico, zinco (testosterona), B12.
+    when:
+      - "Usuário com sintomas físicos de baixa energia mesmo praticando NoFap"
+      - "Usuário com pele ruim, olheiras, baixa libido real (não suprimida)"
+      - "Como complemento — não substituto — de NoFap"
+    counter_example: >
+      Não vire monge perfeito antes de começar — quem espera 'tudo certo
+      pra começar' nunca começa. Comece NoFap mesmo comendo mal e ajuste
+      depois.
+    source_refs:
+      - "À Deriva — passagem sobre vegetarianismo, suplementação, perda de força"
+
+  - id: nao_evangelize_quem_nao_pediu
+    rule: "Não tente convencer quem não pediu. Deixe o exemplo falar e responda apenas quem procura."
+    rationale: >
+      Posicionamento maduro de Donadelli após anos sofrendo polêmica.
+      Tentar convencer o viciado em pornografia é como tentar tirar crack
+      de quem ainda quer crack — gera reatância egoica e queima sua
+      credibilidade. Foque em quem JÁ percebeu o problema e está buscando
+      solução. 'Eu parei de tentar convencer outros — basta ir no canal
+      e ver os relatos.'
+    when:
+      - "Conversa com amigo/familiar resistente ao tema"
+      - "Quando o usuário quer 'salvar' alguém que não quer ser salvo"
+      - "Posicionamento de marca/conteúdo do próprio agente"
+    counter_example: >
+      Se a pessoa LITERALMENTE pediu sua opinião ou abriu o tema, aí
+      você fala com firmeza. A regra é sobre evangelização não-solicitada.
+    source_refs:
+      - "À Deriva — 'eu parei de tentar convencer outros, sei que é real pra mim, tenho dois mil alunos'"
+
+  - id: memento_mori_como_combustivel
+    rule: "Lembre-se diariamente da sua mortalidade — isso queima preguiça e covardia em segundos."
+    rationale: >
+      Frase estoica que Donadelli adota como mantra. 'Hoje pode ser seu
+      último dia. Por que esse mau humor? Por que está procrastinando?'
+      Funciona como interruptor de inércia. Steve Jobs usava. Marco Aurélio
+      usava. Não é pessimismo — é estimulante de presença.
+    when:
+      - "Manhãs apáticas / sem vontade de levantar"
+      - "Antes de decisões adiadas há semanas (medo de risco)"
+      - "Quando o usuário está em conflito sobre 'arriscar dar em cima'"
+    counter_example: >
+      Pessoa com transtorno depressivo grave PODE entrar em espiral com
+      memento mori. Use com pessoas saudáveis ou em recuperação estável.
+    source_refs:
+      - "LifeHacker — 'memento mori. Lembre-se de sua mortalidade. Steve Jobs fez muitas outras pessoas, Michael Aurelio'"
+
+  - id: matrix_e_orgulho_de_desperto
+    rule: "Cuidado com identidade 'desperto' / 'anti-matrix' — é só uma outra matrix de soberba intelectual."
+    rationale: >
+      Auto-crítica importante que Donadelli faz após sua fase de
+      teorias-da-conspiração. Quem se denomina 'desperto', 'woke',
+      'iluminado' apenas trocou de bolha. Pesquisas mostram que crentes
+      em conspiração são extremamente solitários. Tese: humildade
+      intelectual > certeza de superioridade.
+    when:
+      - "Usuário começando a se identificar como 'iluminado' ou 'red-pill'"
+      - "Usuário usando jargão de comunidade conspiratória como verdade absoluta"
+      - "Detecção de superioridade moral em si mesmo após NoFap"
+    counter_example: >
+      Não significa negar evidência ou aceitar tudo. Significa não fazer
+      da DESCOBERTA uma identidade soberba que isola.
+    source_refs:
+      - "À Deriva — 'formar movimento e se denominar woke ou iluminado anti-matrix isso em si é outra matrix'"

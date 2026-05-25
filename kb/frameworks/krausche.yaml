@@ -1,0 +1,296 @@
+---
+mind_id: krausche
+category: frameworks
+generated: 2026-05-25
+notes: |
+  Krausche raramente formaliza um "passo a passo" puro — ele alterna entre
+  método (Método Desenrolado, Robô Desenrolado, Lábia Irresistível) e
+  improvisação. Os frameworks abaixo são a estrutura por trás do discurso
+  dele, reconstruídos a partir do corpus. Quando o nome é dele, está em
+  aspas. Quando é nomeação nossa pra padrão recorrente, é descritivo.
+---
+
+frameworks:
+  - id: metodo_desenrolado
+    name: "Método Desenrolado"
+    description: |
+      Framework guarda-chuva da marca dele. Não é receita de pickup,
+      é um protocolo de transformação masculina que cobre desde
+      autoestima/corpo até abordagem/sexo/relacionamento. Sempre que
+      ele cita "Método Desenrolado", "Além da Conquista", "Geração D"
+      ou "Rei da Abordagem", está se referindo a recortes desse mesmo
+      protocolo.
+    structure:
+      - "PILAR 1 — Status social e valor: corpo (academia), estilo (roupa diferenciada, acessório), perfil de Instagram bom, conhecimento intelectual variado, pilar financeiro. 'Se você é autoconfiante, você é seguro.'"
+      - "PILAR 2 — Comunicação e lábia: saber conversar de qualquer assunto a nível 7/10, escuta ativa, storytelling pessoal, criar conexão por gosto em comum."
+      - "PILAR 3 — Abordagem: identificar oportunidade situacional > usar script pronto. Observar ambiente, detalhe, contexto antes de chegar."
+      - "PILAR 4 — Mensagem / online: análise de perfil, responder stories aleatórios (não biquíni), criar gatilhos de curiosidade e antecipação, calibragem de frequência."
+      - "PILAR 5 — Date e escalada física: lugar que ela gosta, tirar pressão de 'tem que ficar', toques em zonas neutras, leitura de linguagem corporal, transição pro beijo."
+      - "PILAR 6 — Sexo: comunicação, preliminares, olhar, perguntar, camisinha, pós-sexo."
+      - "PILAR 7 — Pós-conquista: relacionamento saudável, dependência emocional, leveza, autossuficiência mútua."
+    when_to_use:
+      - "Como mapa mental do que precisa estar minimamente OK antes do cara reclamar que 'mulher não dá moral'"
+      - "Quando o usuário tem múltiplos problemas simultâneos (timidez + zero shape + zero estilo + zero perfil) — diagnosticar qual pilar está mais furado"
+      - "Pra escolher por onde começar — sempre pelos pilares 1 e 2 antes de 3 e 4"
+    examples:
+      - "Aluno diz 'tomei fora de uma mulher bonita' → diagnóstico: pilar 1 (status/postura) ou pilar 3 (abordagem genérica)? Geralmente os dois."
+      - "Aluno diz 'minas não respondem meu direct' → pilar 4 (mensagem/perfil) provavelmente, mas conferir pilar 1 (perfil bom de Instagram)."
+    source_refs:
+      - "COMO_CRIAR_CONEXAO_COM_QUALQUER_MULHER_ATRAVES_DO_METODO_DESENROLADO"
+      - "PERCA_O_MEDO_DE_CHEGAR_EM_MULHER_BONITA"
+      - "APRENDA_A_LIDAR_COM_A_REJEICAO_E_AUMENTE_8X_SUA_AUTOESTIMA"
+
+  - id: abridor_cantada_e_emocao
+    name: "Cantada como Abridor + Assunto Real"
+    description: |
+      Visão dele sobre cantada: não é produto final, é abridor pra
+      tirar do "oi tudo bem". Função única é fazer rir nos primeiros
+      segundos e demonstrar interesse cedo. Depois disso, OBRIGATÓRIO
+      ir pra assunto que gere emoção/conexão — quem fica em loop de
+      cantadas perde.
+    structure:
+      - "ABRIDOR (cantada): contextual ao ambiente/visual dela. Faz rir, demonstra interesse, sinaliza que você não é genérico"
+      - "PAUSA: ela ri ou reage. Aqui ele para de cantar"
+      - "PUXADA: pergunta aberta ou observação que abra assunto real (gosto, viagem, hobby, signo, futuro)"
+      - "CONEXÃO: encontrar gosto em comum, compartilhar história semelhante, escutar mais que falar"
+      - "CALIBRAGEM: se assunto morre, voltar pra brincadeira/provocação leve. Se assunto rende, demonstrar interesse pelo que ela tá falando"
+      - "RETORNO ESTRATÉGICO DA CANTADA: usar de novo no ponto de pivô (sair pra outro lugar, partir pro beijo, marcar date)"
+    when_to_use:
+      - "Cold approach em balada/bar/festa/academia onde 'oi tudo bem' é morte certa"
+      - "Direct/mensagem como primeira frase pra fugir da pasta de inbox dela"
+      - "Quando o papo desaquece e precisa reinjetar energia"
+    examples:
+      - "'Tô na sala de embarque... ué, agora eu não sabia que eu pegava o avião na sala de embarque' → ela 'como assim?' → 'é, você fica moscando, eu pego esse avião' → ele faz rir → puxa assunto sobre destino dela"
+      - "'Você sabe que música é essa?' → 'qual?' → 'a do nosso primeiro beijo' → ri → 'inclusive, qual música que você mais gosta de ouvir no seu carro?'"
+    source_refs:
+      - "APRENDA_A_CRIAR_E_USAR_CANTADAS_E_NUNCA_MAIS_SAIA_DA_NOITE_ZERADO"
+      - "BATALHA_DE_CANTADAS_-_DESENROLANDO_AO_VIVO"
+
+  - id: gatilhos_mentais_em_conversa
+    name: "Gatilhos Mentais Aplicados a Direct/Conversa"
+    description: |
+      Krausche pega gatilhos de copywriting/vendas (antecipação,
+      curiosidade, escassez, autoridade) e plota em conversa íntima.
+      É a engrenagem por trás das "mensagens infalíveis" que ele vende.
+    structure:
+      - "ANTECIPAÇÃO: instalar mentalmente que você vai ver de novo. 'Vou ter que voltar aqui sempre', 'você vai ter que me apresentar a cidade', 'me leva no melhor restaurante'"
+      - "CURIOSIDADE: deixar gancho aberto sem entregar a resposta. 'Tem três coisas que eu quero experimentar aqui: queijo, trança e empada' — não diz a terceira"
+      - "ESCASSEZ DE SI: não responder o dia inteiro, mandar mensagem em horário específico, não ficar disponível 24h"
+      - "AUTORIDADE / STATUS SOCIAL: perfil bem montado, ser visto antes de chegar, dropar competência relevante (viagem, trabalho, hobby)"
+      - "RECIPROCIDADE: elogio sincero a algo não-óbvio (estilo, energia, dedicação) faz ela querer retribuir interesse"
+      - "PROVA SOCIAL: mostrar (sem ostentar) que você tem vida, amigos, rolê"
+    when_to_use:
+      - "Mensagem inicial em app ou direct quando ela já é cortejada por muitos"
+      - "Conversa que tá morrendo e precisa de gancho psicológico, não de mais perguntinhas"
+      - "Pra construir intimidade antes do encontro presencial (vídeo dele com a Pamela de UD)"
+    examples:
+      - "Conversa Tinder UD: 'Vou ter que voltar aqui sempre' (antecipação) + 'tem três coisas que eu quero experimentar aqui: queijo, trança e empada' (curiosidade) + 'fiquei sabendo que tem umas delícias de minas por aí' (callback à loja dela)"
+      - "Conversa noturna: 'acabei de lembrar de você que tô segurando um copo igual ao seu' (reciprocidade + pouco esforço, alto sinal)"
+    source_refs:
+      - "CONHECI_A_MENINA_MAIS_LEGAL_DO_MUNDO_PELO_TINDER_-_MARQUEI_UM_ENCONTRO_USANDO_O_METODO_DESENROLADO"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: leitura_de_sinais_5_segundos
+    name: "Leitura de Sinais em 5 Segundos (Pré-Aproximação)"
+    description: |
+      Tese dele: você decide se vai abordar e como vai abordar nos
+      primeiros 5 segundos de contato visual / observação. Sinais
+      positivos liberam aproximação direta; sinais negativos abortam
+      antes mesmo da fala. 'Você nem chega na hora que ela ia te dar
+      um fora.'
+    structure:
+      - "OBSERVAR: contato visual sustentado (3+ seg sem ela desviar) = positivo forte"
+      - "SORRISO RECÍPROCO: você sorriu → ela sorriu = segundo nível de validação"
+      - "TRONCO VIRADO: corpo dela direcionado pra você quando você se aproxima = engajamento"
+      - "AUSÊNCIA DE FUGA: ela não recua, não esquiva boca, não procura amigas, não fica no celular"
+      - "DECISÃO BINÁRIA: 2+ sinais positivos = aproximação direta. 1+ sinal negativo (procurar amigas, celular, postura fechada, corpo de lado) = abortar ou recalibrar"
+    when_to_use:
+      - "Antes de qualquer cold approach em ambiente público"
+      - "Pra economizar autoestima — não tomar foras evitáveis"
+      - "Pra distinguir 'ela tá tímida' de 'ela não tá afim'"
+    examples:
+      - "Bar em Floripa: menina olha fixo, ele olha de volta, ela sustenta, ele sorri, ela sorri → ele vai imediatamente: 'você não vai ficar me olhando de longe e não vir falar comigo, né?'"
+      - "Sinal de aborto: tá conversando com ela e ela 'tá procurando as amigas a todo tempo, no celular, com corpo de lado' → 'depois a gente se fala' e sai antes do fora"
+    source_refs:
+      - "OS_PRINCIPAIS_SINAIS_DE_ATRACAO_QUE_A_MULHER_DEMONSTRA_Linguagem_Corporal"
+      - "PERCA_O_MEDO_DA_REJEICAO_-_ABORDAGEM_PARA_NUNCA_MAIS_TOMAR_FORA"
+
+  - id: tres_assuntos_seducao
+    name: "Os 3 Assuntos que Seduzem"
+    description: |
+      Framework explícito dele: três temas que abrem a porta de
+      conexão em quase qualquer conversa com mulher. Não são assuntos
+      mágicos — são assuntos sobre os quais "toda mulher gosta de
+      falar", então o cara ouve mais e fala menos.
+    structure:
+      - "ASSUNTO 1 — FUTURO/AMBIÇÃO: planos, sonhos, onde quer chegar. Posiciona ele como ambicioso (mulher 'não tá nem aí pra onde você tá agora, ela vai reparar onde você quer chegar') e abre escuta sobre os sonhos dela"
+      - "ASSUNTO 2 — VIAGEM: 'se dinheiro não fosse o problema, qual o primeiro lugar que você teria vontade de conhecer?' → diagnóstica perfil (romântica/aventureira) e abre storytelling de experiências"
+      - "ASSUNTO 3 — SIGNO: 'as mulheres gostam de falar sobre signo/astrologia' — não precisa acreditar, precisa saber o básico pra render a conversa por horas"
+    when_to_use:
+      - "Date sem assunto definido"
+      - "Conversa de direct que estagnou em small talk"
+      - "Quando você não tem leitura específica dela ainda"
+    examples:
+      - "Date no barzinho: 'cara, se dinheiro não fosse problema, primeiro lugar que você ia conhecer?' → 'Maldivas' → 'por quê Maldivas?' → 'casamentos lindos, lugar romântico' → leitura: ela é romântica, não aventureira → ajustar próximo date"
+      - "'Que signo você é?' / 'tenho certeza que você é taurina' → ela ri/corrige → conversa estende"
+    source_refs:
+      - "3_ASSUNTOS_PARA_SEDUZIR_A_MULHER_NA_CONVERSA"
+      - "COMO_NUNCA_MAIS_FICAR_SEM_ASSUNTO_COM_ELA"
+
+  - id: protocolo_perda_de_timidez
+    name: "Protocolo de Perda de Timidez (Reps Sociais)"
+    description: |
+      Resposta estrutural dele a 'sou tímido': timidez é falta de
+      reps. Cérebro não tem prática de falar com desconhecido, então
+      trava. Solução é progressão de exposição — começa por
+      desconhecido qualquer (não-mulher), evolui pra grupos mistos,
+      depois pra alvo direto.
+    structure:
+      - "FASE 0 — CONHECIMENTO: aprender o que falar (assuntos, gatilhos, framework) pra não travar por falta de munição"
+      - "FASE 1 — RAPS DE CONVERSA: dar bom dia a desconhecidos, perguntar coisas aleatórias na rua/loja. Treinar comunicação sem peso sexual"
+      - "FASE 2 — ABORDAGEM INDIRETA EM GRUPO: chegar num grupo de mulheres como 'tímido que se perdeu dos amigos, posso ficar aqui um pouquinho?'. Quebra barreira sem pedir ficar"
+      - "FASE 3 — LEITURA DE SINAIS DENTRO DO GRUPO: identificar qual deu mais abertura, ir migrando o foco pra ela"
+      - "FASE 4 — TRANSIÇÃO PRA DIRETA: 'na verdade não foi pra fazer amizade que eu vim aqui, foi pra falar com você. Olha a coragem que eu tive'"
+      - "FASE 5 — ESCALADA FÍSICA: toques em zona neutra (ombro, braço), checar reciprocidade, partir pro beijo quando validações alinham"
+    when_to_use:
+      - "Cara cronicamente tímido que congela ao ver mulher bonita"
+      - "Cara que só consegue chegar quando bebeu — substituir álcool por reps"
+      - "Aluno iniciante que precisa de rampa, não de jogada avançada"
+    examples:
+      - "Treino de comunicação: 'bom dia, sabe que horas são?' pra desconhecidos por uma semana até virar automático"
+      - "Em festa, abordagem indireta: 'gente, tô morrendo de vergonha, perdi meus amigos, posso ficar aqui um pouquinho? Ah, e não sei dançar também, não riam de mim' → grupo recebe, ele lê quem deu mais abertura"
+    source_refs:
+      - "PERCA_SUA_TIMIDEZ_DE_UMA_VEZ_POR_TODAS..._-_Aula_do_curso_Alem_da_Conquista"
+      - "PERCA_O_MEDO_DA_REJEICAO_-_ABORDAGEM_PARA_NUNCA_MAIS_TOMAR_FORA"
+      - "PERCA_O_MEDO_DE_CHEGAR_EM_MULHER_BONITA"
+
+  - id: matematica_da_rejeicao_funil_vendas
+    name: "Matemática da Rejeição (Frame de Vendas)"
+    description: |
+      Reenquadramento estrutural da rejeição usando lógica de funil
+      de vendas. Krausche traz da experiência pré-Desenrolado como
+      vendedor: de cada 100 ligações, 90 nãos e 10 sims. Logo,
+      rejeição NÃO é dado sobre você — é variável estatística do
+      jogo. Quem absorve isso, sai do drama emocional.
+    structure:
+      - "PREMISSA: toda atividade de alto contato (vendas, abordagem, entrevista) tem taxa de rejeição alta por natureza"
+      - "REINTERPRETAÇÃO: cada não não é 'você é insuficiente', é 'esse contato não converteu — próximo'"
+      - "MELHORIA SOBRE OS NÃOS: análise pós-rejeição (foi abordagem? aparência? assunto? linguagem corporal?) → corrige variável → próximo rep"
+      - "FRAME DE QUEM TÁ PERDENDO: 'se ela não me quis, quem tá perdendo é ela, não eu' — não como negação, como postura"
+      - "PROTEÇÃO MENTAL: 'as pessoas que vão te julgar são as que nunca construíram nada'"
+    when_to_use:
+      - "Aluno que tomou fora forte e tá em queda de autoestima"
+      - "Cara que abandonou tentativa após 2-3 nãos e ficou em loop"
+      - "Antes de uma noite que ele precisa fazer 'volume' de aproximações"
+    examples:
+      - "Fui jogador de futebol, fiz teste em 30+ clubes, fui rejeitado em todos. Em vez de parar, dei um passo atrás (clube amador) e continuei até primeiro profissional me chamar"
+      - "Estagiário ligando pra CEO: 'a outra pessoa também caga, também tem problemas, ela já esteve no seu lugar. Tudo depende da forma em que você liga' → mudou tom de voz, postura, conversão subiu"
+    source_refs:
+      - "APRENDA_A_LIDAR_COM_A_REJEICAO_E_AUMENTE_8X_SUA_AUTOESTIMA"
+      - "PERCA_O_MEDO_DA_REJEICAO_-_ABORDAGEM_PARA_NUNCA_MAIS_TOMAR_FORA"
+
+  - id: date_baixa_pressao
+    name: "Date de Baixa Pressão (Tirar Obrigação)"
+    description: |
+      Principal diagnóstico dele sobre por que dates falham: a mulher
+      sente obrigação de ficar e isso gera repulsa. Solução: escolher
+      atividade leve (que ela goste), tirar de 'restaurante chique
+      onde tem que conversar X horas', fazer ela esquecer que é date.
+      Datas memoráveis dele: pular paraquedas, andar de balão,
+      futebol, surfar, parque.
+    structure:
+      - "DESCOBERTA DE GOSTO: já no direct, perguntar 'como quem não quer nada' o que ela gosta de fazer"
+      - "ESCOLHA DE ATIVIDADE: lugar/coisa que ela goste E você goste — gosto em comum elimina assunto forçado"
+      - "QUEBRA DE EXPECTATIVA: atividade ativa (esporte, parque, balão) > atividade passiva (restaurante) — pressão cai"
+      - "POSTURA DURANTE DATE: não falar de ex (dela ou sua), escutar mais que falar, storytelling sobre você em vez de listar conquistas, brincadeiras e provocação leve"
+      - "ESCALADA SEM PRESSA: toques em zona neutra > brincadeira > indireta > leitura > beijo. NUNCA pular pra beijo cedo"
+      - "TIRAR DE 'TEM QUE FICAR': verbalizar implicitamente que ela não precisa ficar. Faz ela querer ficar"
+    when_to_use:
+      - "Primeiro date, especialmente se conheceu por app"
+      - "Mulher que sinalizou no direct que 'não gosta de date' / 'fico desconfortável em date'"
+      - "Quando você quer aumentar chance de segundo encontro mesmo se não rolar fechamento no primeiro"
+    examples:
+      - "Em vez de jantar: 'vamos jogar futebol' ou 'vamos andar de balão' ou 'vamos correr'. Resultado: a Luana topou e foi de Mafra pra Floripa porque a vibe da proposta foi inusitada"
+      - "Date no parque + água de coco em vez de restaurante caro: 'você tira pressão, conhece a pessoa, num outro dia rola mais coisa com mais intimidade'"
+    source_refs:
+      - "COMO_CRIAR_CONEXAO_COM_QUALQUER_MULHER_ATRAVES_DO_METODO_DESENROLADO"
+      - "NUNCA_FACA_ISSO_PARA_TER_UM_DATE_PERFEITO_-_Desenrolado"
+      - "CHAMEI_A_GATA_DA_ACADEMIA_PARA_TREINAR_COMIGO_-_O_PAPO_RENDEU"
+
+  - id: protocolo_resposta_de_stories
+    name: "Protocolo de Resposta de Stories (Direct sem Tomar Vácuo)"
+    description: |
+      Receita específica pra direct via Instagram. Tese central:
+      stories de biquíni são armadilha (concorrência alta, ela
+      ignora); stories aleatórios/estéticos (livro, café, paisagem)
+      são oportunidade (concorrência zero, ela vê).
+    structure:
+      - "REGRA 1 — NUNCA STORIES DE BIQUÍNI/SENSUAL: concorrência saturada, vira reaçãozinha de foguinho, ela ignora"
+      - "REGRA 2 — STORIES ALEATÓRIOS SÃO OURO: livro, paisagem, café, comida, treino. Pouca gente responde. Você se diferencia"
+      - "REGRA 3 — ZERO REAÇÃO COM EMOJI: foguinho, coraçãozinho, palminha = morte. Ela 'curte de volta' e morre"
+      - "REGRA 4 — RESPOSTA = PERGUNTA ABERTA OU SUPOSIÇÃO: 'você tem cara de quem gosta de café bem docinho' (suposição) > 'oi tudo bem' (zero)"
+      - "REGRA 5 — ANÁLISE DE PERFIL ANTES: olhar destaques, fotos antigas, biografia. Comentar algo que NINGUÉM comentou ainda"
+      - "REGRA 6 — CALIBRAGEM DE FREQUÊNCIA: não falar o dia inteiro. Pouca mensagem com alto valor > muita com baixo. 'Vale mais você não mandar nada no meio do dia e falar nossa, acabei de lembrar de você, vi um copo igual ao seu'"
+    when_to_use:
+      - "Direct frio (não tem match nem conexão prévia)"
+      - "Match no Tinder que parou de responder"
+      - "Você quer construir intimidade antes do encontro presencial"
+    examples:
+      - "Stories dela com livro de biquíni: 'duvido que você já leu algum desses livros' → ela 'claro que li, adoro ler, tenho coleção inteira' → conversa abre. Ele jogou luz no que ninguém viu."
+      - "Stories dela tomando vinho: 'você não tem cara de quem gosta de vinho seco' → suposição → ela corrige → 'quando que a gente vai tomar um vinho junto?'"
+    source_refs:
+      - "COMO_CHEGAR_NA_MENINA_PELO_INSTAGRAM"
+      - "COMO_PUXAR_UMA_CONVERSA_COM_ELAS_NAS_REDES_SOCIAIS_E_MANTER_O_ASSUNTO_INTERESSANTE"
+      - "O_SEGREDO_COMPLETO_PARA_DESENROLAR_POR_MENSAGEM"
+
+  - id: regras_de_diferenciacao
+    name: "Regras de Diferenciação Estética/Comportamental"
+    description: |
+      Princípio operacional: em ambiente competitivo (balada,
+      direct, app), 95% dos caras fazem variações da mesma coisa.
+      Sobrevivência é não fazer o que todos fazem. Krausche aplica
+      isso em vestimenta, abordagem, mensagem e elogio.
+    structure:
+      - "ROUPA: 'nunca vá de preto pra balada, todos vão de preto'. Usar cor/acessório que destaca (calça de borboleta, colar de pérola, estilo identificável)"
+      - "ABORDAGEM: nunca 'oi, tudo bem, como você chama?' (entrevista de emprego). Nunca elogio de aparência ('linda, gata, olho lindo')"
+      - "MENSAGEM: nunca reaçãozinha de emoji. Nunca 'foto agora'. Nunca curtir biquíni"
+      - "ELOGIO: nunca aparência. Sempre detalhe não-óbvio (acessório, tatuagem, estilo, energia, dedicação a algo)"
+      - "POSTURA: nunca ombro fechado, olhar baixo. Sempre postura aberta, contato visual sustentado"
+      - "FREQUÊNCIA: nunca falar o dia inteiro. Sempre mensagem em horário específico, conteúdo específico"
+    when_to_use:
+      - "Antes de qualquer interação em ambiente de alta concorrência (balada, app, direct de mulher conhecida)"
+      - "Checklist mental quando aluno reclama 'não tô conseguindo nada' — provavelmente tá fazendo o que todos fazem"
+    examples:
+      - "Balada de laranja: 'tava num rolê de laranja, ninguém mais tava de laranja, conheci a menina de laranja' → cor virou abridor"
+      - "Direct: enquanto 100 caras mandam 'oi linda', você manda 'tem três coisas que eu quero experimentar aqui' (curiosidade) ou elogia o destaque de Florianópolis dela em vez do biquíni"
+    source_refs:
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"
+      - "4_COISAS_QUE_VOCE_NUNCA_DEVE_FAZER_AO_CHEGAR_EM_UMA_MULHER"
+      - "AS_3_MELHORES_FORMAS_DE_ELOGIAR_UMA_MULHER"
+
+  - id: polaridade_masculino_feminino
+    name: "Polaridade Masculino/Feminino (Modelo Energético)"
+    description: |
+      Modelo dele pra explicar dinâmica de atração. Não é ciência —
+      é metáfora operacional. Homem = energia masculina (ouve,
+      observa, age, protege, absorve problema). Mulher = energia
+      feminina (fala, sente, se expressa, é protegida). Quando
+      papéis se invertem ou se misturam, atração some.
+    structure:
+      - "REGRA DA ESCUTA: 'energia feminina libera quando ela tá falando, testosterona masculina sobe quando ele tá ouvindo' — você ouve mais, ela sente mais, atração sobe"
+      - "REGRA DA PROTEÇÃO: 'mulher precisa sentir que com você ela tá protegida' — postura, segurança, autoconfiança como sinalizadores"
+      - "REGRA DO PORTO SEGURO: 'o homem absorve os problemas, ele é o porto seguro dela'. Reclamar/desabafar todo dia quebra polaridade"
+      - "REGRA DO BAD BOY ≠ DESINTERESSE: 'bad boy = autoconfiante. Não é cara que não liga, é cara que se basta'. Atrai porque sinaliza energia masculina forte"
+      - "REGRA DO TEMPO MASCULINO: homem precisa de espaço próprio (amigos, futebol, silêncio no carro). Quem grudou e perdeu isso perde polaridade"
+    when_to_use:
+      - "Diagnosticar relacionamento que esfriou ('por que ela esfriou?' → cara virou amiga/desabafador)"
+      - "Aluno que reclama 'sou bonzinho demais e perco pra bad boy' — não é bondade que é o problema, é falta de polaridade"
+      - "Pra justificar por que escutar funciona melhor que falar"
+    examples:
+      - "Cara que conta TODOS os problemas pra namorada → ela esfria. Solução: absorver, processar com amigos, voltar pra ela como porto"
+      - "No date: ele faz pergunta aberta, deixa ela falar, escuta. Ela sai 'me senti ouvida pela primeira vez' — atração subiu sem ele performar nada"
+    source_refs:
+      - "3_ASSUNTOS_PARA_SEDUZIR_A_MULHER_NA_CONVERSA"
+      - "O_QUE_OS_HOMENS_NAO_TEM_CORAGEM_DE_PERGUNTAR_PARA_AS_MULHERES"
+      - "CHAMEI_A_GATA_DA_ACADEMIA_PARA_TREINAR_COMIGO_-_O_PAPO_RENDEU"
+      - "NAO_SEJA_REPELENTE_DE_MULHER_-_3_COISAS_QUE_ELAS_ODEIAM_EM_QUALQUER_HOMEM"

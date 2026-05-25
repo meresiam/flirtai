@@ -1,0 +1,109 @@
+---
+mind_id: robert_glover
+display_name: Dr. Robert Glover
+origin: usa
+tier: foundation
+philosophical_alignment: glover_axis
+priority: P0
+generated: 2026-05-23
+notes: |
+  Contraponto filosófico ao Greene/Strauss-early. Cura o "Nice Guy Syndrome" —
+  homens covertly controlling que mascaram necessidades.
+
+  Tem material gratuito ABUNDANTE: site próprio com aulas em vídeo, audio series
+  de 4 partes grátis, canal YouTube ativo. Mais farto que Greene em material livre.
+---
+
+# Robert Glover — Fontes Públicas
+
+## Tier 1 — Site oficial + recursos gratuitos diretos
+
+- **Site oficial:** https://drglover.com/
+- **Dr. Robert Glover (página com slides):** https://drglover.com/dr-robert-glover/
+- **All The Way In (curso intro grátis):** https://drglover.com/all-the-way-in/
+- **All The Way In | Intro Video:** https://drglover.com/all-the-way-in-introduction/
+- **TPI University (catálogo de cursos):** https://www.drglover.net/tpi-university.html
+
+⭐ **CRÍTICO:** Glover oferece audio series de 4 partes "Breaking Free From the Nice Guy Syndrome" GRATUITO via cadastro no site. Vale baixar logo no início — material denso, do próprio autor.
+
+## Tier 2 — YouTube canais oficiais
+
+- **YouTube principal (@drrobertglover):** https://www.youtube.com/user/drrobertglover
+- **YouTube alternativo (c/RobertGlover):** https://www.youtube.com/c/RobertGlover
+- **YouTube novo (@drgloverofficial):** [confirmar via canal — mencionado em search results]
+
+### Palestras notáveis no canal
+- **Boldness in the Era of #MeToo (Free to the World):**
+  https://www.youtube.com/watch?v=hhxwC14PRw8
+
+- **Glover on The 21 Report with George Bruno (Full Interview, 4K):**
+  https://www.youtube.com/watch?v=ERxdqSUczyk
+
+## Tier 3 — Entrevistas longas em podcasts
+
+- **The Art of Charm #145 — No More Mr. Nice Guy:**
+  https://theartofcharm.com/podcast-episodes/episode-dr-robert-glover-no-more-mr-nice-guy/
+
+- **The Newman Podcast (2010):**
+  https://www.thenewmanpodcast.com/2010/06/nice-guy/
+
+- **Knowledge for Men #30:**
+  https://www.knowledgeformen.com/podcast-dr-robert-glover/
+
+- **Man Talks — No More Mr. Nice Guy, Death, And Learning To Allow:**
+  https://mantalks.com/podcast/dr-robert-glover-no-more-mr-nice-guy-death-and-learning-to-allow/
+
+- **The Dad Edge — No More Mr. Nice Guy:**
+  https://thedadedge.com/mister-nice-guy/
+
+- **Dad The Best I Can — Dr. Robert Glover:**
+  https://dadthebestican.com/no-more-mr-nice-guy/
+
+- **Apple Podcasts — No More Mr. Nice Guy with Dr. Robert Glover:**
+  https://podcasts.apple.com/us/podcast/no-more-mr-nice-guy-with-dr-robert-glover/id852561607?i=1000374486372
+
+## Tier 4 — Entrevistas YouTube adicionais
+
+- **Rowan Andrews interviews Dr Robert Glover:**
+  https://www.youtube.com/watch?v=CSTBZfjULO0
+
+- **Dr. Robert Glover Talks No More Mr. Nice Guy, Modern Men, Challenges With Women:**
+  https://www.youtube.com/watch?v=S3uFCRCocXo
+
+- **No More Mr Nice Guy — Robert Glover Interview:**
+  https://www.youtube.com/watch?v=mjXWzseQ8Ug
+
+- **Patrick Bet-David interview (mencionado nos search results)** — buscar URL exata
+
+## Plano de coleta
+
+```
+Fase 1.1 — Cadastro no drglover.com → download audio series gratuito 4 partes
+  → corpus/glover/raw/breaking-free-audio/
+  → ESSENCIAL — explicação canônica do framework Nice Guy em voz do autor
+
+Fase 1.2 — Scrape drglover.com (página All The Way In + intro video)
+  → corpus/glover/raw/site/
+
+Fase 1.3 — Download YouTube (canal oficial + entrevistas Tier 3 + 4)
+  → corpus/glover/raw/audio/<episode>.mp3
+  → ~12-15 episódios @ avg 1h = ~14h áudio + audio series 4h = 18h total
+
+Fase 1.4 — Whisper large-v3
+  → corpus/glover/transcripts/
+  → ~180-220K tokens
+
+Fase 1.5 — Consolidação
+  → corpus/glover/processed/full-corpus.md
+  → corpus/glover/processed/by-topic/{nice-guy-syndrome,covert-contracts,dating,marriage}.md
+```
+
+## Volume estimado final
+- ~200K-240K tokens (mais farto que os outros 2 — Glover é prolífico em conteúdo livre)
+
+## Frameworks-alvo da extração
+1. **Nice Guy Syndrome** — sintomas, diagnóstico, etiologia
+2. **Covert Contracts** — "se eu fizer X, ela vai fazer Y" sem combinar
+3. **Boldness** — pedir, expressar, ocupar espaço
+4. **Setting the frame** — não administrar percepção dela
+5. **Integrity** — alinhamento entre o que sente, pensa, diz, faz

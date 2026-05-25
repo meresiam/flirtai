@@ -1,0 +1,191 @@
+---
+mind_id: erick_ronaldo
+category: heuristics
+generated: 2026-05-25
+---
+
+heuristics:
+  - id: aborde_em_segundos_nao_minutos
+    rule: "Aborde nos primeiros 3-5 segundos depois de ver a mulher — não 'pense'."
+    rationale: |
+      Erick repete em vídeos que 'it took me like 20 seconds of courage to come up
+      to you' como ponto positivo — mas o ponto é que ele ABORDA em <30s.
+      Quanto mais tempo entre ver e abordar, maior a aprovação social
+      necessária e menor a chance de fechar. Aprovação não vem; só
+      ansiedade.
+    when:
+      - "Cold approach na rua, praia, faculdade, bar"
+      - "Quando a janela é curta (ela tá andando, indo embora)"
+    counter_example: |
+      Em ambiente de social circle (festa de amigos, trabalho), abordagem
+      relâmpago pode parecer estranha — ali é melhor construir contexto
+      antes.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "PICKING_UP_CONFIDENCE_IN_NASHVILLE"
+
+  - id: peca_numero_nao_instagram
+    rule: "Sempre peça NÚMERO, não Instagram. Instagram é desfecho de quem perdeu."
+    rationale: |
+      Erick é explícito: 'I don't use Instagram, Instagram is bad for you,
+      very addictive'. Quando ela oferece Instagram, ele aceita só como
+      backup — mas o default é insistir em número. Número = compromisso real
+      e canal direto. Instagram = limbo onde DMs morrem.
+    when:
+      - "Toda abordagem cold default"
+      - "Quando ela tenta oferecer Insta como 'meio termo'"
+    counter_example: |
+      Influencers/criadoras de conteúdo onde Instagram é canal profissional —
+      ali aceita Insta sem drama porque é o ambiente nativo dela.
+    source_refs:
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: compliment_especifico_nunca_generico
+    rule: "Compliment tem que ser ESPECÍFICO (sapato, sorriso, sardas) — nunca 'you're hot'."
+    rationale: |
+      Erick raramente fala 'you're sexy' ou 'you're hot'. Sempre é
+      'I love your shoes' / 'I love your freckles' / 'where did you get
+      that smile' / 'your eyes look like the ocean'. Específico prova que
+      ele OLHOU pra ela, genérico prova que ela só é mais uma. Diferença
+      entre cara que tá flertando e cara que tá pedindo.
+    when:
+      - "Opener de qualquer approach"
+      - "Quando você não tem prop ou pretext"
+    counter_example: |
+      Em contexto onde ela claramente está se vestindo pra atenção (festa
+      temática, evento), 'you look amazing' direto funciona porque é o
+      feedback que ela espera — sem precisar de especificidade.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "RIZZING_UP_GIRLS_WITH_YOUR_PICKUP_LINES"
+
+  - id: anuncie_o_que_voce_e_fazer
+    rule: "Anuncie a cantada antecipadamente ('I had to build up the courage / I'm shooting my shot')."
+    rationale: |
+      Erick frequentemente fala 'I had to build up the courage to come and
+      say that' ou 'I'm just shooting my shot, life is short'. Isso é
+      vulnerabilidade calculada — admite que é cantada, o que paradoxalmente
+      desarma a mulher (não está sendo enganada) e te coloca como cara que
+      faz, não cara que tenta esconder.
+    when:
+      - "Quando o pretext está se esticando demais"
+      - "Quando ela tá começando a desconfiar"
+      - "Pra fechar com elegância depois de rejeição"
+    counter_example: |
+      Em context strategic (Tinder, social circle game) anunciar 'estou
+      cantando você' destrói a tensão sexual. Heurística é específica pra
+      cold approach face-to-face.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: saia_antes_de_exaurir
+    rule: "Feche o número e SAIA. Não fique mais 2 minutos 'consolidando'."
+    rationale: |
+      Padrão observável: Erick fecha número e em ~10s já está em 'lovely
+      meeting you / I love you / bye'. Quem fica depois do número entra em
+      território onde só pode perder valor — ela já disse sim, agora é
+      hora de criar tensão pelo afastamento, não diluir pela presença.
+    when:
+      - "Logo após ela digitar/passar o número"
+      - "Quando a conversa começou a ficar repetitiva"
+    counter_example: |
+      Se a química está muito alta e ela claramente quer continuar a
+      conversa (te chama pra sentar, oferece bebida), saída forçada parece
+      ensaiada. Ali, leia o sinal e fique.
+    source_refs:
+      - "How_far_would_you_drive_for_a_sneaky_link"
+      - "Picking_up_girls_with_your_PICKUP_LINES"
+
+  - id: trate_namorado_como_problema_dele_nao_seu
+    rule: "Quando ela diz 'tenho namorado', responda leve ('the good ones always do') e siga."
+    rationale: |
+      Erick nunca discute, nunca pressiona, nunca tenta convencer. Responde
+      com humor ('You want a better one?' / 'I'm going to go jump off a
+      cliff') e sai. Isso preserva frame (não é desespero) e mantém porta
+      aberta pra futuro (ela lembra como 'aquele cara legal'). Discutir
+      namorado = perder duas vezes.
+    when:
+      - "Toda menção a namorado/marido"
+      - "Quando ela usa namorado como soft-rejection"
+    counter_example: |
+      Quando ela claramente está mencionando o namorado como
+      desabafo/insatisfação ('é complicado / a gente tá brigando') — ali
+      vale aprofundar com curiosidade, não fechar.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+      - "PICKING_UP_GIRL_S_IN_MY_3_000_DOLLAR_COSTUME"
+
+  - id: use_o_idioma_dela
+    rule: "Cumprimente no idioma/dialeto dela — mesmo que seja só 2 palavras."
+    rationale: |
+      Erick usa 'Que bola hacer' (cubano), 'Pana marico chama' (venezuelano),
+      'Mas paisa que una arepa' (colombiano paisa), 'Habibi' (árabe),
+      'Yagshamash' (polonês), 'Je t'aime beaucoup' (francês). Isso cria
+      conexão instantânea — sinaliza que ele PRESTA ATENÇÃO em quem ela é,
+      não trata todas igual. Funciona melhor que qualquer cantada.
+    when:
+      - "Quando descobre origem dela"
+      - "Em cidades cosmopolitas (Miami é o caso máximo)"
+    counter_example: |
+      Em cidade homogênea/conservadora onde ela cresceu na mesma cultura que
+      você, isso não tem efeito. Reservar pra ambientes multiculturais.
+    source_refs:
+      - "Do_what_makes_you_HAPPY"
+      - "Rejecting_girls_because_of_their_ASTROLOGY_SIGN"
+
+  - id: pergunta_provocativa_acelera_intimidade
+    rule: "Faça UMA pergunta provocativa logo após o nome — pula 5 etapas de small talk."
+    rationale: |
+      'When is the last time you cried?' / 'How far would you drive for a
+      sneaky link?' / 'What's your favorite position?' / 'What's your body
+      count?'. Cada uma pula direto pra território normalmente reservado pra
+      data #3. Cria intimidade artificial mas funcional — e separa as
+      receptivas (que riem e respondem) das fechadas (que vazam).
+    when:
+      - "Depois do nome e cumprimento, antes do number ask"
+      - "Quando você precisa filtrar fast quem é jogo e quem não é"
+    counter_example: |
+      Ambiente formal/profissional onde a provocação parece harassment. Em
+      networking de trabalho, manter perguntas culturalmente neutras.
+    source_refs:
+      - "HOW_CAN_A_GUY_TAKE_YOU_HOME"
+      - "How_far_would_you_drive_for_a_sneaky_link"
+      - "Do_what_makes_you_HAPPY"
+
+  - id: trate_rejeicao_como_dado_nao_julgamento
+    rule: "Quando levar não, fale 'I'm going to go jump off a cliff' e segue pra próxima."
+    rationale: |
+      Erick literalmente repete essa frase como ritual. Vira a rejeição em
+      piada autodepreciativa que LIBERA ele do peso emocional e mostra pra
+      câmera (e pra mulher que rejeitou) que ele não está investido. É
+      sinalização social: 'I have abundance, this didn't dent me.'
+    when:
+      - "Logo após qualquer 'no'"
+      - "Pra processar rejeição em volume (muitas approaches por sessão)"
+    counter_example: |
+      Quando a interação foi profunda (vocês conversaram 10 minutos, ela
+      compartilhou algo real), tratar com piada parece insensível. Ali, sai
+      com 'I get it, thanks for being honest, have a great day'.
+    source_refs:
+      - "I_m_6_feet_can_I_get_your_number"
+
+  - id: contexto_seu_e_irrelevante_ate_provado
+    rule: "Nunca venda seu currículo/origem/profissão — só responda quando perguntado."
+    rationale: |
+      Erick NUNCA chega falando 'sou youtuber com 1M de seguidores'. Quando
+      ela pergunta, ele dá detalhe ('this is for a cringy YouTube video') —
+      mas nunca lidera com status. O status que precisa ser anunciado
+      depreciaria como prova de insegurança. Quem é alto valor não precisa
+      anunciar.
+    when:
+      - "Toda abordagem inicial"
+      - "Quando você tem credenciais legítimas mas pode parecer 'tryhard'"
+    counter_example: |
+      Quando a credencial É o pretext legítimo da interação (você é
+      personal trainer no ambiente da academia, médico no hospital), ali
+      profissão entra natural — não é venda, é contexto.
+    source_refs:
+      - "How_to_transform_your_dating_life_in_just_90_days"
+      - "Picking_up_girls_with_your_PICKUP_LINES"
