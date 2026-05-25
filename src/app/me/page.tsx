@@ -20,6 +20,7 @@ import {
   type ContextLifeId,
   type RelationshipId,
 } from "@/lib/flirt/me-onboarding";
+import { ME_PAGE_DISPLAY_CAP } from "@/lib/flirt/me-limits";
 
 interface Demographics {
   relationship?: RelationshipId;
@@ -331,7 +332,7 @@ export default function MePage() {
           >
             {profile?.winSamples.length ? (
               <ul className="space-y-2">
-                {profile.winSamples.slice(-20).reverse().map((sample, i) => (
+                {profile.winSamples.slice(-ME_PAGE_DISPLAY_CAP).reverse().map((sample, i) => (
                   <li
                     key={`win-${i}`}
                     className="rounded-2xl border border-emerald-300/15 bg-emerald-300/[0.04] px-4 py-3 text-sm text-white/85"
@@ -354,7 +355,7 @@ export default function MePage() {
           >
             {profile?.redPatterns.length ? (
               <ul className="space-y-2">
-                {profile.redPatterns.slice(-20).reverse().map((pattern, i) => (
+                {profile.redPatterns.slice(-ME_PAGE_DISPLAY_CAP).reverse().map((pattern, i) => (
                   <li
                     key={`red-${i}`}
                     className="rounded-2xl border border-amber-300/15 bg-amber-300/[0.04] px-4 py-3 text-sm text-white/85"

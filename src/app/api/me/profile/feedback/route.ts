@@ -5,16 +5,18 @@ import { Prisma } from "@prisma/client";
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
 import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
+import {
+  WIN_SAMPLES_DB_CAP,
+  RED_PATTERNS_RAW_DB_CAP,
+} from "@/lib/flirt/me-limits";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 // W6 — feedback inline em SuggestionCard.
 // Sem classificador LLM (decisão Wave 6): apenas grava raw. W8 consolida em padrões.
-// Cap defensivo: 100 winSamples, 200 redPatternsRaw (drop oldest).
+// WR-05 — caps importados de me-limits.ts (compartilhados com me-context e /me page).
 
-const WIN_SAMPLES_CAP = 100;
-const RED_PATTERNS_RAW_CAP = 200;
 const FEEDBACK_RATE_LIMIT_PER_HOUR = 120;
 
 const requestSchema = z.object({
@@ -105,7 +107,7 @@ export async function POST(request: Request) {
 
   if (parsed.rating === "worked") {
     const cleanedReds = redsRaw.filter((v) => v !== suggestionText);
-    const nextWins = appendCapped(wins, suggestionText, WIN_SAMPLES_CAP);
+    const nextWins = appendCapped(wins, suggestionText, WIN_SAMPLES_DB_CAP);
     await prisma.userProfile.update({
       where: { userId },
       data: {
@@ -120,7 +122,7 @@ export async function POST(request: Request) {
     });
   } else {
     const cleanedWins = wins.filter((v) => v !== suggestionText);
-    const nextReds = appendCapped(redsRaw, suggestionText, RED_PATTERNS_RAW_CAP);
+    const nextReds = appendCapped(redsRaw, suggestionText, RED_PATTERNS_RAW_DB_CAP);
     await prisma.userProfile.update({
       where: { userId },
       data: {

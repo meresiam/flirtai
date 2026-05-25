@@ -2,10 +2,11 @@
 // Constrói o bloco "Sobre o usuário" injetado no system prompt do /api/coach.
 // Marcado com cache_control: ephemeral pelo caller — o conteúdo só muda quando
 // o user edita /me, e o último N de winSamples/redPatterns é capado pra evitar
-// inflar o prompt (cap defensivo de 12 itens cada na render, mesmo que o DB
-// guarde até 100/200).
+// inflar o prompt (cap ME_CONTEXT_RENDER_CAP definido em me-limits; o DB guarda
+// até WIN_SAMPLES_DB_CAP / RED_PATTERNS_RAW_DB_CAP — ver feedback/route.ts).
 
 import type { CoachToneId } from "@/lib/flirt/system-prompt";
+import { ME_CONTEXT_RENDER_CAP } from "@/lib/flirt/me-limits";
 
 export type MeContextInput = {
   tone?: CoachToneId | null;
@@ -19,7 +20,8 @@ export type MeContextInput = {
   onboardingDone?: boolean;
 };
 
-const RENDER_CAP = 12;
+// WR-05 — alias local pro cap importado, pra preservar legibilidade do código abaixo.
+const RENDER_CAP = ME_CONTEXT_RENDER_CAP;
 
 export function buildMeContext(profile: MeContextInput | null | undefined): string | null {
   if (!profile) return null;
