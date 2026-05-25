@@ -95,7 +95,12 @@ export const useFlirtStore = create<FlirtState>()(
         if (get().isBootstrapping) return;
         set({ isBootstrapping: true, bootstrapError: null });
         try {
-          const response = await fetch("/api/contacts", { cache: "no-store" });
+          // WR-01 — `include=messages` é obrigatório aqui: o shell renderiza
+          // conversationHistory direto do cache do store. Listagens enxutas
+          // (ex: /desenrolos) chamam /api/contacts sem o param e ficam leves.
+          const response = await fetch("/api/contacts?include=messages", {
+            cache: "no-store",
+          });
           if (response.status === 401) {
             if (typeof window !== "undefined") {
               window.location.href = "/login";

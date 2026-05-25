@@ -10,6 +10,9 @@ import { serializeContact } from "@/lib/serializers";
 // Mantém payload bounded mesmo com queries pesadas.
 const SEARCH_QUERY_MAX = 80;
 const CONTACTS_LIST_LIMIT = 500;
+// WR-01 — cap de mensagens por contato quando o caller pede include=messages.
+// 50 cobre o histórico recente que o shell renderiza sem inflar payload.
+const MESSAGES_INCLUDE_TAKE = 50;
 
 const ratingValue = z.number().min(0).max(10).nullable().optional();
 
@@ -64,6 +67,12 @@ export async function GET(request: Request) {
       }
     : null;
 
+  // WR-01 — `messages` é opt-in via ?include=messages. Listagens enxutas
+  // (ex: /desenrolos) omitem o param e recebem só os campos do contato.
+  // Quando incluído, aplicamos take=MESSAGES_INCLUDE_TAKE pra capar payload
+  // mesmo em users com histórico longo. `serializeContact` tolera `messages: undefined`.
+  const includeMessages = searchParams.get("include") === "messages";
+
   const contacts = await prisma.contact.findMany({
     where: {
       userId,
@@ -72,11 +81,14 @@ export async function GET(request: Request) {
     },
     orderBy: { updatedAt: "desc" },
     take: CONTACTS_LIST_LIMIT,
-    include: {
-      messages: {
-        orderBy: { createdAt: "asc" },
-      },
-    },
+    include: includeMessages
+      ? {
+          messages: {
+            orderBy: { createdAt: "asc" },
+            take: MESSAGES_INCLUDE_TAKE,
+          },
+        }
+      : undefined,
   });
 
   return NextResponse.json({
