@@ -241,6 +241,10 @@ export function FlirtAiShell() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [searchValue, setSearchValue] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [streamingText, setStreamingText] = useState<{
+    contactId: string;
+    text: string;
+  } | null>(null);
   const commandPaletteRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -296,7 +300,12 @@ export function FlirtAiShell() {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [selectedContact?.conversationHistory.length, selectedContactId, isTyping]);
+  }, [
+    selectedContact?.conversationHistory.length,
+    selectedContactId,
+    isTyping,
+    streamingText?.text.length,
+  ]);
 
   useEffect(() => {
     setSidebarOpen(false);
@@ -486,12 +495,14 @@ export function FlirtAiShell() {
     adjustHeight(true);
     setShowCommandPalette(false);
     setIsTyping(true);
+    setStreamingText({ contactId, text: "" });
 
     try {
       const response = await fetch("/api/coach", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "text/event-stream",
         },
         body: JSON.stringify({
           contactId,
@@ -500,15 +511,72 @@ export function FlirtAiShell() {
         }),
       });
 
-      const payload = (await response.json()) as CoachChatResponse | { error: string };
-      if (!response.ok || !("assistantMessage" in payload)) {
-        throw new Error(
-          "error" in payload ? payload.error : "O FLIRT A.I não conseguiu responder.",
-        );
+      if (!response.ok || !response.body) {
+        let errMessage = "O FLIRT A.I não conseguiu responder.";
+        try {
+          const errPayload = (await response.json()) as { error?: string };
+          if (errPayload.error) errMessage = errPayload.error;
+        } catch {
+          // body might not be JSON — fall through with default message
+        }
+        throw new Error(errMessage);
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let donePayload: (CoachChatResponse & { messageId: string }) | null = null;
+      let streamError: { message: string; status?: number } | null = null;
+
+      readLoop: while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const parts = buffer.split("\n\n");
+        buffer = parts.pop() ?? "";
+        for (const part of parts) {
+          if (!part.trim()) continue;
+          let event = "message";
+          let dataRaw = "";
+          for (const line of part.split("\n")) {
+            if (line.startsWith("event:")) event = line.slice(6).trim();
+            else if (line.startsWith("data:")) dataRaw += line.slice(5).trimStart();
+          }
+          if (!dataRaw) continue;
+          let data: unknown;
+          try {
+            data = JSON.parse(dataRaw);
+          } catch {
+            continue;
+          }
+          if (event === "delta") {
+            const chunk = (data as { text?: string })?.text ?? "";
+            if (chunk) {
+              setStreamingText((prev) =>
+                prev && prev.contactId === contactId
+                  ? { contactId, text: prev.text + chunk }
+                  : { contactId, text: chunk },
+              );
+            }
+          } else if (event === "done") {
+            donePayload = data as CoachChatResponse & { messageId: string };
+            break readLoop;
+          } else if (event === "error") {
+            streamError = data as { message: string; status?: number };
+            break readLoop;
+          }
+        }
+      }
+
+      if (streamError) {
+        throw new Error(streamError.message || "O FLIRT A.I não conseguiu responder.");
+      }
+      if (!donePayload) {
+        throw new Error("Stream terminou sem resposta. Tenta de novo.");
       }
 
       startTransition(() => {
-        applyCoachResponse(contactId, payload);
+        applyCoachResponse(contactId, donePayload!);
       });
     } catch (error) {
       const fallbackMessage: ConversationMessage = {
@@ -529,6 +597,7 @@ export function FlirtAiShell() {
       );
     } finally {
       setIsTyping(false);
+      setStreamingText(null);
     }
   }
 
@@ -779,16 +848,38 @@ export function FlirtAiShell() {
                             key={suggestion.text}
                             type="button"
                             onClick={() => fillSuggestion(suggestion)}
+                            title={
+                              suggestion.likelyResponse
+                                ? `Resposta provável: ${suggestion.likelyResponse}`
+                                : undefined
+                            }
                             className="rounded-[22px] border border-white/10 bg-white/[0.05] px-3 py-3 text-left transition hover:bg-white/[0.08] hover:text-white"
                           >
                             <div className="flex items-center justify-between gap-3">
-                              <span className="text-[10px] uppercase tracking-[0.18em] text-white/35">
-                                {labelTone(suggestion.tone)}
-                              </span>
+                              <div className="flex flex-wrap items-center gap-1.5">
+                                <span className="text-[10px] uppercase tracking-[0.18em] text-white/35">
+                                  {labelTone(suggestion.tone)}
+                                </span>
+                                {suggestion.risk ? (
+                                  <span
+                                    className={cn(
+                                      "rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.12em]",
+                                      riskBadgeClass(suggestion.risk),
+                                    )}
+                                  >
+                                    {labelRisk(suggestion.risk)}
+                                  </span>
+                                ) : null}
+                              </div>
                               <span className="text-[11px] text-white/35">Usar</span>
                             </div>
                             <p className="mt-2 text-sm text-white/88">{suggestion.text}</p>
                             <p className="mt-2 text-xs text-white/45">{suggestion.why}</p>
+                            {suggestion.likelyResponse ? (
+                              <p className="mt-2 text-[11px] italic text-white/55">
+                                Provável resposta dela: {suggestion.likelyResponse}
+                              </p>
+                            ) : null}
                           </button>
                         ))}
                       </div>
@@ -805,8 +896,32 @@ export function FlirtAiShell() {
                 ))}
 
                 <AnimatePresence>
-                  {isTyping ? (
+                  {streamingText &&
+                  streamingText.contactId === selectedContact?.id ? (
                     <motion.div
+                      key="streaming-bubble"
+                      className="rounded-[28px] border border-white/[0.08] bg-white/[0.04] px-5 py-5 backdrop-blur-2xl"
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 14 }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <FlirtMonogram />
+                        <span className="text-[11px] uppercase tracking-[0.18em] text-white/38">
+                          FLIRT
+                        </span>
+                      </div>
+                      <p
+                        aria-live="polite"
+                        className="mt-3 whitespace-pre-wrap text-sm leading-6 text-white/92"
+                      >
+                        {streamingText.text}
+                        <span className="ml-1 inline-block h-3 w-[2px] translate-y-[2px] animate-pulse bg-white/70" />
+                      </p>
+                    </motion.div>
+                  ) : isTyping ? (
+                    <motion.div
+                      key="typing-indicator"
                       className="w-fit rounded-full border border-white/[0.06] bg-white/[0.03] px-4 py-2 backdrop-blur-2xl"
                       initial={{ opacity: 0, y: 14 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -1175,6 +1290,18 @@ function labelTone(tone: ReplySuggestion["tone"]) {
   if (tone === "confident") return "Confiante";
   if (tone === "intriguing") return "Intrigante";
   return "Direta";
+}
+
+function labelRisk(risk: ReplySuggestion["risk"]) {
+  if (risk === "Safe") return "Segura";
+  if (risk === "Risky") return "Arriscada";
+  return "Faca afiada";
+}
+
+function riskBadgeClass(risk: ReplySuggestion["risk"]) {
+  if (risk === "Safe") return "border-emerald-400/30 bg-emerald-400/10 text-emerald-300";
+  if (risk === "Risky") return "border-amber-400/30 bg-amber-400/10 text-amber-200";
+  return "border-rose-400/30 bg-rose-400/10 text-rose-200";
 }
 
 function labelStatus(status: ContactRecord["status"]) {

@@ -8,6 +8,7 @@ import { prisma } from "@/lib/db";
 import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
 import { buildSystemPrompt } from "@/lib/flirt/system-prompt";
 import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
+import { extractStringField } from "@/lib/flirt/partial-json";
 import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
 import { decryptToken } from "@/lib/profile-watch/token-crypto";
 import { statusToDb } from "@/lib/serializers";
@@ -17,6 +18,9 @@ import type {
   MessageInsight,
   ReplySuggestion,
 } from "@/types/flirt";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const HISTORY_CAP = 20;
 const SUMMARY_THRESHOLD = 30;
@@ -141,111 +145,154 @@ export async function POST(request: Request) {
     mode,
   };
   const startedAt = Date.now();
+  const rateRemaining = rate.remaining.toString();
 
-  let response: Anthropic.Message;
-  try {
-    response = await client.messages.create({
-      model,
-      max_tokens: 2048,
-      system: [
-        {
-          type: "text",
-          text: buildSystemPrompt(mode),
-          cache_control: { type: "ephemeral" },
-        },
-      ],
-      messages: messagesForLlm,
-      tools: [coachToolSchema],
-      tool_choice: { type: "tool", name: COACH_TOOL_NAME },
-    });
-  } catch (error) {
-    const status = (error as { status?: number })?.status ?? 502;
-    const message =
-      status === 404
-        ? `Modelo "${model}" não está disponível na sua conta Anthropic. Confira ANTHROPIC_MODEL.`
-        : error instanceof Error
-          ? error.message
-          : "O FLIRT A.I não conseguiu responder.";
-    await traceCoachCall(traceInput, {
-      inputTokens: 0,
-      outputTokens: 0,
-      cacheReadTokens: 0,
-      cacheCreationTokens: 0,
-      latencyMs: Date.now() - startedAt,
-      status: "error",
-      errorMessage: message,
-    });
-    return NextResponse.json({ error: message }, { status: status === 404 ? 500 : 502 });
-  }
+  const sseStream = new ReadableStream<Uint8Array>({
+    async start(controller) {
+      const encoder = new TextEncoder();
+      const writeEvent = (event: string, data: object) => {
+        controller.enqueue(
+          encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`),
+        );
+      };
 
-  const usage = response.usage as Anthropic.Usage & {
-    cache_read_input_tokens?: number;
-    cache_creation_input_tokens?: number;
-  };
-  await traceCoachCall(traceInput, {
-    inputTokens: usage.input_tokens ?? 0,
-    outputTokens: usage.output_tokens ?? 0,
-    cacheReadTokens: usage.cache_read_input_tokens ?? 0,
-    cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
-    latencyMs: Date.now() - startedAt,
-    status: "ok",
+      let stream: ReturnType<Anthropic["messages"]["stream"]> | null = null;
+      try {
+        stream = client.messages.stream({
+          model,
+          max_tokens: 2048,
+          system: [
+            {
+              type: "text",
+              text: buildSystemPrompt(mode),
+              cache_control: { type: "ephemeral" },
+            },
+          ],
+          messages: messagesForLlm,
+          tools: [coachToolSchema],
+          tool_choice: { type: "tool", name: COACH_TOOL_NAME },
+        });
+
+        let accumulatedJson = "";
+        let sentLength = 0;
+
+        for await (const event of stream) {
+          if (
+            event.type === "content_block_delta" &&
+            event.delta.type === "input_json_delta"
+          ) {
+            accumulatedJson += event.delta.partial_json;
+            const text = extractStringField(accumulatedJson, "assistantMessage");
+            if (text.length > sentLength) {
+              writeEvent("delta", { text: text.slice(sentLength) });
+              sentLength = text.length;
+            }
+          }
+        }
+
+        const finalMsg = await stream.finalMessage();
+        const usage = finalMsg.usage as Anthropic.Usage & {
+          cache_read_input_tokens?: number;
+          cache_creation_input_tokens?: number;
+        };
+        await traceCoachCall(traceInput, {
+          inputTokens: usage.input_tokens ?? 0,
+          outputTokens: usage.output_tokens ?? 0,
+          cacheReadTokens: usage.cache_read_input_tokens ?? 0,
+          cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
+          latencyMs: Date.now() - startedAt,
+          status: "ok",
+        });
+
+        const toolBlock = (finalMsg.content as Anthropic.ContentBlock[]).find(
+          (block): block is Anthropic.ToolUseBlock => block.type === "tool_use",
+        );
+        if (!toolBlock) {
+          writeEvent("error", {
+            message: "Resposta sem tool_use. Tenta de novo.",
+            status: 502,
+          });
+          return;
+        }
+
+        const llmResponse = toolBlock.input as CoachChatResponse;
+
+        const [, assistantMessage] = await prisma.$transaction([
+          prisma.message.create({
+            data: { contactId, sender: "user", content: prompt },
+          }),
+          prisma.message.create({
+            data: {
+              contactId,
+              sender: "assistant",
+              content: llmResponse.assistantMessage,
+              suggestions: llmResponse.suggestions as unknown as object,
+              insight: llmResponse.insight as unknown as object,
+            },
+          }),
+          prisma.contact.update({
+            where: { id: contactId },
+            data: {
+              name: llmResponse.contact.name || contact.name,
+              source: llmResponse.contact.source || contact.source,
+              status: statusToDb(llmResponse.contact.status),
+              attractionLevel: llmResponse.contact.attractionLevel,
+              personalityType:
+                llmResponse.contact.personalityType || contact.personalityType,
+              interests: llmResponse.contact.interests?.length
+                ? llmResponse.contact.interests
+                : contact.interests,
+              tags: llmResponse.contact.tags?.length
+                ? llmResponse.contact.tags
+                : contact.tags,
+              lastInteractionSummary:
+                llmResponse.contact.lastInteractionSummary || prompt.slice(0, 280),
+            },
+          }),
+        ]);
+
+        const payload: CoachChatResponse & { messageId: string } = {
+          ...llmResponse,
+          suggestions: llmResponse.suggestions as ReplySuggestion[],
+          insight: llmResponse.insight as MessageInsight,
+          messageId: assistantMessage.id,
+        };
+
+        writeEvent("done", payload);
+      } catch (error) {
+        const status = (error as { status?: number })?.status ?? 502;
+        const message =
+          status === 404
+            ? `Modelo "${model}" não está disponível na sua conta Anthropic. Confira ANTHROPIC_MODEL.`
+            : error instanceof Error
+              ? error.message
+              : "O FLIRT A.I não conseguiu responder.";
+        await traceCoachCall(traceInput, {
+          inputTokens: 0,
+          outputTokens: 0,
+          cacheReadTokens: 0,
+          cacheCreationTokens: 0,
+          latencyMs: Date.now() - startedAt,
+          status: "error",
+          errorMessage: message,
+        });
+        writeEvent("error", {
+          message,
+          status: status === 404 ? 500 : 502,
+        });
+      } finally {
+        controller.close();
+      }
+    },
   });
 
-  const toolBlock = response.content.find(
-    (block): block is Anthropic.ToolUseBlock => block.type === "tool_use",
-  );
-  if (!toolBlock) {
-    return NextResponse.json(
-      { error: "Resposta sem tool_use. Tenta de novo." },
-      { status: 502 },
-    );
-  }
-
-  const llmResponse = toolBlock.input as CoachChatResponse;
-
-  const [, assistantMessage] = await prisma.$transaction([
-    prisma.message.create({
-      data: { contactId, sender: "user", content: prompt },
-    }),
-    prisma.message.create({
-      data: {
-        contactId,
-        sender: "assistant",
-        content: llmResponse.assistantMessage,
-        suggestions: llmResponse.suggestions as unknown as object,
-        insight: llmResponse.insight as unknown as object,
-      },
-    }),
-    prisma.contact.update({
-      where: { id: contactId },
-      data: {
-        name: llmResponse.contact.name || contact.name,
-        source: llmResponse.contact.source || contact.source,
-        status: statusToDb(llmResponse.contact.status),
-        attractionLevel: llmResponse.contact.attractionLevel,
-        personalityType: llmResponse.contact.personalityType || contact.personalityType,
-        interests: llmResponse.contact.interests?.length
-          ? llmResponse.contact.interests
-          : contact.interests,
-        tags: llmResponse.contact.tags?.length
-          ? llmResponse.contact.tags
-          : contact.tags,
-        lastInteractionSummary:
-          llmResponse.contact.lastInteractionSummary || prompt.slice(0, 280),
-      },
-    }),
-  ]);
-
-  const payload: CoachChatResponse & { messageId: string } = {
-    ...llmResponse,
-    suggestions: llmResponse.suggestions as ReplySuggestion[],
-    insight: llmResponse.insight as MessageInsight,
-    messageId: assistantMessage.id,
-  };
-
-  return NextResponse.json(payload, {
+  return new Response(sseStream, {
     headers: {
-      "X-RateLimit-Remaining": rate.remaining.toString(),
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
+      "X-Accel-Buffering": "no",
+      "X-RateLimit-Remaining": rateRemaining,
     },
   });
 }
