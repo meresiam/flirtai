@@ -158,6 +158,7 @@ model Message {
   content     String
   suggestions Json?
   insight     Json?
+  attachments Json?
   createdAt   DateTime      @default(now()) @map("created_at")
 
   contact Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)

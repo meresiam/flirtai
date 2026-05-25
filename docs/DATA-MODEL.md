@@ -80,13 +80,16 @@ Histórico da conversa entre `User` e uma `Contact`. Inclui sugestões e insight
 | `contactId`   | String FK→Contact     |                                               |
 | `sender`      | MessageSender enum    | `user` · `assistant` · `contact`              |
 | `content`     | String                |                                               |
-| `suggestions` | Json?                 | `[{tone, text, why}]` quando assistant        |
+| `suggestions` | Json?                 | `[{tone, text, why, risk, likelyResponse}]` quando assistant |
 | `insight`     | Json?                 | `{interestLevel, read, move, avoid}`          |
+| `attachments` | Json?                 | W3/C6 — anexos do turno do user (imagens). Shape `[{type, mediaType, name, data?}]` |
 | `createdAt`   | DateTime              |                                               |
 
 Index: `(contactId, createdAt)` — leitura cronológica.
 
-> Cap de contexto: rota `/api/coach` envia só as **8 mensagens mais recentes** pra LLM.
+> Cap de contexto: rota `/api/coach` envia só as **20 mensagens mais recentes** pra LLM (HISTORY_CAP, elevado em W1/C5).
+
+> **W3 / C6 (24-05-2026):** `attachments` é populado **apenas no turno do user** quando o shell anexa imagem. Cada item: `type: "image"`, `mediaType: "image/png" | "image/jpeg" | "image/webp" | "image/gif"`, `name`, `data` (base64 puro, sem prefixo `data:`). O conteúdo da imagem é repassado como `image` block na call Anthropic (vision substitui Tesseract.js client-side). Decisão MVP: base64 inline no DB pra simplicidade; migrar pra URL/R2 depois não exige migration nova (mesmo campo Json, shape extensível).
 
 ### `Analysis`
 Cache de análises agregadas por contato (não usado no MVP, reservado pra futuro).
@@ -142,6 +145,7 @@ Ordem cronológica das migrations aplicadas no schema do core (não inclui Profi
 | `20260524240000_encrypt_anthropic_api_key`| encrypt_anthropic_api_key| **W1 / C2**     | DROP `anthropic_api_key` plaintext + ADD `anthropic_api_key_encrypted`  |
 | `20260524240100_add_conversation_summary` | add_conversation_summary | **W1 / C5**     | ADD `contact.conversation_summary` pra rolling summary via Haiku        |
 | `20260524235721_add_profile_error_count`  | add_profile_error_count  | **W4 / M7**     | contador pra backoff exponencial no cron-runner                         |
+| `20260525010000_add_message_attachments`  | add_message_attachments  | **W3 / C6**     | ADD `message.attachments JSONB` pra anexos multimodais (vision substitui Tesseract) |
 
 ---
 
