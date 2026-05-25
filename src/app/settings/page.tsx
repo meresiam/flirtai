@@ -148,7 +148,13 @@ export default function SettingsPage() {
     }
   }, []);
 
-  async function save(payload: Record<string, unknown>, successMessage = "Atualizado!") {
+  // WR-04 — retorna boolean pro caller poder reverter UI otimista (ex:
+  // handleSaveCoachTone) quando o PATCH falha. Forms tradicionais (perfil,
+  // conta, key, notificações) ignoram o retorno — só mostram setError().
+  async function save(
+    payload: Record<string, unknown>,
+    successMessage = "Atualizado!",
+  ): Promise<boolean> {
     setSaving(true);
     setError(null);
     setSuccess(null);
@@ -169,8 +175,10 @@ export default function SettingsPage() {
       setApiKey("");
       setSuccess(successMessage);
       window.setTimeout(() => setSuccess(null), 2000);
+      return true;
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Erro ao salvar.");
+      return false;
     } finally {
       setSaving(false);
     }
@@ -190,8 +198,16 @@ export default function SettingsPage() {
   }
 
   async function handleSaveCoachTone(tone: CoachToneId | null) {
+    // WR-04 — radio é optimistic: pinta o novo valor antes do PATCH. Se o
+    // servidor falha, save() retorna false e a gente reverte pro valor
+    // anterior pra UI não mentir ("Tom aplicado" + servidor com tom antigo).
+    const previous = coachTone;
     setCoachTone(tone ?? "");
-    await save({ coachTone: tone }, tone ? `Tom "${tone}" aplicado.` : "Tom default restaurado.");
+    const ok = await save(
+      { coachTone: tone },
+      tone ? `Tom "${tone}" aplicado.` : "Tom default restaurado.",
+    );
+    if (!ok) setCoachTone(previous);
   }
 
   async function handleSaveNotifications(event: React.FormEvent<HTMLFormElement>) {
