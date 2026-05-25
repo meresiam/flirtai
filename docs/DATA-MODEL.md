@@ -84,12 +84,14 @@ Index: `(contactId, happenedAt DESC)` — timeline cronológica descendente no p
 > **Shape de `extracted`:**
 > - `greenFlags: string[]` — sinais positivos novos detectados no encontro (até 6 itens). Merge dedup com `Contact.greenFlags` existente.
 > - `redFlags: string[]` — sinais de alerta novos (até 6 itens). Merge dedup com `Contact.redFlags`.
-> - `escalation: "regrediu" | "estagnou" | "avançou" | "indefinido"` — leitura do estágio do relacionamento depois do encontro.
+> - `escalation: "regrediu" | "estagnou" | "avancou" | "indefinido"` — leitura do estágio do relacionamento depois do encontro. **Sem acento** (ver nota abaixo).
 > - `mood: "leve" | "tenso" | "intenso" | "frustrante" | "neutro"` — temperatura emocional do user no encontro.
 > - `nextMove: string` — 1 frase PT-BR com a recomendação concreta de próximo passo (≤180 chars).
 > - `summary: string` — 1-2 frases factuais do encontro (≤240 chars). Vira `Contact.lastInteractionSummary`.
 > - `attractionDelta: "down" | "same" | "up"` — sinaliza se `Contact.attractionLevel` deve descer/subir/ficar. Aplicado na rota com clamp em `Low|Medium|High`.
 > - `userRedPatterns?: string[]` — opcional, até 3 itens. Padrões problemáticos do **homem** detectados no relato (ex: "ele insistiu apesar do desinteresse claro"). Quando presente, vai pra `UserProfile.redPatterns` (cap 200 — reusa `RED_PATTERNS_RAW_DB_CAP` por enquanto, W8 consolida).
+
+> **IN-01 — Enums sem acento (decisão consciente):** os literais de `escalation` no DB/tool/Zod são `avancou` (não `avançou`), `regrediu`, `estagnou`, `indefinido`. Anthropic `input_schema.enum` não garante unicode normalization no output do LLM, e mistura de `"avançou"` vs `"avancou"` faria o Zod rejeitar silenciosamente. Os labels com acento ficam só no frontend (`ESCALATION_LABEL` em `src/components/encounter/encounter-card.tsx`). Mesma regra vale para `mood` se um dia precisar de "frustrante" → cuidado com mistura `ç`/`c` em fixes futuros.
 
 Relations: `contact` (n-1).
 

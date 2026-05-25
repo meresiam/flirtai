@@ -8,6 +8,11 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 export const ENCOUNTER_TOOL_NAME = "submit_encounter_extract";
 
+// IN-01 — Enums em snake_case SEM ACENTO. Anthropic tool input_schema enums
+// nao garantem unicode normalization; o LLM as vezes devolve com acento
+// ("avançou" vs "avancou") e o Zod rejeitaria. Frontend traduz pra labels
+// com acento via ESCALATION_LABEL / MOOD_LABEL em encounter-card.tsx.
+// Ver docs/DATA-MODEL.md secao EncounterLog (shape de `extracted`).
 export const ESCALATION_VALUES = [
   "regrediu",
   "estagnou",
