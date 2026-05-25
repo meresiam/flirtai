@@ -15,7 +15,6 @@ import { statusToDb } from "@/lib/serializers";
 import {
   imageAttachmentSchema,
   MAX_ATTACHMENTS_PER_TURN,
-  type ImageAttachmentPayload,
 } from "@/lib/flirt/attachments";
 import { extractContactAvatar } from "@/lib/flirt/avatar-vision";
 import type {
@@ -293,21 +292,6 @@ export async function POST(request: Request) {
             ? `[${attachments.length} imagem(ns) anexada(s)]`
             : "");
 
-        // W3/M4 — tenta auto-detectar avatar dela quando o contato ainda não tem
-        // e o usuário anexou imagem. Falhas são silenciosas (não bloqueiam o turn).
-        let detectedAvatar: ImageAttachmentPayload | null = null;
-        if (!contact.avatarUrl && attachments.length) {
-          try {
-            detectedAvatar = await extractContactAvatar({
-              client,
-              attachments,
-              contactName: contact.name,
-            });
-          } catch {
-            detectedAvatar = null;
-          }
-        }
-
         const userAttachmentsForDb = attachments.length
           ? attachments.map((attachment) => ({
               type: attachment.type,
@@ -334,9 +318,6 @@ export async function POST(request: Request) {
             llmResponse.contact.lastInteractionSummary ||
             persistedUserPrompt.slice(0, 280),
         };
-        if (detectedAvatar) {
-          contactUpdate.avatarUrl = `data:${detectedAvatar.mediaType};base64,${detectedAvatar.data}`;
-        }
 
         const [, assistantMessage] = await prisma.$transaction([
           prisma.message.create({
@@ -370,6 +351,30 @@ export async function POST(request: Request) {
         };
 
         writeEvent("done", payload);
+
+        // WR-02 — avatar-vision sai do critical path. Roda em background
+        // DEPOIS do "done" pra não bloquear o turno com 500-1500ms extra de
+        // Haiku call. Persiste em update separado (sacrifica atomicidade,
+        // recuperável no próximo turn). Falhas são silenciosas.
+        if (!contact.avatarUrl && attachments.length) {
+          extractContactAvatar({
+            client,
+            attachments,
+            contactName: contact.name,
+          })
+            .then((detected) => {
+              if (!detected) return;
+              return prisma.contact.update({
+                where: { id: contactId },
+                data: {
+                  avatarUrl: `data:${detected.mediaType};base64,${detected.data}`,
+                },
+              });
+            })
+            .catch(() => {
+              // swallow — recuperável no próximo turn
+            });
+        }
       } catch (error) {
         const status = (error as { status?: number })?.status ?? 502;
         const message =
