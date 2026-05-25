@@ -36,6 +36,10 @@ interface ExtractContactAvatarInput {
   client: Anthropic;
   attachments: ImageAttachmentPayload[];
   contactName: string;
+  // WR-05 — opcional pra cancelar a chamada Haiku quando o request principal
+  // for abortado (client fechou aba, etc). Compatível com Anthropic SDK que
+  // aceita { signal } no 2º arg de messages.create.
+  signal?: AbortSignal;
 }
 
 interface AvatarToolResult {
@@ -48,6 +52,7 @@ export async function extractContactAvatar({
   client,
   attachments,
   contactName,
+  signal,
 }: ExtractContactAvatarInput): Promise<ImageAttachmentPayload | null> {
   if (!attachments.length) return null;
 
@@ -76,18 +81,21 @@ export async function extractContactAvatar({
   ].join("\n");
 
   try {
-    const result = await client.messages.create({
-      model: AVATAR_MODEL,
-      max_tokens: AVATAR_MAX_TOKENS,
-      tools: [avatarToolSchema],
-      tool_choice: { type: "tool", name: AVATAR_TOOL_NAME },
-      messages: [
-        {
-          role: "user",
-          content: [...imageBlocks, { type: "text", text: promptText }],
-        },
-      ],
-    });
+    const result = await client.messages.create(
+      {
+        model: AVATAR_MODEL,
+        max_tokens: AVATAR_MAX_TOKENS,
+        tools: [avatarToolSchema],
+        tool_choice: { type: "tool", name: AVATAR_TOOL_NAME },
+        messages: [
+          {
+            role: "user",
+            content: [...imageBlocks, { type: "text", text: promptText }],
+          },
+        ],
+      },
+      signal ? { signal } : undefined,
+    );
 
     const toolBlock = result.content.find(
       (block): block is Anthropic.ToolUseBlock => block.type === "tool_use",

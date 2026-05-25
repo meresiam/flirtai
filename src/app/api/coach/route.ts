@@ -233,14 +233,21 @@ export async function POST(request: Request) {
           systemBlocks.push({ type: "text", text: toneAddendum });
         }
 
-        stream = client.messages.stream({
-          model,
-          max_tokens: 2048,
-          system: systemBlocks,
-          messages: messagesForLlm,
-          tools: [coachToolSchema],
-          tool_choice: { type: "tool", name: COACH_TOOL_NAME },
-        });
+        // WR-05 — propaga AbortSignal do request pro SDK. Quando o client
+        // fecha a aba/cancela o fetch, o stream do Anthropic é abortado
+        // (para de pagar tokens) e o extractContactAvatar em background
+        // também recebe o sinal.
+        stream = client.messages.stream(
+          {
+            model,
+            max_tokens: 2048,
+            system: systemBlocks,
+            messages: messagesForLlm,
+            tools: [coachToolSchema],
+            tool_choice: { type: "tool", name: COACH_TOOL_NAME },
+          },
+          { signal: request.signal },
+        );
 
         let accumulatedJson = "";
         let sentLength = 0;
@@ -356,11 +363,14 @@ export async function POST(request: Request) {
         // DEPOIS do "done" pra não bloquear o turno com 500-1500ms extra de
         // Haiku call. Persiste em update separado (sacrifica atomicidade,
         // recuperável no próximo turn). Falhas são silenciosas.
+        // WR-05 — propaga request.signal pra cancelar a chamada Haiku se
+        // o client abortar (tab close, etc).
         if (!contact.avatarUrl && attachments.length) {
           extractContactAvatar({
             client,
             attachments,
             contactName: contact.name,
+            signal: request.signal,
           })
             .then((detected) => {
               if (!detected) return;
