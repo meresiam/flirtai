@@ -18,7 +18,9 @@ import type {
   ReplySuggestion,
 } from "@/types/flirt";
 
-const HISTORY_CAP = 8;
+const HISTORY_CAP = 20;
+const SUMMARY_THRESHOLD = 30;
+const SUMMARY_MODEL = "claude-haiku-4-5-20251001";
 
 const requestSchema = z.object({
   contactId: z.string().min(1),
@@ -66,6 +68,7 @@ export async function POST(request: Request) {
           orderBy: { createdAt: "desc" },
           take: HISTORY_CAP,
         },
+        _count: { select: { messages: true } },
       },
     }),
   ]);
@@ -89,6 +92,24 @@ export async function POST(request: Request) {
   const client = new Anthropic({ apiKey });
   const model = user?.anthropicModel || process.env.ANTHROPIC_MODEL || "claude-sonnet-4-6";
 
+  let conversationSummary = contact.conversationSummary;
+  if (
+    !conversationSummary &&
+    contact._count.messages > SUMMARY_THRESHOLD
+  ) {
+    conversationSummary = await generateConversationSummary(
+      client,
+      contact.id,
+      contact.name,
+    );
+    if (conversationSummary) {
+      await prisma.contact.update({
+        where: { id: contactId },
+        data: { conversationSummary },
+      });
+    }
+  }
+
   const messagesForLlm: Anthropic.MessageParam[] = [];
   for (const message of history) {
     const role: "user" | "assistant" = message.sender === "assistant" ? "assistant" : "user";
@@ -105,6 +126,9 @@ export async function POST(request: Request) {
       `- Perfil: ${contact.personalityType ?? "em leitura"}`,
       `- Interesses: ${contact.interests.length ? contact.interests.join(", ") : "—"}`,
       `- Tags: ${contact.tags.length ? contact.tags.join(", ") : "—"}`,
+      ...(conversationSummary
+        ? ["", `Resumo da conversa anterior (gerado por Haiku): ${conversationSummary}`]
+        : []),
       "",
       `Pedido dele: ${prompt}`,
     ].join("\n"),
@@ -226,3 +250,59 @@ export async function POST(request: Request) {
 
 // Helper exposto pra eventual SSE/streaming futuro
 export type CoachConversationMessage = ConversationMessage;
+
+// W1/C5 rolling summary: roda 1x por contato quando o histórico passa
+// SUMMARY_THRESHOLD (30) mensagens E ainda não foi resumido. Persistido em
+// `Contact.conversationSummary` e injetado no contexto do coach turn pra
+// dar memória sem inflar o prompt.
+async function generateConversationSummary(
+  client: Anthropic,
+  contactId: string,
+  contactName: string,
+): Promise<string | null> {
+  const messages = await prisma.message.findMany({
+    where: { contactId },
+    orderBy: { createdAt: "asc" },
+    take: 80,
+    select: { sender: true, content: true },
+  });
+  if (messages.length === 0) return null;
+
+  const transcript = messages
+    .map((m) => {
+      const speaker =
+        m.sender === "assistant"
+          ? "[Coach]"
+          : m.sender === "contact"
+            ? `[${contactName || "Ela"}]`
+            : "[Ele]";
+      return `${speaker} ${m.content}`;
+    })
+    .join("\n");
+
+  try {
+    const result = await client.messages.create({
+      model: SUMMARY_MODEL,
+      max_tokens: 320,
+      system:
+        "Você resume conversas de wingman em PT-BR. 3 a 5 frases, direto, sem preâmbulo. " +
+        "Foco: (a) estágio do relacionamento, (b) padrões de interação dela, " +
+        "(c) leituras-chave sobre a interlocutora, (d) o que já tentaram. " +
+        "NUNCA conselho ou opinião — só síntese factual.",
+      messages: [
+        {
+          role: "user",
+          content: `Resuma esta conversa entre o usuário e ${contactName || "a interlocutora"}:\n\n${transcript}`,
+        },
+      ],
+    });
+    const text = result.content
+      .filter((b): b is Anthropic.TextBlock => b.type === "text")
+      .map((b) => b.text)
+      .join(" ")
+      .trim();
+    return text || null;
+  } catch {
+    return null;
+  }
+}
