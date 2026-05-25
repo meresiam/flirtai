@@ -4,53 +4,33 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SparklesIcon, XIcon } from "lucide-react";
 
+import { useMeProfile } from "@/lib/use-me-profile";
+
 // W6 — banner CTA persistente. Aparece quando UserProfile.onboardingDone=false.
 // Dismissable por 7d via localStorage (key `me-banner-dismissed-until`).
 // Quando user clica em "Personalizar agora", abre /me/onboarding.
+// WR-04 — fetch de /api/me/profile vem do useMeProfile() compartilhado.
 
 const DISMISS_KEY = "me-banner-dismissed-until";
 const DISMISS_DURATION_DAYS = 7;
 
 export function MeBannerCta() {
-  const [shouldRender, setShouldRender] = useState(false);
+  const { profile } = useMeProfile();
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    // WR-03 — AbortController real em vez de flag `cancelled`. Em
-    // StrictMode/dev double-mount, a primeira request e abortada antes
-    // da segunda iniciar, evitando setState em componente unmounted +
-    // vazamento de conexao.
-    const ac = new AbortController();
-    void load();
-    return () => ac.abort();
-
-    async function load() {
-      try {
-        const dismissedUntil = window.localStorage.getItem(DISMISS_KEY);
-        if (dismissedUntil && Number(dismissedUntil) > Date.now()) {
-          return;
-        }
-        const response = await fetch("/api/me/profile", {
-          cache: "no-store",
-          signal: ac.signal,
-        });
-        if (!response.ok) return;
-        const { userProfile } = (await response.json()) as {
-          userProfile: { onboardingDone: boolean };
-        };
-        if (!userProfile.onboardingDone) {
-          setShouldRender(true);
-        }
-      } catch (cause) {
-        if ((cause as Error).name === "AbortError") return;
-        // silencioso — banner é não-essencial
-      }
+    const until = window.localStorage.getItem(DISMISS_KEY);
+    if (until && Number(until) > Date.now()) {
+      setDismissed(true);
     }
   }, []);
+
+  const shouldRender = !dismissed && profile != null && !profile.onboardingDone;
 
   function handleDismiss() {
     const until = Date.now() + DISMISS_DURATION_DAYS * 24 * 60 * 60 * 1000;
     window.localStorage.setItem(DISMISS_KEY, String(until));
-    setShouldRender(false);
+    setDismissed(true);
   }
 
   if (!shouldRender) return null;

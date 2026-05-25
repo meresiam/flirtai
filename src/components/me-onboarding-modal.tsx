@@ -9,50 +9,37 @@ import {
   type OnboardingAnswers,
 } from "@/lib/flirt/me-onboarding";
 import { OnboardingWizard } from "@/components/me-onboarding-wizard";
+import { useMeProfile } from "@/lib/use-me-profile";
 
 // W6 — modal auto-abre na 1ª visita pós-signup.
 // Critério: GET /api/me/profile retorna onboardingDone=false E não há
 // localStorage `me-onboarding-modal-dismissed` (sessão atual).
 // Após dismiss/finish, marca sessão-storage pra não reabrir no F5.
 // Persistente entre sessões só pelo onboardingDone do server.
+// WR-04 — fetch de /api/me/profile vem do useMeProfile() compartilhado.
 
 const SESSION_DISMISS_KEY = "me-onboarding-modal-dismissed";
 
 export function MeOnboardingModal() {
+  const { profile, refetch } = useMeProfile();
   const [open, setOpen] = useState(false);
+  const [sessionDismissed, setSessionDismissed] = useState(false);
   const [answers, setAnswers] = useState<OnboardingAnswers>(EMPTY_ANSWERS);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // WR-03 — AbortController real em vez de flag `cancelled`. Em
-    // StrictMode dev a primeira request e abortada antes da segunda;
-    // tambem evita reabertura do modal em route transition caso o user
-    // ja tenha dado dismiss.
-    const ac = new AbortController();
-    void load();
-    return () => ac.abort();
-
-    async function load() {
-      try {
-        if (window.sessionStorage.getItem(SESSION_DISMISS_KEY)) return;
-        const response = await fetch("/api/me/profile", {
-          cache: "no-store",
-          signal: ac.signal,
-        });
-        if (!response.ok) return;
-        const { userProfile } = (await response.json()) as {
-          userProfile: { onboardingDone: boolean };
-        };
-        if (!userProfile.onboardingDone) {
-          setOpen(true);
-        }
-      } catch (cause) {
-        if ((cause as Error).name === "AbortError") return;
-        // silencioso
-      }
+    if (window.sessionStorage.getItem(SESSION_DISMISS_KEY)) {
+      setSessionDismissed(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (sessionDismissed) return;
+    if (profile && !profile.onboardingDone) {
+      setOpen(true);
+    }
+  }, [profile, sessionDismissed]);
 
   async function persist(skipped: boolean) {
     setSubmitting(true);
@@ -71,7 +58,10 @@ export function MeOnboardingModal() {
         throw new Error(data.error ?? "Não consegui salvar.");
       }
       window.sessionStorage.setItem(SESSION_DISMISS_KEY, "1");
+      setSessionDismissed(true);
       setOpen(false);
+      // WR-04 — invalida cache do useMeProfile pra MeBannerCta atualizar.
+      void refetch();
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Erro ao salvar.");
     } finally {
@@ -82,6 +72,7 @@ export function MeOnboardingModal() {
   function handleDismissOnly() {
     // Fecha o modal sem persistir (volta abrir em próxima sessão se onboardingDone=false).
     window.sessionStorage.setItem(SESSION_DISMISS_KEY, "1");
+    setSessionDismissed(true);
     setOpen(false);
   }
 
