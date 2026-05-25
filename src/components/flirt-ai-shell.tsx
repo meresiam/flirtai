@@ -37,6 +37,13 @@ import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border
 import { MeBannerCta } from "@/components/me-banner-cta";
 import { MeOnboardingModal } from "@/components/me-onboarding-modal";
 import { SuggestionFeedback } from "@/components/suggestion-feedback";
+// W8 — Org & Hygiene
+import { SidebarFilterBar } from "@/components/sidebar/sidebar-filter-bar";
+import { ContactContextMenu } from "@/components/sidebar/contact-context-menu";
+import { FolderManagerModal } from "@/components/sidebar/folder-manager-modal";
+import { TagManagerModal } from "@/components/sidebar/tag-manager-modal";
+import { ArchiveUndoToast } from "@/components/sidebar/archive-undo-toast";
+import { CheckCheckIcon, PinIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -192,8 +199,33 @@ export function FlirtAiShell() {
     createContact,
     appendMessage,
     applyCoachResponse,
+    // W8 — Org & Hygiene
+    folders,
+    tagPreferences,
+    selectedFolderId,
+    showArchived,
+    pendingArchiveUndo,
+    pinContact,
+    unpinContact,
+    archiveContact,
+    restoreContact,
+    moveContactToFolder,
+    createFolder,
+    updateFolder,
+    deleteFolder,
+    selectFolder,
+    toggleArchivedView,
+    setTagPreference,
+    removeTagPreference,
+    markMessageSentIrl,
+    removeContact,
+    clearArchiveUndo,
   } = useFlirtStore();
   const router = useRouter();
+
+  // W8 — modais de organização
+  const [folderManagerOpen, setFolderManagerOpen] = useState(false);
+  const [tagManagerOpen, setTagManagerOpen] = useState(false);
 
   const handleCreate = useCallback(
     async (kind: ContactKind, name?: string) => {
@@ -260,24 +292,57 @@ export function FlirtAiShell() {
   });
 
   const selectedContact =
-    contacts.find((contact) => contact.id === selectedContactId) ?? contacts[0] ?? null;
+    contacts.find((contact) => contact.id === selectedContactId) ??
+    contacts.find((c) => !c.archivedAt) ??
+    null;
   const conversationHistory = selectedContact?.conversationHistory ?? [];
   const deferredSearch = useDeferredValue(searchValue);
-  const visibleContacts = contacts.filter((contact) => {
+  // W8 — pipeline: archive gate → folder filter → search filter → pinned-first sort.
+  const visibleContacts = React.useMemo(() => {
     const query = deferredSearch.trim().toLowerCase();
-    if (!query) return true;
+    const filtered = contacts.filter((contact) => {
+      const isArchived = !!contact.archivedAt;
+      if (showArchived ? !isArchived : isArchived) return false;
+      if (selectedFolderId !== null && contact.folderId !== selectedFolderId)
+        return false;
+      if (!query) return true;
+      return [
+        contact.name,
+        contact.source,
+        contact.personalityType,
+        contact.tags.join(" "),
+        contact.lastInteractionSummary,
+      ]
+        .join(" ")
+        .toLowerCase()
+        .includes(query);
+    });
+    return filtered.sort((a, b) => {
+      const aPin = a.pinnedAt ? Date.parse(a.pinnedAt) : 0;
+      const bPin = b.pinnedAt ? Date.parse(b.pinnedAt) : 0;
+      if (aPin !== bPin) return bPin - aPin;
+      return Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
+    });
+  }, [contacts, deferredSearch, showArchived, selectedFolderId]);
 
-    return [
-      contact.name,
-      contact.source,
-      contact.personalityType,
-      contact.tags.join(" "),
-      contact.lastInteractionSummary,
-    ]
-      .join(" ")
-      .toLowerCase()
-      .includes(query);
-  });
+  // W8 — contadores pra filter bar (calculados sobre todos os contatos do user).
+  const pinnedCount = React.useMemo(
+    () => contacts.filter((c) => !c.archivedAt && c.pinnedAt).length,
+    [contacts],
+  );
+  const archivedCount = React.useMemo(
+    () => contacts.filter((c) => c.archivedAt).length,
+    [contacts],
+  );
+  const tagColorByLabel = React.useMemo(() => {
+    const m = new Map<string, string>();
+    for (const tp of tagPreferences) m.set(tp.label, tp.color);
+    return m;
+  }, [tagPreferences]);
+
+  const pendingArchiveContact = pendingArchiveUndo
+    ? contacts.find((c) => c.id === pendingArchiveUndo.contactId)
+    : null;
   const showEmptyConversationState =
     !selectedContact || conversationHistory.length === 0;
 
@@ -681,6 +746,22 @@ export function FlirtAiShell() {
             onSearchChange={setSearchValue}
             onCreateContact={handleCreate}
             onSelectContact={selectContact}
+            folders={folders}
+            selectedFolderId={selectedFolderId}
+            showArchived={showArchived}
+            pinnedCount={pinnedCount}
+            archivedCount={archivedCount}
+            tagColorByLabel={tagColorByLabel}
+            onSelectFolder={selectFolder}
+            onToggleArchived={toggleArchivedView}
+            onOpenFolderManager={() => setFolderManagerOpen(true)}
+            onOpenTagManager={() => setTagManagerOpen(true)}
+            onPinContact={pinContact}
+            onUnpinContact={unpinContact}
+            onArchiveContact={archiveContact}
+            onRestoreContact={restoreContact}
+            onMoveContactToFolder={moveContactToFolder}
+            onDeleteContact={removeContact}
           />
         </div>
 
@@ -709,6 +790,22 @@ export function FlirtAiShell() {
                   onCreateContact={handleCreate}
                   onSelectContact={selectContact}
                   onClose={() => setSidebarOpen(false)}
+                  folders={folders}
+                  selectedFolderId={selectedFolderId}
+                  showArchived={showArchived}
+                  pinnedCount={pinnedCount}
+                  archivedCount={archivedCount}
+                  tagColorByLabel={tagColorByLabel}
+                  onSelectFolder={selectFolder}
+                  onToggleArchived={toggleArchivedView}
+                  onOpenFolderManager={() => setFolderManagerOpen(true)}
+                  onOpenTagManager={() => setTagManagerOpen(true)}
+                  onPinContact={pinContact}
+                  onUnpinContact={unpinContact}
+                  onArchiveContact={archiveContact}
+                  onRestoreContact={restoreContact}
+                  onMoveContactToFolder={moveContactToFolder}
+                  onDeleteContact={removeContact}
                 />
               </motion.div>
             </>
@@ -952,14 +1049,41 @@ export function FlirtAiShell() {
                         ))}
                       </div>
                     ) : null}
-                    <p
+                    <div
                       className={cn(
-                        "mt-3 text-[11px]",
+                        "mt-3 flex items-center justify-between gap-2 text-[11px]",
                         message.sender === "user" ? "text-slate-500" : "text-white/30",
                       )}
                     >
-                      {formatTime(message.timestamp)}
-                    </p>
+                      <span>{formatTime(message.timestamp)}</span>
+                      {/* W8 — toggle "enviei essa no IG real" (só pra user-bubbles persistidas) */}
+                      {message.sender === "user" && message.id ? (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            void markMessageSentIrl(
+                              message.id,
+                              !message.sentIrlAt,
+                            );
+                          }}
+                          title={
+                            message.sentIrlAt
+                              ? "Marcado como enviado no IG/WA real"
+                              : "Marcar como enviado no IG/WA real"
+                          }
+                          className={cn(
+                            "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] transition",
+                            message.sentIrlAt
+                              ? "border-emerald-400/40 bg-emerald-400/12 text-emerald-700"
+                              : "border-slate-300/40 bg-white/0 text-slate-400 hover:border-slate-400 hover:text-slate-600",
+                          )}
+                        >
+                          <CheckCheckIcon className="h-3 w-3" />
+                          {message.sentIrlAt ? "Enviei" : "Marcar como enviado"}
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
                 ))}
 
@@ -1261,6 +1385,34 @@ export function FlirtAiShell() {
       ) : null}
 
       <MeOnboardingModal />
+
+      {/* W8 — Org & Hygiene UI */}
+      <FolderManagerModal
+        open={folderManagerOpen}
+        onOpenChange={setFolderManagerOpen}
+        folders={folders}
+        onCreate={createFolder}
+        onUpdate={updateFolder}
+        onDelete={deleteFolder}
+      />
+      <TagManagerModal
+        open={tagManagerOpen}
+        onOpenChange={setTagManagerOpen}
+        contacts={contacts}
+        tagPreferences={tagPreferences}
+        onSetTagPreference={setTagPreference}
+        onRemoveTagPreference={removeTagPreference}
+      />
+      <ArchiveUndoToast
+        pending={pendingArchiveUndo}
+        contactName={pendingArchiveContact?.name}
+        onUndo={() => {
+          if (pendingArchiveUndo) {
+            void restoreContact(pendingArchiveUndo.contactId);
+          }
+        }}
+        onDismiss={clearArchiveUndo}
+      />
     </div>
   );
 }
@@ -1480,6 +1632,22 @@ function ConversationSidebar({
   onCreateContact,
   onSelectContact,
   onClose,
+  folders,
+  selectedFolderId,
+  showArchived,
+  pinnedCount,
+  archivedCount,
+  tagColorByLabel,
+  onSelectFolder,
+  onToggleArchived,
+  onOpenFolderManager,
+  onOpenTagManager,
+  onPinContact,
+  onUnpinContact,
+  onArchiveContact,
+  onRestoreContact,
+  onMoveContactToFolder,
+  onDeleteContact,
 }: {
   contacts: ContactRecord[];
   selectedContactId: string;
@@ -1488,6 +1656,26 @@ function ConversationSidebar({
   onCreateContact: (kind: ContactKind, name?: string) => void;
   onSelectContact: (contactId: string) => void;
   onClose?: () => void;
+  // W8 — Org & Hygiene
+  folders: import("@/types/flirt").FolderRecord[];
+  selectedFolderId: string | null;
+  showArchived: boolean;
+  pinnedCount: number;
+  archivedCount: number;
+  tagColorByLabel: Map<string, string>;
+  onSelectFolder: (folderId: string | null) => void;
+  onToggleArchived: () => void;
+  onOpenFolderManager: () => void;
+  onOpenTagManager: () => void;
+  onPinContact: (contactId: string) => Promise<void>;
+  onUnpinContact: (contactId: string) => Promise<void>;
+  onArchiveContact: (contactId: string) => Promise<void>;
+  onRestoreContact: (contactId: string) => Promise<void>;
+  onMoveContactToFolder: (
+    contactId: string,
+    folderId: string | null,
+  ) => Promise<void>;
+  onDeleteContact: (contactId: string) => Promise<void>;
 }) {
   const [isSigningOut, setIsSigningOut] = useState(false);
   async function handleLogout() {
@@ -1553,66 +1741,145 @@ function ConversationSidebar({
         </div>
       </div>
 
+      <SidebarFilterBar
+        folders={folders}
+        selectedFolderId={selectedFolderId}
+        showArchived={showArchived}
+        pinnedCount={pinnedCount}
+        archivedCount={archivedCount}
+        onSelectFolder={onSelectFolder}
+        onToggleArchived={onToggleArchived}
+        onOpenFolderManager={onOpenFolderManager}
+      />
+
       <div className="flex-1 space-y-2 overflow-y-auto p-3">
         {contacts.length ? (
-          contacts.map((contact) => (
-            <button
-              key={contact.id}
-              type="button"
-              onClick={() => onSelectContact(contact.id)}
-              className={cn(
-                "w-full rounded-[24px] border p-3 text-left transition",
-                contact.id === selectedContactId
-                  ? "border-[#ff355d]/24 bg-[#ff355d]/8"
-                  : "border-white/[0.06] bg-white/[0.04] hover:bg-white/[0.08]",
-              )}
-            >
-              <div className="flex items-center gap-3">
-                {contact.kind === "agent_chat" ? (
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05]">
-                    <BotIcon className="h-5 w-5 text-white/65" />
-                  </div>
-                ) : (
-                  <ContactAvatar
-                    name={contact.name}
-                    src={contact.avatar}
-                    className="h-12 w-12"
-                    sizes="48px"
-                  />
+          contacts.map((contact) => {
+            const coloredTags = contact.tags
+              .map((tag) => ({ tag, color: tagColorByLabel.get(tag) ?? null }))
+              .slice(0, 3);
+            const hasMoreTags = contact.tags.length > coloredTags.length;
+            return (
+              <div
+                key={contact.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => onSelectContact(contact.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelectContact(contact.id);
+                  }
+                }}
+                className={cn(
+                  "group w-full cursor-pointer rounded-[24px] border p-3 text-left transition",
+                  contact.id === selectedContactId
+                    ? "border-[#ff355d]/24 bg-[#ff355d]/8"
+                    : "border-white/[0.06] bg-white/[0.04] hover:bg-white/[0.08]",
                 )}
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="truncate text-sm font-medium text-white">
-                      {contact.name}
+              >
+                <div className="flex items-start gap-3">
+                  {contact.kind === "agent_chat" ? (
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05]">
+                      <BotIcon className="h-5 w-5 text-white/65" />
+                    </div>
+                  ) : (
+                    <ContactAvatar
+                      name={contact.name}
+                      src={contact.avatar}
+                      className="h-12 w-12"
+                      sizes="48px"
+                    />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex min-w-0 items-center gap-1.5">
+                        {contact.pinnedAt ? (
+                          <PinIcon
+                            className="h-3 w-3 shrink-0 text-amber-300/85"
+                            aria-label="Fixado"
+                          />
+                        ) : null}
+                        <p className="truncate text-sm font-medium text-white">
+                          {contact.name}
+                        </p>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-0.5">
+                        <span className="text-[11px] text-white/32">
+                          {formatTime(contact.updatedAt)}
+                        </span>
+                        <div className="opacity-0 transition group-hover:opacity-100 focus-within:opacity-100">
+                          <ContactContextMenu
+                            contact={contact}
+                            folders={folders}
+                            onPin={(id) => void onPinContact(id)}
+                            onUnpin={(id) => void onUnpinContact(id)}
+                            onArchive={(id) => void onArchiveContact(id)}
+                            onRestore={(id) => void onRestoreContact(id)}
+                            onMoveToFolder={(id, folderId) =>
+                              void onMoveContactToFolder(id, folderId)
+                            }
+                            onDelete={(id) => void onDeleteContact(id)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <p className="mt-1 truncate text-xs text-white/45">
+                      {contact.kind === "agent_chat"
+                        ? "Agente"
+                        : `${contact.source} • ${contact.personalityType}`}
                     </p>
-                    <span className="text-[11px] text-white/32">
-                      {formatTime(contact.updatedAt)}
-                    </span>
                   </div>
-                  <p className="mt-1 truncate text-xs text-white/45">
-                    {contact.kind === "agent_chat" ? "Agente" : `${contact.source} • ${contact.personalityType}`}
-                  </p>
                 </div>
-              </div>
-              {contact.kind === "desenrolo" ? (
-                <div className="mt-3 flex items-center gap-2 text-[11px] text-white/42">
-                  <span className={cn("h-2 w-2 rounded-full", statusDot(contact.status))} />
-                  <span>{labelStatus(contact.status)}</span>
-                  {contact.padrao !== null ? (
-                    <>
-                      <span className="text-white/20">·</span>
-                      <span className="font-mono tabular-nums text-[#ff8a9e]">
-                        Padrão {contact.padrao.toFixed(1)}
+                {contact.kind === "desenrolo" ? (
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-white/42">
+                    <span className={cn("h-2 w-2 rounded-full", statusDot(contact.status))} />
+                    <span>{labelStatus(contact.status)}</span>
+                    {contact.padrao !== null ? (
+                      <>
+                        <span className="text-white/20">·</span>
+                        <span className="font-mono tabular-nums text-[#ff8a9e]">
+                          Padrão {contact.padrao.toFixed(1)}
+                        </span>
+                      </>
+                    ) : null}
+                  </div>
+                ) : null}
+                {coloredTags.length > 0 ? (
+                  <div className="mt-2 flex flex-wrap items-center gap-1">
+                    {coloredTags.map(({ tag, color }) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center rounded-full border px-1.5 py-0.5 text-[10px]"
+                        style={
+                          color
+                            ? {
+                                borderColor: `${color}66`,
+                                color,
+                                backgroundColor: `${color}14`,
+                              }
+                            : {
+                                borderColor: "rgba(255,255,255,0.08)",
+                                color: "rgba(255,255,255,0.55)",
+                              }
+                        }
+                      >
+                        {tag}
                       </span>
-                    </>
-                  ) : null}
-                </div>
-              ) : null}
-              <p className="mt-2 line-clamp-2 text-xs leading-5 text-white/55">
-                {getPreview(contact)}
-              </p>
-            </button>
-          ))
+                    ))}
+                    {hasMoreTags ? (
+                      <span className="text-[10px] text-white/35">
+                        +{contact.tags.length - coloredTags.length}
+                      </span>
+                    ) : null}
+                  </div>
+                ) : null}
+                <p className="mt-2 line-clamp-2 text-xs leading-5 text-white/55">
+                  {getPreview(contact)}
+                </p>
+              </div>
+            );
+          })
         ) : (
           <div className="rounded-[26px] border border-dashed border-white/10 bg-white/[0.03] px-4 py-6 text-center text-sm text-white/45">
             <p>
@@ -1638,7 +1905,14 @@ function ConversationSidebar({
         )}
       </div>
 
-      <div className="sticky bottom-0 border-t border-white/10 bg-[#070913]/80 px-3 py-3 backdrop-blur-xl">
+      <div className="sticky bottom-0 space-y-2 border-t border-white/10 bg-[#070913]/80 px-3 py-3 backdrop-blur-xl">
+        <button
+          type="button"
+          onClick={onOpenTagManager}
+          className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-2 text-xs text-white/55 transition hover:bg-white/[0.06] hover:text-white"
+        >
+          Gerenciar tags coloridas
+        </button>
         <button
           type="button"
           onClick={handleLogout}

@@ -22,6 +22,7 @@ import {
 } from "@/components/desenrolo/desenrolo-form";
 import { EncounterCaptureModal } from "@/components/encounter/encounter-capture-modal";
 import { EncounterTimeline } from "@/components/encounter/encounter-timeline";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
   TooltipContent,
@@ -359,38 +360,49 @@ export default function DesenroloDetailPage() {
           />
         )}
 
-        {/* W7.1 — Sinais consolidados do contato */}
+        {/* W8 — Tabs unificando Sinais + Diário de Campo */}
         {!isEditing ? (
           <div className="mt-6">
-            <ContactSignalsPanel contact={contact} />
+            <Tabs defaultValue="sinais">
+              <TabsList variant="line" className="border-b border-white/10">
+                <TabsTrigger value="sinais">Sinais</TabsTrigger>
+                <TabsTrigger value="encontros">
+                  Encontros
+                  {encounters.length > 0 ? (
+                    <span className="ml-1.5 rounded-full bg-white/[0.06] px-1.5 py-0.5 text-[10px] tabular-nums text-white/55">
+                      {encounters.length}
+                    </span>
+                  ) : null}
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="sinais" className="pt-4">
+                <ContactSignalsPanel contact={contact} />
+              </TabsContent>
+              <TabsContent value="encontros" className="pt-4">
+                <div className="mb-4 flex items-baseline justify-between">
+                  <h2 className="text-sm font-medium uppercase tracking-wider text-white/55">
+                    Diário de campo
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={() => setEncounterModalOpen(true)}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/75 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-white"
+                  >
+                    <PlusIcon className="h-3.5 w-3.5" />
+                    Novo encontro
+                  </button>
+                </div>
+                <EncounterTimeline
+                  encounters={encounters}
+                  loading={encountersLoading}
+                  loadingMore={encountersLoadingMore}
+                  hasMore={encountersCursor != null}
+                  error={encountersError}
+                  onLoadMore={() => void loadMoreEncounters()}
+                />
+              </TabsContent>
+            </Tabs>
           </div>
-        ) : null}
-
-        {/* W7 — Diário de Campo */}
-        {!isEditing ? (
-          <section className="mt-10">
-            <div className="mb-4 flex items-baseline justify-between">
-              <h2 className="text-sm font-medium uppercase tracking-wider text-white/55">
-                Diário de campo
-              </h2>
-              <button
-                type="button"
-                onClick={() => setEncounterModalOpen(true)}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/75 transition hover:border-emerald-400/30 hover:bg-emerald-400/10 hover:text-white"
-              >
-                <PlusIcon className="h-3.5 w-3.5" />
-                Novo encontro
-              </button>
-            </div>
-            <EncounterTimeline
-              encounters={encounters}
-              loading={encountersLoading}
-              loadingMore={encountersLoadingMore}
-              hasMore={encountersCursor != null}
-              error={encountersError}
-              onLoadMore={() => void loadMoreEncounters()}
-            />
-          </section>
         ) : null}
 
         {/* Zona perigo */}
