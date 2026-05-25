@@ -64,7 +64,13 @@ interface FlirtState {
     patch: UpdateContactPayload,
   ) => Promise<ContactRecord | null>;
   appendMessage: (contactId: string, message: ConversationMessage) => void;
-  applyCoachResponse: (contactId: string, response: CoachChatResponse) => void;
+  // CR-01 — exige messageId do server pro <SuggestionFeedback> referenciar o
+  // cuid real da Message no banco. Antes o store gerava UUID local e todo
+  // POST de feedback respondia 404.
+  applyCoachResponse: (
+    contactId: string,
+    response: CoachChatResponse & { messageId: string },
+  ) => void;
   removeContact: (contactId: string) => Promise<void>;
   setHasHydrated: (value: boolean) => void;
 }
@@ -194,7 +200,10 @@ export const useFlirtStore = create<FlirtState>()(
       applyCoachResponse: (contactId, response) =>
         set((state) => {
           const assistantMessage: ConversationMessage = {
-            id: crypto.randomUUID(),
+            // CR-01 — usa o cuid real do DB (vem no evento "done" do SSE).
+            // Sem isso, o POST de /api/me/profile/feedback respondia 404
+            // pois o id local não casava com Message.id no banco.
+            id: response.messageId,
             sender: "assistant",
             content: response.assistantMessage,
             timestamp: new Date().toISOString(),
