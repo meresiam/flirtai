@@ -332,8 +332,12 @@ export async function GET(request: Request, { params }: RouteContext) {
   const where: Prisma.EncounterLogWhereInput = { contactId };
   if (beforeCursor) {
     // Cursor stable: tupla (happenedAt, id) — quem chama passa o id do ultimo item.
+    // WR-01: defesa em profundidade — re-valida ownership via nested contact.userId,
+    // mesmo o contact ja tendo sido validado acima. Se algum dia esse codigo for
+    // refatorado pra endpoint /api/encounters/[id] (sem contact-scope inicial),
+    // o filtro nested previne cross-tenant leak.
     const cursorRow = await prisma.encounterLog.findFirst({
-      where: { id: beforeCursor, contactId },
+      where: { id: beforeCursor, contact: { id: contactId, userId } },
       select: { happenedAt: true, id: true },
     });
     if (cursorRow) {
