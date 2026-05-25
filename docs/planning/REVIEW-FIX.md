@@ -1,86 +1,96 @@
 ---
-fixed_at: 2026-05-25T03:30:00Z
+fixed_at: 2026-05-25T16:00:00Z
 review_path: docs/planning/REVIEW.md
-iteration: 2
-findings_in_scope: 7
-fixed: 7
-skipped: 0
-status: all_fixed
+iteration: 1
+wave: W7 - Diario de Campo (EncounterLog)
+findings_in_scope: 13
+fixed: 11
+skipped: 2
+status: partial
 ---
 
 # Code Review Fix Report
 
-**Fixed at:** 2026-05-25T03:30:00Z
+**Fixed at:** 2026-05-25T16:00:00Z
 **Source review:** docs/planning/REVIEW.md
-**Iteration:** 2
+**Iteration:** 1
+**Wave:** W7 - Diario de Campo (EncounterLog)
 
 **Summary:**
-- Findings in scope: 7 (CR-01, WR-01..WR-06 — IN-01..IN-05 fora do escopo `critical_warning`)
-- Fixed: 7
-- Skipped: 0
-- Base commit: `6a89046`
-- Head commit: `0b1c2f7`
+- Findings in scope: 13 (1 Critical + 7 Warning + 5 Info)
+- Fixed: 11
+- Skipped: 2 (IN-03 e IN-04 — review explicitamente marca como out-of-scope/no-fix)
+
+Verification protocol: cada fix passou por Tier 1 (re-read da secao editada) e Tier 2 (`npx tsc --noEmit` clean). Baseline tsc estava limpo antes do primeiro fix; nenhum erro novo introduzido.
 
 ## Fixed Issues
 
-### CR-01: Feedback de sugestao sempre 404 — messageId do servidor descartado no client
-**Files modified:** `src/store/use-flirt-store.ts`
-**Commit:** `436a8b6`
-**Applied fix:** `applyCoachResponse` agora exige `CoachChatResponse & { messageId: string }` no parametro e usa `response.messageId` direto como `id` da `ConversationMessage` (em vez de `crypto.randomUUID()` que ignorava o cuid do banco). Tipo da action atualizado. O caller no shell (linha 613) ja passava o `donePayload` completo com `messageId` — so faltava o store consumir. POST de `/api/me/profile/feedback` agora encontra a Message no banco em vez de 404.
+### CR-01: Race condition em concurrent POSTs corrompe Contact.greenFlags/redFlags/attractionLevel
+**Files modified:** `src/app/api/contacts/[id]/encounters/route.ts`
+**Commit:** `f0b114a`
+**Applied fix:** Moveu read+merge+write do Contact + UserProfile pra dentro de uma transacao interativa `prisma.$transaction(async (tx) => {...}, { isolationLevel: Serializable, timeout: 10_000 })`. Captura `Prisma.PrismaClientKnownRequestError` com code `P2034` (serialization failure / write conflict) e devolve 409 em PT-BR ("Outro encontro foi salvo agora, tenta de novo daqui a pouco."). Snapshot stale entre POSTs simultaneos agora resulta em retry consciente em vez de perda de flags. Sem retry automatico (manter simples — front pede pro user). Tier 2 OK.
 
-### WR-01: appendCapped dedup desloca recente + conflito cross-array
-**Files modified:** `src/app/api/me/profile/feedback/route.ts`
-**Commit:** `5f673f2`
-**Applied fix:** Dois fixes na mesma rota. (1) `appendCapped` trocou `filter+push` por checagem previa `Array.includes` — se item ja existe, retorna array como estava sem promover pra recencia. (2) Antes do update, remove `suggestionText` do array oposto: clicar `worked` limpa de `redPatternsRaw`, clicar `didnt_work` limpa de `winSamples`. Evita sinal contraditorio chegando no `me-context` ("ja funcionou" + "evite repetir" pro mesmo texto).
+### WR-01: GET cursor lookup nao re-valida ownership via nested contact.userId
+**Files modified:** `src/app/api/contacts/[id]/encounters/route.ts`
+**Commit:** `c6dfd5b`
+**Applied fix:** Mudou `where: { id: beforeCursor, contactId }` pra `where: { id: beforeCursor, contact: { id: contactId, userId } }` no cursor lookup do GET. Defesa em profundidade — se um dia o codigo migrar pra `/api/encounters/[id]` sem contact-scope inicial, nested filter previne cross-tenant leak. Tier 2 OK.
 
-### WR-02: SuggestionFeedback permite trocar rating apos sucesso + race
-**Files modified:** `src/components/suggestion-feedback.tsx`
-**Commit:** `e4aa9fc`
-**Applied fix:** Guard em `send()` agora ignora chamadas quando `status === "sending" || status === "sent"` (antes so checava `sending`). Botoes ficam `disabled` apos `sent`. Acao virou irreversivel por turno, coerente com a UX "thumbs simples" do W6 — mudanca de ideia precisa de UI explicita (DELETE endpoint futuro). Elimina race de 3 POSTs paralelos com closure desatualizado.
+### WR-02: useEffect load nao guarda contra id undefined em transition de rota
+**Files modified:** `src/app/desenrolos/[id]/page.tsx`
+**Commit:** `2abc4b7`
+**Applied fix:** Adicionou `if (!id) return;` no topo do useEffect de `loadEncounters`, no `loadMoreEncounters`, e no `submitEncounter` (este ultimo lanca `Error("Página ainda carregando...")` em vez de retornar pra que o modal feedback corretamente). Previne fetches pra `/api/contacts/undefined/encounters` e consumo de quota durante transitions Next 16 Suspense. Tier 2 OK.
 
-### WR-03: fetches client sem AbortSignal
-**Files modified:** `src/components/me-banner-cta.tsx`, `src/components/me-onboarding-modal.tsx`, `src/app/me/page.tsx`, `src/components/suggestion-feedback.tsx`
-**Commit:** `07e056f`
-**Applied fix:** Trocada flag `cancelled` por `AbortController` real em 3 useEffects e adicionado controller ref-based em `<SuggestionFeedback>` (componente persiste mas precisa abortar POST se desmontar durante fetch). Cleanup do useEffect chama `ac.abort()`. `AbortError` silenciado em todos os catches. Resolve double-fetch em StrictMode dev + vazamento de conexao em unmount + caso onde modal podia reabrir apos dismiss em route transition.
+### WR-03 + WR-04: normalizeExtract aceita qualquer string como enum + EncounterCard assume extracted completo (RESOLVIDOS JUNTOS)
+**Files modified:** `src/app/api/contacts/[id]/encounters/route.ts`, `src/components/encounter/encounter-card.tsx`
+**Commit:** `a8d6230`
+**Applied fix:** Introduziu helper unico `toEncounterPayload(value: unknown): EncounterExtractPayload` que substitui `normalizeExtract` e centraliza serializacao do shape `extracted` em todos os 3 caminhos do route (degradedFallback inicial, `finalExtract` apos extract Anthropic OK, e leitura GET de rows do DB). `safeEnum<T>(value, set, fallback)` valida `escalation`/`mood`/`attractionDelta` contra `Set<string>` inline (`ESCALATION_SET`, `MOOD_SET`, `DELTA_SET`) — string legacy ou typo do LLM ("ascendente", "feliz", "rise") agora cai no fallback em vez de quebrar `ESCALATION_LABEL[invalid] -> undefined` no card. Defensivo extra no `EncounterCard`: extrai `greens`/`reds`/`userPatterns` com `?? []` antes de ler `.length` e mapear. Tier 2 OK.
 
-### WR-04: Banner CTA + Modal duplicavam fetch a /api/me/profile
-**Files modified:** `src/lib/use-me-profile.ts` (novo), `src/components/me-banner-cta.tsx`, `src/components/me-onboarding-modal.tsx`
-**Commit:** `447df1e`
-**Applied fix:** Criado hook `useMeProfile()` em `src/lib/use-me-profile.ts` com cache em modulo (compartilhado entre consumers do mesmo tab) + listeners pra propagar updates entre rerenders + `refetch()` pra invalidar apos onboarding submit. `MeBannerCta` e `MeOnboardingModal` agora consomem do mesmo hook — 1 request por load do shell em vez de 2 simultaneas (3+ com `/me` visitada). Reaproveitavel pra qualquer futuro consumer.
+### WR-05: formatDate cai pra "Data Inválida" em vez do ISO original
+**Files modified:** `src/components/encounter/encounter-card.tsx`
+**Commit:** `49ddce0`
+**Applied fix:** Removeu o `try/catch` (que nunca disparava — `new Date("garbage")` retorna Invalid Date sem throw, e `Intl.DateTimeFormat.format(invalidDate)` devolve string "Data Inválida"). Substituiu por check explicito `if (Number.isNaN(date.getTime())) return iso;` antes do format. Agora ISO bruto debugavel aparece no UI em vez de "Data Inválida". Tier 2 OK.
 
-### WR-05: Caps duplicados em 3 arquivos
-**Files modified:** `src/lib/flirt/me-limits.ts` (novo), `src/app/api/me/profile/feedback/route.ts`, `src/lib/flirt/me-context.ts`, `src/app/me/page.tsx`
-**Commit:** `78b2cc5`
-**Applied fix:** Criado `src/lib/flirt/me-limits.ts` exportando `WIN_SAMPLES_DB_CAP=100`, `RED_PATTERNS_RAW_DB_CAP=200`, `ME_CONTEXT_RENDER_CAP=12`, `ME_PAGE_DISPLAY_CAP=20`. Os 3 sites consumidores importam as constantes em vez de hardcodar. Render cap em `me-context.ts` mantido com alias local pra legibilidade (`const RENDER_CAP = ME_CONTEXT_RENDER_CAP`). Comportamento atual identico — fix e preparatorio pra W8 (consolidador) nao desalinhar storage layer.
+### WR-06: Char count usa trimmed mas maxLength HTML usa raw — UX inconsistente
+**Files modified:** `src/components/encounter/encounter-capture-modal.tsx`
+**Commit:** `e2e2ad3`
+**Applied fix:** Separou `rawLen = rawText.length` (display: bate com `maxLength={MAX_CHARS}` do textarea) e `trimmedLen = rawText.trim().length` (submit guard + `tooShort` flag: bate com `z.string().trim().min(MIN_CHARS).max(MAX_RAW_TEXT)` do backend). Resolve discrepancia onde user digitando 4000 chars com whitespace nas pontas via "3999/4000" enquanto o textarea bloqueava em 4000 raw. Tier 2 OK.
 
-### WR-06: PATCH /api/me/profile aceita body vazio silenciosamente
-**Files modified:** `src/app/api/me/profile/route.ts`
-**Commit:** `0b1c2f7`
-**Applied fix:** Apos montar `data: Prisma.UserProfileUpdateInput`, valida `Object.keys(data).length === 0` -> responde 400 com `"Envie ao menos um campo pra atualizar."`. Antes o prisma `upsert` fazia update com `{}` (noop) e respondia 200 mentindo. Nielsen H5 (prevencao): API deve sinalizar erro do front (form sem dirty check) em vez de mascarar. Comentario inline adicionado explicitando semantica `undefined = nao toca; null = nullify`.
+### WR-07: bootstrap() apos cada submit refaz lista inteira de contatos
+**Files modified:** `src/app/desenrolos/[id]/page.tsx`
+**Commit:** `c247d0a`
+**Applied fix:** Substituiu `void bootstrap()` por patch direto no Zustand via `useFlirtStore.setState((state) => ({ contacts: state.contacts.map((c) => c.id === id ? { ...c, ...patched } : c) }))`. A route POST ja devolve `contact: serializeContact(...)` no body, entao a chamada extra de GET /api/contacts era pura redundancia (network ~50-200ms + re-render da sidebar global). Removida dependencia `bootstrap` do `useCallback` (continua usado no useEffect de hidratacao). Tipou `data.contact` como `Partial<ContactRecord> & { id: string }` pra o spread funcionar sem `any`. Decisao: usei `setState` inline em vez de adicionar nova action `applyContactPatch` no store (out of scope per orchestrator instructions — store nao expoe action equivalente). Tier 2 OK.
+
+### IN-01: Enums sem acento — documentar decisao
+**Files modified:** `src/lib/flirt/encounter-schema.ts`, `docs/DATA-MODEL.md`
+**Commit:** `19f227a`
+**Applied fix:** Bloco de comentario acima das constantes `ESCALATION_VALUES`/`MOOD_VALUES`/`ATTRACTION_DELTA_VALUES` explicando: Anthropic `input_schema.enum` nao garante unicode normalization no output do LLM (as vezes devolve "avançou" vs "avancou") e mistura faria Zod rejeitar silenciosamente. Frontend traduz pra labels acentuadas via `ESCALATION_LABEL`/`MOOD_LABEL`. Adicionou paragrafo equivalente na secao EncounterLog do DATA-MODEL.md (logo apos shape de `extracted`) referenciando o ficheiro de labels. Tier 3 (sem syntax check necessario).
+
+### IN-02: Imports duplicados de @prisma/client
+**Files modified:** `src/app/api/contacts/[id]/encounters/route.ts`
+**Commit:** `4570969`
+**Applied fix:** Mergeou `import { Prisma } from "@prisma/client"` + `import type { AttractionLevel as PrismaAttractionLevel } from "@prisma/client"` num import unico: `import { Prisma, type AttractionLevel as PrismaAttractionLevel } from "@prisma/client"`. Tier 2 OK.
+
+### IN-05: Documentar invariante de seguranca de EncounterLog
+**Files modified:** `prisma/schema.prisma`, `docs/DATA-MODEL.md`
+**Commit:** `8634c0a`
+**Applied fix:** Bloco SECURITY no comentario acima de `model EncounterLog {}` em schema.prisma reforcando que nao tem `user_id` direto e padrao seguro e `{ where: { contact: { userId } } }`. Bloco equivalente em DATA-MODEL.md (callout `> **SECURITY (IN-05):**` apos `Relations: contact (n-1)` da secao EncounterLog) com snippet de codigo e advertencia contra expor `/api/encounters/[id]` sem nested ownership. Tier 3.
 
 ## Skipped Issues
 
-_None._
+### IN-03: Confirmar EncounterRecord como source de truth no boundary
+**File:** `src/components/encounter/encounter-capture-modal.tsx:12-23`, `src/app/desenrolos/[id]/page.tsx:148-182`
+**Reason:** Review explicitamente marca como "Out of scope pro W7, mas vale considerar em W8". Adicionar parser Zod no client pra validar response e mudanca de arquitetura defensiva — defer pra wave de polish.
+**Original issue:** Sem validacao Zod no client, mudanca da API rompe runtime sem tsc pegar.
 
-## Verification
-
-- **Tier 1 (re-read):** Todos os 7 fixes re-validados visualmente apos Edit.
-- **Tier 2 (`npx tsc --noEmit`):** Baseline clean antes dos fixes (0 erros). Cada commit individual ficou clean — nenhuma regressao de tipo introduzida pelos fixes.
-- **Rollback:** nao foi necessario em nenhum fix.
-
-## Out of scope (nao tocado)
-
-5 findings Info (IN-01 a IN-05) ficaram intocados conforme `fix_scope: critical_warning`:
-
-- **IN-01** — duplicacao de `CONTEXT_LIFE_OPTIONS` / `RELATIONSHIP_OPTIONS` entre `lib/flirt/me-onboarding.ts` e as 2 routes.
-- **IN-02** — comentario desatualizado em `me-context.ts:5-6` (parcialmente cuidado em WR-05 quando o comentario foi reescrito; restante e polish).
-- **IN-03** — TODO de LGPD/W8 consolidador em `me/profile/route.ts` DELETE.
-- **IN-04** — rename de `materializeCreate` pra `nonNullableCreateFields`.
-- **IN-05** — magic strings de rate-limit keys (`"me-feedback"`, `"coach"`) viram constantes.
-
-Podem virar proxima rodada se Meres pedir `fix_scope: all`.
+### IN-04: Cursor pode ficar stale apos varios submits
+**File:** `src/app/desenrolos/[id]/page.tsx:168-172`
+**Reason:** Review marca explicitamente: "Sem fix necessario no W7 — anotar pra revisar se aparecer bug 'encontro sumiu da timeline'". Edge case apenas com `happenedAt` manual no passado, nao reproduzido em uso normal. Nenhuma acao tomada.
+**Original issue:** Cursor de paginacao pode pular item se user registra encounter com data manual antiga.
 
 ---
-_Fixed: 2026-05-25T03:30:00Z_
+
+_Fixed: 2026-05-25T16:00:00Z_
 _Fixer: code-fixer (AILA squad)_
-_Iteration: 2_
+_Iteration: 1_
+_Verification: Tier 1 (re-read) + Tier 2 (`npx tsc --noEmit` clean) em todos os fixes de codigo. Tier 3 (sem syntax check) nos fixes de doc (IN-01 / IN-05)._
+_Commits: 10 fixes atomicos (CR-01, WR-01, WR-02, WR-03+WR-04 combinados, WR-05, WR-06, WR-07, IN-01, IN-02, IN-05)._

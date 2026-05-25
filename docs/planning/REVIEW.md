@@ -1,324 +1,449 @@
 ---
-reviewed: 2026-05-25T03:00:00Z
+reviewed: 2026-05-25T15:15:31Z
 depth: standard
-files_reviewed: 14
+wave: W7 - Diario de Campo (EncounterLog)
+files_reviewed: 9
 files_reviewed_list:
   - prisma/schema.prisma
-  - prisma/migrations/20260525020000_create_user_profile/migration.sql
-  - src/app/api/me/profile/route.ts
-  - src/app/api/me/profile/feedback/route.ts
-  - src/app/api/me/profile/onboarding/route.ts
-  - src/lib/flirt/me-context.ts
-  - src/lib/flirt/me-onboarding.ts
-  - src/app/api/coach/route.ts
-  - src/app/me/page.tsx
-  - src/app/me/onboarding/page.tsx
-  - src/components/me-banner-cta.tsx
-  - src/components/me-onboarding-modal.tsx
-  - src/components/me-onboarding-wizard.tsx
-  - src/components/suggestion-feedback.tsx
-  - src/components/flirt-ai-shell.tsx
+  - prisma/migrations/20260525030000_create_encounter_log/migration.sql
+  - src/lib/flirt/encounter-schema.ts
+  - src/app/api/contacts/[id]/encounters/route.ts
+  - src/components/encounter/encounter-capture-modal.tsx
+  - src/components/encounter/encounter-card.tsx
+  - src/components/encounter/encounter-timeline.tsx
+  - src/app/desenrolos/[id]/page.tsx
+  - src/types/flirt.ts
 findings:
   critical: 1
-  warning: 6
+  warning: 7
   info: 5
-  total: 12
+  total: 13
 status: issues_found
 ---
 
 # Code Review Report
 
-**Reviewed:** 2026-05-25T03:00:00Z
+**Reviewed:** 2026-05-25T15:15:31Z
 **Depth:** standard
-**Files Reviewed:** 14 (15 paths — `me-onboarding-wizard.tsx` e `flirt-ai-shell.tsx` revisados apenas no diff W6)
+**Files Reviewed:** 9
+**Wave:** W7 - Diario de Campo (EncounterLog)
 **Status:** issues_found
 
 ## Summary
 
-Wave 6 ("Memória do Homem") entrega o modelo `UserProfile` 1-1 com `User`, três rotas API (`/api/me/profile` GET/PATCH/DELETE, `/feedback` POST, `/onboarding` POST), o builder `buildMeContext`, integração no `/api/coach` com dois prefixos cacheados e três pontos de entrada UI (`/me`, `/me/onboarding`, modal pós-signup, banner CTA). A arquitetura está sólida: multi-tenant defense em todas as rotas, Zod parsing em todo payload, upsert lazy que evita registros zumbis, e tone resolution na ordem correta (`userProfile.tone ?? user.coachTone ?? null` com nullish coalescing).
+W7 entrega o pipeline completo (DB -> route LLM-extractor -> UI timeline + modal). A arquitetura geral esta correta: multi-tenancy aplicada na route (todos os caminhos passam por `requireUser()` + `contact.findFirst({ userId })`), Naming Lock respeitado (snake_case DB / camelCase TS / kebab-case files / PascalCase components), raw-first preservando dado do user em modo degraded, integracao W6 (`userRedPatterns` -> `UserProfile.redPatterns`) consolidada em vez de raw. Nenhuma proibicao de Tier 1 violada (sem Clerk/Supabase/AI SDK Vercel/Drizzle introduzido).
 
-**O concern dominante é um bug crítico de wiring (CR-01):** o `messageId` retornado pelo `/api/coach` no evento `done` é capturado pelo shell mas **não é propagado** dentro de `applyCoachResponse` no store — o assistant `ConversationMessage` é construído com `id: crypto.randomUUID()` no client, ignorando o cuid real do banco. Resultado: todo POST de feedback envia o UUID local, que nunca existe na tabela `message`, e a rota responde 404. **A feature de feedback está quebrada end-to-end** desde o commit `6a89046` apesar de typecheck/lint/build verdes — não há testes pra pegar isso.
+Top 3 concerns:
 
-Demais findings são warnings de robustez (cap "dedup" muda ordem do feedback mais recente; AbortSignal não propagado nas fetches client; sem indicador visual de loading no banner/modal; PATCH aceita body vazio silenciosamente) e infos de qualidade (duplicação de catálogos de enum entre `lib/flirt/me-onboarding.ts` e as routes; magic numbers de cap espalhados em 3 arquivos; comentário desatualizado em `me-context.ts`).
+1. **CR-01 Race condition raw-first/extract-second** — dois POSTs concorrentes pro mesmo `Contact` corrompem `greenFlags`/`redFlags`/`attractionLevel` (read-modify-write fora da transaction, snapshot stale).
+2. **WR-04 `EncounterCard` quebra silenciosamente se `extracted` faltar campo** — POST e GET serializam por caminhos diferentes (POST monta `finalExtract` direto, GET passa por `normalizeExtract`), criando risco de divergencia.
+3. **WR-03 `normalizeExtract` aceita qualquer string como enum** — cast `as EncounterExtractPayload["escalation"]` sem set validation; row legacy ou typo no DB renderiza `undefined` na UI.
 
-A revisão é compatível com Tier 1: Prisma + Postgres + Next 16 + Zod-first + Naming Lock estão respeitados. Migration SQL é trivial e segura (apenas CREATE TABLE + FK CASCADE). `cache_control: ephemeral` em dois blocos do system prompt é correto (Anthropic permite múltiplos breakpoints; o `me-context` muda só quando o user edita `/me` ou marca feedback, o que torna o cache rentável).
+Os outros warnings sao validacoes de borda (cursor lookup nao re-valida ownership defensivamente, `useEffect` sem guard pra `id` undefined, `formatDate` engolindo erro, char count trimmed vs raw maxLength, re-bootstrap apos cada save). Infos sao naming/docs.
+
+Verdict: **issues_found — blocker leve pra prod**. CR-01 deve sair antes de habilitar W7 pra mais de 1 user simultaneo (cenario realista em tab duplicada ou retry de rede). Demais WRs sao fixes de robustez na proxima wave de polish.
 
 ## Critical Issues
 
-### CR-01: Feedback de sugestão sempre 404 — `messageId` do servidor é descartado no client
+### CR-01: Race condition em concurrent POSTs corrompe Contact.greenFlags/redFlags/attractionLevel
 
-**File:** `src/store/use-flirt-store.ts:197` (consumidor: `src/components/flirt-ai-shell.tsx:929` + `src/app/api/me/profile/feedback/route.ts:62-66`)
+**File:** `src/app/api/contacts/[id]/encounters/route.ts:55-272`
 
 **Issue:**
-O coach SSE retorna `{ ...CoachChatResponse, messageId: assistantMessage.id }` no evento `done` (`src/app/api/coach/route.ts:422-429`). O shell **captura** esse `messageId` em `donePayload` (`flirt-ai-shell.tsx:562, 596`) e chama `applyCoachResponse(contactId, donePayload!)`. Porém `applyCoachResponse` em `use-flirt-store.ts:194-204` cria o assistant `ConversationMessage` com:
+O fluxo POST faz:
+1. Le `contact` (linha 55-57) — snapshot do `greenFlags`/`redFlags`/`attractionLevel`.
+2. `prisma.encounterLog.create` com fallback degraded (linha 117) — commit imediato.
+3. Call Anthropic (latencia 3-15s tipico).
+4. Faz `mergeDedupCap(contact.greenFlags, extract.greenFlags, ...)` usando a variavel do passo 1.
+5. Update Contact em `$transaction` (linha 234-248) — commit final.
+
+Se dois POSTs chegam quase simultaneamente pro mesmo `contactId` (tab duplicada, retry de rede com 502, ou usuario clicando "Salvar" 2x antes do loading state subir), ambos leem o **mesmo snapshot** do `Contact`, esperam a LLM, e o segundo a commitar **sobrescreve** o resultado do primeiro — perdendo `greenFlags`/`redFlags` que o primeiro adicionou. Pior em `attractionLevel`: se A faz `up` (Medium -> High) e B comeca com snapshot `Medium` e faz `down`, vai pra `Low` quando deveria ser `Medium` (cancelando A) ou `High` (preservando A).
+
+O mesmo bug afeta `UserProfile.redPatterns` (linhas 251-270): `upsert` -> read -> merge local -> `update` fora de transaction unica.
+
+`mergeDedupCap` nao protege porque opera sobre snapshot local, nao sobre o estado atual do DB.
+
+**Fix:**
+Mover read+write pro mesmo `$transaction` interativo com `Serializable`:
 
 ```ts
-const assistantMessage: ConversationMessage = {
-  id: crypto.randomUUID(),   // <-- ignora response.messageId
-  sender: "assistant",
-  ...
-};
+await prisma.$transaction(
+  async (tx) => {
+    const fresh = await tx.contact.findUniqueOrThrow({
+      where: { id: contactId },
+      select: { greenFlags: true, redFlags: true, attractionLevel: true },
+    });
+    const nextGreenFlags = mergeDedupCap(fresh.greenFlags, extract.greenFlags, FLAGS_CAP);
+    const nextRedFlags = mergeDedupCap(fresh.redFlags, extract.redFlags, FLAGS_CAP);
+    const nextAttraction = shiftAttraction(fresh.attractionLevel, extract.attractionDelta);
+
+    await tx.encounterLog.update({
+      where: { id: encounter.id },
+      data: { extracted: finalExtract as unknown as Prisma.InputJsonValue },
+    });
+    await tx.contact.update({
+      where: { id: contactId },
+      data: {
+        greenFlags: nextGreenFlags,
+        redFlags: nextRedFlags,
+        lastInteractionSummary: extract.summary,
+        attractionLevel: nextAttraction,
+      },
+    });
+
+    if (extract.userRedPatterns.length > 0) {
+      const profile = await tx.userProfile.upsert({
+        where: { userId },
+        update: {},
+        create: { userId },
+        select: { redPatterns: true },
+      });
+      const current = asStringArray(profile.redPatterns);
+      const merged = mergeDedupCap(current, extract.userRedPatterns, RED_PATTERNS_RAW_DB_CAP);
+      if (merged.length !== current.length) {
+        await tx.userProfile.update({
+          where: { userId },
+          data: { redPatterns: merged as unknown as Prisma.InputJsonValue },
+        });
+      }
+    }
+  },
+  { isolationLevel: Prisma.TransactionIsolationLevel.Serializable, timeout: 10_000 },
+);
 ```
 
-Quando o `<SuggestionCard>` renderiza `<SuggestionFeedback messageId={message.id} ... />` (`flirt-ai-shell.tsx:929`), passa o UUID local. O POST em `/api/me/profile/feedback` faz `prisma.message.findFirst({ where: { id: parsed.messageId, contact: { userId } } })` (route.ts:62-66) — o UUID nunca casa com um cuid de `Message.id`, e a API responde **404 "Mensagem não encontrada."** em 100% dos cliques de `[Funcionou]` / `[Não rolou]`.
-
-Sintomas observáveis: zero linhas crescendo em `winSamples`/`redPatternsRaw` em produção, optimistic UI volta com erro "Mensagem não encontrada." no usuário. Tipagem não pega porque `messageId: string` casa com qualquer string. Lint/typecheck/build verdes confirmam que sem teste E2E isso passa direto. Multi-tenant defense não é afetado (o `where: { contact: { userId } }` só seria atingido se o id casasse, o que nunca acontece).
-
-**Fix:** No store, threadar o `messageId` do server na criação do assistant message. Aceite o payload completo já tipado com `messageId` e use o id do server quando presente, com fallback pra UUID local só em path de erro:
-
-```ts
-// src/store/use-flirt-store.ts (~linha 195)
-applyCoachResponse: (contactId, response) =>
-  set((state) => {
-    const assistantMessage: ConversationMessage = {
-      // W6 — usa o id real do DB (vem no evento "done"); fallback só
-      // se algum caller antigo ainda não thread o messageId.
-      id: response.messageId ?? crypto.randomUUID(),
-      sender: "assistant",
-      content: response.assistantMessage,
-      timestamp: new Date().toISOString(),
-      suggestions: response.suggestions,
-      insight: response.insight,
-    };
-    // ...resto inalterado
-  }),
-```
-
-E no tipo `CoachChatResponse` (ou no parâmetro de `applyCoachResponse`), exigir `messageId: string`. Como bonus, no shell `flirt-ai-shell.tsx:927`, trocar a guard `message.id ? ... : null` por uma checagem mais explícita do shape esperado (cuid ≠ uuid v4) — opcional, mas evita renderizar `<SuggestionFeedback>` em casos onde o fallback de erro foi disparado e o id é UUID local. Sugestão concreta:
-
-```tsx
-{message.id && message.sender === "assistant" && !message.id.includes("-") ? (
-  <SuggestionFeedback messageId={message.id} suggestionIndex={suggestionIndex} />
-) : null}
-```
-
-(cuids do Prisma não têm hífen; UUIDs têm. Heurística barata sem mexer no tipo agora.)
+Em Serializable, conflitos disparam erro `P2034` (write conflict) — capturar e retornar 409 com mensagem PT-BR ("Outro encontro foi salvo agora, tenta de novo") OU implementar retry com backoff (max 2x). Alternativa mais leve: advisory lock por `contactId` via `pg_advisory_xact_lock(hashtext(contactId))` na transaction.
 
 ## Warnings
 
-### WR-01: `appendCapped` dedup faz feedback duplicado pular pra o fim — distorce o "recente" + conflito cross-array
+### WR-01: GET cursor lookup nao re-valida ownership via nested `contact.userId`
 
-**File:** `src/app/api/me/profile/feedback/route.ts:130-138`
-
-**Issue:**
-A função `appendCapped` faz `arr.filter((v) => v !== item)` + `push(item)`. Isso é dedup correto, mas tem um side effect: se o usuário marcar a mesma sugestão como `worked` duas vezes (clicar [Funcionou] → mudar de ideia → clicar de novo após algum tempo), o item é **movido** pro fim do array. `buildMeContext` faz `.slice(-RENDER_CAP)` pra pegar os 12 mais recentes — então um feedback antigo "promovido" desloca um feedback genuinamente recente. Não é loss-of-data (o item continua no array), mas o sinal de "recência" fica distorcido.
-
-Adicionalmente, no rating oposto (user clica `worked` e depois muda pra `didnt_work` na mesma sugestão), o texto entra em `redPatternsRaw` **sem ser removido de `winSamples`** — fica nos dois arrays simultaneamente, e o coach recebe instrução contraditória ("já funcionou" + "evite repetir") na mesma sugestão.
-
-**Fix:**
-1. Para dedup-preservando-posição-original, troque `filter + push` por uma checagem prévia:
-```ts
-function appendCapped(arr: string[], item: string, cap: number): string[] {
-  if (arr.includes(item)) return arr;         // já está, não move
-  const next = [...arr, item];
-  return next.length > cap ? next.slice(next.length - cap) : next;
-}
-```
-2. Para resolver o conflito cross-array, na rota antes do upsert, remova `suggestionText` do array oposto:
-```ts
-// Em /api/me/profile/feedback/route.ts, dentro de cada branch de rating:
-const wins = asStringArray(current.winSamples);
-const redsRaw = asStringArray(current.redPatternsRaw);
-
-if (parsed.rating === "worked") {
-  const cleanReds = redsRaw.filter((v) => v !== suggestionText);
-  const nextWins = appendCapped(wins, suggestionText, WIN_SAMPLES_CAP);
-  await prisma.userProfile.update({
-    where: { userId },
-    data: {
-      winSamples: nextWins as unknown as Prisma.InputJsonValue,
-      ...(cleanReds.length !== redsRaw.length
-        ? { redPatternsRaw: cleanReds as unknown as Prisma.InputJsonValue }
-        : {}),
-    },
-  });
-} // espelhar pra didnt_work
-```
-
-### WR-02: `<SuggestionFeedback>` permite trocar rating sem confirmação visual + race condition em clicks rápidos
-
-**File:** `src/components/suggestion-feedback.tsx:28-51`
+**File:** `src/app/api/contacts/[id]/encounters/route.ts:314-318`
 
 **Issue:**
-Depois do primeiro POST 200, `status` vira `"sent"` e fica permanente — o handler só ignora cliques se `status === "sending"` (linha 29). Na prática isso permite trocar `worked → didnt_work`, MAS:
-1. Não há feedback visual de que o segundo clique também gravou (o ícone trocou, mas o badge "guardado" não pulsa novamente).
-2. Se o usuário clicar 3 vezes rapidamente, dispara 3 POSTs em paralelo (a guard só protege contra duplo-clique enquanto `"sending"`, mas após `"sent"` qualquer clique novo dispara). Com `rate_limit = 120/h` é tolerável, mas tem race: o último POST que chegar no banco "vence", e o `previous = rating` capturado no closure pode estar desatualizado se o usuário clicou 3x em ratings diferentes.
-
-**Fix:** Bloquear ações após sucesso, ou apenas considerar `"sent"` final (botões disabled após sucesso, exibindo "guardado"). Já que W6 escolheu não classificar e a UX é "thumbs simples", o caminho mais consistente é tornar a ação irreversível por turno:
-
-```tsx
-// suggestion-feedback.tsx
-async function send(next: Rating) {
-  if (!next || status === "sending" || status === "sent") return;  // bloqueia após sucesso
-  // ...resto inalterado
-}
-// botões: disabled={disabled || status === "sending" || status === "sent"}
-```
-
-Se Meres quiser permitir mudança de ideia, exponha um "Desfazer" explícito que faz DELETE + nova POST (e adicione um endpoint DELETE em `/api/me/profile/feedback`).
-
-### WR-03: `fetch` em client components não propaga AbortSignal — race condition em StrictMode/unmount
-
-**File:** `src/components/me-banner-cta.tsx:30`, `src/components/me-onboarding-modal.tsx:37`, `src/app/me/page.tsx:61`, `src/components/suggestion-feedback.tsx:35`
-
-**Issue:**
-`useEffect` em `MeBannerCta` e `MeOnboardingModal` faz `fetch("/api/me/profile")` e usa flag `cancelled` pra evitar `setState` em componente unmounted. Mas o fetch em si **não é abortado**: a request continua usando bandwidth e mantém uma conexão. Em React 19 StrictMode + Next 16 (com double-mount em dev), dispara duas fetches por mount, ambas resolvendo. Em prod o impacto é menor, mas não é ideal — e em `MeOnboardingModal` há um path onde `cancelled=true` PORÉM o usuário re-monta o componente (route transition em SPA) e o `setOpen(true)` da segunda fetch pode reabrir o modal depois de já ter sido fechado pelo handler de skip.
-
-A página `/me` (`me/page.tsx:61`) tem o mesmo padrão sem AbortController. `SuggestionFeedback.send` (suggestion-feedback.tsx:35) também não usa signal — se o usuário fechar a aba, o POST fica "pendurado" e o optimistic UI nunca recebe a confirmação (irrelevante após unmount, mas vaza recursos).
-
-**Fix:** Trocar a flag `cancelled` por `AbortController` real:
+O GET faz primeiro `prisma.contact.findFirst({ where: { id: contactId, userId } })` (linha 293-296) — 404 se nao for do user. Em seguida, no cursor lookup:
 
 ```ts
-useEffect(() => {
-  const ac = new AbortController();
-  void load();
-  return () => ac.abort();
-
-  async function load() {
-    try {
-      if (window.sessionStorage.getItem(SESSION_DISMISS_KEY)) return;
-      const response = await fetch("/api/me/profile", { cache: "no-store", signal: ac.signal });
-      if (!response.ok) return;
-      const { userProfile } = (await response.json()) as { ... };
-      if (!userProfile.onboardingDone) setOpen(true);
-    } catch (cause) {
-      if ((cause as Error).name === "AbortError") return;
-      // silencioso
-    }
-  }
-}, []);
-```
-
-Aplicar nos 4 arquivos. `<SuggestionFeedback>` pode usar um ref-based `AbortController` se houver risco de o componente desmontar antes da resposta (raro nesse fluxo, mas barato adicionar).
-
-### WR-04: Banner CTA + Modal disparam 2 fetches duplicados a `/api/me/profile` por mount
-
-**File:** `src/components/me-banner-cta.tsx:30` + `src/components/me-onboarding-modal.tsx:37`
-
-**Issue:**
-Ambos `MeBannerCta` e `MeOnboardingModal` são montados via `<FlirtAiShell />` (linha 844 + 1245 no diff). Cada um faz seu próprio `GET /api/me/profile` em `useEffect`. Resultado: a página inicial dispara **duas chamadas idênticas** ao mesmo endpoint em paralelo (e mais uma se `/me` for visitada depois, totalizando 3+ por sessão típica). Em Next 16 com `dynamic = "force-dynamic"`, isso significa duas queries Prisma `upsert` + duas chamadas a `requireUser()` na mesma request HTTP cycle do user.
-
-Não é bug funcional (idempotência segura), mas é desperdício direto. Em PageSpeed/RUM, isso aparece como duplicate XHR no waterfall. Em conjunto com o coach turn (que também faz `select: { userProfile: { ... } }`), o profile é lido 3x em ~10s da landing inicial.
-
-**Fix:**
-Centralizar o fetch em um `useMeProfile()` hook em `src/lib/use-me-profile.ts` que cacheia o resultado em memória do client (ou no `useFlirtStore`) e expõe `{ profile, loading, refetch }`. Ambos componentes consomem do mesmo hook. Alternativa mais barata: incluir `userProfile.onboardingDone` no payload de `/api/contacts` (que o shell já chama em bootstrap) via `prisma.user.findUnique({ ... select: { userProfile: { select: { onboardingDone: true } } } })` e dispensar fetch separado.
-
-### WR-05: Caps duplicados em 3 arquivos (`RENDER_CAP = 12`, DB caps 100/200, page slice 20) — desincronização silenciosa
-
-**File:** `src/lib/flirt/me-context.ts:22` + `src/app/api/me/profile/feedback/route.ts:16-17` + `src/app/me/page.tsx:325, 348`
-
-**Issue:**
-`me-context.ts` faz `slice(-12)` pra capar quantos itens entram no system prompt. `feedback/route.ts` capa o array DB em 100/200. A página `/me` faz `slice(-20).reverse()` pra listar wins e reds. Três caps em três arquivos pro mesmo dado.
-
-Hoje funciona, mas se algum dia W8 trocar o storage layer (ex: agregar em outra tabela), qualquer um dos três pode ficar desincronizado sem alarme. Especialmente perigoso: render cap de 12 < page cap de 20 — o usuário vê "20 wins" na UI mas o coach só lê 12.
-
-**Fix:**
-Exportar constantes de um novo `src/lib/flirt/me-limits.ts` e importar nos 3 sites:
-
-```ts
-// src/lib/flirt/me-limits.ts
-export const WIN_SAMPLES_DB_CAP = 100;
-export const RED_PATTERNS_RAW_DB_CAP = 200;
-export const ME_CONTEXT_RENDER_CAP = 12;
-export const ME_PAGE_DISPLAY_CAP = 20;
-```
-
-Não muda comportamento, mas evita drift quando a Wave 8 (consolidador) chegar.
-
-### WR-06: PATCH em `/api/me/profile` aceita body vazio `{}` — Nielsen H5 (prevenção)
-
-**File:** `src/app/api/me/profile/route.ts:70-105`
-
-**Issue:**
-Se o frontend mandar `PATCH {}`, `patchSchema.parse` aceita (todos os campos são `optional`), `data = {}`, e o `prisma.userProfile.upsert` faz update com objeto vazio (noop). A rota responde 200 com o profile inalterado. Aparenta funcionar, mas mascara bugs do frontend (ex: form que envia sem detectar dirty state) — Nielsen H5 (prevenção): a API deveria sinalizar "nada pra atualizar".
-
-Também: `parsed.demographics === null` é tratado como "nullify" (linha 92-94), mas o validator aceita `demographics: undefined` que cai no `else` e não toca o campo — comportamento correto mas não documentado. A distinção `null vs undefined` não está clara no comentário.
-
-**Fix:** Validar que ao menos um campo foi enviado:
-
-```ts
-if (Object.keys(data).length === 0) {
-  return NextResponse.json(
-    { error: "Envie ao menos um campo pra atualizar." },
-    { status: 400 },
-  );
-}
-```
-
-E adicionar um comentário acima da linha 91 explicitando que `undefined = não toca; null = nullify`. Decisão fica com Meres — Tier 1 não exige isso, é polish defensivo.
-
-## Info
-
-### IN-01: Duplicação de `CONTEXT_LIFE_OPTIONS` / `RELATIONSHIP_OPTIONS` entre `lib/` e routes
-
-**File:** `src/lib/flirt/me-onboarding.ts:5-20` vs `src/app/api/me/profile/route.ts:16-31` vs `src/app/api/me/profile/onboarding/route.ts:14-29`
-
-**Issue:**
-Três fontes da verdade para o mesmo enum. A versão da `lib/flirt/me-onboarding.ts` tem objetos `{ id, label }`; as versões nas routes têm só os ids (`as const` arrays). Hoje os ids batem 100% (`viuvo`, `corporativo`, etc.), mas se alguém adicionar uma opção em um lugar só, vai falhar no Zod e a UI vai mostrar valor que o backend rejeita.
-
-**Fix:** Exportar ids de `me-onboarding.ts` e importar nas routes:
-
-```ts
-// me-onboarding.ts
-export const CONTEXT_LIFE_IDS = CONTEXT_LIFE_OPTIONS.map((o) => o.id) as [ContextLifeId, ...ContextLifeId[]];
-// route.ts
-import { CONTEXT_LIFE_IDS } from "@/lib/flirt/me-onboarding";
-const patchSchema = z.object({
-  contextLife: z.enum(CONTEXT_LIFE_IDS).nullable().optional(),
-  // ...
+const cursorRow = await prisma.encounterLog.findFirst({
+  where: { id: beforeCursor, contactId },
+  select: { happenedAt: true, id: true },
 });
 ```
 
-### IN-02: Comentário desatualizado em `me-context.ts:5-6`
+Filtra por `contactId` (que sabemos ser do user). Tecnicamente seguro hoje, **mas** `EncounterLog` nao tem `userId` direto — toda query depende do guardian do `contactId`. Se um dia alguem adicionar um endpoint `/api/encounters/[id]` ou um GET sem o contact-scope inicial, regride pra cross-tenant leak. Defesa em profundidade.
 
-**File:** `src/lib/flirt/me-context.ts:5-6`
-
-**Issue:**
-Comentário menciona "cap defensivo de 12 itens cada na render" como inline number. Logo abaixo (linha 22) está `const RENDER_CAP = 12`. Só referenciar a constante deixa mais robusto.
-
-**Fix:** Trocar "(cap defensivo de 12 itens cada na render, mesmo que o DB guarde até 100/200)" por "(cap RENDER_CAP definido abaixo; o DB guarda até WIN_SAMPLES_CAP/RED_PATTERNS_RAW_CAP — ver feedback/route.ts)".
-
-### IN-03: DELETE `/api/me/profile` — adicionar TODO sobre LGPD vs W8 consolidador
-
-**File:** `src/app/api/me/profile/route.ts:113-126`
-
-**Issue:**
-O update do DELETE zera corretamente `winSamples`, `redPatternsRaw`, `redPatterns`. Mas quando W8 implementar o consolidador, precisa garantir que ele respeita o reset (não recria `redPatterns` a partir de logs antigos depois de o user limpar).
-
-**Fix:** Comentário inline:
+**Fix:**
+Usar relacao nested:
 
 ```ts
-// W8 TODO: o consolidador deve checar updatedAt > lastConsolidationAt pra
-// respeitar limpeza de memória (LGPD).
+const cursorRow = await prisma.encounterLog.findFirst({
+  where: { id: beforeCursor, contact: { id: contactId, userId } },
+  select: { happenedAt: true, id: true },
+});
 ```
 
-### IN-04: `materializeCreate` — nome sugere construção, função apenas filtra null/undefined
+E documentar o invariante (ver IN-05).
 
-**File:** `src/app/api/me/profile/route.ts:165-177`
+### WR-02: `useEffect` load nao guarda contra `id` undefined em transition de rota
 
-**Issue:**
-Nome `materializeCreate` é ambíguo. Lendo o corpo, o que ela faz é filtrar campos `null/undefined` antes de passar pro `create`. `parsed.demographics != null` (linha 173) é correto (cobre null+undefined). Sem bug — só clareza.
-
-**Fix:** Renomear para `nonNullableCreateFields` ou inline a função (12 linhas, único callsite na linha 101).
-
-### IN-05: Magic strings `"me-feedback"`, `"coach"` espalhadas como route keys em rate limit
-
-**File:** `src/app/api/me/profile/feedback/route.ts:37` + `src/app/api/coach/route.ts:82`
+**File:** `src/app/desenrolos/[id]/page.tsx:83-119, 121-146, 148-182`
 
 **Issue:**
-Strings literais para keys de rate limit. Se outro lugar precisar consultar o mesmo bucket, fácil errar a string. Não é bug — só fragilidade.
+`useParams<{ id: string }>()` em Next 16 pode retornar `undefined` em transitions (Suspense boundary, navegacao client-side antes do params resolver). Se `id` for `undefined`, o fetch vira `/api/contacts/undefined/encounters` -> 404 silencioso. Pior: `submitEncounter` se for chamado antes do params resolver, consome quota do `usage_log` (route="encounters") sem nada acontecer.
 
-**Fix:** Constantes em `src/lib/rate-limit.ts`:
+**Fix:**
+Guard inicial em todos os 3 callbacks:
 
 ```ts
-export const RATE_LIMIT_ROUTES = {
-  COACH: "coach",
-  ME_FEEDBACK: "me-feedback",
-} as const;
+useEffect(() => {
+  if (!id) return;
+  let cancelled = false;
+  async function loadEncounters() { /* ... */ }
+  void loadEncounters();
+  return () => { cancelled = true; };
+}, [id]);
+
+const loadMoreEncounters = useCallback(async () => {
+  if (!id) return;
+  if (!encountersCursor || encountersLoadingMore) return;
+  // ...
+}, [id, encountersCursor, encountersLoadingMore]);
+
+const submitEncounter = useCallback(async (payload) => {
+  if (!id) throw new Error("Pagina ainda carregando.");
+  // ...
+}, [id, bootstrap]);
+```
+
+### WR-03: `normalizeExtract` aceita qualquer string como enum — render quebrado se DB tiver valor legacy
+
+**File:** `src/app/api/contacts/[id]/encounters/route.ts:415-444`
+
+**Issue:**
+```ts
+escalation: (obj.escalation as EncounterExtractPayload["escalation"]) ?? "indefinido",
+mood: (obj.mood as EncounterExtractPayload["mood"]) ?? "neutro",
+attractionDelta: (obj.attractionDelta as EncounterExtractPayload["attractionDelta"]) ?? "same",
+```
+
+O cast `as ...` aceita qualquer string em runtime. Se uma row antiga ou typo no LLM output tiver `escalation: "ascendente"`, `mood: "feliz"`, `attractionDelta: "rise"`, o frontend recebe enum invalido. Em `encounter-card.tsx:92`, `ESCALATION_LABEL[extracted.escalation]` retorna `undefined` -> chip vazio. `escalationStyle()` cai no `else` (border-white/15) mas ainda renderiza icone errado.
+
+**Fix:**
+Validar via Set inline:
+
+```ts
+const ESCALATION_SET = new Set<string>(["regrediu", "estagnou", "avancou", "indefinido"]);
+const MOOD_SET = new Set<string>(["leve", "tenso", "intenso", "frustrante", "neutro"]);
+const DELTA_SET = new Set<string>(["down", "same", "up"]);
+
+function safeEnum<T extends string>(value: unknown, set: Set<string>, fallback: T): T {
+  return typeof value === "string" && set.has(value) ? (value as T) : fallback;
+}
+
+return {
+  summary: typeof obj.summary === "string" ? obj.summary : "",
+  escalation: safeEnum(obj.escalation, ESCALATION_SET, "indefinido"),
+  mood: safeEnum(obj.mood, MOOD_SET, "neutro"),
+  nextMove: typeof obj.nextMove === "string" ? obj.nextMove : "",
+  attractionDelta: safeEnum(obj.attractionDelta, DELTA_SET, "same"),
+  greenFlags: asStringArray(get("greenFlags", []) as Prisma.JsonValue),
+  redFlags: asStringArray(get("redFlags", []) as Prisma.JsonValue),
+  userRedPatterns: asStringArray(get("userRedPatterns", []) as Prisma.JsonValue),
+  ...(obj.degraded === true ? { degraded: true } : {}),
+};
+```
+
+### WR-04: `EncounterCard` assume `extracted` completo — POST e GET serializam por caminhos diferentes
+
+**File:** `src/components/encounter/encounter-card.tsx:73-178`, `src/app/api/contacts/[id]/encounters/route.ts:223-232, 337-339`
+
+**Issue:**
+- GET roda `normalizeExtract(row.extracted)` -> shape garantido (com defaults pros 8 campos).
+- POST monta `finalExtract` direto do `extract` validado pelo Zod (linha 223-232). Tambem garantido pelo Zod.
+- Fallback degraded (linha 105-115) tambem garantido pelo tipo literal.
+
+Hoje OK, mas se alguem mudar o flow pra retornar `extracted: row.extracted` raw em algum endpoint novo, `extracted.greenFlags.length` (linha 117 do card) throw `Cannot read properties of undefined`. Sem `<ErrorBoundary>` na page, a timeline inteira quebra.
+
+**Fix:**
+Centralizar **toda** serializacao de `EncounterRecord.extracted` por uma funcao unica que retorna `EncounterExtractPayload` validado. Hoje existem dois caminhos (`normalizeExtract` no GET, montagem inline no POST) — unificar:
+
+```ts
+function toEncounterPayload(input: unknown, fallback?: EncounterExtractPayload): EncounterExtractPayload {
+  // normaliza + valida enums via safeEnum (WR-03) + retorna shape garantido
+}
+
+// POST:
+encounter: serializeEncounter(encounter, toEncounterPayload(finalExtract))
+// GET:
+slice.map((row) => serializeEncounter(row, toEncounterPayload(row.extracted)))
+```
+
+Defensivo extra no componente:
+
+```ts
+const greens = extracted.greenFlags ?? [];
+const reds = extracted.redFlags ?? [];
+const userPatterns = extracted.userRedPatterns ?? [];
+```
+
+### WR-05: `formatDate` cai pra string "Data Inválida" em vez do ISO original
+
+**File:** `src/components/encounter/encounter-card.tsx:56-69`
+
+**Issue:**
+```ts
+function formatDate(iso: string): string {
+  try {
+    const date = new Date(iso);
+    return new Intl.DateTimeFormat("pt-BR", { ... }).format(date);
+  } catch {
+    return iso;
+  }
+}
+```
+
+`new Date("garbage")` retorna `Invalid Date` (nao throw). `Intl.DateTimeFormat.format(invalidDate)` retorna `"Data Inválida"` (em pt-BR). O catch nunca dispara. O fallback `return iso` morre. Usuario ve `"Data Inválida"` em vez do ISO original (que seria pelo menos debugavel).
+
+**Fix:**
+```ts
+function formatDate(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat("pt-BR", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+}
+```
+
+### WR-06: Char count usa trimmed mas `maxLength` HTML usa raw — UX inconsistente
+
+**File:** `src/components/encounter/encounter-capture-modal.tsx:110-166, 154, 194`
+
+**Issue:**
+```ts
+const charCount = rawText.trim().length;        // linha 110 — trimmed
+maxLength={MAX_CHARS}                            // linha 154 — raw
+disabled={submitting || charCount < MIN_CHARS}   // linha 194 — trimmed
+```
+
+Backend valida `z.string().trim().min(5).max(MAX_RAW_TEXT)` (linha 40). Se o user cola texto de 4001 chars com whitespace, o browser bloqueia em 4000 raw — mas o display mostra "X/4000" usando trimmed count (ate 3999 visivel). Discrepancia confusa. Mais grave: se cola exatamente 4000 chars onde 100 sao whitespace nas pontas, backend trim leva pra 3900 - aceita; mas display mostra 3900/4000 (assumindo trim) enquanto o user ve 4000 chars no campo - confunde.
+
+**Fix:**
+Padronizar pra **raw** no display + manter validacao trimmed pro submit:
+
+```ts
+const rawLen = rawText.length;
+const trimmedLen = rawText.trim().length;
+const tooShort = trimmedLen > 0 && trimmedLen < MIN_CHARS;
+
+// Display:
+<span>{rawLen}/{MAX_CHARS} caracteres</span>
+
+// Submit guard mantem trimmed:
+disabled={submitting || trimmedLen < MIN_CHARS}
+```
+
+### WR-07: `bootstrap()` apos cada submit refaz lista inteira de contatos
+
+**File:** `src/app/desenrolos/[id]/page.tsx:174`
+
+**Issue:**
+```ts
+// Refresca o contato no Zustand pra refletir greenFlags/redFlags/lastInteractionSummary/attractionLevel.
+void bootstrap();
+```
+
+`bootstrap()` chama `GET /api/contacts` que retorna **todos** os contatos do user. Apos cada encontro:
+1. Network round-trip extra (~50-200ms).
+2. Reescreve `contacts` no Zustand -> dispara re-render na sidebar global.
+3. Reference equality quebrada -> filhos que dependem de `contacts.find(...)` re-renderizam.
+
+A route POST ja retorna `contact: serializeContact(refreshedContact)` no body (linha 281). Basta consumir.
+
+**Fix:**
+Adicionar action `applyContactPatch(id, patch)` no `use-flirt-store.ts` (se nao existir) e:
+
+```ts
+const submitEncounter = useCallback(async (payload) => {
+  // ... fetch ...
+  setEncounters((prev) => [data.encounter as EncounterRecord, ...prev.filter((e) => e.id !== data.encounter!.id)]);
+
+  if (data.contact) {
+    useFlirtStore.getState().applyContactPatch(id, data.contact);
+  }
+
+  return { encounter: data.encounter, degraded: data.degraded === true, degradedReason: data.degradedReason };
+}, [id]);
+```
+
+Se nao quiser adicionar action agora (out of scope), substituir por `updateContact(id, partial)` que ja deve existir no store.
+
+## Info
+
+### IN-01: Enums sem acento (`avancou`) — documentar decisao
+
+**File:** `src/lib/flirt/encounter-schema.ts:11-26`, `src/components/encounter/encounter-card.tsx:19-32`
+
+**Issue:**
+DB/enum: `avancou`, `regrediu`, `estagnou`, `indefinido` (sem acentos). UI label: `Avançou` (com acento). Decisao razoavel (Anthropic tool `input_schema.enum` nao garante unicode normalization), mas nao documentada. Risco: futura migracao ou desenvolvedor novo escreve `"avançou"` em algum fix e Zod rejeita silenciosamente.
+
+**Fix:** comentario no schema:
+```ts
+// Enums em snake_case SEM ACENTO — Anthropic tool input_schema enums
+// nao garantem unicode normalization; LLM as vezes devolve com acento.
+// Frontend traduz pra labels com acento via ESCALATION_LABEL/MOOD_LABEL.
+export const ESCALATION_VALUES = ["regrediu", "estagnou", "avancou", "indefinido"] as const;
+```
+
+E adicionar nota em `DATA-MODEL.md` secao EncounterLog (no shape de `extracted`).
+
+### IN-02: Imports duplicados de `@prisma/client`
+
+**File:** `src/app/api/contacts/[id]/encounters/route.ts:4, 22-24`
+
+**Issue:**
+```ts
+import { Prisma } from "@prisma/client";
+// ...
+import type {
+  AttractionLevel as PrismaAttractionLevel,
+} from "@prisma/client";
+```
+
+Dois imports separados do mesmo modulo.
+
+**Fix:**
+```ts
+import { Prisma, type AttractionLevel as PrismaAttractionLevel } from "@prisma/client";
+```
+
+### IN-03: Confirmar `EncounterRecord` como source de truth no boundary
+
+**File:** `src/components/encounter/encounter-capture-modal.tsx:12-23`, `src/app/desenrolos/[id]/page.tsx:148-182`
+
+**Issue:**
+`SubmitResult` no modal e o shape de retorno em `submitEncounter` estao alinhados hoje. Se a API mudar (ex: response wrapping em `{ data: { encounter, ... } }`), os types compilam mas runtime quebra.
+
+**Fix (opcional, defensivo):**
+Adicionar Zod parser no client pra validar response:
+
+```ts
+const ENCOUNTER_POST_SHAPE = z.object({
+  encounter: z.object({ /* shape de EncounterRecord */ }),
+  contact: z.object({ id: z.string() }).optional(),
+  degraded: z.boolean().optional(),
+  degradedReason: z.string().optional(),
+});
+```
+
+Out of scope pro W7, mas vale considerar em W8.
+
+### IN-04: Cursor pode ficar stale apos varios submits — improvavel mas vale anotar
+
+**File:** `src/app/desenrolos/[id]/page.tsx:168-172`
+
+**Issue:**
+Apos `submitEncounter` o codigo prepende encounter no array sem alterar `encountersCursor`. Funcional porque cursor aponta pra `happenedAt DESC` mais antigo do primeiro fetch, e novos encounters tem `happenedAt` mais recente (entram **antes** do cursor). Edge case: se user registra encounter com `happenedAt` no passado (data manual), pode pular item ao "Carregar mais".
+
+**Fix:** Sem fix necessario no W7 — anotar pra revisar se aparecer bug "encontro sumiu da timeline".
+
+### IN-05: Documentar invariante de seguranca de `EncounterLog` no DATA-MODEL.md e schema.prisma
+
+**File:** `prisma/schema.prisma:197-209`, `docs/DATA-MODEL.md` secao EncounterLog
+
+**Issue:**
+`EncounterLog` nao tem `userId`. Multi-tenancy depende do FK `contactId` + ownership check de `contact.userId`. Se nao documentado, regressao futura facil.
+
+**Fix:**
+Adicionar bloco em `DATA-MODEL.md`:
+
+```markdown
+> **SECURITY:** `encounter_log` nao tem `user_id` direto. Multi-tenancy
+> e enforced via `contact_id` FK. Toda query MUST filtrar por
+> `{ contactId } + ownership de contact via { contact: { userId } }`.
+> Helper recomendado: `prisma.encounterLog.findMany({ where: { contact: { userId } } })`.
+> Padrao seguro: nunca expor endpoint `/api/encounters/[id]` sem nesting.
+```
+
+E comentario no schema:
+
+```prisma
+// SECURITY: EncounterLog nao tem userId direto. Toda query DEVE filtrar
+// por contactId E re-validar contact.userId === requireUser().
+// Use { where: { contact: { userId } } } pra defesa em profundidade.
+model EncounterLog {
+  ...
+}
 ```
 
 ---
 
-_Reviewed: 2026-05-25T03:00:00Z_
+_Reviewed: 2026-05-25T15:15:31Z_
 _Reviewer: code-reviewer (AILA squad)_
 _Depth: standard_
+_Final tally: **CR=1 · WR=7 · IN=5 · total=13**_
+_Verdict: **issues_found — blocker leve pra deploy publico**. CR-01 deve ser resolvido antes de habilitar W7 pra mais de 1 user simultaneo (tab duplicada ou retry de rede ja reproduzem). Demais WRs sao fixes de robustez recomendados na proxima wave de polish. INs sao docs/style._
