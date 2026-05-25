@@ -15,6 +15,7 @@ import { statusToDb } from "@/lib/serializers";
 import {
   imageAttachmentSchema,
   MAX_ATTACHMENTS_PER_TURN,
+  type ImageAttachmentPayload,
 } from "@/lib/flirt/attachments";
 import { extractContactAvatar } from "@/lib/flirt/avatar-vision";
 import type {
@@ -148,11 +149,51 @@ export async function POST(request: Request) {
     }
   }
 
+  // WR-06 — re-injeta imagens do histórico SÓ no último turn do user. Sem
+  // isso, o LLM via "[3 imagem(ns) anexada(s)]" no histórico e perdia todo
+  // contexto visual em turns subsequentes. Limitar ao último turn evita
+  // blow-up de tokens (8 turns * 4 imgs * ~1500 tokens ~= 48k).
+  const lastUserHistoryIndex = (() => {
+    for (let i = history.length - 1; i >= 0; i--) {
+      if (history[i].sender === "user") return i;
+    }
+    return -1;
+  })();
+
   const messagesForLlm: Anthropic.MessageParam[] = [];
-  for (const message of history) {
+  for (let i = 0; i < history.length; i++) {
+    const message = history[i];
     const role: "user" | "assistant" = message.sender === "assistant" ? "assistant" : "user";
     const prefix = message.sender === "contact" ? "[Mensagem dela] " : "";
-    messagesForLlm.push({ role, content: prefix + message.content });
+    const text = prefix + message.content;
+
+    const rawAtts = message.attachments as unknown;
+    const historyAtts =
+      i === lastUserHistoryIndex && Array.isArray(rawAtts)
+        ? (rawAtts as ImageAttachmentPayload[]).filter(
+            (a) =>
+              a &&
+              typeof a === "object" &&
+              a.type === "image" &&
+              typeof a.data === "string" &&
+              typeof a.mediaType === "string",
+          )
+        : [];
+
+    if (role === "user" && historyAtts.length) {
+      const imageBlocks = historyAtts.map(
+        (a): Anthropic.ImageBlockParam => ({
+          type: "image",
+          source: { type: "base64", media_type: a.mediaType, data: a.data },
+        }),
+      );
+      messagesForLlm.push({
+        role,
+        content: [...imageBlocks, { type: "text", text }],
+      });
+    } else {
+      messagesForLlm.push({ role, content: text });
+    }
   }
 
   const contextText = [
