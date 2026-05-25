@@ -54,18 +54,18 @@ function moodStyle(value: EncounterMood): string {
 }
 
 function formatDate(iso: string): string {
-  try {
-    const date = new Date(iso);
-    return new Intl.DateTimeFormat("pt-BR", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(date);
-  } catch {
-    return iso;
-  }
+  // WR-05: new Date("garbage") retorna Invalid Date sem throw, e
+  // Intl.DateTimeFormat.format(invalidDate) devolve "Data Inválida" em pt-BR.
+  // Checa NaN explicito antes pra fallback no ISO original (debugavel).
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat("pt-BR", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
 }
 
 export function EncounterCard({ encounter }: { encounter: EncounterRecord }) {
