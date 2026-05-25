@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { ContactKind } from "@prisma/client";
+import { ContactKind, Prisma } from "@prisma/client";
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
 import { serializeContact } from "@/lib/serializers";
+
+// W5 / M5 — limites de busca server-side.
+// Mantém payload bounded mesmo com queries pesadas.
+const SEARCH_QUERY_MAX = 80;
+const CONTACTS_LIST_LIMIT = 500;
 
 const ratingValue = z.number().min(0).max(10).nullable().optional();
 
@@ -43,12 +48,30 @@ export async function GET(request: Request) {
   const kindFilter =
     kindParam === "desenrolo" || kindParam === "agent_chat" ? kindParam : null;
 
+  // W5 / M5 — busca server-side. Match parcial case-insensitive em
+  // name/instagramHandle/location/metContext + match exato em qualquer tag.
+  // Trim + slice protege contra payloads abusivos sem precisar de Zod aqui.
+  const rawQuery = (searchParams.get("q") ?? "").trim().slice(0, SEARCH_QUERY_MAX);
+  const searchFilter: Prisma.ContactWhereInput | null = rawQuery
+    ? {
+        OR: [
+          { name: { contains: rawQuery, mode: "insensitive" } },
+          { instagramHandle: { contains: rawQuery, mode: "insensitive" } },
+          { location: { contains: rawQuery, mode: "insensitive" } },
+          { metContext: { contains: rawQuery, mode: "insensitive" } },
+          { tags: { has: rawQuery } },
+        ],
+      }
+    : null;
+
   const contacts = await prisma.contact.findMany({
     where: {
       userId,
       ...(kindFilter ? { kind: kindFilter as ContactKind } : {}),
+      ...(searchFilter ?? {}),
     },
     orderBy: { updatedAt: "desc" },
+    take: CONTACTS_LIST_LIMIT,
     include: {
       messages: {
         orderBy: { createdAt: "asc" },
@@ -58,6 +81,7 @@ export async function GET(request: Request) {
 
   return NextResponse.json({
     contacts: contacts.map(serializeContact),
+    query: rawQuery || null,
   });
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useDeferredValue, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   PlusIcon,
@@ -8,12 +8,18 @@ import {
   SearchIcon,
   MapPinIcon,
   HeartIcon,
+  Loader2Icon,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import type { ContactRecord } from "@/types/flirt";
+
+// W5 / M5 — debounce + min length pra search server-side.
+// 250ms equilibra responsividade percebida com pressão no DB.
+const SEARCH_DEBOUNCE_MS = 250;
+const SEARCH_MIN_CHARS = 2;
 
 function labelStatus(status: ContactRecord["status"]) {
   if (status === "hot_lead") return "Hot lead";
@@ -31,7 +37,14 @@ export default function DesenrolosListPage() {
   const { contacts, hasHydrated, bootstrap, isBootstrapping, bootstrapError } =
     useFlirtStore();
   const [query, setQuery] = useState("");
-  const deferredQuery = useDeferredValue(query);
+
+  // W5 / M5 — quando query >= SEARCH_MIN_CHARS, a lista vem do servidor
+  // (suporta name/handle/location/metContext/tag). Quando query vazia ou < min,
+  // usa o cache local do Zustand (rápido, suficiente pra listar).
+  const [serverResults, setServerResults] = useState<ContactRecord[] | null>(null);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchError, setSearchError] = useState<string | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     if (!useFlirtStore.persist.hasHydrated()) {
@@ -45,18 +58,69 @@ export default function DesenrolosListPage() {
     }
   }, [hasHydrated, bootstrap]);
 
+  useEffect(() => {
+    const trimmed = query.trim();
+    if (trimmed.length < SEARCH_MIN_CHARS) {
+      // Cancela qualquer fetch em voo. Limpeza de state é feita derivando
+      // `desenrolos` do cache local quando `hasActiveSearch` é false —
+      // assim evitamos setState síncrono dentro do effect (react-hooks/set-state-in-effect).
+      abortRef.current?.abort();
+      abortRef.current = null;
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      abortRef.current?.abort();
+      const controller = new AbortController();
+      abortRef.current = controller;
+      setIsSearching(true);
+      setSearchError(null);
+
+      const params = new URLSearchParams({ kind: "desenrolo", q: trimmed });
+      fetch(`/api/contacts?${params.toString()}`, {
+        cache: "no-store",
+        signal: controller.signal,
+      })
+        .then(async (res) => {
+          if (!res.ok) throw new Error("Não consegui buscar agora.");
+          const data = (await res.json()) as { contacts: ContactRecord[] };
+          return data.contacts;
+        })
+        .then((results) => {
+          if (controller.signal.aborted) return;
+          setServerResults(results);
+        })
+        .catch((cause: unknown) => {
+          if (controller.signal.aborted) return;
+          if (cause instanceof DOMException && cause.name === "AbortError") return;
+          setSearchError(
+            cause instanceof Error ? cause.message : "Erro na busca.",
+          );
+        })
+        .finally(() => {
+          if (!controller.signal.aborted) setIsSearching(false);
+        });
+    }, SEARCH_DEBOUNCE_MS);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [query]);
+
+  useEffect(() => {
+    return () => {
+      abortRef.current?.abort();
+    };
+  }, []);
+
+  const hasActiveSearch = query.trim().length >= SEARCH_MIN_CHARS;
+
   const desenrolos = useMemo(() => {
-    const q = deferredQuery.trim().toLowerCase();
-    const filtered = contacts.filter((c) => c.kind === "desenrolo");
-    if (!q) return filtered;
-    return filtered.filter(
-      (c) =>
-        c.name.toLowerCase().includes(q) ||
-        (c.location ?? "").toLowerCase().includes(q) ||
-        (c.metContext ?? "").toLowerCase().includes(q) ||
-        c.tags.some((t) => t.toLowerCase().includes(q)),
-    );
-  }, [contacts, deferredQuery]);
+    if (hasActiveSearch && serverResults) {
+      return serverResults.filter((c) => c.kind === "desenrolo");
+    }
+    return contacts.filter((c) => c.kind === "desenrolo");
+  }, [contacts, hasActiveSearch, serverResults]);
 
   const isLoading = !hasHydrated || isBootstrapping;
 
@@ -119,21 +183,58 @@ export default function DesenrolosListPage() {
         ) : null}
 
         {/* Busca */}
-        <div className="mb-5 flex items-center gap-2 rounded-2xl border border-white/[0.07] bg-white/[0.04] px-4 py-3">
-          <SearchIcon className="h-4 w-4 text-white/35" />
+        <div
+          className={cn(
+            "mb-5 flex items-center gap-2 rounded-2xl border bg-white/[0.04] px-4 py-3 transition-colors",
+            searchError
+              ? "border-rose-500/30"
+              : isSearching
+                ? "border-[#ff355d]/30"
+                : "border-white/[0.07]",
+          )}
+        >
+          {isSearching ? (
+            <Loader2Icon
+              aria-label="Buscando..."
+              className="h-4 w-4 animate-spin text-[#ff355d]"
+            />
+          ) : (
+            <SearchIcon className="h-4 w-4 text-white/35" aria-hidden="true" />
+          )}
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar por nome, lugar, tag..."
+            aria-label="Buscar desenrolos"
+            aria-busy={isSearching}
             className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/30"
           />
+          {hasActiveSearch && !isSearching ? (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Limpar busca"
+              className="rounded-full px-2 py-0.5 text-xs text-white/40 transition hover:text-white/80"
+            >
+              Limpar
+            </button>
+          ) : null}
         </div>
+
+        {searchError ? (
+          <div
+            role="alert"
+            className="mb-4 rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-300"
+          >
+            {searchError}
+          </div>
+        ) : null}
 
         {/* Grid / estados */}
         {isLoading ? (
           <DesenroloGridSkeleton />
         ) : desenrolos.length === 0 ? (
-          <EmptyState hasFilter={!!query.trim()} />
+          <EmptyState hasFilter={hasActiveSearch} />
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {desenrolos.map((c) => (
