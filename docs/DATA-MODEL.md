@@ -95,6 +95,12 @@ Index: `(contactId, happenedAt DESC)` — timeline cronológica descendente no p
 
 Relations: `contact` (n-1).
 
+> **SECURITY (IN-05):** `encounter_log` **não tem `user_id` direto**. Multi-tenancy é enforced **só** via `contact_id` FK + ownership check do `Contact.userId`. Toda query MUST filtrar por `{ contactId }` E re-validar ownership via `{ contact: { userId } }`. Helper recomendado:
+> ```ts
+> prisma.encounterLog.findMany({ where: { contact: { userId } } })
+> ```
+> Padrão seguro: **nunca** expor endpoint `/api/encounters/[id]` sem nesting de `contact.userId`. Se for criar um (timeline cross-contact, ex), começar pelo `contact: { userId }` no `where`. Comentário SECURITY no `prisma/schema.prisma:EncounterLog` reforça o invariante.
+
 > **W7 (25-05-2026):** introduz Diário de Campo. Captura é **síncrona no MVP** — `POST /api/contacts/:id/encounters` grava raw → call Anthropic com tool `submit_encounter_extract` (em `src/lib/flirt/encounter-schema.ts`) → grava `extracted` + atualiza `Contact` em `prisma.$transaction`. Sem fallback se LLM falhar: grava raw + `extracted={ summary, escalation: "indefinido", ... }` mínimo e retorna 200 com flag `degraded=true` no payload (front mostra aviso "Não consegui ler — texto guardado"). Decisão consciente: prioriza preservação do dado bruto do user em detrimento de extração perfeita. Migration `20260525030000_create_encounter_log`.
 
 ### `Session`, `Account`, `Verification` (better-auth)

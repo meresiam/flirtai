@@ -194,6 +194,12 @@ model Contact {
 // Alimenta Contact.greenFlags/redFlags/lastInteractionSummary/attractionLevel
 // e UserProfile.redPatterns quando extracted.userRedPatterns.length > 0.
 // Source of truth: docs/DATA-MODEL.md secao EncounterLog.
+//
+// SECURITY (IN-05): EncounterLog NAO tem user_id direto. Multi-tenancy
+// e enforced via contact_id FK. Toda query DEVE filtrar por contactId E
+// re-validar contact.userId === requireUser(). Padrao seguro:
+//   { where: { contact: { userId } } } pra defesa em profundidade.
+// NUNCA expor endpoint /api/encounters/[id] sem nested ownership.
 model EncounterLog {
   id         String   @id @default(cuid())
   contactId  String   @map("contact_id")
