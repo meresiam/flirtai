@@ -26,7 +26,10 @@ export function SuggestionFeedback({
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   async function send(next: Rating) {
-    if (!next || status === "sending") return;
+    // WR-02 — bloqueia novas chamadas apos sucesso pra evitar 3 POSTs em
+    // paralelo com closure desatualizado (race no banco). O usuario decide
+    // uma vez por turno; mudanca de ideia precisa de UI explicita (desfazer).
+    if (!next || status === "sending" || status === "sent") return;
     const previous = rating;
     setRating(next);
     setStatus("sending");
@@ -59,7 +62,7 @@ export function SuggestionFeedback({
         <FeedbackButton
           aria-label="Funcionou"
           active={rating === "worked"}
-          disabled={disabled || status === "sending"}
+          disabled={disabled || status === "sending" || status === "sent"}
           onClick={(event) => {
             event.stopPropagation();
             void send("worked");
@@ -78,7 +81,7 @@ export function SuggestionFeedback({
         <FeedbackButton
           aria-label="Não funcionou"
           active={rating === "didnt_work"}
-          disabled={disabled || status === "sending"}
+          disabled={disabled || status === "sending" || status === "sent"}
           onClick={(event) => {
             event.stopPropagation();
             void send("didnt_work");
