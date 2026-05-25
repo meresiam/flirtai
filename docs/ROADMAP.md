@@ -41,7 +41,7 @@ Cada wave existe pra reforçar essa promessa: estabilizar o core (W0-W5) → con
 | **W2** | Coach UX (streaming + schema cleanup) ✅ DONE — 24-05-2026 | UX | 3-4 dias | — |
 | **W3** | Multimodal + Comandos (Vision + commands.ts) ✅ DONE — 24-05-2026 | UX | 2-3 dias | W6 (vision) |
 | **W4** | Profile Watch Hardening (consent + retry) ✅ DONE — 24-05-2026 | hardening | 2 dias | — |
-| **W5** | Settings & Search expandidos | UX | 1-2 dias | W6 |
+| **W5** | Settings & Search expandidos ✅ DONE — 24-05-2026 | UX | 1-2 dias | W6 |
 | **W6** | **Memória do Homem** (UserProfile) | feature | 4-6 dias | W8 |
 | **W7** | **Diário de Campo** (EncounterLog) | feature | 3-4 dias | W8 |
 | **W8** | **Painel Status do Jogo** (dashboard) | feature | 4-5 dias | — |

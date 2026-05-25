@@ -25,13 +25,14 @@ src/app/layout.tsx                          ← fonts + theme + global CSS
 │
 ├── src/app/login/page.tsx                  ← email + senha
 ├── src/app/signup/page.tsx                 ← email + senha + nome
-├── src/app/settings/page.tsx               ← override de API key / modelo
+├── src/app/settings/page.tsx               ← Perfil · Conta (tz/locale) · Coach (tone) · Notificações · API & Modelo
+├── src/app/desenrolos/page.tsx             ← lista de desenrolos + busca server-side com debounce 250ms
 │
 ├── src/app/api/auth/[...all]/route.ts      ← better-auth handler
-├── src/app/api/coach/route.ts              ← Anthropic Claude → JSON estruturado
-├── src/app/api/contacts/route.ts           ← GET (lista) · POST (cria)
+├── src/app/api/coach/route.ts              ← Anthropic Claude → JSON estruturado (consome user.coachTone)
+├── src/app/api/contacts/route.ts           ← GET (lista, aceita ?q= + ?kind=) · POST (cria)
 ├── src/app/api/contacts/[id]/route.ts      ← GET · PATCH · DELETE
-└── src/app/api/settings/route.ts           ← GET · PATCH overrides do user
+└── src/app/api/settings/route.ts           ← GET · PATCH (name, key, model, timezone, locale, coachTone, notificationPrefs)
 ```
 
 > A UI atual tem TUDO inline em `flirt-ai-shell.tsx` (~1285 linhas). Não vamos quebrar em arquivos separados nessa entrega — refator visual seria retrabalho. Os subcomponents acima são lógicos, dentro do mesmo arquivo.
@@ -292,3 +293,41 @@ Scheduler externo → POST /api/cron/profile-scan + X-Cron-Secret
 ## Variáveis sensíveis
 
 `graphAccessToken` é encriptado em repouso via AES-256-GCM com chave em `BETTER_AUTH_SECRET` (já existe, reaproveita). **Nunca** retornar o token em response — apenas flag `hasValidToken`.
+
+---
+
+# Wave 5 — Settings & Search (24-05-2026)
+
+## Settings expandido
+
+Rota `/settings` (mesmo arquivo, refatorado para múltiplas sections). Cada section é um `<SectionCard>` com ícone Lucide + título + descrição opcional, todas com `min-h-[44px]` em CTAs/inputs (MOBILE-FIRST M2).
+
+| Section          | Source state                            | Persistência                                 |
+|------------------|-----------------------------------------|----------------------------------------------|
+| Perfil           | `name`                                  | `PATCH /api/settings { name }`               |
+| Conta            | `timezone`, `locale`                    | `PATCH /api/settings { timezone, locale }`   |
+| Coach            | `coachTone` (radio low_key/direto/provocador) | `PATCH /api/settings { coachTone }` — salva on-change, sem botão (H1 feedback imediato) |
+| Notificações     | `pushEnabled`, `frequency`              | `PATCH /api/settings { notificationPrefs }`  |
+| Anthropic API    | `apiKey`, `model`                       | `PATCH /api/settings { anthropicApiKey, anthropicModel }` |
+
+`coachTone` é consumido em `src/app/api/coach/route.ts` (load do user) → passado como 2º arg de `buildSystemPrompt(mode, tone)` em `src/lib/flirt/system-prompt.ts`. Quando null, voz default (sem addendum).
+
+## Search server-side
+
+`/desenrolos` lista:
+
+```
+input (controlled)
+  → debounce 250ms (window.setTimeout + cleanup)
+  → se trimmed.length >= 2: AbortController + fetch /api/contacts?kind=desenrolo&q=...
+  → setServerResults(results) ou setSearchError(msg)
+  → render desenrolos = hasActiveSearch ? serverResults : cachedContacts
+```
+
+Cache local do Zustand é preservado pra revisita rápida (no-query). Server-side cobre `name`, `instagramHandle`, `location`, `metContext` (ilike case-insensitive) + `tags` (match exato via `has`). `pg_trgm` não foi habilitado — EXPLAIN ANALYZE em 8 rows leva 0.1ms; extrapolando pra 500 rows seq scan fica ~7ms (gate <100ms cumprido). Adicionar `pg_trgm` + GIN index quando passar de ~10k rows por user.
+
+## Naming Lock (W5)
+
+- `CoachTone` enum no schema = `low_key | direto | provocador` (snake_case DB + TS).
+- Frontend UI label: `Low-key | Direto | Provocador`.
+- API contract camelCase: `coachTone`, `notificationPrefs`, `timezone`, `locale`.
