@@ -212,6 +212,9 @@ export function FlirtAiShell() {
     error?: string;
   }
   const [attachments, setAttachments] = useState<ImageAttachmentState[]>([]);
+  // WR-01 — ref espelha o array atual pra cleanup no unmount sem reanexar
+  // o effect a cada mudança (e sem capturar o array inicial vazio via closure).
+  const attachmentsRef = useRef<ImageAttachmentState[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [activeSuggestion, setActiveSuggestion] = useState<number>(-1);
@@ -410,9 +413,14 @@ export function FlirtAiShell() {
     });
   };
 
+  // WR-01 — mantém ref em dia com o array atual.
+  useEffect(() => {
+    attachmentsRef.current = attachments;
+  }, [attachments]);
+
   useEffect(() => {
     return () => {
-      for (const attachment of attachments) {
+      for (const attachment of attachmentsRef.current) {
         if (attachment.previewUrl) URL.revokeObjectURL(attachment.previewUrl);
       }
     };
