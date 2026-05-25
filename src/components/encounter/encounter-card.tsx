@@ -71,6 +71,11 @@ function formatDate(iso: string): string {
 export function EncounterCard({ encounter }: { encounter: EncounterRecord }) {
   const { extracted } = encounter;
   const isDegraded = extracted.degraded === true;
+  // WR-04 — defensivo: serializer ja garante arrays, mas evita crash se algum
+  // endpoint novo retornar shape raw direto do DB sem passar por toEncounterPayload.
+  const greens = extracted.greenFlags ?? [];
+  const reds = extracted.redFlags ?? [];
+  const userPatterns = extracted.userRedPatterns ?? [];
 
   return (
     <article className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
@@ -114,29 +119,29 @@ export function EncounterCard({ encounter }: { encounter: EncounterRecord }) {
         </p>
       ) : null}
 
-      {extracted.greenFlags.length > 0 || extracted.redFlags.length > 0 ? (
+      {greens.length > 0 || reds.length > 0 ? (
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {extracted.greenFlags.length > 0 ? (
+          {greens.length > 0 ? (
             <div className="rounded-lg bg-emerald-400/[0.06] p-3">
               <p className="mb-1.5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-emerald-300/80">
                 <ThumbsUpIcon className="h-3 w-3" />
                 Sinais positivos
               </p>
               <ul className="space-y-1 text-xs text-emerald-100/90">
-                {extracted.greenFlags.map((flag, idx) => (
+                {greens.map((flag, idx) => (
                   <li key={`g-${idx}`}>· {flag}</li>
                 ))}
               </ul>
             </div>
           ) : null}
-          {extracted.redFlags.length > 0 ? (
+          {reds.length > 0 ? (
             <div className="rounded-lg bg-rose-400/[0.06] p-3">
               <p className="mb-1.5 flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-rose-300/80">
                 <AlertTriangleIcon className="h-3 w-3" />
                 Sinais de alerta
               </p>
               <ul className="space-y-1 text-xs text-rose-100/90">
-                {extracted.redFlags.map((flag, idx) => (
+                {reds.map((flag, idx) => (
                   <li key={`r-${idx}`}>· {flag}</li>
                 ))}
               </ul>
@@ -154,13 +159,13 @@ export function EncounterCard({ encounter }: { encounter: EncounterRecord }) {
         </div>
       ) : null}
 
-      {extracted.userRedPatterns.length > 0 ? (
+      {userPatterns.length > 0 ? (
         <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/[0.05] px-3 py-2">
           <p className="text-[11px] uppercase tracking-wider text-amber-300/80">
             Padrão seu detectado nesse encontro
           </p>
           <ul className="mt-1 space-y-0.5 text-xs text-amber-100/90">
-            {extracted.userRedPatterns.map((pattern, idx) => (
+            {userPatterns.map((pattern, idx) => (
               <li key={`up-${idx}`}>· {pattern}</li>
             ))}
           </ul>

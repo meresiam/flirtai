@@ -102,7 +102,8 @@ export async function POST(request: Request, { params }: RouteContext) {
   }
 
   // 1) Grava raw sempre (preserva dado do user mesmo se LLM falhar).
-  const degradedFallback: EncounterExtractPayload = {
+  // WR-04 — usa toEncounterPayload pra garantir o shape unico aceito pelo card.
+  const degradedFallback: EncounterExtractPayload = toEncounterPayload({
     summary: parsed.rawText.slice(0, 240),
     escalation: "indefinido",
     mood: "neutro",
@@ -112,7 +113,7 @@ export async function POST(request: Request, { params }: RouteContext) {
     redFlags: [],
     userRedPatterns: [],
     degraded: true,
-  };
+  });
 
   const encounter = await prisma.encounterLog.create({
     data: {
@@ -220,7 +221,8 @@ export async function POST(request: Request, { params }: RouteContext) {
   //    pra evitar perda de greenFlags/redFlags/attractionLevel em POSTs concorrentes
   //    (tab duplicada, retry de rede, double-click). Em Serializable, conflito de write
   //    dispara P2034 e devolvemos 409 em PT-BR (front pede pra tentar de novo).
-  const finalExtract: EncounterExtractPayload = {
+  // WR-04 — passa pelo mesmo helper pra garantir shape identico ao GET.
+  const finalExtract: EncounterExtractPayload = toEncounterPayload({
     summary: extract.summary,
     escalation: extract.escalation,
     mood: extract.mood,
@@ -229,7 +231,7 @@ export async function POST(request: Request, { params }: RouteContext) {
     greenFlags: extract.greenFlags,
     redFlags: extract.redFlags,
     userRedPatterns: extract.userRedPatterns,
-  };
+  });
 
   try {
     await prisma.$transaction(
@@ -360,7 +362,7 @@ export async function GET(request: Request, { params }: RouteContext) {
   const hasMore = rows.length > limit;
   const slice = hasMore ? rows.slice(0, limit) : rows;
   const encounters: EncounterRecord[] = slice.map((row) =>
-    serializeEncounter(row, normalizeExtract(row.extracted)),
+    serializeEncounter(row, toEncounterPayload(row.extracted)),
   );
   const nextCursor = hasMore ? slice[slice.length - 1].id : null;
 
@@ -437,7 +439,22 @@ function asStringArray(value: Prisma.JsonValue): string[] {
   return value.filter((v): v is string => typeof v === "string");
 }
 
-function normalizeExtract(value: Prisma.JsonValue): EncounterExtractPayload {
+// WR-03 — valida enums via Set inline. Cast `as ...` aceitava qualquer string
+// em runtime; row legacy ou typo do LLM (ex: "ascendente", "feliz", "rise")
+// passava pro frontend e quebrava ESCALATION_LABEL[invalid] -> undefined.
+const ESCALATION_SET = new Set<string>(["regrediu", "estagnou", "avancou", "indefinido"]);
+const MOOD_SET = new Set<string>(["leve", "tenso", "intenso", "frustrante", "neutro"]);
+const DELTA_SET = new Set<string>(["down", "same", "up"]);
+
+function safeEnum<T extends string>(value: unknown, set: Set<string>, fallback: T): T {
+  return typeof value === "string" && set.has(value) ? (value as T) : fallback;
+}
+
+// WR-04 — centraliza serializacao do shape `extracted` de EncounterRecord.
+// POST (extract validado pelo Zod) e GET (leitura de DB possivelmente legacy)
+// passam pelo mesmo funil — `EncounterCard` recebe shape garantido com defaults
+// pros 8 campos + enums validados.
+function toEncounterPayload(value: unknown): EncounterExtractPayload {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     return {
       summary: "",
@@ -452,18 +469,15 @@ function normalizeExtract(value: Prisma.JsonValue): EncounterExtractPayload {
     };
   }
   const obj = value as Record<string, unknown>;
-  const get = <T>(key: string, fallback: T): T =>
-    (obj[key] as T | undefined) ?? fallback;
   return {
     summary: typeof obj.summary === "string" ? obj.summary : "",
-    escalation: (obj.escalation as EncounterExtractPayload["escalation"]) ?? "indefinido",
-    mood: (obj.mood as EncounterExtractPayload["mood"]) ?? "neutro",
+    escalation: safeEnum(obj.escalation, ESCALATION_SET, "indefinido"),
+    mood: safeEnum(obj.mood, MOOD_SET, "neutro"),
     nextMove: typeof obj.nextMove === "string" ? obj.nextMove : "",
-    attractionDelta:
-      (obj.attractionDelta as EncounterExtractPayload["attractionDelta"]) ?? "same",
-    greenFlags: asStringArray(get("greenFlags", []) as Prisma.JsonValue),
-    redFlags: asStringArray(get("redFlags", []) as Prisma.JsonValue),
-    userRedPatterns: asStringArray(get("userRedPatterns", []) as Prisma.JsonValue),
+    attractionDelta: safeEnum(obj.attractionDelta, DELTA_SET, "same"),
+    greenFlags: asStringArray((obj.greenFlags ?? []) as Prisma.JsonValue),
+    redFlags: asStringArray((obj.redFlags ?? []) as Prisma.JsonValue),
+    userRedPatterns: asStringArray((obj.userRedPatterns ?? []) as Prisma.JsonValue),
     ...(obj.degraded === true ? { degraded: true } : {}),
   };
 }
