@@ -107,8 +107,11 @@ export function EncounterCaptureModal({
     }
   }
 
-  const charCount = rawText.trim().length;
-  const tooShort = charCount > 0 && charCount < MIN_CHARS;
+  // WR-06: display usa raw (bate com maxLength HTML), submit guard usa trimmed
+  // (bate com backend z.string().trim().min(MIN_CHARS)).
+  const rawLen = rawText.length;
+  const trimmedLen = rawText.trim().length;
+  const tooShort = trimmedLen > 0 && trimmedLen < MIN_CHARS;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -159,7 +162,7 @@ export function EncounterCaptureModal({
 
           <div className="mt-2 flex items-center justify-between text-xs">
             <span className={tooShort ? "text-amber-300/80" : "text-white/40"}>
-              {charCount}/{MAX_CHARS} caracteres
+              {rawLen}/{MAX_CHARS} caracteres
               {tooShort ? ` · mínimo ${MIN_CHARS}` : ""}
             </span>
             <span className="text-white/35 hidden sm:inline">⌘+Enter envia</span>
@@ -191,7 +194,7 @@ export function EncounterCaptureModal({
             <button
               type="button"
               onClick={() => void handleSubmit()}
-              disabled={submitting || charCount < MIN_CHARS}
+              disabled={submitting || trimmedLen < MIN_CHARS}
               className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#ff355d] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#ff355d]/90 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {submitting ? (
