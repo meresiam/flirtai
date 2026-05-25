@@ -42,6 +42,31 @@ Relations: `sessions`, `accounts`, `contacts`, `usageLogs`, `monitoredProfiles`.
 
 > **W5 / M8 (24-05-2026):** 4 campos novos de preferência (`timezone`, `locale`, `coachTone`, `notificationPrefs`). Todos nullable — defaults aplicados na borda (route `/api/settings` + `buildSystemPrompt`). `coachTone` é consumido por `src/lib/flirt/system-prompt.ts::buildSystemPrompt(mode, tone?)` e injetado como bloco no system prompt do `/api/coach`. Quando `null`, o coach usa a voz default ("low-key" implícito). Migration `20260525011534_add_user_preferences` (ADD COLUMNs nullable + CREATE TYPE `CoachTone`, baixo risco — sem backfill).
 
+### `UserProfile` (W6 — Memória do Homem)
+Perfil persistente do **usuário** (o homem). Source de truth pra "o que o coach sabe sobre mim". 1-1 com `User`.
+
+| Campo            | Tipo               | Nota                                                                  |
+|------------------|--------------------|-----------------------------------------------------------------------|
+| `userId`         | String PK / FK→User| 1-1, cascade delete                                                   |
+| `tone`           | CoachTone?         | override fino do tom (W6). Prioridade: `UserProfile.tone > User.coachTone > null` |
+| `age`            | Int?               | idade do homem                                                        |
+| `locationCity`   | String?            | "São Paulo", "Lisboa", etc                                            |
+| `contextLife`    | String?            | enum livre PT-BR: "universitário", "corporativo", "autônomo", "atleta", "criativo" |
+| `demographics`   | Json?              | `{ relationship?: "solteiro"\|"divorciado"\|"casado", kids?: number }` opcional |
+| `winSamples`     | Json               | `string[]` — textos de sugestões marcadas como `[Funcionou]`. Cap 100 |
+| `redPatternsRaw` | Json               | `string[]` — feedbacks negativos raw (`[Não funcionou]`). Cap 200. W8 processa em padrões |
+| `redPatterns`    | Json               | `string[]` — padrões problemáticos consolidados (vazio até W8 rodar)  |
+| `onboardingDone` | Boolean            | default false. True após preencher o wizard 6-perguntas               |
+| `createdAt`      | DateTime           |                                                                       |
+| `updatedAt`      | DateTime           | @updatedAt                                                            |
+
+Relations: `user` (1-1).
+Index: PK em `userId` é suficiente.
+
+> **W6 (24-05-2026):** introduz a "Memória do Homem". Schema desenhado pra ser **append-only** nos arrays (`winSamples`/`redPatternsRaw`) com cap defensivo (100/200) — sem cap, prompt do coach inflaria sem limite. O classificador Haiku previsto no ROADMAP foi adiado: feedback negativo grava raw e `WeeklyDigest` (W8) consolida em `redPatterns`. Migration `20260525020000_create_user_profile`.
+
+> **Tone resolution:** `/api/coach` resolve em runtime via `effectiveTone = userProfile?.tone ?? user.coachTone ?? null`. UserProfile.tone é o override fino (W6); User.coachTone (W5) continua sendo o default global em `/settings`. Sem retrocompatibilidade necessária — W5 funciona se UserProfile.tone for null (caso de qualquer user pre-W6).
+
 ### `Session`, `Account`, `Verification` (better-auth)
 Tabelas canônicas do better-auth. Não tocar manualmente. `Account.password` guarda o hash do email/senha.
 
@@ -153,6 +178,7 @@ Ordem cronológica das migrations aplicadas no schema do core (não inclui Profi
 | `20260524235721_add_profile_error_count`  | add_profile_error_count  | **W4 / M7**     | contador pra backoff exponencial no cron-runner                         |
 | `20260525010000_add_message_attachments`  | add_message_attachments  | **W3 / C6**     | ADD `message.attachments JSONB` pra anexos multimodais (vision substitui Tesseract) |
 | `20260525011534_add_user_preferences`     | add_user_preferences     | **W5 / M8**     | ADD `user.timezone`/`locale` (TEXT) + `user.coach_tone` (enum `CoachTone`) + `user.notification_prefs` (JSONB), todos nullable |
+| `20260525020000_create_user_profile`      | create_user_profile      | **W6**          | CREATE TABLE `user_profile` (1-1 com user, cascade) com `tone` (CoachTone?), `age`, `location_city`, `context_life`, `demographics` (JSONB), `win_samples` (JSONB default `[]`), `red_patterns_raw` (JSONB default `[]`), `red_patterns` (JSONB default `[]`), `onboarding_done` (BOOL default false) |
 
 ---
 

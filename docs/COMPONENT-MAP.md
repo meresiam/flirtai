@@ -331,3 +331,152 @@ Cache local do Zustand é preservado pra revisita rápida (no-query). Server-sid
 - `CoachTone` enum no schema = `low_key | direto | provocador` (snake_case DB + TS).
 - Frontend UI label: `Low-key | Direto | Provocador`.
 - API contract camelCase: `coachTone`, `notificationPrefs`, `timezone`, `locale`.
+
+---
+
+# Wave 6 — Memória do Homem (24-05-2026)
+
+## Visão
+
+Coach deixa de dar conselho genérico. Cada turno do `/api/coach` injeta um bloco "sobre o usuário" no system prompt (com `cache_control: ephemeral`, batch separado do tone). 3 pontos de entrada: **modal pós-signup**, **banner CTA persistente no shell**, **página `/me`** dedicada.
+
+## Hierarquia
+
+```
+src/app/me/
+├── page.tsx                            ← <MePage />  [client]
+│   ├── <MeHeader />                    ← título + descrição + "limpar memória"
+│   ├── <MeForm />                      ← edita tone/age/locationCity/contextLife/demographics
+│   ├── <MeWinSamplesList />            ← lista winSamples (read-only, com "remover")
+│   └── <MeRedPatternsList />           ← lista redPatterns + redPatternsRaw (read-only)
+│
+└── onboarding/
+    └── page.tsx                        ← <OnboardingPage /> wizard 6-passos full-screen, mobile-first
+
+src/components/
+├── me-onboarding-modal.tsx             ← <MeOnboardingModal /> [client]
+│   - Mesma lib de wizard que /me/onboarding (compartilha steps).
+│   - Auto-abre quando `user.userProfile.onboardingDone === false` e cookie `me-onboarding-dismissed` ausente.
+│   - Botão "Pular por enquanto" seta cookie e fecha; banner CTA aparece em seguida.
+│
+├── me-banner-cta.tsx                   ← <MeBannerCta /> [client]
+│   - Renderiza no topo do <FlirtAiShell /> quando onboardingDone=false.
+│   - Copy: "Conta sobre você pro coach parar de chutar." → link /me/onboarding.
+│   - Dismissable (cookie 7d): some por 1 semana, volta depois.
+│
+└── flirt-ai-shell.tsx                  ← (mod W6)
+    ├── <AssistantBubble />
+    │   └── <SuggestionCard />
+    │       └── <SuggestionFeedback />  ← [Funcionou] / [Não funcionou] inline (W6)
+    └── <MeBannerCta />                 ← topo do shell
+
+src/lib/flirt/
+└── me-context.ts                       ← buildMeContext(userProfile, user) → string
+                                          (injetado no system prompt do /api/coach)
+
+src/app/api/me/
+├── profile/
+│   ├── route.ts                        ← GET (lê) · PATCH (atualiza) · DELETE (limpa memória LGPD)
+│   ├── feedback/route.ts               ← POST (registra winSample ou redPatternRaw, sem LLM)
+│   └── onboarding/route.ts             ← POST (recebe payload do wizard, seta onboardingDone=true)
+```
+
+## Estado
+
+### Local (useState)
+- `MePage`: campos do form (tone, age, locationCity, contextLife, demographics)
+- `MeOnboardingModal` / `OnboardingPage`: `step` (0-5), `answers` accumulator
+- `MeBannerCta`: `dismissed` (cookie-based)
+- `SuggestionFeedback`: `status` (`idle`, `sending`, `sent`, `error`), `rating` (`worked`, `didnt_work`, `null`)
+
+### Global (Zustand)
+Mantém-se simples: nada novo no `use-flirt-store.ts` por enquanto. `UserProfile` é fetch-on-mount em `/me` e estatuto `onboardingDone` é hidratado via cookie HttpOnly setado pelo server na rota `/me/onboarding` POST. Reavaliar em W8 se virar payload grande.
+
+### Server (route handlers)
+- `GET /api/me/profile` → retorna `{ userProfile, defaults }`. Cria stub `{}` se ainda não existir (upsert lazy).
+- `PATCH /api/me/profile` → Zod parse → update parcial. Retorna patch aplicado.
+- `DELETE /api/me/profile` → zera arrays (`winSamples`, `redPatternsRaw`, `redPatterns`) + nullifica age/location/context/demographics. **Não deleta a row** (preserva `onboardingDone`).
+- `POST /api/me/profile/feedback` → `{ messageId, suggestionIndex, rating: "worked" | "didnt_work" }`. Lê texto da sugestão via `Message.suggestions[suggestionIndex].text`, append em `winSamples` ou `redPatternsRaw` (cap 100/200, drop oldest). 1 row do `UsageLog` por feedback pra rate-limit (`route=me-feedback`).
+- `POST /api/me/profile/onboarding` → recebe `{ age?, locationCity?, contextLife?, demographics?, tone? }`, seta `onboardingDone=true`. Idempotente (chamar 2x atualiza, não duplica).
+
+## Fluxos críticos
+
+### 1. Pós-signup → onboarding
+```
+/signup completa → POST /api/auth/sign-up/email → redirect /
+  → <FlirtAiShell /> mount
+  → fetch /api/me/profile → onboardingDone=false (stub criado lazy)
+  → <MeOnboardingModal /> auto-abre
+  → user preenche 1-6 passos OU clica "Pular"
+    → POST /api/me/profile/onboarding { ...answers } → onboardingDone=true
+    → modal fecha
+  → se "Pular" → cookie me-onboarding-dismissed=1 (24h) + banner CTA persiste
+```
+
+### 2. Coach turn com Memória do Homem
+```
+POST /api/coach { contactId, prompt, mode }
+  → load(user) inclui userProfile (1-1 nested)
+  → buildSystemPromptParts(mode, effectiveTone)
+    onde effectiveTone = userProfile?.tone ?? user.coachTone ?? null
+  → buildMeContext(userProfile) → bloco "Sobre o usuário" string
+  → systemBlocks: [
+      { text: base, cache_control: ephemeral },           ← Wave 0/1 cache hit
+      meContextBlock ? { text: meContext, cache_control: ephemeral } : null, ← W6 cache hit
+      toneAddendum ? { text: toneAddendum } : null,
+    ]
+  → resto idêntico ao W2 (streaming + tool_use + persist)
+```
+
+### 3. Feedback inline
+```
+user vê <SuggestionCard /> → clica [Funcionou]
+  → optimistic: setRating("worked"), setStatus("sending")
+  → POST /api/me/profile/feedback { messageId, suggestionIndex, rating: "worked" }
+    → server lê Message.suggestions[suggestionIndex].text
+    → upsert UserProfile.winSamples = append(text, cap 100)
+    → 200 { ok: true }
+  → setStatus("sent") → micro-confirmação visual (check + "guardado")
+  → erro → setStatus("error") → toast + reset rating
+```
+
+### 4. Limpar memória (LGPD)
+```
+/me → "Limpar memória" → confirm dialog ("Isso apaga tudo que o coach guardou sobre você. Não tem volta.")
+  → DELETE /api/me/profile → zera arrays + nullifica campos
+  → 200 → reload local state, mostra empty state
+  → onboardingDone permanece (pra não forçar wizard de novo a menos que user queira)
+```
+
+## Mobile-first do módulo (régua antes de fechar)
+
+- Modal onboarding: `Sheet` full-screen no mobile (`<sm`). 1 pergunta por tela, próximo via swipe ou CTA grande.
+- Cada step: input gigante (mín 56px), copy curta, "Pular" sempre visível (rodapé).
+- `/me` page: stack vertical. Cada section card ≥56px touch target. Form em coluna única.
+- Banner CTA: 1 linha mobile (`text-xs`), 2 linhas desktop. Toque em qualquer lugar abre `/me/onboarding`.
+- Feedback buttons: tamanho 40px (mínimo viável pra inline em SuggestionCard). Cumprem H7 atalhos.
+
+## Nielsen checklist W6 (a aplicar antes de fechar)
+
+| # | Critério                                | Como cumprir aqui                                                |
+|---|-----------------------------------------|------------------------------------------------------------------|
+| H1| Feedback ≤200ms                         | Optimistic + check sutil em SuggestionFeedback; spinner no /me   |
+| H2| Linguagem do usuário                    | "Sobre você", "O que funcionou", "Padrões a evitar" — não jargão |
+| H3| Cancelar/undo                           | Onboarding "Voltar" entre steps; DELETE /me com confirm dialog   |
+| H4| Consistência                            | Reusa `<SectionCard>`/`<Field>`/`<PrimaryButton>` do /settings   |
+| H5| Prevenção                               | DELETE pede confirm; campos opcionais; sem validação intrusiva   |
+| H6| Reconhecimento                          | /me mostra "o que o coach sabe" em texto direto, sem código      |
+| H7| Eficiência                              | Atalho ↑↓ nos steps do modal; ENTER avança; cookie skip 7d       |
+| H8| Minimalismo                             | 1 pergunta por step; 1 CTA primário por section em /me           |
+| H9| Erros PT-BR                             | "Esse campo é opcional, segue em frente"; toast PT em feedback   |
+| H10| Ajuda                                  | Tooltip "?" em `redPatternsRaw` explica "será processado depois" |
+
+Critério: zero BLOCK, ≤2 FLAGs (H10 fica FLAG no MVP — tooltip pode ficar pra W8).
+
+## Naming Lock (W6)
+
+- `UserProfile` modelo TS · tabela DB `user_profile` (snake_case).
+- Coluna DB: `user_id`, `location_city`, `context_life`, `win_samples`, `red_patterns_raw`, `red_patterns`, `onboarding_done`.
+- Campo TS: `locationCity`, `contextLife`, `winSamples`, `redPatternsRaw`, `redPatterns`, `onboardingDone`.
+- Frontend label: "Cidade", "Contexto de vida", "O que funcionou pra você", "Padrões a evitar".
+- API contract: `userProfile` (nested), `effectiveTone` (server-only, não exposto).

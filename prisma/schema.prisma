@@ -39,8 +39,31 @@ model User {
   contacts          Contact[]
   usageLogs         UsageLog[]
   monitoredProfiles MonitoredProfile[]
+  userProfile       UserProfile?
 
   @@map("user")
+}
+
+// W6 — Memória do Homem. 1-1 com User. Append-only nos arrays (cap defensivo).
+// Source of truth: docs/DATA-MODEL.md seção UserProfile.
+// effectiveTone (server-only) = userProfile?.tone ?? user.coachTone ?? null.
+model UserProfile {
+  userId         String     @id @map("user_id")
+  tone           CoachTone?
+  age            Int?
+  locationCity   String?    @map("location_city")
+  contextLife    String?    @map("context_life")
+  demographics   Json?
+  winSamples     Json       @default("[]") @map("win_samples")
+  redPatternsRaw Json       @default("[]") @map("red_patterns_raw")
+  redPatterns    Json       @default("[]") @map("red_patterns")
+  onboardingDone Boolean    @default(false) @map("onboarding_done")
+  createdAt      DateTime   @default(now()) @map("created_at")
+  updatedAt      DateTime   @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profile")
 }
 
 model Session {

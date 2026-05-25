@@ -32,6 +32,9 @@ import {
 import { cn } from "@/lib/utils";
 import { ContactAvatar } from "@/components/contact-avatar";
 import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border";
+import { MeBannerCta } from "@/components/me-banner-cta";
+import { MeOnboardingModal } from "@/components/me-onboarding-modal";
+import { SuggestionFeedback } from "@/components/suggestion-feedback";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -838,6 +841,7 @@ export function FlirtAiShell() {
               ) : null}
 
               <div className="mx-auto flex max-w-3xl flex-col gap-4 pb-10">
+                <MeBannerCta />
                 {conversationHistory.map((message) => (
                   <div
                     key={message.id}
@@ -879,44 +883,54 @@ export function FlirtAiShell() {
                     ) : null}
                     {message.suggestions?.length ? (
                       <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                        {message.suggestions.map((suggestion) => (
-                          <button
+                        {message.suggestions.map((suggestion, suggestionIndex) => (
+                          <div
                             key={suggestion.text}
-                            type="button"
-                            onClick={() => fillSuggestion(suggestion)}
-                            title={
-                              suggestion.likelyResponse
-                                ? `Resposta provável: ${suggestion.likelyResponse}`
-                                : undefined
-                            }
-                            className="rounded-[22px] border border-white/10 bg-white/[0.05] px-3 py-3 text-left transition hover:bg-white/[0.08] hover:text-white"
+                            className="rounded-[22px] border border-white/10 bg-white/[0.05] px-3 py-3 text-left transition hover:bg-white/[0.08]"
                           >
-                            <div className="flex items-center justify-between gap-3">
-                              <div className="flex flex-wrap items-center gap-1.5">
-                                <span className="text-[10px] uppercase tracking-[0.18em] text-white/35">
-                                  {labelTone(suggestion.tone)}
-                                </span>
-                                {suggestion.risk ? (
-                                  <span
-                                    className={cn(
-                                      "rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.12em]",
-                                      riskBadgeClass(suggestion.risk),
-                                    )}
-                                  >
-                                    {labelRisk(suggestion.risk)}
+                            <button
+                              type="button"
+                              onClick={() => fillSuggestion(suggestion)}
+                              title={
+                                suggestion.likelyResponse
+                                  ? `Resposta provável: ${suggestion.likelyResponse}`
+                                  : undefined
+                              }
+                              className="block w-full text-left text-white/88 transition hover:text-white"
+                            >
+                              <div className="flex items-center justify-between gap-3">
+                                <div className="flex flex-wrap items-center gap-1.5">
+                                  <span className="text-[10px] uppercase tracking-[0.18em] text-white/35">
+                                    {labelTone(suggestion.tone)}
                                   </span>
-                                ) : null}
+                                  {suggestion.risk ? (
+                                    <span
+                                      className={cn(
+                                        "rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.12em]",
+                                        riskBadgeClass(suggestion.risk),
+                                      )}
+                                    >
+                                      {labelRisk(suggestion.risk)}
+                                    </span>
+                                  ) : null}
+                                </div>
+                                <span className="text-[11px] text-white/35">Usar</span>
                               </div>
-                              <span className="text-[11px] text-white/35">Usar</span>
-                            </div>
-                            <p className="mt-2 text-sm text-white/88">{suggestion.text}</p>
-                            <p className="mt-2 text-xs text-white/45">{suggestion.why}</p>
-                            {suggestion.likelyResponse ? (
-                              <p className="mt-2 text-[11px] italic text-white/55">
-                                Provável resposta dela: {suggestion.likelyResponse}
-                              </p>
+                              <p className="mt-2 text-sm">{suggestion.text}</p>
+                              <p className="mt-2 text-xs text-white/45">{suggestion.why}</p>
+                              {suggestion.likelyResponse ? (
+                                <p className="mt-2 text-[11px] italic text-white/55">
+                                  Provável resposta dela: {suggestion.likelyResponse}
+                                </p>
+                              ) : null}
+                            </button>
+                            {message.id ? (
+                              <SuggestionFeedback
+                                messageId={message.id}
+                                suggestionIndex={suggestionIndex}
+                              />
                             ) : null}
-                          </button>
+                          </div>
                         ))}
                       </div>
                     ) : null}
@@ -1227,6 +1241,8 @@ export function FlirtAiShell() {
           }}
         />
       ) : null}
+
+      <MeOnboardingModal />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
 import { buildSystemPromptParts } from "@/lib/flirt/system-prompt";
+import { buildMeContext } from "@/lib/flirt/me-context";
 import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
 import { extractStringField } from "@/lib/flirt/partial-json";
 import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
@@ -98,6 +99,19 @@ export async function POST(request: Request) {
         anthropicApiKeyEncrypted: true,
         anthropicModel: true,
         coachTone: true,
+        userProfile: {
+          select: {
+            tone: true,
+            age: true,
+            locationCity: true,
+            contextLife: true,
+            demographics: true,
+            winSamples: true,
+            redPatternsRaw: true,
+            redPatterns: true,
+            onboardingDone: true,
+          },
+        },
       },
     }),
     prisma.contact.findFirst({
@@ -259,10 +273,17 @@ export async function POST(request: Request) {
         // WR-02 — split system em base (estável, ~95% do prompt) + tone
         // addendum (varia por user). Só o base ganha cache_control: ephemeral,
         // preservando cache hit mesmo quando o tone muda entre users.
-        const { base, toneAddendum } = buildSystemPromptParts(
-          mode,
-          user?.coachTone ?? null,
-        );
+        //
+        // W6 — tone resolution: userProfile.tone (W6 override fino) >
+        // user.coachTone (W5 default global) > null. Me-context entra como
+        // bloco separado, também cached: muda quando user edita /me ou marca
+        // feedback. Anthropic suporta múltiplos breakpoints de cache_control;
+        // base estável + me-context estável-por-user garantem 2 prefixos
+        // independentes.
+        const effectiveTone = user?.userProfile?.tone ?? user?.coachTone ?? null;
+        const { base, toneAddendum } = buildSystemPromptParts(mode, effectiveTone);
+        const meContextBlock = buildMeContext(user?.userProfile ?? null);
+
         const systemBlocks: Anthropic.TextBlockParam[] = [
           {
             type: "text",
@@ -270,6 +291,13 @@ export async function POST(request: Request) {
             cache_control: { type: "ephemeral" },
           },
         ];
+        if (meContextBlock) {
+          systemBlocks.push({
+            type: "text",
+            text: meContextBlock,
+            cache_control: { type: "ephemeral" },
+          });
+        }
         if (toneAddendum) {
           systemBlocks.push({ type: "text", text: toneAddendum });
         }
