@@ -68,7 +68,44 @@ Estrutura:
   - lastInteractionSummary (1 frase do que rolou agora)
 `.trim();
 
-export function buildSystemPrompt(mode: "incoming" | "strategy") {
+// W5 / M8 — addendum de tom default escolhido pelo user em /settings.
+// Valores devem casar com enum CoachTone no schema.prisma. Quando null/undefined,
+// a função `buildSystemPrompt` injeta nenhum addendum (voz default do core).
+export type CoachToneId = "low_key" | "direto" | "provocador";
+
+const COACH_TONE_ADDENDA: Record<CoachToneId, string> = {
+  low_key: `
+Tom default deste usuário: LOW-KEY.
+- Reduza intensidade emocional e provocação. Frases curtas, pontuais, sem floreio.
+- Sugestões devem soar como mensagem de quem está ocupado e responde com naturalidade.
+- Evite "ataques de charme" — opte por curiosidade discreta e desinvestimento elegante.
+`.trim(),
+  direto: `
+Tom default deste usuário: DIRETO.
+- Vá ao ponto. Diga o que precisa ser dito sem rodeio.
+- Sugestões assertivas: convite claro, pergunta objetiva, posicionamento sem desculpa.
+- Evite ironia ou subtexto que dependa de leitura sutil — clareza vence sofisticação.
+`.trim(),
+  provocador: `
+Tom default deste usuário: PROVOCADOR.
+- Use tensão, desafio leve e teasing calibrado. Nunca grosseria, nunca humilhação.
+- Sugestões com fricção saudável: discordar com bom humor, deixar ela trabalhar pra continuar a conversa.
+- Mantém autorrespeito — provocação só vale quando vem de quem não está implorando atenção.
+`.trim(),
+};
+
+export function buildSystemPrompt(
+  mode: "incoming" | "strategy",
+  tone?: CoachToneId | null,
+) {
   const modeAddendum = mode === "strategy" ? FLIRT_AI_MODE_STRATEGY : FLIRT_AI_MODE_INCOMING;
-  return [FLIRT_AI_SYSTEM_PROMPT_CORE, modeAddendum, FLIRT_AI_STRUCTURED_RESPONSE_GUIDE].join("\n\n");
+  const toneAddendum = tone ? COACH_TONE_ADDENDA[tone] : null;
+  return [
+    FLIRT_AI_SYSTEM_PROMPT_CORE,
+    modeAddendum,
+    toneAddendum,
+    FLIRT_AI_STRUCTURED_RESPONSE_GUIDE,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 }

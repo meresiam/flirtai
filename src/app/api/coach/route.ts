@@ -78,7 +78,11 @@ export async function POST(request: Request) {
   const [user, contact] = await Promise.all([
     prisma.user.findUnique({
       where: { id: userId },
-      select: { anthropicApiKeyEncrypted: true, anthropicModel: true },
+      select: {
+        anthropicApiKeyEncrypted: true,
+        anthropicModel: true,
+        coachTone: true,
+      },
     }),
     prisma.contact.findFirst({
       where: { id: contactId, userId },
@@ -202,7 +206,7 @@ export async function POST(request: Request) {
           system: [
             {
               type: "text",
-              text: buildSystemPrompt(mode),
+              text: buildSystemPrompt(mode, user?.coachTone ?? null),
               cache_control: { type: "ephemeral" },
             },
           ],
