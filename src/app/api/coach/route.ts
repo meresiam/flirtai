@@ -123,7 +123,13 @@ export async function POST(request: Request) {
     response = await client.messages.create({
       model,
       max_tokens: 2048,
-      system: buildSystemPrompt(mode),
+      system: [
+        {
+          type: "text",
+          text: buildSystemPrompt(mode),
+          cache_control: { type: "ephemeral" },
+        },
+      ],
       messages: messagesForLlm,
       tools: [coachToolSchema],
       tool_choice: { type: "tool", name: COACH_TOOL_NAME },
