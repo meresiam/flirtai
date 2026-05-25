@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import Anthropic from "@anthropic-ai/sdk";
-import { Prisma } from "@prisma/client";
+import { Prisma, type AttractionLevel as PrismaAttractionLevel } from "@prisma/client";
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
@@ -19,9 +19,6 @@ import type {
   EncounterExtractPayload,
   EncounterRecord,
 } from "@/types/flirt";
-import type {
-  AttractionLevel as PrismaAttractionLevel,
-} from "@prisma/client";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
