@@ -83,6 +83,8 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: message }, { status: 400 });
   }
 
+  // Distincao semantica: campo `undefined` no parsed => nao toca o registro;
+  // campo `null` no parsed => nullify explicito no DB.
   const data: Prisma.UserProfileUpdateInput = {};
   if (parsed.tone !== undefined) data.tone = parsed.tone;
   if (parsed.age !== undefined) data.age = parsed.age;
@@ -93,6 +95,15 @@ export async function PATCH(request: Request) {
       parsed.demographics === null
         ? Prisma.DbNull
         : (parsed.demographics as Prisma.InputJsonValue);
+  }
+
+  // WR-06 — Nielsen H5 (prevencao): rejeitar PATCH vazio em vez de fazer
+  // noop silencioso. Mascarava bugs do front (form sem dirty check).
+  if (Object.keys(data).length === 0) {
+    return NextResponse.json(
+      { error: "Envie ao menos um campo pra atualizar." },
+      { status: 400 },
+    );
   }
 
   const profile = await prisma.userProfile.upsert({
