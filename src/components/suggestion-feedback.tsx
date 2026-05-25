@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CheckIcon, Loader2Icon, ThumbsDownIcon, ThumbsUpIcon } from "lucide-react";
 
 // W6 — botões inline [Funcionou] / [Não funcionou] em cada SuggestionCard.
@@ -24,6 +24,13 @@ export function SuggestionFeedback({
   const [status, setStatus] = useState<Status>("idle");
   const [rating, setRating] = useState<Rating>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  // WR-03 — AbortController ref pra cancelar o POST se o componente
+  // desmontar antes da resposta (tab close, route change).
+  const abortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    return () => abortRef.current?.abort();
+  }, []);
 
   async function send(next: Rating) {
     // WR-02 — bloqueia novas chamadas apos sucesso pra evitar 3 POSTs em
@@ -34,11 +41,13 @@ export function SuggestionFeedback({
     setRating(next);
     setStatus("sending");
     setErrorMsg(null);
+    abortRef.current = new AbortController();
     try {
       const response = await fetch("/api/me/profile/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messageId, suggestionIndex, rating: next }),
+        signal: abortRef.current.signal,
       });
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
@@ -46,6 +55,7 @@ export function SuggestionFeedback({
       }
       setStatus("sent");
     } catch (cause) {
+      if ((cause as Error).name === "AbortError") return;
       setRating(previous);
       setStatus("error");
       setErrorMsg(cause instanceof Error ? cause.message : "Erro.");

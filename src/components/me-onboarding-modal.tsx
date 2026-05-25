@@ -25,24 +25,30 @@ export function MeOnboardingModal() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let cancelled = false;
+    // WR-03 — AbortController real em vez de flag `cancelled`. Em
+    // StrictMode dev a primeira request e abortada antes da segunda;
+    // tambem evita reabertura do modal em route transition caso o user
+    // ja tenha dado dismiss.
+    const ac = new AbortController();
     void load();
-    return () => {
-      cancelled = true;
-    };
+    return () => ac.abort();
 
     async function load() {
       try {
         if (window.sessionStorage.getItem(SESSION_DISMISS_KEY)) return;
-        const response = await fetch("/api/me/profile", { cache: "no-store" });
-        if (cancelled || !response.ok) return;
+        const response = await fetch("/api/me/profile", {
+          cache: "no-store",
+          signal: ac.signal,
+        });
+        if (!response.ok) return;
         const { userProfile } = (await response.json()) as {
           userProfile: { onboardingDone: boolean };
         };
-        if (!cancelled && !userProfile.onboardingDone) {
+        if (!userProfile.onboardingDone) {
           setOpen(true);
         }
-      } catch {
+      } catch (cause) {
+        if ((cause as Error).name === "AbortError") return;
         // silencioso
       }
     }

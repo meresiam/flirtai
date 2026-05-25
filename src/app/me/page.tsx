@@ -55,14 +55,23 @@ export default function MePage() {
   const [kids, setKids] = useState("");
 
   useEffect(() => {
+    // WR-03 — AbortController real em vez de flag implicita. Em StrictMode
+    // dev double-mount a primeira request e abortada antes da segunda.
+    const ac = new AbortController();
     void load();
+    return () => ac.abort();
+
     async function load() {
       try {
-        const response = await fetch("/api/me/profile", { cache: "no-store" });
+        const response = await fetch("/api/me/profile", {
+          cache: "no-store",
+          signal: ac.signal,
+        });
         if (!response.ok) throw new Error("Não consegui carregar seu perfil.");
         const { userProfile } = (await response.json()) as { userProfile: MeProfile };
         applyProfile(userProfile);
       } catch (cause) {
+        if ((cause as Error).name === "AbortError") return;
         setError(cause instanceof Error ? cause.message : "Erro ao carregar.");
       } finally {
         setLoading(false);

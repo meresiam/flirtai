@@ -15,11 +15,13 @@ export function MeBannerCta() {
   const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
+    // WR-03 — AbortController real em vez de flag `cancelled`. Em
+    // StrictMode/dev double-mount, a primeira request e abortada antes
+    // da segunda iniciar, evitando setState em componente unmounted +
+    // vazamento de conexao.
+    const ac = new AbortController();
     void load();
-    return () => {
-      cancelled = true;
-    };
+    return () => ac.abort();
 
     async function load() {
       try {
@@ -27,15 +29,19 @@ export function MeBannerCta() {
         if (dismissedUntil && Number(dismissedUntil) > Date.now()) {
           return;
         }
-        const response = await fetch("/api/me/profile", { cache: "no-store" });
-        if (cancelled || !response.ok) return;
+        const response = await fetch("/api/me/profile", {
+          cache: "no-store",
+          signal: ac.signal,
+        });
+        if (!response.ok) return;
         const { userProfile } = (await response.json()) as {
           userProfile: { onboardingDone: boolean };
         };
-        if (!cancelled && !userProfile.onboardingDone) {
+        if (!userProfile.onboardingDone) {
           setShouldRender(true);
         }
-      } catch {
+      } catch (cause) {
+        if ((cause as Error).name === "AbortError") return;
         // silencioso — banner é não-essencial
       }
     }
