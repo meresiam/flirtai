@@ -22,8 +22,9 @@ model User {
 
   // Optional user override of LLM provider config.
   // If null, the server-side env defaults are used.
-  anthropicApiKey String? @map("anthropic_api_key")
-  anthropicModel  String? @map("anthropic_model")
+  // Token armazenado encriptado (AES-256-GCM via src/lib/profile-watch/token-crypto.ts).
+  anthropicApiKeyEncrypted String? @map("anthropic_api_key_encrypted")
+  anthropicModel           String? @map("anthropic_model")
 
   sessions          Session[]
   accounts          Account[]
@@ -126,6 +127,7 @@ model Contact {
   personalityType        String?         @map("personality_type")
   interests              String[]        @default([])
   lastInteractionSummary String?         @map("last_interaction_summary")
+  conversationSummary    String?         @map("conversation_summary")
   greenFlags             String[]        @default([]) @map("green_flags")
   redFlags               String[]        @default([]) @map("red_flags")
   notes                  String?

@@ -20,17 +20,21 @@
 ### `User` (better-auth)
 Pessoa logada. Multi-tenant por `userId`.
 
-| Campo           | Tipo       | Nota                                 |
-|-----------------|------------|--------------------------------------|
-| `id`            | String PK  | cuid                                 |
-| `email`         | String     | UNIQUE                               |
-| `emailVerified` | Boolean    | default false                        |
-| `name`          | String?    |                                      |
-| `image`         | String?    |                                      |
-| `createdAt`     | DateTime   |                                      |
-| `updatedAt`     | DateTime   |                                      |
+| Campo                       | Tipo       | Nota                                                                 |
+|-----------------------------|------------|----------------------------------------------------------------------|
+| `id`                        | String PK  | cuid                                                                 |
+| `email`                     | String     | UNIQUE                                                               |
+| `emailVerified`             | Boolean    | default false                                                        |
+| `name`                      | String?    |                                                                      |
+| `image`                     | String?    |                                                                      |
+| `anthropicApiKeyEncrypted`  | String?    | override per-user da API key — encriptado (ver nota abaixo)          |
+| `anthropicModel`            | String?    | override per-user do model id (ex: `claude-sonnet-4-6`)              |
+| `createdAt`                 | DateTime   |                                                                      |
+| `updatedAt`                 | DateTime   |                                                                      |
 
-Relations: `sessions`, `accounts`, `contacts`, `usageLogs`.
+Relations: `sessions`, `accounts`, `contacts`, `usageLogs`, `monitoredProfiles`.
+
+> **W1 / C2 (24-05-2026):** o campo `anthropicApiKey` (plaintext) foi substituído por `anthropicApiKeyEncrypted`. Armazenamento usa **AES-256-GCM** com chave derivada de `SHA-256(BETTER_AUTH_SECRET)` (32 bytes), formato `base64(iv(12) || ciphertext || tag(16))`. Reusa `src/lib/profile-watch/token-crypto.ts::encryptToken/decryptToken`. Migration `20260524240000_encrypt_anthropic_api_key` empacotou expand-contract em 1 passo porque o DB dev está vazio; em prod com dados reais splitar em 3 etapas (ADD encrypted → backfill → DROP plaintext).
 
 ### `Session`, `Account`, `Verification` (better-auth)
 Tabelas canônicas do better-auth. Não tocar manualmente. `Account.password` guarda o hash do email/senha.
@@ -53,6 +57,7 @@ Cada mulher cadastrada por um `User`. Frontend a chama de "conversa" na sidebar.
 | `personalityType`        | String?             |                |
 | `interests`              | String[]            | []             |
 | `lastInteractionSummary` | String?             |                |
+| `conversationSummary`    | String?             |                |
 | `greenFlags`             | String[]            | []             |
 | `redFlags`               | String[]            | []             |
 | `notes`                  | String?             |                |
@@ -61,8 +66,10 @@ Cada mulher cadastrada por um `User`. Frontend a chama de "conversa" na sidebar.
 Index: `(userId)`, `(userId, updatedAt DESC)` — pra ordenar conversas pelo topo.
 
 Enums:
-- `ContactStatus`: `active` · `cold` · `hot lead`
+- `ContactStatus`: `active` · `cold` · `hot_lead`
 - `AttractionLevel`: `Low` · `Medium` · `High`
+
+> **W1 / C5 (24-05-2026):** campo `conversationSummary` é um **rolling summary** gerado via Haiku 4.5 (`claude-haiku-4-5-20251001`) quando `messages.count > 30` pra um contato. O resumo é injetado no system prompt do `/api/coach` **antes das últimas 20 mensagens**, permitindo manter contexto longo sem estourar `HISTORY_CAP`. Migration `20260524240100_add_conversation_summary` (ADD COLUMN nullable, baixo risco).
 
 ### `Message`
 Histórico da conversa entre `User` e uma `Contact`. Inclui sugestões e insight do coach quando vem do assistant.
@@ -121,6 +128,20 @@ Schema original Supabase está preservado em `docs/v2-roadmap/schema.sql` pra re
 - `green_flags` / `red_flags` automáticos via LLM — campos existem mas UI não expõe ainda
 - Tabela `Analysis` (agregados) — schema existe, sem leitura/escrita ainda
 
+## Migration history
+
+Ordem cronológica das migrations aplicadas no schema do core (não inclui Profile Watch, que tem seu próprio bloco).
+
+| Timestamp                          | Nome                            | Wave / Ticket   | Impacto                                                                 |
+|------------------------------------|---------------------------------|-----------------|-------------------------------------------------------------------------|
+| `20260523012636_init`              | init                            | bootstrap       | schema better-auth + domínio FlirtAI v1                                 |
+| `20260523223707_profile_watch`     | profile_watch                   | módulo Profile Watch | tabelas `monitored_profile`/`profile_*`/`coaching_suggestion` + enums |
+| `20260524214722_desenrolo_profile_fields` | desenrolo_profile_fields | W0              | campos `kind`, `personalityType`, `interests`, etc                      |
+| `20260524221957_expand_rating_to_padrao`  | expand_rating_to_padrao  | W0              | dimensões de rating (`beleza`/`inteligencia`/`lealdade`/`respeito`/`vestimenta`) |
+| `20260524230000_rename_hot_lead_enum`     | rename_hot_lead_enum     | W0 / C9         | `ContactStatus` literal `'hot lead'` → `'hot_lead'` (Naming Lock)        |
+| `20260524240000_encrypt_anthropic_api_key`| encrypt_anthropic_api_key| **W1 / C2**     | DROP `anthropic_api_key` plaintext + ADD `anthropic_api_key_encrypted`  |
+| `20260524240100_add_conversation_summary` | add_conversation_summary | **W1 / C5**     | ADD `contact.conversation_summary` pra rolling summary via Haiku        |
+
 ---
 
 # Módulo: Profile Watch
@@ -150,6 +171,7 @@ Perfil que o `User` cadastrou pra acompanhar.
 | `displayName`        | String?                |                  | nome público                                        |
 | `status`             | ProfileWatchStatus     | `active`         | `active` · `paused` · `error`                       |
 | `lastErrorMessage`   | String?                |                  | populado quando `status=error`                      |
+| `errorCount`         | Int                    | 0                | W4 / M7 — contador de falhas consecutivas, alimenta backoff exponencial do cron |
 | `cadenceHours`       | Int                    | 24               | min 6, max 168                                      |
 | `lastScanAt`         | DateTime?              |                  | última varredura bem-sucedida                       |
 | `nextScanAt`         | DateTime?              |                  | indexed — o cron query usa isso                     |
@@ -167,6 +189,7 @@ Invariantes:
 - `source=self` ⇒ `graphAccessToken` e `graphUserId` obrigatórios após OAuth concluir.
 - `source ∈ {competitor, influencer}` ⇒ `graphAccessToken` SEMPRE null.
 - Perfil privado detectado no primeiro scan ⇒ `status=error` + bloqueio do scan.
+- `errorCount` reseta pra 0 quando scan sucede; cap em 12 (gera backoff máximo 24h).
 
 ### `ProfileSnapshot`
 Foto agregada do perfil num momento. Imutável.
