@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { ContactStatus } from "@prisma/client";
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
-import { serializeContact } from "@/lib/serializers";
+import { serializeContact, statusToDb } from "@/lib/serializers";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -87,7 +86,7 @@ export async function PATCH(request: Request, { params }: RouteContext) {
   const data = {
     ...rest,
     ...(normalizedAvatar !== undefined ? { avatarUrl: normalizedAvatar } : {}),
-    ...(status ? { status: status as ContactStatus } : {}),
+    ...(status ? { status: statusToDb(status) } : {}),
   };
 
   const updated = await prisma.contact.update({

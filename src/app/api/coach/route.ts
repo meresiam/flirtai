@@ -9,6 +9,7 @@ import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
 import { buildSystemPrompt } from "@/lib/flirt/system-prompt";
 import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
 import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
+import { statusToDb } from "@/lib/serializers";
 import type {
   CoachChatResponse,
   ConversationMessage,
@@ -186,7 +187,7 @@ export async function POST(request: Request) {
       data: {
         name: llmResponse.contact.name || contact.name,
         source: llmResponse.contact.source || contact.source,
-        status: llmResponse.contact.status,
+        status: statusToDb(llmResponse.contact.status),
         attractionLevel: llmResponse.contact.attractionLevel,
         personalityType: llmResponse.contact.personalityType || contact.personalityType,
         interests: llmResponse.contact.interests.length
