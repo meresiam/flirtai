@@ -12,6 +12,12 @@ import { extractStringField } from "@/lib/flirt/partial-json";
 import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
 import { decryptToken } from "@/lib/profile-watch/token-crypto";
 import { statusToDb } from "@/lib/serializers";
+import {
+  imageAttachmentSchema,
+  MAX_ATTACHMENTS_PER_TURN,
+  type ImageAttachmentPayload,
+} from "@/lib/flirt/attachments";
+import { extractContactAvatar } from "@/lib/flirt/avatar-vision";
 import type {
   CoachChatResponse,
   ConversationMessage,
@@ -26,11 +32,20 @@ const HISTORY_CAP = 20;
 const SUMMARY_THRESHOLD = 30;
 const SUMMARY_MODEL = "claude-haiku-4-5-20251001";
 
-const requestSchema = z.object({
-  contactId: z.string().min(1),
-  prompt: z.string().min(1).max(4000),
-  mode: z.enum(["incoming", "strategy"]).default("incoming"),
-});
+const requestSchema = z
+  .object({
+    contactId: z.string().min(1),
+    prompt: z.string().max(4000).default(""),
+    mode: z.enum(["incoming", "strategy"]).default("incoming"),
+    attachments: z
+      .array(imageAttachmentSchema)
+      .max(MAX_ATTACHMENTS_PER_TURN)
+      .default([]),
+  })
+  .refine((value) => value.prompt.trim().length > 0 || value.attachments.length > 0, {
+    message: "Envie texto ou pelo menos uma imagem.",
+    path: ["prompt"],
+  });
 
 export async function POST(request: Request) {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -45,7 +60,7 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json({ error: "Payload inválido." }, { status: 400 });
   }
-  const { contactId, prompt, mode } = parsed;
+  const { contactId, prompt, mode, attachments } = parsed;
 
   const rate = await checkAndConsumeRateLimit(userId, "coach");
   if (!rate.ok) {
@@ -120,23 +135,46 @@ export async function POST(request: Request) {
     const prefix = message.sender === "contact" ? "[Mensagem dela] " : "";
     messagesForLlm.push({ role, content: prefix + message.content });
   }
-  messagesForLlm.push({
-    role: "user",
-    content: [
-      `Contexto atual da conversa com ${contact.name || "sem nome"}:`,
-      `- Fonte: ${contact.source}`,
-      `- Status: ${contact.status}`,
-      `- Nível de atração estimado: ${contact.attractionLevel}`,
-      `- Perfil: ${contact.personalityType ?? "em leitura"}`,
-      `- Interesses: ${contact.interests.length ? contact.interests.join(", ") : "—"}`,
-      `- Tags: ${contact.tags.length ? contact.tags.join(", ") : "—"}`,
-      ...(conversationSummary
-        ? ["", `Resumo da conversa anterior (gerado por Haiku): ${conversationSummary}`]
-        : []),
-      "",
-      `Pedido dele: ${prompt}`,
-    ].join("\n"),
-  });
+
+  const contextText = [
+    `Contexto atual da conversa com ${contact.name || "sem nome"}:`,
+    `- Fonte: ${contact.source}`,
+    `- Status: ${contact.status}`,
+    `- Nível de atração estimado: ${contact.attractionLevel}`,
+    `- Perfil: ${contact.personalityType ?? "em leitura"}`,
+    `- Interesses: ${contact.interests.length ? contact.interests.join(", ") : "—"}`,
+    `- Tags: ${contact.tags.length ? contact.tags.join(", ") : "—"}`,
+    ...(conversationSummary
+      ? ["", `Resumo da conversa anterior (gerado por Haiku): ${conversationSummary}`]
+      : []),
+    ...(attachments.length
+      ? [
+          "",
+          `Ele anexou ${attachments.length} imagem(ns) (provavelmente print da conversa dela). Lê com atenção antes de responder.`,
+        ]
+      : []),
+    "",
+    `Pedido dele: ${prompt.trim() || "(sem texto — interpreta o print acima)"}`,
+  ].join("\n");
+
+  if (attachments.length) {
+    const imageBlocks = attachments.map(
+      (attachment): Anthropic.ImageBlockParam => ({
+        type: "image",
+        source: {
+          type: "base64",
+          media_type: attachment.mediaType,
+          data: attachment.data,
+        },
+      }),
+    );
+    messagesForLlm.push({
+      role: "user",
+      content: [...imageBlocks, { type: "text", text: contextText }],
+    });
+  } else {
+    messagesForLlm.push({ role: "user", content: contextText });
+  }
 
   const traceInput = {
     userIdHash: hashUserId(userId),
@@ -217,9 +255,65 @@ export async function POST(request: Request) {
 
         const llmResponse = toolBlock.input as CoachChatResponse;
 
+        const persistedUserPrompt =
+          prompt.trim() ||
+          (attachments.length
+            ? `[${attachments.length} imagem(ns) anexada(s)]`
+            : "");
+
+        // W3/M4 — tenta auto-detectar avatar dela quando o contato ainda não tem
+        // e o usuário anexou imagem. Falhas são silenciosas (não bloqueiam o turn).
+        let detectedAvatar: ImageAttachmentPayload | null = null;
+        if (!contact.avatarUrl && attachments.length) {
+          try {
+            detectedAvatar = await extractContactAvatar({
+              client,
+              attachments,
+              contactName: contact.name,
+            });
+          } catch {
+            detectedAvatar = null;
+          }
+        }
+
+        const userAttachmentsForDb = attachments.length
+          ? attachments.map((attachment) => ({
+              type: attachment.type,
+              mediaType: attachment.mediaType,
+              name: attachment.name,
+              data: attachment.data,
+            }))
+          : null;
+
+        const contactUpdate: Record<string, unknown> = {
+          name: llmResponse.contact.name || contact.name,
+          source: llmResponse.contact.source || contact.source,
+          status: statusToDb(llmResponse.contact.status),
+          attractionLevel: llmResponse.contact.attractionLevel,
+          personalityType:
+            llmResponse.contact.personalityType || contact.personalityType,
+          interests: llmResponse.contact.interests?.length
+            ? llmResponse.contact.interests
+            : contact.interests,
+          tags: llmResponse.contact.tags?.length
+            ? llmResponse.contact.tags
+            : contact.tags,
+          lastInteractionSummary:
+            llmResponse.contact.lastInteractionSummary ||
+            persistedUserPrompt.slice(0, 280),
+        };
+        if (detectedAvatar) {
+          contactUpdate.avatarUrl = `data:${detectedAvatar.mediaType};base64,${detectedAvatar.data}`;
+        }
+
         const [, assistantMessage] = await prisma.$transaction([
           prisma.message.create({
-            data: { contactId, sender: "user", content: prompt },
+            data: {
+              contactId,
+              sender: "user",
+              content: persistedUserPrompt,
+              attachments: userAttachmentsForDb as unknown as object,
+            },
           }),
           prisma.message.create({
             data: {
@@ -232,22 +326,7 @@ export async function POST(request: Request) {
           }),
           prisma.contact.update({
             where: { id: contactId },
-            data: {
-              name: llmResponse.contact.name || contact.name,
-              source: llmResponse.contact.source || contact.source,
-              status: statusToDb(llmResponse.contact.status),
-              attractionLevel: llmResponse.contact.attractionLevel,
-              personalityType:
-                llmResponse.contact.personalityType || contact.personalityType,
-              interests: llmResponse.contact.interests?.length
-                ? llmResponse.contact.interests
-                : contact.interests,
-              tags: llmResponse.contact.tags?.length
-                ? llmResponse.contact.tags
-                : contact.tags,
-              lastInteractionSummary:
-                llmResponse.contact.lastInteractionSummary || prompt.slice(0, 280),
-            },
+            data: contactUpdate,
           }),
         ]);
 

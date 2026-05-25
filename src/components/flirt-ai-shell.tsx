@@ -39,12 +39,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useFlirtStore } from "@/store/use-flirt-store";
-import { useOcr } from "@/lib/use-ocr";
 import {
   COACH_COMMANDS,
   parseCoachCommand,
   type CommandIconName,
 } from "@/lib/flirt/commands";
+import {
+  fileToBase64Attachment,
+  type ImageAttachmentPayload,
+} from "@/lib/flirt/attachments";
 import type {
   CoachChatResponse,
   ContactKind,
@@ -199,15 +202,16 @@ export function FlirtAiShell() {
   );
 
   const [value, setValue] = useState("");
-  interface OcrAttachment {
+  interface ImageAttachmentState {
     id: string;
     name: string;
-    status: "reading" | "ready" | "error";
-    text?: string;
+    size: number;
+    status: "encoding" | "ready" | "error";
+    payload?: ImageAttachmentPayload;
+    previewUrl?: string;
     error?: string;
   }
-  const [attachments, setAttachments] = useState<OcrAttachment[]>([]);
-  const ocr = useOcr();
+  const [attachments, setAttachments] = useState<ImageAttachmentState[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [activeSuggestion, setActiveSuggestion] = useState<number>(-1);
@@ -361,40 +365,35 @@ export function FlirtAiShell() {
 
     for (const file of files) {
       const id = crypto.randomUUID();
+      const previewUrl = URL.createObjectURL(file);
       setAttachments((previous) => [
         ...previous,
-        { id, name: file.name, status: "reading" },
+        { id, name: file.name, size: file.size, status: "encoding", previewUrl },
       ]);
 
-      ocr
-        .recognize(file)
-        .then((text) => {
+      fileToBase64Attachment(file)
+        .then((payload) => {
           setAttachments((previous) =>
             previous.map((attachment) =>
               attachment.id === id
-                ? { ...attachment, status: "ready", text }
+                ? { ...attachment, status: "ready", payload }
                 : attachment,
             ),
           );
-          setValue((current) => {
-            const trimmedText = text.trim();
-            if (!trimmedText) return current;
-            const prefix = current.trim() ? `${current.trim()}\n\n` : "";
-            return `${prefix}[Print da conversa]\n${trimmedText}`;
-          });
-          requestAnimationFrame(() => adjustHeight());
         })
         .catch((cause) => {
+          URL.revokeObjectURL(previewUrl);
           setAttachments((previous) =>
             previous.map((attachment) =>
               attachment.id === id
                 ? {
                     ...attachment,
                     status: "error",
+                    previewUrl: undefined,
                     error:
                       cause instanceof Error
                         ? cause.message
-                        : "Não consegui ler a imagem.",
+                        : "Não consegui processar a imagem.",
                   }
                 : attachment,
             ),
@@ -404,8 +403,21 @@ export function FlirtAiShell() {
   };
 
   const removeAttachment = (id: string) => {
-    setAttachments((previous) => previous.filter((attachment) => attachment.id !== id));
+    setAttachments((previous) => {
+      const target = previous.find((attachment) => attachment.id === id);
+      if (target?.previewUrl) URL.revokeObjectURL(target.previewUrl);
+      return previous.filter((attachment) => attachment.id !== id);
+    });
   };
+
+  useEffect(() => {
+    return () => {
+      for (const attachment of attachments) {
+        if (attachment.previewUrl) URL.revokeObjectURL(attachment.previewUrl);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const selectCommandSuggestion = (index: number) => {
     const selectedCommand = COACH_COMMANDS[index];
@@ -422,7 +434,14 @@ export function FlirtAiShell() {
 
   async function handleSendMessage() {
     const trimmed = value.trim();
-    if (!trimmed && !attachments.length) {
+    if (attachments.some((attachment) => attachment.status === "encoding")) {
+      setErrorMessage("Aguarde os anexos terminarem de carregar.");
+      return;
+    }
+    const readyAttachments = attachments.filter(
+      (attachment) => attachment.status === "ready" && attachment.payload,
+    );
+    if (!trimmed && !readyAttachments.length) {
       return;
     }
 
@@ -457,7 +476,12 @@ export function FlirtAiShell() {
     }
 
     const contactId = activeContact.id;
-    const messageContent = commandMeta.displayPrompt || trimmed;
+    const attachmentPayloads = readyAttachments.map((attachment) => attachment.payload!);
+    const fallbackPromptForImageOnly = "Lê esse print e me orienta.";
+    const messageContent =
+      commandMeta.displayPrompt ||
+      trimmed ||
+      (attachmentPayloads.length ? fallbackPromptForImageOnly : "");
     const outgoingMessage: ConversationMessage = {
       id: crypto.randomUUID(),
       sender: "user",
@@ -468,6 +492,9 @@ export function FlirtAiShell() {
     appendMessage(contactId, outgoingMessage);
     setErrorMessage(null);
     setValue("");
+    for (const attachment of attachments) {
+      if (attachment.previewUrl) URL.revokeObjectURL(attachment.previewUrl);
+    }
     setAttachments([]);
     adjustHeight(true);
     setShowCommandPalette(false);
@@ -485,6 +512,7 @@ export function FlirtAiShell() {
           contactId,
           prompt: messageContent,
           mode: commandMeta.mode,
+          attachments: attachmentPayloads,
         }),
       });
 
@@ -1028,10 +1056,10 @@ export function FlirtAiShell() {
                         <motion.div
                           key={file.id}
                           className={cn(
-                            "flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs",
+                            "flex items-center gap-2 rounded-full border px-2 py-1 text-xs",
                             file.status === "ready" &&
                               "border-white/10 bg-white/[0.04] text-white/70",
-                            file.status === "reading" &&
+                            file.status === "encoding" &&
                               "border-white/10 bg-white/[0.04] text-white/55",
                             file.status === "error" &&
                               "border-rose-400/30 bg-rose-500/10 text-rose-200",
@@ -1039,17 +1067,24 @@ export function FlirtAiShell() {
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.9 }}
-                          title={file.status === "error" ? file.error : file.text}
+                          title={file.status === "error" ? file.error : file.name}
                         >
-                          {file.status === "reading" ? (
+                          {file.previewUrl ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={file.previewUrl}
+                              alt={file.name}
+                              className="h-6 w-6 rounded object-cover"
+                            />
+                          ) : file.status === "encoding" ? (
                             <LoaderIcon className="h-3 w-3 animate-spin" />
                           ) : null}
-                          <span className="max-w-[14rem] truncate">{file.name}</span>
+                          <span className="max-w-[12rem] truncate">{file.name}</span>
                           <span className="text-[10px] text-white/35">
-                            {file.status === "reading"
-                              ? "lendo..."
+                            {file.status === "encoding"
+                              ? "preparando..."
                               : file.status === "ready"
-                                ? `${file.text?.length ?? 0} chars`
+                                ? `${(file.size / 1024).toFixed(0)} KB`
                                 : "erro"}
                           </span>
                           <button
@@ -1071,7 +1106,7 @@ export function FlirtAiShell() {
                       ref={fileInputRef}
                       type="file"
                       multiple
-                      accept="image/*,.pdf"
+                      accept="image/png,image/jpeg,image/webp,image/gif"
                       className="hidden"
                       onChange={handleAttachChange}
                     />
