@@ -98,14 +98,25 @@ export function buildSystemPrompt(
   mode: "incoming" | "strategy",
   tone?: CoachToneId | null,
 ) {
-  const modeAddendum = mode === "strategy" ? FLIRT_AI_MODE_STRATEGY : FLIRT_AI_MODE_INCOMING;
-  const toneAddendum = tone ? COACH_TONE_ADDENDA[tone] : null;
-  return [
+  const { base, toneAddendum } = buildSystemPromptParts(mode, tone);
+  return [base, toneAddendum].filter(Boolean).join("\n\n");
+}
+
+// WR-02 — separa o que é estável (core + mode + structured guide) do que
+// varia por user (tone). O caller (api/coach) marca só `base` como
+// cache_control: ephemeral pra preservar cache hit de ~95% do prompt
+// mesmo quando o tone muda entre users.
+export function buildSystemPromptParts(
+  mode: "incoming" | "strategy",
+  tone?: CoachToneId | null,
+): { base: string; toneAddendum: string | null } {
+  const modeAddendum =
+    mode === "strategy" ? FLIRT_AI_MODE_STRATEGY : FLIRT_AI_MODE_INCOMING;
+  const base = [
     FLIRT_AI_SYSTEM_PROMPT_CORE,
     modeAddendum,
-    toneAddendum,
     FLIRT_AI_STRUCTURED_RESPONSE_GUIDE,
-  ]
-    .filter(Boolean)
-    .join("\n\n");
+  ].join("\n\n");
+  const toneAddendum = tone ? COACH_TONE_ADDENDA[tone] : null;
+  return { base, toneAddendum };
 }

@@ -6,7 +6,7 @@ import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
-import { buildSystemPrompt } from "@/lib/flirt/system-prompt";
+import { buildSystemPromptParts } from "@/lib/flirt/system-prompt";
 import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
 import { extractStringField } from "@/lib/flirt/partial-json";
 import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
@@ -200,16 +200,28 @@ export async function POST(request: Request) {
 
       let stream: ReturnType<Anthropic["messages"]["stream"]> | null = null;
       try {
+        // WR-02 — split system em base (estável, ~95% do prompt) + tone
+        // addendum (varia por user). Só o base ganha cache_control: ephemeral,
+        // preservando cache hit mesmo quando o tone muda entre users.
+        const { base, toneAddendum } = buildSystemPromptParts(
+          mode,
+          user?.coachTone ?? null,
+        );
+        const systemBlocks: Anthropic.TextBlockParam[] = [
+          {
+            type: "text",
+            text: base,
+            cache_control: { type: "ephemeral" },
+          },
+        ];
+        if (toneAddendum) {
+          systemBlocks.push({ type: "text", text: toneAddendum });
+        }
+
         stream = client.messages.stream({
           model,
           max_tokens: 2048,
-          system: [
-            {
-              type: "text",
-              text: buildSystemPrompt(mode, user?.coachTone ?? null),
-              cache_control: { type: "ephemeral" },
-            },
-          ],
+          system: systemBlocks,
           messages: messagesForLlm,
           tools: [coachToolSchema],
           tool_choice: { type: "tool", name: COACH_TOOL_NAME },
