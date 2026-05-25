@@ -16,6 +16,8 @@ export interface ReplySuggestion {
   tone: ReplyTone;
   text: string;
   why: string;
+  risk: RiskLevel;
+  likelyResponse: string;
 }
 
 export interface MessageInsight {
@@ -122,13 +124,7 @@ export interface CoachChatResponse {
   insight: MessageInsight;
   contact: Pick<
     ContactRecord,
-    | "name"
-    | "source"
-    | "status"
-    | "attractionLevel"
-    | "personalityType"
-    | "interests"
-    | "tags"
-    | "lastInteractionSummary"
-  >;
+    "name" | "source" | "status" | "attractionLevel" | "lastInteractionSummary"
+  > &
+    Partial<Pick<ContactRecord, "personalityType" | "interests" | "tags">>;
 }

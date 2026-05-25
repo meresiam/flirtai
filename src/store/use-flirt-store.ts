@@ -202,12 +202,14 @@ export const useFlirtStore = create<FlirtState>()(
               ? {
                   ...contact,
                   ...response.contact,
-                  tags: response.contact.tags.length
+                  tags: response.contact.tags?.length
                     ? response.contact.tags
                     : contact.tags,
-                  interests: response.contact.interests.length
+                  interests: response.contact.interests?.length
                     ? response.contact.interests
                     : contact.interests,
+                  personalityType:
+                    response.contact.personalityType ?? contact.personalityType,
                   conversationHistory: [...contact.conversationHistory, assistantMessage],
                   updatedAt: assistantMessage.timestamp,
                 }
@@ -245,7 +247,7 @@ export const useFlirtStore = create<FlirtState>()(
     }),
     {
       name: "flirt-ai-store",
-      version: 6,
+      version: 7,
       skipHydration: true,
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({

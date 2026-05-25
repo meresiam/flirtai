@@ -19,7 +19,7 @@ export const coachToolSchema: Anthropic.Tool = {
         maxItems: 5,
         items: {
           type: "object",
-          required: ["tone", "text", "why"],
+          required: ["tone", "text", "why", "risk", "likelyResponse"],
           properties: {
             tone: {
               type: "string",
@@ -27,6 +27,17 @@ export const coachToolSchema: Anthropic.Tool = {
             },
             text: { type: "string" },
             why: { type: "string" },
+            risk: {
+              type: "string",
+              enum: ["Safe", "Risky", "High-risk"],
+              description:
+                "Safe = aposta baixa, baixa rejeição. Risky = aposta média, polariza. High-risk = aposta alta, ou ganha forte ou queima.",
+            },
+            likelyResponse: {
+              type: "string",
+              description:
+                "Como ela provavelmente responde a essa mensagem, em 1 frase curta PT-BR.",
+            },
           },
         },
       },
@@ -47,9 +58,6 @@ export const coachToolSchema: Anthropic.Tool = {
           "source",
           "status",
           "attractionLevel",
-          "personalityType",
-          "interests",
-          "tags",
           "lastInteractionSummary",
         ],
         properties: {
