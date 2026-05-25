@@ -1,13 +1,13 @@
 ---
 projeto: flirtai
 documento: ROADMAP
-versao: 1.3
+versao: 1.5
 criado: 24-05-2026
 atualizado: 25-05-2026
 owner: Meres
 status: ativo
-total_waves: 9
-total_estimado_dias_uteis: 24-33
+total_waves: 12
+total_estimado_dias_uteis: 25-35
 ---
 
 # FlirtAI — Roadmap de Desenvolvimento
@@ -44,9 +44,22 @@ Cada wave existe pra reforçar essa promessa: estabilizar o core (W0-W5) → con
 | **W5** | Settings & Search expandidos ✅ DONE — 24-05-2026 | UX | 1-2 dias | W6 |
 | **W6** | **Memória do Homem** (UserProfile) ✅ DONE — 24-05-2026 | feature | 4-6 dias | W8 |
 | **W7** | **Diário de Campo** (EncounterLog) ✅ DONE — 25-05-2026 | feature | 3-4 dias | W8 |
+| **W7.1** | **Hotfix Sinais Consolidados** (Bug #1 + Gap #1) ✅ DONE — 25-05-2026 | hotfix | 1-2h | W8 |
+| **W7.2** | **UX Polish** (logout + nome no picker + tooltip) ✅ DONE — 25-05-2026 | hotfix | 1-2h | — |
+| **W7.3** | **Auth Hardening + Race Fixes** (proxy.ts → src/ + AbortController) ✅ DONE — 25-05-2026 | hotfix | 2-3h | deploy seguro |
 | **W8** | **Painel Status do Jogo** (dashboard) | feature | 4-5 dias | — |
 
-**Total:** ~24-33 dias úteis = **5-7 semanas**.
+**Total:** ~25-35 dias úteis = **5-7 semanas** + ~5h de hotfixes (W7.1+W7.2+W7.3).
+
+## Hotfixes pós-SMOKE-W7
+
+Descobertos no `docs/SMOKE-W7-DONE.md` (25-05-2026). 3 bugs + 5 gaps de UX agrupados em 3 waves curtas:
+
+- **W7.1** — `serializeContact` não retorna `greenFlags/redFlags` → invisível no front (CRÍTICO). Spec: `docs/WAVE-W7.1.md`.
+- **W7.2** — Logout só em `/settings` + criar contato sem nome + tooltip ausente. Spec: `docs/WAVE-W7.2.md`.
+- **W7.3** — `proxy.ts` não redireciona server-side + race no `useMeProfile`. Spec: `docs/WAVE-W7.3.md`.
+
+Ordem recomendada: **W7.1 → W7.2 → W7.3 → W8**. W7.1+W7.2 podem rodar em paralelo (escopos independentes); W7.3 envolve investigação, melhor isolada.
 
 ## Diagrama de dependências
 
@@ -57,7 +70,11 @@ W0 ─┬─→ W1 ─→ W2 ─→ W3
     │
     └─→ W5 ─→ W6 ─┬─→ W8
                    │
-              W7 ──┘
+              W7 ──┴─→ W7.1 ─┐
+                              ├─→ W8
+                    W7.2 ─────┤
+                              │
+                    W7.3 ─────┘  (auth hardening, paralela)
 ```
 
 Paralelismo possível depois de W0:

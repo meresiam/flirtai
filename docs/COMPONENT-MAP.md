@@ -612,3 +612,41 @@ Critério: zero BLOCK, ≤2 FLAGs (H3 sem delete + H10 tooltip ficam FLAG).
 - Frontend label: "Como foi?" (CTA), "Encontros registrados" (timeline header), "Sinais detectados" (chips).
 - API contract: `encounter` (nested), `degraded` (boolean opcional).
 - Extracted enum: `escalation` = `regrediu|estagnou|avançou|indefinido` · `mood` = `leve|tenso|intenso|frustrante|neutro` · `attractionDelta` = `down|same|up`.
+
+---
+
+## Wave 7.1 — Sinais Consolidados do Contato
+
+Hotfix do Bug #1 do SMOKE-W7-DONE: `serializeContact` não retornava `greenFlags`/`redFlags`, então as flags acumuladas pelo W7 ficavam invisíveis fora do `EncounterCard`.
+
+### Stack do módulo
+
+| Arquivo                                              | Papel                                                              |
+|------------------------------------------------------|--------------------------------------------------------------------|
+| `src/types/flirt.ts`                                 | `ContactRecord` agora declara `greenFlags: string[]` + `redFlags: string[]` |
+| `src/lib/serializers.ts`                             | `serializeContact` retorna ambos os arrays (default `[]` se DB null) |
+| `src/components/contact/contact-signals-panel.tsx`   | NEW — `<ContactSignalsPanel contact={contact} />` consolidado      |
+| `src/app/desenrolos/[id]/page.tsx`                   | Insere o painel entre `DesenroloReadView` e `Diário de campo`     |
+
+### Fluxo de dados
+
+```
+POST /api/contacts/[id]/encounters
+  → mergeDedupCap aplica flags novas no DB (cap 12)
+  → serializeContact retorna contact com greenFlags/redFlags atualizados
+  → page.tsx faz patch direto no Zustand via setState
+  → <ContactSignalsPanel /> re-renderiza com nova contagem sem F5
+```
+
+### Naming Lock (W7.1)
+
+- DB: `green_flags` / `red_flags` (snake_case, `String[]`).
+- TS: `greenFlags` / `redFlags` (camelCase) via `@map` em `schema.prisma`.
+- UI header: "Sinais da {primeiroNome}" + contador "N positivos · M a observar".
+- Empty state: "Nenhum sinal registrado ainda. Use **Como foi?** pra alimentar."
+
+### Mobile-first
+
+- Chips em `flex-wrap` — sem overflow horizontal em viewport 320.
+- Grid `sm:grid-cols-2` (greens à esquerda, reds à direita) só ≥640px.
+- Header com `flex-wrap` + `items-baseline` pra contador quebrar embaixo no mobile.
