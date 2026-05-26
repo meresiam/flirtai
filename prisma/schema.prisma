@@ -54,7 +54,7 @@ model UserProfile {
   tone           CoachTone?
   age            Int?
   locationCity   String?    @map("location_city")
-  contextLife    String?    @map("context_life")
+  contextLife    String[]   @default([]) @map("context_life")
   demographics   Json?
   winSamples     Json       @default("[]") @map("win_samples")
   redPatternsRaw Json       @default("[]") @map("red_patterns_raw")

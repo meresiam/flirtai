@@ -12,7 +12,7 @@ export type MeContextInput = {
   tone?: CoachToneId | null;
   age?: number | null;
   locationCity?: string | null;
-  contextLife?: string | null;
+  contextLife?: string[] | string | null; // multi-seleção (array); aceita string legada
   demographics?: unknown; // Json — { relationship?, kids? } opcional
   winSamples?: unknown; // string[]
   redPatterns?: unknown; // string[] consolidados
@@ -27,10 +27,14 @@ export function buildMeContext(profile: MeContextInput | null | undefined): stri
   if (!profile) return null;
 
   const lines: string[] = [];
+  const contextLifeList =
+    typeof profile.contextLife === "string"
+      ? [profile.contextLife].filter((v) => v.trim().length > 0)
+      : asStringArray(profile.contextLife);
   const hasAnyField =
     profile.age != null ||
     !!profile.locationCity ||
-    !!profile.contextLife ||
+    contextLifeList.length > 0 ||
     isNonEmptyObject(profile.demographics) ||
     asStringArray(profile.winSamples).length > 0 ||
     asStringArray(profile.redPatterns).length > 0 ||
@@ -43,7 +47,7 @@ export function buildMeContext(profile: MeContextInput | null | undefined): stri
   const facts: string[] = [];
   if (profile.age != null) facts.push(`Idade: ${profile.age}`);
   if (profile.locationCity) facts.push(`Cidade: ${profile.locationCity}`);
-  if (profile.contextLife) facts.push(`Contexto: ${profile.contextLife}`);
+  if (contextLifeList.length) facts.push(`Contexto: ${contextLifeList.join(", ")}`);
   const demo = pickDemographics(profile.demographics);
   if (demo) facts.push(demo);
   if (facts.length) {

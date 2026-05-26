@@ -42,7 +42,8 @@ const patchSchema = z
     tone: z.nativeEnum(CoachTone).nullable().optional(),
     age: z.number().int().min(14).max(120).nullable().optional(),
     locationCity: z.string().trim().min(1).max(120).nullable().optional(),
-    contextLife: z.enum(CONTEXT_LIFE_OPTIONS).nullable().optional(),
+    // Multi-seleção: array de contextos. null/[] = limpar.
+    contextLife: z.array(z.enum(CONTEXT_LIFE_OPTIONS)).max(6).nullable().optional(),
     demographics: demographicsSchema.nullable().optional(),
   })
   .strict();
@@ -89,7 +90,10 @@ export async function PATCH(request: Request) {
   if (parsed.tone !== undefined) data.tone = parsed.tone;
   if (parsed.age !== undefined) data.age = parsed.age;
   if (parsed.locationCity !== undefined) data.locationCity = parsed.locationCity;
-  if (parsed.contextLife !== undefined) data.contextLife = parsed.contextLife;
+  // String[] non-null no DB: null/ausência de itens vira lista vazia (set).
+  if (parsed.contextLife !== undefined) {
+    data.contextLife = { set: parsed.contextLife ?? [] };
+  }
   if (parsed.demographics !== undefined) {
     data.demographics =
       parsed.demographics === null
@@ -127,7 +131,7 @@ export async function DELETE() {
       tone: null,
       age: null,
       locationCity: null,
-      contextLife: null,
+      contextLife: { set: [] },
       demographics: Prisma.DbNull,
       winSamples: [],
       redPatternsRaw: [],
@@ -144,7 +148,7 @@ function serialize(profile: {
   tone: CoachTone | null;
   age: number | null;
   locationCity: string | null;
-  contextLife: string | null;
+  contextLife: string[];
   demographics: Prisma.JsonValue;
   winSamples: Prisma.JsonValue;
   redPatternsRaw: Prisma.JsonValue;
@@ -181,6 +185,7 @@ function materializeCreate(
   if (parsed.age != null) create.age = parsed.age;
   if (parsed.locationCity != null) create.locationCity = parsed.locationCity;
   if (parsed.contextLife != null) create.contextLife = parsed.contextLife;
+  // (contextLife já é string[]; create aceita o array direto)
   if (parsed.demographics != null) {
     create.demographics = parsed.demographics as Prisma.InputJsonValue;
   }

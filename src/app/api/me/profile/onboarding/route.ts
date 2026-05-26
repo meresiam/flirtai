@@ -40,7 +40,7 @@ const requestSchema = z
     tone: z.nativeEnum(CoachTone).nullable().optional(),
     age: z.number().int().min(14).max(120).nullable().optional(),
     locationCity: z.string().trim().min(1).max(120).nullable().optional(),
-    contextLife: z.enum(CONTEXT_LIFE_OPTIONS).nullable().optional(),
+    contextLife: z.array(z.enum(CONTEXT_LIFE_OPTIONS)).max(6).nullable().optional(),
     demographics: demographicsSchema.nullable().optional(),
     skipped: z.boolean().default(false),
   })
@@ -82,7 +82,7 @@ export async function POST(request: Request) {
       if (parsed.locationCity != null) create.locationCity = parsed.locationCity;
     }
     if (parsed.contextLife !== undefined) {
-      data.contextLife = parsed.contextLife;
+      data.contextLife = { set: parsed.contextLife ?? [] };
       if (parsed.contextLife != null) create.contextLife = parsed.contextLife;
     }
     if (parsed.demographics !== undefined) {
