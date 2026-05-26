@@ -45,4 +45,7 @@ USER nextjs
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "npx prisma migrate deploy && node server.js"]
+# prisma CLI invocado pelo caminho real (nao via .bin/prisma symlink): o Prisma 7
+# resolve os .wasm relativo ao dir do entrypoint, e via symlink ele procurava em
+# .bin/ em vez de prisma/build/. node <realpath> faz __dirname = prisma/build/.
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node server.js"]
