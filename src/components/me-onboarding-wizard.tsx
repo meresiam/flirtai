@@ -58,16 +58,18 @@ export function OnboardingWizard({
           <TextStep
             value={answers.locationCity ?? ""}
             placeholder="São Paulo"
-            onChange={(v) => onChange({ ...answers, locationCity: v.trim() || null })}
+            // Armazena o valor cru (com espaços) — o trim acontece só no payload.
+            // Trimar a cada tecla comia o espaço antes da próxima palavra.
+            onChange={(v) => onChange({ ...answers, locationCity: v })}
           />
         ),
       },
       {
         id: "context" as const,
         title: "Contexto de vida",
-        hint: "Qual desses descreve melhor sua rotina?",
+        hint: "Pode marcar mais de um — o que descreve sua rotina.",
         body: (
-          <RadioStep
+          <CheckboxStep
             value={answers.contextLife}
             options={CONTEXT_LIFE_OPTIONS as readonly { id: ContextLifeId; label: string }[]}
             onChange={(v) => onChange({ ...answers, contextLife: v })}
@@ -282,6 +284,55 @@ function RadioStep<T extends string>({
           className="text-xs text-white/45 underline decoration-dotted underline-offset-4 transition hover:text-white/75"
         >
           Limpar resposta
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
+function CheckboxStep<T extends string>({
+  value,
+  options,
+  onChange,
+}: {
+  value: T[];
+  options: readonly { id: T; label: string }[];
+  onChange: (v: T[]) => void;
+}) {
+  function toggle(id: T) {
+    onChange(value.includes(id) ? value.filter((v) => v !== id) : [...value, id]);
+  }
+  return (
+    <div className="space-y-2">
+      {options.map((opt) => {
+        const checked = value.includes(opt.id);
+        return (
+          <label
+            key={opt.id}
+            className={`flex min-h-[56px] cursor-pointer items-center justify-between gap-3 rounded-2xl border p-4 transition ${
+              checked
+                ? "border-[#ff355d]/60 bg-[#ff355d]/[0.08]"
+                : "border-white/10 bg-white/[0.03] hover:border-white/25"
+            }`}
+          >
+            <span className="text-base font-medium text-white">{opt.label}</span>
+            <input
+              type="checkbox"
+              value={opt.id}
+              checked={checked}
+              onChange={() => toggle(opt.id)}
+              className="h-4 w-4 rounded accent-[#ff355d]"
+            />
+          </label>
+        );
+      })}
+      {value.length ? (
+        <button
+          type="button"
+          onClick={() => onChange([])}
+          className="text-xs text-white/45 underline decoration-dotted underline-offset-4 transition hover:text-white/75"
+        >
+          Limpar seleção
         </button>
       ) : null}
     </div>

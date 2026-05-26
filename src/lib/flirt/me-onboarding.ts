@@ -43,8 +43,10 @@ export type CoachToneId = (typeof COACH_TONE_OPTIONS)[number]["id"];
 
 export interface OnboardingAnswers {
   age: number | null;
+  // String cru durante a digitação (pode ter espaços/trailing); trimado no payload.
   locationCity: string | null;
-  contextLife: ContextLifeId | null;
+  // Multi-seleção: o usuário pode marcar mais de um contexto de vida.
+  contextLife: ContextLifeId[];
   relationship: RelationshipId | null;
   kids: number | null;
   tone: CoachToneId | null;
@@ -53,7 +55,7 @@ export interface OnboardingAnswers {
 export const EMPTY_ANSWERS: OnboardingAnswers = {
   age: null,
   locationCity: null,
-  contextLife: null,
+  contextLife: [],
   relationship: null,
   kids: null,
   tone: null,
@@ -65,7 +67,7 @@ export function answersToPayload(answers: OnboardingAnswers) {
   if (answers.kids != null) demographics.kids = answers.kids;
   return {
     age: answers.age,
-    locationCity: answers.locationCity,
+    locationCity: answers.locationCity?.trim() || null,
     contextLife: answers.contextLife,
     tone: answers.tone,
     demographics: Object.keys(demographics).length > 0 ? demographics : null,
