@@ -34,6 +34,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
 
+# curl: necessario para o healthcheck do Coolify (alpine nao tem por padrao)
+RUN apk add --no-cache curl
+
 RUN addgroup --system --gid 1001 nodejs \
  && adduser --system --uid 1001 nextjs
 
@@ -48,12 +51,10 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
 # Mescla TODO o node_modules do prisma-cli: garante que o CLI tem
 # acesso a todas as deps transitivas sem ter que listar individualmente.
-# Pacotes ja presentes em @prisma (copiado acima) sao sobrescritos pela
-# versao do prisma-cli — ambas sao prisma@7.8.0 entao sao identicas.
 COPY --from=prisma-cli /prisma-runner/node_modules ./node_modules
 
-# Sobrescreve com o @prisma client gerado pelo builder (tem o client gerado
-# para o schema especifico do projeto — nao o generico do prisma-cli)
+# Sobrescreve com o @prisma client gerado pelo builder (tem o client compilado
+# contra o schema especifico do projeto — nao o generico do prisma-cli)
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
 RUN chown -R nextjs:nodejs /app
