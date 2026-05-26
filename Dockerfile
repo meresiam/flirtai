@@ -10,6 +10,12 @@ COPY prisma.config.ts ./prisma.config.ts
 COPY tsconfig.json ./tsconfig.json
 RUN npm ci
 
+# ── prisma-cli: instala o CLI com todas as deps transitivas (effect, c12, etc.)
+#    num dir isolado para nao contaminar o bundle da app ──
+FROM base AS prisma-cli
+WORKDIR /prisma-runner
+RUN npm install prisma@7.8.0 --save-exact 2>&1
+
 # ── builder ──
 FROM base AS builder
 WORKDIR /app
@@ -35,17 +41,18 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder /app/node_modules/.bin/prisma ./node_modules/.bin/prisma
-COPY --from=builder /app/node_modules/dotenv ./node_modules/dotenv
 
-RUN chown -R nextjs:nodejs /app
+# Prisma client (gerado pelo builder — necessario para o app em runtime)
+COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
+COPY --from=builder /app/node_modules/@prisma/adapter-pg ./node_modules/@prisma/adapter-pg
+
+# Prisma CLI completo com todas as deps transitivas (effect, c12, empathic, etc.)
+COPY --from=prisma-cli /prisma-runner/node_modules /prisma-runner/node_modules
+
+RUN chown -R nextjs:nodejs /app /prisma-runner
 USER nextjs
 
 EXPOSE 3000
 
-# prisma CLI invocado pelo caminho real (nao via .bin/prisma symlink): o Prisma 7
-# resolve os .wasm relativo ao dir do entrypoint, e via symlink ele procurava em
-# .bin/ em vez de prisma/build/. node <realpath> faz __dirname = prisma/build/.
-CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node server.js"]
+# Usa o CLI do prisma-runner (tem todas as deps) para migrate, depois sobe o Next
+CMD ["sh", "-c", "node /prisma-runner/node_modules/prisma/build/index.js migrate deploy && node server.js"]
