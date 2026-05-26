@@ -47,8 +47,11 @@ import { CheckCheckIcon, PinIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { BarChart3Icon, UserCircle2Icon } from "lucide-react";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import {
   COACH_COMMANDS,
@@ -905,13 +908,7 @@ export function FlirtAiShell() {
               >
                 Perfis
               </Link>
-              <Link
-                href="/settings"
-                aria-label="Configurações"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white"
-              >
-                <SettingsIcon className="h-4 w-4" />
-              </Link>
+              <AccountMenu />
             </div>
           </div>
 
@@ -1619,6 +1616,77 @@ function NewConversationPicker({
             </div>
           </button>
         </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+// Menu de conta no header — entrypoint pro perfil, dashboard, settings e logout.
+function AccountMenu() {
+  const [open, setOpen] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
+
+  async function handleLogout() {
+    if (signingOut) return;
+    setSigningOut(true);
+    try {
+      await signOut();
+    } catch {
+      // ignora — redireciona de qualquer jeito pra garantir saída
+    }
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
+    }
+  }
+
+  const itemClass =
+    "cursor-pointer gap-2 px-2.5 py-2 text-sm text-white/80 hover:bg-white/[0.07]";
+
+  return (
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger
+        render={
+          <button
+            type="button"
+            aria-label="Conta e perfil"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white"
+          >
+            <UserCircle2Icon className="h-5 w-5" />
+          </button>
+        }
+      />
+      <DropdownMenuContent
+        align="end"
+        sideOffset={6}
+        className="w-56 border-white/10 bg-[#0c0f1a] p-1.5 text-white"
+      >
+        <DropdownMenuItem render={<Link href="/me" />} className={itemClass}>
+          <UserCircle2Icon className="h-4 w-4 text-white/55" />
+          Meu perfil
+        </DropdownMenuItem>
+        <DropdownMenuItem render={<Link href="/me#dashboard" />} className={itemClass}>
+          <BarChart3Icon className="h-4 w-4 text-white/55" />
+          Dashboard
+        </DropdownMenuItem>
+        <DropdownMenuItem render={<Link href="/settings" />} className={itemClass}>
+          <SettingsIcon className="h-4 w-4 text-white/55" />
+          Configurações
+        </DropdownMenuItem>
+        <DropdownMenuSeparator className="my-1 bg-white/10" />
+        <DropdownMenuItem
+          variant="destructive"
+          closeOnClick={false}
+          onClick={handleLogout}
+          disabled={signingOut}
+          className="cursor-pointer gap-2 px-2.5 py-2 text-sm"
+        >
+          {signingOut ? (
+            <LoaderIcon className="h-4 w-4 animate-spin" />
+          ) : (
+            <LogOutIcon className="h-4 w-4" />
+          )}
+          {signingOut ? "Saindo..." : "Sair"}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

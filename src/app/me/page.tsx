@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   ArrowLeftIcon,
+  BarChart3Icon,
   HeartIcon,
   MapPinIcon,
   ShieldAlertIcon,
@@ -31,7 +32,7 @@ interface MeProfile {
   tone: CoachToneId | null;
   age: number | null;
   locationCity: string | null;
-  contextLife: ContextLifeId | null;
+  contextLife: ContextLifeId[];
   demographics: Demographics | null;
   winSamples: string[];
   redPatternsRaw: string[];
@@ -39,6 +40,13 @@ interface MeProfile {
   onboardingDone: boolean;
   createdAt: string;
   updatedAt: string;
+}
+
+interface MeStats {
+  contacts: { total: number; byStatus: { active: number; cold: number; hot_lead: number } };
+  attraction: { Low: number; Medium: number; High: number };
+  messages: { total: number; sentIrl: number };
+  encounters: { total: number; greenFlags: number; redFlags: number };
 }
 
 export default function MePage() {
@@ -51,9 +59,10 @@ export default function MePage() {
   const [tone, setTone] = useState<CoachToneId | "">("");
   const [age, setAge] = useState("");
   const [locationCity, setLocationCity] = useState("");
-  const [contextLife, setContextLife] = useState<ContextLifeId | "">("");
+  const [contextLife, setContextLife] = useState<ContextLifeId[]>([]);
   const [relationship, setRelationship] = useState<RelationshipId | "">("");
   const [kids, setKids] = useState("");
+  const [stats, setStats] = useState<MeStats | null>(null);
 
   useEffect(() => {
     // WR-03 — AbortController real em vez de flag implicita. Em StrictMode
@@ -64,13 +73,18 @@ export default function MePage() {
 
     async function load() {
       try {
-        const response = await fetch("/api/me/profile", {
-          cache: "no-store",
-          signal: ac.signal,
-        });
-        if (!response.ok) throw new Error("Não consegui carregar seu perfil.");
-        const { userProfile } = (await response.json()) as { userProfile: MeProfile };
+        const [profileRes, statsRes] = await Promise.all([
+          fetch("/api/me/profile", { cache: "no-store", signal: ac.signal }),
+          fetch("/api/me/stats", { cache: "no-store", signal: ac.signal }),
+        ]);
+        if (!profileRes.ok) throw new Error("Não consegui carregar seu perfil.");
+        const { userProfile } = (await profileRes.json()) as { userProfile: MeProfile };
         applyProfile(userProfile);
+        // Dashboard é best-effort: se stats falhar, o perfil ainda carrega.
+        if (statsRes.ok) {
+          const { stats: payload } = (await statsRes.json()) as { stats: MeStats };
+          setStats(payload);
+        }
       } catch (cause) {
         if ((cause as Error).name === "AbortError") return;
         setError(cause instanceof Error ? cause.message : "Erro ao carregar.");
@@ -85,7 +99,7 @@ export default function MePage() {
     setTone(payload.tone ?? "");
     setAge(payload.age != null ? String(payload.age) : "");
     setLocationCity(payload.locationCity ?? "");
-    setContextLife(payload.contextLife ?? "");
+    setContextLife(payload.contextLife ?? []);
     setRelationship(payload.demographics?.relationship ?? "");
     setKids(
       payload.demographics?.kids != null ? String(payload.demographics.kids) : "",
@@ -114,7 +128,7 @@ export default function MePage() {
         tone: tone || null,
         age: ageNum,
         locationCity: locationCity.trim() || null,
-        contextLife: contextLife || null,
+        contextLife,
         demographics: Object.keys(demographics).length ? demographics : null,
       };
 
@@ -196,6 +210,56 @@ export default function MePage() {
         <p className="mt-10 text-sm text-white/55">Carregando...</p>
       ) : (
         <div className="mt-8 space-y-6">
+          <section
+            id="dashboard"
+            className="liquid-panel scroll-mt-24 rounded-[24px] border border-white/10 p-6"
+          >
+            <div className="flex items-center gap-2">
+              <BarChart3Icon className="h-4 w-4 text-[#ff355d]" aria-hidden="true" />
+              <h2 className="font-heading text-lg">Dashboard</h2>
+            </div>
+            <p className="mt-1 text-sm text-white/55">
+              Seus números de campo. Só conta desenrolos (interesses), não os agentes.
+            </p>
+            {stats ? (
+              <div className="mt-4 space-y-5">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <Kpi label="Contatos" value={stats.contacts.total} />
+                  <Kpi label="Hot leads" value={stats.contacts.byStatus.hot_lead} accent="rose" />
+                  <Kpi label="Mensagens" value={stats.messages.total} />
+                  <Kpi label="Encontros" value={stats.encounters.total} />
+                </div>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <MiniBreakdown
+                    title="Por status"
+                    items={[
+                      { label: "Ativos", value: stats.contacts.byStatus.active, dot: "bg-emerald-300" },
+                      { label: "Hot leads", value: stats.contacts.byStatus.hot_lead, dot: "bg-rose-300" },
+                      { label: "Frios", value: stats.contacts.byStatus.cold, dot: "bg-slate-300" },
+                    ]}
+                  />
+                  <MiniBreakdown
+                    title="Nível de atração"
+                    items={[
+                      { label: "Alto", value: stats.attraction.High, dot: "bg-[#ff355d]" },
+                      { label: "Médio", value: stats.attraction.Medium, dot: "bg-amber-300" },
+                      { label: "Baixo", value: stats.attraction.Low, dot: "bg-slate-400" },
+                    ]}
+                  />
+                </div>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  <Kpi label="Enviadas no IG/WA" value={stats.messages.sentIrl} small />
+                  <Kpi label="Green flags" value={stats.encounters.greenFlags} accent="emerald" small />
+                  <Kpi label="Red flags" value={stats.encounters.redFlags} accent="amber" small />
+                </div>
+              </div>
+            ) : (
+              <EmptyHint>
+                Sem dados ainda. Conforme você cria desenrolos e registra encontros, os números aparecem aqui.
+              </EmptyHint>
+            )}
+          </section>
+
           <SectionCard
             icon={<UserCircle2Icon className="h-4 w-4 text-[#ff355d]" aria-hidden="true" />}
             title="Quem é você"
@@ -225,24 +289,40 @@ export default function MePage() {
                   />
                 </Field>
               </div>
-              <Field label="Contexto de vida">
-                <select
-                  value={contextLife}
-                  onChange={(event) =>
-                    setContextLife(event.target.value as ContextLifeId | "")
-                  }
-                  className="mt-2 w-full appearance-none rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm outline-none transition focus:border-[#ff355d]/40"
-                >
-                  <option value="" className="bg-[#0a0d18]">
-                    Não dizer
-                  </option>
-                  {CONTEXT_LIFE_OPTIONS.map((opt) => (
-                    <option key={opt.id} value={opt.id} className="bg-[#0a0d18] text-white">
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-              </Field>
+              <fieldset>
+                <legend className="text-xs uppercase tracking-[0.18em] text-white/65">
+                  Contexto de vida
+                </legend>
+                <p className="mt-1 text-xs text-white/45">
+                  Pode marcar mais de um.
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {CONTEXT_LIFE_OPTIONS.map((opt) => {
+                    const checked = contextLife.includes(opt.id);
+                    return (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        aria-pressed={checked}
+                        onClick={() =>
+                          setContextLife((prev) =>
+                            prev.includes(opt.id)
+                              ? prev.filter((v) => v !== opt.id)
+                              : [...prev, opt.id],
+                          )
+                        }
+                        className={`min-h-[40px] rounded-full border px-4 py-2 text-sm transition ${
+                          checked
+                            ? "border-[#ff355d]/60 bg-[#ff355d]/[0.12] text-white"
+                            : "border-white/10 bg-white/[0.03] text-white/65 hover:border-white/25"
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </fieldset>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <Field label="Estado civil">
                   <select
@@ -450,6 +530,59 @@ function PrimaryButton({
     >
       {children}
     </button>
+  );
+}
+
+const KPI_ACCENT = {
+  default: "text-white",
+  rose: "text-rose-200",
+  emerald: "text-emerald-200",
+  amber: "text-amber-200",
+} as const;
+
+function Kpi({
+  label,
+  value,
+  accent = "default",
+  small = false,
+}: {
+  label: string;
+  value: number;
+  accent?: keyof typeof KPI_ACCENT;
+  small?: boolean;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+      <p className={`font-heading ${small ? "text-2xl" : "text-3xl"} ${KPI_ACCENT[accent]}`}>
+        {value}
+      </p>
+      <p className="mt-1 text-xs text-white/55">{label}</p>
+    </div>
+  );
+}
+
+function MiniBreakdown({
+  title,
+  items,
+}: {
+  title: string;
+  items: { label: string; value: number; dot: string }[];
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+      <p className="text-xs uppercase tracking-[0.18em] text-white/45">{title}</p>
+      <ul className="mt-2 space-y-1.5">
+        {items.map((item) => (
+          <li key={item.label} className="flex items-center justify-between text-sm">
+            <span className="flex items-center gap-2 text-white/75">
+              <span className={`h-2 w-2 rounded-full ${item.dot}`} aria-hidden="true" />
+              {item.label}
+            </span>
+            <span className="font-medium text-white">{item.value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
