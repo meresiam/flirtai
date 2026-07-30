@@ -125,4 +125,21 @@ Dockerfile is a 3-stage build (deps → builder → runner) on `node:22-alpine`.
 npx prisma migrate deploy && node server.js
 ```
 
-Coolify is the target host. `DATABASE_URL`, `ANTHROPIC_API_KEY`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` are required at runtime. `BETTER_AUTH_URL` also drives `trustedOrigins` in `lib/auth.ts` — set it to the public URL or auth requests will be rejected.
+Coolify is the target host. `DATABASE_URL`, `ANTHROPIC_API_KEY`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` are required at runtime; `ADMIN_EMAILS` (lista separada por vírgula) habilita o /admin e a aprovação de cadastros. `BETTER_AUTH_URL` also drives `trustedOrigins` in `lib/auth.ts` — set it to the public URL or auth requests will be rejected.
+
+### Pipeline Coolify (aprendido em 30-07-2026)
+
+- Instância: `https://coolify.meresiam.com` (token em `$MERESCLAUDE/.env` → `COOLIFY_API_TOKEN` / `COOLIFY_BASE_URL`). A instância `coolify.ailalabs.com` NÃO hospeda este app.
+- UUIDs: projeto `h7oyeqc4qsa22rxp3qb8wdyi` · app `t11djtug6y6qpfnxelzt7wfg` (flirtai-app) · Postgres `lqf675lvsk7p8glep7w8bzsc`.
+- Push em `origin/main` NÃO dispara auto-deploy (sem webhook GitHub configurado). Deploy manual:
+  `curl -H "Authorization: Bearer $COOLIFY_API_TOKEN" "$COOLIFY_BASE_URL/api/v1/deploy?uuid=t11djtug6y6qpfnxelzt7wfg"`
+- Poll: `GET /api/v1/deployments` (em andamento) e `GET /api/v1/deployments/applications/{uuid}` (histórico).
+- **ATENÇÃO:** o token precisa das permissões `read + write + deploy` no Coolify (Keys & Tokens → API tokens). Token read-only responde `{"message":"Missing required permissions: deploy"}` — foi o bloqueio em 30-07-2026. Sem SSH na VPS (nenhuma key local autentica em root@coolify.meresiam.com).
+- Migrations aplicam sozinhas no boot do container (`prisma migrate deploy` no CMD).
+
+### Smoke pós-deploy
+
+1. `curl -s -o /dev/null -w "%{http_code}" https://flirtai.meresiam.com/login` → 200.
+2. `curl -s https://flirtai.meresiam.com/api/contacts` → 401 JSON (sem sessão).
+3. Fluxo real de signup via browser: criar conta teste → deve cair em `/aguardando` (gate de aprovação) com APIs respondendo 403 `pending_approval`.
+4. Login com conta aprovada → coach responde streaming; `/admin` acessível só pra `ADMIN_EMAILS`.
