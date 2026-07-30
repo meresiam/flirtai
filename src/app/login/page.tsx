@@ -65,9 +65,17 @@ function LoginForm() {
           </div>
 
           <div>
-            <label className="text-xs uppercase tracking-[0.18em] text-white/55" htmlFor="password">
-              Senha
-            </label>
+            <div className="flex items-baseline justify-between">
+              <label
+                className="text-xs uppercase tracking-[0.18em] text-white/55"
+                htmlFor="password"
+              >
+                Senha
+              </label>
+              <Link href="/esqueci-senha" className="text-xs text-white/55 underline transition hover:text-white">
+                Esqueceu a senha?
+              </Link>
+            </div>
             <input
               id="password"
               type="password"

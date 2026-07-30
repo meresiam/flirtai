@@ -125,7 +125,7 @@ Dockerfile is a 3-stage build (deps → builder → runner) on `node:22-alpine`.
 npx prisma migrate deploy && node server.js
 ```
 
-Coolify is the target host. `DATABASE_URL`, `ANTHROPIC_API_KEY`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` are required at runtime; `ADMIN_EMAILS` (lista separada por vírgula) habilita o /admin e a aprovação de cadastros. `BETTER_AUTH_URL` also drives `trustedOrigins` in `lib/auth.ts` — set it to the public URL or auth requests will be rejected.
+Coolify is the target host. `DATABASE_URL`, `ANTHROPIC_API_KEY`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` are required at runtime; `ADMIN_EMAILS` (lista separada por vírgula) habilita o /admin e a aprovação de cadastros; `SMTP_HOST`/`SMTP_PORT`/`SMTP_USER`/`SMTP_PASS`/`SMTP_FROM` habilitam o email de "esqueci minha senha" (sem `SMTP_HOST` o link de reset sai só no log do container). `BETTER_AUTH_URL` also drives `trustedOrigins` in `lib/auth.ts` — set it to the public URL or auth requests will be rejected.
 
 ### Pipeline Coolify (aprendido em 30-07-2026)
 
