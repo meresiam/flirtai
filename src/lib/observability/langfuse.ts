@@ -85,7 +85,7 @@ export async function traceCoachCall(
   });
 
   trace.generation({
-    name: "anthropic.messages.create",
+    name: "gemini.generateContent",
     model: input.model,
     usage: {
       input: output.inputTokens,

@@ -1,14 +1,16 @@
-// Gera ProfileReport via Anthropic tool_use.
+// Gera ProfileReport via Gemini structured output.
 // Recebe contexto já calculado (deltas, posts novos, posts deletados) e pede ao
 // LLM apenas a camada de linguagem natural (aiSummary + aiHighlights).
 
-import Anthropic from "@anthropic-ai/sdk";
+import {
+  createGeminiClient,
+  generateStructured,
+  resolveGeminiModel,
+} from "@/lib/llm/gemini";
 
 import type { ProfileSource } from "./types";
 import type { ReportHighlight } from "./types";
-import { REPORT_TOOL_NAME, reportToolSchema } from "./tools/report-tool-schema";
-
-const DEFAULT_MODEL = "claude-sonnet-4-6";
+import { reportResponseSchema } from "./tools/report-tool-schema";
 
 export interface ReportContext {
   handle: string;
@@ -33,17 +35,17 @@ REGRAS NÃO-NEGOCIÁVEIS:
 - Foco em padrões observáveis: cadência, formato dominante, engajamento relativo, mudanças de bio/avatar/categoria.
 - Quando houver post deletado, descreva como "post deletado" sem especular o porquê.
 - Tom: factual, profissional. Sem floreio.
-- Resposta SEMPRE via tool submit_profile_report.`;
+- Resposta SEMPRE no schema JSON pedido.`;
 
 export async function generateReport(ctx: ReportContext): Promise<{
   aiSummary: string;
   aiHighlights: ReportHighlight[];
 }> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) throw new Error("ANTHROPIC_API_KEY ausente.");
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("GEMINI_API_KEY ausente.");
 
-  const model = process.env.ANTHROPIC_MODEL || DEFAULT_MODEL;
-  const client = new Anthropic({ apiKey });
+  const model = resolveGeminiModel();
+  const client = createGeminiClient(apiKey);
 
   const userMessage = [
     `Perfil monitorado (tipo: ${ctx.source}): @${ctx.handle}${ctx.displayName ? ` (${ctx.displayName})` : ""}.`,
@@ -63,31 +65,25 @@ export async function generateReport(ctx: ReportContext): Promise<{
       : "Sem deleções detectadas.",
   ].join("\n");
 
-  let response: Anthropic.Message;
+  let input: { aiSummary: string; aiHighlights: ReportHighlight[] };
   try {
-    response = await client.messages.create({
+    const { data } = await generateStructured<{
+      aiSummary: string;
+      aiHighlights: ReportHighlight[];
+    }>({
+      client,
       model,
-      max_tokens: 1024,
       system: SYSTEM_PROMPT,
-      messages: [{ role: "user", content: userMessage }],
-      tools: [reportToolSchema],
-      tool_choice: { type: "tool", name: REPORT_TOOL_NAME },
+      contents: [{ role: "user", parts: [{ text: userMessage }] }],
+      schema: reportResponseSchema,
+      maxOutputTokens: 1024,
     });
+    input = data;
   } catch (err) {
     throw new Error(
-      `Anthropic falhou ao gerar report: ${err instanceof Error ? err.message : String(err)}`,
+      `Gemini falhou ao gerar report: ${err instanceof Error ? err.message : String(err)}`,
     );
   }
-
-  const toolBlock = response.content.find(
-    (block): block is Anthropic.ToolUseBlock => block.type === "tool_use",
-  );
-  if (!toolBlock) throw new Error("Anthropic response sem tool_use block.");
-
-  const input = toolBlock.input as {
-    aiSummary: string;
-    aiHighlights: ReportHighlight[];
-  };
 
   return {
     aiSummary: input.aiSummary,

@@ -1,6 +1,6 @@
 // W2/M1 — extrai incrementalmente o valor JSON-string de um campo nomeado
-// (`assistantMessage`) a partir de um buffer JSON parcial vindo dos eventos
-// `input_json_delta` do Anthropic. Para no primeiro ponto onde o buffer
+// (`assistantMessage`) a partir de um buffer JSON parcial vindo dos chunks
+// do streaming em JSON mode do Gemini. Para no primeiro ponto onde o buffer
 // fica ambíguo (escape incompleto, unicode incompleto, string fechou).
 
 export function extractStringField(

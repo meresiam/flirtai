@@ -14,7 +14,7 @@ import {
 type RouteContext = { params: Promise<{ id: string }> };
 
 const SCAN_RATE_ROUTE = "profile-scan";
-// Manual scan é caro (Apify + Anthropic). Override do limite global.
+// Manual scan é caro (Apify + Gemini). Override do limite global.
 const SCAN_LIMIT_PER_HOUR = 10;
 
 export async function POST(_req: Request, { params }: RouteContext) {

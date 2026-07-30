@@ -19,18 +19,18 @@ npx prisma generate                      # regenerate client after schema change
 npx prisma studio                        # browse DB
 ```
 
-No test runner is configured. Lint + `tsc --noEmit` (implicit via `next build`) are the only gates.
+Tests: `npm test` (vitest, unit/contract) e `npm run test:e2e` (Playwright). Lint + `tsc --noEmit` (implícito via `next build`) completam os gates.
 
 ## Stack notes (read before writing code)
 
 - **Next.js 16** — `middleware.ts` is deprecated; auth gating lives in `src/proxy.ts` **(must sit next to `app/`, not at repo root — see ADR-007)**. App code lives in `src/app/` (path alias `@/*` → `./src/*`). Build uses Turbopack. Keep `output: "standalone"` in `next.config.ts` — the Dockerfile copies `.next/standalone` + `.next/static` and depends on `server.js` existing.
 - **Prisma 7** — the datasource URL lives in `prisma.config.ts` (not `schema.prisma`). The client is built with `@prisma/adapter-pg` (driver adapter) instead of the binary engine; `src/lib/db.ts` constructs `PrismaPg` from `DATABASE_URL` and caches the client on `globalThis` in dev.
 - **better-auth** — email+password, schema is canonical (`user`, `session`, `account`, `verification` tables, all `@map`-ed to snake_case). Don't hand-edit those tables. Server-side session lookup uses `auth.api.getSession({ headers: await headers() })`; client uses `src/lib/auth-client.ts` hooks.
-- **Anthropic tool_use for structured output** — the coach route forces `tool_choice: { type: "tool", name: "submit_flirt_response" }` against the schema in `src/lib/flirt/coach-schema.ts`. The model's response is read from the `tool_use` block, not from text. Mirror this pattern for any new structured LLM call.
+- **Gemini structured output** — all LLM calls go through `src/lib/llm/gemini.ts` (Google GenAI SDK, default model `gemini-3.5-flash-lite`). Structured calls use `responseMimeType: "application/json"` + `responseJsonSchema` (schemas live in `src/lib/flirt/coach-schema.ts` etc. as plain JSON Schema objects); the response is `JSON.parse`d from `response.text`. Mirror this pattern for any new structured LLM call — never call the SDK directly from a route.
 
 ## Architecture
 
-Single-tenant-per-user wingman chat. One user → many `Contact`s → many `Message`s. Each coach turn is one Anthropic call that returns *both* a chat reply *and* a refreshed contact profile in one tool invocation, then persisted in a single Prisma `$transaction`.
+Single-tenant-per-user wingman chat. One user → many `Contact`s → many `Message`s. Each coach turn is one Gemini call that returns *both* a chat reply *and* a refreshed contact profile in one structured JSON response, then persisted in a single Prisma `$transaction`.
 
 ### Request flow for a coach turn
 
@@ -41,14 +41,13 @@ client (flirt-ai-shell)
        ├─ auth.api.getSession()                      → 401 if no session
        ├─ zod parse                                  → 400 on bad payload
        ├─ checkAndConsumeRateLimit(userId, "coach")  → 429 + Retry-After (60/h default)
-       ├─ load User (anthropicApiKey/Model override) + Contact (+ last 8 messages, HISTORY_CAP)
-       ├─ Anthropic.messages.create({
-       │     model: user override ?? env ?? "claude-sonnet-4-6",
-       │     system: buildSystemPrompt(mode),
-       │     tools: [coachToolSchema],
-       │     tool_choice: { type: "tool", name: COACH_TOOL_NAME }
+       ├─ load User (geminiApiKey/Model override) + Contact (+ last 20 messages, HISTORY_CAP)
+       ├─ client.models.generateContentStream({
+       │     model: user override ?? env GEMINI_MODEL ?? "gemini-3.5-flash-lite",
+       │     config: { systemInstruction, responseMimeType: "application/json",
+       │               responseJsonSchema: coachResponseSchema }
        │   })
-       ├─ extract tool_use block → CoachChatResponse
+       ├─ accumulate JSON stream → CoachChatResponse
        └─ prisma.$transaction([
             create user Message,
             create assistant Message (with suggestions + insight JSON),
@@ -103,9 +102,10 @@ src/types/      shared TS types
 
 - `src/app/api/coach/route.ts` — the only LLM-calling route; all structured-output rules live here + `src/lib/flirt/`.
 - `src/app/api/contacts/route.ts` + `[id]/route.ts` — contact CRUD; always scoped by `userId` from `requireUser()`.
-- `src/app/api/settings/route.ts` — per-user override of `anthropicApiKey` / `anthropicModel` (read inside `/api/coach`).
+- `src/app/api/settings/route.ts` — per-user override of `geminiApiKey` / `geminiModel` (read inside `/api/coach`).
 - `src/lib/flirt/system-prompt.ts` — voice/ethics/mode prompts, joined by `buildSystemPrompt(mode)`. PT-BR.
-- `src/lib/flirt/coach-schema.ts` — Anthropic Tool definition; source of truth for the response shape.
+- `src/lib/flirt/coach-schema.ts` — JSON Schema for the coach turn; source of truth for the response shape.
+- `src/lib/llm/gemini.ts` — the only place that touches the Google GenAI SDK (client, structured calls, usage mapping, error copy).
 - `src/lib/use-ocr.ts` — Tesseract.js worker (singleton `workerPromise`) for image attachments; lazy-loads `por`+`eng` language data.
 - `src/types/flirt.ts` — shared `CoachChatResponse`, `ContactRecord`, `ConversationMessage`, `ReplySuggestion`, `MessageInsight`.
 
@@ -114,7 +114,7 @@ src/types/      shared TS types
 - Schema-First → DATA-MODEL is `prisma/schema.prisma`; never mutate already-applied SQL in `prisma/migrations/`, generate a new one.
 - Component-First — UI intentionally lives in one shell file; don't split for splitting's sake.
 - Coach route caps history at `HISTORY_CAP = 8` messages and `max_tokens: 2048`. Increasing either has cost + latency implications.
-- Errors from the Anthropic SDK with `status === 404` are reported as "modelo não disponível" (likely a wrong `ANTHROPIC_MODEL`); other failures bubble up as 502.
+- Errors from the Gemini SDK with `status === 404` are reported as "modelo não disponível" (likely a wrong `GEMINI_MODEL`); other failures bubble up as 502.
 - Rate limit is a `UsageLog` row per call, counted over a sliding 1h window — there's no Redis or cache, so it's exactly accurate and exactly as expensive as `COUNT(*)` with a `(userId, createdAt DESC)` index.
 
 ## Deploy
@@ -125,7 +125,7 @@ Dockerfile is a 3-stage build (deps → builder → runner) on `node:22-alpine`.
 npx prisma migrate deploy && node server.js
 ```
 
-Coolify is the target host. `DATABASE_URL`, `ANTHROPIC_API_KEY`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` are required at runtime; `ADMIN_EMAILS` (lista separada por vírgula) habilita o /admin e a aprovação de cadastros; `SMTP_HOST`/`SMTP_PORT`/`SMTP_USER`/`SMTP_PASS`/`SMTP_FROM` habilitam o email de "esqueci minha senha" (sem `SMTP_HOST` o link de reset sai só no log do container). `BETTER_AUTH_URL` also drives `trustedOrigins` in `lib/auth.ts` — set it to the public URL or auth requests will be rejected.
+Coolify is the target host. `DATABASE_URL`, `GEMINI_API_KEY`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` are required at runtime (`ANTHROPIC_API_KEY` is dead since the Gemini swap); `ADMIN_EMAILS` (lista separada por vírgula) habilita o /admin e a aprovação de cadastros; `SMTP_HOST`/`SMTP_PORT`/`SMTP_USER`/`SMTP_PASS`/`SMTP_FROM` habilitam o email de "esqueci minha senha" (sem `SMTP_HOST` o link de reset sai só no log do container). `BETTER_AUTH_URL` also drives `trustedOrigins` in `lib/auth.ts` — set it to the public URL or auth requests will be rejected.
 
 ### Pipeline Coolify (aprendido em 30-07-2026)
 

@@ -114,7 +114,7 @@ export default function AdminPage() {
       </div>
       <p className="mt-1 text-sm text-white/55">
         Aprovação de cadastros e uso de cada usuário. Custo é estimativa pelos
-        preços de tabela da Anthropic.
+        preços de tabela do Gemini.
       </p>
 
       {loading ? (
@@ -205,7 +205,7 @@ export default function AdminPage() {
                             {user.hasOwnKey ? (
                               <KeyRoundIcon
                                 className="h-3.5 w-3.5 shrink-0 text-emerald-300/80"
-                                aria-label="Usa chave Anthropic própria"
+                                aria-label="Usa chave Gemini própria"
                               />
                             ) : null}
                           </div>

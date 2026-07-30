@@ -45,7 +45,7 @@ export async function GET() {
           name: true,
           createdAt: true,
           approvedAt: true,
-          anthropicApiKeyEncrypted: true,
+          geminiApiKeyEncrypted: true,
         },
       }),
       prisma.usageLog.groupBy({
@@ -116,7 +116,7 @@ export async function GET() {
       createdAt: user.createdAt.toISOString(),
       approvedAt: user.approvedAt?.toISOString() ?? null,
       isAdmin: isAdminEmail(user.email),
-      hasOwnKey: Boolean(user.anthropicApiKeyEncrypted),
+      hasOwnKey: Boolean(user.geminiApiKeyEncrypted),
       contacts: contactsByUser.get(user.id) ?? 0,
       messages: messagesByUser.get(user.id) ?? 0,
       llmCalls,

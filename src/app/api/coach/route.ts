@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
+import type { Content, GoogleGenAI, Part } from "@google/genai";
 import { z } from "zod";
 
 import { requireUser } from "@/lib/api-auth";
@@ -7,8 +7,16 @@ import { prisma } from "@/lib/db";
 import { checkAndConsumeRateLimit, recordLlmUsage } from "@/lib/rate-limit";
 import { buildSystemPromptParts } from "@/lib/flirt/system-prompt";
 import { buildMeContext } from "@/lib/flirt/me-context";
-import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
+import { coachResponseSchema } from "@/lib/flirt/coach-schema";
 import { extractStringField } from "@/lib/flirt/partial-json";
+import {
+  createGeminiClient,
+  geminiErrorMessage,
+  resolveGeminiModel,
+  usageFromResponse,
+  DEFAULT_GEMINI_MODEL,
+  type LlmUsage,
+} from "@/lib/llm/gemini";
 import { hashUserId, traceCoachCall } from "@/lib/observability/langfuse";
 import { decryptToken } from "@/lib/profile-watch/token-crypto";
 import { statusToDb } from "@/lib/serializers";
@@ -30,7 +38,7 @@ export const dynamic = "force-dynamic";
 
 const HISTORY_CAP = 20;
 const SUMMARY_THRESHOLD = 30;
-const SUMMARY_MODEL = "claude-haiku-4-5-20251001";
+const SUMMARY_MODEL = DEFAULT_GEMINI_MODEL;
 
 // CR-01 — cap de body pra evitar DoS/OOM. 4 anexos * ~7MB base64 + overhead ~= 30MB.
 // Sem isso, com rate limit 60/h um cliente buggy/malicioso submete ~1.7GB/h
@@ -93,8 +101,8 @@ export async function POST(request: Request) {
     prisma.user.findUnique({
       where: { id: userId },
       select: {
-        anthropicApiKeyEncrypted: true,
-        anthropicModel: true,
+        geminiApiKeyEncrypted: true,
+        geminiModel: true,
         coachTone: true,
         userProfile: {
           select: {
@@ -129,18 +137,18 @@ export async function POST(request: Request) {
   const history = [...contact.messages].reverse();
 
   const apiKey =
-    (user?.anthropicApiKeyEncrypted
-      ? decryptToken(user.anthropicApiKeyEncrypted)
-      : null) || process.env.ANTHROPIC_API_KEY;
+    (user?.geminiApiKeyEncrypted
+      ? decryptToken(user.geminiApiKeyEncrypted)
+      : null) || process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { error: "Sem chave da Anthropic. Configure em /settings ou no servidor." },
+      { error: "Sem chave da API Gemini. Configure em /settings ou no servidor." },
       { status: 503 },
     );
   }
 
-  const client = new Anthropic({ apiKey });
-  const model = user?.anthropicModel || process.env.ANTHROPIC_MODEL || "claude-sonnet-4-6";
+  const client = createGeminiClient(apiKey);
+  const model = resolveGeminiModel(user?.geminiModel);
 
   let conversationSummary = contact.conversationSummary;
   if (
@@ -171,10 +179,10 @@ export async function POST(request: Request) {
     return -1;
   })();
 
-  const messagesForLlm: Anthropic.MessageParam[] = [];
+  const messagesForLlm: Content[] = [];
   for (let i = 0; i < history.length; i++) {
     const message = history[i];
-    const role: "user" | "assistant" = message.sender === "assistant" ? "assistant" : "user";
+    const role: "user" | "model" = message.sender === "assistant" ? "model" : "user";
     const prefix = message.sender === "contact" ? "[Mensagem dela] " : "";
     const text = prefix + message.content;
 
@@ -192,18 +200,17 @@ export async function POST(request: Request) {
         : [];
 
     if (role === "user" && historyAtts.length) {
-      const imageBlocks = historyAtts.map(
-        (a): Anthropic.ImageBlockParam => ({
-          type: "image",
-          source: { type: "base64", media_type: a.mediaType, data: a.data },
+      const imageParts = historyAtts.map(
+        (a): Part => ({
+          inlineData: { mimeType: a.mediaType, data: a.data },
         }),
       );
       messagesForLlm.push({
         role,
-        content: [...imageBlocks, { type: "text", text }],
+        parts: [...imageParts, { text }],
       });
     } else {
-      messagesForLlm.push({ role, content: text });
+      messagesForLlm.push({ role, parts: [{ text }] });
     }
   }
 
@@ -216,7 +223,7 @@ export async function POST(request: Request) {
     `- Interesses: ${contact.interests.length ? contact.interests.join(", ") : "—"}`,
     `- Tags: ${contact.tags.length ? contact.tags.join(", ") : "—"}`,
     ...(conversationSummary
-      ? ["", `Resumo da conversa anterior (gerado por Haiku): ${conversationSummary}`]
+      ? ["", `Resumo da conversa anterior (gerado automaticamente): ${conversationSummary}`]
       : []),
     ...(attachments.length
       ? [
@@ -229,22 +236,20 @@ export async function POST(request: Request) {
   ].join("\n");
 
   if (attachments.length) {
-    const imageBlocks = attachments.map(
-      (attachment): Anthropic.ImageBlockParam => ({
-        type: "image",
-        source: {
-          type: "base64",
-          media_type: attachment.mediaType,
+    const imageParts = attachments.map(
+      (attachment): Part => ({
+        inlineData: {
+          mimeType: attachment.mediaType,
           data: attachment.data,
         },
       }),
     );
     messagesForLlm.push({
       role: "user",
-      content: [...imageBlocks, { type: "text", text: contextText }],
+      parts: [...imageParts, { text: contextText }],
     });
   } else {
-    messagesForLlm.push({ role: "user", content: contextText });
+    messagesForLlm.push({ role: "user", parts: [{ text: contextText }] });
   }
 
   const traceInput = {
@@ -265,107 +270,91 @@ export async function POST(request: Request) {
         );
       };
 
-      let stream: ReturnType<Anthropic["messages"]["stream"]> | null = null;
       try {
-        // WR-02 — split system em base (estável, ~95% do prompt) + tone
-        // addendum (varia por user). Só o base ganha cache_control: ephemeral,
-        // preservando cache hit mesmo quando o tone muda entre users.
+        // System prompt em string única: base estável + me-context por user +
+        // tone addendum. O cache de prefixo do Gemini é implícito (sem
+        // cache_control manual) — manter o bloco estável no INÍCIO preserva
+        // hit de cache entre turns.
         //
         // W6 — tone resolution: userProfile.tone (W6 override fino) >
-        // user.coachTone (W5 default global) > null. Me-context entra como
-        // bloco separado, também cached: muda quando user edita /me ou marca
-        // feedback. Anthropic suporta múltiplos breakpoints de cache_control;
-        // base estável + me-context estável-por-user garantem 2 prefixos
-        // independentes.
+        // user.coachTone (W5 default global) > null.
         const effectiveTone = user?.userProfile?.tone ?? user?.coachTone ?? null;
         const { base, toneAddendum } = buildSystemPromptParts(mode, effectiveTone);
         const meContextBlock = buildMeContext(user?.userProfile ?? null);
 
-        const systemBlocks: Anthropic.TextBlockParam[] = [
-          {
-            type: "text",
-            text: base,
-            cache_control: { type: "ephemeral" },
-          },
-        ];
-        if (meContextBlock) {
-          systemBlocks.push({
-            type: "text",
-            text: meContextBlock,
-            cache_control: { type: "ephemeral" },
-          });
-        }
-        if (toneAddendum) {
-          systemBlocks.push({ type: "text", text: toneAddendum });
-        }
+        const systemInstruction = [base, meContextBlock, toneAddendum]
+          .filter(Boolean)
+          .join("\n\n");
 
         // WR-05 — propaga AbortSignal do request pro SDK. Quando o client
-        // fecha a aba/cancela o fetch, o stream do Anthropic é abortado
+        // fecha a aba/cancela o fetch, o stream do Gemini é abortado
         // (para de pagar tokens) e o extractContactAvatar em background
         // também recebe o sinal.
-        stream = client.messages.stream(
-          {
-            model,
-            max_tokens: 2048,
-            system: systemBlocks,
-            messages: messagesForLlm,
-            tools: [coachToolSchema],
-            tool_choice: { type: "tool", name: COACH_TOOL_NAME },
+        const stream = await client.models.generateContentStream({
+          model,
+          contents: messagesForLlm,
+          config: {
+            systemInstruction,
+            responseMimeType: "application/json",
+            responseJsonSchema: coachResponseSchema,
+            maxOutputTokens: 2048,
+            abortSignal: request.signal,
           },
-          { signal: request.signal },
-        );
+        });
 
         let accumulatedJson = "";
         let sentLength = 0;
+        let usage: LlmUsage = usageFromResponse(undefined);
 
-        for await (const event of stream) {
-          if (
-            event.type === "content_block_delta" &&
-            event.delta.type === "input_json_delta"
-          ) {
-            accumulatedJson += event.delta.partial_json;
+        for await (const chunk of stream) {
+          const delta = chunk.text;
+          if (delta) {
+            accumulatedJson += delta;
             const text = extractStringField(accumulatedJson, "assistantMessage");
             if (text.length > sentLength) {
               writeEvent("delta", { text: text.slice(sentLength) });
               sentLength = text.length;
             }
           }
+          if (chunk.usageMetadata) {
+            usage = usageFromResponse(chunk.usageMetadata);
+          }
         }
 
-        const finalMsg = await stream.finalMessage();
-        const usage = finalMsg.usage as Anthropic.Usage & {
-          cache_read_input_tokens?: number;
-          cache_creation_input_tokens?: number;
-        };
         await traceCoachCall(traceInput, {
-          inputTokens: usage.input_tokens ?? 0,
-          outputTokens: usage.output_tokens ?? 0,
-          cacheReadTokens: usage.cache_read_input_tokens ?? 0,
-          cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
+          inputTokens: usage.inputTokens,
+          outputTokens: usage.outputTokens,
+          cacheReadTokens: usage.cacheReadTokens,
+          cacheCreationTokens: usage.cacheCreationTokens,
           latencyMs: Date.now() - startedAt,
           status: "ok",
         });
         // Persiste tokens na linha do UsageLog (base do /admin de gastos).
         await recordLlmUsage(rate.usageLogId, {
           model,
-          inputTokens: usage.input_tokens ?? 0,
-          outputTokens: usage.output_tokens ?? 0,
-          cacheReadTokens: usage.cache_read_input_tokens ?? 0,
-          cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
+          inputTokens: usage.inputTokens,
+          outputTokens: usage.outputTokens,
+          cacheReadTokens: usage.cacheReadTokens,
+          cacheCreationTokens: usage.cacheCreationTokens,
         });
 
-        const toolBlock = (finalMsg.content as Anthropic.ContentBlock[]).find(
-          (block): block is Anthropic.ToolUseBlock => block.type === "tool_use",
-        );
-        if (!toolBlock) {
+        let llmResponse: CoachChatResponse;
+        try {
+          llmResponse = JSON.parse(accumulatedJson) as CoachChatResponse;
+        } catch {
           writeEvent("error", {
-            message: "Resposta sem tool_use. Tenta de novo.",
+            message: "Resposta fora do formato esperado. Tenta de novo.",
             status: 502,
           });
           return;
         }
-
-        const llmResponse = toolBlock.input as CoachChatResponse;
+        if (!llmResponse?.assistantMessage || !llmResponse.contact) {
+          writeEvent("error", {
+            message: "Resposta incompleta do modelo. Tenta de novo.",
+            status: 502,
+          });
+          return;
+        }
 
         const persistedUserPrompt =
           prompt.trim() ||
@@ -434,10 +423,10 @@ export async function POST(request: Request) {
         writeEvent("done", payload);
 
         // WR-02 — avatar-vision sai do critical path. Roda em background
-        // DEPOIS do "done" pra não bloquear o turno com 500-1500ms extra de
-        // Haiku call. Persiste em update separado (sacrifica atomicidade,
-        // recuperável no próximo turn). Falhas são silenciosas.
-        // WR-05 — propaga request.signal pra cancelar a chamada Haiku se
+        // DEPOIS do "done" pra não bloquear o turno com latência extra de
+        // uma segunda call de visão. Persiste em update separado (sacrifica
+        // atomicidade, recuperável no próximo turn). Falhas são silenciosas.
+        // WR-05 — propaga request.signal pra cancelar a chamada se
         // o client abortar (tab close, etc).
         if (!contact.avatarUrl && attachments.length) {
           extractContactAvatar({
@@ -461,12 +450,7 @@ export async function POST(request: Request) {
         }
       } catch (error) {
         const status = (error as { status?: number })?.status ?? 502;
-        const message =
-          status === 404
-            ? `Modelo "${model}" não está disponível na sua conta Anthropic. Confira ANTHROPIC_MODEL.`
-            : error instanceof Error
-              ? error.message
-              : "O FLIRT A.I não conseguiu responder.";
+        const message = geminiErrorMessage(error, model);
         await traceCoachCall(traceInput, {
           inputTokens: 0,
           outputTokens: 0,
@@ -505,7 +489,7 @@ export type CoachConversationMessage = ConversationMessage;
 // `Contact.conversationSummary` e injetado no contexto do coach turn pra
 // dar memória sem inflar o prompt.
 async function generateConversationSummary(
-  client: Anthropic,
+  client: GoogleGenAI,
   contactId: string,
   contactName: string,
 ): Promise<string | null> {
@@ -530,26 +514,28 @@ async function generateConversationSummary(
     .join("\n");
 
   try {
-    const result = await client.messages.create({
+    const result = await client.models.generateContent({
       model: SUMMARY_MODEL,
-      max_tokens: 320,
-      system:
-        "Você resume conversas de wingman em PT-BR. 3 a 5 frases, direto, sem preâmbulo. " +
-        "Foco: (a) estágio do relacionamento, (b) padrões de interação dela, " +
-        "(c) leituras-chave sobre a interlocutora, (d) o que já tentaram. " +
-        "NUNCA conselho ou opinião — só síntese factual.",
-      messages: [
+      contents: [
         {
           role: "user",
-          content: `Resuma esta conversa entre o usuário e ${contactName || "a interlocutora"}:\n\n${transcript}`,
+          parts: [
+            {
+              text: `Resuma esta conversa entre o usuário e ${contactName || "a interlocutora"}:\n\n${transcript}`,
+            },
+          ],
         },
       ],
+      config: {
+        systemInstruction:
+          "Você resume conversas de wingman em PT-BR. 3 a 5 frases, direto, sem preâmbulo. " +
+          "Foco: (a) estágio do relacionamento, (b) padrões de interação dela, " +
+          "(c) leituras-chave sobre a interlocutora, (d) o que já tentaram. " +
+          "NUNCA conselho ou opinião — só síntese factual.",
+        maxOutputTokens: 320,
+      },
     });
-    const text = result.content
-      .filter((b): b is Anthropic.TextBlock => b.type === "text")
-      .map((b) => b.text)
-      .join(" ")
-      .trim();
+    const text = result.text?.trim();
     return text || null;
   } catch {
     return null;

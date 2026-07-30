@@ -1,16 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { COACH_TOOL_NAME, coachToolSchema } from "./coach-schema";
+import { coachResponseSchema } from "./coach-schema";
 import type { CoachChatResponse } from "@/types/flirt";
 
-describe("coachToolSchema (contract)", () => {
-  it("exposes the canonical tool name expected by /api/coach", () => {
-    expect(COACH_TOOL_NAME).toBe("submit_flirt_response");
-    expect(coachToolSchema.name).toBe(COACH_TOOL_NAME);
-  });
-
+describe("coachResponseSchema (contract)", () => {
   it("requires the 4 top-level blocks consumed by the route", () => {
-    const schema = coachToolSchema.input_schema;
+    const schema = coachResponseSchema as { type?: string; required?: string[] };
     expect(schema.type).toBe("object");
     expect(schema.required).toEqual([
       "assistantMessage",
@@ -21,7 +16,7 @@ describe("coachToolSchema (contract)", () => {
   });
 
   it("uses the snake_case 'hot_lead' literal in the status enum (Wave 0 / C9)", () => {
-    const properties = coachToolSchema.input_schema.properties as Record<
+    const properties = coachResponseSchema.properties as Record<
       string,
       { properties: Record<string, { enum?: string[] }> }
     >;
@@ -31,7 +26,7 @@ describe("coachToolSchema (contract)", () => {
   });
 
   it("enforces 3-5 suggestions with required tone/text/why + risk + likelyResponse (W2/M2)", () => {
-    const properties = coachToolSchema.input_schema.properties as Record<
+    const properties = coachResponseSchema.properties as Record<
       string,
       {
         minItems?: number;
@@ -61,7 +56,7 @@ describe("coachToolSchema (contract)", () => {
   });
 
   it("insight enforces the 4 required fields used by the shell UI", () => {
-    const properties = coachToolSchema.input_schema.properties as Record<
+    const properties = coachResponseSchema.properties as Record<
       string,
       { required?: string[] }
     >;
@@ -74,7 +69,7 @@ describe("coachToolSchema (contract)", () => {
   });
 
   it("contact block requires only os campos minimos (W2/M3 — personalityType/interests/tags ficam optional)", () => {
-    const properties = coachToolSchema.input_schema.properties as Record<
+    const properties = coachResponseSchema.properties as Record<
       string,
       { required?: string[]; properties?: Record<string, unknown> }
     >;

@@ -1,5 +1,7 @@
-// Preços Anthropic em US$ por milhão de tokens (referência: platform.claude.com/docs/en/pricing,
-// jul/2026). Cache read = 0.1x do input; cache write (5min) = 1.25x do input.
+// Preços em US$ por milhão de tokens. Gemini: ai.google.dev/gemini-api/docs/pricing
+// (jul/2026). Claude fica na tabela pra precificar linhas HISTÓRICAS do
+// UsageLog da era Anthropic. Cache read = 0.1x do input; cache write só
+// existia na Anthropic (1.25x) — no Gemini cacheCreationTokens é sempre 0.
 // Usado só pra ESTIMATIVA de gasto no /admin — não é fatura.
 
 interface ModelPricing {
@@ -8,12 +10,15 @@ interface ModelPricing {
 }
 
 const PRICING: Array<{ prefix: string; pricing: ModelPricing }> = [
+  { prefix: "gemini-3.5-flash-lite", pricing: { inputPerMTok: 0.3, outputPerMTok: 2.5 } },
+  { prefix: "gemini-3.1-flash-lite", pricing: { inputPerMTok: 0.25, outputPerMTok: 1.5 } },
+  { prefix: "gemini-2.5-flash-lite", pricing: { inputPerMTok: 0.1, outputPerMTok: 0.4 } },
   { prefix: "claude-opus", pricing: { inputPerMTok: 5, outputPerMTok: 25 } },
   { prefix: "claude-sonnet", pricing: { inputPerMTok: 3, outputPerMTok: 15 } },
   { prefix: "claude-haiku", pricing: { inputPerMTok: 1, outputPerMTok: 5 } },
 ];
 
-const DEFAULT_PRICING: ModelPricing = { inputPerMTok: 3, outputPerMTok: 15 };
+const DEFAULT_PRICING: ModelPricing = { inputPerMTok: 0.3, outputPerMTok: 2.5 };
 
 function pricingFor(model: string | null): ModelPricing {
   if (!model) return DEFAULT_PRICING;

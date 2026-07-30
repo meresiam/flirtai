@@ -35,9 +35,9 @@ interface NotificationPrefs {
 interface SettingsPayload {
   email: string;
   name: string | null;
-  anthropicKeyMasked: string | null;
-  anthropicKeySet: boolean;
-  anthropicModel: string | null;
+  geminiKeyMasked: string | null;
+  geminiKeySet: boolean;
+  geminiModel: string | null;
   defaultModel: string;
   timezone: string | null;
   locale: string | null;
@@ -135,7 +135,7 @@ export default function SettingsPage() {
         const { settings: payload } = (await response.json()) as { settings: SettingsPayload };
         setSettings(payload);
         setName(payload.name ?? "");
-        setModel(payload.anthropicModel ?? "");
+        setModel(payload.geminiModel ?? "");
         setTimezone(payload.timezone ?? payload.defaults.timezone);
         setLocale(payload.locale ?? payload.defaults.locale);
         setCoachTone(payload.coachTone ?? "");
@@ -223,12 +223,12 @@ export default function SettingsPage() {
   async function handleSaveKey(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!apiKey.trim()) return;
-    await save({ anthropicApiKey: apiKey.trim(), anthropicModel: model.trim() || null });
+    await save({ geminiApiKey: apiKey.trim(), geminiModel: model.trim() || null });
   }
 
   async function handleClearKey() {
     if (!confirm("Remover sua key e voltar pra key padrão do servidor?")) return;
-    await save({ anthropicApiKey: null, anthropicModel: null });
+    await save({ geminiApiKey: null, geminiModel: null });
     setModel("");
   }
 
@@ -420,11 +420,11 @@ export default function SettingsPage() {
 
           <SectionCard
             icon={<KeyIcon className="h-4 w-4 text-[#ff355d]" aria-hidden="true" />}
-            title="Anthropic API"
+            title="Gemini API"
           >
             <p className="text-sm text-white/55">
-              {settings?.anthropicKeySet
-                ? `Usando sua key: ${settings.anthropicKeyMasked}`
+              {settings?.geminiKeySet
+                ? `Usando sua key: ${settings.geminiKeyMasked}`
                 : "Usando key padrão do servidor."}
             </p>
 
@@ -434,7 +434,7 @@ export default function SettingsPage() {
                   type="password"
                   value={apiKey}
                   onChange={(event) => setApiKey(event.target.value)}
-                  placeholder="sk-ant-..."
+                  placeholder="AIza..."
                   autoComplete="off"
                   className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 font-mono text-sm outline-none transition focus:border-[#ff355d]/40"
                 />
@@ -445,11 +445,11 @@ export default function SettingsPage() {
                   type="text"
                   value={model}
                   onChange={(event) => setModel(event.target.value)}
-                  placeholder={settings?.defaultModel ?? "claude-sonnet-4-6"}
+                  placeholder={settings?.defaultModel ?? "gemini-3.5-flash-lite"}
                   className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 font-mono text-sm outline-none transition focus:border-[#ff355d]/40"
                 />
                 <span className="mt-1 block text-xs text-white/45">
-                  Padrão: {settings?.defaultModel ?? "claude-sonnet-4-6"}
+                  Padrão: {settings?.defaultModel ?? "gemini-3.5-flash-lite"}
                 </span>
               </Field>
 
@@ -457,7 +457,7 @@ export default function SettingsPage() {
                 <PrimaryButton type="submit" disabled={saving || !apiKey.trim()}>
                   Salvar key
                 </PrimaryButton>
-                {settings?.anthropicKeySet ? (
+                {settings?.geminiKeySet ? (
                   <button
                     type="button"
                     onClick={handleClearKey}

@@ -27,8 +27,8 @@ model User {
   // Optional user override of LLM provider config.
   // If null, the server-side env defaults are used.
   // Token armazenado encriptado (AES-256-GCM via src/lib/profile-watch/token-crypto.ts).
-  anthropicApiKeyEncrypted String? @map("anthropic_api_key_encrypted")
-  anthropicModel           String? @map("anthropic_model")
+  geminiApiKeyEncrypted String? @map("gemini_api_key_encrypted")
+  geminiModel           String? @map("gemini_model")
 
   // W5 — preferências do usuário (settings expandido).
   // Source of truth: docs/DATA-MODEL.md seção User.

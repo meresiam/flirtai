@@ -21,14 +21,14 @@ const timezoneSchema = z.enum(TIMEZONE_IDS);
 const localeSchema = z.enum(LOCALE_IDS);
 
 const patchSchema = z.object({
-  anthropicApiKey: z
+  geminiApiKey: z
     .string()
     .trim()
     .min(1)
     .max(200)
     .nullable()
     .optional(),
-  anthropicModel: z.string().trim().min(1).max(80).nullable().optional(),
+  geminiModel: z.string().trim().min(1).max(80).nullable().optional(),
   name: z.string().min(1).max(120).optional(),
   // W5 / M8
   timezone: timezoneSchema.nullable().optional(),
@@ -52,8 +52,8 @@ export async function GET() {
       id: true,
       email: true,
       name: true,
-      anthropicApiKeyEncrypted: true,
-      anthropicModel: true,
+      geminiApiKeyEncrypted: true,
+      geminiModel: true,
       timezone: true,
       locale: true,
       coachTone: true,
@@ -66,10 +66,10 @@ export async function GET() {
     settings: {
       email: user.email,
       name: user.name,
-      anthropicKeyMasked: user.anthropicApiKeyEncrypted ? SET_MASK : null,
-      anthropicKeySet: Boolean(user.anthropicApiKeyEncrypted),
-      anthropicModel: user.anthropicModel,
-      defaultModel: process.env.ANTHROPIC_MODEL ?? "claude-sonnet-4-6",
+      geminiKeyMasked: user.geminiApiKeyEncrypted ? SET_MASK : null,
+      geminiKeySet: Boolean(user.geminiApiKeyEncrypted),
+      geminiModel: user.geminiModel,
+      defaultModel: process.env.GEMINI_MODEL ?? "gemini-3.5-flash-lite",
       timezone: user.timezone,
       locale: user.locale,
       coachTone: user.coachTone,
@@ -99,13 +99,13 @@ export async function PATCH(request: Request) {
   }
 
   const data: Prisma.UserUpdateInput = {};
-  if (parsed.anthropicApiKey !== undefined) {
-    data.anthropicApiKeyEncrypted = parsed.anthropicApiKey
-      ? encryptToken(parsed.anthropicApiKey)
+  if (parsed.geminiApiKey !== undefined) {
+    data.geminiApiKeyEncrypted = parsed.geminiApiKey
+      ? encryptToken(parsed.geminiApiKey)
       : null;
   }
-  if (parsed.anthropicModel !== undefined) {
-    data.anthropicModel = parsed.anthropicModel;
+  if (parsed.geminiModel !== undefined) {
+    data.geminiModel = parsed.geminiModel;
   }
   if (parsed.name !== undefined) {
     data.name = parsed.name;
@@ -131,8 +131,8 @@ export async function PATCH(request: Request) {
     data,
     select: {
       name: true,
-      anthropicApiKeyEncrypted: true,
-      anthropicModel: true,
+      geminiApiKeyEncrypted: true,
+      geminiModel: true,
       timezone: true,
       locale: true,
       coachTone: true,
@@ -143,9 +143,9 @@ export async function PATCH(request: Request) {
   return NextResponse.json({
     settings: {
       name: updated.name,
-      anthropicKeyMasked: updated.anthropicApiKeyEncrypted ? SET_MASK : null,
-      anthropicKeySet: Boolean(updated.anthropicApiKeyEncrypted),
-      anthropicModel: updated.anthropicModel,
+      geminiKeyMasked: updated.geminiApiKeyEncrypted ? SET_MASK : null,
+      geminiKeySet: Boolean(updated.geminiApiKeyEncrypted),
+      geminiModel: updated.geminiModel,
       timezone: updated.timezone,
       locale: updated.locale,
       coachTone: updated.coachTone,

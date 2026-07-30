@@ -1,14 +1,12 @@
 // W7 — Diário de Campo.
-// Tool definition Anthropic pro extractor síncrono usado em POST /api/contacts/:id/encounters.
-// O LLM recebe o rawText do user + contexto da Contact e devolve sinais estruturados.
+// JSON Schema do extractor síncrono usado em POST /api/contacts/:id/encounters
+// (responseJsonSchema do Gemini). O LLM recebe o rawText do user + contexto da
+// Contact e devolve sinais estruturados.
 // O contrato JSON aqui é a única fonte de verdade — tipos TS e zod runtime parser derivam dele.
 
 import { z } from "zod";
-import type Anthropic from "@anthropic-ai/sdk";
 
-export const ENCOUNTER_TOOL_NAME = "submit_encounter_extract";
-
-// IN-01 — Enums em snake_case SEM ACENTO. Anthropic tool input_schema enums
+// IN-01 — Enums em snake_case SEM ACENTO. Enums de schema estruturado
 // nao garantem unicode normalization; o LLM as vezes devolve com acento
 // ("avançou" vs "avancou") e o Zod rejeitaria. Frontend traduz pra labels
 // com acento via ESCALATION_LABEL / MOOD_LABEL em encounter-card.tsx.
@@ -45,14 +43,8 @@ export const encounterExtractSchema = z
 
 export type EncounterExtract = z.infer<typeof encounterExtractSchema>;
 
-export const encounterToolSchema: Anthropic.Tool = {
-  name: ENCOUNTER_TOOL_NAME,
-  description:
-    "Extrai sinais factuais de um relato pos-encontro (texto livre PT-BR) do usuario sobre uma Contact. " +
-    "Voce e UM EXTRATOR, nao um conselheiro. Saida em PT-BR, curta, factual, sem opiniao. " +
-    "userRedPatterns so deve ser populado se o relato do USUARIO indicar padrao problematico DELE (nao dela).",
-  input_schema: {
-    type: "object",
+export const encounterResponseSchema: Record<string, unknown> = {
+  type: "object",
     required: [
       "summary",
       "escalation",
@@ -122,7 +114,6 @@ export const encounterToolSchema: Anthropic.Tool = {
           "Max 3, max 120 chars cada. Exemplos: 'insistiu apos sinal claro de desinteresse', " +
           "'falou 80% do tempo sobre si mesmo', 'cancelou no ultimo minuto sem explicar'. " +
           "Use array vazio se nada relevante. NAO INCLUIR padroes DELA aqui — esse campo e so do usuario.",
-      },
     },
   },
 };

@@ -1,16 +1,19 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import Anthropic from "@anthropic-ai/sdk";
 import { Prisma, type AttractionLevel as PrismaAttractionLevel } from "@prisma/client";
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
 import { checkAndConsumeRateLimit, recordLlmUsage } from "@/lib/rate-limit";
+import {
+  createGeminiClient,
+  generateStructured,
+  resolveGeminiModel,
+} from "@/lib/llm/gemini";
 import { decryptToken } from "@/lib/profile-watch/token-crypto";
 import { serializeContact } from "@/lib/serializers";
 import {
-  ENCOUNTER_TOOL_NAME,
-  encounterToolSchema,
+  encounterResponseSchema,
   encounterExtractSchema,
   type EncounterExtract,
 } from "@/lib/flirt/encounter-schema";
@@ -27,7 +30,6 @@ type RouteContext = { params: Promise<{ id: string }> };
 
 const ENCOUNTERS_RATE_LIMIT_PER_HOUR = 60;
 const FLAGS_CAP = 12;
-const DEFAULT_EXTRACT_MODEL = "claude-sonnet-4-6";
 const MAX_RAW_TEXT = 4000;
 const LIST_LIMIT_DEFAULT = 20;
 const LIST_LIMIT_MAX = 50;
@@ -125,15 +127,15 @@ export async function POST(request: Request, { params }: RouteContext) {
   const user = await prisma.user.findUnique({
     where: { id: userId },
     select: {
-      anthropicApiKeyEncrypted: true,
-      anthropicModel: true,
+      geminiApiKeyEncrypted: true,
+      geminiModel: true,
     },
   });
 
   const apiKey =
-    (user?.anthropicApiKeyEncrypted
-      ? decryptToken(user.anthropicApiKeyEncrypted)
-      : null) || process.env.ANTHROPIC_API_KEY;
+    (user?.geminiApiKeyEncrypted
+      ? decryptToken(user.geminiApiKeyEncrypted)
+      : null) || process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
     // Sem chave: encerra com degraded ON (raw já gravado).
@@ -145,70 +147,60 @@ export async function POST(request: Request, { params }: RouteContext) {
       encounter: serializeEncounter(encounter, degradedFallback),
       contact: serializeContact(refreshedContact),
       degraded: true,
-      degradedReason: "Sem chave da Anthropic configurada (servidor ou /settings).",
+      degradedReason: "Sem chave da API Gemini configurada (servidor ou /settings).",
     });
   }
 
-  const model = user?.anthropicModel || process.env.ANTHROPIC_MODEL || DEFAULT_EXTRACT_MODEL;
-  const client = new Anthropic({ apiKey });
+  const model = resolveGeminiModel(user?.geminiModel);
+  const client = createGeminiClient(apiKey);
 
   // 3) Call extractor sincrono.
   let extract: EncounterExtract | null = null;
   let degradedReason: string | null = null;
   try {
-    const result = await client.messages.create({
+    const { data, usage } = await generateStructured<unknown>({
+      client,
       model,
-      max_tokens: 1024,
       system:
         "Voce e um EXTRATOR de sinais factuais de relatos pos-encontro (PT-BR). " +
         "Recebe contexto da Contact + relato livre do usuario e devolve JSON estruturado " +
-        "via tool_use. NAO da conselho, NAO julga, NAO inventa fatos. " +
-        "Se o relato e vago, prefira 'indefinido'/'same'/arrays vazios em vez de adivinhar.",
-      tools: [encounterToolSchema],
-      tool_choice: { type: "tool", name: ENCOUNTER_TOOL_NAME },
-      messages: [
+        "no schema pedido. NAO da conselho, NAO julga, NAO inventa fatos. " +
+        "Se o relato e vago, prefira 'indefinido'/'same'/arrays vazios em vez de adivinhar. " +
+        "userRedPatterns so deve ser populado se o relato do USUARIO indicar padrao problematico DELE (nao dela).",
+      contents: [
         {
           role: "user",
-          content: buildExtractorPrompt(contact, parsed.rawText, happenedAt),
+          parts: [{ text: buildExtractorPrompt(contact, parsed.rawText, happenedAt) }],
         },
       ],
+      schema: encounterResponseSchema,
+      maxOutputTokens: 1024,
     });
 
-    const usage = result.usage as Anthropic.Usage & {
-      cache_read_input_tokens?: number;
-      cache_creation_input_tokens?: number;
-    };
     await recordLlmUsage(rate.usageLogId, {
       model,
-      inputTokens: usage.input_tokens ?? 0,
-      outputTokens: usage.output_tokens ?? 0,
-      cacheReadTokens: usage.cache_read_input_tokens ?? 0,
-      cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
+      inputTokens: usage.inputTokens,
+      outputTokens: usage.outputTokens,
+      cacheReadTokens: usage.cacheReadTokens,
+      cacheCreationTokens: usage.cacheCreationTokens,
     });
 
-    const toolBlock = result.content.find(
-      (b): b is Anthropic.ToolUseBlock => b.type === "tool_use",
-    );
-    if (!toolBlock) {
-      degradedReason = "LLM nao devolveu tool_use.";
+    const parsedExtract = encounterExtractSchema.safeParse(data);
+    if (!parsedExtract.success) {
+      degradedReason =
+        "Saida do extrator fora do schema: " +
+        parsedExtract.error.issues
+          .slice(0, 3)
+          .map((i) => i.path.join("."))
+          .join(", ");
     } else {
-      const parsedExtract = encounterExtractSchema.safeParse(toolBlock.input);
-      if (!parsedExtract.success) {
-        degradedReason =
-          "Saida do extrator fora do schema: " +
-          parsedExtract.error.issues
-            .slice(0, 3)
-            .map((i) => i.path.join("."))
-            .join(", ");
-      } else {
-        extract = parsedExtract.data;
-      }
+      extract = parsedExtract.data;
     }
   } catch (cause) {
     degradedReason =
       cause instanceof Error
-        ? `Falha na call Anthropic: ${cause.message}`
-        : "Falha desconhecida na call Anthropic.";
+        ? `Falha na call Gemini: ${cause.message}`
+        : "Falha desconhecida na call Gemini.";
   }
 
   if (!extract) {
