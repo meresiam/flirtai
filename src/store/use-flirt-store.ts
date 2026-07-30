@@ -176,6 +176,14 @@ export const useFlirtStore = create<FlirtState>()(
             set({ isBootstrapping: false });
             return;
           }
+          if (contactsRes.status === 403) {
+            // Cadastro ainda não aprovado pelo admin.
+            if (typeof window !== "undefined") {
+              window.location.href = "/aguardando";
+            }
+            set({ isBootstrapping: false });
+            return;
+          }
           if (!contactsRes.ok) {
             throw new Error("Não consegui carregar suas conversas.");
           }

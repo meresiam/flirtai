@@ -10,10 +10,12 @@ import {
   KeyIcon,
   LogOutIcon,
   MessageCircleIcon,
+  PlayCircleIcon,
   UserIcon,
 } from "lucide-react";
 
 import { authClient } from "@/lib/auth-client";
+import { TOUR_REPLAY_KEY } from "@/components/onboarding-tour";
 import {
   LOCALE_IDS,
   TIMEZONE_IDS,
@@ -234,6 +236,12 @@ export default function SettingsPage() {
     await authClient.signOut();
     router.push("/login");
     router.refresh();
+  }
+
+  function handleReplayTour() {
+    // Flag lida pelo <OnboardingTour /> no shell — inicia o tour ao chegar em "/".
+    window.localStorage.setItem(TOUR_REPLAY_KEY, "1");
+    router.push("/");
   }
 
   return (
@@ -461,6 +469,21 @@ export default function SettingsPage() {
                 ) : null}
               </div>
             </form>
+          </SectionCard>
+
+          <SectionCard
+            icon={<PlayCircleIcon className="h-4 w-4 text-[#ff355d]" aria-hidden="true" />}
+            title="Tutorial"
+            description="Reveja o tour guiado que mostra cada funcionalidade do FlirtAI."
+          >
+            <button
+              type="button"
+              onClick={handleReplayTour}
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/75 transition hover:border-[#ff355d]/30 hover:bg-[#ff355d]/8 hover:text-white"
+            >
+              <PlayCircleIcon className="h-4 w-4" />
+              Ver tutorial novamente
+            </button>
           </SectionCard>
 
           {error ? (

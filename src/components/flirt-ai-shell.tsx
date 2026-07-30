@@ -36,6 +36,7 @@ import { ContactAvatar } from "@/components/contact-avatar";
 import { AnimatedGradientBorder } from "@/components/ui/animated-gradient-border";
 import { MeBannerCta } from "@/components/me-banner-cta";
 import { MeOnboardingModal } from "@/components/me-onboarding-modal";
+import { OnboardingTour } from "@/components/onboarding-tour";
 import { SuggestionFeedback } from "@/components/suggestion-feedback";
 // W8 — Org & Hygiene
 import { SidebarFilterBar } from "@/components/sidebar/sidebar-filter-bar";
@@ -51,7 +52,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { BarChart3Icon, UserCircle2Icon } from "lucide-react";
+import { BarChart3Icon, ShieldCheckIcon, UserCircle2Icon } from "lucide-react";
+import { useMeProfile } from "@/lib/use-me-profile";
 import { useFlirtStore } from "@/store/use-flirt-store";
 import {
   COACH_COMMANDS,
@@ -741,7 +743,7 @@ export function FlirtAiShell() {
       </div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-[1440px] gap-3 lg:grid-cols-[18rem_minmax(0,1fr)]">
-        <div className="hidden lg:block">
+        <div className="hidden lg:block" data-tour="sidebar">
           <ConversationSidebar
             contacts={visibleContacts}
             selectedContactId={selectedContact?.id ?? ""}
@@ -887,6 +889,7 @@ export function FlirtAiShell() {
                 trigger={
                   <button
                     type="button"
+                    data-tour="new-conversation"
                     className="hidden rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
                   >
                     Nova conversa
@@ -896,6 +899,7 @@ export function FlirtAiShell() {
               <Link
                 href="/desenrolos"
                 aria-label="Meus desenrolos"
+                data-tour="desenrolos-link"
                 className="hidden items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
               >
                 <HeartIcon className="h-3.5 w-3.5" />
@@ -904,6 +908,7 @@ export function FlirtAiShell() {
               <Link
                 href="/profiles"
                 aria-label="Perfis monitorados"
+                data-tour="profiles-link"
                 className="hidden items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white sm:inline-flex"
               >
                 Perfis
@@ -1133,7 +1138,7 @@ export function FlirtAiShell() {
           </div>
 
           <div className="border-t border-white/10 px-5 py-5 sm:px-6">
-            <div className="mx-auto w-full max-w-3xl">
+            <div className="mx-auto w-full max-w-3xl" data-tour="composer">
               <AnimatedGradientBorder
                 borderRadius={26}
                 borderWidth={1.5}
@@ -1296,6 +1301,7 @@ export function FlirtAiShell() {
                     />
                     <motion.button
                       type="button"
+                      data-tour="attach"
                       onClick={handleAttachFile}
                       whileTap={{ scale: 0.94 }}
                       className="group relative inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-white/55 transition-colors hover:bg-white/[0.06] hover:text-white/90"
@@ -1310,6 +1316,7 @@ export function FlirtAiShell() {
                     <motion.button
                       type="button"
                       data-command-button
+                      data-tour="commands"
                       onClick={(event) => {
                         event.stopPropagation();
                         setShowCommandPalette((previous) => !previous);
@@ -1382,6 +1389,7 @@ export function FlirtAiShell() {
       ) : null}
 
       <MeOnboardingModal />
+      <OnboardingTour />
 
       {/* W8 — Org & Hygiene UI */}
       <FolderManagerModal
@@ -1622,7 +1630,9 @@ function NewConversationPicker({
 }
 
 // Menu de conta no header — entrypoint pro perfil, dashboard, settings e logout.
+// Item "Admin" só aparece pra emails da allowlist (ADMIN_EMAILS, via /api/me/profile).
 function AccountMenu() {
+  const { profile } = useMeProfile();
   const [open, setOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
 
@@ -1649,6 +1659,7 @@ function AccountMenu() {
           <button
             type="button"
             aria-label="Conta e perfil"
+            data-tour="account-menu"
             className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-white/65 transition hover:border-[#ff355d]/24 hover:bg-[#ff355d]/8 hover:text-white"
           >
             <UserCircle2Icon className="h-5 w-5" />
@@ -1672,6 +1683,12 @@ function AccountMenu() {
           <SettingsIcon className="h-4 w-4 text-white/55" />
           Configurações
         </DropdownMenuItem>
+        {profile?.isAdmin ? (
+          <DropdownMenuItem render={<Link href="/admin" />} className={itemClass}>
+            <ShieldCheckIcon className="h-4 w-4 text-[#ff8a9e]" />
+            Admin
+          </DropdownMenuItem>
+        ) : null}
         <DropdownMenuSeparator className="my-1 bg-white/10" />
         <DropdownMenuItem
           variant="destructive"

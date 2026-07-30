@@ -20,6 +20,10 @@ model User {
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
+  // Gate de aprovação manual: null = cadastro pendente, bloqueado em todas
+  // as rotas autenticadas (requireUser). Admin (ADMIN_EMAILS) aprova em /admin.
+  approvedAt DateTime? @map("approved_at")
+
   // Optional user override of LLM provider config.
   // If null, the server-side env defaults are used.
   // Token armazenado encriptado (AES-256-GCM via src/lib/profile-watch/token-crypto.ts).
@@ -60,6 +64,8 @@ model UserProfile {
   redPatternsRaw Json       @default("[]") @map("red_patterns_raw")
   redPatterns    Json       @default("[]") @map("red_patterns")
   onboardingDone Boolean    @default(false) @map("onboarding_done")
+  // Tour guiado de UI (balões). null = nunca viu; setado ao concluir/pular.
+  tourSeenAt     DateTime?  @map("tour_seen_at")
   createdAt      DateTime   @default(now()) @map("created_at")
   updatedAt      DateTime   @updatedAt @map("updated_at")
 
@@ -299,6 +305,14 @@ model UsageLog {
   userId    String   @map("user_id")
   route     String
   createdAt DateTime @default(now()) @map("created_at")
+
+  // Preenchidos após a chamada LLM completar (nulos em rotas sem LLM ou se a
+  // chamada falhou). Base do monitoramento de gasto por usuário em /admin.
+  model               String? @map("model")
+  inputTokens         Int?    @map("input_tokens")
+  outputTokens        Int?    @map("output_tokens")
+  cacheReadTokens     Int?    @map("cache_read_tokens")
+  cacheCreationTokens Int?    @map("cache_creation_tokens")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

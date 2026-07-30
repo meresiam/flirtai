@@ -3,6 +3,7 @@ import { z } from "zod";
 import { CoachTone, Prisma } from "@prisma/client";
 
 import { requireUser } from "@/lib/api-auth";
+import { isAdminEmail } from "@/lib/admin";
 import { prisma } from "@/lib/db";
 
 export const runtime = "nodejs";
@@ -45,6 +46,8 @@ const patchSchema = z
     // Multi-seleção: array de contextos. null/[] = limpar.
     contextLife: z.array(z.enum(CONTEXT_LIFE_OPTIONS)).max(6).nullable().optional(),
     demographics: demographicsSchema.nullable().optional(),
+    // Tour guiado: true = marca como visto (concluiu ou pulou).
+    tourSeen: z.literal(true).optional(),
   })
   .strict();
 
@@ -53,14 +56,18 @@ export async function GET() {
   if (auth instanceof NextResponse) return auth;
   const userId = auth;
 
-  const profile = await prisma.userProfile.upsert({
-    where: { userId },
-    update: {},
-    create: { userId },
-  });
+  const [profile, user] = await Promise.all([
+    prisma.userProfile.upsert({
+      where: { userId },
+      update: {},
+      create: { userId },
+    }),
+    prisma.user.findUnique({ where: { id: userId }, select: { email: true } }),
+  ]);
 
   return NextResponse.json({
     userProfile: serialize(profile),
+    isAdmin: isAdminEmail(user?.email),
     options: {
       contextLife: CONTEXT_LIFE_OPTIONS,
       relationship: RELATIONSHIP_OPTIONS,
@@ -99,6 +106,9 @@ export async function PATCH(request: Request) {
       parsed.demographics === null
         ? Prisma.DbNull
         : (parsed.demographics as Prisma.InputJsonValue);
+  }
+  if (parsed.tourSeen) {
+    data.tourSeenAt = new Date();
   }
 
   // WR-06 — Nielsen H5 (prevencao): rejeitar PATCH vazio em vez de fazer
@@ -154,6 +164,7 @@ function serialize(profile: {
   redPatternsRaw: Prisma.JsonValue;
   redPatterns: Prisma.JsonValue;
   onboardingDone: boolean;
+  tourSeenAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
 }) {
@@ -167,6 +178,7 @@ function serialize(profile: {
     redPatternsRaw: asStringArray(profile.redPatternsRaw),
     redPatterns: asStringArray(profile.redPatterns),
     onboardingDone: profile.onboardingDone,
+    tourSeenAt: profile.tourSeenAt?.toISOString() ?? null,
     createdAt: profile.createdAt.toISOString(),
     updatedAt: profile.updatedAt.toISOString(),
   };
@@ -189,5 +201,6 @@ function materializeCreate(
   if (parsed.demographics != null) {
     create.demographics = parsed.demographics as Prisma.InputJsonValue;
   }
+  if (parsed.tourSeen) create.tourSeenAt = new Date();
   return create;
 }

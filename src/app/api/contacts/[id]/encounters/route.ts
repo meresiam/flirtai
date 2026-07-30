@@ -5,7 +5,7 @@ import { Prisma, type AttractionLevel as PrismaAttractionLevel } from "@prisma/c
 
 import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
-import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
+import { checkAndConsumeRateLimit, recordLlmUsage } from "@/lib/rate-limit";
 import { decryptToken } from "@/lib/profile-watch/token-crypto";
 import { serializeContact } from "@/lib/serializers";
 import {
@@ -172,6 +172,18 @@ export async function POST(request: Request, { params }: RouteContext) {
           content: buildExtractorPrompt(contact, parsed.rawText, happenedAt),
         },
       ],
+    });
+
+    const usage = result.usage as Anthropic.Usage & {
+      cache_read_input_tokens?: number;
+      cache_creation_input_tokens?: number;
+    };
+    await recordLlmUsage(rate.usageLogId, {
+      model,
+      inputTokens: usage.input_tokens ?? 0,
+      outputTokens: usage.output_tokens ?? 0,
+      cacheReadTokens: usage.cache_read_input_tokens ?? 0,
+      cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
     });
 
     const toolBlock = result.content.find(

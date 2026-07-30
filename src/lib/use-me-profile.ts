@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 
 export interface MeProfileLite {
   onboardingDone: boolean;
+  tourSeenAt: string | null;
+  isAdmin: boolean;
 }
 
 interface CacheEntry {
@@ -50,10 +52,15 @@ async function fetchMeProfile(): Promise<MeProfileLite | null> {
         signal: controller.signal,
       });
       if (!response.ok) return null;
-      const { userProfile } = (await response.json()) as {
-        userProfile: { onboardingDone: boolean };
+      const { userProfile, isAdmin } = (await response.json()) as {
+        userProfile: { onboardingDone: boolean; tourSeenAt: string | null };
+        isAdmin?: boolean;
       };
-      const lite: MeProfileLite = { onboardingDone: userProfile.onboardingDone };
+      const lite: MeProfileLite = {
+        onboardingDone: userProfile.onboardingDone,
+        tourSeenAt: userProfile.tourSeenAt ?? null,
+        isAdmin: Boolean(isAdmin),
+      };
       cache.data = lite;
       cache.fetchedAt = Date.now();
       notify(lite);

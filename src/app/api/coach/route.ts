@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import { headers } from "next/headers";
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 
-import { auth } from "@/lib/auth";
+import { requireUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/db";
-import { checkAndConsumeRateLimit } from "@/lib/rate-limit";
+import { checkAndConsumeRateLimit, recordLlmUsage } from "@/lib/rate-limit";
 import { buildSystemPromptParts } from "@/lib/flirt/system-prompt";
 import { buildMeContext } from "@/lib/flirt/me-context";
 import { COACH_TOOL_NAME, coachToolSchema } from "@/lib/flirt/coach-schema";
@@ -54,11 +53,9 @@ const requestSchema = z
   });
 
 export async function POST(request: Request) {
-  const session = await auth.api.getSession({ headers: await headers() });
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Não autenticado." }, { status: 401 });
-  }
-  const userId = session.user.id;
+  const authResult = await requireUser();
+  if (authResult instanceof NextResponse) return authResult;
+  const userId = authResult;
 
   // CR-01 — short-circuit ANTES de ler o body. Header Content-Length nao e
   // confiavel em 100% dos casos (chunked transfer pode omitir), mas cobre o
@@ -347,6 +344,14 @@ export async function POST(request: Request) {
           cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
           latencyMs: Date.now() - startedAt,
           status: "ok",
+        });
+        // Persiste tokens na linha do UsageLog (base do /admin de gastos).
+        await recordLlmUsage(rate.usageLogId, {
+          model,
+          inputTokens: usage.input_tokens ?? 0,
+          outputTokens: usage.output_tokens ?? 0,
+          cacheReadTokens: usage.cache_read_input_tokens ?? 0,
+          cacheCreationTokens: usage.cache_creation_input_tokens ?? 0,
         });
 
         const toolBlock = (finalMsg.content as Anthropic.ContentBlock[]).find(
