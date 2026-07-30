@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { authClient } from "@/lib/auth-client";
+import { PasswordInput } from "@/components/password-input";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -74,15 +75,13 @@ export default function SignupPage() {
             <label className="text-xs uppercase tracking-[0.18em] text-white/55" htmlFor="password">
               Senha
             </label>
-            <input
+            <PasswordInput
               id="password"
-              type="password"
               autoComplete="new-password"
               required
               minLength={8}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition focus:border-[#ff355d]/40"
             />
             <p className="mt-1 text-xs text-white/45">Mínimo 8 caracteres.</p>
           </div>

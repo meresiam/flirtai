@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 import { authClient } from "@/lib/auth-client";
+import { PasswordInput } from "@/components/password-input";
 
 export default function ResetPasswordPage() {
   return (
@@ -92,15 +93,13 @@ function ResetPasswordForm() {
               >
                 Nova senha
               </label>
-              <input
+              <PasswordInput
                 id="password"
-                type="password"
                 autoComplete="new-password"
                 required
                 minLength={8}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition focus:border-[#ff355d]/40"
               />
             </div>
 
@@ -111,15 +110,13 @@ function ResetPasswordForm() {
               >
                 Confirmar senha
               </label>
-              <input
+              <PasswordInput
                 id="confirm"
-                type="password"
                 autoComplete="new-password"
                 required
                 minLength={8}
                 value={confirm}
                 onChange={(event) => setConfirm(event.target.value)}
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition focus:border-[#ff355d]/40"
               />
             </div>
 
